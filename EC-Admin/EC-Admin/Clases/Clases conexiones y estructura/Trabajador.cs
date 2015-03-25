@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Drawing;
 
 namespace EC_Admin
 {
@@ -16,6 +17,8 @@ namespace EC_Admin
         private string nombre;
         private string apellidos;
         private int puesto;
+        private string nomina;
+        private decimal sueldo;
         private string telefono;
         private string celular;
         private string correo;
@@ -25,6 +28,8 @@ namespace EC_Admin
         private int cp;
         private DateTime fechaInicio;
         private DateTime fechaFin;
+        private Image imagen;
+        private byte[] huella;
         private bool eliminado;
         private int createUser;
         private DateTime createTime;
@@ -62,6 +67,18 @@ namespace EC_Admin
             set { puesto = value; }
         }
 
+        public string Nomina
+        {
+            get { return nomina; }
+            set { nomina = value; }
+        }
+        
+        public decimal Sueldo
+        {
+            get { return sueldo; }
+            set { sueldo = value; }
+        }
+        
         public string Telefono
         {
             get { return telefono; }
@@ -116,6 +133,18 @@ namespace EC_Admin
             set { fechaFin = value; }
         }
 
+        public Image Imagen
+        {
+            get { return imagen; }
+            set { imagen = value; }
+        }
+
+        public byte[] Huella
+        {
+            get { return huella; }
+            set { huella = value; }
+        }
+        
         public bool Eliminado
         {
             get { return eliminado; }
@@ -216,6 +245,8 @@ namespace EC_Admin
                     nombre = dr["nombre"].ToString();
                     apellidos = dr["apellidos"].ToString();
                     puesto = (int)dr["puesto"];
+                    nomina = dr["nomina"].ToString();
+                    sueldo = (decimal)dr["sueldo"];
                     telefono = dr["telefono"].ToString();
                     celular = dr["celular"].ToString();
                     correo = dr["email"].ToString();
@@ -228,6 +259,14 @@ namespace EC_Admin
                         fechaFin = (DateTime)dr["fecha_fin"];
                     else
                         fechaFin = new DateTime();
+                    if (dr["imagen"] != DBNull.Value)
+                        imagen = FuncionesGenerales.BytesImagen((byte[])dr["imagen"]);
+                    else
+                        imagen = null;
+                    if (dr["huella"] != DBNull.Value)
+                        huella = (byte[])dr["huella"];
+                    else
+                        huella = null;
                     eliminado = (bool)dr["eliminado"];
                     createUser = (int)dr["create_user"];
                     createTime = (DateTime)dr["create_time"];
@@ -259,12 +298,13 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO trabajador (sucursal_id, nombre, apellidos, puesto, telefono, celular, email, direccion, ciudad, estado, cp, fecha_inicio, create_user, create_time) " +
-                    "VALUES (?sucursal_id, ?nombre, ?apellidos, ?puesto, ?telefono, ?celular, ?email, ?direccion, ?ciudad, ?estado, ?cp, ?fecha_inicio, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO trabajador (sucursal_id, nombre, apellidos, puesto, sueldo, telefono, celular, email, direccion, ciudad, estado, cp, fecha_inicio, imagen, huella, create_user, create_time) " +
+                    "VALUES (?sucursal_id, ?nombre, ?apellidos, ?puesto, ?sueldo, ?telefono, ?celular, ?email, ?direccion, ?ciudad, ?estado, ?cp, ?fecha_inicio, ?imagen, ?huella, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?sucursal_id", idSucursal);
                 sql.Parameters.AddWithValue("?nombre", nombre);
                 sql.Parameters.AddWithValue("?apellidos", apellidos);
                 sql.Parameters.AddWithValue("?puesto", puesto);
+                sql.Parameters.AddWithValue("?sueldo", sueldo);
                 sql.Parameters.AddWithValue("?telefono", telefono);
                 sql.Parameters.AddWithValue("?celular", celular);
                 sql.Parameters.AddWithValue("?email", correo);
@@ -273,6 +313,11 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?estado", estado);
                 sql.Parameters.AddWithValue("?cp", cp);
                 sql.Parameters.AddWithValue("?fecha_inicio", fechaInicio);
+                if (imagen != null)
+                    sql.Parameters.AddWithValue("?imagen", FuncionesGenerales.ImagenBytes(imagen));
+                else
+                    sql.Parameters.AddWithValue("?imagen", DBNull.Value);
+                sql.Parameters.AddWithValue("?huella", huella);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
                 ConexionBD.EjecutarConsulta(sql);
                 Cant();
@@ -295,12 +340,14 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE trabajador SET sucursal_id=?sucursal_id, nombre=?nombre, apellidos=?apellidos, puesto=?puesto, telefono=?telefono, celular=?celular, " + 
-                    "email=?email, direccion=?direccion, ciudad=?ciudad, estado=?estado, cp=?cp, update_user=?update_user, update_time=NOW() WHERE id=?id";
+                sql.CommandText = "UPDATE trabajador SET sucursal_id=?sucursal_id, nombre=?nombre, apellidos=?apellidos, puesto=?puesto, nomina=?nomina, sueldo=?sueldo, telefono=?telefono, celular=?celular, " + 
+                    "email=?email, direccion=?direccion, ciudad=?ciudad, estado=?estado, cp=?cp, imagen=?imagen, huella=?huella, update_user=?update_user, update_time=NOW() WHERE id=?id";
                 sql.Parameters.AddWithValue("?sucursal_id", idSucursal);
                 sql.Parameters.AddWithValue("?nombre", nombre);
                 sql.Parameters.AddWithValue("?apellidos", apellidos);
                 sql.Parameters.AddWithValue("?puesto", puesto);
+                sql.Parameters.AddWithValue("?nomina", nomina);
+                sql.Parameters.AddWithValue("?sueldo", sueldo);
                 sql.Parameters.AddWithValue("?telefono", telefono);
                 sql.Parameters.AddWithValue("?celular", celular);
                 sql.Parameters.AddWithValue("?email", correo);
@@ -308,6 +355,11 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?ciudad", ciudad);
                 sql.Parameters.AddWithValue("?estado", estado);
                 sql.Parameters.AddWithValue("?cp", cp);
+                if (imagen != null)
+                    sql.Parameters.AddWithValue("?imagen", FuncionesGenerales.ImagenBytes(imagen));
+                else
+                    sql.Parameters.AddWithValue("?imagen", DBNull.Value);
+                sql.Parameters.AddWithValue("?huella", huella);
                 sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
@@ -348,176 +400,176 @@ namespace EC_Admin
             }
         }
 
-        #region Puesto
-        private int idP;
-        private string nombreP;
-        private string departamentoP;
-        private int createUserP;
-        private DateTime createTimeP;
-        private int updateUserP;
-        private DateTime updateTimeP;
-        private static int cantP = -1;
+        //#region Puesto
+        //private int idP;
+        //private string nombreP;
+        //private string departamentoP;
+        //private int createUserP;
+        //private DateTime createTimeP;
+        //private int updateUserP;
+        //private DateTime updateTimeP;
+        //private static int cantP = -1;
 
-        public int IDPuesto
-        {
-            get { return idP; }
-            set { idP = value; }
-        }
+        //public int IDPuesto
+        //{
+        //    get { return idP; }
+        //    set { idP = value; }
+        //}
 
-        public string NombrePuesto
-        {
-            get { return nombreP; }
-            set { nombreP = value; }
-        }
+        //public string NombrePuesto
+        //{
+        //    get { return nombreP; }
+        //    set { nombreP = value; }
+        //}
 
-        public string DepartamentoPuesto
-        {
-            get { return departamentoP; }
-            set { departamentoP = value; }
-        }
+        //public string DepartamentoPuesto
+        //{
+        //    get { return departamentoP; }
+        //    set { departamentoP = value; }
+        //}
 
-        public int CreateUserPuesto
-        {
-            get { return createUserP; }
-        }
+        //public int CreateUserPuesto
+        //{
+        //    get { return createUserP; }
+        //}
 
-        public DateTime CreateTimePuesto
-        {
-            get { return createTimeP; }
-            set { createTimeP = value; }
-        }
+        //public DateTime CreateTimePuesto
+        //{
+        //    get { return createTimeP; }
+        //    set { createTimeP = value; }
+        //}
 
-        public int UpdateUserPuesto
-        {
-            get { return updateUserP; }
-            set { updateUserP = value; }
-        }
+        //public int UpdateUserPuesto
+        //{
+        //    get { return updateUserP; }
+        //    set { updateUserP = value; }
+        //}
 
-        public DateTime UpdateTimePuesto
-        {
-            get { return updateTimeP; }
-            set { updateTimeP = value; }
-        }
+        //public DateTime UpdateTimePuesto
+        //{
+        //    get { return updateTimeP; }
+        //    set { updateTimeP = value; }
+        //}
 
-        public static int CantidadPuesto
-        {
-            get
-            {
-                try
-                {
-                    if (cantP < 0)
-                        CantPuesto();
-                    return cantP;
-                }
-                catch (MySqlException ex)
-                {
-                    throw ex;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-        }
+        //public static int CantidadPuesto
+        //{
+        //    get
+        //    {
+        //        try
+        //        {
+        //            if (cantP < 0)
+        //                CantPuesto();
+        //            return cantP;
+        //        }
+        //        catch (MySqlException ex)
+        //        {
+        //            throw ex;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw ex;
+        //        }
+        //    }
+        //}
 
-        private static void CantPuesto()
-        {
-            try
-            {
-                string sql = "SELECT COUNT(id) AS c FROM puesto";
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    cantP = int.Parse(dr["c"].ToString());
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //private static void CantPuesto()
+        //{
+        //    try
+        //    {
+        //        string sql = "SELECT COUNT(id) AS c FROM puesto";
+        //        DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //            cantP = int.Parse(dr["c"].ToString());
+        //        }
+        //    }
+        //    catch (MySqlException ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
-        public void ObtenerDatosPuesto()
-        {
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT * FROM puesto WHERE id=?id";
-                sql.Parameters.AddWithValue("?id", idP);
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    nombreP = dr["nombre"].ToString();
-                    departamentoP = dr["departamento"].ToString();
-                    createUserP = (int)dr["create_user"];
-                    createTimeP = (DateTime)dr["create_time"];
-                    if (dr["update_user"] != DBNull.Value)
-                        updateUserP = (int)dr["update_user"];
-                    else
-                        updateUserP = 0;
-                    if (dr["update_time"] != DBNull.Value)
-                        updateTimeP = (DateTime)dr["update_time"];
-                    else
-                        updateTimeP = new DateTime();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public void ObtenerDatosPuesto()
+        //{
+        //    try
+        //    {
+        //        MySqlCommand sql = new MySqlCommand();
+        //        sql.CommandText = "SELECT * FROM puesto WHERE id=?id";
+        //        sql.Parameters.AddWithValue("?id", idP);
+        //        DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //            nombreP = dr["nombre"].ToString();
+        //            departamentoP = dr["departamento"].ToString();
+        //            createUserP = (int)dr["create_user"];
+        //            createTimeP = (DateTime)dr["create_time"];
+        //            if (dr["update_user"] != DBNull.Value)
+        //                updateUserP = (int)dr["update_user"];
+        //            else
+        //                updateUserP = 0;
+        //            if (dr["update_time"] != DBNull.Value)
+        //                updateTimeP = (DateTime)dr["update_time"];
+        //            else
+        //                updateTimeP = new DateTime();
+        //        }
+        //    }
+        //    catch (MySqlException ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
-        public void InsertarPuesto()
-        {
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO puesto (nombre, departamento, create_user, create_time) " +
-                    "VALUES (?nombre, ?departamento, ?create_user, NOW())";
-                sql.Parameters.AddWithValue("?nombre", nombreP);
-                sql.Parameters.AddWithValue("?departamento", departamentoP);
-                sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
-                ConexionBD.EjecutarConsulta(sql);
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public void InsertarPuesto()
+        //{
+        //    try
+        //    {
+        //        MySqlCommand sql = new MySqlCommand();
+        //        sql.CommandText = "INSERT INTO puesto (nombre, departamento, create_user, create_time) " +
+        //            "VALUES (?nombre, ?departamento, ?create_user, NOW())";
+        //        sql.Parameters.AddWithValue("?nombre", nombreP);
+        //        sql.Parameters.AddWithValue("?departamento", departamentoP);
+        //        sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
+        //        ConexionBD.EjecutarConsulta(sql);
+        //    }
+        //    catch (MySqlException ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
-        public void EditarPuesto()
-        {
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE puesto SET nombre=?nombre, departamento=?departamento, update_user=?update_user, update_time=NOW() WHERE id=?id";
-                sql.Parameters.AddWithValue("?nombre", nombreP);
-                sql.Parameters.AddWithValue("?departamento", departamentoP);
-                sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
-                sql.Parameters.AddWithValue("?id", idP);
-                ConexionBD.EjecutarConsulta(sql);
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        #endregion
+        //public void EditarPuesto()
+        //{
+        //    try
+        //    {
+        //        MySqlCommand sql = new MySqlCommand();
+        //        sql.CommandText = "UPDATE puesto SET nombre=?nombre, departamento=?departamento, update_user=?update_user, update_time=NOW() WHERE id=?id";
+        //        sql.Parameters.AddWithValue("?nombre", nombreP);
+        //        sql.Parameters.AddWithValue("?departamento", departamentoP);
+        //        sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
+        //        sql.Parameters.AddWithValue("?id", idP);
+        //        ConexionBD.EjecutarConsulta(sql);
+        //    }
+        //    catch (MySqlException ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+        //#endregion
     }
 }

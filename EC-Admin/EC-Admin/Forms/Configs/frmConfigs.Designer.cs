@@ -90,7 +90,7 @@
             this.btnTicket.Name = "btnTicket";
             this.btnTicket.Size = new System.Drawing.Size(149, 46);
             this.btnTicket.TabIndex = 2;
-            this.btnTicket.Text = "Ticket";
+            this.btnTicket.Text = "Impresión";
             this.btnTicket.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTicket.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnTicket.UseVisualStyleBackColor = false;

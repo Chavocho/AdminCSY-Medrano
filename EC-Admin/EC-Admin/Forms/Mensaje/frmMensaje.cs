@@ -50,21 +50,25 @@ namespace EC_Admin
                     pcbIcono.Image = global::EC_Admin.Properties.Resources.IconoExito;
                     pnlImagen.BackColor = Colores.Exito;
                     this.ForeColor = Colores.ExitoObscuro;
+                    BotonOK();
                     break;
                 case Mensajes.Informativo:
                     pcbIcono.Image = global::EC_Admin.Properties.Resources.IconoInformativo;
                     pnlImagen.BackColor = Colores.Info;
                     this.ForeColor = Colores.InfoObscuro;
+                    BotonOK();
                     break;
                 case Mensajes.Alerta:
                     pcbIcono.Image = global::EC_Admin.Properties.Resources.IconoAlerta;
                     pnlImagen.BackColor = Colores.Alerta;
                     this.ForeColor = Colores.AlertaObscuro;
+                    BotonOK();
                     break;
                 case Mensajes.Error:
                     pcbIcono.Image = global::EC_Admin.Properties.Resources.IconoError;
                     pnlImagen.BackColor = Colores.Error;
                     this.ForeColor = Colores.ErrorObscuro;
+                    BotonOK();
                     break;
                 case Mensajes.Pregunta:
                     pcbIcono.Image = global::EC_Admin.Properties.Resources.IconoPregunta;
@@ -111,6 +115,26 @@ namespace EC_Admin
             }
             //Centramos el lblMensaje
             lblMensaje.Left = (pnlMensaje.Width - lblMensaje.Width) / 2;
+        }
+
+        /// <summary>
+        /// Crea el botón OK para su uso en la mayoria de los formularios
+        /// </summary>
+        private void BotonOK()
+        {
+            Button btnOK = new Button();
+            btnOK.Name = "btnOK";
+            btnOK.BackColor = Colores.Obscuro;
+            btnOK.ForeColor = Colores.Claro;
+            btnOK.FlatStyle = FlatStyle.Flat;
+            btnOK.FlatAppearance.BorderSize = 0;
+            btnOK.FlatAppearance.MouseDownBackColor = Colores.ClaroObscuro;
+            btnOK.FlatAppearance.MouseOverBackColor = Colores.ObscuroClaro;
+            btnOK.Size = new System.Drawing.Size(97, 30);
+            btnOK.Text = "OK";
+            btnOK.Location = new Point(pnlMensaje.Width - btnOK.Width - 10, pnlMensaje.Height - btnOK.Height - 10);
+            btnOK.Click += new EventHandler(btnOK_Click);
+            pnlMensaje.Controls.Add(btnOK);
         }
 
         /// <summary>
@@ -174,6 +198,11 @@ namespace EC_Admin
             //Usamos el API de Windows para mover el formulario en el evento MouseDown
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void btnSi_Click(object sender, EventArgs e)

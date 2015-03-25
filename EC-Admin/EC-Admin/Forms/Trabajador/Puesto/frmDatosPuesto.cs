@@ -14,19 +14,19 @@ namespace EC_Admin.Forms
     public partial class frmDatosPuesto : Form
     {
         bool editar = false;
-        Trabajador t;
+        Puesto t;
 
         public frmDatosPuesto()
         {
             InitializeComponent();
-            t = new Trabajador();
+            t = new Puesto();
         }
 
         public frmDatosPuesto(int id)
         {
             InitializeComponent();
-            t = new Trabajador();
-            t.IDPuesto = id;
+            t = new Puesto();
+            t.ID = id;
             editar = true;
         }
 
@@ -34,9 +34,9 @@ namespace EC_Admin.Forms
         {
             try
             {
-                t.ObtenerDatosPuesto();
-                txtNombre.Text = t.NombrePuesto;
-                txtDepartamento.Text = t.DepartamentoPuesto;
+                t.ObtenerDatos();
+                txtNombre.Text = t.Nombre;
+                txtDepartamento.Text = t.Departamento;
             }
             catch (MySqlException ex)
             {
@@ -52,9 +52,9 @@ namespace EC_Admin.Forms
         {
             try
             {
-                t.NombrePuesto = txtNombre.Text;
-                t.DepartamentoPuesto = txtDepartamento.Text;
-                t.InsertarPuesto();
+                t.Nombre = txtNombre.Text;
+                t.Departamento = txtDepartamento.Text;
+                t.Insertar();
             }
             catch (MySqlException ex)
             {
@@ -70,9 +70,9 @@ namespace EC_Admin.Forms
         {
             try
             {
-                t.NombrePuesto = txtNombre.Text;
-                t.DepartamentoPuesto = txtDepartamento.Text;
-                t.EditarPuesto();
+                t.Nombre = txtNombre.Text;
+                t.Departamento = txtDepartamento.Text;
+                t.Editar();
             }
             catch (MySqlException ex)
             {

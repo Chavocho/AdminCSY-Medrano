@@ -194,5 +194,15 @@ namespace EC_Admin.Forms
             tmrEspera.Enabled = false;
             FuncionesGenerales.frmEspera("Espere, buscando trabajadores", this);
         }
+
+        private void btnHorarios_Click(object sender, EventArgs e)
+        {
+            (new frmHorarioTrabajador()).ShowDialog(this);
+        }
+
+        private void btnIngreso_Click(object sender, EventArgs e)
+        {
+            (new frmIngreso()).Show(this);
+        }
     }
 }

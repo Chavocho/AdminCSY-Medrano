@@ -187,6 +187,8 @@ namespace EC_Admin
         {
             get
             {
+                if (cantP < 0)
+                    CantP();
                 return cantP;
             }
         }
@@ -201,7 +203,8 @@ namespace EC_Admin
                 {
                     if (dr["c"] != DBNull.Value)
                         cantP = int.Parse(dr["c"].ToString());
-
+                    else
+                        cantP = 0;
                 }
             }
             catch (Exception ex)
@@ -210,5 +213,191 @@ namespace EC_Admin
             }
         }
         #endregion
+
+        public Producto()
+        {
+
+        }
+
+        public Producto(int id)
+        {
+            this.ID = id;
+        }
+
+        public void ObtenerDatos()
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT * FROM producto WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    idProveedor = (int)dr["proveedor_id"];
+                    idAlmacen = (int)dr["almacen_id"];
+                    idCategoria = (int)dr["categoria"];
+                    nombre = dr["nombre"].ToString();
+                    marca = dr["marca"].ToString();
+                    codigo = dr["codigo"].ToString();
+                    descripcion01 = dr["descripcion1"].ToString();
+                    descripcion02 = dr["descripcion2"].ToString();
+                    costo = (decimal)dr["costo"];
+                    precio = (decimal)dr["precio"];
+                    cantidad = (int)dr["cant"];
+                    precioMedioMayoreo = (decimal)dr["precio_mediomayoreo"];
+                    precioMayoreo = (decimal)dr["precio_mayoreo"];
+                    cantidadMedioMayoreo = (int)dr["cant_mediomayoreo"];
+                    cantidadMayoreo = (int)dr["cant_mayoreo"];
+                    unidad = (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString());
+                    if (dr["imagen"] != DBNull.Value)
+                        imagen = FuncionesGenerales.BytesImagen((byte[])dr["imagen"]);
+                    else
+                        imagen = null;
+                    eliminado = (bool)dr["eliminado"];
+                    createUser = (int)dr["create_user"];
+                    createTime = (DateTime)dr["create_time"];
+                    if (dr["update_user"] != DBNull.Value)
+                        updateUser = (int)dr["update_user"];
+                    else
+                        updateUser = 0;
+                    if (dr["update_time"] != DBNull.Value)
+                        updateTime = (DateTime)dr["update_time"];
+                    else
+                        updateTime = new DateTime();
+                    if (dr["delete_user"] != DBNull.Value)
+                        deleteUser = (int)dr["delete_user"];
+                    else
+                        deleteUser = 0;
+                    if (dr["delete_time"] != DBNull.Value)
+                        deleteTime = (DateTime)dr["delete_time"];
+                    else
+                        deleteTime = new DateTime();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void Insertar()
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "INSERT INTO producto (proveedor_id, almacen_id, categoria, nombre, marca, codigo, descripcion1, descripcion2, costo, precio, cant, precio_mediomayoreo, precio_mayoreo, cant_mediomayoreo, cant_mayoreo, unidad, imagen, create_user, create_time) " +
+                    "VALUES (?proveedor_id, ?almacen_id, ?categoria, ?nombre, ?marca, ?codigo, ?descripcion1, ?descripcion2, ?costo, ?precio, ?cant, ?precio_mediomayoreo, ?precio_mayoreo, ?cant_mediomayoreo, ?cant_mayoreo, ?unidad, ?imagen, ?create_user, NOW())";
+                sql.Parameters.AddWithValue("?proveedor_id", idProveedor);
+                sql.Parameters.AddWithValue("?almacen_id", idAlmacen);
+                sql.Parameters.AddWithValue("?categoria", idCategoria);
+                sql.Parameters.AddWithValue("?nombre", nombre);
+                sql.Parameters.AddWithValue("?marca", marca);
+                sql.Parameters.AddWithValue("?codigo", codigo);
+                sql.Parameters.AddWithValue("?descripcion1", descripcion01);
+                sql.Parameters.AddWithValue("?descripcion2", descripcion02);
+                sql.Parameters.AddWithValue("?costo", costo);
+                sql.Parameters.AddWithValue("?precio", precio);
+                sql.Parameters.AddWithValue("?cant", cantidad);
+                sql.Parameters.AddWithValue("?precio_mediomayoreo", precioMedioMayoreo);
+                sql.Parameters.AddWithValue("?precio_mayoreo", precioMayoreo);
+                sql.Parameters.AddWithValue("?cant_mediomayoreo", cantidadMedioMayoreo);
+                sql.Parameters.AddWithValue("?cant_mayoreo", cantidadMayoreo);
+                sql.Parameters.AddWithValue("?unidad", unidad);
+                sql.Parameters.AddWithValue("?imagen", imagen);
+                sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
+                ConexionBD.EjecutarConsulta(sql);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void Editar()
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "UPDATE producto SET proveedor_id=?proveedor_id, almacen_id=?almacen_id, categoria=?categoria, nombre=?nombre, marca=?marca, codigo=?codigo, descripcion1=?descripcion1, descripcion2=?descripcion2, costo=?costo, precio=?precio, cant=?cant, " +
+                    "precio_mediomayoreo=?precio_mediomayoreo, precio_mayoreo=?precio_mayoreo, cant_mediomayoreo=?cant_mediomayoreo, cant_mayoreo=?cant_mayoreo, unidad=?unidad, imagen=?imagen, update_user=?update_user, update_time=NOW() WHERE id=?id"; 
+                sql.Parameters.AddWithValue("?proveedor_id", idProveedor);
+                sql.Parameters.AddWithValue("?almacen_id", idAlmacen);
+                sql.Parameters.AddWithValue("?categoria", idCategoria);
+                sql.Parameters.AddWithValue("?nombre", nombre);
+                sql.Parameters.AddWithValue("?marca", marca);
+                sql.Parameters.AddWithValue("?codigo", codigo);
+                sql.Parameters.AddWithValue("?descripcion1", descripcion01);
+                sql.Parameters.AddWithValue("?descripcion2", descripcion02);
+                sql.Parameters.AddWithValue("?costo", costo);
+                sql.Parameters.AddWithValue("?precio", precio);
+                sql.Parameters.AddWithValue("?cant", cantidad);
+                sql.Parameters.AddWithValue("?precio_mediomayoreo", precioMedioMayoreo);
+                sql.Parameters.AddWithValue("?precio_mayoreo", precioMayoreo);
+                sql.Parameters.AddWithValue("?cant_mediomayoreo", cantidadMedioMayoreo);
+                sql.Parameters.AddWithValue("?cant_mayoreo", cantidadMayoreo);
+                sql.Parameters.AddWithValue("?unidad", unidad);
+                sql.Parameters.AddWithValue("?imagen", imagen);
+                sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
+                sql.Parameters.AddWithValue("?id", id);
+                ConexionBD.EjecutarConsulta(sql);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void CambiarEstado(int id, bool estado)
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "UPDATE producto SET eliminado=?estado, delete_user=?delete_user, delete_time=NOW() WHERE id=?id";
+                sql.Parameters.AddWithValue("?estado", estado);
+                sql.Parameters.AddWithValue("?delete_user", Usuario.IDUsuarioActual);
+                sql.Parameters.AddWithValue("?id", id);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void CambiarCantidadInventario(int id, int cant)
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "UPDATE producto SET cant=?cant WHERE id=?id";
+                sql.Parameters.AddWithValue("?cant", cant);
+                sql.Parameters.AddWithValue("?id", id);
+                ConexionBD.EjecutarConsulta(sql);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

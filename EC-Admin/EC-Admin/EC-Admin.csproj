@@ -35,6 +35,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge.Video">
+      <HintPath>..\..\..\..\GymCSY-Version-Gratuita\GYM\bin\Debug\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow">
+      <HintPath>..\..\..\..\GymCSY-Version-Gratuita\GYM\bin\Debug\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.VFW">
+      <HintPath>..\..\..\..\GymCSY-Version-Gratuita\GYM\bin\Debug\AForge.Video.VFW.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\..\..\Desktop\itextsharp-all-5.5.4\itextsharp-dll-core-wo_Drawing\itextsharp.dll</HintPath>
     </Reference>
@@ -65,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Clases\Clases conexiones y estructura\Cliente.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\ClienteContacto.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Horario.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Producto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Proveedor.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\ProveedorContacto.cs" />
@@ -113,6 +123,18 @@
     <Compile Include="Forms\Cliente\frmEditarCliente.Designer.cs">
       <DependentUpon>frmEditarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Compra\frmCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\frmCompras.Designer.cs">
+      <DependentUpon>frmCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configs\Almacen\frmConfigAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configs\Almacen\frmConfigAlmacen.Designer.cs">
+      <DependentUpon>frmConfigAlmacen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Configs\frmConfigBaseDatos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +158,24 @@
     </Compile>
     <Compile Include="Forms\Mensaje\frmMensaje.Designer.cs">
       <DependentUpon>frmMensaje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Producto\frmEditarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Producto\frmEditarProducto.Designer.cs">
+      <DependentUpon>frmEditarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Producto\frmNuevoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Producto\frmNuevoProducto.Designer.cs">
+      <DependentUpon>frmNuevoProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Producto\frmProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Producto\frmProducto.Designer.cs">
+      <DependentUpon>frmProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Proveedor\frmEditarProveedor.cs">
       <SubType>Form</SubType>
@@ -220,6 +260,30 @@
     </Compile>
     <Compile Include="Forms\Trabajador\frmNuevoTrabajador.Designer.cs">
       <DependentUpon>frmNuevoTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Trabajador\Horario\frmEditarHorario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Trabajador\Horario\frmEditarHorario.Designer.cs">
+      <DependentUpon>frmEditarHorario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Trabajador\Horario\frmHorarioTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Trabajador\Horario\frmHorarioTrabajador.Designer.cs">
+      <DependentUpon>frmHorarioTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Trabajador\Horario\frmNuevoHorario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Trabajador\Horario\frmNuevoHorario.Designer.cs">
+      <DependentUpon>frmNuevoHorario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Trabajador\Ingreso\frmIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Trabajador\Ingreso\frmIngreso.Designer.cs">
+      <DependentUpon>frmIngreso.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Trabajador\Puesto\frmDatosPuesto.cs">
       <SubType>Form</SubType>
@@ -328,6 +392,12 @@
     <EmbeddedResource Include="Forms\Cliente\frmEditarCliente.resx">
       <DependentUpon>frmEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\frmCompras.resx">
+      <DependentUpon>frmCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configs\Almacen\frmConfigAlmacen.resx">
+      <DependentUpon>frmConfigAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configs\frmConfigBaseDatos.resx">
       <DependentUpon>frmConfigBaseDatos.cs</DependentUpon>
     </EmbeddedResource>
@@ -339,6 +409,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mensaje\frmMensaje.resx">
       <DependentUpon>frmMensaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Producto\frmEditarProducto.resx">
+      <DependentUpon>frmEditarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Producto\frmNuevoProducto.resx">
+      <DependentUpon>frmNuevoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Producto\frmProducto.resx">
+      <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Proveedor\frmContactosProveedor.resx">
       <DependentUpon>frmContactosProveedor.cs</DependentUpon>
@@ -381,6 +460,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Trabajador\frmNuevoTrabajador.resx">
       <DependentUpon>frmNuevoTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Trabajador\Horario\frmEditarHorario.resx">
+      <DependentUpon>frmEditarHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Trabajador\Horario\frmHorarioTrabajador.resx">
+      <DependentUpon>frmHorarioTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Trabajador\Horario\frmNuevoHorario.resx">
+      <DependentUpon>frmNuevoHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Trabajador\Ingreso\frmIngreso.resx">
+      <DependentUpon>frmIngreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Trabajador\Puesto\frmDatosPuesto.resx">
       <DependentUpon>frmDatosPuesto.cs</DependentUpon>
@@ -469,7 +560,10 @@
   <ItemGroup>
     <None Include="Resources\Config.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Forms\Caja\" />
+    <Folder Include="Forms\Trabajador\Pagos\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

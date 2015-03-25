@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using AForge.Video;
+using AForge.Video.DirectShow;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +16,10 @@ namespace EC_Admin.Forms
     public partial class frmEditarTrabajador : Form
     {
         Trabajador t;
+        private byte[] huella;
+        private bool existeCamara = false;
+        private FilterInfoCollection dispositivoDeVideo;
+        private VideoCaptureDevice fuenteDeVideo = null;
         List<int> idSucursal = new List<int>();
         List<int> idPuesto = new List<int>();
 
@@ -23,6 +29,48 @@ namespace EC_Admin.Forms
             t = new Trabajador();
             t.ID = id;
         }
+
+        #region Cámara
+        public void CargarCamaras(FilterInfoCollection Dispositivos)
+        {
+            for (int i = 0; i < Dispositivos.Count; i++)
+                cboCamaras.Items.Add(Dispositivos[i].Name.ToString());
+            cboCamaras.Text = cboCamaras.Items[0].ToString();
+        }
+
+        public void BuscarCamaras()
+        {
+            dispositivoDeVideo = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (dispositivoDeVideo.Count == 0)
+            {
+                existeCamara = false;
+            }
+            else
+            {
+                existeCamara = true;
+                CargarCamaras(dispositivoDeVideo);
+            }
+        }
+
+        public void TerminarFuenteDeVideo()
+        {
+            if (fuenteDeVideo != null)
+            {
+                if (fuenteDeVideo.IsRunning)
+                {
+                    fuenteDeVideo.SignalToStop();
+                    fuenteDeVideo = null;
+                }
+            }
+        }
+
+        public void Mostrar_Imagen(object sender, NewFrameEventArgs eventArgs)
+        {
+            Bitmap Imagen = (Bitmap)eventArgs.Frame.Clone();
+            pcbImagen.Image = Imagen;
+        }
+        #endregion
+
         private void CargarSucursales()
         {
             try
@@ -96,6 +144,7 @@ namespace EC_Admin.Forms
                 txtNombre.Text = t.Nombre;
                 txtApellidos.Text = t.Apellidos;
                 cboPuesto.SelectedIndex = SeleccionarPuesto(t.Puesto);
+                txtNumNomina.Text = t.Nomina;
                 txtTelefono.Text = t.Telefono;
                 txtCelular.Text = t.Celular;
                 txtCorreo.Text = t.Correo;
@@ -103,6 +152,8 @@ namespace EC_Admin.Forms
                 txtCiudad.Text = t.Ciudad;
                 txtEstado.Text = t.Estado;
                 txtCP.Text = t.CP.ToString();
+                pcbImagen.Image = t.Imagen;
+                huella = t.Huella;
             }
             catch (MySqlException ex)
             {
@@ -120,6 +171,7 @@ namespace EC_Admin.Forms
             {
                 t.IDSucursal = idSucursal[cboSucursal.SelectedIndex];
                 t.Puesto = idPuesto[cboPuesto.SelectedIndex];
+                t.Nomina = txtNumNomina.Text;
                 t.Nombre = txtNombre.Text;
                 t.Apellidos = txtApellidos.Text;
                 t.Telefono = txtTelefono.Text;
@@ -129,6 +181,8 @@ namespace EC_Admin.Forms
                 t.Ciudad = txtCiudad.Text;
                 t.Estado = txtEstado.Text;
                 t.CP = int.Parse(txtCP.Text);
+                t.Imagen = pcbImagen.Image;
+                t.Huella = huella;
                 t.Editar();
             }
             catch (MySqlException ex)
@@ -161,6 +215,11 @@ namespace EC_Admin.Forms
             if (cboPuesto.SelectedIndex < 0)
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Se debe seleccionar un puesto asociado con éste trabajador.", "EC-Admin");
+                return false;
+            }
+            if (txtNumNomina.Text.Trim() == "")
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número de nómina es obligatorio.", "EC-Admin");
                 return false;
             }
             if (txtTelefono.Text.Trim() == "" && txtCelular.Text.Trim() == "")
@@ -206,6 +265,7 @@ namespace EC_Admin.Forms
 
         private void frmEditarTrabajador_Load(object sender, EventArgs e)
         {
+            BuscarCamaras();
             CargarPuestos();
             CargarSucursales();
             CargarDatos();
@@ -229,6 +289,55 @@ namespace EC_Admin.Forms
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al modificar el trabajador.", "EC-Admin", ex);
                 }
+            }
+        }
+
+        private void btnCamara_Click(object sender, EventArgs e)
+        {
+            if (fuenteDeVideo == null)
+            {
+                if (existeCamara)
+                {
+                    fuenteDeVideo = new VideoCaptureDevice(dispositivoDeVideo[cboCamaras.SelectedIndex].MonikerString);
+                    fuenteDeVideo.NewFrame += new NewFrameEventHandler(Mostrar_Imagen);
+                    fuenteDeVideo.Start();
+                    cboCamaras.Enabled = false;
+                }
+                else
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No hay ninguna cámara seleccionada", "EC-Admin");
+                }
+            }
+            else
+            {
+                if (fuenteDeVideo.IsRunning)
+                {
+                    TerminarFuenteDeVideo();
+                    FuncionesGenerales.EfectoFoto(ref pcbImagen);
+                }
+            }
+        }
+
+        private void btnQuitar_Click(object sender, EventArgs e)
+        {
+            pcbImagen.Image = null;
+        }
+
+        private void pcbImagen_Click(object sender, EventArgs e)
+        {
+            if (fuenteDeVideo != null)
+            {
+                TerminarFuenteDeVideo();
+                pcbImagen.Image = null;
+            }
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Archivos de imagen (*.jpg; *.jpeg) | *.jpg; *.jpeg";
+            ofd.Multiselect = false;
+            ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            DialogResult r = ofd.ShowDialog(this);
+            if (r == System.Windows.Forms.DialogResult.OK)
+            {
+                pcbImagen.Image = Bitmap.FromFile(ofd.FileName);
             }
         }
 

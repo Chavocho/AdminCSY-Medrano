@@ -205,6 +205,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?nombre", nombre);
                 sql.Parameters.AddWithValue("?departamento", departamento);
                 sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
+                sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
             }
             catch (MySqlException ex)

@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using MySql.Data.MySqlClient;
+using System.Media;
 
 namespace EC_Admin
 {
@@ -105,64 +106,6 @@ namespace EC_Admin
             return valido;
         }
 
-        //Funcion que no ocupe, pero por si las dudas
-        ///// <summary>
-        ///// Función que verifica que el valor de una cadena sea númerico
-        ///// </summary>
-        ///// <param name="valor">Cadena de la cual se comprobará el valor</param>
-        ///// <returns>Valor booleano que indica si la cadena es o no un número</returns>
-        //public static bool EsNumero(string valor)
-        //{
-        //    //Y pus a declarar variables a lo loco porque así lo requiere la función ¬¬
-        //    int num;
-        //    decimal num2;
-        //    float num3;
-        //    long num4;
-        //    double num5;
-        //    bool esNum = false;
-        //    if (int.TryParse(valor, out num))
-        //        esNum = true;
-        //    else if (decimal.TryParse(valor, out num2))
-        //        esNum = true;
-        //    else if (float.TryParse(valor, out num3))
-        //        esNum = true;
-        //    else if (long.TryParse(valor, out num4))
-        //        esNum = true;
-        //    else if (double.TryParse(valor, out num5))
-        //        esNum = true;
-        //    return esNum;
-        //}
-
-        /// <summary>
-        /// Redimensiona una imagen al tamaño definido
-        /// </summary>
-        /// <param name="imagen">Imagen a redimensionar</param>
-        /// <param name="nuevoTamanio">Nuevo tamaño de la imagen.</param>
-        /// <exception cref="System.ArgumentNullException">Excepción que se produce cuando se pasa una referencia nula a un método que no la acepta como argumento válido.</exception>
-        /// <exception cref="System.Exception">Representa los errores que se producen durante la ejecución de un programa.</exception>
-        /// <returns>Imagen redimensionada.</returns>
-        public static System.Drawing.Image RedimensionarLogo(System.Drawing.Image imagen, System.Drawing.Size nuevoTamanio)
-        {
-            System.Drawing.Image nuevaImagen = null;
-            try
-            {
-                nuevaImagen = new System.Drawing.Bitmap(nuevoTamanio.Width, nuevoTamanio.Height);
-                using (System.Drawing.Graphics GFX = System.Drawing.Graphics.FromImage((System.Drawing.Bitmap)nuevaImagen))
-                {
-                    GFX.DrawImage(imagen, new System.Drawing.Rectangle(System.Drawing.Point.Empty, nuevoTamanio));
-                }
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return nuevaImagen;
-        }
-
         /// <summary>
         /// Función que compara que dos imagenes sean iguales
         /// </summary>
@@ -208,46 +151,6 @@ namespace EC_Admin
                 throw ex;
             }
             return sonIguales;
-        }
-
-        /// <summary>
-        /// Función que guarda una imagen en la carpeta de photo de la aplicación
-        /// </summary>
-        /// <param name="img">Imagen a guardar</param>
-        /// <param name="nomImg">Nombre de la imagen</param>
-        /// <exception cref="System.Runtime.InteropServices.ExternalException">El tipo de excepción base para todas las excepciones de interoperabilidad COM y excepciones de control de excepciones estructurado (SEH).</exception>
-        /// <exception cref="System.ArgumentNullException">Excepción que se produce cuando se pasa una referencia nula a un método que no la acepta como argumento válido.</exception>
-        /// <exception cref="System.Exception">Representa los errores que se producen durante la ejecución de un programa.</exception>
-        public static void GuardarImagen(Image img, string nomImg)
-        {
-            if (img == null) return;
-            try
-            {
-                string ruta = Application.StartupPath + "\\photo\\" + nomImg + ".jpg";
-                if (!File.Exists(ruta))
-                {
-                    Bitmap btm = new Bitmap(img);
-                    btm.Save(ruta, System.Drawing.Imaging.ImageFormat.Jpeg);
-                }
-                else
-                {
-                    File.Delete(ruta);
-                    GuardarImagen(img, nomImg);
-                }
-
-            }
-            catch (System.Runtime.InteropServices.ExternalException ex)
-            {
-                throw ex;
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
         }
 
         /// <summary>
@@ -397,6 +300,17 @@ namespace EC_Admin
         }
 
         /// <summary>
+        /// Función que redimensiona una imagen a una resolución dada sin recorte
+        /// </summary>
+        /// <param name="imgPhoto">Imagen a redimensionar</param>
+        /// <param name="size">Tamaño al que se desea redimensionar la imagen</param>
+        /// <returns>Imagen redimensionada</returns>
+        public static Image RedimensionarImagen(Image imgPhoto, Size size)
+        {
+            return RedimensionarImagen(imgPhoto, size.Width, size.Height);
+        }
+
+        /// <summary>
         /// Función que muestra un MessageBox con un mensaje de error y el mensaje de la excepción.
         /// </summary>
         /// <param name="mensaje">Mensaje a mostrar</param>
@@ -438,6 +352,34 @@ namespace EC_Admin
                 }
             }
             frm = null;
+        }
+
+        /// <summary>
+        /// Método que hace un efecto de toma de fotografía
+        /// </summary>
+        /// <param name="pcb">PictureBox que contiene la imagen</param>
+        public static void EfectoFoto(ref PictureBox pcb)
+        {
+            const int duracion = 50;
+            Image img = pcb.Image;
+            pcb.Image = null;
+            System.Threading.Thread.Sleep(duracion);
+            Application.DoEvents();
+            pcb.BackColor = Colores.Obscuro;
+            System.Threading.Thread.Sleep(duracion);
+            Application.DoEvents();
+            pcb.BackColor = Colores.ClaroObscuro;
+            System.Threading.Thread.Sleep(duracion);
+            Application.DoEvents();
+            pcb.BackColor = Colores.ObscuroClaro;
+            System.Threading.Thread.Sleep(duracion);
+            Application.DoEvents();
+            pcb.Image = img;
+            if (File.Exists(Config.rutaSonidoObturador))
+            {
+                SoundPlayer p = new SoundPlayer(Config.rutaSonidoObturador);
+                p.Play();
+            }
         }
 
         #region Siempre Encima

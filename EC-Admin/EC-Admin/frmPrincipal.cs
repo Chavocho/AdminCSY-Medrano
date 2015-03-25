@@ -126,7 +126,10 @@ namespace EC_Admin
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-
+            if (!frmProducto.Instancia.Visible)
+                frmProducto.Instancia.Show();
+            else
+                frmProducto.Instancia.Select();
         }
 
         private void btnReportes_Click(object sender, EventArgs e)

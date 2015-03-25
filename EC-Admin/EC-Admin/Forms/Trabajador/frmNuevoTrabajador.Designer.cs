@@ -53,6 +53,15 @@
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.lblEFechaInicio = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.lblENumNomina = new System.Windows.Forms.Label();
+            this.txtNumNomina = new System.Windows.Forms.TextBox();
+            this.pcbImagen = new System.Windows.Forms.PictureBox();
+            this.btnHuella = new System.Windows.Forms.Button();
+            this.btnQuitar = new System.Windows.Forms.Button();
+            this.lblInfoImagen = new System.Windows.Forms.Label();
+            this.btnCamara = new System.Windows.Forms.Button();
+            this.cboCamaras = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // cboSucursal
@@ -145,7 +154,7 @@
             // 
             this.lblETelefono.AutoSize = true;
             this.lblETelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblETelefono.Location = new System.Drawing.Point(274, 67);
+            this.lblETelefono.Location = new System.Drawing.Point(539, 67);
             this.lblETelefono.Name = "lblETelefono";
             this.lblETelefono.Size = new System.Drawing.Size(61, 18);
             this.lblETelefono.TabIndex = 8;
@@ -156,7 +165,7 @@
             this.txtTelefono.BackColor = System.Drawing.Color.White;
             this.txtTelefono.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtTelefono.Location = new System.Drawing.Point(277, 88);
+            this.txtTelefono.Location = new System.Drawing.Point(542, 88);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(259, 29);
             this.txtTelefono.TabIndex = 9;
@@ -165,7 +174,7 @@
             // 
             this.lblECelular.AutoSize = true;
             this.lblECelular.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECelular.Location = new System.Drawing.Point(539, 67);
+            this.lblECelular.Location = new System.Drawing.Point(9, 125);
             this.lblECelular.Name = "lblECelular";
             this.lblECelular.Size = new System.Drawing.Size(50, 18);
             this.lblECelular.TabIndex = 10;
@@ -176,7 +185,7 @@
             this.txtCelular.BackColor = System.Drawing.Color.White;
             this.txtCelular.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtCelular.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCelular.Location = new System.Drawing.Point(542, 88);
+            this.txtCelular.Location = new System.Drawing.Point(12, 146);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(259, 29);
             this.txtCelular.TabIndex = 11;
@@ -186,7 +195,7 @@
             this.txtCorreo.BackColor = System.Drawing.Color.White;
             this.txtCorreo.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCorreo.Location = new System.Drawing.Point(12, 146);
+            this.txtCorreo.Location = new System.Drawing.Point(277, 146);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(259, 29);
             this.txtCorreo.TabIndex = 13;
@@ -195,7 +204,7 @@
             // 
             this.lblECorreo.AutoSize = true;
             this.lblECorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECorreo.Location = new System.Drawing.Point(9, 125);
+            this.lblECorreo.Location = new System.Drawing.Point(274, 125);
             this.lblECorreo.Name = "lblECorreo";
             this.lblECorreo.Size = new System.Drawing.Size(121, 18);
             this.lblECorreo.TabIndex = 12;
@@ -206,7 +215,7 @@
             this.txtDireccion.BackColor = System.Drawing.Color.White;
             this.txtDireccion.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtDireccion.Location = new System.Drawing.Point(277, 146);
+            this.txtDireccion.Location = new System.Drawing.Point(542, 146);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(259, 29);
             this.txtDireccion.TabIndex = 15;
@@ -215,7 +224,7 @@
             // 
             this.lblEDireccion.AutoSize = true;
             this.lblEDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEDireccion.Location = new System.Drawing.Point(274, 125);
+            this.lblEDireccion.Location = new System.Drawing.Point(539, 125);
             this.lblEDireccion.Name = "lblEDireccion";
             this.lblEDireccion.Size = new System.Drawing.Size(66, 18);
             this.lblEDireccion.TabIndex = 14;
@@ -226,7 +235,7 @@
             this.txtEstado.BackColor = System.Drawing.Color.White;
             this.txtEstado.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtEstado.Location = new System.Drawing.Point(12, 204);
+            this.txtEstado.Location = new System.Drawing.Point(277, 204);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(259, 29);
             this.txtEstado.TabIndex = 19;
@@ -235,7 +244,7 @@
             // 
             this.lblEEstado.AutoSize = true;
             this.lblEEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEEstado.Location = new System.Drawing.Point(9, 183);
+            this.lblEEstado.Location = new System.Drawing.Point(274, 183);
             this.lblEEstado.Name = "lblEEstado";
             this.lblEEstado.Size = new System.Drawing.Size(50, 18);
             this.lblEEstado.TabIndex = 18;
@@ -246,7 +255,7 @@
             this.txtCiudad.BackColor = System.Drawing.Color.White;
             this.txtCiudad.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtCiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCiudad.Location = new System.Drawing.Point(542, 146);
+            this.txtCiudad.Location = new System.Drawing.Point(12, 204);
             this.txtCiudad.Name = "txtCiudad";
             this.txtCiudad.Size = new System.Drawing.Size(259, 29);
             this.txtCiudad.TabIndex = 17;
@@ -255,7 +264,7 @@
             // 
             this.lblECiudad.AutoSize = true;
             this.lblECiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECiudad.Location = new System.Drawing.Point(539, 125);
+            this.lblECiudad.Location = new System.Drawing.Point(9, 183);
             this.lblECiudad.Name = "lblECiudad";
             this.lblECiudad.Size = new System.Drawing.Size(51, 18);
             this.lblECiudad.TabIndex = 16;
@@ -266,7 +275,7 @@
             this.txtCP.BackColor = System.Drawing.Color.White;
             this.txtCP.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtCP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCP.Location = new System.Drawing.Point(277, 204);
+            this.txtCP.Location = new System.Drawing.Point(542, 204);
             this.txtCP.Name = "txtCP";
             this.txtCP.Size = new System.Drawing.Size(259, 29);
             this.txtCP.TabIndex = 21;
@@ -276,7 +285,7 @@
             // 
             this.lblECP.AutoSize = true;
             this.lblECP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECP.Location = new System.Drawing.Point(274, 183);
+            this.lblECP.Location = new System.Drawing.Point(539, 183);
             this.lblECP.Name = "lblECP";
             this.lblECP.Size = new System.Drawing.Size(92, 18);
             this.lblECP.TabIndex = 20;
@@ -287,7 +296,7 @@
             this.dtpFechaInicio.CustomFormat = "dd \'de\' MMMM \'del\' yyyy";
             this.dtpFechaInicio.Font = new System.Drawing.Font("Corbel", 13F);
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(542, 204);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(12, 262);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(259, 29);
             this.dtpFechaInicio.TabIndex = 23;
@@ -296,7 +305,7 @@
             // 
             this.lblEFechaInicio.AutoSize = true;
             this.lblEFechaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEFechaInicio.Location = new System.Drawing.Point(539, 183);
+            this.lblEFechaInicio.Location = new System.Drawing.Point(9, 241);
             this.lblEFechaInicio.Name = "lblEFechaInicio";
             this.lblEFechaInicio.Size = new System.Drawing.Size(142, 18);
             this.lblEFechaInicio.TabIndex = 22;
@@ -313,7 +322,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(651, 282);
+            this.btnAceptar.Location = new System.Drawing.Point(651, 446);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
             this.btnAceptar.TabIndex = 24;
@@ -323,11 +332,131 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // lblENumNomina
+            // 
+            this.lblENumNomina.AutoSize = true;
+            this.lblENumNomina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblENumNomina.Location = new System.Drawing.Point(274, 67);
+            this.lblENumNomina.Name = "lblENumNomina";
+            this.lblENumNomina.Size = new System.Drawing.Size(125, 18);
+            this.lblENumNomina.TabIndex = 25;
+            this.lblENumNomina.Text = "Número de nómina";
+            // 
+            // txtNumNomina
+            // 
+            this.txtNumNomina.BackColor = System.Drawing.Color.White;
+            this.txtNumNomina.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNumNomina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtNumNomina.Location = new System.Drawing.Point(277, 88);
+            this.txtNumNomina.Name = "txtNumNomina";
+            this.txtNumNomina.Size = new System.Drawing.Size(259, 29);
+            this.txtNumNomina.TabIndex = 26;
+            // 
+            // pcbImagen
+            // 
+            this.pcbImagen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.pcbImagen.Location = new System.Drawing.Point(12, 322);
+            this.pcbImagen.Name = "pcbImagen";
+            this.pcbImagen.Size = new System.Drawing.Size(156, 156);
+            this.pcbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbImagen.TabIndex = 27;
+            this.pcbImagen.TabStop = false;
+            this.pcbImagen.Click += new System.EventHandler(this.pcbImagen_Click);
+            // 
+            // btnHuella
+            // 
+            this.btnHuella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHuella.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnHuella.FlatAppearance.BorderSize = 0;
+            this.btnHuella.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnHuella.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnHuella.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHuella.Font = new System.Drawing.Font("Corbel", 9F);
+            this.btnHuella.ForeColor = System.Drawing.Color.White;
+            this.btnHuella.Location = new System.Drawing.Point(174, 376);
+            this.btnHuella.Name = "btnHuella";
+            this.btnHuella.Size = new System.Drawing.Size(97, 30);
+            this.btnHuella.TabIndex = 29;
+            this.btnHuella.Text = "Asignar huella";
+            this.btnHuella.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHuella.UseVisualStyleBackColor = false;
+            this.btnHuella.Visible = false;
+            // 
+            // btnQuitar
+            // 
+            this.btnQuitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQuitar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnQuitar.FlatAppearance.BorderSize = 0;
+            this.btnQuitar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnQuitar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuitar.Font = new System.Drawing.Font("Corbel", 9F);
+            this.btnQuitar.ForeColor = System.Drawing.Color.White;
+            this.btnQuitar.Location = new System.Drawing.Point(174, 412);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(97, 30);
+            this.btnQuitar.TabIndex = 30;
+            this.btnQuitar.Text = "Quitar imagen";
+            this.btnQuitar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQuitar.UseVisualStyleBackColor = false;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
+            // 
+            // lblInfoImagen
+            // 
+            this.lblInfoImagen.AutoSize = true;
+            this.lblInfoImagen.Font = new System.Drawing.Font("Corbel", 9F);
+            this.lblInfoImagen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblInfoImagen.Location = new System.Drawing.Point(9, 481);
+            this.lblInfoImagen.Name = "lblInfoImagen";
+            this.lblInfoImagen.Size = new System.Drawing.Size(141, 14);
+            this.lblInfoImagen.TabIndex = 28;
+            this.lblInfoImagen.Text = "Clic para cambiar la imagen";
+            // 
+            // btnCamara
+            // 
+            this.btnCamara.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCamara.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnCamara.FlatAppearance.BorderSize = 0;
+            this.btnCamara.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnCamara.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnCamara.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCamara.Font = new System.Drawing.Font("Corbel", 9F);
+            this.btnCamara.ForeColor = System.Drawing.Color.White;
+            this.btnCamara.Location = new System.Drawing.Point(174, 448);
+            this.btnCamara.Name = "btnCamara";
+            this.btnCamara.Size = new System.Drawing.Size(97, 30);
+            this.btnCamara.TabIndex = 31;
+            this.btnCamara.Text = "Tomar foto";
+            this.btnCamara.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCamara.UseVisualStyleBackColor = false;
+            this.btnCamara.Click += new System.EventHandler(this.btnCamara_Click);
+            // 
+            // cboCamaras
+            // 
+            this.cboCamaras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            this.cboCamaras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCamaras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboCamaras.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboCamaras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.cboCamaras.FormattingEnabled = true;
+            this.cboCamaras.Location = new System.Drawing.Point(277, 449);
+            this.cboCamaras.Name = "cboCamaras";
+            this.cboCamaras.Size = new System.Drawing.Size(259, 29);
+            this.cboCamaras.TabIndex = 32;
+            // 
             // frmNuevoTrabajador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(813, 340);
+            this.ClientSize = new System.Drawing.Size(813, 504);
+            this.Controls.Add(this.cboCamaras);
+            this.Controls.Add(this.btnCamara);
+            this.Controls.Add(this.btnHuella);
+            this.Controls.Add(this.btnQuitar);
+            this.Controls.Add(this.lblInfoImagen);
+            this.Controls.Add(this.pcbImagen);
+            this.Controls.Add(this.lblENumNomina);
+            this.Controls.Add(this.txtNumNomina);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lblEFechaInicio);
             this.Controls.Add(this.dtpFechaInicio);
@@ -362,6 +491,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de nuevo trabajador";
             this.Load += new System.EventHandler(this.frmNuevoTrabajador_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,5 +524,13 @@
         private System.Windows.Forms.DateTimePicker dtpFechaInicio;
         private System.Windows.Forms.Label lblEFechaInicio;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label lblENumNomina;
+        private System.Windows.Forms.TextBox txtNumNomina;
+        private System.Windows.Forms.PictureBox pcbImagen;
+        private System.Windows.Forms.Button btnHuella;
+        private System.Windows.Forms.Button btnQuitar;
+        private System.Windows.Forms.Label lblInfoImagen;
+        private System.Windows.Forms.Button btnCamara;
+        private System.Windows.Forms.ComboBox cboCamaras;
     }
 }
