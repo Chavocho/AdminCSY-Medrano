@@ -53,8 +53,10 @@ namespace EC_Admin
         /// <exception cref="MySql.Data.MySqlClient.MySqlException">Excepción que se lanza cuando ocurre un error con la conexión a la base de datos o con la ejecución de la consulta</exception>
         /// <exception cref="System.Exception">Representa los errores que se producen durante la ejecución de una aplicación.</exception>
         /// <param name="consulta">Consulta SQLite que puede ser INSERT, UPDATE, DELETE</param>
-        public static void EjecutarConsulta(string consulta)
+        /// <returns>En caso de ser consulta INSERT, regresa el último ID ingresado</returns>
+        public static int EjecutarConsulta(string consulta)
         {
+            int id = 0;
             conexion = null;
             try
             {
@@ -64,6 +66,7 @@ namespace EC_Admin
                 sql.CommandText = consulta;
                 sql.CommandType = CommandType.Text;
                 sql.ExecuteNonQuery();
+                id = (int)sql.LastInsertedId;
             }
             catch (MySqlException ex)
             {
@@ -77,6 +80,7 @@ namespace EC_Admin
             {
                 CerrarConexion();
             }
+            return id;
         }
 
         /// <summary>
@@ -85,8 +89,10 @@ namespace EC_Admin
         /// <exception cref="MySql.Data.MySqlClient.MySqlException">Excepción que se lanza cuando ocurre un error con la conexión a la base de datos o con la ejecución de la consulta</exception>
         /// <exception cref="System.Exception">Representa los errores que se producen durante la ejecución de una aplicación.</exception>
         /// <param name="comando">Comando SQLite que se va a ejecutar</param>
-        public static void EjecutarConsulta(MySqlCommand comando)
+        /// <returns>En caso de ser consulta INSERT, regresa el último ID ingresado</returns>
+        public static int EjecutarConsulta(MySqlCommand comando)
         {
+            int id = 0;
             conexion = null;
             try
             {
@@ -94,6 +100,7 @@ namespace EC_Admin
                 comando.Connection = conexion;
                 comando.CommandType = CommandType.Text;
                 comando.ExecuteReader();
+                id = (int)comando.LastInsertedId;
             }
             catch (MySqlException ex)
             {
@@ -107,6 +114,7 @@ namespace EC_Admin
             {
                 CerrarConexion();
             }
+            return id;
         }
 
         /// <summary>

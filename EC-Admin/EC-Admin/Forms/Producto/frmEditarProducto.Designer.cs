@@ -138,7 +138,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(259, 29);
             this.txtPrecio.TabIndex = 61;
-            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecios_KeyPress);
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblEPrecio
             // 
@@ -159,7 +159,7 @@
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(259, 29);
             this.txtCosto.TabIndex = 59;
-            this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecios_KeyPress);
+            this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblECosto
             // 
@@ -351,7 +351,7 @@
             this.txtCant.Name = "txtCant";
             this.txtCant.Size = new System.Drawing.Size(259, 29);
             this.txtCant.TabIndex = 87;
-            this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidades_KeyPress);
+            this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblECant
             // 
@@ -399,7 +399,7 @@
             this.txtCantMayoreo.Name = "txtCantMayoreo";
             this.txtCantMayoreo.Size = new System.Drawing.Size(259, 29);
             this.txtCantMayoreo.TabIndex = 83;
-            this.txtCantMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidades_KeyPress);
+            this.txtCantMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblECantMayoreo
             // 
@@ -420,7 +420,7 @@
             this.txtCantMedioMayoreo.Name = "txtCantMedioMayoreo";
             this.txtCantMedioMayoreo.Size = new System.Drawing.Size(259, 29);
             this.txtCantMedioMayoreo.TabIndex = 81;
-            this.txtCantMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidades_KeyPress);
+            this.txtCantMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblECantMedioMayoreo
             // 
@@ -441,7 +441,7 @@
             this.txtPrecioMayoreo.Name = "txtPrecioMayoreo";
             this.txtPrecioMayoreo.Size = new System.Drawing.Size(259, 29);
             this.txtPrecioMayoreo.TabIndex = 79;
-            this.txtPrecioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecios_KeyPress);
+            this.txtPrecioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblEPrecioMayoreo
             // 
@@ -462,7 +462,7 @@
             this.txtPrecioMedioMayoreo.Name = "txtPrecioMedioMayoreo";
             this.txtPrecioMedioMayoreo.Size = new System.Drawing.Size(259, 29);
             this.txtPrecioMedioMayoreo.TabIndex = 77;
-            this.txtPrecioMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecios_KeyPress);
+            this.txtPrecioMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblEPrecioMedioMayoreo
             // 

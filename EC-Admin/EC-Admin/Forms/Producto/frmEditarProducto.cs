@@ -164,11 +164,11 @@ namespace EC_Admin.Forms
                 p.Descripcion02 = txtDescripcion02.Text;
                 p.Costo = decimal.Parse(txtCosto.Text);
                 p.Precio = decimal.Parse(txtPrecio.Text);
-                p.Cantidad = int.Parse(txtCant.Text);
+                p.Cantidad = decimal.Parse(txtCant.Text);
                 p.PrecioMedioMayoreo = decimal.Parse(txtPrecioMedioMayoreo.Text);
                 p.PrecioMayoreo = decimal.Parse(txtPrecioMayoreo.Text);
-                p.CantidadMedioMayoreo = int.Parse(txtCantMedioMayoreo.Text);
-                p.CantidadMayoreo = int.Parse(txtCantMayoreo.Text);
+                p.CantidadMedioMayoreo = decimal.Parse(txtCantMedioMayoreo.Text);
+                p.CantidadMayoreo = decimal.Parse(txtCantMayoreo.Text);
                 p.Unidad = u;
                 p.Imagen = pcbImagen.Image;
                 p.Editar();
@@ -243,14 +243,9 @@ namespace EC_Admin.Forms
             return true;
         }
 
-        private void txtPrecios_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNumeros_KeyPress(object sender, KeyPressEventArgs e)
         {
             FuncionesGenerales.VerificarEsNumero(ref sender, ref e, false);
-        }
-
-        private void txtCantidades_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            FuncionesGenerales.VerificarEsNumero(ref sender, ref e, true);
         }
 
         private void pcbImagen_Click(object sender, EventArgs e)

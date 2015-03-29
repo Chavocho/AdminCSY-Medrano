@@ -13,6 +13,7 @@ namespace EC_Admin.Forms
     public partial class frmNuevoUsuario : Form
     {
         NivelesUsuario n;
+        Camara c;
         bool quitoImagen = false;
         private byte[] huella = null;
 
@@ -104,6 +105,11 @@ namespace EC_Admin.Forms
 
         private void pcbImagen_Click(object sender, EventArgs e)
         {
+            if (c.FuenteDeVideo != null)
+            {
+                c.TerminarFuenteDeVideo();
+                pcbImagen.Image = null;
+            }
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Archivos de imagen (*.jpeg, *.jpg) | *.jpeg; *.jpg;";
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
@@ -172,6 +178,40 @@ namespace EC_Admin.Forms
                 lblInfo.Visible = false;
                 txtUsuario.BackColor = Colores.Claro;
                 txtUsuario.ForeColor = Colores.Obscuro;
+            }
+        }
+
+        private void frmNuevoUsuario_Load(object sender, EventArgs e)
+        {
+            c = new Camara(ref pcbImagen, ref cboCamaras);
+        }
+
+        private void btnCamara_Click(object sender, EventArgs e)
+        {
+            if (c.FuenteDeVideo == null)
+            {
+                if (c.ExisteCamara)
+                {
+                    c.IniciarCamara(cboCamaras.SelectedIndex);
+                    cboCamaras.Enabled = false;
+                }
+                else
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No hay ninguna cámara seleccionada", "EC-Admin");
+                }
+            }
+            else
+            {
+                c.TerminarFuenteDeVideo();
+                FuncionesGenerales.EfectoFoto(ref pcbImagen);
+            }
+        }
+
+        private void frmNuevoUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (c.FuenteDeVideo != null)
+            {
+                c.TerminarFuenteDeVideo();
             }
         }
     }

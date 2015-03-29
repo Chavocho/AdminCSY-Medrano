@@ -126,3 +126,4 @@ C:\Users\Chavocho\Trabajos\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.
 C:\Users\Chavocho\Trabajos\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\AForge.Video.DirectShow.dll
 C:\Users\Chavocho\Trabajos\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\AForge.Video.dll
 C:\Users\Chavocho\Trabajos\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\AForge.Video.VFW.dll
+C:\Users\Chavocho\Trabajos\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmPagosPendientes.resources

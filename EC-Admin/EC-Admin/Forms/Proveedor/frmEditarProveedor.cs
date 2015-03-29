@@ -16,7 +16,7 @@ namespace EC_Admin.Forms
         int idC = 0;
         Proveedor p;
         TipoPersona t;
-        List<int> idSucursal = new List<int>();
+        List<int> idSucursal = new List<int>(), idCuenta = new List<int>();
 
         public frmEditarProveedor(int id)
         {
@@ -43,14 +43,36 @@ namespace EC_Admin.Forms
             }
         }
 
-        private int PosicionSucursal(int id)
+        private void CargarCuentas()
+        {
+            try
+            {
+                string sql = "SELECT id, clabe, banco FROM cuenta;";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    idCuenta.Add((int)dr["id"]);
+                    cboCuenta.Items.Add(dr["clabe"].ToString() + "/" + dr["banco"].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private int Posicion(List<int> l, int id)
         {
             int pos = -1;
             try
             {
-                for (int i = 0; i < idSucursal.Count; i++)
+                for (int i = 0; i < l.Count; i++)
                 {
-                    if (idSucursal[i] == id)
+                    if (l[i] == id)
                     {
                         pos = i;
                         break;
@@ -69,7 +91,8 @@ namespace EC_Admin.Forms
             try
             {
                 p.ObtenerDatos();
-                cboSucursal.SelectedIndex = PosicionSucursal(p.ID);
+                cboSucursal.SelectedIndex = Posicion(idSucursal, p.Sucursal);
+                cboCuenta.SelectedIndex = Posicion(idCuenta, p.Cuenta);
                 txtNombre.Text = p.Nombre;
                 txtRazonSocial.Text = p.RazonSocial;
                 txtRFC.Text = p.RFC;
@@ -169,6 +192,7 @@ namespace EC_Admin.Forms
             try
             {
                 p.Sucursal = idSucursal[cboSucursal.SelectedIndex];
+                p.Cuenta = idCuenta[cboCuenta.SelectedIndex];
                 p.Nombre = txtNombre.Text;
                 p.RazonSocial = txtRazonSocial.Text;
                 p.RFC = txtRFC.Text;
@@ -206,6 +230,11 @@ namespace EC_Admin.Forms
             if (cboSucursal.SelectedIndex < 0)
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo sucursal es obligatorio", "EC-Admin");
+                return false;
+            }
+            if (cboCuenta.SelectedIndex < 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cuenta es obligatorio", "EC-Admin");
                 return false;
             }
             if (txtNombre.Text.Trim() == "")
@@ -348,6 +377,7 @@ namespace EC_Admin.Forms
         private void frmEditarProveedor_Load(object sender, EventArgs e)
         {
             CargarSucursales();
+            CargarCuentas();
             MostrarDatos();
             MostrarContactos();
         }

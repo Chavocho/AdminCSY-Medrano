@@ -12,6 +12,7 @@ namespace EC_Admin.Forms
 {
     public partial class frmEditarUsuario : Form
     {
+        Camara c;
         NivelesUsuario n;
         Usuario u;
         private byte[] huella = null;
@@ -128,11 +129,17 @@ namespace EC_Admin.Forms
 
         private void frmEditarUsuario_Load(object sender, EventArgs e)
         {
+            c = new Camara(ref pcbImagen, ref cboCamaras);
             CargarDatosUsuario();
         }
 
         private void pcbImagen_Click(object sender, EventArgs e)
         {
+            if (c.FuenteDeVideo != null)
+            {
+                c.TerminarFuenteDeVideo();
+                pcbImagen.Image = null;
+            }
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Archivos de imagen (*.jpeg, *.jpg) | *.jpeg; *.jpg;";
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
@@ -199,6 +206,35 @@ namespace EC_Admin.Forms
                 this.Size = new Size(this.Width, this.Height - pnlPass.Height);
             }
             this.Top = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2;
+        }
+
+        private void btnCamara_Click(object sender, EventArgs e)
+        {
+            if (c.FuenteDeVideo == null)
+            {
+                if (c.ExisteCamara)
+                {
+                    c.IniciarCamara(cboCamaras.SelectedIndex);
+                    cboCamaras.Enabled = false;
+                }
+                else
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No hay ninguna cámara seleccionada", "EC-Admin");
+                }
+            }
+            else
+            {
+                c.TerminarFuenteDeVideo();
+                FuncionesGenerales.EfectoFoto(ref pcbImagen);
+            }
+        }
+
+        private void frmEditarUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (c.FuenteDeVideo != null)
+            {
+                c.TerminarFuenteDeVideo();
+            }
         }
     }
 }

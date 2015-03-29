@@ -13,6 +13,7 @@ namespace EC_Admin
         #region Propiedades
         private int id;
         private int sucursal;
+        private int cuenta;
         private string nombre;
         private string razonSocial;
         private string rfc;
@@ -55,6 +56,12 @@ namespace EC_Admin
         {
             get { return sucursal; }
             set { sucursal = value; }
+        }
+
+        public override int Cuenta
+        {
+            get { return cuenta; }
+            set { cuenta = value; }
         }
 
         public override string Nombre
@@ -361,6 +368,7 @@ namespace EC_Admin
                 foreach (DataRow dr in dt.Rows)
                 {
                     sucursal = (int)dr["sucursal_id"];
+                    cuenta = (int)dr["cuenta_id"];
                     nombre = dr["nombre"].ToString();
                     razonSocial = dr["razon_social"].ToString();
                     rfc = dr["rfc"].ToString();
@@ -413,9 +421,10 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO cliente (sucursal_id, nombre, razon_social, rfc, calle, num_ext, num_int, colonia, ciudad, estado, cp, telefono1, telefono2, email, lada1, lada2, tipo, limite_credito, create_user, create_time) " +
-                    "VALUES (?sucursal_id, ?nombre, ?razon_social, ?rfc, ?calle, ?num_ext, ?num_int, ?colonia, ?ciudad, ?estado, ?cp, ?telefono1, ?telefono2, ?email, ?lada1, ?lada2, ?tipo, ?limite_credito, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO cliente (sucursal_id, cuenta_id, nombre, razon_social, rfc, calle, num_ext, num_int, colonia, ciudad, estado, cp, telefono1, telefono2, email, lada1, lada2, tipo, limite_credito, create_user, create_time) " +
+                    "VALUES (?sucursal_id, ?cuenta_id, ?nombre, ?razon_social, ?rfc, ?calle, ?num_ext, ?num_int, ?colonia, ?ciudad, ?estado, ?cp, ?telefono1, ?telefono2, ?email, ?lada1, ?lada2, ?tipo, ?limite_credito, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?sucursal_id", sucursal);
+                sql.Parameters.AddWithValue("?cuenta_id", cuenta);
                 sql.Parameters.AddWithValue("?nombre", nombre);
                 sql.Parameters.AddWithValue("?razon_social", razonSocial);
                 sql.Parameters.AddWithValue("?rfc", rfc);
@@ -455,9 +464,10 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE cliente SET sucursal_id=?sucursal_id, nombre=?nombre, razon_social=?razon_social, rfc=?rfc, calle=?calle, num_ext=?num_ext, num_int=?num_int, colonia=?colonia, ciudad=?ciudad, " +
+                sql.CommandText = "UPDATE cliente SET sucursal_id=?sucursal_id, cuenta_id=?cuenta_id, nombre=?nombre, razon_social=?razon_social, rfc=?rfc, calle=?calle, num_ext=?num_ext, num_int=?num_int, colonia=?colonia, ciudad=?ciudad, " +
                     "estado=?estado, cp=?cp, telefono1=?telefono1, telefono2=?telefono2, email=?email, lada1=?lada1, lada2=?lada2, tipo=?tipo, limite_credito=?limite_credito, update_user=?update_user, update_time=NOW() WHERE id=?id";
                 sql.Parameters.AddWithValue("?sucursal_id", sucursal);
+                sql.Parameters.AddWithValue("?cuenta_id", cuenta);
                 sql.Parameters.AddWithValue("?nombre", nombre);
                 sql.Parameters.AddWithValue("?razon_social", razonSocial);
                 sql.Parameters.AddWithValue("?rfc", rfc);

@@ -204,5 +204,10 @@ namespace EC_Admin.Forms
         {
             (new frmIngreso()).Show(this);
         }
+
+        private void btnPagos_Click(object sender, EventArgs e)
+        {
+            (new frmPagosPendientes()).Show();
+        }
     }
 }

@@ -23,11 +23,11 @@ namespace EC_Admin
         private string descripcion02;
         private decimal costo;
         private decimal precio;
-        private int cantidad;
+        private decimal cantidad;
         private decimal precioMedioMayoreo;
         private decimal precioMayoreo;
-        private int cantidadMedioMayoreo;
-        private int cantidadMayoreo;
+        private decimal cantidadMedioMayoreo;
+        private decimal cantidadMayoreo;
         private Unidades unidad;
         private Image imagen;
         private bool eliminado;
@@ -105,7 +105,7 @@ namespace EC_Admin
             set { precio = value; }
         }
 
-        public int Cantidad
+        public decimal Cantidad
         {
             get { return cantidad; }
             set { cantidad = value; }
@@ -123,13 +123,13 @@ namespace EC_Admin
             set { precioMayoreo = value; }
         }
 
-        public int CantidadMedioMayoreo
+        public decimal CantidadMedioMayoreo
         {
             get { return cantidadMedioMayoreo; }
             set { cantidadMedioMayoreo = value; }
         }
 
-        public int CantidadMayoreo
+        public decimal CantidadMayoreo
         {
             get { return cantidadMayoreo; }
             set { cantidadMayoreo = value; }
@@ -244,11 +244,11 @@ namespace EC_Admin
                     descripcion02 = dr["descripcion2"].ToString();
                     costo = (decimal)dr["costo"];
                     precio = (decimal)dr["precio"];
-                    cantidad = (int)dr["cant"];
+                    cantidad = (decimal)dr["cant"];
                     precioMedioMayoreo = (decimal)dr["precio_mediomayoreo"];
                     precioMayoreo = (decimal)dr["precio_mayoreo"];
-                    cantidadMedioMayoreo = (int)dr["cant_mediomayoreo"];
-                    cantidadMayoreo = (int)dr["cant_mayoreo"];
+                    cantidadMedioMayoreo = (decimal)dr["cant_mediomayoreo"];
+                    cantidadMayoreo = (decimal)dr["cant_mayoreo"];
                     unidad = (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString());
                     if (dr["imagen"] != DBNull.Value)
                         imagen = FuncionesGenerales.BytesImagen((byte[])dr["imagen"]);
@@ -380,7 +380,7 @@ namespace EC_Admin
             }
         }
 
-        public static void CambiarCantidadInventario(int id, int cant)
+        public static void CambiarCantidadInventario(int id, decimal cant)
         {
             try
             {

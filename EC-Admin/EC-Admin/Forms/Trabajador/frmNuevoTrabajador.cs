@@ -15,10 +15,8 @@ namespace EC_Admin.Forms
 {
     public partial class frmNuevoTrabajador : Form
     {
-        private byte[] huella;
-        private bool existeCamara = false;
-        private FilterInfoCollection dispositivoDeVideo;
-        private VideoCaptureDevice fuenteDeVideo = null;
+        Camara c;
+        private byte[] huella = null;
         List<int> idSucursal = new List<int>();
         List<int> idPuesto = new List<int>();
 
@@ -26,47 +24,6 @@ namespace EC_Admin.Forms
         {
             InitializeComponent();
         }
-
-        #region Cámara
-        public void CargarCamaras(FilterInfoCollection Dispositivos)
-        {
-            for (int i = 0; i < Dispositivos.Count; i++)
-                cboCamaras.Items.Add(Dispositivos[i].Name.ToString());
-            cboCamaras.Text = cboCamaras.Items[0].ToString();
-        }
-
-        public void BuscarCamaras()
-        {
-            dispositivoDeVideo = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            if (dispositivoDeVideo.Count == 0)
-            {
-                existeCamara = false;
-            }
-            else
-            {
-                existeCamara = true;
-                CargarCamaras(dispositivoDeVideo);
-            }
-        }
-
-        public void TerminarFuenteDeVideo()
-        {
-            if (fuenteDeVideo != null)
-            {
-                if (fuenteDeVideo.IsRunning)
-                {
-                    fuenteDeVideo.SignalToStop();
-                    fuenteDeVideo = null;
-                }
-            }
-        }
-
-        public void Mostrar_Imagen(object sender, NewFrameEventArgs eventArgs)
-        {
-            Bitmap Imagen = (Bitmap)eventArgs.Frame.Clone();
-            pcbImagen.Image = Imagen;
-        }
-        #endregion
 
         private void CargarSucursales()
         {
@@ -206,7 +163,7 @@ namespace EC_Admin.Forms
 
         private void frmNuevoTrabajador_Load(object sender, EventArgs e)
         {
-            BuscarCamaras();
+            c = new Camara(ref pcbImagen, ref cboCamaras);
             CargarPuestos();
             CargarSucursales();
         }
@@ -234,13 +191,11 @@ namespace EC_Admin.Forms
 
         private void btnCamara_Click(object sender, EventArgs e)
         {
-            if (fuenteDeVideo == null)
+            if (c.FuenteDeVideo == null)
             {
-                if (existeCamara)
+                if (c.ExisteCamara)
                 {
-                    fuenteDeVideo = new VideoCaptureDevice(dispositivoDeVideo[cboCamaras.SelectedIndex].MonikerString);
-                    fuenteDeVideo.NewFrame += new NewFrameEventHandler(Mostrar_Imagen);
-                    fuenteDeVideo.Start();
+                    c.IniciarCamara(cboCamaras.SelectedIndex);
                     cboCamaras.Enabled = false;
                 }
                 else
@@ -250,19 +205,16 @@ namespace EC_Admin.Forms
             }
             else
             {
-                if (fuenteDeVideo.IsRunning)
-                {
-                    TerminarFuenteDeVideo();
-                    FuncionesGenerales.EfectoFoto(ref pcbImagen);
-                }
+                c.TerminarFuenteDeVideo();
+                FuncionesGenerales.EfectoFoto(ref pcbImagen);
             }
         }
 
         private void pcbImagen_Click(object sender, EventArgs e)
         {
-            if (fuenteDeVideo != null)
+            if (c.FuenteDeVideo != null)
             {
-                TerminarFuenteDeVideo();
+                c.TerminarFuenteDeVideo();
                 pcbImagen.Image = null;
             }
             OpenFileDialog ofd = new OpenFileDialog();
@@ -279,6 +231,14 @@ namespace EC_Admin.Forms
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             pcbImagen.Image = null;
+        }
+
+        private void frmNuevoTrabajador_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (c.FuenteDeVideo != null)
+            {
+                c.TerminarFuenteDeVideo();
+            }
         }
     }
 }

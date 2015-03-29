@@ -14,7 +14,7 @@ namespace EC_Admin.Forms
     public partial class frmNuevoProveedor : Form
     {
         TipoPersona t;
-        List<int> idSucursal = new List<int>();
+        List<int> idSucursal = new List<int>(), idCuenta = new List<int>();
 
         public frmNuevoProveedor()
         {
@@ -38,12 +38,35 @@ namespace EC_Admin.Forms
             }
         }
 
+        private void CargarCuentas()
+        {
+            try
+            {
+                string sql = "SELECT id, clabe, banco FROM cuenta;";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    idCuenta.Add((int)dr["id"]);
+                    cboCuenta.Items.Add(dr["clabe"].ToString() + "/" + dr["banco"].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private void InsertarProveedor()
         {
             try
             {
                 Proveedor p = new Proveedor();
                 p.Sucursal = idSucursal[cboSucursal.SelectedIndex];
+                p.Cuenta = idCuenta[cboCuenta.SelectedIndex];
                 p.Nombre = txtNombre.Text;
                 p.RazonSocial = txtRazonSocial.Text;
                 p.RFC = txtRFC.Text;
@@ -81,6 +104,11 @@ namespace EC_Admin.Forms
             if (cboSucursal.SelectedIndex < 0)
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo sucursal es obligatorio", "EC-Admin");
+                return false;
+            }
+            if (cboCuenta.SelectedIndex < 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cuenta es obligatorio", "EC-Admin");
                 return false;
             }
             if (txtNombre.Text.Trim() == "")
@@ -215,6 +243,7 @@ namespace EC_Admin.Forms
         private void frmNuevoProveedor_Load(object sender, EventArgs e)
         {
             CargarSucursales();
+            CargarCuentas();
             cboTipoCredito.SelectedIndex = 0;
         }
 

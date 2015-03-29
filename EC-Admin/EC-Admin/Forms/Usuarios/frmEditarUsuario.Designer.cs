@@ -50,6 +50,8 @@
             this.lblAntiPass = new System.Windows.Forms.Label();
             this.chbPass = new System.Windows.Forms.CheckBox();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.cboCamaras = new System.Windows.Forms.ComboBox();
+            this.btnCamara = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).BeginInit();
             this.pnlPass.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +66,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Corbel", 9F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(174, 277);
+            this.button1.Location = new System.Drawing.Point(174, 245);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 30);
             this.button1.TabIndex = 12;
@@ -83,7 +85,7 @@
             this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar.Location = new System.Drawing.Point(174, 313);
+            this.btnQuitar.Location = new System.Drawing.Point(174, 281);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar.TabIndex = 13;
@@ -96,7 +98,7 @@
             // 
             this.pcbImagen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pcbImagen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.pcbImagen.Location = new System.Drawing.Point(12, 187);
+            this.pcbImagen.Location = new System.Drawing.Point(12, 191);
             this.pcbImagen.Name = "pcbImagen";
             this.pcbImagen.Size = new System.Drawing.Size(156, 156);
             this.pcbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -317,7 +319,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(386, 297);
+            this.btnAceptar.Location = new System.Drawing.Point(386, 336);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
             this.btnAceptar.TabIndex = 14;
@@ -327,11 +329,46 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // cboCamaras
+            // 
+            this.cboCamaras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cboCamaras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            this.cboCamaras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCamaras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboCamaras.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboCamaras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.cboCamaras.FormattingEnabled = true;
+            this.cboCamaras.Location = new System.Drawing.Point(12, 353);
+            this.cboCamaras.Name = "cboCamaras";
+            this.cboCamaras.Size = new System.Drawing.Size(259, 29);
+            this.cboCamaras.TabIndex = 36;
+            // 
+            // btnCamara
+            // 
+            this.btnCamara.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCamara.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnCamara.FlatAppearance.BorderSize = 0;
+            this.btnCamara.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnCamara.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnCamara.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCamara.Font = new System.Drawing.Font("Corbel", 9F);
+            this.btnCamara.ForeColor = System.Drawing.Color.White;
+            this.btnCamara.Location = new System.Drawing.Point(174, 317);
+            this.btnCamara.Name = "btnCamara";
+            this.btnCamara.Size = new System.Drawing.Size(97, 30);
+            this.btnCamara.TabIndex = 35;
+            this.btnCamara.Text = "Tomar foto";
+            this.btnCamara.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCamara.UseVisualStyleBackColor = false;
+            this.btnCamara.Click += new System.EventHandler(this.btnCamara_Click);
+            // 
             // frmEditarUsuario
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(548, 355);
+            this.ClientSize = new System.Drawing.Size(548, 394);
+            this.Controls.Add(this.cboCamaras);
+            this.Controls.Add(this.btnCamara);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.chbPass);
             this.Controls.Add(this.pnlPass);
@@ -356,6 +393,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar usuario";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmEditarUsuario_FormClosed);
             this.Load += new System.EventHandler(this.frmEditarUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).EndInit();
             this.pnlPass.ResumeLayout(false);
@@ -389,5 +427,7 @@
         private System.Windows.Forms.TextBox txtAntiPass;
         private System.Windows.Forms.Label lblAntiPass;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.ComboBox cboCamaras;
+        private System.Windows.Forms.Button btnCamara;
     }
 }

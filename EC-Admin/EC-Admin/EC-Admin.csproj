@@ -81,6 +81,8 @@
     <Compile Include="Clases\Clases conexiones y estructura\Puesto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Sucursal.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Trabajador.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Venta.cs" />
+    <Compile Include="Clases\Clases generales\Camara.cs" />
     <Compile Include="Clases\Clases generales\Correos.cs" />
     <Compile Include="Clases\Clases generales\Colores.cs" />
     <Compile Include="Clases\Clases generales\Configuraciones.cs" />
@@ -285,6 +287,12 @@
     <Compile Include="Forms\Trabajador\Ingreso\frmIngreso.Designer.cs">
       <DependentUpon>frmIngreso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Trabajador\Pagos\frmPagosPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Trabajador\Pagos\frmPagosPendientes.Designer.cs">
+      <DependentUpon>frmPagosPendientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Trabajador\Puesto\frmDatosPuesto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,6 +358,12 @@
     </Compile>
     <Compile Include="Forms\Usuarios\Restablecimiento de contraseña\frmVerificarUsuario.Designer.cs">
       <DependentUpon>frmVerificarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmPOS.Designer.cs">
+      <DependentUpon>frmPOS.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEspera.cs">
       <SubType>Form</SubType>
@@ -473,6 +487,9 @@
     <EmbeddedResource Include="Forms\Trabajador\Ingreso\frmIngreso.resx">
       <DependentUpon>frmIngreso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Trabajador\Pagos\frmPagosPendientes.resx">
+      <DependentUpon>frmPagosPendientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Trabajador\Puesto\frmDatosPuesto.resx">
       <DependentUpon>frmDatosPuesto.cs</DependentUpon>
     </EmbeddedResource>
@@ -505,6 +522,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Usuarios\Restablecimiento de contraseña\frmVerificarUsuario.resx">
       <DependentUpon>frmVerificarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmPOS.resx">
+      <DependentUpon>frmPOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEspera.resx">
       <DependentUpon>frmEspera.cs</DependentUpon>
@@ -562,7 +582,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Caja\" />
-    <Folder Include="Forms\Trabajador\Pagos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

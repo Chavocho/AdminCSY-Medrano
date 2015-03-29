@@ -21,6 +21,12 @@ namespace EC_Admin
             set;
         }
 
+        abstract public int Cuenta
+        {
+            get;
+            set;
+        }
+
         abstract public string Nombre
         {
             get;

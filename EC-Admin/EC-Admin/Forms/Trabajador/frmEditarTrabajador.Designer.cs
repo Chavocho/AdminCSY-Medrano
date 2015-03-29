@@ -468,6 +468,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar datos de";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmEditarTrabajador_FormClosed);
             this.Load += new System.EventHandler(this.frmEditarTrabajador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).EndInit();
             this.ResumeLayout(false);

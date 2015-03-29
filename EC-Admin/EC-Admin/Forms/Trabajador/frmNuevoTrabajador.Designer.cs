@@ -490,6 +490,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de nuevo trabajador";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmNuevoTrabajador_FormClosed);
             this.Load += new System.EventHandler(this.frmNuevoTrabajador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).EndInit();
             this.ResumeLayout(false);
