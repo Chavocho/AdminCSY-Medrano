@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Clases\Clases conexiones y estructura\Cliente.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\ClienteContacto.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Cuenta.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Horario.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Producto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Proveedor.cs" />
@@ -154,6 +155,30 @@
     </Compile>
     <Compile Include="Forms\Configs\frmConfigs.Designer.cs">
       <DependentUpon>frmConfigs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cuentas\frmAsignarCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cuentas\frmAsignarCuenta.Designer.cs">
+      <DependentUpon>frmAsignarCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cuentas\frmCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cuentas\frmCuenta.Designer.cs">
+      <DependentUpon>frmCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cuentas\frmEditarCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cuentas\frmEditarCuenta.Designer.cs">
+      <DependentUpon>frmEditarCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cuentas\frmNuevaCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cuentas\frmNuevaCuenta.Designer.cs">
+      <DependentUpon>frmNuevaCuenta.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Mensaje\frmMensaje.cs">
       <SubType>Form</SubType>
@@ -420,6 +445,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configs\frmConfigs.resx">
       <DependentUpon>frmConfigs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cuentas\frmAsignarCuenta.resx">
+      <DependentUpon>frmAsignarCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cuentas\frmCuenta.resx">
+      <DependentUpon>frmCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cuentas\frmEditarCuenta.resx">
+      <DependentUpon>frmEditarCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cuentas\frmNuevaCuenta.resx">
+      <DependentUpon>frmNuevaCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mensaje\frmMensaje.resx">
       <DependentUpon>frmMensaje.cs</DependentUpon>

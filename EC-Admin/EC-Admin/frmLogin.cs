@@ -73,7 +73,6 @@ namespace EC_Admin
 
         private void btnPruebas_Click(object sender, EventArgs e)
         {
-            MessageBox.Show((new Venta()).NuevaVenta().ToString());
         }
     }
 }

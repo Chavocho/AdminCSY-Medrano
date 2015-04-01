@@ -52,5 +52,13 @@ namespace EC_Admin.Forms
             else
                 frmDomicilio.Instancia.Select();
         }
+
+        private void btnCuentas_Click(object sender, EventArgs e)
+        {
+            if (!frmCuenta.Instancia.Visible)
+                frmCuenta.Instancia.Show();
+            else
+                frmCuenta.Instancia.Select();
+        }
     }
 }

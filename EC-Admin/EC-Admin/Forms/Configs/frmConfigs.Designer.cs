@@ -33,6 +33,7 @@
             this.btnTicket = new System.Windows.Forms.Button();
             this.btnSucursales = new System.Windows.Forms.Button();
             this.btnDirecciones = new System.Windows.Forms.Button();
+            this.btnCuentas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCorreo
@@ -137,11 +138,33 @@
             this.btnDirecciones.UseVisualStyleBackColor = false;
             this.btnDirecciones.Click += new System.EventHandler(this.btnDirecciones_Click);
             // 
+            // btnCuentas
+            // 
+            this.btnCuentas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCuentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnCuentas.FlatAppearance.BorderSize = 0;
+            this.btnCuentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnCuentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnCuentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCuentas.Font = new System.Drawing.Font("Corbel", 11F);
+            this.btnCuentas.ForeColor = System.Drawing.Color.White;
+            this.btnCuentas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCuentas.Location = new System.Drawing.Point(167, 12);
+            this.btnCuentas.Name = "btnCuentas";
+            this.btnCuentas.Size = new System.Drawing.Size(149, 46);
+            this.btnCuentas.TabIndex = 5;
+            this.btnCuentas.Text = "Cuentas bancarias";
+            this.btnCuentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCuentas.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnCuentas.UseVisualStyleBackColor = false;
+            this.btnCuentas.Click += new System.EventHandler(this.btnCuentas_Click);
+            // 
             // frmConfigs
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(522, 276);
+            this.Controls.Add(this.btnCuentas);
             this.Controls.Add(this.btnDirecciones);
             this.Controls.Add(this.btnSucursales);
             this.Controls.Add(this.btnTicket);
@@ -162,5 +185,6 @@
         private System.Windows.Forms.Button btnTicket;
         private System.Windows.Forms.Button btnSucursales;
         private System.Windows.Forms.Button btnDirecciones;
+        private System.Windows.Forms.Button btnCuentas;
     }
 }

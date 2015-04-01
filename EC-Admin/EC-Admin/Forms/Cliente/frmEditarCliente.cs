@@ -16,12 +16,25 @@ namespace EC_Admin.Forms
         int idC = 0;
         Cliente c;
         TipoPersona t;
-        List<int> idSucursal = new List<int>(), idCuenta = new List<int>();
+        List<int> idSucursal = new List<int>();
+
+        private int idCuenta;
+
+        public int IDCuenta
+        {
+            get { return idCuenta; }
+            set
+            {
+                idCuenta = value;
+                DatosCuenta();
+            }
+        }
 
         public frmEditarCliente(int id)
         {
             InitializeComponent();
             c = new Cliente(id);
+            //Este evento sucede cuando se modifica la base de datos de contactos
             c.Contacto.ContactDataBaseModified += new EventHandler(Contact_Modified);
         }
 
@@ -43,26 +56,34 @@ namespace EC_Admin.Forms
             }
         }
 
-        private void CargarCuentas()
+        private void DatosCuenta()
         {
             try
             {
-                string sql = "SELECT id, clabe, banco FROM cuenta;";
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    idCuenta.Add((int)dr["id"]);
-                    cboCuenta.Items.Add(dr["clabe"].ToString() + "/" + dr["banco"].ToString());
-                }
+                Cuenta c = new Cuenta(idCuenta);
+                c.ObtenerDatos();
+                lblCNumCuenta.Text = c.NumeroCuenta;
+                lblCBanco.Text = c.Banco;
+                lblCBeneficiario.Text = c.Beneficiario;
+                lblCSucursal.Text = c.Sucursal;
             }
             catch (MySqlException ex)
             {
-                throw ex;
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la cuenta. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
             }
             catch (Exception ex)
             {
-                throw ex;
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la cuenta.", "EC-Admin", ex);
             }
+        }
+
+        private void QuitarDatosCuenta()
+        {
+            idCuenta = 0;
+            lblCNumCuenta.Text = "---";
+            lblCBanco.Text = "---";
+            lblCBeneficiario.Text = "---";
+            lblCSucursal.Text = "---";
         }
 
         private int Posicion(List<int> l, int id)
@@ -92,7 +113,7 @@ namespace EC_Admin.Forms
             {
                 c.ObtenerDatos();
                 cboSucursal.SelectedIndex = Posicion(idSucursal, c.Sucursal);
-                cboCuenta.SelectedIndex = Posicion(idCuenta, c.Cuenta);
+                IDCuenta = c.Cuenta;
                 txtNombre.Text = c.Nombre;
                 txtRazonSocial.Text = c.RazonSocial;
                 txtRFC.Text = c.RFC;
@@ -192,7 +213,7 @@ namespace EC_Admin.Forms
             try
             {
                 c.Sucursal = idSucursal[cboSucursal.SelectedIndex];
-                c.Cuenta = idCuenta[cboCuenta.SelectedIndex];
+                c.Cuenta = idCuenta;
                 c.Nombre = txtNombre.Text;
                 c.RazonSocial = txtRazonSocial.Text;
                 c.RFC = txtRFC.Text;
@@ -227,11 +248,6 @@ namespace EC_Admin.Forms
             if (cboSucursal.SelectedIndex < 0)
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo sucursal es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (cboCuenta.SelectedIndex < 0)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cuenta es obligatorio", "EC-Admin");
                 return false;
             }
             if (txtNombre.Text.Trim() == "")
@@ -366,7 +382,6 @@ namespace EC_Admin.Forms
         private void frmEditarCliente_Load(object sender, EventArgs e)
         {
             CargarSucursales();
-            CargarCuentas();
             MostrarDatos();
             MostrarContactos();
         }
@@ -426,6 +441,16 @@ namespace EC_Admin.Forms
         private void Contact_Modified(object sender, EventArgs e)
         {
             MostrarContactos();
+        }
+
+        private void btnQuitar_Click(object sender, EventArgs e)
+        {
+            QuitarDatosCuenta();
+        }
+
+        private void btnCuenta_Click(object sender, EventArgs e)
+        {
+            (new frmAsignarCuenta(this)).ShowDialog(this);
         }
     }
 }
