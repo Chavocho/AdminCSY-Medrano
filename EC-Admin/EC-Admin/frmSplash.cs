@@ -13,6 +13,7 @@ namespace EC_Admin
     public partial class frmSplash : Form
     {
         int c = 0;
+
         public frmSplash()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace EC_Admin
         {
             if (!ConfiguracionXML.ExisteConfiguracion("basedatos"))
             {
-                DialogResult r = MessageBox.Show("No tienes configurada tu conexión con la base de datos. ¿Deseas configurarla?", "EC-Admin", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "No tienes configurada tu conexión con la base de datos. ¿Deseas configurarla?", "EC-Admin");
                 if (r == System.Windows.Forms.DialogResult.Yes)
                 {
                     (new Forms.frmConfigBaseDatos(false)).ShowDialog(this);
@@ -35,7 +36,7 @@ namespace EC_Admin
                 }
                 else
                 {
-                    MessageBox.Show("La aplicación se cerrará.", "EC-Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La aplicación se cerrará.", "EC-Admin");
                     Application.Exit();
                 }
             }
@@ -45,6 +46,15 @@ namespace EC_Admin
                 Config.baseDatos = ConfiguracionXML.LeerConfiguración("basedatos", "base");
                 Config.usuario = ConfiguracionXML.LeerConfiguración("basedatos", "usuario");
                 Config.pass = ConfiguracionXML.LeerConfiguración("basedatos", "pass");
+            }
+        }
+
+        private void ConfiguracionSucursal()
+        {
+            if (ConfiguracionXML.ExisteConfiguracion("sucursal"))
+            {
+                Config.idSucursal = int.Parse(ConfiguracionXML.LeerConfiguración("sucursal", "id"));
+                Config.nombreSucursal = ConfiguracionXML.LeerConfiguración("sucursal", "nombre");
             }
         }
         #endregion

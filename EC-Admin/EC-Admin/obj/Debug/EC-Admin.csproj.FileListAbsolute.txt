@@ -178,7 +178,6 @@ C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmReestablecerPass.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmUsuarios.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmVerificarUsuario.resources
-C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Ventas.frmPOS.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmEspera.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmLogin.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmPrincipal.resources
@@ -189,3 +188,13 @@ C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmEditarCuenta.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevaCuenta.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmAsignarCuenta.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Ventas.frmVendedor.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmPOS.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Ventas.frmRecuperarVenta.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Ventas.frmVentaCliente.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmVentaProducto.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmAlmacenTrabajador.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevoAlmacen.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmBienvenido.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmTerminado.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmPrimerUso.resources

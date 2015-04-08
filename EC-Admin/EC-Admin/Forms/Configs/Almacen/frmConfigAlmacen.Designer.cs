@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnEditarUsuario = new System.Windows.Forms.Button();
             this.btnNuevoUsuario = new System.Windows.Forms.Button();
             this.dgvAlmacen = new System.Windows.Forms.DataGridView();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNumAlm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,6 +61,7 @@
             this.btnEditarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditarUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditarUsuario.UseVisualStyleBackColor = false;
+            this.btnEditarUsuario.Click += new System.EventHandler(this.btnEditarUsuario_Click);
             // 
             // btnNuevoUsuario
             // 
@@ -76,6 +80,7 @@
             this.btnNuevoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNuevoUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevoUsuario.UseVisualStyleBackColor = false;
+            this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
             // 
             // dgvAlmacen
             // 
@@ -106,6 +111,7 @@
             this.dgvAlmacen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlmacen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
+            this.CTrabajador,
             this.CNumAlm,
             this.CDescripcion});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -125,14 +131,25 @@
             this.dgvAlmacen.RowHeadersVisible = false;
             this.dgvAlmacen.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvAlmacen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlmacen.Size = new System.Drawing.Size(529, 338);
+            this.dgvAlmacen.Size = new System.Drawing.Size(636, 338);
             this.dgvAlmacen.TabIndex = 4;
+            this.dgvAlmacen.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlmacen_RowEnter);
+            // 
+            // tmrEspera
+            // 
+            this.tmrEspera.Interval = 300;
             // 
             // CID
             // 
             this.CID.HeaderText = "ID";
             this.CID.Name = "CID";
             this.CID.Visible = false;
+            // 
+            // CTrabajador
+            // 
+            this.CTrabajador.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CTrabajador.HeaderText = "Jefe de almacen";
+            this.CTrabajador.Name = "CTrabajador";
             // 
             // CNumAlm
             // 
@@ -142,22 +159,24 @@
             // 
             // CDescripcion
             // 
-            this.CDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CDescripcion.HeaderText = "Descripción";
             this.CDescripcion.Name = "CDescripcion";
+            this.CDescripcion.Width = 200;
             // 
             // frmConfigAlmacen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(734, 362);
+            this.ClientSize = new System.Drawing.Size(841, 362);
             this.Controls.Add(this.btnEditarUsuario);
             this.Controls.Add(this.btnNuevoUsuario);
             this.Controls.Add(this.dgvAlmacen);
             this.Name = "frmConfigAlmacen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Almacenes";
+            this.Load += new System.EventHandler(this.frmConfigAlmacen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacen)).EndInit();
             this.ResumeLayout(false);
 
@@ -168,9 +187,11 @@
         private System.Windows.Forms.Button btnEditarUsuario;
         private System.Windows.Forms.Button btnNuevoUsuario;
         private System.Windows.Forms.DataGridView dgvAlmacen;
+        private System.ComponentModel.BackgroundWorker bgwBusqueda;
+        private System.Windows.Forms.Timer tmrEspera;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTrabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNumAlm;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescripcion;
-        private System.ComponentModel.BackgroundWorker bgwBusqueda;
     }
 }

@@ -12,9 +12,9 @@ namespace EC_Admin.Forms
 {
     public partial class frmNuevoUsuario : Form
     {
+        frmPrimerUso frm = null;
         NivelesUsuario n;
         Camara c;
-        bool quitoImagen = false;
         private byte[] huella = null;
 
         public byte[] Huella
@@ -30,6 +30,14 @@ namespace EC_Admin.Forms
             cboNivel.SelectedIndex = 0;
         }
 
+        public frmNuevoUsuario(frmPrimerUso frm, string [] niveles)
+        {
+            InitializeComponent();
+            this.frm = frm;
+            cboNivel.Items.AddRange(niveles);
+            cboNivel.SelectedIndex = 0;
+        }
+
         private void InsertarUsuario()
         {
             try
@@ -41,10 +49,7 @@ namespace EC_Admin.Forms
                 u.Nombre = txtNombre.Text;
                 u.Apellidos = txtApellidos.Text;
                 u.Correo = txtCorreo.Text;
-                if (!quitoImagen)
-                    u.Imagen = pcbImagen.Image;
-                else
-                    u.Imagen = null;
+                u.Imagen = pcbImagen.Image;
                 u.Huella = huella;
                 u.InsertarUsuario();
             }
@@ -118,14 +123,12 @@ namespace EC_Admin.Forms
             if (r == System.Windows.Forms.DialogResult.OK)
             {
                 pcbImagen.Image = new Bitmap(ofd.FileName);
-                quitoImagen = false;
             }
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             pcbImagen.Image = null;
-            quitoImagen = true;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -134,9 +137,18 @@ namespace EC_Admin.Forms
             {
                 try
                 {
-                    InsertarUsuario();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el usuario con éxito!", "EC-Admin");
-                    this.Close();
+                    if (frm == null)
+                    {
+                        InsertarUsuario();
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el usuario con éxito!", "EC-Admin");
+                        this.Close();
+                    }
+                    else
+                    {
+                        InsertarUsuario();
+                        frm.Siguiente();
+                        this.Close();
+                    }
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {

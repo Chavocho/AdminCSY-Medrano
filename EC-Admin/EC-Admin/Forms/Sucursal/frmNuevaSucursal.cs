@@ -13,6 +13,8 @@ namespace EC_Admin.Forms
 {
     public partial class frmNuevaSucursal : Form
     {
+        Sucursal s = new Sucursal();
+        frmPrimerUso frm = null;
         private int idD = 0;
 
         public int IDDireccion
@@ -27,6 +29,12 @@ namespace EC_Admin.Forms
         public frmNuevaSucursal()
         {
             InitializeComponent();
+        }
+
+        public frmNuevaSucursal(frmPrimerUso frm)
+        {
+            InitializeComponent();
+            this.frm = frm;
         }
 
         private void ObtenerDatosDireccion()
@@ -62,7 +70,6 @@ namespace EC_Admin.Forms
         {
             try
             {
-                Sucursal s = new Sucursal();
                 s.IDDireccion = idD;
                 s.Nombre = txtNombre.Text;
                 s.Calle = txtCalle.Text;
@@ -223,9 +230,20 @@ namespace EC_Admin.Forms
             {
                 try
                 {
-                    Insertar();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado la sucursal correctamente!", "EC-Admin");
-                    this.Close();
+                    if (frm == null)
+                    {
+                        Insertar();
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado la sucursal correctamente!", "EC-Admin");
+                        this.Close();
+                    }
+                    else
+                    {
+                        Insertar();
+                        ConfiguracionXML.GuardarConfiguracion("sucursal", "id", s.ID.ToString());
+                        ConfiguracionXML.GuardarConfiguracion("sucursal", "nombre", txtNombre.Text);
+                        frm.Siguiente();
+                        this.Close();
+                    }
                 }
                 catch (MySqlException ex)
                 {

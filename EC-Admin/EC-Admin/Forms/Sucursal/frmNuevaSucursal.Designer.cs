@@ -373,7 +373,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(651, 630);
+            this.btnAceptar.Location = new System.Drawing.Point(651, 611);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
             this.btnAceptar.TabIndex = 31;
@@ -403,7 +403,7 @@
             this.grbFiscal.Font = new System.Drawing.Font("Corbel", 9F);
             this.grbFiscal.Location = new System.Drawing.Point(0, 297);
             this.grbFiscal.Name = "grbFiscal";
-            this.grbFiscal.Size = new System.Drawing.Size(813, 187);
+            this.grbFiscal.Size = new System.Drawing.Size(813, 168);
             this.grbFiscal.TabIndex = 28;
             this.grbFiscal.TabStop = false;
             this.grbFiscal.Text = "Domicilio fiscal";
@@ -413,7 +413,7 @@
             this.lblFColonia.AutoSize = true;
             this.lblFColonia.Font = new System.Drawing.Font("Corbel", 13F);
             this.lblFColonia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblFColonia.Location = new System.Drawing.Point(8, 99);
+            this.lblFColonia.Location = new System.Drawing.Point(8, 91);
             this.lblFColonia.Name = "lblFColonia";
             this.lblFColonia.Size = new System.Drawing.Size(0, 22);
             this.lblFColonia.TabIndex = 9;
@@ -423,7 +423,7 @@
             this.lblFEstado.AutoSize = true;
             this.lblFEstado.Font = new System.Drawing.Font("Corbel", 13F);
             this.lblFEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblFEstado.Location = new System.Drawing.Point(538, 99);
+            this.lblFEstado.Location = new System.Drawing.Point(538, 91);
             this.lblFEstado.Name = "lblFEstado";
             this.lblFEstado.Size = new System.Drawing.Size(0, 22);
             this.lblFEstado.TabIndex = 13;
@@ -433,7 +433,7 @@
             this.lblFCiudad.AutoSize = true;
             this.lblFCiudad.Font = new System.Drawing.Font("Corbel", 13F);
             this.lblFCiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblFCiudad.Location = new System.Drawing.Point(273, 99);
+            this.lblFCiudad.Location = new System.Drawing.Point(273, 91);
             this.lblFCiudad.Name = "lblFCiudad";
             this.lblFCiudad.Size = new System.Drawing.Size(0, 22);
             this.lblFCiudad.TabIndex = 11;
@@ -489,7 +489,7 @@
             this.btnAsignarDomicilio.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAsignarDomicilio.ForeColor = System.Drawing.Color.White;
             this.btnAsignarDomicilio.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAsignarDomicilio.Location = new System.Drawing.Point(651, 135);
+            this.btnAsignarDomicilio.Location = new System.Drawing.Point(651, 116);
             this.btnAsignarDomicilio.Name = "btnAsignarDomicilio";
             this.btnAsignarDomicilio.Size = new System.Drawing.Size(150, 46);
             this.btnAsignarDomicilio.TabIndex = 14;
@@ -504,7 +504,7 @@
             this.lblEFColonia.AutoSize = true;
             this.lblEFColonia.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblEFColonia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEFColonia.Location = new System.Drawing.Point(9, 76);
+            this.lblEFColonia.Location = new System.Drawing.Point(9, 68);
             this.lblEFColonia.Name = "lblEFColonia";
             this.lblEFColonia.Size = new System.Drawing.Size(54, 18);
             this.lblEFColonia.TabIndex = 8;
@@ -515,7 +515,7 @@
             this.lblEFEstado.AutoSize = true;
             this.lblEFEstado.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblEFEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEFEstado.Location = new System.Drawing.Point(539, 76);
+            this.lblEFEstado.Location = new System.Drawing.Point(539, 68);
             this.lblEFEstado.Name = "lblEFEstado";
             this.lblEFEstado.Size = new System.Drawing.Size(50, 18);
             this.lblEFEstado.TabIndex = 12;
@@ -526,7 +526,7 @@
             this.lblEFCiudad.AutoSize = true;
             this.lblEFCiudad.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblEFCiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEFCiudad.Location = new System.Drawing.Point(274, 76);
+            this.lblEFCiudad.Location = new System.Drawing.Point(274, 68);
             this.lblEFCiudad.Name = "lblEFCiudad";
             this.lblEFCiudad.Size = new System.Drawing.Size(51, 18);
             this.lblEFCiudad.TabIndex = 10;
@@ -579,7 +579,7 @@
             // pcbLogotipo
             // 
             this.pcbLogotipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.pcbLogotipo.Location = new System.Drawing.Point(12, 490);
+            this.pcbLogotipo.Location = new System.Drawing.Point(12, 471);
             this.pcbLogotipo.Name = "pcbLogotipo";
             this.pcbLogotipo.Size = new System.Drawing.Size(175, 175);
             this.pcbLogotipo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -597,7 +597,7 @@
             this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar.Location = new System.Drawing.Point(193, 635);
+            this.btnQuitar.Location = new System.Drawing.Point(193, 616);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar.TabIndex = 30;
@@ -611,7 +611,7 @@
             this.lblInfoImagen.AutoSize = true;
             this.lblInfoImagen.Font = new System.Drawing.Font("Corbel", 9F);
             this.lblInfoImagen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblInfoImagen.Location = new System.Drawing.Point(9, 668);
+            this.lblInfoImagen.Location = new System.Drawing.Point(9, 649);
             this.lblInfoImagen.Name = "lblInfoImagen";
             this.lblInfoImagen.Size = new System.Drawing.Size(141, 14);
             this.lblInfoImagen.TabIndex = 29;
@@ -621,7 +621,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(813, 688);
+            this.ClientSize = new System.Drawing.Size(813, 669);
             this.Controls.Add(this.btnQuitar);
             this.Controls.Add(this.lblInfoImagen);
             this.Controls.Add(this.pcbLogotipo);

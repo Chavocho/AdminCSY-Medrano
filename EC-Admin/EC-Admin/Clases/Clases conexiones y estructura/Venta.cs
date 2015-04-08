@@ -11,133 +11,133 @@ namespace EC_Admin
     class Venta
     {
         #region Propiedades Venta
+        private int id;
+        private int idC;
+        private int idS;
         private int idV;
+        private bool cancelada;
+        private bool abierta;
+        private decimal subtotal;
+        private decimal impuesto;
+        private decimal descuento;
+        private decimal total;
+        private string remision;
+        private string factura;
+        private TipoPago tipo;
+        private int createUser;
+        private DateTime createTime;
+        private int updateUser;
+        private DateTime updateTime;
+        private int cancelUser;
+        private DateTime cancelTime;
 
         public int IDVenta
         {
-            get { return idV; }
-            set { idV = value; }
+            get { return id; }
+            set { id = value; }
         }
-        private int idC;
 
         public int IDCliente
         {
             get { return idC; }
             set { idC = value; }
         }
-        private int idS;
 
         public int IDSucursal
         {
             get { return idS; }
             set { idS = value; }
         }
-        private int idT;
 
         public int IDVendedor
         {
-            get { return idT; }
-            set { idT = value; }
+            get { return idV; }
+            set { idV = value; }
         }
-        private bool cancelada;
 
         public bool Cancelada
         {
             get { return cancelada; }
             set { cancelada = value; }
         }
-        private bool abierta;
 
         public bool Abierta
         {
             get { return abierta; }
             set { abierta = value; }
         }
-        private decimal subtotal;
 
         public decimal Subtotal
         {
             get { return subtotal; }
             set { subtotal = value; }
         }
-        private decimal impuesto;
 
         public decimal Impuesto
         {
             get { return impuesto; }
             set { impuesto = value; }
         }
-        private decimal descuento;
 
         public decimal Descuento
         {
             get { return descuento; }
             set { descuento = value; }
         }
-        private decimal total;
 
         public decimal Total
         {
             get { return total; }
             set { total = value; }
         }
-        private string remision;
 
         public string Remision
         {
             get { return remision; }
             set { remision = value; }
         }
-        private string factura;
 
         public string Factura
         {
             get { return factura; }
             set { factura = value; }
         }
-        private TipoPago tipo;
 
         public TipoPago Tipo
         {
             get { return tipo; }
             set { tipo = value; }
         }
-        private int createUser;
 
         public int CreateUser
         {
             get { return createUser; }
             set { createUser = value; }
         }
-        private DateTime createTime;
 
         public DateTime CreateTime
         {
             get { return createTime; }
             set { createTime = value; }
         }
-        private int updateUser;
 
         public int UpdateUser
         {
             get { return updateUser; }
             set { updateUser = value; }
         }
-        private DateTime updateTime;
 
         public DateTime UpdateTime
         {
             get { return updateTime; }
             set { updateTime = value; }
         }
-        private int cancelUser;
 
         public int CancelUser
         {
             get { return cancelUser; }
             set { cancelUser = value; }
         }
-        private DateTime cancelTime;
 
         public DateTime CancelTime
         {
@@ -148,34 +148,34 @@ namespace EC_Admin
 
         #region Propiedades Venta Detallada
         private List<int> idP;
+        private List<decimal> cantidad;
+        private List<decimal> precio;
+        private List<decimal> descuentoP;
+        private List<Unidades> unidad;
 
         public List<int> IDProductos
         {
             get { return idP; }
             set { idP = value; }
         }
-        private List<decimal> cantidad;
 
         public List<decimal> Cantidad
         {
             get { return cantidad; }
             set { cantidad = value; }
         }
-        private List<decimal> precio;
 
         public List<decimal> Precio
         {
             get { return precio; }
             set { precio = value; }
         }
-        private List<decimal> descuentoP;
 
         public List<decimal> DescuentoProducto
         {
             get { return descuentoP; }
             set { descuentoP = value; }
         }
-        private List<Unidades> unidad;
 
         public List<Unidades> Unidad
         {
@@ -184,21 +184,30 @@ namespace EC_Admin
         }
         #endregion
 
+        /// <summary>
+        /// Inicializa la instancia de la clase Venta
+        /// </summary>
         public Venta()
         {
             InicializarVenta();
             InicializarVentaDetallada();
         }
 
+        /// <summary>
+        /// Inicializa la instancia de la clase Venta
+        /// </summary>
+        /// <param name="idVenta">ID de la venta</param>
         public Venta(int idVenta)
         {
-            this.idV = idVenta;
+            this.id = idVenta;
             InicializarVenta();
             InicializarVentaDetallada();
         }
 
         #region Métodos Venta
-
+        /// <summary>
+        /// Método que inicializa las propiedades de la clase Venta
+        /// </summary>
         private void InicializarVenta()
         {
             idC = 0;
@@ -211,6 +220,9 @@ namespace EC_Admin
             total = 0;
         }
 
+        /// <summary>
+        /// Inserta una nueva venta y asigna el ID de la venta
+        /// </summary>
         public void NuevaVenta()
         {
             try
@@ -218,7 +230,7 @@ namespace EC_Admin
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "INSERT INTO venta (create_user, create_time) VALUES (?create_user, NOW())";
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
-                idV = ConexionBD.EjecutarConsulta(sql);
+                id = ConexionBD.EjecutarConsulta(sql);
                 InicializarVenta();
             }
             catch (MySqlException ex)
@@ -231,19 +243,22 @@ namespace EC_Admin
             }
         }
 
+        /// <summary>
+        /// Recupera los datos de la venta
+        /// </summary>
         public void RecuperarVenta()
         {
             try
             {
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "SELECT * FROM venta WHERE id=?id";
-                sql.Parameters.AddWithValue("?id", idV);
+                sql.Parameters.AddWithValue("?id", id);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
                     idC = (int)dr["id_cliente"];
                     idS = (int)dr["id_sucursal"];
-                    idT = (int)dr["id_vendedor"];
+                    idV = (int)dr["id_vendedor"];
                     cancelada = (bool)dr["cancelada"];
                     abierta = (bool)dr["abierta"];
                     subtotal = (decimal)dr["subtotal"];
@@ -283,10 +298,48 @@ namespace EC_Admin
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// Inserta todos los datos de una venta
+        /// </summary>
+        public void DatosVenta()
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "UPDATE venta SET id_cliente=?id_cliente, id_sucursal=?id_sucursal, id_vendedor=?id_vendedor, abierta=?abierta, subtotal=?subtotal, impuesto=?impuesto, " + 
+                    "descuento=?descuento, total=?total, remision=?remision, factura=?factura, tipo_pago=?tipo_pago, update_user=?update_user, update_time=NOW() WHERE id=?id";
+                sql.Parameters.AddWithValue("?id_cliente", idC);
+                sql.Parameters.AddWithValue("?id_sucursal", idS);
+                sql.Parameters.AddWithValue("?id_vendedor", idV);
+                sql.Parameters.AddWithValue("?abierta", abierta);
+                sql.Parameters.AddWithValue("?subtotal", subtotal);
+                sql.Parameters.AddWithValue("?impuesto", impuesto);
+                sql.Parameters.AddWithValue("?descuento", descuento);
+                sql.Parameters.AddWithValue("?total", total);
+                sql.Parameters.AddWithValue("?remision", remision);
+                sql.Parameters.AddWithValue("?factura", factura);
+                sql.Parameters.AddWithValue("?tipo", tipo);
+                sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
+                sql.Parameters.AddWithValue("?id", id);
+                ConexionBD.EjecutarConsulta(sql);
+                InsertarProductos();
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
 
         #region Métodos Venta Detallada
-
+        /// <summary>
+        /// Inicializa las propiedades que esten relacionadas con la venta detallada
+        /// </summary>
         private void InicializarVentaDetallada()
         {
             idP = new List<int>();
@@ -296,6 +349,9 @@ namespace EC_Admin
             unidad = new List<Unidades>();
         }
 
+        /// <summary>
+        /// Inserta los productos de la venta en la base de datos, y en caso de estar ya, los actualiza
+        /// </summary>
         private void InsertarProductos()
         {
             try
@@ -304,8 +360,9 @@ namespace EC_Admin
                 for (int i = 0; i < idP.Count; i++)
                 {
                     sql.CommandText = "INSERT INTO (id_venta, id_producto, cant, precio, descuento, unidad) " +
-                    "VALUES (?id_venta, ?id_producto, ?cant, ?precio, ?descuento, ?unidad)";
-                    sql.Parameters.AddWithValue("?id_venta", idV);
+                    "VALUES (?id_venta, ?id_producto, ?cant, ?precio, ?descuento, ?unidad) " +
+                    "ON DUPLICATE KEY UPDATE cant=?cant, precio=?precio, descuento=?descuento, unidad=?unidad;";
+                    sql.Parameters.AddWithValue("?id_venta", id);
                     sql.Parameters.AddWithValue("?id_producto", idP[i]);
                     sql.Parameters.AddWithValue("?cant", cantidad[i]);
                     sql.Parameters.AddWithValue("?precio", precio[i]);
@@ -327,6 +384,9 @@ namespace EC_Admin
             }
         }
 
+        /// <summary>
+        /// Recupera los datos de los productos de la venta detallada
+        /// </summary>
         private void RecuperarVentaDetallada()
         {
             InicializarVentaDetallada();
@@ -334,7 +394,7 @@ namespace EC_Admin
             {
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "SELECT * FROM venta_detallada WHERE id_venta=?id";
-                sql.Parameters.AddWithValue("?id", idV);
+                sql.Parameters.AddWithValue("?id", id);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {

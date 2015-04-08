@@ -268,7 +268,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?web", web);
                 sql.Parameters.AddWithValue("?rfc", rfc);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
-                ConexionBD.EjecutarConsulta(sql);
+                this.ID = ConexionBD.EjecutarConsulta(sql);
             }
             catch (MySqlException ex)
             {

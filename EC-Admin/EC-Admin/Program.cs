@@ -16,7 +16,14 @@ namespace EC_Admin
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Inicio());
+            if (Properties.Settings.Default.PrimerUso)
+            {
+                Application.Run(new PrimerInicio());
+            }
+            else
+            {
+                Application.Run(new Inicio());
+            }
         }
     }
 
@@ -25,6 +32,14 @@ namespace EC_Admin
         public Inicio()
         {
             (new frmSplash()).Show();
+        }
+    }
+
+    class PrimerInicio : ApplicationContext
+    {
+        public PrimerInicio()
+        {
+            (new frmPrimerUso()).Show();
         }
     }
 }

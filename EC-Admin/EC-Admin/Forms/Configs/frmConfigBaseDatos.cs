@@ -12,11 +12,20 @@ namespace EC_Admin.Forms
 {
     public partial class frmConfigBaseDatos : Form
     {
+        frmPrimerUso frm = null;
         bool reiniciar;
+
         public frmConfigBaseDatos(bool reiniciar)
         {
             InitializeComponent();
             this.reiniciar = reiniciar;
+        }
+
+        public frmConfigBaseDatos(frmPrimerUso frm)
+        {
+            InitializeComponent();
+            this.frm = frm;
+            reiniciar = false;
         }
 
         private void Cargar()
@@ -49,8 +58,17 @@ namespace EC_Admin.Forms
             DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Es correcta la información?", "EC-Admin");
             if (r == System.Windows.Forms.DialogResult.Yes)
             {
-                Guardar();
-                this.Close();
+                if (frm == null)
+                {
+                    Guardar();
+                    this.Close();
+                }
+                else
+                {
+                    Guardar();
+                    frm.Siguiente();
+                    this.Close();
+                }
             }
         }
 

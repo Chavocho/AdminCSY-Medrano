@@ -30,7 +30,7 @@ namespace EC_Admin
             }
             else
             {
-                MessageBox.Show("El usuario y/o contraseña no coinciden.", "EC-Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El usuario y/o contraseña no coinciden.", "EC-Admin");
                 txtPass.Text = "";
             }
         }
@@ -59,13 +59,13 @@ namespace EC_Admin
             Application.DoEvents();
             if (Usuario.CantidadUsuariosAdministrador == 0)
             {
-                if (MessageBox.Show("No tienes usuarios registrados, ¿deseas crear uno?", "EC-Admin", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "No tienes usuarios registrados, ¿deseas crear uno?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
                 {
                     (new Forms.frmNuevoUsuario(new string[] { "Administador" })).Show();
                 }
                 else
                 {
-                    MessageBox.Show("La aplicación se cerrará. Puede crear un usuario la próxima vez que lo abra.", "EC-Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La aplicación se cerrará. Puede crear un usuario la próxima vez que lo abra.", "EC-Admin");
                     btnCancelar.PerformClick();
                 }
             }

@@ -82,7 +82,10 @@ namespace EC_Admin
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-
+            if (!frmPOS.Instancia.Visible)
+                frmPOS.Instancia.Show();
+            else
+                frmPOS.Instancia.Select();
         }
 
         private void btnCompras_Click(object sender, EventArgs e)

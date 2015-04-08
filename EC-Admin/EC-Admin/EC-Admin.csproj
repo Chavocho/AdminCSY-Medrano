@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Clases conexiones y estructura\Almacen.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cliente.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\ClienteContacto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cuenta.cs" />
@@ -132,11 +133,29 @@
     <Compile Include="Forms\Compra\frmCompras.Designer.cs">
       <DependentUpon>frmCompras.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Configs\Almacen\frmAlmacenTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configs\Almacen\frmAlmacenTrabajador.Designer.cs">
+      <DependentUpon>frmAlmacenTrabajador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Configs\Almacen\frmConfigAlmacen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Configs\Almacen\frmConfigAlmacen.Designer.cs">
       <DependentUpon>frmConfigAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configs\Almacen\frmEditarAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configs\Almacen\frmEditarAlmacen.Designer.cs">
+      <DependentUpon>frmEditarAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configs\Almacen\frmNuevoAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configs\Almacen\frmNuevoAlmacen.Designer.cs">
+      <DependentUpon>frmNuevoAlmacen.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Configs\frmConfigBaseDatos.cs">
       <SubType>Form</SubType>
@@ -185,6 +204,18 @@
     </Compile>
     <Compile Include="Forms\Mensaje\frmMensaje.Designer.cs">
       <DependentUpon>frmMensaje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrimerUso\frmBienvenido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrimerUso\frmBienvenido.Designer.cs">
+      <DependentUpon>frmBienvenido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrimerUso\frmTerminado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrimerUso\frmTerminado.Designer.cs">
+      <DependentUpon>frmTerminado.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Producto\frmEditarProducto.cs">
       <SubType>Form</SubType>
@@ -384,11 +415,41 @@
     <Compile Include="Forms\Usuarios\Restablecimiento de contraseña\frmVerificarUsuario.Designer.cs">
       <DependentUpon>frmVerificarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Ventas\frmCobrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmCobrar.Designer.cs">
+      <DependentUpon>frmCobrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmVendedor.Designer.cs">
+      <DependentUpon>frmVendedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Ventas\frmPOS.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Ventas\frmPOS.Designer.cs">
       <DependentUpon>frmPOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmRecuperarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmRecuperarVenta.Designer.cs">
+      <DependentUpon>frmRecuperarVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmVentaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmVentaCliente.Designer.cs">
+      <DependentUpon>frmVentaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmVentaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmVentaProducto.Designer.cs">
+      <DependentUpon>frmVentaProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEspera.cs">
       <SubType>Form</SubType>
@@ -401,6 +462,12 @@
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrimerUso\frmPrimerUso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrimerUso\frmPrimerUso.Designer.cs">
+      <DependentUpon>frmPrimerUso.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -434,8 +501,14 @@
     <EmbeddedResource Include="Forms\Compra\frmCompras.resx">
       <DependentUpon>frmCompras.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configs\Almacen\frmAlmacenTrabajador.resx">
+      <DependentUpon>frmAlmacenTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configs\Almacen\frmConfigAlmacen.resx">
       <DependentUpon>frmConfigAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configs\Almacen\frmNuevoAlmacen.resx">
+      <DependentUpon>frmNuevoAlmacen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configs\frmConfigBaseDatos.resx">
       <DependentUpon>frmConfigBaseDatos.cs</DependentUpon>
@@ -460,6 +533,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mensaje\frmMensaje.resx">
       <DependentUpon>frmMensaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrimerUso\frmBienvenido.resx">
+      <DependentUpon>frmBienvenido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrimerUso\frmTerminado.resx">
+      <DependentUpon>frmTerminado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Producto\frmEditarProducto.resx">
       <DependentUpon>frmEditarProducto.cs</DependentUpon>
@@ -560,14 +639,29 @@
     <EmbeddedResource Include="Forms\Usuarios\Restablecimiento de contraseña\frmVerificarUsuario.resx">
       <DependentUpon>frmVerificarUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmVendedor.resx">
+      <DependentUpon>frmVendedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\frmPOS.resx">
       <DependentUpon>frmPOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmRecuperarVenta.resx">
+      <DependentUpon>frmRecuperarVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmVentaCliente.resx">
+      <DependentUpon>frmVentaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmVentaProducto.resx">
+      <DependentUpon>frmVentaProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEspera.resx">
       <DependentUpon>frmEspera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrimerUso\frmPrimerUso.resx">
+      <DependentUpon>frmPrimerUso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
