@@ -58,7 +58,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     idPro.Add((int)dr["id"]);
-                    cboProveedor.Items.Add(dr["num_alm"]);
+                    cboAlmacen.Items.Add(dr["num_alm"]);
                 }
             }
             catch (MySqlException ex)
@@ -82,7 +82,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     idPro.Add((int)dr["id"]);
-                    cboProveedor.Items.Add(dr["nombre"]);
+                    cboCategoria.Items.Add(dr["nombre"]);
                 }
             }
             catch (MySqlException ex)

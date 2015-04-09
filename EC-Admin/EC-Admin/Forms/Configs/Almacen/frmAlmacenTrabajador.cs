@@ -64,6 +64,7 @@ namespace EC_Admin.Forms
                 {
                     dgvTrabajadores.Rows.Add(new object[] { dr["id"], dr["nombre"].ToString() + " " + dr["apellidos"].ToString(), dr["puesto"].ToString() });
                 }
+                dgvTrabajadores_RowEnter(dgvTrabajadores, new DataGridViewCellEventArgs(0, 0));
             }
             catch (Exception ex)
             {
@@ -93,9 +94,15 @@ namespace EC_Admin.Forms
             if (dgvTrabajadores.CurrentRow != null)
             {
                 if (frmN != null)
+                {
                     frmN.IDTrabajador = id;
+                    frmN.NombreTrabajador = dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString();
+                }
                 else if (frmE != null)
+                {
                     frmE.IDTrabajador = id;
+                    frmE.NombreTrabajador = dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString();
+                }
                 this.Close();
             }
         }

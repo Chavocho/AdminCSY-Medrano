@@ -34,6 +34,7 @@
             this.btnSucursales = new System.Windows.Forms.Button();
             this.btnDirecciones = new System.Windows.Forms.Button();
             this.btnCuentas = new System.Windows.Forms.Button();
+            this.btnAlmacen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCorreo
@@ -75,6 +76,7 @@
             this.btnBaseDatos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBaseDatos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnBaseDatos.UseVisualStyleBackColor = false;
+            this.btnBaseDatos.Click += new System.EventHandler(this.btnBaseDatos_Click);
             // 
             // btnTicket
             // 
@@ -159,11 +161,33 @@
             this.btnCuentas.UseVisualStyleBackColor = false;
             this.btnCuentas.Click += new System.EventHandler(this.btnCuentas_Click);
             // 
+            // btnAlmacen
+            // 
+            this.btnAlmacen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAlmacen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnAlmacen.FlatAppearance.BorderSize = 0;
+            this.btnAlmacen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnAlmacen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlmacen.Font = new System.Drawing.Font("Corbel", 11F);
+            this.btnAlmacen.ForeColor = System.Drawing.Color.White;
+            this.btnAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAlmacen.Location = new System.Drawing.Point(167, 64);
+            this.btnAlmacen.Name = "btnAlmacen";
+            this.btnAlmacen.Size = new System.Drawing.Size(149, 46);
+            this.btnAlmacen.TabIndex = 6;
+            this.btnAlmacen.Text = "Almacen";
+            this.btnAlmacen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAlmacen.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAlmacen.UseVisualStyleBackColor = false;
+            this.btnAlmacen.Click += new System.EventHandler(this.btnAlmacen_Click);
+            // 
             // frmConfigs
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(522, 276);
+            this.Controls.Add(this.btnAlmacen);
             this.Controls.Add(this.btnCuentas);
             this.Controls.Add(this.btnDirecciones);
             this.Controls.Add(this.btnSucursales);
@@ -186,5 +210,6 @@
         private System.Windows.Forms.Button btnSucursales;
         private System.Windows.Forms.Button btnDirecciones;
         private System.Windows.Forms.Button btnCuentas;
+        private System.Windows.Forms.Button btnAlmacen;
     }
 }

@@ -48,6 +48,19 @@ namespace EC_Admin
         }
 
         /// <summary>
+        /// Método que verifica la conexión a la base de datos
+        /// </summary>
+        /// <returns></returns>
+        public static bool Ping()
+        {
+            bool ping;
+            AbrirConexion();
+            ping = conexion.Ping();
+            CerrarConexion();
+            return ping;
+        }
+
+        /// <summary>
         /// Función que ejecuta una consulta a base de un string
         /// </summary>
         /// <exception cref="MySql.Data.MySqlClient.MySqlException">Excepción que se lanza cuando ocurre un error con la conexión a la base de datos o con la ejecución de la consulta</exception>

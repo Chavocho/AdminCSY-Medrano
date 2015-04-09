@@ -61,6 +61,33 @@ namespace EC_Admin.Forms
                 if (frm == null)
                 {
                     Guardar();
+                    try
+                    {
+                        if (!ConexionBD.Ping())
+                        {
+                            DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                            if (re == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    catch (MySql.Data.MySqlClient.MySqlException)
+                    {
+                        DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                        if (re == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            return;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                        if (re == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            return;
+                        }
+                    }
                     this.Close();
                 }
                 else
@@ -72,12 +99,12 @@ namespace EC_Admin.Forms
             }
         }
 
-        private void frmConfigBaseDatos_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmConfigBaseDatos_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (reiniciar)
             {
-                MessageBox.Show("La aplicación se reiniciará.", "EC-Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Restart();
+                Application.Exit();
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La aplicación se cerrará.", "EC-Admin");
             }
         }
     }

@@ -47,8 +47,46 @@ namespace EC_Admin
                 Config.usuario = ConfiguracionXML.LeerConfiguración("basedatos", "usuario");
                 Config.pass = ConfiguracionXML.LeerConfiguración("basedatos", "pass");
             }
+            VerificarConexion();
         }
 
+        /// <summary>
+        /// Método que verifica la conexión con la base de datos
+        /// </summary>
+        private void VerificarConexion()
+        {
+            try
+            {
+                if (!ConexionBD.Ping())
+                {
+                    DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                    if (re == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException)
+            {
+                DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                if (re == System.Windows.Forms.DialogResult.Yes)
+                {
+                    (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
+                }
+            }
+            catch (Exception)
+            {
+                DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                if (re == System.Windows.Forms.DialogResult.Yes)
+                {
+                    (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Función que carga los datos de la sucursal
+        /// </summary>
         private void ConfiguracionSucursal()
         {
             if (ConfiguracionXML.ExisteConfiguracion("sucursal"))
@@ -88,7 +126,7 @@ namespace EC_Admin
             try
             {
                 ConfiguracionBaseDatos();
-                ConexionBD.AbrirConexion();
+                ConfiguracionSucursal();
                 InicializarCantidades();
             }
             catch (Exception ex)

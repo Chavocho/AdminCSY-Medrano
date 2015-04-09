@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Clases conexiones y estructura\Almacen.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Categoria.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cliente.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\ClienteContacto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cuenta.cs" />
@@ -97,6 +98,24 @@
     <Compile Include="Clases\Clases conexiones y estructura\Persona.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\PersonaContacto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Usuario.cs" />
+    <Compile Include="Forms\Categoria\frmCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Categoria\frmCategorias.Designer.cs">
+      <DependentUpon>frmCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Categoria\frmEditarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Categoria\frmEditarCategoria.Designer.cs">
+      <DependentUpon>frmEditarCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Categoria\frmNuevaCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Categoria\frmNuevaCategoria.Designer.cs">
+      <DependentUpon>frmNuevaCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Cliente\frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -483,6 +502,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Categoria\frmCategorias.resx">
+      <DependentUpon>frmCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Categoria\frmEditarCategoria.resx">
+      <DependentUpon>frmEditarCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Categoria\frmNuevaCategoria.resx">
+      <DependentUpon>frmNuevaCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cliente\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -506,6 +534,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configs\Almacen\frmConfigAlmacen.resx">
       <DependentUpon>frmConfigAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configs\Almacen\frmEditarAlmacen.resx">
+      <DependentUpon>frmEditarAlmacen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configs\Almacen\frmNuevoAlmacen.resx">
       <DependentUpon>frmNuevoAlmacen.cs</DependentUpon>

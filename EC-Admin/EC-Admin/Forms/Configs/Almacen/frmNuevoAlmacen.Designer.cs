@@ -47,6 +47,7 @@
             this.txtNumAlm.Name = "txtNumAlm";
             this.txtNumAlm.Size = new System.Drawing.Size(259, 29);
             this.txtNumAlm.TabIndex = 3;
+            this.txtNumAlm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumAlm_KeyPress);
             // 
             // lblENumAlm
             // 
@@ -120,7 +121,7 @@
             this.btnAsignar.Text = "Asignar jefe";
             this.btnAsignar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAsignar.UseVisualStyleBackColor = false;
-            this.btnAsignar.Visible = false;
+            this.btnAsignar.Click += new System.EventHandler(this.btnAsignar_Click);
             // 
             // btnAceptar
             // 
@@ -141,6 +142,7 @@
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // frmNuevoAlmacen
             // 

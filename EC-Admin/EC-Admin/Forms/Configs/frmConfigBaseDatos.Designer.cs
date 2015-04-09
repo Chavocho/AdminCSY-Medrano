@@ -161,7 +161,7 @@
             this.Name = "frmConfigBaseDatos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuración de conexión";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmConfigBaseDatos_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmConfigBaseDatos_FormClosed);
             this.Load += new System.EventHandler(this.frmConfigBaseDatos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

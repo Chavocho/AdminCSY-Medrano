@@ -60,5 +60,18 @@ namespace EC_Admin.Forms
             else
                 frmCuenta.Instancia.Select();
         }
+
+        private void btnBaseDatos_Click(object sender, EventArgs e)
+        {
+            (new frmConfigBaseDatos(true)).ShowDialog(this);
+        }
+
+        private void btnAlmacen_Click(object sender, EventArgs e)
+        {
+            if (!frmConfigAlmacen.Instancia.Visible)
+                frmConfigAlmacen.Instancia.Show();
+            else
+                frmConfigAlmacen.Instancia.Select();
+        }
     }
 }

@@ -71,7 +71,7 @@ namespace EC_Admin
                     idTrabajador = (int)dr["id_trabajador"];
                     numAlm = (int)dr["num_alm"];
                     descripcion = dr["descripcion"].ToString();
-                    idSucursal = (int)dr["id_sucursal"];
+                    idSucursal = (int)dr["sucursal_id"];
                 }
             }
             catch (MySqlException ex)
@@ -89,11 +89,11 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO almacen (id_trabajador, num_alm, descripcion, id_sucursal) VALUES (?id_trabajador, ?num_alm, ?descripcion, ?id_sucursal)";
+                sql.CommandText = "INSERT INTO almacen (id_trabajador, num_alm, descripcion, sucursal_id) VALUES (?id_trabajador, ?num_alm, ?descripcion, ?id_sucursal)";
                 sql.Parameters.AddWithValue("?id_trabajador", idTrabajador);
                 sql.Parameters.AddWithValue("?num_alm", numAlm);
                 sql.Parameters.AddWithValue("?descripcion", descripcion);
-                sql.Parameters.AddWithValue("?id_sucursal", idSucursal);
+                sql.Parameters.AddWithValue("?id_sucursal", Config.idSucursal);
                 ConexionBD.EjecutarConsulta(sql);
             }
             catch (MySqlException ex)
@@ -111,11 +111,11 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE almacen SET id_trabajador=?id_trabajador, num_alm=?num_alm, descripcion=?descripcion, id_sucursal=?id_sucursal WHERE id=?id";
+                sql.CommandText = "UPDATE almacen SET id_trabajador=?id_trabajador, num_alm=?num_alm, descripcion=?descripcion, sucursal_id=?id_sucursal WHERE id=?id";
                 sql.Parameters.AddWithValue("?id_trabajador", idTrabajador);
                 sql.Parameters.AddWithValue("?num_alm", numAlm);
                 sql.Parameters.AddWithValue("?descripcion", descripcion);
-                sql.Parameters.AddWithValue("?id_sucursal", idSucursal);
+                sql.Parameters.AddWithValue("?id_sucursal", Config.idSucursal);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
             }

@@ -56,10 +56,12 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
+                Cerrar();
                 this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los almacenes. No se ha podido conectar con la base de datos.", "EC-Admin", ex });
             }
             catch (Exception ex)
             {
+                Cerrar();
                 this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los almacenes.", "EC-Admin", ex });
             }
         }
@@ -68,6 +70,7 @@ namespace EC_Admin.Forms
         {
             try
             {
+                dgvAlmacen.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
                     dgvAlmacen.Rows.Add(new object[] { dr["id"], dr["nombre"].ToString() + " " + dr["apellidos"].ToString(), dr["num_alm"], dr["descripcion"].ToString() });
@@ -83,16 +86,24 @@ namespace EC_Admin.Forms
         private void frmConfigAlmacen_Load(object sender, EventArgs e)
         {
             bgwBusqueda.RunWorkerAsync();
+            tmrEspera.Enabled = true;
         }
 
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
-
+            (new frmNuevoAlmacen()).ShowDialog(this);
+            bgwBusqueda.RunWorkerAsync();
+            tmrEspera.Enabled = true;
         }
 
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
-
+            if (dgvAlmacen.CurrentRow != null)
+            {
+                (new frmEditarAlmacen(id)).ShowDialog(this);
+                bgwBusqueda.RunWorkerAsync();
+                tmrEspera.Enabled = true;
+            }
         }
 
         private void dgvAlmacen_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -101,6 +112,23 @@ namespace EC_Admin.Forms
                 id = (int)dgvAlmacen[0, e.RowIndex].Value;
             else
                 id = 0;
+        }
+
+        private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Buscar();
+        }
+
+        private void bgwBusqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cerrar();
+            LlenarDataGrid();
+        }
+
+        private void tmrEspera_Tick(object sender, EventArgs e)
+        {
+            tmrEspera.Enabled = false;
+            FuncionesGenerales.frmEspera("Espere, cargando almacenes", this);
         }
     }
 }
