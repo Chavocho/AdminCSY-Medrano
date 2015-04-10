@@ -16,5 +16,60 @@ namespace EC_Admin.Forms
         {
             InitializeComponent();
         }
+
+        private void Insertar()
+        {
+            try
+            {
+                Categoria c = new Categoria();
+                c.Nombre = txtNombre.Text;
+                c.Descripcion = txtDescripcion.Text;
+                c.Insertar();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private bool VerificarDatos()
+        {
+            if (txtNombre.Text.Trim() == "")
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "EC-Admin");
+                return false;
+            }
+            if (txtDescripcion.Text.Trim() == "")
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo descripción es obligatorio", "EC-Admin");
+                return false;
+            }
+            return true;
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (VerificarDatos())
+            {
+                try
+                {
+                    Insertar();
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado correctamente la categoría!", "EC-Admin");
+                    this.Close();
+                }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear la categoría. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                }
+                catch (Exception ex)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear la categoría.", "EC-Admin", ex);
+                }
+            }
+        }
     }
 }

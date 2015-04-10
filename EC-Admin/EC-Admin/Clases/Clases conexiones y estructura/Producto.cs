@@ -308,7 +308,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?cant_mediomayoreo", cantidadMedioMayoreo);
                 sql.Parameters.AddWithValue("?cant_mayoreo", cantidadMayoreo);
                 sql.Parameters.AddWithValue("?unidad", unidad);
-                sql.Parameters.AddWithValue("?imagen", imagen);
+                sql.Parameters.AddWithValue("?imagen", FuncionesGenerales.ImagenBytes(imagen));
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
                 ConexionBD.EjecutarConsulta(sql);
             }
@@ -345,7 +345,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?cant_mediomayoreo", cantidadMedioMayoreo);
                 sql.Parameters.AddWithValue("?cant_mayoreo", cantidadMayoreo);
                 sql.Parameters.AddWithValue("?unidad", unidad);
-                sql.Parameters.AddWithValue("?imagen", imagen);
+                sql.Parameters.AddWithValue("?imagen", FuncionesGenerales.ImagenBytes(imagen));
                 sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
@@ -399,5 +399,32 @@ namespace EC_Admin
                 throw ex;
             }
         }
+
+        public static Image ImagenProducto(int id)
+        {
+            Image img = null;
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT imagen FROM producto WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["imagen"] != DBNull.Value)
+                        img = FuncionesGenerales.BytesImagen((byte[])dr["imagen"]);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return img;
+        }
+
     }
 }

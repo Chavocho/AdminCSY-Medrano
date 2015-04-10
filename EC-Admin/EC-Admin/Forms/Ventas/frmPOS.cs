@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +31,11 @@ namespace EC_Admin.Forms
             }
         }
         #endregion
+
+        delegate void ImagenProducto(Image img);
+
+        int id;
+        decimal subtotal = 0M, impuesto = 0M, descuento = 0M, total = 0M, cantTot = 0M;
 
         Venta v;
         private int idCliente;
@@ -101,6 +107,9 @@ namespace EC_Admin.Forms
             if (!VerificarProducto(id, cant))
             {
                 dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc });
+                dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, dgvProductos.RowCount - 1));
+                dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                CalcularTotales();
             }
         }
 
@@ -108,8 +117,8 @@ namespace EC_Admin.Forms
         /// Método que verifica la existencia del producto en la venta, en caso de estar registrado, suma la cantidad
         /// dada al producto
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="cant"></param>
+        /// <param name="id">ID del producto</param>
+        /// <param name="cant">Cantidad a añadir al producto</param>
         private bool VerificarProducto(int id, decimal cant)
         {
             bool existe = false;
@@ -119,16 +128,64 @@ namespace EC_Admin.Forms
                 {
                     dr.Cells[4].Value = ((decimal)dr.Cells[4].Value + cant);
                     existe = true;
+                    if (cant < 0 && (decimal)dr.Cells[4].Value <= 0)
+                        QuitarProducto(id);
+                    dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                    CalcularTotales();
+                    break;
                 }
             }
             return existe;
         }
 
-        public void ModificarProducto(decimal precio, decimal cant, decimal desc)
+        public void ModificarProducto(decimal cant, decimal desc)
         {
-            dgvProductos[3, dgvProductos.CurrentRow.Index].Value = precio;
             dgvProductos[4, dgvProductos.CurrentRow.Index].Value = cant;
             dgvProductos[5, dgvProductos.CurrentRow.Index].Value = desc;
+            CalcularTotales();
+        }
+
+        private void QuitarProducto(int id)
+        {
+            foreach (DataGridViewRow dr in dgvProductos.Rows)
+            {
+                if (dr.Cells[0].Value.ToString() == id.ToString())
+                {
+                    dgvProductos.Rows.Remove(dr);
+                    dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                    CalcularTotales();
+                    return;
+                }
+            }
+        }
+
+        private void CalcularTotales()
+        {
+            subtotal = 0M;
+            impuesto = 0M;
+            descuento = 0M;
+            total = 0M;
+            cantTot = 0M;
+            foreach (DataGridViewRow dr in dgvProductos.Rows)
+            {
+                subtotal += ((decimal)dr.Cells[3].Value * (decimal)dr.Cells[4].Value);
+                cantTot += (decimal)dr.Cells[4].Value;
+                descuento += (decimal)dr.Cells[5].Value;
+            }
+            impuesto = subtotal * Config.iva;
+            total = subtotal + impuesto - descuento;
+
+            lblSubtotal.Text = subtotal.ToString("C2");
+            lblImpuesto.Text = impuesto.ToString("C2");
+            lblDescuento.Text = descuento.ToString("C2");
+            lblTotal.Text = total.ToString("C2");
+            lblCantDif.Text = dgvProductos.RowCount.ToString();
+            lblCantTot.Text = cantTot.ToString();
+        }
+
+        private void Imagen(Image img)
+        {
+            pcbProducto.Image = img;
         }
 
         public void Cobrar()
@@ -144,6 +201,7 @@ namespace EC_Admin.Forms
         /// </summary>
         private void ControlesVisibles()
         {
+            dgvProductos.Enabled = true;
             lblECliente.Visible = true;
             lblCliente.Visible = true;
             lblEFolio.Visible = true;
@@ -164,6 +222,20 @@ namespace EC_Admin.Forms
         /// </summary>
         private void ControlesInhabilitados()
         {
+            dgvProductos.Enabled = false;
+            lblECliente.Enabled = false;
+            lblCliente.Enabled = false;
+            lblEFolio.Enabled = false;
+            lblFolio.Enabled = false;
+            lblEVendedor.Enabled = false;
+            lblVendedor.Enabled = false;
+            btnClientes.Enabled = false;
+            btnProductos.Enabled = false;
+            btnCobrar.Enabled = false;
+            btnGuardar.Enabled = false;
+            btnVendedor.Enabled = false;
+            txtBusqueda.Enabled = false;
+            grbTotales.Enabled = false;
         }
 
         /// <summary>
@@ -171,6 +243,20 @@ namespace EC_Admin.Forms
         /// </summary>
         private void ControlesHabilitados()
         {
+            dgvProductos.Enabled = true;
+            lblECliente.Enabled = true;
+            lblCliente.Enabled = true;
+            lblEFolio.Enabled = true;
+            lblFolio.Enabled = true;
+            lblEVendedor.Enabled = true;
+            lblVendedor.Enabled = true;
+            btnClientes.Enabled = true;
+            btnProductos.Enabled = true;
+            btnCobrar.Enabled = true;
+            btnGuardar.Enabled = true;
+            btnVendedor.Enabled = true;
+            txtBusqueda.Enabled = true;
+            grbTotales.Enabled = true;
         }
 
         private void btnNuevaVenta_Click(object sender, EventArgs e)
@@ -181,6 +267,60 @@ namespace EC_Admin.Forms
         private void btnProductos_Click(object sender, EventArgs e)
         {
             (new frmVentaProducto(this)).ShowDialog(this);
+        }
+
+        private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvProductos.CurrentRow != null)
+                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, (decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value)).ShowDialog(this);
+        }
+
+        private void frmPOS_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (dgvProductos.CurrentRow != null)
+            {
+                if (e.Control)
+                {
+                    if (e.KeyCode == Keys.Oemplus)
+                    {
+                        VerificarProducto(id, 1);
+                    }
+                    else if (e.KeyCode == Keys.OemMinus)
+                    {
+                        VerificarProducto(id, -1);
+                    }
+                    else if (e.KeyCode == Keys.Delete)
+                    {
+                        QuitarProducto(id);
+                    }
+                }
+            }
+        }
+
+        private void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProductos.CurrentRow != null)
+            {
+                id = (int)dgvProductos[0, e.RowIndex].Value;
+            }
+            else
+                id = 0;
+        }
+
+        private void bgwImagen_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (pcbProducto.InvokeRequired)
+            {
+                ImagenProducto i = new ImagenProducto(Imagen);
+                this.Invoke(i, Producto.ImagenProducto(id));
+            }
+        }
+
+        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProductos.CurrentRow != null)
+                if (!bgwImagen.IsBusy)
+                    bgwImagen.RunWorkerAsync();
         }
     }
 }

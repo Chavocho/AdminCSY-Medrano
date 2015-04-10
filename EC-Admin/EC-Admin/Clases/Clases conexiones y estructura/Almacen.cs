@@ -12,39 +12,68 @@ namespace EC_Admin
     {
         #region Propiedades
         private int id;
+        private int idTrabajador;
+        private int numAlm;
+        private string descripcion;
+        private int idSucursal;
+        private static int cant = -1;
 
         public int ID
         {
             get { return id; }
             set { id = value; }
         }
-        private int idTrabajador;
 
         public int IDTrabajador
         {
             get { return idTrabajador; }
             set { idTrabajador = value; }
         }
-        private int numAlm;
 
         public int NumeroAlmacen
         {
             get { return numAlm; }
             set { numAlm = value; }
         }
-        private string descripcion;
 
         public string Descripcion
         {
             get { return descripcion; }
             set { descripcion = value; }
         }
-        private int idSucursal;
 
         public int IDSucursal
         {
             get { return idSucursal; }
             set { idSucursal = value; }
+        }
+
+        public static int Cantidad
+        {
+            get { return cant; }
+            set { cant = value; }
+        }
+        #endregion
+
+        #region Cantidad
+        private static void Cant()
+        {
+            try
+            {
+                string sql = "SELECT COUNT(id) AS c FROM almacen";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["c"] != DBNull.Value)
+                        cant = int.Parse(dr["c"].ToString());
+                    else
+                        cant = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         #endregion
 

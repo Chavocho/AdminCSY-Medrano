@@ -13,6 +13,25 @@ namespace EC_Admin.Forms
 {
     public partial class frmCategorias : Form
     {
+        #region Instancia
+        private static frmCategorias frmInstancia;
+        public static frmCategorias Instancia
+        {
+            get
+            {
+                if (frmInstancia == null)
+                    frmInstancia = new frmCategorias();
+                else if (frmInstancia.IsDisposed)
+                    frmInstancia = new frmCategorias();
+                return frmInstancia;
+            }
+            set
+            {
+                frmInstancia = value;
+            }
+        }
+        #endregion
+
         int id;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);

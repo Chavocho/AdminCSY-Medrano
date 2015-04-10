@@ -55,7 +55,7 @@ namespace EC_Admin.Forms
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    idPro.Add((int)dr["id"]);
+                    idAlm.Add((int)dr["id"]);
                     cboAlmacen.Items.Add(dr["num_alm"]);
                 }
             }
@@ -79,7 +79,7 @@ namespace EC_Admin.Forms
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    idPro.Add((int)dr["id"]);
+                    idCat.Add((int)dr["id"]);
                     cboCategoria.Items.Add(dr["nombre"]);
                 }
             }
@@ -100,6 +100,14 @@ namespace EC_Admin.Forms
             try
             {
                 Producto p = new Producto();
+                decimal costo, precio, cant, precioMedioMayoreo, precioMayoreo, cantMedioMayoreo, cantMayoreo;
+                decimal.TryParse(txtCosto.Text, out costo);
+                decimal.TryParse(txtPrecio.Text, out precio);
+                decimal.TryParse(txtCant.Text, out cant);
+                decimal.TryParse(txtPrecioMedioMayoreo.Text, out precioMedioMayoreo);
+                decimal.TryParse(txtPrecioMayoreo.Text, out precioMayoreo);
+                decimal.TryParse(txtCantMedioMayoreo.Text, out cantMedioMayoreo);
+                decimal.TryParse(txtCantMayoreo.Text, out cantMayoreo);
                 p.IDProveedor = idPro[cboProveedor.SelectedIndex];
                 p.IDAlmacen = idAlm[cboAlmacen.SelectedIndex];
                 p.IDCategoria = idCat[cboCategoria.SelectedIndex];
@@ -108,13 +116,13 @@ namespace EC_Admin.Forms
                 p.Codigo = txtCodigo.Text;
                 p.Descripcion01 = txtDescripcion01.Text;
                 p.Descripcion02 = txtDescripcion02.Text;
-                p.Costo = decimal.Parse(txtCosto.Text);
-                p.Precio = decimal.Parse(txtPrecio.Text);
-                p.Cantidad = decimal.Parse(txtCant.Text);
-                p.PrecioMedioMayoreo = decimal.Parse(txtPrecioMedioMayoreo.Text);
-                p.PrecioMayoreo = decimal.Parse(txtPrecioMayoreo.Text);
-                p.CantidadMedioMayoreo = decimal.Parse(txtCantMedioMayoreo.Text);
-                p.CantidadMayoreo = decimal.Parse(txtCantMayoreo.Text);
+                p.Costo = costo;
+                p.Precio = precio;
+                p.Cantidad = cant;
+                p.PrecioMedioMayoreo = precioMedioMayoreo;
+                p.PrecioMayoreo = precioMayoreo;
+                p.CantidadMedioMayoreo = cantMedioMayoreo;
+                p.CantidadMayoreo = cantMayoreo;
                 p.Unidad = u;
                 p.Imagen = pcbImagen.Image;
                 p.Insertar();
@@ -225,9 +233,18 @@ namespace EC_Admin.Forms
             switch (cboUnidad.SelectedIndex)
             {
                 case 0:
-                    u = Unidades.Kilogramo;
+                    u = Unidades.Gramo;
                     break;
                 case 1:
+                    u = Unidades.Kilogramo;
+                    break;
+                case 2:
+                    u = Unidades.Mililitro;
+                    break;
+                case 3:
+                    u = Unidades.Litro;
+                    break;
+                case 4:
                     u = Unidades.Pieza;
                     break;
             }

@@ -70,5 +70,80 @@ namespace EC_Admin
             }
         }
         #endregion
+
+        public Categoria()
+        {
+
+        }
+
+        public Categoria(int id)
+        {
+            this.ID = id;
+        }
+
+        public void ObtenerDatos()
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT * FROM categoria WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    nombre = dr["nombre"].ToString();
+                    descripcion = dr["descripcion"].ToString();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void Insertar()
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "INSERT INTO categoria (nombre, descripcion) VALUES (?nombre, ?descripcion)";
+                sql.Parameters.AddWithValue("?nombre", nombre);
+                sql.Parameters.AddWithValue("?descripcion", descripcion);
+                id = ConexionBD.EjecutarConsulta(sql);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void Editar()
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "UPDATE categoria SET nombre=?nombre, descripcion=?descripcion WHERE id=?id";
+                sql.Parameters.AddWithValue("?nombre", nombre);
+                sql.Parameters.AddWithValue("?descripcion", descripcion);
+                sql.Parameters.AddWithValue("?id", id);
+                ConexionBD.EjecutarConsulta(sql);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

@@ -199,3 +199,7 @@ C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmTerminado.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmPrimerUso.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmEditarAlmacen.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCategorias.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmEditarCategoria.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevaCategoria.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmDatosVentaProducto.resources

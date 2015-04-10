@@ -39,13 +39,13 @@
             this.lblEBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.dgvProveedores = new System.Windows.Forms.DataGridView();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CRFC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CTelefonos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
             this.tmrEspera = new System.Windows.Forms.Timer(this.components);
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTelefonos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,7 +177,7 @@
             this.dgvProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
             this.CNombre,
-            this.CRFC,
+            this.CRazonSocial,
             this.CTelefonos,
             this.CCorreo});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -201,6 +201,16 @@
             this.dgvProveedores.TabIndex = 2;
             this.dgvProveedores.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProveedores_RowEnter);
             // 
+            // bgwBusqueda
+            // 
+            this.bgwBusqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusqueda_DoWork);
+            this.bgwBusqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusqueda_RunWorkerCompleted);
+            // 
+            // tmrEspera
+            // 
+            this.tmrEspera.Interval = 300;
+            this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
+            // 
             // CID
             // 
             this.CID.HeaderText = "ID";
@@ -213,11 +223,11 @@
             this.CNombre.HeaderText = "Nombre";
             this.CNombre.Name = "CNombre";
             // 
-            // CRFC
+            // CRazonSocial
             // 
-            this.CRFC.HeaderText = "RFC";
-            this.CRFC.Name = "CRFC";
-            this.CRFC.Width = 130;
+            this.CRazonSocial.HeaderText = "Razón Social";
+            this.CRazonSocial.Name = "CRazonSocial";
+            this.CRazonSocial.Width = 130;
             // 
             // CTelefonos
             // 
@@ -230,16 +240,6 @@
             this.CCorreo.HeaderText = "Correo";
             this.CCorreo.Name = "CCorreo";
             this.CCorreo.Width = 200;
-            // 
-            // bgwBusqueda
-            // 
-            this.bgwBusqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusqueda_DoWork);
-            this.bgwBusqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusqueda_RunWorkerCompleted);
-            // 
-            // tmrEspera
-            // 
-            this.tmrEspera.Interval = 300;
-            this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
             // 
             // frmProveedor
             // 
@@ -273,12 +273,12 @@
         private System.Windows.Forms.Label lblEBusqueda;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.DataGridView dgvProveedores;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CRFC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CTelefonos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CCorreo;
         private System.ComponentModel.BackgroundWorker bgwBusqueda;
         private System.Windows.Forms.Timer tmrEspera;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CRazonSocial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTelefonos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCorreo;
     }
 }

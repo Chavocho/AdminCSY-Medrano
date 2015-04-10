@@ -39,7 +39,10 @@ namespace EC_Admin
 
     public enum Unidades
     {
-        Kilogramo = 0,
-        Pieza = 1
+        Gramo = 0,
+        Kilogramo = 1,
+        Mililitro = 2,
+        Litro = 3,
+        Pieza = 4
     }
 }

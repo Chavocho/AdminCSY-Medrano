@@ -46,6 +46,7 @@ namespace EC_Admin.Forms
             txtBusqueda.Enabled = true;
             tmrEspera.Enabled = false;
             FuncionesGenerales.frmEsperaClose();
+            txtBusqueda.Select();
         }
 
         private void Buscar(string p)
@@ -141,6 +142,31 @@ namespace EC_Admin.Forms
                     Eliminar();
                 }
             }
+        }
+
+        private void btnCategoria_Click(object sender, EventArgs e)
+        {
+            if (!frmCategorias.Instancia.Visible)
+                frmCategorias.Instancia.Show();
+            else
+                frmCategorias.Instancia.Select();
+        }
+
+        private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Buscar(e.Argument.ToString());
+        }
+
+        private void bgwBusqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cerrar();
+            LlenarDataGrid();
+        }
+
+        private void tmrEspera_Tick(object sender, EventArgs e)
+        {
+            tmrEspera.Enabled = false;
+            FuncionesGenerales.frmEspera("Espere, cargando productos", this);
         }
     }
 }

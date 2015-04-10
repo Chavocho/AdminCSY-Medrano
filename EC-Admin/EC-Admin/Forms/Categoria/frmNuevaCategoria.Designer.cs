@@ -54,6 +54,7 @@
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // txtDescripcion
             // 
@@ -94,9 +95,9 @@
             this.lblENombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblENombre.Location = new System.Drawing.Point(9, 9);
             this.lblENombre.Name = "lblENombre";
-            this.lblENombre.Size = new System.Drawing.Size(130, 18);
+            this.lblENombre.Size = new System.Drawing.Size(58, 18);
             this.lblENombre.TabIndex = 28;
-            this.lblENombre.Text = "Número de almacen";
+            this.lblENombre.Text = "Nombre";
             // 
             // frmNuevaCategoria
             // 

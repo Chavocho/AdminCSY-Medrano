@@ -75,7 +75,7 @@
             this.txtNombre.Location = new System.Drawing.Point(12, 88);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(259, 29);
-            this.txtNombre.TabIndex = 5;
+            this.txtNombre.TabIndex = 7;
             // 
             // lblENombre
             // 
@@ -84,7 +84,7 @@
             this.lblENombre.Location = new System.Drawing.Point(9, 67);
             this.lblENombre.Name = "lblENombre";
             this.lblENombre.Size = new System.Drawing.Size(58, 18);
-            this.lblENombre.TabIndex = 4;
+            this.lblENombre.TabIndex = 6;
             this.lblENombre.Text = "Nombre";
             // 
             // txtMarca
@@ -95,7 +95,7 @@
             this.txtMarca.Location = new System.Drawing.Point(277, 88);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(259, 29);
-            this.txtMarca.TabIndex = 7;
+            this.txtMarca.TabIndex = 9;
             // 
             // lblEMarca
             // 
@@ -104,7 +104,7 @@
             this.lblEMarca.Location = new System.Drawing.Point(274, 67);
             this.lblEMarca.Name = "lblEMarca";
             this.lblEMarca.Size = new System.Drawing.Size(46, 18);
-            this.lblEMarca.TabIndex = 6;
+            this.lblEMarca.TabIndex = 8;
             this.lblEMarca.Text = "Marca";
             // 
             // txtCodigo
@@ -115,7 +115,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(542, 88);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(259, 29);
-            this.txtCodigo.TabIndex = 9;
+            this.txtCodigo.TabIndex = 11;
             // 
             // lblECodigo
             // 
@@ -124,7 +124,7 @@
             this.lblECodigo.Location = new System.Drawing.Point(539, 67);
             this.lblECodigo.Name = "lblECodigo";
             this.lblECodigo.Size = new System.Drawing.Size(52, 18);
-            this.lblECodigo.TabIndex = 8;
+            this.lblECodigo.TabIndex = 10;
             this.lblECodigo.Text = "Código";
             // 
             // lblEProveedor
@@ -134,7 +134,7 @@
             this.lblEProveedor.Location = new System.Drawing.Point(9, 9);
             this.lblEProveedor.Name = "lblEProveedor";
             this.lblEProveedor.Size = new System.Drawing.Size(72, 18);
-            this.lblEProveedor.TabIndex = 10;
+            this.lblEProveedor.TabIndex = 0;
             this.lblEProveedor.Text = "Proveedor";
             // 
             // cboProveedor
@@ -148,7 +148,7 @@
             this.cboProveedor.Location = new System.Drawing.Point(12, 30);
             this.cboProveedor.Name = "cboProveedor";
             this.cboProveedor.Size = new System.Drawing.Size(259, 29);
-            this.cboProveedor.TabIndex = 11;
+            this.cboProveedor.TabIndex = 1;
             // 
             // lblEAlmacen
             // 
@@ -157,7 +157,7 @@
             this.lblEAlmacen.Location = new System.Drawing.Point(274, 9);
             this.lblEAlmacen.Name = "lblEAlmacen";
             this.lblEAlmacen.Size = new System.Drawing.Size(62, 18);
-            this.lblEAlmacen.TabIndex = 12;
+            this.lblEAlmacen.TabIndex = 2;
             this.lblEAlmacen.Text = "Almacen";
             // 
             // cboAlmacen
@@ -171,7 +171,7 @@
             this.cboAlmacen.Location = new System.Drawing.Point(277, 30);
             this.cboAlmacen.Name = "cboAlmacen";
             this.cboAlmacen.Size = new System.Drawing.Size(259, 29);
-            this.cboAlmacen.TabIndex = 13;
+            this.cboAlmacen.TabIndex = 3;
             // 
             // lblECategoria
             // 
@@ -180,7 +180,7 @@
             this.lblECategoria.Location = new System.Drawing.Point(539, 9);
             this.lblECategoria.Name = "lblECategoria";
             this.lblECategoria.Size = new System.Drawing.Size(67, 18);
-            this.lblECategoria.TabIndex = 14;
+            this.lblECategoria.TabIndex = 4;
             this.lblECategoria.Text = "Categoría";
             // 
             // cboCategoria
@@ -194,7 +194,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(542, 30);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(259, 29);
-            this.cboCategoria.TabIndex = 15;
+            this.cboCategoria.TabIndex = 5;
             // 
             // txtDescripcion02
             // 
@@ -205,7 +205,7 @@
             this.txtDescripcion02.Multiline = true;
             this.txtDescripcion02.Name = "txtDescripcion02";
             this.txtDescripcion02.Size = new System.Drawing.Size(259, 87);
-            this.txtDescripcion02.TabIndex = 19;
+            this.txtDescripcion02.TabIndex = 15;
             // 
             // lblEDescripcion02
             // 
@@ -214,7 +214,7 @@
             this.lblEDescripcion02.Location = new System.Drawing.Point(274, 125);
             this.lblEDescripcion02.Name = "lblEDescripcion02";
             this.lblEDescripcion02.Size = new System.Drawing.Size(80, 18);
-            this.lblEDescripcion02.TabIndex = 18;
+            this.lblEDescripcion02.TabIndex = 14;
             this.lblEDescripcion02.Text = "Descripción";
             // 
             // txtDescripcion01
@@ -226,7 +226,7 @@
             this.txtDescripcion01.Multiline = true;
             this.txtDescripcion01.Name = "txtDescripcion01";
             this.txtDescripcion01.Size = new System.Drawing.Size(259, 87);
-            this.txtDescripcion01.TabIndex = 17;
+            this.txtDescripcion01.TabIndex = 13;
             // 
             // lblEDescripcion01
             // 
@@ -235,7 +235,7 @@
             this.lblEDescripcion01.Location = new System.Drawing.Point(9, 125);
             this.lblEDescripcion01.Name = "lblEDescripcion01";
             this.lblEDescripcion01.Size = new System.Drawing.Size(80, 18);
-            this.lblEDescripcion01.TabIndex = 16;
+            this.lblEDescripcion01.TabIndex = 12;
             this.lblEDescripcion01.Text = "Descripción";
             // 
             // txtCosto
@@ -246,7 +246,7 @@
             this.txtCosto.Location = new System.Drawing.Point(542, 146);
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(259, 29);
-            this.txtCosto.TabIndex = 21;
+            this.txtCosto.TabIndex = 17;
             this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblECosto
@@ -256,7 +256,7 @@
             this.lblECosto.Location = new System.Drawing.Point(539, 125);
             this.lblECosto.Name = "lblECosto";
             this.lblECosto.Size = new System.Drawing.Size(44, 18);
-            this.lblECosto.TabIndex = 20;
+            this.lblECosto.TabIndex = 16;
             this.lblECosto.Text = "Costo";
             // 
             // txtPrecio
@@ -267,7 +267,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(542, 204);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(259, 29);
-            this.txtPrecio.TabIndex = 23;
+            this.txtPrecio.TabIndex = 19;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblEPrecio
@@ -277,7 +277,7 @@
             this.lblEPrecio.Location = new System.Drawing.Point(539, 183);
             this.lblEPrecio.Name = "lblEPrecio";
             this.lblEPrecio.Size = new System.Drawing.Size(47, 18);
-            this.lblEPrecio.TabIndex = 22;
+            this.lblEPrecio.TabIndex = 18;
             this.lblEPrecio.Text = "Precio";
             // 
             // txtPrecioMayoreo
@@ -288,7 +288,7 @@
             this.txtPrecioMayoreo.Location = new System.Drawing.Point(542, 262);
             this.txtPrecioMayoreo.Name = "txtPrecioMayoreo";
             this.txtPrecioMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtPrecioMayoreo.TabIndex = 27;
+            this.txtPrecioMayoreo.TabIndex = 25;
             this.txtPrecioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblEPrecioMayoreo
@@ -298,7 +298,7 @@
             this.lblEPrecioMayoreo.Location = new System.Drawing.Point(539, 241);
             this.lblEPrecioMayoreo.Name = "lblEPrecioMayoreo";
             this.lblEPrecioMayoreo.Size = new System.Drawing.Size(104, 18);
-            this.lblEPrecioMayoreo.TabIndex = 26;
+            this.lblEPrecioMayoreo.TabIndex = 24;
             this.lblEPrecioMayoreo.Text = "Precio mayoreo";
             // 
             // txtPrecioMedioMayoreo
@@ -309,7 +309,7 @@
             this.txtPrecioMedioMayoreo.Location = new System.Drawing.Point(277, 262);
             this.txtPrecioMedioMayoreo.Name = "txtPrecioMedioMayoreo";
             this.txtPrecioMedioMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtPrecioMedioMayoreo.TabIndex = 25;
+            this.txtPrecioMedioMayoreo.TabIndex = 23;
             this.txtPrecioMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblEPrecioMedioMayoreo
@@ -319,7 +319,7 @@
             this.lblEPrecioMedioMayoreo.Location = new System.Drawing.Point(274, 241);
             this.lblEPrecioMedioMayoreo.Name = "lblEPrecioMedioMayoreo";
             this.lblEPrecioMedioMayoreo.Size = new System.Drawing.Size(145, 18);
-            this.lblEPrecioMedioMayoreo.TabIndex = 24;
+            this.lblEPrecioMedioMayoreo.TabIndex = 22;
             this.lblEPrecioMedioMayoreo.Text = "Precio medio mayoreo";
             // 
             // txtCantMedioMayoreo
@@ -330,7 +330,7 @@
             this.txtCantMedioMayoreo.Location = new System.Drawing.Point(12, 320);
             this.txtCantMedioMayoreo.Name = "txtCantMedioMayoreo";
             this.txtCantMedioMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtCantMedioMayoreo.TabIndex = 29;
+            this.txtCantMedioMayoreo.TabIndex = 27;
             this.txtCantMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblECantMedioMayoreo
@@ -340,7 +340,7 @@
             this.lblECantMedioMayoreo.Location = new System.Drawing.Point(9, 299);
             this.lblECantMedioMayoreo.Name = "lblECantMedioMayoreo";
             this.lblECantMedioMayoreo.Size = new System.Drawing.Size(179, 18);
-            this.lblECantMedioMayoreo.TabIndex = 28;
+            this.lblECantMedioMayoreo.TabIndex = 26;
             this.lblECantMedioMayoreo.Text = "Cantidad de medio mayoreo";
             // 
             // txtCantMayoreo
@@ -351,7 +351,7 @@
             this.txtCantMayoreo.Location = new System.Drawing.Point(277, 320);
             this.txtCantMayoreo.Name = "txtCantMayoreo";
             this.txtCantMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtCantMayoreo.TabIndex = 31;
+            this.txtCantMayoreo.TabIndex = 29;
             this.txtCantMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblECantMayoreo
@@ -361,7 +361,7 @@
             this.lblECantMayoreo.Location = new System.Drawing.Point(274, 299);
             this.lblECantMayoreo.Name = "lblECantMayoreo";
             this.lblECantMayoreo.Size = new System.Drawing.Size(120, 18);
-            this.lblECantMayoreo.TabIndex = 30;
+            this.lblECantMayoreo.TabIndex = 28;
             this.lblECantMayoreo.Text = "Cantidad mayoreo";
             // 
             // lblEUnidad
@@ -371,7 +371,7 @@
             this.lblEUnidad.Location = new System.Drawing.Point(539, 299);
             this.lblEUnidad.Name = "lblEUnidad";
             this.lblEUnidad.Size = new System.Drawing.Size(52, 18);
-            this.lblEUnidad.TabIndex = 36;
+            this.lblEUnidad.TabIndex = 30;
             this.lblEUnidad.Text = "Unidad";
             // 
             // cboUnidad
@@ -383,12 +383,15 @@
             this.cboUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.cboUnidad.FormattingEnabled = true;
             this.cboUnidad.Items.AddRange(new object[] {
+            "Gramo",
             "Kilogramo",
+            "Mililitro",
+            "Litro",
             "Pieza"});
             this.cboUnidad.Location = new System.Drawing.Point(542, 320);
             this.cboUnidad.Name = "cboUnidad";
             this.cboUnidad.Size = new System.Drawing.Size(259, 29);
-            this.cboUnidad.TabIndex = 37;
+            this.cboUnidad.TabIndex = 31;
             this.cboUnidad.SelectedIndexChanged += new System.EventHandler(this.cboUnidad_SelectedIndexChanged);
             // 
             // btnQuitar
@@ -404,7 +407,7 @@
             this.btnQuitar.Location = new System.Drawing.Point(174, 481);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(97, 30);
-            this.btnQuitar.TabIndex = 40;
+            this.btnQuitar.TabIndex = 33;
             this.btnQuitar.Text = "Quitar imagen";
             this.btnQuitar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitar.UseVisualStyleBackColor = false;
@@ -418,7 +421,7 @@
             this.lblInfoImagen.Location = new System.Drawing.Point(9, 514);
             this.lblInfoImagen.Name = "lblInfoImagen";
             this.lblInfoImagen.Size = new System.Drawing.Size(141, 14);
-            this.lblInfoImagen.TabIndex = 39;
+            this.lblInfoImagen.TabIndex = 32;
             this.lblInfoImagen.Text = "Clic para cambiar la imagen";
             // 
             // pcbImagen
@@ -446,7 +449,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(651, 481);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 41;
+            this.btnAceptar.TabIndex = 34;
             this.btnAceptar.Text = "Crear";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -461,7 +464,7 @@
             this.txtCant.Location = new System.Drawing.Point(12, 262);
             this.txtCant.Name = "txtCant";
             this.txtCant.Size = new System.Drawing.Size(259, 29);
-            this.txtCant.TabIndex = 43;
+            this.txtCant.TabIndex = 21;
             this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblECant
@@ -471,7 +474,7 @@
             this.lblECant.Location = new System.Drawing.Point(9, 241);
             this.lblECant.Name = "lblECant";
             this.lblECant.Size = new System.Drawing.Size(63, 18);
-            this.lblECant.TabIndex = 42;
+            this.lblECant.TabIndex = 20;
             this.lblECant.Text = "Cantidad";
             // 
             // frmNuevoProducto

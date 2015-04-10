@@ -9,6 +9,8 @@ namespace System
 {
     public class Config
     {
+        public static decimal iva = 0M;
+
         #region Base de datos
         public static string baseDatos = "", servidor = "", usuario = "", pass = "";
         #endregion
