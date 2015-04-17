@@ -41,6 +41,7 @@
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblEFolio = new System.Windows.Forms.Label();
             this.lblFolio = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
@@ -108,7 +109,8 @@
             this.CNombre,
             this.CPrecio,
             this.CCant,
-            this.CDescuento});
+            this.CDescuento,
+            this.CUnidad});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Corbel", 11F);
@@ -118,7 +120,6 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvProductos.Enabled = false;
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvProductos.Location = new System.Drawing.Point(218, 66);
             this.dgvProductos.MultiSelect = false;
@@ -128,10 +129,12 @@
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(778, 403);
-            this.dgvProductos.TabIndex = 4;
+            this.dgvProductos.TabIndex = 12;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
             this.dgvProductos.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProductos_CellMouseDoubleClick);
             this.dgvProductos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_RowEnter);
+            this.dgvProductos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvProductos_RowsAdded);
+            this.dgvProductos.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvProductos_RowsRemoved);
             // 
             // CID
             // 
@@ -172,6 +175,12 @@
             this.CDescuento.HeaderText = "Descuento";
             this.CDescuento.Name = "CDescuento";
             // 
+            // CUnidad
+            // 
+            this.CUnidad.HeaderText = "Unidad";
+            this.CUnidad.Name = "CUnidad";
+            this.CUnidad.Visible = false;
+            // 
             // lblEFolio
             // 
             this.lblEFolio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -180,7 +189,7 @@
             this.lblEFolio.Location = new System.Drawing.Point(786, 9);
             this.lblEFolio.Name = "lblEFolio";
             this.lblEFolio.Size = new System.Drawing.Size(121, 22);
-            this.lblEFolio.TabIndex = 5;
+            this.lblEFolio.TabIndex = 10;
             this.lblEFolio.Text = "Folio de venta:";
             this.lblEFolio.Visible = false;
             // 
@@ -192,7 +201,7 @@
             this.lblFolio.Location = new System.Drawing.Point(913, 9);
             this.lblFolio.Name = "lblFolio";
             this.lblFolio.Size = new System.Drawing.Size(0, 22);
-            this.lblFolio.TabIndex = 6;
+            this.lblFolio.TabIndex = 11;
             this.lblFolio.Visible = false;
             // 
             // lblCliente
@@ -202,7 +211,7 @@
             this.lblCliente.Location = new System.Drawing.Point(88, 9);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(0, 22);
-            this.lblCliente.TabIndex = 8;
+            this.lblCliente.TabIndex = 7;
             this.lblCliente.Visible = false;
             // 
             // lblECliente
@@ -212,7 +221,7 @@
             this.lblECliente.Location = new System.Drawing.Point(14, 9);
             this.lblECliente.Name = "lblECliente";
             this.lblECliente.Size = new System.Drawing.Size(68, 22);
-            this.lblECliente.TabIndex = 7;
+            this.lblECliente.TabIndex = 6;
             this.lblECliente.Text = "Cliente:";
             this.lblECliente.Visible = false;
             // 
@@ -230,7 +239,7 @@
             this.btnNuevaVenta.Location = new System.Drawing.Point(12, 625);
             this.btnNuevaVenta.Name = "btnNuevaVenta";
             this.btnNuevaVenta.Size = new System.Drawing.Size(200, 60);
-            this.btnNuevaVenta.TabIndex = 30;
+            this.btnNuevaVenta.TabIndex = 0;
             this.btnNuevaVenta.Text = "Nueva Venta (F1)";
             this.btnNuevaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNuevaVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -251,11 +260,12 @@
             this.btnRecuperarVenta.Location = new System.Drawing.Point(218, 625);
             this.btnRecuperarVenta.Name = "btnRecuperarVenta";
             this.btnRecuperarVenta.Size = new System.Drawing.Size(200, 60);
-            this.btnRecuperarVenta.TabIndex = 31;
+            this.btnRecuperarVenta.TabIndex = 1;
             this.btnRecuperarVenta.Text = "Recuperar Venta (F2)";
             this.btnRecuperarVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRecuperarVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRecuperarVenta.UseVisualStyleBackColor = false;
+            this.btnRecuperarVenta.Click += new System.EventHandler(this.btnRecuperarVenta_Click);
             // 
             // btnProductos
             // 
@@ -271,7 +281,7 @@
             this.btnProductos.Location = new System.Drawing.Point(796, 475);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(200, 60);
-            this.btnProductos.TabIndex = 32;
+            this.btnProductos.TabIndex = 4;
             this.btnProductos.Text = "Productos (F4)";
             this.btnProductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnProductos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -293,12 +303,13 @@
             this.btnCobrar.Location = new System.Drawing.Point(796, 625);
             this.btnCobrar.Name = "btnCobrar";
             this.btnCobrar.Size = new System.Drawing.Size(200, 60);
-            this.btnCobrar.TabIndex = 33;
+            this.btnCobrar.TabIndex = 15;
             this.btnCobrar.Text = "Cobrar (F5)";
             this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCobrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCobrar.UseVisualStyleBackColor = false;
             this.btnCobrar.Visible = false;
+            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
             // btnClientes
             // 
@@ -314,12 +325,13 @@
             this.btnClientes.Location = new System.Drawing.Point(424, 625);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(200, 60);
-            this.btnClientes.TabIndex = 34;
+            this.btnClientes.TabIndex = 3;
             this.btnClientes.Text = "Clientes (F3)";
             this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClientes.UseVisualStyleBackColor = false;
             this.btnClientes.Visible = false;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // txtBusqueda
             // 
@@ -330,7 +342,8 @@
             this.txtBusqueda.Location = new System.Drawing.Point(12, 475);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(406, 29);
-            this.txtBusqueda.TabIndex = 35;
+            this.txtBusqueda.TabIndex = 2;
+            this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
             // 
             // grbTotales
             // 
@@ -351,7 +364,7 @@
             this.grbTotales.Location = new System.Drawing.Point(12, 510);
             this.grbTotales.Name = "grbTotales";
             this.grbTotales.Size = new System.Drawing.Size(406, 110);
-            this.grbTotales.TabIndex = 36;
+            this.grbTotales.TabIndex = 5;
             this.grbTotales.TabStop = false;
             this.grbTotales.Text = "Información de venta";
             this.grbTotales.Visible = false;
@@ -363,7 +376,7 @@
             this.lblCantDif.Location = new System.Drawing.Point(317, 64);
             this.lblCantDif.Name = "lblCantDif";
             this.lblCantDif.Size = new System.Drawing.Size(16, 18);
-            this.lblCantDif.TabIndex = 11;
+            this.lblCantDif.TabIndex = 9;
             this.lblCantDif.Text = "0";
             // 
             // lblECantDif
@@ -373,7 +386,7 @@
             this.lblECantDif.Location = new System.Drawing.Point(178, 64);
             this.lblECantDif.Name = "lblECantDif";
             this.lblECantDif.Size = new System.Drawing.Size(133, 18);
-            this.lblECantDif.TabIndex = 10;
+            this.lblECantDif.TabIndex = 8;
             this.lblECantDif.Text = "Cant. productos dif.:";
             // 
             // lblCantTot
@@ -383,7 +396,7 @@
             this.lblCantTot.Location = new System.Drawing.Point(317, 87);
             this.lblCantTot.Name = "lblCantTot";
             this.lblCantTot.Size = new System.Drawing.Size(16, 18);
-            this.lblCantTot.TabIndex = 9;
+            this.lblCantTot.TabIndex = 11;
             this.lblCantTot.Text = "0";
             // 
             // lblECantTot
@@ -393,7 +406,7 @@
             this.lblECantTot.Location = new System.Drawing.Point(203, 87);
             this.lblECantTot.Name = "lblECantTot";
             this.lblECantTot.Size = new System.Drawing.Size(108, 18);
-            this.lblECantTot.TabIndex = 8;
+            this.lblECantTot.TabIndex = 10;
             this.lblECantTot.Text = "Total productos:";
             // 
             // lblTotal
@@ -490,12 +503,13 @@
             this.btnGuardar.Location = new System.Drawing.Point(12, 409);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(200, 60);
-            this.btnGuardar.TabIndex = 38;
+            this.btnGuardar.TabIndex = 14;
             this.btnGuardar.Text = "Guardar venta (F12)";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Visible = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // lblVendedor
             // 
@@ -504,7 +518,7 @@
             this.lblVendedor.Location = new System.Drawing.Point(88, 36);
             this.lblVendedor.Name = "lblVendedor";
             this.lblVendedor.Size = new System.Drawing.Size(0, 22);
-            this.lblVendedor.TabIndex = 40;
+            this.lblVendedor.TabIndex = 9;
             this.lblVendedor.Visible = false;
             // 
             // lblEVendedor
@@ -514,7 +528,7 @@
             this.lblEVendedor.Location = new System.Drawing.Point(8, 36);
             this.lblEVendedor.Name = "lblEVendedor";
             this.lblEVendedor.Size = new System.Drawing.Size(74, 22);
-            this.lblEVendedor.TabIndex = 39;
+            this.lblEVendedor.TabIndex = 8;
             this.lblEVendedor.Text = "Atiende:";
             this.lblEVendedor.Visible = false;
             // 
@@ -532,12 +546,13 @@
             this.btnVendedor.Location = new System.Drawing.Point(12, 343);
             this.btnVendedor.Name = "btnVendedor";
             this.btnVendedor.Size = new System.Drawing.Size(200, 60);
-            this.btnVendedor.TabIndex = 41;
+            this.btnVendedor.TabIndex = 13;
             this.btnVendedor.Text = "Vendedor (F11)";
             this.btnVendedor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVendedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnVendedor.UseVisualStyleBackColor = false;
             this.btnVendedor.Visible = false;
+            this.btnVendedor.Click += new System.EventHandler(this.btnVendedor_Click);
             // 
             // pcbProducto
             // 
@@ -625,12 +640,13 @@
         private System.Windows.Forms.Label lblVendedor;
         private System.Windows.Forms.Label lblEVendedor;
         private System.Windows.Forms.Button btnVendedor;
+        private System.ComponentModel.BackgroundWorker bgwImagen;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCant;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescuento;
-        private System.ComponentModel.BackgroundWorker bgwImagen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CUnidad;
     }
 }

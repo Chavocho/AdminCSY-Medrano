@@ -400,6 +400,26 @@ namespace EC_Admin
             }
         }
 
+        public static string NombreTrabajador(int id)
+        {
+            string nom = "";
+            try
+            {
+                string sql = "SELECT nombre, apellidos FROM trabajador WHERE id='" + id + "'";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    nom = dr["nombre"].ToString() + " " + dr["apellidos"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            return nom;
+        }
+
         //#region Puesto
         //private int idP;
         //private string nombreP;

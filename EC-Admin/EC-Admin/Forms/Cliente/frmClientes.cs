@@ -177,7 +177,7 @@ namespace EC_Admin.Forms
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvClientes.CurrentRow != null)
+            if (dgvClientes.CurrentRow != null && id > 0)
             {
                 (new frmEditarCliente(id)).ShowDialog(this);
             }
@@ -185,7 +185,7 @@ namespace EC_Admin.Forms
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvClientes.CurrentRow != null)
+            if (dgvClientes.CurrentRow != null && id > 0)
             {
                 if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas realmente eliminar a " + dgvClientes[1, dgvClientes.CurrentRow.Index].Value.ToString() + "?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
                 {

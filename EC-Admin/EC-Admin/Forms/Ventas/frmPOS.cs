@@ -39,19 +39,7 @@ namespace EC_Admin.Forms
 
         Venta v;
         private int idCliente;
-        private int idVendedor;
-
-        public int IDCliente
-        {
-            get { return idCliente; }
-            set { idCliente = value; }
-        }
-
-        public int IDVendedor
-        {
-            get { return idVendedor; }
-            set { idVendedor = value; }
-        }
+        private int idVendedor = -1;
 
         /// <summary>
         /// Inicializa la instancia de la clase frmPOS
@@ -70,6 +58,8 @@ namespace EC_Admin.Forms
                 Instancia.Select();
         }
 
+        #region Venta
+
         /// <summary>
         /// Inicia una nueva venta, y verifica si el formulario es visible, en caso de no serlo, lo muestra primero
         /// y después inicia la nueva venta
@@ -77,11 +67,53 @@ namespace EC_Admin.Forms
         public void NuevaVenta()
         {
             VerificarVisible();
-            v.NuevaVenta();
-            ControlesVisibles();
-            lblFolio.Text = v.IDVenta.ToString();
-            lblSubtotal.Text = lblImpuesto.Text = lblDescuento.Text = lblTotal.Text = "$0.00";
-            lblCantDif.Text = lblCantTot.Text = "0";
+            if (idVendedor <= 0)
+            {
+                DialogResult r = (new frmLoginValidacion()).ShowDialog(this);
+                if (r == System.Windows.Forms.DialogResult.OK)
+                {
+                    (new frmVendedor(this)).ShowDialog(this);
+                    if (idVendedor <= 0)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Debes ingresar un trabajador que atienda las ventas para poder usar el punto de venta", "EC-Admin");
+                    }
+                    else
+                    {
+                        CrearVenta();
+                    }
+                }
+            }
+            else
+            {
+                CrearVenta();
+            }
+        }
+
+        private void CrearVenta()
+        {
+            if (v.Abierta)
+            {
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La venta no se ha finalizado, ¿desea crear una nueva?\n(Puedes guardar la venta actual para continuarla posteriormente)", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+                {
+                    v.IDVendedor = idVendedor;
+                    v.NuevaVenta();
+                    ControlesHabilitados();
+                    AsignarCliente(0, "Público en general");
+                    lblFolio.Text = v.IDVenta.ToString();
+                    lblSubtotal.Text = lblImpuesto.Text = lblDescuento.Text = lblTotal.Text = "$0.00";
+                    lblCantDif.Text = lblCantTot.Text = "0";
+                }
+            }
+            else
+            {
+                v.IDVendedor = idVendedor;
+                v.NuevaVenta();
+                ControlesHabilitados();
+                AsignarCliente(0, "Público en general");
+                lblFolio.Text = v.IDVenta.ToString();
+                lblSubtotal.Text = lblImpuesto.Text = lblDescuento.Text = lblTotal.Text = "$0.00";
+                lblCantDif.Text = lblCantTot.Text = "0";
+            }
         }
 
         /// <summary>
@@ -90,9 +122,130 @@ namespace EC_Admin.Forms
         /// <param name="id">ID de la venta</param>
         public void RecuperarVenta(int id)
         {
-            v.IDVenta = id;
-            v.RecuperarVenta();
+            try
+            {
+                VerificarVisible();
+                v.IDVenta = id;
+                lblFolio.Text = id.ToString();
+                v.RecuperarVenta();
+                ControlesHabilitados();
+                idCliente = v.IDCliente;
+                lblCliente.Text = Cliente.NombreCliente(idCliente);
+                idVendedor = v.IDVendedor;
+                lblVendedor.Text = Trabajador.NombreTrabajador(idVendedor);
+                for (int i = 0; i < v.IDProductos.Count; i++)
+                {
+                    AgregarProducto(v.IDProductos[i], CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Precio[i], v.Cantidad[i], v.DescuentoProducto[i], v.Unidad[i]);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
+        /// <summary>
+        /// Control que cambia la propiedad Enable a false en determinados controles del formulario cuando se termina una venta
+        /// </summary>
+        private void ControlesInhabilitados()
+        {
+            lblECliente.Enabled = false;
+            lblCliente.Enabled = false;
+            lblEFolio.Enabled = false;
+            lblFolio.Enabled = false;
+            lblEVendedor.Enabled = false;
+            lblVendedor.Enabled = false;
+            btnClientes.Enabled = false;
+            btnProductos.Enabled = false;
+            btnCobrar.Enabled = false;
+            btnGuardar.Enabled = false;
+            btnVendedor.Enabled = false;
+            txtBusqueda.Enabled = false;
+            grbTotales.Enabled = false;
+        }
+
+        /// <summary>
+        /// Control que cambia la propiedad Enable a true en determinados controles del formulario cuando se inicia una venta
+        /// </summary>
+        private void ControlesHabilitados()
+        {
+            dgvProductos.Enabled = true;
+            lblECliente.Visible = true;
+            lblCliente.Visible = true;
+            lblEFolio.Visible = true;
+            lblFolio.Visible = true;
+            lblEVendedor.Visible = true;
+            lblVendedor.Visible = true;
+            btnClientes.Visible = true;
+            btnProductos.Visible = true;
+            btnCobrar.Visible = true;
+            btnGuardar.Visible = true;
+            btnVendedor.Visible = true;
+            txtBusqueda.Enabled = true;
+            grbTotales.Visible = true;
+
+            lblECliente.Enabled = true;
+            lblCliente.Enabled = true;
+            lblEFolio.Enabled = true;
+            lblFolio.Enabled = true;
+            lblEVendedor.Enabled = true;
+            lblVendedor.Enabled = true;
+            btnClientes.Enabled = true;
+            btnProductos.Enabled = true;
+            btnCobrar.Enabled = true;
+            btnGuardar.Enabled = true;
+            btnVendedor.Enabled = true;
+            txtBusqueda.Enabled = true;
+            grbTotales.Enabled = true;
+            idCliente = 0;
+            lblCliente.Text = "";
+        }
+
+        public void GuardarVenta(bool abierta, TipoPago t)
+        {
+            try
+            {
+                v.IDCliente = idCliente;
+                v.IDVendedor = idVendedor;
+                v.IDSucursal = Config.idSucursal;
+                v.Cancelada = false;
+                v.Abierta = abierta;
+                v.Subtotal = subtotal;
+                v.Impuesto = impuesto;
+                v.Descuento = descuento;
+                v.Total = total;
+                v.Tipo = t;
+                foreach (DataGridViewRow dr in dgvProductos.Rows)
+                {
+                    v.IDProductos.Add((int)dr.Cells[0].Value);
+                    v.Precio.Add((decimal)dr.Cells[3].Value);
+                    v.Cantidad.Add((decimal)dr.Cells[4].Value);
+                    v.DescuentoProducto.Add((decimal)dr.Cells[5].Value);
+                    v.Unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
+                }
+                v.DatosVenta();
+                if (abierta == false)
+                {
+                    ControlesInhabilitados();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        #endregion
+
+        #region Productos
 
         /// <summary>
         /// Método que agrega un producto a la venta
@@ -102,14 +255,16 @@ namespace EC_Admin.Forms
         /// <param name="precio">Precio del producto</param>
         /// <param name="cant">Cantidad del producto</param>
         /// <param name="desc">Descuento aplicado al producto</param>
-        public void AgregarProducto(int id, string codProd, string nombre, decimal precio, decimal cant, decimal desc)
+        public void AgregarProducto(int id, string codProd, string nombre, decimal precio, decimal cant, decimal desc, Unidades u)
         {
             if (!VerificarProducto(id, cant))
             {
-                dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc });
-                dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, dgvProductos.RowCount - 1));
-                dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
-                CalcularTotales();
+                dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u });
+                if (dgvProductos.RowCount == 1)
+                {
+                    dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                    dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                }
             }
         }
 
@@ -129,8 +284,7 @@ namespace EC_Admin.Forms
                     dr.Cells[4].Value = ((decimal)dr.Cells[4].Value + cant);
                     existe = true;
                     if (cant < 0 && (decimal)dr.Cells[4].Value <= 0)
-                        QuitarProducto(id);
-                    dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                        QuitarProducto(dr);
                     CalcularTotales();
                     break;
                 }
@@ -145,19 +299,92 @@ namespace EC_Admin.Forms
             CalcularTotales();
         }
 
-        private void QuitarProducto(int id)
+        private void QuitarProducto()
         {
-            foreach (DataGridViewRow dr in dgvProductos.Rows)
+            if (dgvProductos.CurrentRow != null)
             {
-                if (dr.Cells[0].Value.ToString() == id.ToString())
-                {
-                    dgvProductos.Rows.Remove(dr);
-                    dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
-                    CalcularTotales();
-                    return;
-                }
+                int ind = dgvProductos.CurrentRow.Index;
+                dgvProductos.Rows.Remove(dgvProductos.CurrentRow);
+                CambioImagen(ind);
+                CalcularTotales();
             }
         }
+
+        private void QuitarProducto(DataGridViewRow dr)
+        {
+            int ind = dr.Index;
+            dgvProductos.Rows.Remove(dr);
+            CambioImagen(ind);
+            CalcularTotales();
+        }
+
+        private void CambioImagen(int ind)
+        {
+            if (ind <= dgvProductos.RowCount - 1)
+            {
+                dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, ind));
+                dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, ind));
+            }
+            else if (ind > dgvProductos.RowCount - 1)
+            {
+                dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, dgvProductos.RowCount - 1));
+                dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, dgvProductos.RowCount - 1));
+            }
+        }
+
+        private void BusquedaProducto(string codProd)
+        {
+            try
+            {
+                string sql = "SELECT id, nombre, codigo, precio, unidad FROM producto WHERE codigo='" + codProd + "'";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["precio"], 1M, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
+                    break;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al buscar el producto. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+            }
+            catch (Exception ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al buscar el producto.", "EC-Admin", ex);
+            }
+        }
+
+        private string CodigoProducto(int id)
+        {
+            string cod = "";
+            try
+            {
+                string sql = "SELECT codigo FROM producto WHERE id='" + id + "'";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    cod = dr["codigo"].ToString();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return cod;
+        }
+
+        private void Imagen(Image img)
+        {
+            pcbProducto.Image = img;
+        }
+
+        #endregion
+
+        #region Métodos DataGrid y demás
 
         private void CalcularTotales()
         {
@@ -183,101 +410,99 @@ namespace EC_Admin.Forms
             lblCantTot.Text = cantTot.ToString();
         }
 
-        private void Imagen(Image img)
+        #endregion
+
+        #region Clientes
+
+        public void AsignarCliente(int id, string nombre)
         {
-            pcbProducto.Image = img;
+            this.idCliente = id;
+            this.lblCliente.Text = nombre;
+            
         }
 
-        public void Cobrar()
+        #endregion
+
+        #region Vendedor
+        
+        public void AsignarVendedor(int id, string nombre)
         {
+            this.idVendedor = id;
+            this.lblVendedor.Text = nombre;
         }
 
-        private void Guardar()
-        {
-        }
-
-        /// <summary>
-        /// Método que hace visibles los controles que al abrir el formulario tienen su propiedad Visible en false
-        /// </summary>
-        private void ControlesVisibles()
-        {
-            dgvProductos.Enabled = true;
-            lblECliente.Visible = true;
-            lblCliente.Visible = true;
-            lblEFolio.Visible = true;
-            lblFolio.Visible = true;
-            lblEVendedor.Visible = true;
-            lblVendedor.Visible = true;
-            btnClientes.Visible = true;
-            btnProductos.Visible = true;
-            btnCobrar.Visible = true;
-            btnGuardar.Visible = true;
-            btnVendedor.Visible = true;
-            txtBusqueda.Enabled = true;
-            grbTotales.Visible = true;
-        }
-
-        /// <summary>
-        /// Control que cambia la propiedad Enable a false en determinados controles del formulario cuando se termina una venta
-        /// </summary>
-        private void ControlesInhabilitados()
-        {
-            dgvProductos.Enabled = false;
-            lblECliente.Enabled = false;
-            lblCliente.Enabled = false;
-            lblEFolio.Enabled = false;
-            lblFolio.Enabled = false;
-            lblEVendedor.Enabled = false;
-            lblVendedor.Enabled = false;
-            btnClientes.Enabled = false;
-            btnProductos.Enabled = false;
-            btnCobrar.Enabled = false;
-            btnGuardar.Enabled = false;
-            btnVendedor.Enabled = false;
-            txtBusqueda.Enabled = false;
-            grbTotales.Enabled = false;
-        }
-
-        /// <summary>
-        /// Control que cambia la propiedad Enable a true en determinados controles del formulario cuando se inicia una venta
-        /// </summary>
-        private void ControlesHabilitados()
-        {
-            dgvProductos.Enabled = true;
-            lblECliente.Enabled = true;
-            lblCliente.Enabled = true;
-            lblEFolio.Enabled = true;
-            lblFolio.Enabled = true;
-            lblEVendedor.Enabled = true;
-            lblVendedor.Enabled = true;
-            btnClientes.Enabled = true;
-            btnProductos.Enabled = true;
-            btnCobrar.Enabled = true;
-            btnGuardar.Enabled = true;
-            btnVendedor.Enabled = true;
-            txtBusqueda.Enabled = true;
-            grbTotales.Enabled = true;
-        }
+        #endregion
 
         private void btnNuevaVenta_Click(object sender, EventArgs e)
         {
             NuevaVenta();
+            txtBusqueda.Select();
+        }
+
+        private void btnRecuperarVenta_Click(object sender, EventArgs e)
+        {
+            (new frmRecuperarVenta(this)).ShowDialog(this);
+            txtBusqueda.Select();
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            if (btnClientes.Visible || btnClientes.Enabled)
+                (new frmVentaCliente(this)).ShowDialog(this);
+            txtBusqueda.Select();
         }
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-            (new frmVentaProducto(this)).ShowDialog(this);
+            if (btnProductos.Visible || btnProductos.Enabled)
+                (new frmVentaProducto(this)).ShowDialog(this);
+            txtBusqueda.Select();
         }
 
-        private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void btnCobrar_Click(object sender, EventArgs e)
         {
-            if (dgvProductos.CurrentRow != null)
-                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, (decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value)).ShowDialog(this);
+            if (btnCobrar.Visible || btnCobrar.Enabled)
+                (new frmCobrar(this, total)).ShowDialog(this);
+            txtBusqueda.Select();
+        }
+
+        private void btnVendedor_Click(object sender, EventArgs e)
+        {
+            if (btnVendedor.Visible || btnVendedor.Enabled)
+            {
+
+                DialogResult r = (new frmLoginValidacion()).ShowDialog(this);
+                if (r == System.Windows.Forms.DialogResult.OK)
+                {
+                    (new frmVendedor(this, idVendedor, lblVendedor.Text)).ShowDialog(this);
+                }
+                txtBusqueda.Select();
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (btnGuardar.Visible || btnGuardar.Enabled)
+                {
+                    GuardarVenta(true, TipoPago.Efectivo);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha guardado correctamente la venta!", "EC-Admin");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al guardar la venta. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+            }
+            catch (Exception ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al guardar la venta.", "EC-Admin", ex);
+            }
         }
 
         private void frmPOS_KeyUp(object sender, KeyEventArgs e)
         {
-            if (dgvProductos.CurrentRow != null)
+            if (dgvProductos.CurrentRow != null && btnProductos.Visible && btnProductos.Enabled)
             {
                 if (e.Control)
                 {
@@ -291,20 +516,39 @@ namespace EC_Admin.Forms
                     }
                     else if (e.KeyCode == Keys.Delete)
                     {
-                        QuitarProducto(id);
+                        QuitarProducto();
                     }
+                    return;
                 }
             }
-        }
-
-        private void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvProductos.CurrentRow != null)
+            if (e.KeyCode == Keys.F1)
             {
-                id = (int)dgvProductos[0, e.RowIndex].Value;
+                btnNuevaVenta.PerformClick();
             }
-            else
-                id = 0;
+            else if (e.KeyCode == Keys.F2)
+            {
+                btnRecuperarVenta.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                btnClientes.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F4)
+            {
+                btnProductos.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                btnCobrar.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F11)
+            {
+                btnVendedor.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F12)
+            {
+                btnGuardar.PerformClick();
+            }
         }
 
         private void bgwImagen_DoWork(object sender, DoWorkEventArgs e)
@@ -316,11 +560,58 @@ namespace EC_Admin.Forms
             }
         }
 
+        private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvProductos.CurrentRow != null)
+                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, (decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value)).ShowDialog(this);
+        }
+
+        private void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProductos.CurrentRow != null)
+            {
+                id = (int)dgvProductos[0, e.RowIndex].Value;
+                dgvProductos.Rows[e.RowIndex].Selected = true;
+            }
+            else
+                id = 0;
+            txtBusqueda.Select();
+        }
+
+        /// <summary>
+        /// Método al que llama el evento CellClick del dgvProductos y que ejecuta la búsqueda de imagen del producto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvProductos.CurrentRow != null)
                 if (!bgwImagen.IsBusy)
                     bgwImagen.RunWorkerAsync();
+            txtBusqueda.Select();
+        }
+
+        private void dgvProductos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            CalcularTotales();
+        }
+
+        private void dgvProductos_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            CalcularTotales();
+            if (dgvProductos.RowCount == 0)
+            {
+                pcbProducto.Image = null;
+            }
+        }
+
+        private void txtBusqueda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BusquedaProducto(txtBusqueda.Text);
+                txtBusqueda.Text = "";
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ namespace EC_Admin
         public frmLogin()
         {
             InitializeComponent();
+            FuncionesGenerales.DeshabilitarBotonCerrar(this);
             cancelo = true;
         }   
 

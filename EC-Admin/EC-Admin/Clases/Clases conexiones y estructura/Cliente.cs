@@ -525,5 +525,79 @@ namespace EC_Admin
                 throw ex;
             }
         }
+
+        public static string NombreCliente(int id)
+        {
+            string nombre = "";
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT nombre FROM cliente WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    nombre = dr["nombre"].ToString();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return nombre;
+        }
+
+        /// <summary>
+        /// Método que crea el cliente general
+        /// </summary>
+        public static void ClienteGeneral()
+        {
+            try
+            {
+                Cliente c = new Cliente();
+                c.Sucursal = Config.idSucursal;
+                c.Cuenta = 0;
+                c.Nombre = "Público en General";
+                c.RazonSocial = "";
+                c.RFC = "XAXX010101000";
+                c.Calle = "";
+                c.NumExt = "";
+                c.NumInt = "";
+                c.Colonia = "";
+                c.Ciudad = "";
+                c.Estado = "";
+                c.CP = 0;
+                c.Telefono01 = "";
+                c.Telefono02 = "";
+                c.Correo = "";
+                c.Lada01 = "";
+                c.Lada02 = "";
+                c.Tipo = TipoPersona.SinCredito;
+                c.LimiteCredito = 0M;
+                c.Insertar();
+
+                int idG = 0;
+                string sqlI = "SELECT MAX(id) AS i FROM cliente";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sqlI);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    idG = int.Parse(dr["i"].ToString());
+                }
+                string sql = "UPDATE cliente SET id='0' WHERE id='" + idG + "'";
+                ConexionBD.EjecutarConsulta(sql);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

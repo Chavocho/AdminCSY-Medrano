@@ -44,7 +44,7 @@
             this.lblEDescuento.Location = new System.Drawing.Point(135, 10);
             this.lblEDescuento.Name = "lblEDescuento";
             this.lblEDescuento.Size = new System.Drawing.Size(74, 18);
-            this.lblEDescuento.TabIndex = 32;
+            this.lblEDescuento.TabIndex = 2;
             this.lblEDescuento.Text = "Descuento";
             // 
             // txtDescuento
@@ -55,7 +55,7 @@
             this.txtDescuento.Location = new System.Drawing.Point(138, 31);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(246, 25);
-            this.txtDescuento.TabIndex = 33;
+            this.txtDescuento.TabIndex = 3;
             this.txtDescuento.Text = "0.00";
             // 
             // lblECant
@@ -66,7 +66,7 @@
             this.lblECant.Location = new System.Drawing.Point(11, 10);
             this.lblECant.Name = "lblECant";
             this.lblECant.Size = new System.Drawing.Size(63, 18);
-            this.lblECant.TabIndex = 31;
+            this.lblECant.TabIndex = 0;
             this.lblECant.Text = "Cantidad";
             // 
             // nudCant
@@ -81,7 +81,7 @@
             131072});
             this.nudCant.Name = "nudCant";
             this.nudCant.Size = new System.Drawing.Size(120, 25);
-            this.nudCant.TabIndex = 30;
+            this.nudCant.TabIndex = 1;
             this.nudCant.Value = new decimal(new int[] {
             1,
             0,
@@ -102,7 +102,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(234, 83);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 34;
+            this.btnAceptar.TabIndex = 4;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;

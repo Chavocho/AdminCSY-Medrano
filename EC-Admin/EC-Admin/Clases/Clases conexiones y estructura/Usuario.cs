@@ -493,6 +493,32 @@ namespace EC_Admin
             return existe;
         }
 
+        public static NivelesUsuario VerificarNivelUsuario(string nomUsu, string pass)
+        {
+            NivelesUsuario n = NivelesUsuario.Desconocido;
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT nivel FROM usuario WHERE username=?userName AND pass=?pass AND eliminado=0";
+                sql.Parameters.AddWithValue("?userName", nomUsu);
+                sql.Parameters.AddWithValue("?pass", Criptografia.Cifrar(pass));
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    n = (NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dr["nivel"].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return n;
+        }
+
         /// <summary>
         /// Método que obtiene los datos del usuario y los guarda en las propiedades
         /// </summary>

@@ -400,6 +400,25 @@ namespace EC_Admin
             }
         }
 
+        public static string NombreProducto(int id)
+        {
+            string nom = "";
+            try
+            {
+                string sql = "SELECT nombre FROM producto WHERE id='" + id + "'";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    nom = dr["nombre"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return nom;
+        }
+
         public static Image ImagenProducto(int id)
         {
             Image img = null;

@@ -1,4 +1,4 @@
-﻿namespace EC_Admin.Forms.Ventas
+﻿namespace EC_Admin.Forms
 {
     partial class frmVendedor
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -35,13 +36,13 @@
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CTelefonos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblEBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.lblENombre = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajadores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,9 +76,7 @@
             this.dgvTrabajadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
             this.CNombre,
-            this.CPuesto,
-            this.CTelefonos,
-            this.CCorreo});
+            this.CPuesto});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 9F);
@@ -96,7 +95,8 @@
             this.dgvTrabajadores.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTrabajadores.Size = new System.Drawing.Size(888, 346);
-            this.dgvTrabajadores.TabIndex = 3;
+            this.dgvTrabajadores.TabIndex = 2;
+            this.dgvTrabajadores.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrabajadores_RowEnter);
             // 
             // CID
             // 
@@ -116,28 +116,16 @@
             this.CPuesto.Name = "CPuesto";
             this.CPuesto.Width = 130;
             // 
-            // CTelefonos
-            // 
-            this.CTelefonos.HeaderText = "Teléfonos";
-            this.CTelefonos.Name = "CTelefonos";
-            this.CTelefonos.Width = 200;
-            // 
-            // CCorreo
-            // 
-            this.CCorreo.HeaderText = "Correo";
-            this.CCorreo.Name = "CCorreo";
-            this.CCorreo.Width = 200;
-            // 
             // lblEBusqueda
             // 
             this.lblEBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEBusqueda.AutoSize = true;
             this.lblEBusqueda.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblEBusqueda.Location = new System.Drawing.Point(480, 17);
+            this.lblEBusqueda.Location = new System.Drawing.Point(400, 17);
             this.lblEBusqueda.Name = "lblEBusqueda";
-            this.lblEBusqueda.Size = new System.Drawing.Size(168, 18);
-            this.lblEBusqueda.TabIndex = 5;
-            this.lblEBusqueda.Text = "Buscar cliente por nombre";
+            this.lblEBusqueda.Size = new System.Drawing.Size(248, 18);
+            this.lblEBusqueda.TabIndex = 0;
+            this.lblEBusqueda.Text = "Buscar trabajador por nombre o puesto";
             // 
             // txtBusqueda
             // 
@@ -147,7 +135,8 @@
             this.txtBusqueda.Location = new System.Drawing.Point(654, 12);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(246, 29);
-            this.txtBusqueda.TabIndex = 6;
+            this.txtBusqueda.TabIndex = 1;
+            this.txtBusqueda.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyUp);
             // 
             // lblENombre
             // 
@@ -157,7 +146,7 @@
             this.lblENombre.Location = new System.Drawing.Point(9, 396);
             this.lblENombre.Name = "lblENombre";
             this.lblENombre.Size = new System.Drawing.Size(111, 18);
-            this.lblENombre.TabIndex = 7;
+            this.lblENombre.TabIndex = 3;
             this.lblENombre.Text = "Vendedor actual:";
             // 
             // lblNombre
@@ -168,7 +157,7 @@
             this.lblNombre.Location = new System.Drawing.Point(126, 396);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(153, 18);
-            this.lblNombre.TabIndex = 8;
+            this.lblNombre.TabIndex = 4;
             this.lblNombre.Text = "Juan Jimenez Pacheco";
             // 
             // btnAceptar
@@ -185,11 +174,22 @@
             this.btnAceptar.Location = new System.Drawing.Point(750, 399);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 25;
+            this.btnAceptar.TabIndex = 5;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // bgwBusqueda
+            // 
+            this.bgwBusqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusqueda_DoWork);
+            this.bgwBusqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusqueda_RunWorkerCompleted);
+            // 
+            // tmrEspera
+            // 
+            this.tmrEspera.Interval = 300;
+            this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
             // 
             // frmVendedor
             // 
@@ -217,15 +217,15 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvTrabajadores;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPuesto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CTelefonos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CCorreo;
         private System.Windows.Forms.Label lblEBusqueda;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.Label lblENombre;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPuesto;
+        private System.ComponentModel.BackgroundWorker bgwBusqueda;
+        private System.Windows.Forms.Timer tmrEspera;
     }
 }

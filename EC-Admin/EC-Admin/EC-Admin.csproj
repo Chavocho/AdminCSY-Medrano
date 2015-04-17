@@ -218,6 +218,12 @@
     <Compile Include="Forms\Cuentas\frmNuevaCuenta.Designer.cs">
       <DependentUpon>frmNuevaCuenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Mensaje\frmLoginValidacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mensaje\frmLoginValidacion.Designer.cs">
+      <DependentUpon>frmLoginValidacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Mensaje\frmMensaje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -568,6 +574,9 @@
     <EmbeddedResource Include="Forms\Cuentas\frmNuevaCuenta.resx">
       <DependentUpon>frmNuevaCuenta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mensaje\frmLoginValidacion.resx">
+      <DependentUpon>frmLoginValidacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mensaje\frmMensaje.resx">
       <DependentUpon>frmMensaje.cs</DependentUpon>
     </EmbeddedResource>
@@ -675,6 +684,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Usuarios\Restablecimiento de contraseña\frmVerificarUsuario.resx">
       <DependentUpon>frmVerificarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmCobrar.resx">
+      <DependentUpon>frmCobrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\frmDatosVentaProducto.resx">
       <DependentUpon>frmDatosVentaProducto.cs</DependentUpon>

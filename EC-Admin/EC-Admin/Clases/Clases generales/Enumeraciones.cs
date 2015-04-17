@@ -19,7 +19,7 @@ namespace EC_Admin
         Cheque = 1,
         Crédito = 2,
         Débito = 3,
-        Transferencia = 4,
+        Transferencia = 4
     }
 
     public enum Mensajes

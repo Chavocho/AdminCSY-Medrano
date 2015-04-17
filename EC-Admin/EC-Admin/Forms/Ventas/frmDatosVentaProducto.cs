@@ -20,6 +20,7 @@ namespace EC_Admin.Forms
             nudCant.Value = cant;
             txtDescuento.Text = descuento.ToString();
             this.frm = frm;
+            nudCant.Select();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

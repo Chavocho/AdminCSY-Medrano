@@ -16,7 +16,7 @@ namespace EC_Admin
         private int idS;
         private int idV;
         private bool cancelada;
-        private bool abierta;
+        private bool abierta = false;
         private decimal subtotal;
         private decimal impuesto;
         private decimal descuento;
@@ -112,37 +112,31 @@ namespace EC_Admin
         public int CreateUser
         {
             get { return createUser; }
-            set { createUser = value; }
         }
 
         public DateTime CreateTime
         {
             get { return createTime; }
-            set { createTime = value; }
         }
 
         public int UpdateUser
         {
             get { return updateUser; }
-            set { updateUser = value; }
         }
 
         public DateTime UpdateTime
         {
             get { return updateTime; }
-            set { updateTime = value; }
         }
 
         public int CancelUser
         {
             get { return cancelUser; }
-            set { cancelUser = value; }
         }
 
         public DateTime CancelTime
         {
             get { return cancelTime; }
-            set { cancelTime = value; }
         }
         #endregion
 
@@ -189,7 +183,6 @@ namespace EC_Admin
         /// </summary>
         public Venta()
         {
-            InicializarVenta();
             InicializarVentaDetallada();
         }
 
@@ -228,7 +221,9 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO venta (create_user, create_time) VALUES (?create_user, NOW())";
+                sql.CommandText = "INSERT INTO venta (id_vendedor, tipo_pago, create_user, create_time) VALUES (?id_vendedor, ?tipo_pago, ?create_user, NOW())";
+                sql.Parameters.AddWithValue("?id_vendedor", idV);
+                sql.Parameters.AddWithValue("?tipo_pago", TipoPago.Efectivo);   
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
                 id = ConexionBD.EjecutarConsulta(sql);
                 InicializarVenta();
@@ -319,7 +314,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?total", total);
                 sql.Parameters.AddWithValue("?remision", remision);
                 sql.Parameters.AddWithValue("?factura", factura);
-                sql.Parameters.AddWithValue("?tipo", tipo);
+                sql.Parameters.AddWithValue("?tipo_pago", tipo);
                 sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
@@ -359,7 +354,7 @@ namespace EC_Admin
                 MySqlCommand sql = new MySqlCommand();
                 for (int i = 0; i < idP.Count; i++)
                 {
-                    sql.CommandText = "INSERT INTO (id_venta, id_producto, cant, precio, descuento, unidad) " +
+                    sql.CommandText = "INSERT INTO venta_detallada (id_venta, id_producto, cant, precio, descuento, unidad) " +
                     "VALUES (?id_venta, ?id_producto, ?cant, ?precio, ?descuento, ?unidad) " +
                     "ON DUPLICATE KEY UPDATE cant=?cant, precio=?precio, descuento=?descuento, unidad=?unidad;";
                     sql.Parameters.AddWithValue("?id_venta", id);

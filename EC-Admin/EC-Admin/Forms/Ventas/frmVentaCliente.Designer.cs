@@ -1,4 +1,4 @@
-﻿namespace EC_Admin.Forms.Ventas
+﻿namespace EC_Admin.Forms
 {
     partial class frmVentaCliente
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,6 +41,8 @@
             this.CTelefonos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.bgwBúsqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,11 +51,11 @@
             this.lblEBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEBusqueda.AutoSize = true;
             this.lblEBusqueda.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblEBusqueda.Location = new System.Drawing.Point(480, 17);
+            this.lblEBusqueda.Location = new System.Drawing.Point(394, 17);
             this.lblEBusqueda.Name = "lblEBusqueda";
-            this.lblEBusqueda.Size = new System.Drawing.Size(168, 18);
-            this.lblEBusqueda.TabIndex = 3;
-            this.lblEBusqueda.Text = "Buscar cliente por nombre";
+            this.lblEBusqueda.Size = new System.Drawing.Size(254, 18);
+            this.lblEBusqueda.TabIndex = 0;
+            this.lblEBusqueda.Text = "Buscar cliente por nombre o razón social";
             // 
             // txtBusqueda
             // 
@@ -62,7 +65,8 @@
             this.txtBusqueda.Location = new System.Drawing.Point(654, 12);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(246, 29);
-            this.txtBusqueda.TabIndex = 4;
+            this.txtBusqueda.TabIndex = 1;
+            this.txtBusqueda.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyUp);
             // 
             // dgvClientes
             // 
@@ -115,7 +119,8 @@
             this.dgvClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClientes.Size = new System.Drawing.Size(888, 346);
-            this.dgvClientes.TabIndex = 5;
+            this.dgvClientes.TabIndex = 2;
+            this.dgvClientes.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_RowEnter);
             // 
             // CID
             // 
@@ -161,11 +166,22 @@
             this.btnAceptar.Location = new System.Drawing.Point(750, 399);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 20;
+            this.btnAceptar.TabIndex = 3;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // bgwBúsqueda
+            // 
+            this.bgwBúsqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBúsqueda_DoWork);
+            this.bgwBúsqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBúsqueda_RunWorkerCompleted);
+            // 
+            // tmrEspera
+            // 
+            this.tmrEspera.Interval = 300;
+            this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
             // 
             // frmVentaCliente
             // 
@@ -200,5 +216,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CTelefonos;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCorreo;
         private System.Windows.Forms.Button btnAceptar;
+        private System.ComponentModel.BackgroundWorker bgwBúsqueda;
+        private System.Windows.Forms.Timer tmrEspera;
     }
 }
