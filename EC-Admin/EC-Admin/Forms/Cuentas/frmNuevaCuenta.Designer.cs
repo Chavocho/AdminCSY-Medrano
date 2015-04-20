@@ -140,7 +140,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(386, 207);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 19;
+            this.btnAceptar.TabIndex = 10;
             this.btnAceptar.Text = "Crear";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;

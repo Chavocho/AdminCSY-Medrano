@@ -51,7 +51,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(12, 198);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(150, 46);
-            this.btnCancelar.TabIndex = 59;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -71,7 +71,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(382, 198);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 58;
+            this.btnAceptar.TabIndex = 4;
             this.btnAceptar.Text = "Validar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -86,7 +86,7 @@
             this.lblEPass.Location = new System.Drawing.Point(224, 82);
             this.lblEPass.Name = "lblEPass";
             this.lblEPass.Size = new System.Drawing.Size(97, 22);
-            this.lblEPass.TabIndex = 57;
+            this.lblEPass.TabIndex = 2;
             this.lblEPass.Text = "Contraseña";
             // 
             // txtPass
@@ -97,7 +97,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '•';
             this.txtPass.Size = new System.Drawing.Size(351, 29);
-            this.txtPass.TabIndex = 56;
+            this.txtPass.TabIndex = 3;
             this.txtPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblEUsuario
@@ -108,7 +108,7 @@
             this.lblEUsuario.Location = new System.Drawing.Point(239, 11);
             this.lblEUsuario.Name = "lblEUsuario";
             this.lblEUsuario.Size = new System.Drawing.Size(67, 22);
-            this.lblEUsuario.TabIndex = 55;
+            this.lblEUsuario.TabIndex = 0;
             this.lblEUsuario.Text = "Usuario";
             // 
             // txtUsuario
@@ -118,7 +118,7 @@
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(351, 29);
-            this.txtUsuario.TabIndex = 54;
+            this.txtUsuario.TabIndex = 1;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmLoginValidacion

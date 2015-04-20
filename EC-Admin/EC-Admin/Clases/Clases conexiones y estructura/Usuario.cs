@@ -284,7 +284,7 @@ namespace EC_Admin
         }
         #endregion
 
-        #region Funciones para cantidad de usuarios
+        #region Cantidades
         /// <summary>
         /// Método que actualiza los valores de las cantidades de los usuarios.
         /// </summary>

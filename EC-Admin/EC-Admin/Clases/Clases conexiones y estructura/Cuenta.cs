@@ -17,6 +17,7 @@ namespace EC_Admin
         private string beneficiario;
         private string sucursal;
         private string numCuenta;
+        private static int cant = -1;
 
         public int ID
         {
@@ -52,6 +53,40 @@ namespace EC_Admin
         {
             get { return numCuenta; }
             set { numCuenta = value; }
+        }
+
+        public static int Cantidad
+        {
+            get
+            {
+                if (cant < 0)
+                    Cant();
+                return cant;
+            }
+        }
+        
+        #endregion
+
+        #region Cantidad
+        private static void Cant()
+        {
+            try
+            {
+                string sql = "SELECT COUNT(id) AS c FROM cuenta";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    cant = int.Parse(dr["c"].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         #endregion
 
@@ -104,7 +139,8 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?beneficiario", beneficiario);
                 sql.Parameters.AddWithValue("?sucursal", sucursal);
                 sql.Parameters.AddWithValue("?num_cuenta", numCuenta);
-                ConexionBD.EjecutarConsulta(sql);
+                this.id = ConexionBD.EjecutarConsulta(sql);
+                Cant();
             }
             catch (MySqlException ex)
             {

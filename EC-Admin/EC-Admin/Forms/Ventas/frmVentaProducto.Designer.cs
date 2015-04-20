@@ -36,6 +36,12 @@
             this.lblEBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
+            this.nudCant = new System.Windows.Forms.NumericUpDown();
+            this.lblECant = new System.Windows.Forms.Label();
+            this.lblEDescuento = new System.Windows.Forms.Label();
+            this.txtDescuento = new System.Windows.Forms.TextBox();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CAlmacen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,12 +49,6 @@
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
-            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
-            this.nudCant = new System.Windows.Forms.NumericUpDown();
-            this.lblECant = new System.Windows.Forms.Label();
-            this.lblEDescuento = new System.Windows.Forms.Label();
-            this.txtDescuento = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCant)).BeginInit();
             this.SuspendLayout();
@@ -116,7 +116,7 @@
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -133,7 +133,7 @@
             this.Unidad});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -151,46 +151,6 @@
             this.dgvProductos.Size = new System.Drawing.Size(888, 346);
             this.dgvProductos.TabIndex = 2;
             this.dgvProductos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_RowEnter);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CNombre
-            // 
-            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CNombre.HeaderText = "Nombre";
-            this.CNombre.Name = "CNombre";
-            // 
-            // CAlmacen
-            // 
-            this.CAlmacen.HeaderText = "Num. Almacen";
-            this.CAlmacen.Name = "CAlmacen";
-            this.CAlmacen.Width = 120;
-            // 
-            // CCodigo
-            // 
-            this.CCodigo.HeaderText = "Código de producto";
-            this.CCodigo.Name = "CCodigo";
-            this.CCodigo.Width = 125;
-            // 
-            // CPrecio
-            // 
-            this.CPrecio.HeaderText = "Precio";
-            this.CPrecio.Name = "CPrecio";
-            // 
-            // CCant
-            // 
-            this.CCant.HeaderText = "Cantidad";
-            this.CCant.Name = "CCant";
-            // 
-            // Unidad
-            // 
-            this.Unidad.HeaderText = "Unidad";
-            this.Unidad.Name = "Unidad";
-            this.Unidad.Visible = false;
             // 
             // bgwBusqueda
             // 
@@ -254,10 +214,49 @@
             this.txtDescuento.TabIndex = 6;
             this.txtDescuento.Text = "0.00";
             // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CNombre
+            // 
+            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CNombre.HeaderText = "Nombre";
+            this.CNombre.Name = "CNombre";
+            // 
+            // CAlmacen
+            // 
+            this.CAlmacen.HeaderText = "Num. Almacen";
+            this.CAlmacen.Name = "CAlmacen";
+            this.CAlmacen.Width = 125;
+            // 
+            // CCodigo
+            // 
+            this.CCodigo.HeaderText = "Cód. producto";
+            this.CCodigo.Name = "CCodigo";
+            this.CCodigo.Width = 125;
+            // 
+            // CPrecio
+            // 
+            this.CPrecio.HeaderText = "Precio";
+            this.CPrecio.Name = "CPrecio";
+            // 
+            // CCant
+            // 
+            this.CCant.HeaderText = "Cantidad";
+            this.CCant.Name = "CCant";
+            // 
+            // Unidad
+            // 
+            this.Unidad.HeaderText = "Unidad";
+            this.Unidad.Name = "Unidad";
+            this.Unidad.Visible = false;
+            // 
             // frmVentaProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(912, 457);
             this.Controls.Add(this.lblEDescuento);
@@ -268,12 +267,15 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lblEBusqueda);
             this.Controls.Add(this.txtBusqueda);
+            this.Font = new System.Drawing.Font("Corbel", 11F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmVentaProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Búsqueda de productos";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVentaProducto_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCant)).EndInit();
             this.ResumeLayout(false);

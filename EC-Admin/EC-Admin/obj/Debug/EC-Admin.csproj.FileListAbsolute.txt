@@ -139,7 +139,6 @@ C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmDatosContactoCliente.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevoCliente.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmEditarCliente.resources
-C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Compra.frmCompras.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmConfigAlmacen.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmConfigBaseDatos.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Configs.frmConfigCorreo.resources
@@ -205,3 +204,7 @@ C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmVendedor.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmRecuperarVenta.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCobrar.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCompraProveedor.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCompras.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCompraProducto.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevaCompra.resources

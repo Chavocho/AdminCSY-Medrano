@@ -62,7 +62,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(287, 208);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 23;
+            this.btnAceptar.TabIndex = 4;
             this.btnAceptar.Text = "Modificar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -76,7 +76,7 @@
             this.lblEHoras.Location = new System.Drawing.Point(9, 213);
             this.lblEHoras.Name = "lblEHoras";
             this.lblEHoras.Size = new System.Drawing.Size(111, 18);
-            this.lblEHoras.TabIndex = 22;
+            this.lblEHoras.TabIndex = 2;
             this.lblEHoras.Text = "Horas trabajadas";
             this.lblEHoras.Visible = false;
             // 
@@ -90,7 +90,7 @@
             this.grbHorario.Location = new System.Drawing.Point(12, 95);
             this.grbHorario.Name = "grbHorario";
             this.grbHorario.Size = new System.Drawing.Size(425, 76);
-            this.grbHorario.TabIndex = 21;
+            this.grbHorario.TabIndex = 1;
             this.grbHorario.TabStop = false;
             this.grbHorario.Text = "Horario";
             // 
@@ -101,7 +101,7 @@
             this.lblEHoraFin.Location = new System.Drawing.Point(213, 18);
             this.lblEHoraFin.Name = "lblEHoraFin";
             this.lblEHoraFin.Size = new System.Drawing.Size(93, 18);
-            this.lblEHoraFin.TabIndex = 3;
+            this.lblEHoraFin.TabIndex = 2;
             this.lblEHoraFin.Text = "Hora de salida";
             // 
             // lblEHoraIni
@@ -111,7 +111,7 @@
             this.lblEHoraIni.Location = new System.Drawing.Point(6, 18);
             this.lblEHoraIni.Name = "lblEHoraIni";
             this.lblEHoraIni.Size = new System.Drawing.Size(106, 18);
-            this.lblEHoraIni.TabIndex = 2;
+            this.lblEHoraIni.TabIndex = 0;
             this.lblEHoraIni.Text = "Hora de entrada";
             // 
             // dtpHoraFin
@@ -123,7 +123,7 @@
             this.dtpHoraFin.Name = "dtpHoraFin";
             this.dtpHoraFin.ShowUpDown = true;
             this.dtpHoraFin.Size = new System.Drawing.Size(203, 25);
-            this.dtpHoraFin.TabIndex = 1;
+            this.dtpHoraFin.TabIndex = 3;
             this.dtpHoraFin.Value = new System.DateTime(1753, 1, 1, 18, 0, 0, 0);
             this.dtpHoraFin.ValueChanged += new System.EventHandler(this.dtpHoras_ValueChanged);
             // 
@@ -136,7 +136,7 @@
             this.dtpHoraIni.Name = "dtpHoraIni";
             this.dtpHoraIni.ShowUpDown = true;
             this.dtpHoraIni.Size = new System.Drawing.Size(204, 25);
-            this.dtpHoraIni.TabIndex = 0;
+            this.dtpHoraIni.TabIndex = 1;
             this.dtpHoraIni.Value = new System.DateTime(1753, 1, 1, 9, 0, 0, 0);
             this.dtpHoraIni.ValueChanged += new System.EventHandler(this.dtpHoras_ValueChanged);
             // 
@@ -153,7 +153,7 @@
             this.grbDias.Location = new System.Drawing.Point(12, 12);
             this.grbDias.Name = "grbDias";
             this.grbDias.Size = new System.Drawing.Size(425, 77);
-            this.grbDias.TabIndex = 20;
+            this.grbDias.TabIndex = 0;
             this.grbDias.TabStop = false;
             this.grbDias.Text = "Días de trabajo";
             // 
@@ -164,7 +164,7 @@
             this.chbLunes.Location = new System.Drawing.Point(6, 21);
             this.chbLunes.Name = "chbLunes";
             this.chbLunes.Size = new System.Drawing.Size(64, 22);
-            this.chbLunes.TabIndex = 7;
+            this.chbLunes.TabIndex = 0;
             this.chbLunes.Text = "Lunes";
             this.chbLunes.UseVisualStyleBackColor = true;
             this.chbLunes.CheckedChanged += new System.EventHandler(this.chbDias_CheckedChanged);
@@ -176,7 +176,7 @@
             this.chbDomingo.Location = new System.Drawing.Point(325, 21);
             this.chbDomingo.Name = "chbDomingo";
             this.chbDomingo.Size = new System.Drawing.Size(84, 22);
-            this.chbDomingo.TabIndex = 13;
+            this.chbDomingo.TabIndex = 6;
             this.chbDomingo.Text = "Domingo";
             this.chbDomingo.UseVisualStyleBackColor = true;
             this.chbDomingo.CheckedChanged += new System.EventHandler(this.chbDias_CheckedChanged);
@@ -188,7 +188,7 @@
             this.chbMartes.Location = new System.Drawing.Point(6, 49);
             this.chbMartes.Name = "chbMartes";
             this.chbMartes.Size = new System.Drawing.Size(69, 22);
-            this.chbMartes.TabIndex = 8;
+            this.chbMartes.TabIndex = 1;
             this.chbMartes.Text = "Martes";
             this.chbMartes.UseVisualStyleBackColor = true;
             this.chbMartes.CheckedChanged += new System.EventHandler(this.chbDias_CheckedChanged);
@@ -200,7 +200,7 @@
             this.chbSabado.Location = new System.Drawing.Point(209, 49);
             this.chbSabado.Name = "chbSabado";
             this.chbSabado.Size = new System.Drawing.Size(73, 22);
-            this.chbSabado.TabIndex = 12;
+            this.chbSabado.TabIndex = 5;
             this.chbSabado.Text = "Sábado";
             this.chbSabado.UseVisualStyleBackColor = true;
             this.chbSabado.CheckedChanged += new System.EventHandler(this.chbDias_CheckedChanged);
@@ -212,7 +212,7 @@
             this.chbMiercoles.Location = new System.Drawing.Point(95, 21);
             this.chbMiercoles.Name = "chbMiercoles";
             this.chbMiercoles.Size = new System.Drawing.Size(85, 22);
-            this.chbMiercoles.TabIndex = 9;
+            this.chbMiercoles.TabIndex = 2;
             this.chbMiercoles.Text = "Miércoles";
             this.chbMiercoles.UseVisualStyleBackColor = true;
             this.chbMiercoles.CheckedChanged += new System.EventHandler(this.chbDias_CheckedChanged);
@@ -224,7 +224,7 @@
             this.chbViernes.Location = new System.Drawing.Point(210, 21);
             this.chbViernes.Name = "chbViernes";
             this.chbViernes.Size = new System.Drawing.Size(72, 22);
-            this.chbViernes.TabIndex = 11;
+            this.chbViernes.TabIndex = 4;
             this.chbViernes.Text = "Viernes";
             this.chbViernes.UseVisualStyleBackColor = true;
             this.chbViernes.CheckedChanged += new System.EventHandler(this.chbDias_CheckedChanged);
@@ -236,7 +236,7 @@
             this.chbJueves.Location = new System.Drawing.Point(95, 49);
             this.chbJueves.Name = "chbJueves";
             this.chbJueves.Size = new System.Drawing.Size(68, 22);
-            this.chbJueves.TabIndex = 10;
+            this.chbJueves.TabIndex = 3;
             this.chbJueves.Text = "Jueves";
             this.chbJueves.UseVisualStyleBackColor = true;
             this.chbJueves.CheckedChanged += new System.EventHandler(this.chbDias_CheckedChanged);
@@ -248,7 +248,7 @@
             this.lblHoras.Location = new System.Drawing.Point(9, 236);
             this.lblHoras.Name = "lblHoras";
             this.lblHoras.Size = new System.Drawing.Size(24, 18);
-            this.lblHoras.TabIndex = 24;
+            this.lblHoras.TabIndex = 3;
             this.lblHoras.Text = "60";
             this.lblHoras.Visible = false;
             // 

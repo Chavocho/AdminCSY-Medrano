@@ -52,7 +52,7 @@
             this.lblEBusqueda.Location = new System.Drawing.Point(163, 17);
             this.lblEBusqueda.Name = "lblEBusqueda";
             this.lblEBusqueda.Size = new System.Drawing.Size(248, 18);
-            this.lblEBusqueda.TabIndex = 3;
+            this.lblEBusqueda.TabIndex = 0;
             this.lblEBusqueda.Text = "Buscar trabajador por nombre o puesto";
             // 
             // txtBusqueda
@@ -63,7 +63,7 @@
             this.txtBusqueda.Location = new System.Drawing.Point(417, 12);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(246, 29);
-            this.txtBusqueda.TabIndex = 4;
+            this.txtBusqueda.TabIndex = 1;
             this.txtBusqueda.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyUp);
             // 
             // dgvTrabajadores
@@ -73,6 +73,7 @@
             this.dgvTrabajadores.AllowUserToResizeColumns = false;
             this.dgvTrabajadores.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
@@ -86,7 +87,7 @@
             this.dgvTrabajadores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -99,7 +100,7 @@
             this.CPuesto});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -115,7 +116,7 @@
             this.dgvTrabajadores.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTrabajadores.Size = new System.Drawing.Size(651, 242);
-            this.dgvTrabajadores.TabIndex = 5;
+            this.dgvTrabajadores.TabIndex = 2;
             this.dgvTrabajadores.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrabajadores_RowEnter);
             // 
             // CID
@@ -150,7 +151,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(513, 295);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 25;
+            this.btnAceptar.TabIndex = 3;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -169,14 +170,17 @@
             // 
             // frmAlmacenTrabajador
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(675, 353);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lblEBusqueda);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.dgvTrabajadores);
+            this.Font = new System.Drawing.Font("Corbel", 11F);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmAlmacenTrabajador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccionar trabajador";

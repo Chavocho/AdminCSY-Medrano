@@ -14,7 +14,8 @@ namespace EC_Admin.Forms
     public partial class frmVendedor : Form
     {
         int id = 0, idActual = 0;
-        frmPOS frm;
+        frmPOS frm = null;
+        frmNuevaCompra frmC = null;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
 
@@ -31,6 +32,22 @@ namespace EC_Admin.Forms
             this.frm = frm;
             this.id = idActual;
             this.lblNombre.Text = nombre;
+        }
+
+        public frmVendedor(frmNuevaCompra frm)
+        {
+            InitializeComponent();
+            this.frmC = frm;
+            this.lblENombre.Visible = this.lblNombre.Visible = false;
+        }
+
+        public frmVendedor(frmNuevaCompra frm, int id, string nombre)
+        {
+            InitializeComponent();
+            this.frmC = frm;
+            this.id = idActual;
+            this.lblNombre.Text = nombre;
+            lblENombre.Text = "Comprador actual:";
         }
 
         private void Cerrar()
@@ -95,12 +112,26 @@ namespace EC_Admin.Forms
         {
             if (dgvTrabajadores.CurrentRow == null && idActual > 0)
             {
-                frm.AsignarVendedor(idActual, dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString());
+                if (frm != null)
+                {
+                    frm.AsignarVendedor(idActual, dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString());
+                }
+                else if (frmC != null)
+                {
+                    frmC.AsignarComprador(idActual, dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString());
+                }
                 this.Close();
             }
             else if (dgvTrabajadores.CurrentRow != null && id > 0)
             {
-                frm.AsignarVendedor(id, dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString());
+                if (frm != null)
+                {
+                    frm.AsignarVendedor(id, dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString());
+                }
+                else if (frmC != null)
+                {
+                    frmC.AsignarComprador(id, dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString());
+                }
                 this.Close();
             }
         }
@@ -120,6 +151,33 @@ namespace EC_Admin.Forms
         {
             tmrEspera.Enabled = false;
             FuncionesGenerales.frmEspera("Espere, cargando trabajadores", this);
+        }
+
+        private void frmVendedor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down && txtBusqueda.Focused)
+            {
+                dgvTrabajadores.Focus();
+            }
+            else if (e.KeyCode == Keys.Up && dgvTrabajadores.Focused)
+            {
+                if (dgvTrabajadores.CurrentRow != null)
+                {
+                    if (dgvTrabajadores.CurrentRow.Index == 0)
+                    {
+                        txtBusqueda.Focus();
+                    }
+                }
+                else
+                {
+                    txtBusqueda.Focus();
+                }
+            }
+            else if (e.KeyCode == Keys.Enter && dgvTrabajadores.Focused && dgvTrabajadores.CurrentRow != null)
+            {
+                dgvTrabajadores.Enabled = false;
+                btnAceptar.PerformClick();
+            }
         }
     }
 }

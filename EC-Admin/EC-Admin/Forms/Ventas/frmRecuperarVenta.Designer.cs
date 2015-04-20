@@ -72,7 +72,7 @@
             this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -92,7 +92,6 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvVentas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvVentas.Enabled = false;
             this.dgvVentas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvVentas.Location = new System.Drawing.Point(12, 74);
             this.dgvVentas.MultiSelect = false;
@@ -142,6 +141,7 @@
             // 
             this.grbFolio.Controls.Add(this.txtBusqueda);
             this.grbFolio.Font = new System.Drawing.Font("Corbel", 9F);
+            this.grbFolio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.grbFolio.Location = new System.Drawing.Point(639, 12);
             this.grbFolio.Name = "grbFolio";
             this.grbFolio.Size = new System.Drawing.Size(261, 56);
@@ -155,6 +155,7 @@
             this.grbFechas.Controls.Add(this.dtpFechaFin);
             this.grbFechas.Controls.Add(this.dtpFechaInicio);
             this.grbFechas.Font = new System.Drawing.Font("Corbel", 9F);
+            this.grbFechas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.grbFechas.Location = new System.Drawing.Point(12, 12);
             this.grbFechas.Name = "grbFechas";
             this.grbFechas.Size = new System.Drawing.Size(621, 56);
@@ -188,6 +189,7 @@
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(250, 25);
             this.dtpFechaFin.TabIndex = 1;
+            this.dtpFechaFin.ValueChanged += new System.EventHandler(this.dtpFechas_ValueChanged);
             // 
             // dtpFechaInicio
             // 
@@ -196,6 +198,7 @@
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(250, 25);
             this.dtpFechaInicio.TabIndex = 0;
+            this.dtpFechaInicio.ValueChanged += new System.EventHandler(this.dtpFechas_ValueChanged);
             // 
             // btnAceptar
             // 
@@ -229,19 +232,21 @@
             // 
             // frmRecuperarVenta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(912, 457);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.grbFechas);
             this.Controls.Add(this.dgvVentas);
             this.Controls.Add(this.grbFolio);
+            this.Font = new System.Drawing.Font("Corbel", 11F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmRecuperarVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "w";
+            this.Text = "Recuperar venta";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmRecuperarVenta_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.grbFolio.ResumeLayout(false);
             this.grbFolio.PerformLayout();

@@ -85,22 +85,7 @@ namespace EC_Admin
         }
         #endregion
 
-        /// <summary>
-        /// Inicializa la instancia de la clase Puesto
-        /// </summary>
-        public Puesto()
-        {
-
-        }
-
-        /// <summary>
-        /// Inicializa la instancia de la clase Puesto
-        /// </summary>
-        /// <param name="id">ID del puesto</param>
-        public Puesto(int id)
-        {
-            this.id = id;
-        }
+        #region Cantidades
 
         /// <summary>
         /// Método que obtiene la cantidad de puestos en la base de datos
@@ -127,6 +112,25 @@ namespace EC_Admin
             {
                 throw ex;
             }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Inicializa la instancia de la clase Puesto
+        /// </summary>
+        public Puesto()
+        {
+
+        }
+
+        /// <summary>
+        /// Inicializa la instancia de la clase Puesto
+        /// </summary>
+        /// <param name="id">ID del puesto</param>
+        public Puesto(int id)
+        {
+            this.id = id;
         }
 
         /// <summary>
@@ -207,30 +211,6 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        /// <summary>
-        /// Método que elimina un puesto
-        /// </summary>
-        /// <param name="id">ID del puesto</param>
-        public static void Eliminar(int id)
-        {
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "DELETE FROM puesto WHERE id=?id";
-                sql.Parameters.AddWithValue("?id", id);
-                ConexionBD.EjecutarConsulta(sql);
-                Cant();
             }
             catch (MySqlException ex)
             {

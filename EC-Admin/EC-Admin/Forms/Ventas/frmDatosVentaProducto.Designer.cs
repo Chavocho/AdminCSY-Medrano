@@ -41,6 +41,7 @@
             this.lblEDescuento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEDescuento.AutoSize = true;
             this.lblEDescuento.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEDescuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEDescuento.Location = new System.Drawing.Point(135, 10);
             this.lblEDescuento.Name = "lblEDescuento";
             this.lblEDescuento.Size = new System.Drawing.Size(74, 18);
@@ -63,6 +64,7 @@
             this.lblECant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblECant.AutoSize = true;
             this.lblECant.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblECant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblECant.Location = new System.Drawing.Point(11, 10);
             this.lblECant.Name = "lblECant";
             this.lblECant.Size = new System.Drawing.Size(63, 18);
@@ -73,6 +75,7 @@
             // 
             this.nudCant.DecimalPlaces = 2;
             this.nudCant.Font = new System.Drawing.Font("Corbel", 11F);
+            this.nudCant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.nudCant.Location = new System.Drawing.Point(12, 31);
             this.nudCant.Minimum = new decimal(new int[] {
             1,

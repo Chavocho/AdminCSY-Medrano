@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace EC_Admin.Forms
 {
-    public partial class frmVentaCliente : Form
+    public partial class frmCompraProveedor : Form
     {
-        int id = 0;
+        int id;
+        frmNuevaCompra frm;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
-        frmPOS frm;
 
-        public frmVentaCliente(frmPOS frm)
+        public frmCompraProveedor(frmNuevaCompra frm)
         {
             InitializeComponent();
             this.frm = frm;
@@ -34,18 +34,18 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT id, nombre, razon_social, telefono1, telefono2, email, lada1, lada2 FROM cliente WHERE nombre LIKE '%" + p + "%' OR razon_social LIKE '%" + p + "%'";
+                string sql = "SELECT id, nombre, razon_social, telefono1, telefono2, email, lada1, lada2 FROM proveedor WHERE nombre LIKE '%" + p + "%' OR razon_social LIKE '%" + p + "%'";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los clientes. No se ha podido conectar a la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar a los proveedores.", "EC-Admin", ex });
             }
             catch (Exception ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los clientes.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar a los proveedores.", "EC-Admin", ex });
             }
         }
 
@@ -53,7 +53,7 @@ namespace EC_Admin.Forms
         {
             try
             {
-                dgvClientes.Rows.Clear();
+                dgvProveedores.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
                     string telefono = "Sin información", correo = "Sin información", razonSocial = "Sin información";
@@ -109,12 +109,13 @@ namespace EC_Admin.Forms
                     {
                         correo = dr["email"].ToString();
                     }
-                    dgvClientes.Rows.Add(new object[] { dr["id"], dr["nombre"], razonSocial, telefono, correo });
+                    dgvProveedores.Rows.Add(new object[] { dr["id"], dr["nombre"], razonSocial, telefono, correo });
                 }
+                dgvProveedores_RowEnter(dgvProveedores, new DataGridViewCellEventArgs(0, 0));
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de los clientes.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los proveedores.", "EC-Admin", ex);
             }
         }
 
@@ -122,56 +123,22 @@ namespace EC_Admin.Forms
         {
             if (e.KeyCode == Keys.Enter)
             {
+                bgwBusqueda.RunWorkerAsync(txtBusqueda.Text);
                 tmrEspera.Enabled = true;
-                bgwBúsqueda.RunWorkerAsync(txtBusqueda.Text);
             }
         }
 
-        private void dgvClientes_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvClientes.CurrentRow != null)
-                id = (int)dgvClientes[0, e.RowIndex].Value;
-            else
-                id = 0;
-        }
-
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            if (dgvClientes.CurrentRow != null)
-            {
-                frm.AsignarCliente(id, dgvClientes[1, dgvClientes.CurrentRow.Index].Value.ToString());
-                this.Close();
-            }
-        }
-
-        private void bgwBúsqueda_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Buscar(e.Argument.ToString());
-        }
-
-        private void bgwBúsqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Cerrar();
-            LlenarDataGrid();
-        }
-
-        private void tmrEspera_Tick(object sender, EventArgs e)
-        {
-            tmrEspera.Enabled = false;
-            FuncionesGenerales.frmEspera("Espere, cargando clientes", this);
-        }
-
-        private void frmVentaCliente_KeyDown(object sender, KeyEventArgs e)
+        private void frmCompraProveedor_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down && txtBusqueda.Focused)
             {
-                dgvClientes.Focus();
+                dgvProveedores.Focus();
             }
-            else if (e.KeyCode == Keys.Up && dgvClientes.Focused)
+            else if (e.KeyCode == Keys.Up && dgvProveedores.Focused)
             {
-                if (dgvClientes.RowCount > 0)
+                if (dgvProveedores.RowCount > 0)
                 {
-                    if (dgvClientes.CurrentRow.Index == 0)
+                    if (dgvProveedores.CurrentRow.Index == 0)
                     {
                         txtBusqueda.Focus();
                     }
@@ -181,11 +148,45 @@ namespace EC_Admin.Forms
                     txtBusqueda.Focus();
                 }
             }
-            else if (e.KeyCode == Keys.Enter && dgvClientes.Focused && dgvClientes.CurrentRow != null)
+            else if (e.KeyCode == Keys.Enter && dgvProveedores.Focused && dgvProveedores.CurrentRow != null)
             {
-                dgvClientes.Enabled = false;
+                dgvProveedores.Enabled = false;
                 btnAceptar.PerformClick();
             }
+        }
+
+        private void dgvProveedores_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProveedores.CurrentRow != null)
+                id = (int)dgvProveedores[0, e.RowIndex].Value;
+            else
+                id = 0;
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (dgvProveedores.CurrentRow != null)
+            {
+                frm.AsignarProveedor(id, dgvProveedores[1, dgvProveedores.CurrentRow.Index].Value.ToString());
+                this.Close();
+            }
+        }
+
+        private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Buscar(e.Argument.ToString());
+        }
+
+        private void bgwBusqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cerrar();
+            LlenarDataGrid();
+        }
+
+        private void tmrEspera_Tick(object sender, EventArgs e)
+        {
+            tmrEspera.Enabled = false;
+            FuncionesGenerales.frmEspera("Espere, cargando proveedores", this);
         }
     }
 }

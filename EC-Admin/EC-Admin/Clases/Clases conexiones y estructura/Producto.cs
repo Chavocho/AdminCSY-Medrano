@@ -192,7 +192,9 @@ namespace EC_Admin
                 return cantP;
             }
         }
+        #endregion
 
+        #region Cantidad
         private static void CantP()
         {
             try
@@ -310,7 +312,8 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?unidad", unidad);
                 sql.Parameters.AddWithValue("?imagen", FuncionesGenerales.ImagenBytes(imagen));
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
-                ConexionBD.EjecutarConsulta(sql);
+                this.id = ConexionBD.EjecutarConsulta(sql);
+                CantP();
             }
             catch (MySqlException ex)
             {
@@ -369,6 +372,8 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?estado", estado);
                 sql.Parameters.AddWithValue("?delete_user", Usuario.IDUsuarioActual);
                 sql.Parameters.AddWithValue("?id", id);
+                ConexionBD.EjecutarConsulta(sql);
+                CantP();
             }
             catch (MySqlException ex)
             {
@@ -385,7 +390,7 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE producto SET cant=?cant WHERE id=?id";
+                sql.CommandText = "UPDATE producto SET cant=cant+?cant WHERE id=?id";
                 sql.Parameters.AddWithValue("?cant", cant);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);

@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace EC_Admin.Forms
 {
-    public partial class frmVentaProducto : Form
+    public partial class frmCompraProducto : Form
     {
-        int id = 0;
+        int id;
+        frmNuevaCompra frm;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
-        frmPOS frm;
 
-        public frmVentaProducto(frmPOS frm)
+        public frmCompraProducto(frmNuevaCompra frm)
         {
             InitializeComponent();
             this.frm = frm;
@@ -26,7 +26,6 @@ namespace EC_Admin.Forms
 
         private void Cerrar()
         {
-            txtBusqueda.Enabled = true;
             tmrEspera.Enabled = false;
             FuncionesGenerales.frmEsperaClose();
         }
@@ -35,8 +34,7 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT p.id, p.nombre, a.num_alm, p.codigo, p.precio, p.cant, p.unidad FROM producto AS p INNER JOIN almacen AS a ON (p.almacen_id=a.id) " +
-                    "WHERE (p.nombre LIKE '%" + p + "%' OR p.codigo='" + p + "') AND p.eliminado=0";
+                string sql = "SELECT id, nombre, codigo, costo, cant, unidad FROM producto WHERE nombre LIKE '%" + p + "%' OR codigo='" + p + "'";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -58,13 +56,33 @@ namespace EC_Admin.Forms
                 dgvProductos.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["num_alm"], dr["codigo"], dr["precio"], dr["cant"], dr["unidad"] });
+                    Unidades u = (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString());
+                    string unidad = "";
+                    switch (u)
+                    {
+                        case Unidades.Gramo:
+                            unidad = "Gramo";
+                            break;
+                        case Unidades.Kilogramo:
+                            unidad = "Kilogramo";
+                            break;
+                        case Unidades.Mililitro:
+                            unidad = "Mililitro";
+                            break;
+                        case Unidades.Litro:
+                            unidad = "Litro";
+                            break;
+                        case Unidades.Pieza:
+                            unidad = "Pieza";
+                            break;
+                    }
+                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["codigo"], dr["costo"], dr["cant"], unidad });
                 }
                 dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
             }
             catch (Exception ex)
             {
-                throw ex;
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los productos.", "EC-Admin", ex);
             }
         }
 
@@ -85,6 +103,20 @@ namespace EC_Admin.Forms
                 id = 0;
         }
 
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (dgvProductos.CurrentRow != null && id > 0)
+            {
+                int i = dgvProductos.CurrentRow.Index;
+                decimal desc;
+                decimal.TryParse(txtDescuento.Text, out desc);
+                Unidades u = (Unidades)Enum.Parse(typeof(Unidades), dgvProductos[5, i].Value.ToString());
+
+                frm.AgregarProducto(id, dgvProductos[2, i].Value.ToString(), dgvProductos[1, i].Value.ToString(), (decimal)dgvProductos[3, i].Value, nudCant.Value, desc, u);
+                this.Close();
+            }
+        }
+
         private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
         {
             Buscar(e.Argument.ToString());
@@ -99,45 +131,7 @@ namespace EC_Admin.Forms
         private void tmrEspera_Tick(object sender, EventArgs e)
         {
             tmrEspera.Enabled = false;
-            FuncionesGenerales.frmEspera("Espere, buscando productos", this);
+            FuncionesGenerales.frmEspera("Espere, cargando los productos", this);
         }
-
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            if (dgvProductos.CurrentRow != null)
-            {
-                DataGridViewRow dr = dgvProductos.CurrentRow;
-                frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[3].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[4].Value, nudCant.Value, decimal.Parse(txtDescuento.Text), (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
-                this.Close();
-            }
-        }
-
-        private void frmVentaProducto_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Down && txtBusqueda.Focused)
-            {
-                dgvProductos.Focus();
-            }
-            else if (e.KeyCode == Keys.Up && dgvProductos.Focused)
-            {
-                if (dgvProductos.RowCount > 0)
-                {
-                    if (dgvProductos.CurrentRow.Index == 0)
-                    {
-                        txtBusqueda.Focus();
-                    }
-                }
-                else
-                {
-                    txtBusqueda.Focus();
-                }
-            }
-            else if (e.KeyCode == Keys.Enter && dgvProductos.Focused && dgvProductos.CurrentRow != null)
-            {
-                dgvProductos.Enabled = false;
-                btnAceptar.PerformClick();
-            }
-        }
-
     }
 }

@@ -43,7 +43,7 @@
             this.txtNombre.Location = new System.Drawing.Point(12, 30);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(259, 29);
-            this.txtNombre.TabIndex = 5;
+            this.txtNombre.TabIndex = 1;
             // 
             // lblENombre
             // 
@@ -52,7 +52,7 @@
             this.lblENombre.Location = new System.Drawing.Point(9, 9);
             this.lblENombre.Name = "lblENombre";
             this.lblENombre.Size = new System.Drawing.Size(58, 18);
-            this.lblENombre.TabIndex = 4;
+            this.lblENombre.TabIndex = 0;
             this.lblENombre.Text = "Nombre";
             // 
             // txtDepartamento
@@ -63,7 +63,7 @@
             this.txtDepartamento.Location = new System.Drawing.Point(277, 30);
             this.txtDepartamento.Name = "txtDepartamento";
             this.txtDepartamento.Size = new System.Drawing.Size(259, 29);
-            this.txtDepartamento.TabIndex = 7;
+            this.txtDepartamento.TabIndex = 3;
             // 
             // lblEDepartamento
             // 
@@ -72,7 +72,7 @@
             this.lblEDepartamento.Location = new System.Drawing.Point(274, 9);
             this.lblEDepartamento.Name = "lblEDepartamento";
             this.lblEDepartamento.Size = new System.Drawing.Size(97, 18);
-            this.lblEDepartamento.TabIndex = 6;
+            this.lblEDepartamento.TabIndex = 2;
             this.lblEDepartamento.Text = "Departamento";
             // 
             // btnAceptar
@@ -89,7 +89,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(386, 79);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 25;
+            this.btnAceptar.TabIndex = 4;
             this.btnAceptar.Text = "Crear";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;

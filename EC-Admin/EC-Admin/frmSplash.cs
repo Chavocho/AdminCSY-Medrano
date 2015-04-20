@@ -122,13 +122,7 @@ namespace EC_Admin
         #endregion
 
         #region Paso 03
-        private void ClienteGeneral()
-        {
-            if (Cliente.Cantidad == 0)
-            {
-                Cliente.ClienteGeneral();
-            }
-        }
+        
         #endregion
 
         private void frmSplash_Shown(object sender, EventArgs e)
@@ -138,7 +132,6 @@ namespace EC_Admin
                 ConfiguracionBaseDatos();
                 ConfiguracionSucursal();
                 InicializarCantidades();
-                ClienteGeneral();
             }
             catch (Exception ex)
             {

@@ -90,12 +90,15 @@ namespace EC_Admin
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
-
+            if (!frmCompras.Instancia.Visible)
+                frmCompras.Instancia.Show();
+            else
+                frmCompras.Instancia.Select();
         }
 
         private void btnCotizacion_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnCaja_Click(object sender, EventArgs e)

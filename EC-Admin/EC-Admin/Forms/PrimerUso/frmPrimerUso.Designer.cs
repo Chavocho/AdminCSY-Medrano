@@ -44,7 +44,7 @@
             this.pnlForms.Location = new System.Drawing.Point(0, 22);
             this.pnlForms.Name = "pnlForms";
             this.pnlForms.Size = new System.Drawing.Size(813, 708);
-            this.pnlForms.TabIndex = 0;
+            this.pnlForms.TabIndex = 6;
             // 
             // lblEBaseDatos
             // 
@@ -55,7 +55,7 @@
             this.lblEBaseDatos.Location = new System.Drawing.Point(51, 0);
             this.lblEBaseDatos.Name = "lblEBaseDatos";
             this.lblEBaseDatos.Size = new System.Drawing.Size(118, 22);
-            this.lblEBaseDatos.TabIndex = 3;
+            this.lblEBaseDatos.TabIndex = 1;
             this.lblEBaseDatos.Text = "Base de datos";
             // 
             // lblEInicio
@@ -67,7 +67,7 @@
             this.lblEInicio.Location = new System.Drawing.Point(0, 0);
             this.lblEInicio.Name = "lblEInicio";
             this.lblEInicio.Size = new System.Drawing.Size(51, 22);
-            this.lblEInicio.TabIndex = 2;
+            this.lblEInicio.TabIndex = 0;
             this.lblEInicio.Text = "Inicio";
             // 
             // lblEUsuario
@@ -79,7 +79,7 @@
             this.lblEUsuario.Location = new System.Drawing.Point(169, 0);
             this.lblEUsuario.Name = "lblEUsuario";
             this.lblEUsuario.Size = new System.Drawing.Size(70, 22);
-            this.lblEUsuario.TabIndex = 4;
+            this.lblEUsuario.TabIndex = 2;
             this.lblEUsuario.Text = "Usuario";
             // 
             // lblESucursal
@@ -91,7 +91,7 @@
             this.lblESucursal.Location = new System.Drawing.Point(239, 0);
             this.lblESucursal.Name = "lblESucursal";
             this.lblESucursal.Size = new System.Drawing.Size(76, 22);
-            this.lblESucursal.TabIndex = 5;
+            this.lblESucursal.TabIndex = 3;
             this.lblESucursal.Text = "Sucursal";
             // 
             // lblCerrar
@@ -103,7 +103,7 @@
             this.lblCerrar.Location = new System.Drawing.Point(792, 2);
             this.lblCerrar.Name = "lblCerrar";
             this.lblCerrar.Size = new System.Drawing.Size(18, 18);
-            this.lblCerrar.TabIndex = 6;
+            this.lblCerrar.TabIndex = 5;
             this.lblCerrar.Text = "X";
             this.lblCerrar.Click += new System.EventHandler(this.lblCerrar_Click);
             this.lblCerrar.MouseEnter += new System.EventHandler(this.lblCerrar_MouseEnter);
@@ -118,7 +118,7 @@
             this.lblETerminamos.Location = new System.Drawing.Point(315, 0);
             this.lblETerminamos.Name = "lblETerminamos";
             this.lblETerminamos.Size = new System.Drawing.Size(105, 22);
-            this.lblETerminamos.TabIndex = 7;
+            this.lblETerminamos.TabIndex = 4;
             this.lblETerminamos.Text = "Terminamos";
             // 
             // frmPrimerUso

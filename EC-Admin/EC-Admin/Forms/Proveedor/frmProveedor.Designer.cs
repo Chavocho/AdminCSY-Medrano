@@ -39,13 +39,13 @@
             this.lblEBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.dgvProveedores = new System.Windows.Forms.DataGridView();
-            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
-            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CTelefonos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,6 +154,7 @@
             this.dgvProveedores.AllowUserToResizeColumns = false;
             this.dgvProveedores.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
@@ -167,7 +168,7 @@
             this.dgvProveedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -182,7 +183,7 @@
             this.CCorreo});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -197,19 +198,9 @@
             this.dgvProveedores.RowHeadersVisible = false;
             this.dgvProveedores.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProveedores.Size = new System.Drawing.Size(803, 403);
+            this.dgvProveedores.Size = new System.Drawing.Size(803, 402);
             this.dgvProveedores.TabIndex = 2;
             this.dgvProveedores.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProveedores_RowEnter);
-            // 
-            // bgwBusqueda
-            // 
-            this.bgwBusqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusqueda_DoWork);
-            this.bgwBusqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusqueda_RunWorkerCompleted);
-            // 
-            // tmrEspera
-            // 
-            this.tmrEspera.Interval = 300;
-            this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
             // 
             // CID
             // 
@@ -241,11 +232,21 @@
             this.CCorreo.Name = "CCorreo";
             this.CCorreo.Width = 200;
             // 
+            // bgwBusqueda
+            // 
+            this.bgwBusqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusqueda_DoWork);
+            this.bgwBusqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusqueda_RunWorkerCompleted);
+            // 
+            // tmrEspera
+            // 
+            this.tmrEspera.Interval = 300;
+            this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
+            // 
             // frmProveedor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 462);
+            this.ClientSize = new System.Drawing.Size(1008, 461);
             this.Controls.Add(this.btnContactos);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
@@ -253,7 +254,7 @@
             this.Controls.Add(this.lblEBusqueda);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.dgvProveedores);
-            this.Font = new System.Drawing.Font("Corbel", 9F);
+            this.Font = new System.Drawing.Font("Corbel", 11F);
             this.MinimumSize = new System.Drawing.Size(1024, 500);
             this.Name = "frmProveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

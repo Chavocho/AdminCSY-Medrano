@@ -443,7 +443,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?tipo", tipo);
                 sql.Parameters.AddWithValue("?limite_credito", limiteCredito);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
-                ConexionBD.EjecutarConsulta(sql);
+                this.id = ConexionBD.EjecutarConsulta(sql);
                 ActualizarCantidades();
             }
             catch (MySqlException ex)

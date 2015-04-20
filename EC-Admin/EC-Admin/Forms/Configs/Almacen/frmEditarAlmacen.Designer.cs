@@ -52,7 +52,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(386, 159);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 27;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "Modificar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -72,7 +72,7 @@
             this.btnAsignar.Location = new System.Drawing.Point(439, 4);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Size = new System.Drawing.Size(97, 30);
-            this.btnAsignar.TabIndex = 26;
+            this.btnAsignar.TabIndex = 2;
             this.btnAsignar.Text = "Asignar jefe";
             this.btnAsignar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAsignar.UseVisualStyleBackColor = false;
@@ -87,7 +87,7 @@
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(259, 100);
-            this.txtDescripcion.TabIndex = 25;
+            this.txtDescripcion.TabIndex = 6;
             // 
             // lblEDescripcion
             // 
@@ -97,7 +97,7 @@
             this.lblEDescripcion.Location = new System.Drawing.Point(274, 32);
             this.lblEDescripcion.Name = "lblEDescripcion";
             this.lblEDescripcion.Size = new System.Drawing.Size(80, 18);
-            this.lblEDescripcion.TabIndex = 24;
+            this.lblEDescripcion.TabIndex = 5;
             this.lblEDescripcion.Text = "Descripción";
             // 
             // lblJefeAlmacen
@@ -108,7 +108,7 @@
             this.lblJefeAlmacen.Location = new System.Drawing.Point(124, 9);
             this.lblJefeAlmacen.Name = "lblJefeAlmacen";
             this.lblJefeAlmacen.Size = new System.Drawing.Size(79, 18);
-            this.lblJefeAlmacen.TabIndex = 23;
+            this.lblJefeAlmacen.TabIndex = 1;
             this.lblJefeAlmacen.Text = "Sin asignar";
             // 
             // lblEJefeAlmacen
@@ -119,7 +119,7 @@
             this.lblEJefeAlmacen.Location = new System.Drawing.Point(9, 9);
             this.lblEJefeAlmacen.Name = "lblEJefeAlmacen";
             this.lblEJefeAlmacen.Size = new System.Drawing.Size(109, 18);
-            this.lblEJefeAlmacen.TabIndex = 22;
+            this.lblEJefeAlmacen.TabIndex = 0;
             this.lblEJefeAlmacen.Text = "Jefe de almacen:";
             // 
             // txtNumAlm
@@ -130,7 +130,7 @@
             this.txtNumAlm.Location = new System.Drawing.Point(12, 53);
             this.txtNumAlm.Name = "txtNumAlm";
             this.txtNumAlm.Size = new System.Drawing.Size(259, 29);
-            this.txtNumAlm.TabIndex = 21;
+            this.txtNumAlm.TabIndex = 4;
             this.txtNumAlm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumAlm_KeyPress);
             // 
             // lblENumAlm
@@ -141,7 +141,7 @@
             this.lblENumAlm.Location = new System.Drawing.Point(9, 32);
             this.lblENumAlm.Name = "lblENumAlm";
             this.lblENumAlm.Size = new System.Drawing.Size(130, 18);
-            this.lblENumAlm.TabIndex = 20;
+            this.lblENumAlm.TabIndex = 3;
             this.lblENumAlm.Text = "Número de almacen";
             // 
             // frmEditarAlmacen

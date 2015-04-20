@@ -113,7 +113,8 @@ namespace EC_Admin
                 sql.CommandText = "INSERT INTO categoria (nombre, descripcion) VALUES (?nombre, ?descripcion)";
                 sql.Parameters.AddWithValue("?nombre", nombre);
                 sql.Parameters.AddWithValue("?descripcion", descripcion);
-                id = ConexionBD.EjecutarConsulta(sql);
+                this.id = ConexionBD.EjecutarConsulta(sql);
+                Cant();
             }
             catch (MySqlException ex)
             {

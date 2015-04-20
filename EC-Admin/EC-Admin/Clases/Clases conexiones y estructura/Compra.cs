@@ -8,19 +8,20 @@ using System.Threading.Tasks;
 
 namespace EC_Admin
 {
-    class Venta
+    class Compra
     {
-        #region Propiedades Venta
+        #region Propiedades Compra
         private int id;
-        private int idC;
+        private int idP;
         private int idS;
-        private int idV;
-        private bool cancelada;
-        private bool abierta = false;
+        private int idC;
+        private bool cancelada = false;
         private decimal subtotal;
         private decimal impuesto;
         private decimal descuento;
         private decimal total;
+        private bool remision;
+        private string folioRemision;
         private bool factura;
         private string folioFactura;
         private TipoPago tipo;
@@ -37,10 +38,10 @@ namespace EC_Admin
             set { id = value; }
         }
 
-        public int IDCliente
+        public int IDProveedor
         {
-            get { return idC; }
-            set { idC = value; }
+            get { return idP; }
+            set { idP = value; }
         }
 
         public int IDSucursal
@@ -49,22 +50,16 @@ namespace EC_Admin
             set { idS = value; }
         }
 
-        public int IDVendedor
+        public int IDComprador
         {
-            get { return idV; }
-            set { idV = value; }
+            get { return idC; }
+            set { idC = value; }
         }
 
         public bool Cancelada
         {
             get { return cancelada; }
             set { cancelada = value; }
-        }
-
-        public bool Abierta
-        {
-            get { return abierta; }
-            set { abierta = value; }
         }
 
         public decimal Subtotal
@@ -91,6 +86,18 @@ namespace EC_Admin
             set { total = value; }
         }
 
+        public bool Remision
+        {
+            get { return remision; }
+            set { remision = value; }
+        }
+
+        public string FolioRemision
+        {
+            get { return folioRemision; }
+            set { folioRemision = value; }
+        }
+        
         public bool Factura
         {
             get { return factura; }
@@ -140,8 +147,8 @@ namespace EC_Admin
         }
         #endregion
 
-        #region Propiedades Venta Detallada
-        private List<int> idP;
+        #region Propiedades Compra Detallada
+        private List<int> idPs;
         private List<decimal> cantidad;
         private List<decimal> precio;
         private List<decimal> descuentoP;
@@ -149,8 +156,8 @@ namespace EC_Admin
 
         public List<int> IDProductos
         {
-            get { return idP; }
-            set { idP = value; }
+            get { return idPs; }
+            set { idPs = value; }
         }
 
         public List<decimal> Cantidad
@@ -178,91 +185,42 @@ namespace EC_Admin
         }
         #endregion
 
-        /// <summary>
-        /// Inicializa la instancia de la clase Venta
-        /// </summary>
-        public Venta()
+        public Compra()
         {
-            InicializarVentaDetallada();
+            InicializarCompraDetallada();
         }
 
-        /// <summary>
-        /// Inicializa la instancia de la clase Venta
-        /// </summary>
-        /// <param name="idVenta">ID de la venta</param>
-        public Venta(int idVenta)
+        public Compra(int id)
         {
-            this.id = idVenta;
-            InicializarVenta();
-            InicializarVentaDetallada();
+            InicializarCompraDetallada();
+            this.id = id;
         }
 
-        #region Métodos Venta
-        /// <summary>
-        /// Método que inicializa las propiedades de la clase Venta
-        /// </summary>
-        private void InicializarVenta()
-        {
-            idC = 0;
-            idV = 0;
-            cancelada = false;
-            abierta = true;
-            subtotal = 0;
-            impuesto = 0;
-            descuento = 0;
-            total = 0;
-        }
+        #region Compra
 
-        /// <summary>
-        /// Inserta una nueva venta y asigna el ID de la venta
-        /// </summary>
-        public void NuevaVenta()
+        public void ObtenerDatos()
         {
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO venta (id_vendedor, tipo_pago, create_user, create_time) VALUES (?id_vendedor, ?tipo_pago, ?create_user, NOW())";
-                sql.Parameters.AddWithValue("?id_vendedor", idV);
-                sql.Parameters.AddWithValue("?tipo_pago", TipoPago.Efectivo);   
-                sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
-                id = ConexionBD.EjecutarConsulta(sql);
-                InicializarVenta();
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        /// <summary>
-        /// Recupera los datos de la venta
-        /// </summary>
-        public void RecuperarVenta()
-        {
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT * FROM venta WHERE id=?id";
+                sql.CommandText = "SELECT * FROM compra WHERE id=?id";
                 sql.Parameters.AddWithValue("?id", id);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    idC = (int)dr["id_cliente"];
+                    idP = (int)dr["id_proveedor"];
                     idS = (int)dr["id_sucursal"];
-                    idV = (int)dr["id_vendedor"];
+                    idC = (int)dr["id_comprador"];
                     cancelada = (bool)dr["cancelada"];
-                    abierta = (bool)dr["abierta"];
                     subtotal = (decimal)dr["subtotal"];
                     impuesto = (decimal)dr["impuesto"];
                     descuento = (decimal)dr["descuento"];
                     total = (decimal)dr["total"];
-                    factura = (bool)dr["factura"];
-                    folioFactura = dr["folio_factura"].ToString();
                     tipo = (TipoPago)Enum.Parse(typeof(TipoPago), dr["tipo_pago"].ToString());
+                    remision = (bool)dr["remision"];
+                    factura = (bool)dr["factura"];
+                    folioRemision = dr["folio_remision"].ToString();
+                    folioFactura = dr["folio_factura"].ToString();
                     createUser = (int)dr["create_user"];
                     createTime = (DateTime)dr["create_time"];
                     if (dr["update_user"] != DBNull.Value)
@@ -281,7 +239,6 @@ namespace EC_Admin
                         cancelTime = (DateTime)dr["cancel_time"];
                     else
                         cancelTime = new DateTime();
-                    RecuperarVentaDetallada();
                 }
             }
             catch (MySqlException ex)
@@ -294,31 +251,27 @@ namespace EC_Admin
             }
         }
 
-        /// <summary>
-        /// Inserta todos los datos de una venta
-        /// </summary>
-        public void DatosVenta()
+        public void Insertar()
         {
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE venta SET id_cliente=?id_cliente, id_sucursal=?id_sucursal, id_vendedor=?id_vendedor, abierta=?abierta, subtotal=?subtotal, impuesto=?impuesto, " + 
-                    "descuento=?descuento, total=?total, factura=?factura, folio_factura=?folio_factura, tipo_pago=?tipo_pago, update_user=?update_user, update_time=NOW() WHERE id=?id";
-                sql.Parameters.AddWithValue("?id_cliente", idC);
-                sql.Parameters.AddWithValue("?id_sucursal", idS);
-                sql.Parameters.AddWithValue("?id_vendedor", idV);
-                sql.Parameters.AddWithValue("?abierta", abierta);
-                sql.Parameters.AddWithValue("?subtotal", subtotal);
-                sql.Parameters.AddWithValue("?impuesto", impuesto);
-                sql.Parameters.AddWithValue("?descuento", descuento);
-                sql.Parameters.AddWithValue("?total", total);
-                sql.Parameters.AddWithValue("?factura", factura);
-                sql.Parameters.AddWithValue("?folio_factura", folioFactura);
-                sql.Parameters.AddWithValue("?tipo_pago", tipo);
-                sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
-                sql.Parameters.AddWithValue("?id", id);
-                ConexionBD.EjecutarConsulta(sql);
-                InsertarProductos();
+                sql.CommandText = "INSERT INTO compra (id_proveedor, id_sucursal, id_comprador, subtotal, impuesto, descuento, total, tipo_pago, remision, factura, folio_remision, folio_factura, create_user, create_time) " +
+                    "VALUES (?id_proveedor, ?id_sucursal, ?id_comprador, ?subtotal, ?impuesto, ?descuento, ?total, ?tipo_pago, ?remision, ?factura, ?folio_remision, ?folio_factura, ?create_user, NOW())";
+                sql.Parameters.AddWithValue("?id_proveedor", IDProveedor);
+                sql.Parameters.AddWithValue("?id_sucursal", Config.idSucursal);
+                sql.Parameters.AddWithValue("?id_comprador", IDComprador);
+                sql.Parameters.AddWithValue("?subtotal", Subtotal);
+                sql.Parameters.AddWithValue("?impuesto", Impuesto);
+                sql.Parameters.AddWithValue("?descuento", Descuento);
+                sql.Parameters.AddWithValue("?total", Total);
+                sql.Parameters.AddWithValue("?tipo_pago", Tipo);
+                sql.Parameters.AddWithValue("?remision", Remision);
+                sql.Parameters.AddWithValue("?factura", Factura);
+                sql.Parameters.AddWithValue("?folio_remision", FolioRemision);
+                sql.Parameters.AddWithValue("?folio_factura", FolioFactura);
+                sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
+                this.id = ConexionBD.EjecutarConsulta(sql);
             }
             catch (MySqlException ex)
             {
@@ -330,12 +283,12 @@ namespace EC_Admin
             }
         }
 
-        private static void CancelarVenta(int id)
+        private static void CancelarCompra(int id)
         {
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE venta SET cancelada=?cancelada, cancel_user=?cancel_user, cancel_time=NOW() WHERE id=?id";
+                sql.CommandText = "UPDATE compra SET cancelada=?cancelada, cancel_user=?cancel_user, cancel_time=NOW() WHERE id=?id";
                 sql.Parameters.AddWithValue("?cancelada", true);
                 sql.Parameters.AddWithValue("?cancel_user", Usuario.IDUsuarioActual);
                 sql.Parameters.AddWithValue("?id", id);
@@ -353,46 +306,32 @@ namespace EC_Admin
         }
         #endregion
 
-        #region Métodos Venta Detallada
-        /// <summary>
-        /// Inicializa las propiedades que esten relacionadas con la venta detallada
-        /// </summary>
-        private void InicializarVentaDetallada()
+        #region Compra detallada
+        private void InicializarCompraDetallada()
         {
-            idP = new List<int>();
+            idPs = new List<int>();
             cantidad = new List<decimal>();
+            unidad = new List<Unidades>();
             precio = new List<decimal>();
             descuentoP = new List<decimal>();
-            unidad = new List<Unidades>();
         }
 
-        /// <summary>
-        /// Inserta los productos de la venta en la base de datos, y en caso de estar ya, los actualiza
-        /// </summary>
-        private void InsertarProductos()
+        private void ObtenerDatosDetallada()
         {
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                for (int i = 0; i < idP.Count; i++)
+                sql.CommandText = "SELECT * FROM compra_detallada WHERE id_compra=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
                 {
-                    sql.CommandText = "INSERT INTO venta_detallada (id_venta, id_producto, cant, precio, descuento, unidad) " +
-                    "VALUES (?id_venta, ?id_producto, ?cant, ?precio, ?descuento, ?unidad) " +
-                    "ON DUPLICATE KEY UPDATE cant=?cant, precio=?precio, descuento=?descuento, unidad=?unidad;";
-                    sql.Parameters.AddWithValue("?id_venta", id);
-                    sql.Parameters.AddWithValue("?id_producto", idP[i]);
-                    sql.Parameters.AddWithValue("?cant", cantidad[i]);
-                    sql.Parameters.AddWithValue("?precio", precio[i]);
-                    sql.Parameters.AddWithValue("?descuento", descuentoP[i]);
-                    sql.Parameters.AddWithValue("?unidad", unidad[i]);
-                    ConexionBD.EjecutarConsulta(sql);
-                    sql.Parameters.Clear();
-                    if (this.abierta == false)
-                    {
-                        Producto.CambiarCantidadInventario(idP[i], decimal.Negate(cantidad[i]));
-                    }
+                    idPs.Add((int)dr["id_producto"]);
+                    cantidad.Add((decimal)dr["cant"]);
+                    unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
+                    precio.Add((decimal)dr["precio"]);
+                    descuentoP.Add((decimal)dr["descuento"]);
                 }
-                InicializarVentaDetallada();
             }
             catch (MySqlException ex)
             {
@@ -404,25 +343,22 @@ namespace EC_Admin
             }
         }
 
-        /// <summary>
-        /// Recupera los datos de los productos de la venta detallada
-        /// </summary>
-        private void RecuperarVentaDetallada()
+        private void InsertarDetallada()
         {
-            InicializarVentaDetallada();
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT * FROM venta_detallada WHERE id_venta=?id";
-                sql.Parameters.AddWithValue("?id", id);
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
+                for (int i = 0; i < idPs.Count; i++)
                 {
-                    idP.Add((int)dr["id_producto"]);
-                    cantidad.Add((decimal)dr["cant"]);
-                    precio.Add((decimal)dr["precio"]);
-                    descuentoP.Add((decimal)dr["descuento"]);
-                    unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
+                    sql.CommandText = "INSERT INTO compra_detallada (id_producto, cant, unidad, precio, descuento) " +
+                        "VALUES (?id_producto, ?cant, ?unidad, ?precio, ?descuento)";
+                    sql.Parameters.AddWithValue("?id_producto", idPs[i]);
+                    sql.Parameters.AddWithValue("?cant", cantidad[i]);
+                    sql.Parameters.AddWithValue("?unidad", unidad[i]);
+                    sql.Parameters.AddWithValue("?precio", precio[i]);
+                    sql.Parameters.AddWithValue("?descuento", descuentoP[i]);
+                    ConexionBD.EjecutarConsulta(sql);
+                    sql.Parameters.Clear();
                 }
             }
             catch (MySqlException ex)
@@ -439,11 +375,11 @@ namespace EC_Admin
         {
             try
             {
-                Venta v = new Venta(id);
-                v.RecuperarVenta();
-                for (int i = 0; i < v.IDProductos.Count; i++)
+                Compra c = new Compra(id);
+                c.ObtenerDatos();
+                for (int i = 0; i < c.IDProductos.Count; i++)
                 {
-                    Producto.CambiarCantidadInventario(v.IDProductos[i], decimal.Negate(v.Cantidad[i]));
+                    Producto.CambiarCantidadInventario(c.IDProductos[i], decimal.Negate(c.Cantidad[i]));
                 }
             }
             catch (MySqlException ex)

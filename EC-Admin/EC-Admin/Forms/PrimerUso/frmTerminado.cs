@@ -20,8 +20,17 @@ namespace EC_Admin
             this.frm = frm;
         }
 
+        private void ClienteGeneral()
+        {
+            if (Cliente.Cantidad == 0)
+            {
+                Cliente.ClienteGeneral();
+            }
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            ClienteGeneral();
             frm.Siguiente();
             this.Close();
         }

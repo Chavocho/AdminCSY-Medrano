@@ -555,8 +555,14 @@ namespace EC_Admin.Forms
         {
             if (pcbProducto.InvokeRequired)
             {
-                ImagenProducto i = new ImagenProducto(Imagen);
-                this.Invoke(i, Producto.ImagenProducto(id));
+                try
+                {
+                    ImagenProducto i = new ImagenProducto(Imagen);
+                    this.Invoke(i, Producto.ImagenProducto(id));
+                }
+                catch
+                {
+                }
             }
         }
 

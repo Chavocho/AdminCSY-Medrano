@@ -35,13 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblEFolio = new System.Windows.Forms.Label();
             this.lblFolio = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
@@ -71,6 +64,13 @@
             this.btnVendedor = new System.Windows.Forms.Button();
             this.pcbProducto = new System.Windows.Forms.PictureBox();
             this.bgwImagen = new System.ComponentModel.BackgroundWorker();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.grbTotales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbProducto)).BeginInit();
@@ -96,7 +96,7 @@
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -135,51 +135,6 @@
             this.dgvProductos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_RowEnter);
             this.dgvProductos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvProductos_RowsAdded);
             this.dgvProductos.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvProductos_RowsRemoved);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CCodigo
-            // 
-            this.CCodigo.HeaderText = "Código de producto";
-            this.CCodigo.Name = "CCodigo";
-            this.CCodigo.Width = 150;
-            // 
-            // CNombre
-            // 
-            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CNombre.HeaderText = "Nombre";
-            this.CNombre.Name = "CNombre";
-            // 
-            // CPrecio
-            // 
-            dataGridViewCellStyle3.Format = "C2";
-            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
-            this.CPrecio.HeaderText = "Precio";
-            this.CPrecio.Name = "CPrecio";
-            // 
-            // CCant
-            // 
-            dataGridViewCellStyle4.Format = "0.00";
-            this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
-            this.CCant.HeaderText = "Cantidad";
-            this.CCant.Name = "CCant";
-            // 
-            // CDescuento
-            // 
-            dataGridViewCellStyle5.Format = "C2";
-            this.CDescuento.DefaultCellStyle = dataGridViewCellStyle5;
-            this.CDescuento.HeaderText = "Descuento";
-            this.CDescuento.Name = "CDescuento";
-            // 
-            // CUnidad
-            // 
-            this.CUnidad.HeaderText = "Unidad";
-            this.CUnidad.Name = "CUnidad";
-            this.CUnidad.Visible = false;
             // 
             // lblEFolio
             // 
@@ -569,10 +524,54 @@
             // 
             this.bgwImagen.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwImagen_DoWork);
             // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CCodigo
+            // 
+            this.CCodigo.HeaderText = "Cód. producto";
+            this.CCodigo.Name = "CCodigo";
+            this.CCodigo.Width = 150;
+            // 
+            // CNombre
+            // 
+            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CNombre.HeaderText = "Nombre";
+            this.CNombre.Name = "CNombre";
+            // 
+            // CPrecio
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CPrecio.HeaderText = "Precio";
+            this.CPrecio.Name = "CPrecio";
+            // 
+            // CCant
+            // 
+            dataGridViewCellStyle4.Format = "0.00";
+            this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
+            this.CCant.HeaderText = "Cantidad";
+            this.CCant.Name = "CCant";
+            // 
+            // CDescuento
+            // 
+            dataGridViewCellStyle5.Format = "C2";
+            this.CDescuento.DefaultCellStyle = dataGridViewCellStyle5;
+            this.CDescuento.HeaderText = "Descuento";
+            this.CDescuento.Name = "CDescuento";
+            // 
+            // CUnidad
+            // 
+            this.CUnidad.HeaderText = "Unidad";
+            this.CUnidad.Name = "CUnidad";
+            this.CUnidad.Visible = false;
+            // 
             // frmPOS
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 697);
             this.Controls.Add(this.btnVendedor);
@@ -592,6 +591,7 @@
             this.Controls.Add(this.lblFolio);
             this.Controls.Add(this.lblEFolio);
             this.Controls.Add(this.dgvProductos);
+            this.Font = new System.Drawing.Font("Corbel", 11F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(1024, 736);

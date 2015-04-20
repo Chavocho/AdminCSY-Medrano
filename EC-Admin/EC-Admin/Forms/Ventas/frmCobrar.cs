@@ -46,6 +46,17 @@ namespace EC_Admin.Forms
             }
         }
 
+        private void QuitarEfectivo()
+        {
+            lblEEfectivo.Enabled = false;
+            txtEfectivo.Enabled = false;
+            txtEfectivo.Text = "0.00";
+            lblCambio.Text = "$0.00";
+            lblCambio.BackColor = Colores.Exito;
+            lblECambio.Text = "Cambio:";
+            lblECambio.Location = new Point(206, 102);
+        }
+
         private void frmCobrar_Load(object sender, EventArgs e)
         {
             txtEfectivo.Select();
@@ -58,13 +69,27 @@ namespace EC_Admin.Forms
                 case 0:
                     lblEEfectivo.Enabled = true;
                     txtEfectivo.Enabled = true;
+                    txtDatos.Visible = lblEDatos.Visible = false;
+                    CalcularCambio();
                     break;
-                default:
-                    lblEEfectivo.Enabled = false;
-                    txtEfectivo.Enabled = false;
-                    txtEfectivo.Text = "0.00";
-                    lblCambio.Text = "$0.00";
-                    lblCambio.BackColor = Colores.Exito;
+                case 1:
+                    QuitarEfectivo();
+                    lblEDatos.Text = "Núm. de cheque";
+                    txtDatos.Visible = lblEDatos.Visible = true;
+                    break;
+                case 2:
+                    QuitarEfectivo();
+                    lblEDatos.Text = "Núm. de tarjeta";
+                    txtDatos.Visible = lblEDatos.Visible = true;
+                    break;
+                case 3:
+                    QuitarEfectivo();
+                    lblEDatos.Text = "Núm. de tarjeta";
+                    txtDatos.Visible = lblEDatos.Visible = true;
+                    break;
+                case 4:
+                    QuitarEfectivo();
+                    txtDatos.Visible = lblEDatos.Visible = false;
                     break;
             }
         }

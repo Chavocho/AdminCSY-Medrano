@@ -145,5 +145,40 @@ namespace EC_Admin.Forms
                 this.Close();
             }
         }
+
+        private void frmRecuperarVenta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down && (txtBusqueda.Focused || btnBuscar.Focused || dtpFechaInicio.Focused || dtpFechaFin.Focused))
+            {
+                dgvVentas.Focus();
+            }
+            else if (e.KeyCode == Keys.Up && dgvVentas.Focused)
+            {
+                if (dgvVentas.CurrentRow != null)
+                {
+                    if (dgvVentas.CurrentRow.Index == 0)
+                    {
+                        txtBusqueda.Focus();
+                    }
+                }
+                else
+                {
+                    txtBusqueda.Focus();
+                }
+            }
+            else if (e.KeyCode == Keys.Enter && dgvVentas.Focused && dgvVentas.CurrentRow != null)
+            {
+                dgvVentas.Enabled = false;
+                btnAceptar.PerformClick();
+            }
+        }
+
+        private void dtpFechas_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpFechaInicio.Value > dtpFechaFin.Value)
+                dtpFechaInicio.Value = dtpFechaFin.Value;
+            if (dtpFechaFin.Value < dtpFechaInicio.Value)
+                dtpFechaFin.Value = dtpFechaInicio.Value;
+        }
     }
 }

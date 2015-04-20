@@ -33,17 +33,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDomicilio = new System.Windows.Forms.DataGridView();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CColonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCiudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
-            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDomicilio)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +54,7 @@
             this.dgvDomicilio.AllowUserToResizeColumns = false;
             this.dgvDomicilio.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
@@ -67,7 +68,7 @@
             this.dgvDomicilio.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -83,7 +84,7 @@
             this.CEstado});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -101,41 +102,6 @@
             this.dgvDomicilio.Size = new System.Drawing.Size(803, 438);
             this.dgvDomicilio.TabIndex = 0;
             this.dgvDomicilio.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDomicilio_RowEnter);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CDireccion
-            // 
-            this.CDireccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CDireccion.HeaderText = "Dirección";
-            this.CDireccion.Name = "CDireccion";
-            // 
-            // CCP
-            // 
-            this.CCP.HeaderText = "Código Postal";
-            this.CCP.Name = "CCP";
-            // 
-            // CColonia
-            // 
-            this.CColonia.HeaderText = "Colonia";
-            this.CColonia.Name = "CColonia";
-            this.CColonia.Width = 120;
-            // 
-            // CCiudad
-            // 
-            this.CCiudad.HeaderText = "Ciudad";
-            this.CCiudad.Name = "CCiudad";
-            this.CCiudad.Width = 120;
-            // 
-            // CEstado
-            // 
-            this.CEstado.HeaderText = "Estado";
-            this.CEstado.Name = "CEstado";
-            this.CEstado.Width = 120;
             // 
             // btnEliminar
             // 
@@ -204,6 +170,41 @@
             this.tmrEspera.Interval = 300;
             this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
             // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CDireccion
+            // 
+            this.CDireccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CDireccion.HeaderText = "Dirección";
+            this.CDireccion.Name = "CDireccion";
+            // 
+            // CCP
+            // 
+            this.CCP.HeaderText = "Cód. Postal";
+            this.CCP.Name = "CCP";
+            // 
+            // CColonia
+            // 
+            this.CColonia.HeaderText = "Colonia";
+            this.CColonia.Name = "CColonia";
+            this.CColonia.Width = 120;
+            // 
+            // CCiudad
+            // 
+            this.CCiudad.HeaderText = "Ciudad";
+            this.CCiudad.Name = "CCiudad";
+            this.CCiudad.Width = 120;
+            // 
+            // CEstado
+            // 
+            this.CEstado.HeaderText = "Estado";
+            this.CEstado.Name = "CEstado";
+            this.CEstado.Width = 120;
+            // 
             // frmDomicilio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -213,7 +214,7 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dgvDomicilio);
-            this.Font = new System.Drawing.Font("Corbel", 9F);
+            this.Font = new System.Drawing.Font("Corbel", 11F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.MinimumSize = new System.Drawing.Size(1024, 500);
             this.Name = "frmDomicilio";

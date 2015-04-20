@@ -12,82 +12,116 @@ namespace EC_Admin
     {
         #region Propiedades
         private int id;
+        private int idTrabajador;
+        private bool lunes;
+        private bool martes;
+        private bool miercoles;
+        private bool jueves;
+        private bool viernes;
+        private bool sabado;
+        private bool domingo;
+        private DateTime horaIni;
+        private DateTime horaFin;
+        private static int cant = -1;
 
         public int ID
         {
             get { return id; }
             set { id = value; }
         }
-        private int idTrabajador;
 
         public int IDTrabajor
         {
             get { return idTrabajador; }
             set { idTrabajador = value; }
         }
-        private bool lunes;
 
         public bool Lunes
         {
             get { return lunes; }
             set { lunes = value; }
         }
-        private bool martes;
 
         public bool Martes
         {
             get { return martes; }
             set { martes = value; }
         }
-        private bool miercoles;
 
         public bool Miercoles
         {
             get { return miercoles; }
             set { miercoles = value; }
         }
-        private bool jueves;
 
         public bool Jueves
         {
             get { return jueves; }
             set { jueves = value; }
         }
-        private bool viernes;
 
         public bool Viernes
         {
             get { return viernes; }
             set { viernes = value; }
         }
-        private bool sabado;
 
         public bool Sabado
         {
             get { return sabado; }
             set { sabado = value; }
         }
-        private bool domingo;
 
         public bool Domingo
         {
             get { return domingo; }
             set { domingo = value; }
         }
-        private DateTime horaIni;
 
         public DateTime HoraInicio
         {
             get { return horaIni; }
             set { horaIni = value; }
         }
-        private DateTime horaFin;
 
         public DateTime HoraFin
         {
             get { return horaFin; }
             set { horaFin = value; }
+        }
+
+        public static int Cantidad
+        {
+            get
+            {
+                if (cant < 0)
+                    Cant();
+                return cant;
+            }
         }        
+        #endregion
+
+        #region Cantidad
+        private static void Cant()
+        {
+            try
+            {
+                string sql = "SELECT COUNT(id) AS c FROM horario";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    cant = int.Parse(dr["c"].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
 
         public Horario()
@@ -145,7 +179,8 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?domingo", domingo);
                 sql.Parameters.AddWithValue("?hora_ini", horaIni);
                 sql.Parameters.AddWithValue("?hora_fin", horaFin);
-                ConexionBD.EjecutarConsulta(sql);
+                this.id = ConexionBD.EjecutarConsulta(sql);
+                Cant();
             }
             catch (MySqlException ex)
             {

@@ -66,7 +66,7 @@
             this.dgvTrabajadores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -79,7 +79,7 @@
             this.CPuesto});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -121,6 +121,7 @@
             this.lblEBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEBusqueda.AutoSize = true;
             this.lblEBusqueda.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEBusqueda.Location = new System.Drawing.Point(400, 17);
             this.lblEBusqueda.Name = "lblEBusqueda";
             this.lblEBusqueda.Size = new System.Drawing.Size(248, 18);
@@ -143,18 +144,20 @@
             this.lblENombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblENombre.AutoSize = true;
             this.lblENombre.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblENombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblENombre.Location = new System.Drawing.Point(9, 396);
             this.lblENombre.Name = "lblENombre";
-            this.lblENombre.Size = new System.Drawing.Size(111, 18);
+            this.lblENombre.Size = new System.Drawing.Size(122, 18);
             this.lblENombre.TabIndex = 3;
-            this.lblENombre.Text = "Vendedor actual:";
+            this.lblENombre.Text = "Comprador actual:";
             // 
             // lblNombre
             // 
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Corbel", 11F, System.Drawing.FontStyle.Bold);
-            this.lblNombre.Location = new System.Drawing.Point(126, 396);
+            this.lblNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblNombre.Location = new System.Drawing.Point(137, 396);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(153, 18);
             this.lblNombre.TabIndex = 4;
@@ -193,8 +196,7 @@
             // 
             // frmVendedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(912, 457);
             this.Controls.Add(this.btnAceptar);
@@ -203,11 +205,14 @@
             this.Controls.Add(this.lblEBusqueda);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.dgvTrabajadores);
+            this.Font = new System.Drawing.Font("Corbel", 11F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmVendedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Selección de vendedor";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVendedor_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajadores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -40,7 +40,7 @@
             this.lblSubtitulo.Location = new System.Drawing.Point(74, 132);
             this.lblSubtitulo.Name = "lblSubtitulo";
             this.lblSubtitulo.Size = new System.Drawing.Size(452, 36);
-            this.lblSubtitulo.TabIndex = 4;
+            this.lblSubtitulo.TabIndex = 1;
             this.lblSubtitulo.Text = "Ahora ya puedes empezar a usar el software. Toda la configuración se\r\npuede modif" +
     "icar posteriormente. Que disfrutes de EC-Admin";
             this.lblSubtitulo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -52,7 +52,7 @@
             this.lblTitulo.Location = new System.Drawing.Point(218, 35);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(164, 24);
-            this.lblTitulo.TabIndex = 3;
+            this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Hemos terminado";
             // 
             // btnAceptar
@@ -69,7 +69,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(438, 242);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 20;
+            this.btnAceptar.TabIndex = 2;
             this.btnAceptar.Text = "Terminar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;

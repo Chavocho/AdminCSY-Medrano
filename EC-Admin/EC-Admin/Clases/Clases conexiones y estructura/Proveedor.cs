@@ -248,28 +248,13 @@ namespace EC_Admin
         
         #endregion
 
+        #region Cantidades
+        
         private static void ActualizarCantidades()
         {
             Cant();
             CantProveedoresCredito();
             CantProveedoresSinCredito();
-        }
-
-        /// <summary>
-        /// Inicializa la instancia de la clase Proveedor
-        /// </summary>
-        public Proveedor()
-        {
-
-        }
-
-        /// <summary>
-        /// Inicializa la instancia de la clase Proveedor con el ID especificado
-        /// </summary>
-        /// <param name="id">ID del proveedor</param>
-        public Proveedor(int id)
-        {
-            this.ID = id;
         }
 
         /// <summary>
@@ -347,6 +332,25 @@ namespace EC_Admin
             {
                 throw ex;
             }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Inicializa la instancia de la clase Proveedor
+        /// </summary>
+        public Proveedor()
+        {
+
+        }
+
+        /// <summary>
+        /// Inicializa la instancia de la clase Proveedor con el ID especificado
+        /// </summary>
+        /// <param name="id">ID del proveedor</param>
+        public Proveedor(int id)
+        {
+            this.ID = id;
         }
 
         /// <summary>

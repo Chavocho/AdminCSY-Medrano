@@ -28,11 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.pnlDatos = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblECBeneficiario = new System.Windows.Forms.Label();
+            this.lblCSucursal = new System.Windows.Forms.Label();
+            this.lblCBeneficiario = new System.Windows.Forms.Label();
+            this.lblECSucursal = new System.Windows.Forms.Label();
+            this.lblECNumCuenta = new System.Windows.Forms.Label();
+            this.lblCBanco = new System.Windows.Forms.Label();
+            this.lblCNumCuenta = new System.Windows.Forms.Label();
+            this.lblECBanco = new System.Windows.Forms.Label();
             this.txtLimiteCredito = new System.Windows.Forms.TextBox();
             this.lblELimiteCredito = new System.Windows.Forms.Label();
             this.cboTipoCredito = new System.Windows.Forms.ComboBox();
@@ -81,20 +90,11 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.pnlContactos = new System.Windows.Forms.Panel();
             this.btnCuenta = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblECBeneficiario = new System.Windows.Forms.Label();
-            this.lblCSucursal = new System.Windows.Forms.Label();
-            this.lblCBeneficiario = new System.Windows.Forms.Label();
-            this.lblECSucursal = new System.Windows.Forms.Label();
-            this.lblECNumCuenta = new System.Windows.Forms.Label();
-            this.lblCBanco = new System.Windows.Forms.Label();
-            this.lblCNumCuenta = new System.Windows.Forms.Label();
-            this.lblECBanco = new System.Windows.Forms.Label();
             this.btnQuitar = new System.Windows.Forms.Button();
             this.pnlDatos.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).BeginInit();
             this.pnlContactos.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -161,591 +161,6 @@
             this.pnlDatos.Name = "pnlDatos";
             this.pnlDatos.Size = new System.Drawing.Size(813, 370);
             this.pnlDatos.TabIndex = 2;
-            // 
-            // txtLimiteCredito
-            // 
-            this.txtLimiteCredito.BackColor = System.Drawing.Color.White;
-            this.txtLimiteCredito.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtLimiteCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtLimiteCredito.Location = new System.Drawing.Point(542, 255);
-            this.txtLimiteCredito.MaxLength = 15;
-            this.txtLimiteCredito.Name = "txtLimiteCredito";
-            this.txtLimiteCredito.Size = new System.Drawing.Size(259, 29);
-            this.txtLimiteCredito.TabIndex = 35;
-            this.txtLimiteCredito.Text = "0.00";
-            this.txtLimiteCredito.Visible = false;
-            this.txtLimiteCredito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLimiteCredito_KeyPress);
-            // 
-            // lblELimiteCredito
-            // 
-            this.lblELimiteCredito.AutoSize = true;
-            this.lblELimiteCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblELimiteCredito.Location = new System.Drawing.Point(539, 234);
-            this.lblELimiteCredito.Name = "lblELimiteCredito";
-            this.lblELimiteCredito.Size = new System.Drawing.Size(110, 18);
-            this.lblELimiteCredito.TabIndex = 34;
-            this.lblELimiteCredito.Text = "Límite de crédito";
-            this.lblELimiteCredito.Visible = false;
-            // 
-            // cboTipoCredito
-            // 
-            this.cboTipoCredito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            this.cboTipoCredito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboTipoCredito.Font = new System.Drawing.Font("Corbel", 13F);
-            this.cboTipoCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.cboTipoCredito.FormattingEnabled = true;
-            this.cboTipoCredito.Items.AddRange(new object[] {
-            "Sin crédito",
-            "Con crédito"});
-            this.cboTipoCredito.Location = new System.Drawing.Point(277, 255);
-            this.cboTipoCredito.Name = "cboTipoCredito";
-            this.cboTipoCredito.Size = new System.Drawing.Size(259, 29);
-            this.cboTipoCredito.TabIndex = 33;
-            this.cboTipoCredito.SelectedIndexChanged += new System.EventHandler(this.cboTipoCredito_SelectedIndexChanged);
-            // 
-            // lblETipoCredito
-            // 
-            this.lblETipoCredito.AutoSize = true;
-            this.lblETipoCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblETipoCredito.Location = new System.Drawing.Point(274, 234);
-            this.lblETipoCredito.Name = "lblETipoCredito";
-            this.lblETipoCredito.Size = new System.Drawing.Size(99, 18);
-            this.lblETipoCredito.TabIndex = 32;
-            this.lblETipoCredito.Text = "Tipo de crédito";
-            // 
-            // txtCorreo
-            // 
-            this.txtCorreo.BackColor = System.Drawing.Color.White;
-            this.txtCorreo.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCorreo.Location = new System.Drawing.Point(12, 255);
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(259, 29);
-            this.txtCorreo.TabIndex = 31;
-            // 
-            // lblECorreo
-            // 
-            this.lblECorreo.AutoSize = true;
-            this.lblECorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECorreo.Location = new System.Drawing.Point(9, 234);
-            this.lblECorreo.Name = "lblECorreo";
-            this.lblECorreo.Size = new System.Drawing.Size(121, 18);
-            this.lblECorreo.TabIndex = 30;
-            this.lblECorreo.Text = "Correo electrónico";
-            // 
-            // lblETelefono02
-            // 
-            this.lblETelefono02.AutoSize = true;
-            this.lblETelefono02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblETelefono02.Location = new System.Drawing.Point(600, 176);
-            this.lblETelefono02.Name = "lblETelefono02";
-            this.lblETelefono02.Size = new System.Drawing.Size(61, 18);
-            this.lblETelefono02.TabIndex = 28;
-            this.lblETelefono02.Text = "Teléfono";
-            // 
-            // lblELada02
-            // 
-            this.lblELada02.AutoSize = true;
-            this.lblELada02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblELada02.Location = new System.Drawing.Point(539, 176);
-            this.lblELada02.Name = "lblELada02";
-            this.lblELada02.Size = new System.Drawing.Size(38, 18);
-            this.lblELada02.TabIndex = 26;
-            this.lblELada02.Text = "Lada";
-            // 
-            // lblETelefono01
-            // 
-            this.lblETelefono01.AutoSize = true;
-            this.lblETelefono01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblETelefono01.Location = new System.Drawing.Point(335, 176);
-            this.lblETelefono01.Name = "lblETelefono01";
-            this.lblETelefono01.Size = new System.Drawing.Size(61, 18);
-            this.lblETelefono01.TabIndex = 24;
-            this.lblETelefono01.Text = "Teléfono";
-            // 
-            // txtLada02
-            // 
-            this.txtLada02.BackColor = System.Drawing.Color.White;
-            this.txtLada02.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtLada02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtLada02.Location = new System.Drawing.Point(542, 197);
-            this.txtLada02.MaxLength = 45;
-            this.txtLada02.Name = "txtLada02";
-            this.txtLada02.Size = new System.Drawing.Size(55, 29);
-            this.txtLada02.TabIndex = 27;
-            // 
-            // txtTelefono02
-            // 
-            this.txtTelefono02.BackColor = System.Drawing.Color.White;
-            this.txtTelefono02.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtTelefono02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtTelefono02.Location = new System.Drawing.Point(603, 197);
-            this.txtTelefono02.MaxLength = 45;
-            this.txtTelefono02.Name = "txtTelefono02";
-            this.txtTelefono02.Size = new System.Drawing.Size(198, 29);
-            this.txtTelefono02.TabIndex = 29;
-            // 
-            // txtLada01
-            // 
-            this.txtLada01.BackColor = System.Drawing.Color.White;
-            this.txtLada01.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtLada01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtLada01.Location = new System.Drawing.Point(277, 197);
-            this.txtLada01.MaxLength = 45;
-            this.txtLada01.Name = "txtLada01";
-            this.txtLada01.Size = new System.Drawing.Size(55, 29);
-            this.txtLada01.TabIndex = 23;
-            // 
-            // txtTelefono01
-            // 
-            this.txtTelefono01.BackColor = System.Drawing.Color.White;
-            this.txtTelefono01.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtTelefono01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtTelefono01.Location = new System.Drawing.Point(338, 197);
-            this.txtTelefono01.MaxLength = 45;
-            this.txtTelefono01.Name = "txtTelefono01";
-            this.txtTelefono01.Size = new System.Drawing.Size(198, 29);
-            this.txtTelefono01.TabIndex = 25;
-            // 
-            // lblELada01
-            // 
-            this.lblELada01.AutoSize = true;
-            this.lblELada01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblELada01.Location = new System.Drawing.Point(274, 176);
-            this.lblELada01.Name = "lblELada01";
-            this.lblELada01.Size = new System.Drawing.Size(38, 18);
-            this.lblELada01.TabIndex = 22;
-            this.lblELada01.Text = "Lada";
-            // 
-            // txtCP
-            // 
-            this.txtCP.BackColor = System.Drawing.Color.White;
-            this.txtCP.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtCP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCP.Location = new System.Drawing.Point(12, 197);
-            this.txtCP.Name = "txtCP";
-            this.txtCP.Size = new System.Drawing.Size(259, 29);
-            this.txtCP.TabIndex = 21;
-            this.txtCP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCP_KeyPress);
-            // 
-            // lblECP
-            // 
-            this.lblECP.AutoSize = true;
-            this.lblECP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECP.Location = new System.Drawing.Point(9, 176);
-            this.lblECP.Name = "lblECP";
-            this.lblECP.Size = new System.Drawing.Size(92, 18);
-            this.lblECP.TabIndex = 20;
-            this.lblECP.Text = "Código postal";
-            // 
-            // txtEstado
-            // 
-            this.txtEstado.BackColor = System.Drawing.Color.White;
-            this.txtEstado.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtEstado.Location = new System.Drawing.Point(542, 139);
-            this.txtEstado.MaxLength = 45;
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(259, 29);
-            this.txtEstado.TabIndex = 19;
-            // 
-            // lblEEstado
-            // 
-            this.lblEEstado.AutoSize = true;
-            this.lblEEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEEstado.Location = new System.Drawing.Point(539, 118);
-            this.lblEEstado.Name = "lblEEstado";
-            this.lblEEstado.Size = new System.Drawing.Size(50, 18);
-            this.lblEEstado.TabIndex = 18;
-            this.lblEEstado.Text = "Estado";
-            // 
-            // txtCiudad
-            // 
-            this.txtCiudad.BackColor = System.Drawing.Color.White;
-            this.txtCiudad.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtCiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCiudad.Location = new System.Drawing.Point(277, 139);
-            this.txtCiudad.MaxLength = 45;
-            this.txtCiudad.Name = "txtCiudad";
-            this.txtCiudad.Size = new System.Drawing.Size(259, 29);
-            this.txtCiudad.TabIndex = 17;
-            // 
-            // lblECiudad
-            // 
-            this.lblECiudad.AutoSize = true;
-            this.lblECiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECiudad.Location = new System.Drawing.Point(274, 118);
-            this.lblECiudad.Name = "lblECiudad";
-            this.lblECiudad.Size = new System.Drawing.Size(51, 18);
-            this.lblECiudad.TabIndex = 16;
-            this.lblECiudad.Text = "Ciudad";
-            // 
-            // txtColonia
-            // 
-            this.txtColonia.BackColor = System.Drawing.Color.White;
-            this.txtColonia.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtColonia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtColonia.Location = new System.Drawing.Point(12, 139);
-            this.txtColonia.MaxLength = 45;
-            this.txtColonia.Name = "txtColonia";
-            this.txtColonia.Size = new System.Drawing.Size(259, 29);
-            this.txtColonia.TabIndex = 15;
-            // 
-            // lblEColonia
-            // 
-            this.lblEColonia.AutoSize = true;
-            this.lblEColonia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEColonia.Location = new System.Drawing.Point(9, 118);
-            this.lblEColonia.Name = "lblEColonia";
-            this.lblEColonia.Size = new System.Drawing.Size(54, 18);
-            this.lblEColonia.TabIndex = 14;
-            this.lblEColonia.Text = "Colonia";
-            // 
-            // txtNumInt
-            // 
-            this.txtNumInt.BackColor = System.Drawing.Color.White;
-            this.txtNumInt.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtNumInt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtNumInt.Location = new System.Drawing.Point(675, 81);
-            this.txtNumInt.MaxLength = 15;
-            this.txtNumInt.Name = "txtNumInt";
-            this.txtNumInt.Size = new System.Drawing.Size(126, 29);
-            this.txtNumInt.TabIndex = 13;
-            // 
-            // lblENumInt
-            // 
-            this.lblENumInt.AutoSize = true;
-            this.lblENumInt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblENumInt.Location = new System.Drawing.Point(670, 60);
-            this.lblENumInt.Name = "lblENumInt";
-            this.lblENumInt.Size = new System.Drawing.Size(105, 18);
-            this.lblENumInt.TabIndex = 12;
-            this.lblENumInt.Text = "Número interior";
-            // 
-            // txtNumExt
-            // 
-            this.txtNumExt.BackColor = System.Drawing.Color.White;
-            this.txtNumExt.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtNumExt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtNumExt.Location = new System.Drawing.Point(542, 81);
-            this.txtNumExt.MaxLength = 15;
-            this.txtNumExt.Name = "txtNumExt";
-            this.txtNumExt.Size = new System.Drawing.Size(127, 29);
-            this.txtNumExt.TabIndex = 11;
-            // 
-            // lblENumExt
-            // 
-            this.lblENumExt.AutoSize = true;
-            this.lblENumExt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblENumExt.Location = new System.Drawing.Point(539, 60);
-            this.lblENumExt.Name = "lblENumExt";
-            this.lblENumExt.Size = new System.Drawing.Size(108, 18);
-            this.lblENumExt.TabIndex = 10;
-            this.lblENumExt.Text = "Número exterior";
-            // 
-            // txtCalle
-            // 
-            this.txtCalle.BackColor = System.Drawing.Color.White;
-            this.txtCalle.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtCalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCalle.Location = new System.Drawing.Point(277, 81);
-            this.txtCalle.MaxLength = 45;
-            this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(259, 29);
-            this.txtCalle.TabIndex = 9;
-            // 
-            // lblECalle
-            // 
-            this.lblECalle.AutoSize = true;
-            this.lblECalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECalle.Location = new System.Drawing.Point(274, 60);
-            this.lblECalle.Name = "lblECalle";
-            this.lblECalle.Size = new System.Drawing.Size(37, 18);
-            this.lblECalle.TabIndex = 8;
-            this.lblECalle.Text = "Calle";
-            // 
-            // txtRFC
-            // 
-            this.txtRFC.BackColor = System.Drawing.Color.White;
-            this.txtRFC.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtRFC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtRFC.Location = new System.Drawing.Point(12, 81);
-            this.txtRFC.MaxLength = 13;
-            this.txtRFC.Name = "txtRFC";
-            this.txtRFC.Size = new System.Drawing.Size(259, 29);
-            this.txtRFC.TabIndex = 7;
-            // 
-            // lblERFC
-            // 
-            this.lblERFC.AutoSize = true;
-            this.lblERFC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblERFC.Location = new System.Drawing.Point(9, 60);
-            this.lblERFC.Name = "lblERFC";
-            this.lblERFC.Size = new System.Drawing.Size(34, 18);
-            this.lblERFC.TabIndex = 6;
-            this.lblERFC.Text = "RFC";
-            // 
-            // cboSucursal
-            // 
-            this.cboSucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            this.cboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSucursal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboSucursal.Font = new System.Drawing.Font("Corbel", 13F);
-            this.cboSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.cboSucursal.FormattingEnabled = true;
-            this.cboSucursal.Location = new System.Drawing.Point(12, 23);
-            this.cboSucursal.Name = "cboSucursal";
-            this.cboSucursal.Size = new System.Drawing.Size(259, 29);
-            this.cboSucursal.TabIndex = 1;
-            // 
-            // txtRazonSocial
-            // 
-            this.txtRazonSocial.BackColor = System.Drawing.Color.White;
-            this.txtRazonSocial.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtRazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtRazonSocial.Location = new System.Drawing.Point(542, 23);
-            this.txtRazonSocial.MaxLength = 45;
-            this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(259, 29);
-            this.txtRazonSocial.TabIndex = 5;
-            // 
-            // lblERazonSocial
-            // 
-            this.lblERazonSocial.AutoSize = true;
-            this.lblERazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblERazonSocial.Location = new System.Drawing.Point(539, 2);
-            this.lblERazonSocial.Name = "lblERazonSocial";
-            this.lblERazonSocial.Size = new System.Drawing.Size(84, 18);
-            this.lblERazonSocial.TabIndex = 4;
-            this.lblERazonSocial.Text = "Razón social";
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.BackColor = System.Drawing.Color.White;
-            this.txtNombre.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtNombre.Location = new System.Drawing.Point(277, 23);
-            this.txtNombre.MaxLength = 45;
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(259, 29);
-            this.txtNombre.TabIndex = 3;
-            // 
-            // lblENombre
-            // 
-            this.lblENombre.AutoSize = true;
-            this.lblENombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblENombre.Location = new System.Drawing.Point(274, 2);
-            this.lblENombre.Name = "lblENombre";
-            this.lblENombre.Size = new System.Drawing.Size(58, 18);
-            this.lblENombre.TabIndex = 2;
-            this.lblENombre.Text = "Nombre";
-            // 
-            // lblESucursal
-            // 
-            this.lblESucursal.AutoSize = true;
-            this.lblESucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblESucursal.Location = new System.Drawing.Point(9, 2);
-            this.lblESucursal.Name = "lblESucursal";
-            this.lblESucursal.Size = new System.Drawing.Size(60, 18);
-            this.lblESucursal.TabIndex = 0;
-            this.lblESucursal.Text = "Sucursal";
-            // 
-            // lblEDatosCliente
-            // 
-            this.lblEDatosCliente.AutoSize = true;
-            this.lblEDatosCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEDatosCliente.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
-            this.lblEDatosCliente.ForeColor = System.Drawing.Color.White;
-            this.lblEDatosCliente.Location = new System.Drawing.Point(0, 0);
-            this.lblEDatosCliente.Name = "lblEDatosCliente";
-            this.lblEDatosCliente.Size = new System.Drawing.Size(112, 22);
-            this.lblEDatosCliente.TabIndex = 0;
-            this.lblEDatosCliente.Text = "Datos cliente";
-            this.lblEDatosCliente.Click += new System.EventHandler(this.lblEDatosCliente_Click);
-            // 
-            // lblEContactos
-            // 
-            this.lblEContactos.AutoSize = true;
-            this.lblEContactos.BackColor = System.Drawing.Color.White;
-            this.lblEContactos.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
-            this.lblEContactos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEContactos.Location = new System.Drawing.Point(112, 0);
-            this.lblEContactos.Name = "lblEContactos";
-            this.lblEContactos.Size = new System.Drawing.Size(90, 22);
-            this.lblEContactos.TabIndex = 1;
-            this.lblEContactos.Text = "Contactos";
-            this.lblEContactos.Click += new System.EventHandler(this.lblEContactos_Click);
-            // 
-            // dgvContactos
-            // 
-            this.dgvContactos.AllowUserToAddRows = false;
-            this.dgvContactos.AllowUserToDeleteRows = false;
-            this.dgvContactos.AllowUserToResizeColumns = false;
-            this.dgvContactos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            this.dgvContactos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvContactos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvContactos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            this.dgvContactos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvContactos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvContactos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Corbel", 9F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvContactos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvContactos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CID,
-            this.CNombre,
-            this.CTelefonos,
-            this.CCorreo});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Corbel", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvContactos.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvContactos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvContactos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.dgvContactos.Location = new System.Drawing.Point(0, 0);
-            this.dgvContactos.MultiSelect = false;
-            this.dgvContactos.Name = "dgvContactos";
-            this.dgvContactos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvContactos.RowHeadersVisible = false;
-            this.dgvContactos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvContactos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContactos.Size = new System.Drawing.Size(813, 310);
-            this.dgvContactos.TabIndex = 0;
-            this.dgvContactos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContactos_RowEnter);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CNombre
-            // 
-            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CNombre.HeaderText = "Nombre";
-            this.CNombre.Name = "CNombre";
-            // 
-            // CTelefonos
-            // 
-            this.CTelefonos.HeaderText = "Teléfonos";
-            this.CTelefonos.Name = "CTelefonos";
-            this.CTelefonos.Width = 200;
-            // 
-            // CCorreo
-            // 
-            this.CCorreo.HeaderText = "Correo";
-            this.CCorreo.Name = "CCorreo";
-            this.CCorreo.Width = 200;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnNuevo.FlatAppearance.BorderSize = 0;
-            this.btnNuevo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Font = new System.Drawing.Font("Corbel", 11F);
-            this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(626, 316);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(175, 46);
-            this.btnNuevo.TabIndex = 0;
-            this.btnNuevo.Text = "Nuevo contacto";
-            this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnEditar.FlatAppearance.BorderSize = 0;
-            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Corbel", 11F);
-            this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(445, 316);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(175, 46);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "Modificar contacto";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Font = new System.Drawing.Font("Corbel", 11F);
-            this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(264, 316);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(175, 46);
-            this.btnEliminar.TabIndex = 2;
-            this.btnEliminar.Text = "Eliminar contacto";
-            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // pnlContactos
-            // 
-            this.pnlContactos.Controls.Add(this.btnEliminar);
-            this.pnlContactos.Controls.Add(this.btnEditar);
-            this.pnlContactos.Controls.Add(this.btnNuevo);
-            this.pnlContactos.Controls.Add(this.dgvContactos);
-            this.pnlContactos.Font = new System.Drawing.Font("Corbel", 9F);
-            this.pnlContactos.Location = new System.Drawing.Point(0, 25);
-            this.pnlContactos.Name = "pnlContactos";
-            this.pnlContactos.Size = new System.Drawing.Size(813, 365);
-            this.pnlContactos.TabIndex = 3;
-            this.pnlContactos.Visible = false;
-            // 
-            // btnCuenta
-            // 
-            this.btnCuenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnCuenta.FlatAppearance.BorderSize = 0;
-            this.btnCuenta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnCuenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCuenta.Font = new System.Drawing.Font("Corbel", 11F);
-            this.btnCuenta.ForeColor = System.Drawing.Color.White;
-            this.btnCuenta.Location = new System.Drawing.Point(12, 401);
-            this.btnCuenta.Name = "btnCuenta";
-            this.btnCuenta.Size = new System.Drawing.Size(175, 46);
-            this.btnCuenta.TabIndex = 42;
-            this.btnCuenta.Text = "Asignar cuenta bancaria";
-            this.btnCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCuenta.UseVisualStyleBackColor = false;
-            this.btnCuenta.Click += new System.EventHandler(this.btnCuenta_Click);
             // 
             // groupBox1
             // 
@@ -853,6 +268,610 @@
             this.lblECBanco.TabIndex = 40;
             this.lblECBanco.Text = "Banco:";
             // 
+            // txtLimiteCredito
+            // 
+            this.txtLimiteCredito.BackColor = System.Drawing.Color.White;
+            this.txtLimiteCredito.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtLimiteCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtLimiteCredito.Location = new System.Drawing.Point(542, 255);
+            this.txtLimiteCredito.MaxLength = 15;
+            this.txtLimiteCredito.Name = "txtLimiteCredito";
+            this.txtLimiteCredito.Size = new System.Drawing.Size(259, 29);
+            this.txtLimiteCredito.TabIndex = 35;
+            this.txtLimiteCredito.Text = "0.00";
+            this.txtLimiteCredito.Visible = false;
+            this.txtLimiteCredito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLimiteCredito_KeyPress);
+            // 
+            // lblELimiteCredito
+            // 
+            this.lblELimiteCredito.AutoSize = true;
+            this.lblELimiteCredito.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblELimiteCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblELimiteCredito.Location = new System.Drawing.Point(539, 234);
+            this.lblELimiteCredito.Name = "lblELimiteCredito";
+            this.lblELimiteCredito.Size = new System.Drawing.Size(110, 18);
+            this.lblELimiteCredito.TabIndex = 34;
+            this.lblELimiteCredito.Text = "Límite de crédito";
+            this.lblELimiteCredito.Visible = false;
+            // 
+            // cboTipoCredito
+            // 
+            this.cboTipoCredito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            this.cboTipoCredito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboTipoCredito.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboTipoCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.cboTipoCredito.FormattingEnabled = true;
+            this.cboTipoCredito.Items.AddRange(new object[] {
+            "Sin crédito",
+            "Con crédito"});
+            this.cboTipoCredito.Location = new System.Drawing.Point(277, 255);
+            this.cboTipoCredito.Name = "cboTipoCredito";
+            this.cboTipoCredito.Size = new System.Drawing.Size(259, 29);
+            this.cboTipoCredito.TabIndex = 33;
+            this.cboTipoCredito.SelectedIndexChanged += new System.EventHandler(this.cboTipoCredito_SelectedIndexChanged);
+            // 
+            // lblETipoCredito
+            // 
+            this.lblETipoCredito.AutoSize = true;
+            this.lblETipoCredito.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblETipoCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblETipoCredito.Location = new System.Drawing.Point(274, 234);
+            this.lblETipoCredito.Name = "lblETipoCredito";
+            this.lblETipoCredito.Size = new System.Drawing.Size(99, 18);
+            this.lblETipoCredito.TabIndex = 32;
+            this.lblETipoCredito.Text = "Tipo de crédito";
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.BackColor = System.Drawing.Color.White;
+            this.txtCorreo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtCorreo.Location = new System.Drawing.Point(12, 255);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(259, 29);
+            this.txtCorreo.TabIndex = 31;
+            // 
+            // lblECorreo
+            // 
+            this.lblECorreo.AutoSize = true;
+            this.lblECorreo.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblECorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblECorreo.Location = new System.Drawing.Point(9, 234);
+            this.lblECorreo.Name = "lblECorreo";
+            this.lblECorreo.Size = new System.Drawing.Size(121, 18);
+            this.lblECorreo.TabIndex = 30;
+            this.lblECorreo.Text = "Correo electrónico";
+            // 
+            // lblETelefono02
+            // 
+            this.lblETelefono02.AutoSize = true;
+            this.lblETelefono02.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblETelefono02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblETelefono02.Location = new System.Drawing.Point(600, 176);
+            this.lblETelefono02.Name = "lblETelefono02";
+            this.lblETelefono02.Size = new System.Drawing.Size(61, 18);
+            this.lblETelefono02.TabIndex = 28;
+            this.lblETelefono02.Text = "Teléfono";
+            // 
+            // lblELada02
+            // 
+            this.lblELada02.AutoSize = true;
+            this.lblELada02.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblELada02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblELada02.Location = new System.Drawing.Point(539, 176);
+            this.lblELada02.Name = "lblELada02";
+            this.lblELada02.Size = new System.Drawing.Size(38, 18);
+            this.lblELada02.TabIndex = 26;
+            this.lblELada02.Text = "Lada";
+            // 
+            // lblETelefono01
+            // 
+            this.lblETelefono01.AutoSize = true;
+            this.lblETelefono01.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblETelefono01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblETelefono01.Location = new System.Drawing.Point(335, 176);
+            this.lblETelefono01.Name = "lblETelefono01";
+            this.lblETelefono01.Size = new System.Drawing.Size(61, 18);
+            this.lblETelefono01.TabIndex = 24;
+            this.lblETelefono01.Text = "Teléfono";
+            // 
+            // txtLada02
+            // 
+            this.txtLada02.BackColor = System.Drawing.Color.White;
+            this.txtLada02.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtLada02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtLada02.Location = new System.Drawing.Point(542, 197);
+            this.txtLada02.MaxLength = 45;
+            this.txtLada02.Name = "txtLada02";
+            this.txtLada02.Size = new System.Drawing.Size(55, 29);
+            this.txtLada02.TabIndex = 27;
+            // 
+            // txtTelefono02
+            // 
+            this.txtTelefono02.BackColor = System.Drawing.Color.White;
+            this.txtTelefono02.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtTelefono02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtTelefono02.Location = new System.Drawing.Point(603, 197);
+            this.txtTelefono02.MaxLength = 45;
+            this.txtTelefono02.Name = "txtTelefono02";
+            this.txtTelefono02.Size = new System.Drawing.Size(198, 29);
+            this.txtTelefono02.TabIndex = 29;
+            // 
+            // txtLada01
+            // 
+            this.txtLada01.BackColor = System.Drawing.Color.White;
+            this.txtLada01.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtLada01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtLada01.Location = new System.Drawing.Point(277, 197);
+            this.txtLada01.MaxLength = 45;
+            this.txtLada01.Name = "txtLada01";
+            this.txtLada01.Size = new System.Drawing.Size(55, 29);
+            this.txtLada01.TabIndex = 23;
+            // 
+            // txtTelefono01
+            // 
+            this.txtTelefono01.BackColor = System.Drawing.Color.White;
+            this.txtTelefono01.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtTelefono01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtTelefono01.Location = new System.Drawing.Point(338, 197);
+            this.txtTelefono01.MaxLength = 45;
+            this.txtTelefono01.Name = "txtTelefono01";
+            this.txtTelefono01.Size = new System.Drawing.Size(198, 29);
+            this.txtTelefono01.TabIndex = 25;
+            // 
+            // lblELada01
+            // 
+            this.lblELada01.AutoSize = true;
+            this.lblELada01.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblELada01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblELada01.Location = new System.Drawing.Point(274, 176);
+            this.lblELada01.Name = "lblELada01";
+            this.lblELada01.Size = new System.Drawing.Size(38, 18);
+            this.lblELada01.TabIndex = 22;
+            this.lblELada01.Text = "Lada";
+            // 
+            // txtCP
+            // 
+            this.txtCP.BackColor = System.Drawing.Color.White;
+            this.txtCP.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtCP.Location = new System.Drawing.Point(12, 197);
+            this.txtCP.Name = "txtCP";
+            this.txtCP.Size = new System.Drawing.Size(259, 29);
+            this.txtCP.TabIndex = 21;
+            this.txtCP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCP_KeyPress);
+            // 
+            // lblECP
+            // 
+            this.lblECP.AutoSize = true;
+            this.lblECP.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblECP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblECP.Location = new System.Drawing.Point(9, 176);
+            this.lblECP.Name = "lblECP";
+            this.lblECP.Size = new System.Drawing.Size(92, 18);
+            this.lblECP.TabIndex = 20;
+            this.lblECP.Text = "Código postal";
+            // 
+            // txtEstado
+            // 
+            this.txtEstado.BackColor = System.Drawing.Color.White;
+            this.txtEstado.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtEstado.Location = new System.Drawing.Point(542, 139);
+            this.txtEstado.MaxLength = 45;
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.Size = new System.Drawing.Size(259, 29);
+            this.txtEstado.TabIndex = 19;
+            // 
+            // lblEEstado
+            // 
+            this.lblEEstado.AutoSize = true;
+            this.lblEEstado.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblEEstado.Location = new System.Drawing.Point(539, 118);
+            this.lblEEstado.Name = "lblEEstado";
+            this.lblEEstado.Size = new System.Drawing.Size(50, 18);
+            this.lblEEstado.TabIndex = 18;
+            this.lblEEstado.Text = "Estado";
+            // 
+            // txtCiudad
+            // 
+            this.txtCiudad.BackColor = System.Drawing.Color.White;
+            this.txtCiudad.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtCiudad.Location = new System.Drawing.Point(277, 139);
+            this.txtCiudad.MaxLength = 45;
+            this.txtCiudad.Name = "txtCiudad";
+            this.txtCiudad.Size = new System.Drawing.Size(259, 29);
+            this.txtCiudad.TabIndex = 17;
+            // 
+            // lblECiudad
+            // 
+            this.lblECiudad.AutoSize = true;
+            this.lblECiudad.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblECiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblECiudad.Location = new System.Drawing.Point(274, 118);
+            this.lblECiudad.Name = "lblECiudad";
+            this.lblECiudad.Size = new System.Drawing.Size(51, 18);
+            this.lblECiudad.TabIndex = 16;
+            this.lblECiudad.Text = "Ciudad";
+            // 
+            // txtColonia
+            // 
+            this.txtColonia.BackColor = System.Drawing.Color.White;
+            this.txtColonia.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtColonia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtColonia.Location = new System.Drawing.Point(12, 139);
+            this.txtColonia.MaxLength = 45;
+            this.txtColonia.Name = "txtColonia";
+            this.txtColonia.Size = new System.Drawing.Size(259, 29);
+            this.txtColonia.TabIndex = 15;
+            // 
+            // lblEColonia
+            // 
+            this.lblEColonia.AutoSize = true;
+            this.lblEColonia.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEColonia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblEColonia.Location = new System.Drawing.Point(9, 118);
+            this.lblEColonia.Name = "lblEColonia";
+            this.lblEColonia.Size = new System.Drawing.Size(54, 18);
+            this.lblEColonia.TabIndex = 14;
+            this.lblEColonia.Text = "Colonia";
+            // 
+            // txtNumInt
+            // 
+            this.txtNumInt.BackColor = System.Drawing.Color.White;
+            this.txtNumInt.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNumInt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtNumInt.Location = new System.Drawing.Point(675, 81);
+            this.txtNumInt.MaxLength = 15;
+            this.txtNumInt.Name = "txtNumInt";
+            this.txtNumInt.Size = new System.Drawing.Size(126, 29);
+            this.txtNumInt.TabIndex = 13;
+            // 
+            // lblENumInt
+            // 
+            this.lblENumInt.AutoSize = true;
+            this.lblENumInt.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblENumInt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblENumInt.Location = new System.Drawing.Point(670, 60);
+            this.lblENumInt.Name = "lblENumInt";
+            this.lblENumInt.Size = new System.Drawing.Size(105, 18);
+            this.lblENumInt.TabIndex = 12;
+            this.lblENumInt.Text = "Número interior";
+            // 
+            // txtNumExt
+            // 
+            this.txtNumExt.BackColor = System.Drawing.Color.White;
+            this.txtNumExt.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNumExt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtNumExt.Location = new System.Drawing.Point(542, 81);
+            this.txtNumExt.MaxLength = 15;
+            this.txtNumExt.Name = "txtNumExt";
+            this.txtNumExt.Size = new System.Drawing.Size(127, 29);
+            this.txtNumExt.TabIndex = 11;
+            // 
+            // lblENumExt
+            // 
+            this.lblENumExt.AutoSize = true;
+            this.lblENumExt.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblENumExt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblENumExt.Location = new System.Drawing.Point(539, 60);
+            this.lblENumExt.Name = "lblENumExt";
+            this.lblENumExt.Size = new System.Drawing.Size(108, 18);
+            this.lblENumExt.TabIndex = 10;
+            this.lblENumExt.Text = "Número exterior";
+            // 
+            // txtCalle
+            // 
+            this.txtCalle.BackColor = System.Drawing.Color.White;
+            this.txtCalle.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtCalle.Location = new System.Drawing.Point(277, 81);
+            this.txtCalle.MaxLength = 45;
+            this.txtCalle.Name = "txtCalle";
+            this.txtCalle.Size = new System.Drawing.Size(259, 29);
+            this.txtCalle.TabIndex = 9;
+            // 
+            // lblECalle
+            // 
+            this.lblECalle.AutoSize = true;
+            this.lblECalle.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblECalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblECalle.Location = new System.Drawing.Point(274, 60);
+            this.lblECalle.Name = "lblECalle";
+            this.lblECalle.Size = new System.Drawing.Size(37, 18);
+            this.lblECalle.TabIndex = 8;
+            this.lblECalle.Text = "Calle";
+            // 
+            // txtRFC
+            // 
+            this.txtRFC.BackColor = System.Drawing.Color.White;
+            this.txtRFC.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtRFC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtRFC.Location = new System.Drawing.Point(12, 81);
+            this.txtRFC.MaxLength = 13;
+            this.txtRFC.Name = "txtRFC";
+            this.txtRFC.Size = new System.Drawing.Size(259, 29);
+            this.txtRFC.TabIndex = 7;
+            // 
+            // lblERFC
+            // 
+            this.lblERFC.AutoSize = true;
+            this.lblERFC.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblERFC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblERFC.Location = new System.Drawing.Point(9, 60);
+            this.lblERFC.Name = "lblERFC";
+            this.lblERFC.Size = new System.Drawing.Size(34, 18);
+            this.lblERFC.TabIndex = 6;
+            this.lblERFC.Text = "RFC";
+            // 
+            // cboSucursal
+            // 
+            this.cboSucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            this.cboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSucursal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboSucursal.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.cboSucursal.FormattingEnabled = true;
+            this.cboSucursal.Location = new System.Drawing.Point(12, 23);
+            this.cboSucursal.Name = "cboSucursal";
+            this.cboSucursal.Size = new System.Drawing.Size(259, 29);
+            this.cboSucursal.TabIndex = 1;
+            // 
+            // txtRazonSocial
+            // 
+            this.txtRazonSocial.BackColor = System.Drawing.Color.White;
+            this.txtRazonSocial.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtRazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtRazonSocial.Location = new System.Drawing.Point(542, 23);
+            this.txtRazonSocial.MaxLength = 45;
+            this.txtRazonSocial.Name = "txtRazonSocial";
+            this.txtRazonSocial.Size = new System.Drawing.Size(259, 29);
+            this.txtRazonSocial.TabIndex = 5;
+            // 
+            // lblERazonSocial
+            // 
+            this.lblERazonSocial.AutoSize = true;
+            this.lblERazonSocial.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblERazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblERazonSocial.Location = new System.Drawing.Point(539, 2);
+            this.lblERazonSocial.Name = "lblERazonSocial";
+            this.lblERazonSocial.Size = new System.Drawing.Size(84, 18);
+            this.lblERazonSocial.TabIndex = 4;
+            this.lblERazonSocial.Text = "Razón social";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.BackColor = System.Drawing.Color.White;
+            this.txtNombre.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtNombre.Location = new System.Drawing.Point(277, 23);
+            this.txtNombre.MaxLength = 45;
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(259, 29);
+            this.txtNombre.TabIndex = 3;
+            // 
+            // lblENombre
+            // 
+            this.lblENombre.AutoSize = true;
+            this.lblENombre.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblENombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblENombre.Location = new System.Drawing.Point(274, 2);
+            this.lblENombre.Name = "lblENombre";
+            this.lblENombre.Size = new System.Drawing.Size(58, 18);
+            this.lblENombre.TabIndex = 2;
+            this.lblENombre.Text = "Nombre";
+            // 
+            // lblESucursal
+            // 
+            this.lblESucursal.AutoSize = true;
+            this.lblESucursal.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblESucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblESucursal.Location = new System.Drawing.Point(9, 2);
+            this.lblESucursal.Name = "lblESucursal";
+            this.lblESucursal.Size = new System.Drawing.Size(60, 18);
+            this.lblESucursal.TabIndex = 0;
+            this.lblESucursal.Text = "Sucursal";
+            // 
+            // lblEDatosCliente
+            // 
+            this.lblEDatosCliente.AutoSize = true;
+            this.lblEDatosCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblEDatosCliente.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
+            this.lblEDatosCliente.ForeColor = System.Drawing.Color.White;
+            this.lblEDatosCliente.Location = new System.Drawing.Point(0, 0);
+            this.lblEDatosCliente.Name = "lblEDatosCliente";
+            this.lblEDatosCliente.Size = new System.Drawing.Size(112, 22);
+            this.lblEDatosCliente.TabIndex = 0;
+            this.lblEDatosCliente.Text = "Datos cliente";
+            this.lblEDatosCliente.Click += new System.EventHandler(this.lblEDatosCliente_Click);
+            // 
+            // lblEContactos
+            // 
+            this.lblEContactos.AutoSize = true;
+            this.lblEContactos.BackColor = System.Drawing.Color.White;
+            this.lblEContactos.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
+            this.lblEContactos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblEContactos.Location = new System.Drawing.Point(112, 0);
+            this.lblEContactos.Name = "lblEContactos";
+            this.lblEContactos.Size = new System.Drawing.Size(90, 22);
+            this.lblEContactos.TabIndex = 1;
+            this.lblEContactos.Text = "Contactos";
+            this.lblEContactos.Click += new System.EventHandler(this.lblEContactos_Click);
+            // 
+            // dgvContactos
+            // 
+            this.dgvContactos.AllowUserToAddRows = false;
+            this.dgvContactos.AllowUserToDeleteRows = false;
+            this.dgvContactos.AllowUserToResizeColumns = false;
+            this.dgvContactos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            this.dgvContactos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvContactos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvContactos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            this.dgvContactos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvContactos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvContactos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvContactos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContactos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CID,
+            this.CNombre,
+            this.CTelefonos,
+            this.CCorreo});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvContactos.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvContactos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvContactos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.dgvContactos.Location = new System.Drawing.Point(0, 0);
+            this.dgvContactos.MultiSelect = false;
+            this.dgvContactos.Name = "dgvContactos";
+            this.dgvContactos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvContactos.RowHeadersVisible = false;
+            this.dgvContactos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvContactos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvContactos.Size = new System.Drawing.Size(813, 315);
+            this.dgvContactos.TabIndex = 0;
+            this.dgvContactos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContactos_RowEnter);
+            // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CNombre
+            // 
+            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CNombre.HeaderText = "Nombre";
+            this.CNombre.Name = "CNombre";
+            // 
+            // CTelefonos
+            // 
+            this.CTelefonos.HeaderText = "Teléfonos";
+            this.CTelefonos.Name = "CTelefonos";
+            this.CTelefonos.Width = 200;
+            // 
+            // CCorreo
+            // 
+            this.CCorreo.HeaderText = "Correo";
+            this.CCorreo.Name = "CCorreo";
+            this.CCorreo.Width = 200;
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
+            this.btnNuevo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Font = new System.Drawing.Font("Corbel", 11F);
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(626, 321);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(175, 46);
+            this.btnNuevo.TabIndex = 0;
+            this.btnNuevo.Text = "Nuevo contacto";
+            this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Corbel", 11F);
+            this.btnEditar.ForeColor = System.Drawing.Color.White;
+            this.btnEditar.Location = new System.Drawing.Point(445, 321);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(175, 46);
+            this.btnEditar.TabIndex = 1;
+            this.btnEditar.Text = "Modificar contacto";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Corbel", 11F);
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(264, 321);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(175, 46);
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.Text = "Eliminar contacto";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // pnlContactos
+            // 
+            this.pnlContactos.Controls.Add(this.btnEliminar);
+            this.pnlContactos.Controls.Add(this.btnEditar);
+            this.pnlContactos.Controls.Add(this.btnNuevo);
+            this.pnlContactos.Controls.Add(this.dgvContactos);
+            this.pnlContactos.Font = new System.Drawing.Font("Corbel", 11F);
+            this.pnlContactos.Location = new System.Drawing.Point(0, 25);
+            this.pnlContactos.Name = "pnlContactos";
+            this.pnlContactos.Size = new System.Drawing.Size(813, 370);
+            this.pnlContactos.TabIndex = 3;
+            this.pnlContactos.Visible = false;
+            // 
+            // btnCuenta
+            // 
+            this.btnCuenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnCuenta.FlatAppearance.BorderSize = 0;
+            this.btnCuenta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnCuenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCuenta.Font = new System.Drawing.Font("Corbel", 11F);
+            this.btnCuenta.ForeColor = System.Drawing.Color.White;
+            this.btnCuenta.Location = new System.Drawing.Point(12, 401);
+            this.btnCuenta.Name = "btnCuenta";
+            this.btnCuenta.Size = new System.Drawing.Size(175, 46);
+            this.btnCuenta.TabIndex = 42;
+            this.btnCuenta.Text = "Asignar cuenta bancaria";
+            this.btnCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCuenta.UseVisualStyleBackColor = false;
+            this.btnCuenta.Click += new System.EventHandler(this.btnCuenta_Click);
+            // 
             // btnQuitar
             // 
             this.btnQuitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -896,10 +915,10 @@
             this.Load += new System.EventHandler(this.frmEditarCliente_Load);
             this.pnlDatos.ResumeLayout(false);
             this.pnlDatos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).EndInit();
-            this.pnlContactos.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).EndInit();
+            this.pnlContactos.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

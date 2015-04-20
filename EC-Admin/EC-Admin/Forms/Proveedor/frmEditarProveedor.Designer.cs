@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblEContactos = new System.Windows.Forms.Label();
             this.lblEDatosCliente = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -309,6 +309,7 @@
             // lblELimiteCredito
             // 
             this.lblELimiteCredito.AutoSize = true;
+            this.lblELimiteCredito.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblELimiteCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblELimiteCredito.Location = new System.Drawing.Point(539, 234);
             this.lblELimiteCredito.Name = "lblELimiteCredito";
@@ -336,6 +337,7 @@
             // lblETipoCredito
             // 
             this.lblETipoCredito.AutoSize = true;
+            this.lblETipoCredito.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblETipoCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblETipoCredito.Location = new System.Drawing.Point(274, 234);
             this.lblETipoCredito.Name = "lblETipoCredito";
@@ -356,6 +358,7 @@
             // lblECorreo
             // 
             this.lblECorreo.AutoSize = true;
+            this.lblECorreo.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblECorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblECorreo.Location = new System.Drawing.Point(9, 234);
             this.lblECorreo.Name = "lblECorreo";
@@ -366,6 +369,7 @@
             // lblETelefono02
             // 
             this.lblETelefono02.AutoSize = true;
+            this.lblETelefono02.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblETelefono02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblETelefono02.Location = new System.Drawing.Point(600, 176);
             this.lblETelefono02.Name = "lblETelefono02";
@@ -376,6 +380,7 @@
             // lblELada02
             // 
             this.lblELada02.AutoSize = true;
+            this.lblELada02.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblELada02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblELada02.Location = new System.Drawing.Point(539, 176);
             this.lblELada02.Name = "lblELada02";
@@ -386,6 +391,7 @@
             // lblETelefono01
             // 
             this.lblETelefono01.AutoSize = true;
+            this.lblETelefono01.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblETelefono01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblETelefono01.Location = new System.Drawing.Point(335, 176);
             this.lblETelefono01.Name = "lblETelefono01";
@@ -436,6 +442,7 @@
             // lblELada01
             // 
             this.lblELada01.AutoSize = true;
+            this.lblELada01.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblELada01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblELada01.Location = new System.Drawing.Point(274, 176);
             this.lblELada01.Name = "lblELada01";
@@ -457,6 +464,7 @@
             // lblECP
             // 
             this.lblECP.AutoSize = true;
+            this.lblECP.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblECP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblECP.Location = new System.Drawing.Point(9, 176);
             this.lblECP.Name = "lblECP";
@@ -477,6 +485,7 @@
             // lblEEstado
             // 
             this.lblEEstado.AutoSize = true;
+            this.lblEEstado.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblEEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEEstado.Location = new System.Drawing.Point(539, 118);
             this.lblEEstado.Name = "lblEEstado";
@@ -497,6 +506,7 @@
             // lblECiudad
             // 
             this.lblECiudad.AutoSize = true;
+            this.lblECiudad.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblECiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblECiudad.Location = new System.Drawing.Point(274, 118);
             this.lblECiudad.Name = "lblECiudad";
@@ -517,6 +527,7 @@
             // lblEColonia
             // 
             this.lblEColonia.AutoSize = true;
+            this.lblEColonia.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblEColonia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEColonia.Location = new System.Drawing.Point(9, 118);
             this.lblEColonia.Name = "lblEColonia";
@@ -537,6 +548,7 @@
             // lblENumInt
             // 
             this.lblENumInt.AutoSize = true;
+            this.lblENumInt.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblENumInt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblENumInt.Location = new System.Drawing.Point(670, 60);
             this.lblENumInt.Name = "lblENumInt";
@@ -557,6 +569,7 @@
             // lblENumExt
             // 
             this.lblENumExt.AutoSize = true;
+            this.lblENumExt.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblENumExt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblENumExt.Location = new System.Drawing.Point(539, 60);
             this.lblENumExt.Name = "lblENumExt";
@@ -577,6 +590,7 @@
             // lblECalle
             // 
             this.lblECalle.AutoSize = true;
+            this.lblECalle.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblECalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblECalle.Location = new System.Drawing.Point(274, 60);
             this.lblECalle.Name = "lblECalle";
@@ -598,6 +612,7 @@
             // lblERFC
             // 
             this.lblERFC.AutoSize = true;
+            this.lblERFC.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblERFC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblERFC.Location = new System.Drawing.Point(9, 60);
             this.lblERFC.Name = "lblERFC";
@@ -631,6 +646,7 @@
             // lblERazonSocial
             // 
             this.lblERazonSocial.AutoSize = true;
+            this.lblERazonSocial.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblERazonSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblERazonSocial.Location = new System.Drawing.Point(539, 2);
             this.lblERazonSocial.Name = "lblERazonSocial";
@@ -651,6 +667,7 @@
             // lblENombre
             // 
             this.lblENombre.AutoSize = true;
+            this.lblENombre.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblENombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblENombre.Location = new System.Drawing.Point(274, 2);
             this.lblENombre.Name = "lblENombre";
@@ -661,6 +678,7 @@
             // lblESucursal
             // 
             this.lblESucursal.AutoSize = true;
+            this.lblESucursal.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblESucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblESucursal.Location = new System.Drawing.Point(9, 2);
             this.lblESucursal.Name = "lblESucursal";
@@ -674,7 +692,7 @@
             this.pnlContactos.Controls.Add(this.btnEditar);
             this.pnlContactos.Controls.Add(this.btnNuevo);
             this.pnlContactos.Controls.Add(this.dgvContactos);
-            this.pnlContactos.Font = new System.Drawing.Font("Corbel", 9F);
+            this.pnlContactos.Font = new System.Drawing.Font("Corbel", 11F);
             this.pnlContactos.Location = new System.Drawing.Point(0, 25);
             this.pnlContactos.Name = "pnlContactos";
             this.pnlContactos.Size = new System.Drawing.Size(813, 370);
@@ -746,11 +764,12 @@
             this.dgvContactos.AllowUserToDeleteRows = false;
             this.dgvContactos.AllowUserToResizeColumns = false;
             this.dgvContactos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            this.dgvContactos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            this.dgvContactos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvContactos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -758,14 +777,14 @@
             this.dgvContactos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvContactos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvContactos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Corbel", 9F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvContactos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvContactos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvContactos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
@@ -773,14 +792,14 @@
             this.CRFC,
             this.CTelefonos,
             this.CCorreo});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Corbel", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvContactos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvContactos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvContactos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvContactos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvContactos.Location = new System.Drawing.Point(0, 0);

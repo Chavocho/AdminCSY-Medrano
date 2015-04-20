@@ -55,7 +55,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(388, 208);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 30;
+            this.btnAceptar.TabIndex = 10;
             this.btnAceptar.Text = "Modificar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -68,7 +68,7 @@
             this.txtNumCuenta.Location = new System.Drawing.Point(14, 147);
             this.txtNumCuenta.Name = "txtNumCuenta";
             this.txtNumCuenta.Size = new System.Drawing.Size(259, 29);
-            this.txtNumCuenta.TabIndex = 29;
+            this.txtNumCuenta.TabIndex = 9;
             // 
             // lblENumCuenta
             // 
@@ -76,7 +76,7 @@
             this.lblENumCuenta.Location = new System.Drawing.Point(11, 126);
             this.lblENumCuenta.Name = "lblENumCuenta";
             this.lblENumCuenta.Size = new System.Drawing.Size(121, 18);
-            this.lblENumCuenta.TabIndex = 28;
+            this.lblENumCuenta.TabIndex = 8;
             this.lblENumCuenta.Text = "Número de cuenta";
             // 
             // txtSucursal
@@ -85,7 +85,7 @@
             this.txtSucursal.Location = new System.Drawing.Point(279, 89);
             this.txtSucursal.Name = "txtSucursal";
             this.txtSucursal.Size = new System.Drawing.Size(259, 29);
-            this.txtSucursal.TabIndex = 27;
+            this.txtSucursal.TabIndex = 7;
             // 
             // lblESucursal
             // 
@@ -93,7 +93,7 @@
             this.lblESucursal.Location = new System.Drawing.Point(276, 68);
             this.lblESucursal.Name = "lblESucursal";
             this.lblESucursal.Size = new System.Drawing.Size(60, 18);
-            this.lblESucursal.TabIndex = 26;
+            this.lblESucursal.TabIndex = 6;
             this.lblESucursal.Text = "Sucursal";
             // 
             // txtBeneficiario
@@ -102,7 +102,7 @@
             this.txtBeneficiario.Location = new System.Drawing.Point(14, 89);
             this.txtBeneficiario.Name = "txtBeneficiario";
             this.txtBeneficiario.Size = new System.Drawing.Size(259, 29);
-            this.txtBeneficiario.TabIndex = 25;
+            this.txtBeneficiario.TabIndex = 5;
             // 
             // lblEBeneficiario
             // 
@@ -110,7 +110,7 @@
             this.lblEBeneficiario.Location = new System.Drawing.Point(11, 68);
             this.lblEBeneficiario.Name = "lblEBeneficiario";
             this.lblEBeneficiario.Size = new System.Drawing.Size(80, 18);
-            this.lblEBeneficiario.TabIndex = 24;
+            this.lblEBeneficiario.TabIndex = 4;
             this.lblEBeneficiario.Text = "Beneficiario";
             // 
             // txtBanco
@@ -119,7 +119,7 @@
             this.txtBanco.Location = new System.Drawing.Point(279, 31);
             this.txtBanco.Name = "txtBanco";
             this.txtBanco.Size = new System.Drawing.Size(259, 29);
-            this.txtBanco.TabIndex = 23;
+            this.txtBanco.TabIndex = 3;
             // 
             // lblEBanco
             // 
@@ -127,7 +127,7 @@
             this.lblEBanco.Location = new System.Drawing.Point(276, 10);
             this.lblEBanco.Name = "lblEBanco";
             this.lblEBanco.Size = new System.Drawing.Size(47, 18);
-            this.lblEBanco.TabIndex = 22;
+            this.lblEBanco.TabIndex = 2;
             this.lblEBanco.Text = "Banco";
             // 
             // txtClabe
@@ -136,7 +136,7 @@
             this.txtClabe.Location = new System.Drawing.Point(14, 31);
             this.txtClabe.Name = "txtClabe";
             this.txtClabe.Size = new System.Drawing.Size(259, 29);
-            this.txtClabe.TabIndex = 21;
+            this.txtClabe.TabIndex = 1;
             // 
             // lblEClabe
             // 
@@ -144,7 +144,7 @@
             this.lblEClabe.Location = new System.Drawing.Point(11, 10);
             this.lblEClabe.Name = "lblEClabe";
             this.lblEClabe.Size = new System.Drawing.Size(42, 18);
-            this.lblEClabe.TabIndex = 20;
+            this.lblEClabe.TabIndex = 0;
             this.lblEClabe.Text = "Clabe";
             // 
             // frmEditarCuenta

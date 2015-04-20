@@ -123,7 +123,8 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?num_alm", numAlm);
                 sql.Parameters.AddWithValue("?descripcion", descripcion);
                 sql.Parameters.AddWithValue("?id_sucursal", Config.idSucursal);
-                ConexionBD.EjecutarConsulta(sql);
+                this.id = ConexionBD.EjecutarConsulta(sql);
+                Cant();
             }
             catch (MySqlException ex)
             {

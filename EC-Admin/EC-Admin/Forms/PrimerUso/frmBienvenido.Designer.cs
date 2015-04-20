@@ -42,7 +42,7 @@
             this.lblTitulo02.Location = new System.Drawing.Point(252, 61);
             this.lblTitulo02.Name = "lblTitulo02";
             this.lblTitulo02.Size = new System.Drawing.Size(97, 24);
-            this.lblTitulo02.TabIndex = 0;
+            this.lblTitulo02.TabIndex = 1;
             this.lblTitulo02.Text = "EC-Admin";
             // 
             // lblTitulo01
@@ -52,7 +52,7 @@
             this.lblTitulo01.Location = new System.Drawing.Point(246, 21);
             this.lblTitulo01.Name = "lblTitulo01";
             this.lblTitulo01.Size = new System.Drawing.Size(109, 22);
-            this.lblTitulo01.TabIndex = 1;
+            this.lblTitulo01.TabIndex = 0;
             this.lblTitulo01.Text = "Bienvenido a";
             // 
             // lblSubtitulo
@@ -80,7 +80,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(438, 242);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 19;
+            this.btnAceptar.TabIndex = 3;
             this.btnAceptar.Text = "Siguiente";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;

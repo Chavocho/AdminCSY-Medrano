@@ -76,6 +76,7 @@
     <Compile Include="Clases\Clases conexiones y estructura\Categoria.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cliente.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\ClienteContacto.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Compra.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cuenta.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Horario.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Producto.cs" />
@@ -146,11 +147,29 @@
     <Compile Include="Forms\Cliente\frmEditarCliente.Designer.cs">
       <DependentUpon>frmEditarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Compra\frmCompraProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\frmCompraProveedor.Designer.cs">
+      <DependentUpon>frmCompraProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Compra\frmCompras.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Compra\frmCompras.Designer.cs">
       <DependentUpon>frmCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Compra\frmCompraProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\frmCompraProducto.Designer.cs">
+      <DependentUpon>frmCompraProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Compra\frmNuevaCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\frmNuevaCompra.Designer.cs">
+      <DependentUpon>frmNuevaCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Configs\Almacen\frmAlmacenTrabajador.cs">
       <SubType>Form</SubType>
@@ -538,8 +557,17 @@
     <EmbeddedResource Include="Forms\Cliente\frmEditarCliente.resx">
       <DependentUpon>frmEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\frmCompraProveedor.resx">
+      <DependentUpon>frmCompraProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Compra\frmCompras.resx">
       <DependentUpon>frmCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\frmCompraProducto.resx">
+      <DependentUpon>frmCompraProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\frmNuevaCompra.resx">
+      <DependentUpon>frmNuevaCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configs\Almacen\frmAlmacenTrabajador.resx">
       <DependentUpon>frmAlmacenTrabajador.cs</DependentUpon>
