@@ -15,19 +15,44 @@ namespace EC_Admin.Forms
     {
         int id;
         decimal subtotal = 0M, impuesto = 0M, descuento = 0M, total = 0M, cantTot = 0M;
+        TipoPago t;
 
         Venta v;
         private int idProveedor;
         private int idComprador = -1;
+
         public frmNuevaCompra()
         {
             InitializeComponent();
+            cboTipoPago.SelectedIndex = 0;
+            chbRemision.Checked = true;
         }
 
         #region Compra
 
         private void NuevaCompra()
         {
+            Compra c = new Compra();
+            c.IDProveedor = idProveedor;
+            c.IDComprador = idComprador;
+            c.Subtotal = subtotal;
+            c.Impuesto = impuesto;
+            c.Descuento = descuento;
+            c.Total = total;
+            c.Tipo = t;
+            c.Remision = chbRemision.Checked;
+            c.Factura = chbFactura.Checked;
+            c.FolioRemision = txtRemision.Text;
+            c.FolioFactura = txtFactura.Text;
+            foreach (DataGridViewRow dr in dgvProductos.Rows)
+            {
+                c.IDProductos.Add((int)dr.Cells[0].Value);
+                c.Cantidad.Add((decimal)dr.Cells[4].Value);
+                c.Unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
+                c.Precio.Add((decimal)dr.Cells[3].Value);
+                c.DescuentoProducto.Add((decimal)dr.Cells[5].Value);
+            }
+            c.Insertar();
         }
 
         #endregion
@@ -169,6 +194,66 @@ namespace EC_Admin.Forms
 
         #endregion
 
+        private bool VerificarDatos()
+        {
+            if (idComprador <= 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes seleccionar un comprador", "EC-Admin");
+                return false;
+            }
+            if (idProveedor <= 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes seleccionar un proveedor", "EC-Admin");
+                return false;
+            }
+            if (dgvProductos.RowCount == 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un producto a la compra", "EC-Admin");
+                return false;
+            }
+            switch (cboTipoPago.SelectedIndex)
+            {
+                case 1:
+                    if (txtDatos.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el número de cheque", "EC-Admin");
+                        return false;
+                    }
+                    break;
+                case 2:
+                    if (txtDatos.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de crédito", "EC-Admin");
+                        return false;
+                    }
+                    break;
+                case 3:
+                    if (txtDatos.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de débito", "EC-Admin");
+                        return false;
+                    }
+                    break;
+            }
+            if (chbRemision.Checked)
+            {
+                if (txtRemision.Text.Trim() == "")
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la remisión", "EC-Admin");
+                    return false;
+                }
+            }
+            if (chbFactura.Checked)
+            {
+                if (txtFactura.Text.Trim() == "")
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la factura", "EC-Admin");
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvProductos.CurrentRow != null)
@@ -207,11 +292,25 @@ namespace EC_Admin.Forms
 
         private void btnCobrar_Click(object sender, EventArgs e)
         {
-            if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Los datos ingresados son correctos?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+            if (VerificarDatos())
             {
-                NuevaCompra();
-                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha registrado la compra correctamente!", "EC-Admin");
-                this.Close();
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Los datos ingresados son correctos?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+                {
+                    try
+                    {
+                        NuevaCompra();
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha registrado la compra correctamente!", "EC-Admin");
+                        this.Close();
+                    }
+                    catch (MySqlException ex)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar la compra. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar la compra.", "EC-Admin", ex);
+                    }
+                }
             }
         }
 
@@ -275,6 +374,62 @@ namespace EC_Admin.Forms
                 (new frmVendedor(this, idComprador, lblComprador.Text)).ShowDialog(this);
             }
             txtBusqueda.Select();
+        }
+
+        private void chbRemision_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbRemision.Checked)
+            {
+                chbFactura.Checked = false;
+                txtFactura.Enabled = false;
+                txtFactura.Text = "";
+                txtRemision.Enabled = true;
+                if (chbRemision.Checked == false)
+                {
+                    chbRemision.Checked = true;
+                }
+            }
+        }
+
+        private void chbFactura_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbFactura.Enabled)
+            {
+                chbRemision.Checked = false;
+                txtRemision.Enabled = false;
+                txtRemision.Text = "";
+                txtFactura.Enabled = true;
+            }
+        }
+
+        private void cboTipoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cboTipoPago.SelectedIndex)
+            {
+                case 0:
+                    txtDatos.Visible = lblEDatos.Visible = false;
+                    t = TipoPago.Efectivo;
+                    break;
+                case 1:
+                    lblEDatos.Text = "Núm. de cheque";
+                    txtDatos.Visible = lblEDatos.Visible = true;
+                    t = TipoPago.Cheque;
+                    break;
+                case 2:
+                    lblEDatos.Text = "Núm. de tarjeta";
+                    txtDatos.Visible = lblEDatos.Visible = true;
+                    t = TipoPago.Crédito;
+                    break;
+                case 3:
+                    lblEDatos.Text = "Núm. de tarjeta";
+                    txtDatos.Visible = lblEDatos.Visible = true;
+                    t = TipoPago.Débito;
+                    break;
+                case 4:
+                    txtDatos.Visible = lblEDatos.Visible = false;
+                    t = TipoPago.Transferencia;
+                    break;
+            }
         }
     }
 }

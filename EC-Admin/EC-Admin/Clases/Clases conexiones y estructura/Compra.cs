@@ -272,6 +272,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?folio_factura", FolioFactura);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
                 this.id = ConexionBD.EjecutarConsulta(sql);
+                InsertarDetallada();
             }
             catch (MySqlException ex)
             {
@@ -359,6 +360,7 @@ namespace EC_Admin
                     sql.Parameters.AddWithValue("?descuento", descuentoP[i]);
                     ConexionBD.EjecutarConsulta(sql);
                     sql.Parameters.Clear();
+                    Producto.CambiarCantidadInventario(idPs[i], cantidad[i]);
                 }
             }
             catch (MySqlException ex)
