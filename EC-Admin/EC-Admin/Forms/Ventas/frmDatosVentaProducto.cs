@@ -12,7 +12,8 @@ namespace EC_Admin.Forms
 {
     public partial class frmDatosVentaProducto : Form
     {
-        frmPOS frm;
+        frmPOS frm = null;
+        frmNuevaCompra frmC = null;
         public frmDatosVentaProducto(frmPOS frm, string nombre, decimal cant, decimal descuento)
         {
             InitializeComponent();
@@ -23,11 +24,24 @@ namespace EC_Admin.Forms
             nudCant.Select();
         }
 
+        public frmDatosVentaProducto(frmNuevaCompra frm, string nombre, decimal cant, decimal descuento)
+        {
+            InitializeComponent();
+            this.frmC = frm;
+            this.Text += nombre;
+            nudCant.Value = cant;
+            txtDescuento.Text = descuento.ToString();
+            nudCant.Select();
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             decimal desc;
             decimal.TryParse(txtDescuento.Text, out desc);
-            frm.ModificarProducto(nudCant.Value, desc);
+            if (frm != null)
+                frm.ModificarProducto(nudCant.Value, desc);
+            else if (frmC != null)
+                frmC.ModificarProducto(nudCant.Value, desc);
             this.Close();
         }
     }

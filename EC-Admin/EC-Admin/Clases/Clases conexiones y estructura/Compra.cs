@@ -351,8 +351,9 @@ namespace EC_Admin
                 MySqlCommand sql = new MySqlCommand();
                 for (int i = 0; i < idPs.Count; i++)
                 {
-                    sql.CommandText = "INSERT INTO compra_detallada (id_producto, cant, unidad, precio, descuento) " +
-                        "VALUES (?id_producto, ?cant, ?unidad, ?precio, ?descuento)";
+                    sql.CommandText = "INSERT INTO compra_detallada (id_compra, id_producto, cant, unidad, precio, descuento) " +
+                        "VALUES (?id_compra, ?id_producto, ?cant, ?unidad, ?precio, ?descuento)";
+                    sql.Parameters.AddWithValue("?id_compra", id);
                     sql.Parameters.AddWithValue("?id_producto", idPs[i]);
                     sql.Parameters.AddWithValue("?cant", cantidad[i]);
                     sql.Parameters.AddWithValue("?unidad", unidad[i]);
