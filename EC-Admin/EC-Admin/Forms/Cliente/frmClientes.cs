@@ -35,6 +35,7 @@ namespace EC_Admin.Forms
         int id = 0;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
+        CerrarFrmEspera c;
 
         public frmClientes()
         {
@@ -44,13 +45,12 @@ namespace EC_Admin.Forms
         private void Cerrar()
         {
             tmrEspera.Enabled = false;
-            txtBusqueda.Enabled = true;
-            txtBusqueda.Select();
             FuncionesGenerales.frmEsperaClose();
         }
 
         private void BuscarClientes(string p)
         {
+            c = new CerrarFrmEspera(Cerrar);
             try
             {
                 string sql = "SELECT id, nombre, razon_social, telefono1, telefono2, email, lada1, lada2 FROM cliente WHERE nombre LIKE '%" + p + "%' AND eliminado=0";
@@ -58,18 +58,19 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                Cerrar();
+                this.Invoke(c);
                 this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los clientes.", "EC-Admin", ex });
             }
             catch (Exception ex)
             {
-                Cerrar();
+                this.Invoke(c);
                 this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los clientes.", "EC-Admin", ex });
             }
         }
 
         private void LlenarDataGrid()
         {
+            dgvClientes.Rows.Clear();
             foreach (DataRow dr in dt.Rows)
             {
                 string razonSocial = "", telefonos = "", correo = "";
@@ -130,8 +131,10 @@ namespace EC_Admin.Forms
                 {
                     correo = "Sin información";
                 }
-
-                dgvClientes.Rows.Add(new object[] { dr["id"], dr["nombre"], razonSocial, telefonos, correo });
+                if (dr["id"].ToString() != "0")
+                {
+                    dgvClientes.Rows.Add(new object[] { dr["id"], dr["nombre"], razonSocial, telefonos, correo });
+                }
             }
             dgvClientes_RowEnter(dgvClientes, new DataGridViewCellEventArgs(0, 0));
         }
@@ -157,7 +160,6 @@ namespace EC_Admin.Forms
             if (e.KeyCode == Keys.Enter)
             {
                 tmrEspera.Enabled = true;
-                txtBusqueda.Enabled = false;
                 bgwBusqueda.RunWorkerAsync(txtBusqueda.Text);
             }
         }

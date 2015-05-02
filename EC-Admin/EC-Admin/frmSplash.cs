@@ -99,9 +99,10 @@ namespace EC_Admin
 
         #region Paso 02
         //Inicializamos las variables de cantidad en las clases
-        private void InicializarCantidades()
+        private void InicializarPropiedades()
         {
             int cant = 0;
+            decimal efe = 0M;
             cant = Cliente.Cantidad;
             cant = Cliente.CantidadCredito;
             cant = Cliente.CantidadSinCredito;
@@ -109,7 +110,7 @@ namespace EC_Admin
             cant = Proveedor.Cantidad;
             cant = Proveedor.CantidadCredito;
             cant = Proveedor.CantidadSinCredito;
-            //cant = ProveedorContacto.Cantidad;
+            cant = ProveedorContacto.Cantidad;
             cant = Puesto.Cantidad;
             cant = Sucursal.Cantidad;
             cant = Sucursal.CantidadDomicilios;
@@ -118,6 +119,8 @@ namespace EC_Admin
             cant = Usuario.CantidadUsuariosAdministrador;
             cant = Usuario.CantidadUsuariosEncargado;
             cant = Usuario.CantidadUsuariosDesconocido;
+            Caja.EstadoC();
+            efe = Caja.TotalEfectivo;
         }
         #endregion
 
@@ -131,7 +134,7 @@ namespace EC_Admin
             {
                 ConfiguracionBaseDatos();
                 ConfiguracionSucursal();
-                InicializarCantidades();
+                InicializarPropiedades();
             }
             catch (Exception ex)
             {

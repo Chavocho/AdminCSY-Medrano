@@ -340,6 +340,31 @@ namespace EC_Admin
             }
         }
 
+        public static string NombreSucursal(int id)
+        {
+            string nombre = "";
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT nombre FROM sucursal WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    nombre = dr["nombre"].ToString();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return nombre;
+        }
+
         #region Direcciones
         private int idDireccion;
         private string calleFiscal;

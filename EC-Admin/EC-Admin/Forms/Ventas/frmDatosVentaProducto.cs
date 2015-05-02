@@ -14,6 +14,8 @@ namespace EC_Admin.Forms
     {
         frmPOS frm = null;
         frmNuevaCompra frmC = null;
+        frmCotizacion frmCT = null;
+
         public frmDatosVentaProducto(frmPOS frm, string nombre, decimal cant, decimal descuento)
         {
             InitializeComponent();
@@ -34,6 +36,16 @@ namespace EC_Admin.Forms
             nudCant.Select();
         }
 
+        public frmDatosVentaProducto(frmCotizacion frm, string nombre, decimal cant, decimal descuento)
+        {
+            InitializeComponent();
+            this.frmCT = frm;
+            this.Text += nombre;
+            nudCant.Value = cant;
+            txtDescuento.Text = descuento.ToString();
+            nudCant.Select();
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             decimal desc;
@@ -42,6 +54,8 @@ namespace EC_Admin.Forms
                 frm.ModificarProducto(nudCant.Value, desc);
             else if (frmC != null)
                 frmC.ModificarProducto(nudCant.Value, desc);
+            else if (frmCT != null)
+                frmCT.ModificarProducto(nudCant.Value, desc);
             this.Close();
         }
     }

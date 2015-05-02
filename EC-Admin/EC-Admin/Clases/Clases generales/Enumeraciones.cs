@@ -45,4 +45,17 @@ namespace EC_Admin
         Litro = 3,
         Pieza = 4
     }
+
+    public enum MovimientoCaja
+    {
+        Entrada = 0,
+        Salida = 1
+    }
+
+    public enum EstadoVenta
+    {
+        Abierta = 0,
+        Cerrada = 1,
+        Credito = 2
+    }
 }

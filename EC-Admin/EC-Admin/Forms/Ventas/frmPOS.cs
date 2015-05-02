@@ -243,6 +243,35 @@ namespace EC_Admin.Forms
             }
         }
 
+        public void VentaCotizacion(Cotizacion c)
+        {
+            try
+            {
+                VerificarVisible();
+                ControlesHabilitados();
+                v.NuevaVenta();
+                lblFolio.Text = v.IDVenta.ToString();
+                v.Abierta = true;
+                v.Descuento = c.Descuento;
+                v.IDCliente = c.IDCliente;
+                lblCliente.Text = Cliente.NombreCliente(c.IDCliente);
+                v.IDSucursal = c.IDSucursal;
+                v.IDVendedor = c.IDVendedor;
+                lblVendedor.Text = Trabajador.NombreTrabajador(c.IDVendedor);
+                v.Impuesto = c.Impuesto;
+                v.Subtotal = c.Subtotal;
+                v.Total = c.Total;
+                for (int i = 0; i < c.IDProductos.Count; i++)
+                {
+                    AgregarProducto(c.IDProductos[i], CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Precio[i], c.Cantidad[i], c.DescuentoProducto[i], c.Unidad[i]);
+                }
+            }
+            catch (Exception ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al importar la cotización.", "EC-Admin", ex);
+            }
+        }
+
         #endregion
 
         #region Productos

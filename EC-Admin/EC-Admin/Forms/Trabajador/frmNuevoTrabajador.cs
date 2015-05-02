@@ -65,6 +65,8 @@ namespace EC_Admin.Forms
         {
             try
             {
+                decimal sueldo;
+                decimal.TryParse(txtSueldo.Text, out sueldo);
                 Trabajador t = new Trabajador();
                 t.IDSucursal = idSucursal[cboSucursal.SelectedIndex];
                 t.Puesto = idPuesto[cboPuesto.SelectedIndex];
@@ -81,6 +83,7 @@ namespace EC_Admin.Forms
                 t.FechaInicio = dtpFechaInicio.Value;
                 t.Imagen = pcbImagen.Image;
                 t.Huella = huella;
+                t.Sueldo = sueldo;
                 t.Insertar();
             }
             catch (MySqlException ex)
@@ -207,6 +210,7 @@ namespace EC_Admin.Forms
             {
                 c.TerminarFuenteDeVideo();
                 FuncionesGenerales.EfectoFoto(ref pcbImagen);
+                cboCamaras.Enabled = true;
             }
         }
 
@@ -239,6 +243,11 @@ namespace EC_Admin.Forms
             {
                 c.TerminarFuenteDeVideo();
             }
+        }
+
+        private void txtSueldo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesGenerales.VerificarEsNumero(ref sender, ref e, false);
         }
     }
 }

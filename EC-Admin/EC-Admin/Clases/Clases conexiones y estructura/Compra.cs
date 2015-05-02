@@ -240,6 +240,7 @@ namespace EC_Admin
                     else
                         cancelTime = new DateTime();
                 }
+                ObtenerDatosDetallada();
             }
             catch (MySqlException ex)
             {
@@ -272,7 +273,52 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?folio_factura", FolioFactura);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
                 this.id = ConexionBD.EjecutarConsulta(sql);
+                RegistrarMovimientoIngreso();
                 InsertarDetallada();
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void RegistrarMovimientoIngreso()
+        {
+            try
+            {
+                Caja c = new Caja();
+                c.Descripcion = "COMPRA DE PRODUCTOS CON FOLIO: " + this.id.ToString();
+                c.Efectivo = decimal.Negate(this.total);
+                c.IDSucursal = this.idS;
+                c.TipoMovimiento = MovimientoCaja.Salida;
+                c.Voucher = 0M;
+                c.RegistrarMovimiento();
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private static void RegistrarMovimientoCancelacion(int id, int idSucursal, decimal total)
+        {
+            try
+            {
+                Caja c = new Caja();
+                c.Descripcion = "CANCELACIÓN DE COMPRA DE PRODUCTOS CON FOLIO: " + id.ToString();
+                c.Efectivo = total;
+                c.IDSucursal = idSucursal;
+                c.TipoMovimiento = MovimientoCaja.Salida;
+                c.Voucher = 0M;
+                c.RegistrarMovimiento();
             }
             catch (MySqlException ex)
             {

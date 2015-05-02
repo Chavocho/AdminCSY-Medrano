@@ -33,14 +33,14 @@ namespace EC_Admin.Forms
             if (cambio > 0)
             {
                 lblECambio.Text = "Falta:";
-                lblECambio.Location = new Point(230, 102);
+                lblECambio.Location = new Point(30, 121);
                 lblCambio.BackColor = Colores.Error;
                 lblCambio.Text = cambio.ToString("C2");
             }
             else
             {
                 lblECambio.Text = "Cambio:";
-                lblECambio.Location = new Point(206, 102);
+                lblECambio.Location = new Point(10, 121);
                 lblCambio.BackColor = Colores.Exito;
                 lblCambio.Text = (cambio * -1).ToString("C2");
             }

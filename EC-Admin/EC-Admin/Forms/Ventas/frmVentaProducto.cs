@@ -16,12 +16,19 @@ namespace EC_Admin.Forms
         int id = 0;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
-        frmPOS frm;
+        frmPOS frm = null;
+        frmCotizacion frmC = null;
 
         public frmVentaProducto(frmPOS frm)
         {
             InitializeComponent();
             this.frm = frm;
+        }
+
+        public frmVentaProducto(frmCotizacion frm)
+        {
+            InitializeComponent();
+            this.frmC = frm;
         }
 
         private void Cerrar()
@@ -107,7 +114,14 @@ namespace EC_Admin.Forms
             if (dgvProductos.CurrentRow != null)
             {
                 DataGridViewRow dr = dgvProductos.CurrentRow;
-                frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[3].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[4].Value, nudCant.Value, decimal.Parse(txtDescuento.Text), (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
+                if (frm != null)
+                {
+                    frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[3].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[4].Value, nudCant.Value, decimal.Parse(txtDescuento.Text), (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
+                }
+                else if (frmC != null)
+                {
+                    frmC.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[3].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[4].Value, nudCant.Value, decimal.Parse(txtDescuento.Text), (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
+                }
                 this.Close();
             }
         }

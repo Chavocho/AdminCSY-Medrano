@@ -139,7 +139,7 @@ namespace EC_Admin
             get { return cancelTime; }
         }
         #endregion
-
+         
         #region Propiedades Venta Detallada
         private List<int> idP;
         private List<decimal> cantidad;

@@ -16,12 +16,19 @@ namespace EC_Admin.Forms
         int id = 0;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
-        frmPOS frm;
+        frmPOS frm = null;
+        frmCotizacion frmC = null;
 
         public frmVentaCliente(frmPOS frm)
         {
             InitializeComponent();
             this.frm = frm;
+        }
+
+        public frmVentaCliente(frmCotizacion frm)
+        {
+            InitializeComponent();
+            this.frmC = frm;
         }
 
         private void Cerrar()
@@ -139,7 +146,14 @@ namespace EC_Admin.Forms
         {
             if (dgvClientes.CurrentRow != null)
             {
-                frm.AsignarCliente(id, dgvClientes[1, dgvClientes.CurrentRow.Index].Value.ToString());
+                if (frm != null)
+                {
+                    frm.AsignarCliente(id, dgvClientes[1, dgvClientes.CurrentRow.Index].Value.ToString());
+                }
+                else if (frmC != null)
+                {
+                    frmC.AsignarCliente(id, dgvClientes[1, dgvClientes.CurrentRow.Index].Value.ToString());
+                }
                 this.Close();
             }
         }

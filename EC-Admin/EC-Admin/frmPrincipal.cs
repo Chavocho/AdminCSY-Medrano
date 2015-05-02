@@ -53,6 +53,13 @@ namespace EC_Admin
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            try
+            {
+                this.Text += " - " + Sucursal.NombreSucursal(Config.idSucursal);
+            }
+            catch
+            {
+            }
             DatosUsuario();
         }
 
@@ -98,12 +105,18 @@ namespace EC_Admin
 
         private void btnCotizacion_Click(object sender, EventArgs e)
         {
-            
+            if (!frmCotizacion.Instancia.Visible)
+                frmCotizacion.Instancia.Show();
+            else
+                frmCotizacion.Instancia.Select();
         }
 
         private void btnCaja_Click(object sender, EventArgs e)
         {
-
+            if (!frmCaja.Instancia.Visible)
+                frmCaja.Instancia.Show();
+            else
+                frmCaja.Instancia.Select();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)

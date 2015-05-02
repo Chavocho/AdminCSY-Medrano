@@ -14,4 +14,6 @@ namespace System
     /// <param name="mensaje">Mensaje personalizado a mostrar.</param>
     /// <param name="ex">Excepción que ocurrió.</param>
     public delegate DialogResult DelegadoMensajes(IWin32Window frm, Mensajes m, string mensaje, string titulo, Exception ex);
+
+    public delegate void CerrarFrmEspera();
 }

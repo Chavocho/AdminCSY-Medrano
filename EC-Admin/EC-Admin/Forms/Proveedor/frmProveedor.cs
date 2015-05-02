@@ -35,6 +35,7 @@ namespace EC_Admin.Forms
         int id = 0;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
+        CerrarFrmEspera c;
 
         public frmProveedor()
         {
@@ -44,13 +45,12 @@ namespace EC_Admin.Forms
         private void Cerrar()
         {
             tmrEspera.Enabled = false;
-            txtBusqueda.Enabled = true;
-            txtBusqueda.Select();
             FuncionesGenerales.frmEsperaClose();
         }
 
         private void BuscarProveedores(string p)
         {
+            c = new CerrarFrmEspera(Cerrar);
             try
             {
                 string sql = "SELECT id, nombre, razon_social, telefono1, telefono2, email, lada1, lada2 FROM proveedor WHERE nombre LIKE '%" + p + "%' AND eliminado=0";
@@ -58,18 +58,19 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                Cerrar();
+                this.Invoke(c);
                 this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los proveedor.", "EC-Admin", ex });
             }
             catch (Exception ex)
             {
-                Cerrar();
+                this.Invoke(c);
                 this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los proveedor.", "EC-Admin", ex });
             }
         }
 
         private void LlenarDataGrid()
         {
+            dgvProveedores.Rows.Clear();
             foreach (DataRow dr in dt.Rows)
             {
                 string razonSocial = "", telefonos = "", correo = "";

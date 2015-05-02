@@ -16,6 +16,8 @@ namespace EC_Admin.Forms
         int id = 0, idActual = 0;
         frmPOS frm = null;
         frmNuevaCompra frmC = null;
+        frmCotizacion frmCT = null;
+
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
 
@@ -48,6 +50,21 @@ namespace EC_Admin.Forms
             this.id = idActual;
             this.lblNombre.Text = nombre;
             lblENombre.Text = "Comprador actual:";
+        }
+
+        public frmVendedor(frmCotizacion frm)
+        {
+            InitializeComponent();
+            this.frmCT = frm;
+            this.lblENombre.Visible = this.lblNombre.Visible = false;
+        }
+
+        public frmVendedor(frmCotizacion frm, int id, string nombre)
+        {
+            InitializeComponent();
+            this.frmCT = frm;
+            this.id = idActual;
+            this.lblNombre.Text = nombre;
         }
 
         private void Cerrar()
@@ -120,6 +137,10 @@ namespace EC_Admin.Forms
                 {
                     frmC.AsignarComprador(idActual, dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString());
                 }
+                else if (frmCT != null)
+                {
+                    frmCT.AsignarVendedor(idActual, dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString());
+                }
                 this.Close();
             }
             else if (dgvTrabajadores.CurrentRow != null && id > 0)
@@ -131,6 +152,10 @@ namespace EC_Admin.Forms
                 else if (frmC != null)
                 {
                     frmC.AsignarComprador(id, dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString());
+                }
+                else if (frmCT != null)
+                {
+                    frmCT.AsignarVendedor(id, dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString());
                 }
                 this.Close();
             }

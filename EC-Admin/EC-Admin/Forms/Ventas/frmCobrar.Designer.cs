@@ -79,7 +79,7 @@
             this.lblETotal.AutoSize = true;
             this.lblETotal.Font = new System.Drawing.Font("Corbel", 15F);
             this.lblETotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblETotal.Location = new System.Drawing.Point(29, 57);
+            this.lblETotal.Location = new System.Drawing.Point(33, 57);
             this.lblETotal.Name = "lblETotal";
             this.lblETotal.Size = new System.Drawing.Size(58, 24);
             this.lblETotal.TabIndex = 0;

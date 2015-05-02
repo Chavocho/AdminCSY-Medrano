@@ -73,10 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Clases conexiones y estructura\Almacen.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Caja.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Categoria.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cliente.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\ClienteContacto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Compra.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Cotizacion.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cuenta.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Horario.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Producto.cs" />
@@ -99,6 +101,30 @@
     <Compile Include="Clases\Clases conexiones y estructura\Persona.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\PersonaContacto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Usuario.cs" />
+    <Compile Include="Forms\Caja\frmAbrirCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caja\frmAbrirCaja.Designer.cs">
+      <DependentUpon>frmAbrirCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caja\frmCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caja\frmCaja.Designer.cs">
+      <DependentUpon>frmCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caja\frmCerrarCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caja\frmCerrarCaja.Designer.cs">
+      <DependentUpon>frmCerrarCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caja\frmEntradaSalida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caja\frmEntradaSalida.Designer.cs">
+      <DependentUpon>frmEntradaSalida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Categoria\frmCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +191,12 @@
     <Compile Include="Forms\Compra\frmCompraProducto.Designer.cs">
       <DependentUpon>frmCompraProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Compra\frmDetalladoCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\frmDetalladoCompra.Designer.cs">
+      <DependentUpon>frmDetalladoCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Compra\frmNuevaCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +244,18 @@
     </Compile>
     <Compile Include="Forms\Configs\frmConfigs.Designer.cs">
       <DependentUpon>frmConfigs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cotizacion\frmCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cotizacion\frmCotizacion.Designer.cs">
+      <DependentUpon>frmCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cotizacion\frmRecuperarCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cotizacion\frmRecuperarCotizacion.Designer.cs">
+      <DependentUpon>frmRecuperarCotizacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Cuentas\frmAsignarCuenta.cs">
       <SubType>Form</SubType>
@@ -533,6 +577,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Caja\frmAbrirCaja.resx">
+      <DependentUpon>frmAbrirCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caja\frmCaja.resx">
+      <DependentUpon>frmCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caja\frmCerrarCaja.resx">
+      <DependentUpon>frmCerrarCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caja\frmEntradaSalida.resx">
+      <DependentUpon>frmEntradaSalida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Categoria\frmCategorias.resx">
       <DependentUpon>frmCategorias.cs</DependentUpon>
     </EmbeddedResource>
@@ -566,6 +622,9 @@
     <EmbeddedResource Include="Forms\Compra\frmCompraProducto.resx">
       <DependentUpon>frmCompraProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\frmDetalladoCompra.resx">
+      <DependentUpon>frmDetalladoCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Compra\frmNuevaCompra.resx">
       <DependentUpon>frmNuevaCompra.cs</DependentUpon>
     </EmbeddedResource>
@@ -589,6 +648,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configs\frmConfigs.resx">
       <DependentUpon>frmConfigs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cotizacion\frmCotizacion.resx">
+      <DependentUpon>frmCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cotizacion\frmRecuperarCotizacion.resx">
+      <DependentUpon>frmRecuperarCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cuentas\frmAsignarCuenta.resx">
       <DependentUpon>frmAsignarCuenta.cs</DependentUpon>
@@ -791,9 +856,7 @@
   <ItemGroup>
     <None Include="Resources\Config.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Caja\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

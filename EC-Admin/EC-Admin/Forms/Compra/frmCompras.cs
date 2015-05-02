@@ -35,6 +35,7 @@ namespace EC_Admin.Forms
         int id = 0;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
+        CerrarFrmEspera c;
 
         public frmCompras()
         {
@@ -49,22 +50,23 @@ namespace EC_Admin.Forms
 
         private void Buscar(DateTime fechaIni, DateTime fechaFin)
         {
+            c = new CerrarFrmEspera(Cerrar);
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT c.total, SUM(d.cant) AS cant, c.create_time FROM compra INNER JOIN compra_detallada ON (c.id=?d.id_compra) WHERE c.create_time BETWEEN (?fechaIni AND ?fechaFin)";
+                sql.CommandText = "SELECT c.id, c.total, c.create_time FROM compra AS c INNER JOIN compra_detallada AS d ON (c.id=d.id_compra) WHERE (c.create_time BETWEEN ?fechaIni AND ?fechaFin)";
                 sql.Parameters.AddWithValue("?fechaIni", fechaIni.ToString("yyyy-MM-dd") + " 00:00:00");
-                sql.Parameters.AddWithValue("?fechaIni", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
+                sql.Parameters.AddWithValue("?fechaFin", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
             {
-                Cerrar();
+                this.Invoke(c);
                 this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las compras. No se ha podido conectar a la base de datos.", "EC-Admin", ex });
             }
             catch (Exception ex)
             {
-                Cerrar();
+                this.Invoke(c);
                 this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las compras.", "EC-Admin", ex });
             }
         }
@@ -76,7 +78,7 @@ namespace EC_Admin.Forms
                 dgvCompras.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    dgvCompras.Rows.Add(new object[] { dr["create_user"], dr["total"], dr["cant"] });
+                    dgvCompras.Rows.Add(new object[] { dr["id"], dr["create_time"], dr["total"] });
                 }
                 dgvCompras_RowEnter(dgvCompras, new DataGridViewCellEventArgs(0, 0));
             }
@@ -88,6 +90,7 @@ namespace EC_Admin.Forms
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            tmrEspera.Enabled = true;
             bgwBusqueda.RunWorkerAsync(new object[] { dtpFechaInicio.Value, dtpFechaFin.Value });
         }
 
@@ -110,6 +113,32 @@ namespace EC_Admin.Forms
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             (new frmNuevaCompra()).ShowDialog(this);
+        }
+
+        private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
+        {
+            object[] a = (object[])e.Argument;
+            Buscar((DateTime)a[0], (DateTime)a[1]);
+        }
+
+        private void bgwBusqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cerrar();
+            LlenarDataGrid();
+        }
+
+        private void tmrEspera_Tick(object sender, EventArgs e)
+        {
+            tmrEspera.Enabled = false;
+            FuncionesGenerales.frmEspera("Espere, cargando las compras", this);
+        }
+
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            if (dgvCompras.CurrentRow != null)
+            {
+                (new frmDetalladoCompra(id)).ShowDialog(this);
+            }
         }
     }
 }
