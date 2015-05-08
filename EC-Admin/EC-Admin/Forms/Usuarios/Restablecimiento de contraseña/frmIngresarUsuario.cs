@@ -52,7 +52,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mandar el número de verificación al correo del usuario.", "EC-Admin", ex);
             }
         }
 
@@ -66,14 +66,15 @@ namespace EC_Admin.Forms
             if (frm.Correo != "")
             {
                 lblCorreo.Text = frm.Correo;
+                btnCodigoCorreo.Visible = true;
             }
             else
             {
                 lblCorreo.Text = "El usuario ingresado no existe o no tiene un correo asignado.";
+                btnCodigoCorreo.Visible = false;
             }
             lblCorreo.Left = (this.Width - lblCorreo.Width) / 2;
             lblCorreo.Visible = true;
-            btnCodigoCorreo.Visible = true;
         }
 
         private void btnVerificarUsuario_Click(object sender, EventArgs e)
@@ -85,12 +86,34 @@ namespace EC_Admin.Forms
         {
             if (FuncionesGenerales.EsCorreoValido(lblCorreo.Text))
             {
-                EnviarCódigoVerificación();
-                frm.CambioFormulario(new frmVerificarUsuario(frm));
+                if (FuncionesGenerales.HayInternet())
+                {
+                    EnviarCódigoVerificación();
+                    frm.CambioFormulario(new frmVerificarUsuario(frm));
+                }
+                else
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No hay disponible una conexión a internet. Vuelve a intentarlo más tarde.", "EC-Admin");
+                }
             }
             else
             {
-                MessageBox.Show("Necesitas tener registrado un correo válido para poder continuar.", "EC-Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Necesitas tener registrado un correo válido para poder continuar.", "EC-Admin");
+            }
+        }
+
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!btnCodigoCorreo.Visible)
+                {
+                    btnVerificarUsuario.PerformClick();
+                }
+                else
+                {
+                    btnCodigoCorreo.PerformClick();
+                }
             }
         }    
     }

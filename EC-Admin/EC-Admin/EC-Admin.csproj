@@ -81,6 +81,7 @@
     <Compile Include="Clases\Clases conexiones y estructura\Cotizacion.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cuenta.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Horario.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Privilegios.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Producto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Proveedor.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\ProveedorContacto.cs" />
@@ -473,6 +474,12 @@
     <Compile Include="Forms\Usuarios\frmUsuariosEliminados.Designer.cs">
       <DependentUpon>frmUsuariosEliminados.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Usuarios\Privilegios\frmPrivilegios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Usuarios\Privilegios\frmPrivilegios.Designer.cs">
+      <DependentUpon>frmPrivilegios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Usuarios\Restablecimiento de contraseña\frmIngresarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -762,6 +769,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Usuarios\frmUsuariosEliminados.resx">
       <DependentUpon>frmUsuariosEliminados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Usuarios\Privilegios\frmPrivilegios.resx">
+      <DependentUpon>frmPrivilegios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Usuarios\Restablecimiento de contraseña\frmIngresarUsuario.resx">
       <DependentUpon>frmIngresarUsuario.cs</DependentUpon>

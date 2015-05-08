@@ -21,16 +21,16 @@ namespace EC_Admin.Forms.Configs
         {
             txtCorreo.Text = Config.correoOrigenExterno;
             txtPass.Text = Config.contraseñaOrigenExterno;
-            txtHost.Text = Config.host;
-            txtPuerto.Text = Config.puerto;
+            txtHost.Text = Config.hostExterno;
+            txtPuerto.Text = Config.puertoExterno;
         }
 
         private void GuardarDatos()
         {
             Config.correoOrigenExterno = txtCorreo.Text;
             Config.contraseñaOrigenExterno = txtPass.Text;
-            Config.host = txtHost.Text;
-            Config.puerto = txtPuerto.Text;
+            Config.hostExterno = txtHost.Text;
+            Config.puertoExterno = txtPuerto.Text;
             ConfiguracionXML.GuardarConfiguracion("correo", "correo", txtCorreo.Text);
             ConfiguracionXML.GuardarConfiguracion("correo", "pass", txtPass.Text);
             ConfiguracionXML.GuardarConfiguracion("correo", "host", txtHost.Text);

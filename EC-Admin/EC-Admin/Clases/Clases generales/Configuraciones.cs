@@ -16,7 +16,8 @@ namespace System
         #endregion
 
         #region Correo
-        public static string correoOrigenInterno = "", contraseñaOrigenInterno, correoOrigenExterno = "", contraseñaOrigenExterno = "", puerto = "", host = "";
+        public static string correoOrigenInterno = "", contraseñaOrigenInterno = "", puertoInterno = "", hostInterno = "", 
+            correoOrigenExterno = "", contraseñaOrigenExterno = "", puertoExterno = "", hostExterno = "";
         #endregion
 
         #region Sonidos

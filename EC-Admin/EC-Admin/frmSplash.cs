@@ -125,7 +125,29 @@ namespace EC_Admin
         #endregion
 
         #region Paso 03
-        
+
+        private void CorreoInterno()
+        {
+            if (!ConfiguracionXML.ExisteConfiguracion("correo"))
+            {
+                ConfiguracionXML.GuardarConfiguracion("correo", "correo_interno", "");
+                ConfiguracionXML.GuardarConfiguracion("correo", "pass_interno", "");
+                ConfiguracionXML.GuardarConfiguracion("correo", "puerto_interno", "");
+                ConfiguracionXML.GuardarConfiguracion("correo", "host_interno", "");
+                Config.correoOrigenInterno = "";
+                Config.contraseñaOrigenInterno = "";
+                Config.puertoInterno = "";
+                Config.hostInterno = "";
+            }
+            else
+            {
+                Config.correoOrigenInterno = ConfiguracionXML.LeerConfiguración("correo", "correo_interno");
+                Config.contraseñaOrigenInterno = ConfiguracionXML.LeerConfiguración("correo", "pass_interno");
+                Config.puertoInterno = ConfiguracionXML.LeerConfiguración("correo", "puerto_interno");
+                Config.hostInterno = ConfiguracionXML.LeerConfiguración("correo", "host_interno");
+            }
+        }
+
         #endregion
 
         private void frmSplash_Shown(object sender, EventArgs e)
@@ -135,6 +157,7 @@ namespace EC_Admin
                 ConfiguracionBaseDatos();
                 ConfiguracionSucursal();
                 InicializarPropiedades();
+                CorreoInterno();
             }
             catch (Exception ex)
             {

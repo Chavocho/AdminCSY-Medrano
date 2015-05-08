@@ -52,6 +52,7 @@ namespace EC_Admin
 
         private void llbReestablecer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            txtPass.Text = "";
             (new Forms.frmReestablecerPass()).ShowDialog(this);
         }
 

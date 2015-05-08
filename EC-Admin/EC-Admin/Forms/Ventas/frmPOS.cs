@@ -361,7 +361,7 @@ namespace EC_Admin.Forms
             }
         }
 
-        private void BusquedaProducto(string codProd)
+        private void BusquedaProducto(string codProd, decimal cant)
         {
             try
             {
@@ -369,7 +369,7 @@ namespace EC_Admin.Forms
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["precio"], 1M, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
+                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["precio"], cant, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
                     break;
                 }
             }
@@ -644,7 +644,15 @@ namespace EC_Admin.Forms
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                BusquedaProducto(txtBusqueda.Text);
+                string[] datos = txtBusqueda.Text.Split(new char[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
+                if (datos.Length > 1)
+                {
+                    BusquedaProducto(datos[1].ToString(), decimal.Parse(datos[0]));
+                }
+                else
+                {
+                    BusquedaProducto(datos[0].ToString(), 1);
+                }
                 txtBusqueda.Text = "";
             }
         }

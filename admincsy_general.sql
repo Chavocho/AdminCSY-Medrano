@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2015 a las 05:00:30
--- Versión del servidor: 5.6.20
--- Versión de PHP: 5.5.15
+-- Tiempo de generación: 02-05-2015 a las 05:51:22
+-- Versión del servidor: 5.6.21
+-- Versión de PHP: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,6 +31,8 @@ USE `admincsy_general`;
 CREATE TABLE IF NOT EXISTS `abono` (
 `id` int(11) NOT NULL,
   `venta_id` int(11) DEFAULT NULL,
+  `id_trabajador` int(11) DEFAULT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
   `abono` decimal(10,2) DEFAULT NULL,
   `tipo_pago` int(11) DEFAULT NULL,
   `observaciones` varchar(45) DEFAULT NULL,
@@ -39,8 +41,10 @@ CREATE TABLE IF NOT EXISTS `abono` (
   `create_user` int(11) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `update_user` int(11) DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `update_time` datetime DEFAULT NULL,
+  `cancel_user` int(11) DEFAULT NULL,
+  `cancel_time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -52,8 +56,26 @@ CREATE TABLE IF NOT EXISTS `almacen` (
 `id` int(11) NOT NULL,
   `id_trabajador` int(11) NOT NULL,
   `num_alm` int(11) NOT NULL,
+  `descripcion` varchar(100) DEFAULT NULL,
   `sucursal_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `caja`
+--
+
+CREATE TABLE IF NOT EXISTS `caja` (
+`id` int(11) NOT NULL,
+  `id_sucursal` int(11) NOT NULL,
+  `efectivo` decimal(10,2) NOT NULL,
+  `voucher` decimal(10,2) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `tipo_movimiento` int(11) DEFAULT NULL,
+  `create_user` int(11) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -65,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 `id` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `descripcion` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -76,6 +98,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 CREATE TABLE IF NOT EXISTS `cliente` (
 `id` int(11) NOT NULL,
   `sucursal_id` int(11) NOT NULL,
+  `cuenta_id` int(11) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `razon_social` varchar(45) DEFAULT NULL,
   `rfc` varchar(45) DEFAULT NULL,
@@ -100,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `update_time` datetime DEFAULT NULL,
   `delete_user` int(11) DEFAULT NULL,
   `delete_time` datetime DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -112,7 +135,8 @@ CREATE TABLE IF NOT EXISTS `compra` (
 `id` int(11) NOT NULL,
   `id_proveedor` int(11) NOT NULL,
   `id_sucursal` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL DEFAULT '0',
+  `id_comprador` int(11) DEFAULT NULL COMMENT 'Utilizar trabajador_id',
+  `estado` int(11) NOT NULL DEFAULT '0',
   `subtotal` decimal(10,2) NOT NULL DEFAULT '0.00',
   `impuesto` decimal(10,2) NOT NULL DEFAULT '0.00',
   `descuento` decimal(10,2) NOT NULL DEFAULT '0.00',
@@ -122,11 +146,14 @@ CREATE TABLE IF NOT EXISTS `compra` (
   `factura` tinyint(1) NOT NULL,
   `folio_remision` varchar(100) DEFAULT NULL,
   `folio_factura` varchar(100) DEFAULT NULL,
+  `cancelada` tinyint(1) NOT NULL DEFAULT '0',
   `create_user` int(11) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `update_user` int(11) DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `update_time` datetime DEFAULT NULL,
+  `cancel_user` int(11) DEFAULT NULL,
+  `cancel_time` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -137,7 +164,8 @@ CREATE TABLE IF NOT EXISTS `compra` (
 CREATE TABLE IF NOT EXISTS `compra_detallada` (
   `id_compra` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
-  `cant` int(11) NOT NULL,
+  `cant` decimal(10,2) NOT NULL,
+  `unidad` int(11) DEFAULT NULL,
   `precio` decimal(10,2) NOT NULL,
   `descuento` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -164,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `contacto_cliente` (
   `create_time` datetime DEFAULT NULL,
   `update_user` int(11) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -188,20 +216,66 @@ CREATE TABLE IF NOT EXISTS `contacto_proveedor` (
   `create_time` datetime DEFAULT NULL,
   `update_user` int(11) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `credito`
+-- Estructura de tabla para la tabla `cotizacion`
 --
 
-CREATE TABLE IF NOT EXISTS `credito` (
+CREATE TABLE IF NOT EXISTS `cotizacion` (
 `id` int(11) NOT NULL,
-  `cliente_id` int(11) DEFAULT NULL,
-  `proveedor_id` int(11) DEFAULT NULL,
-  `limite_credito` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `id_cliente` int(11) NOT NULL,
+  `id_sucursal` int(11) NOT NULL,
+  `id_vendedor` int(11) DEFAULT NULL COMMENT 'Utilizar trabajador_id',
+  `estado` int(11) NOT NULL DEFAULT '0',
+  `abierta` tinyint(1) NOT NULL DEFAULT '1',
+  `subtotal` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `impuesto` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `descuento` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `total` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `remision` tinyint(1) DEFAULT NULL,
+  `factura` tinyint(1) DEFAULT NULL,
+  `folio_factura` varchar(30) DEFAULT NULL,
+  `tipo_pago` int(11) DEFAULT NULL,
+  `create_user` int(11) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_user` int(11) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `cancel_user` int(11) DEFAULT NULL,
+  `cancel_time` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cotizacion_detallada`
+--
+
+CREATE TABLE IF NOT EXISTS `cotizacion_detallada` (
+  `id_venta` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `cant` decimal(10,2) NOT NULL,
+  `unidad` int(11) DEFAULT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `descuento` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuenta`
+--
+
+CREATE TABLE IF NOT EXISTS `cuenta` (
+`id` int(11) NOT NULL,
+  `clabe` varchar(50) DEFAULT NULL,
+  `banco` varchar(70) DEFAULT NULL,
+  `beneficiario` varchar(100) DEFAULT NULL,
+  `sucursal` varchar(20) DEFAULT NULL,
+  `num_cuenta` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -219,7 +293,17 @@ CREATE TABLE IF NOT EXISTS `direccion` (
   `ciudad` varchar(75) NOT NULL,
   `estado` varchar(75) NOT NULL,
   `eliminado` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado_caja`
+--
+
+CREATE TABLE IF NOT EXISTS `estado_caja` (
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -233,40 +317,7 @@ CREATE TABLE IF NOT EXISTS `gasto` (
   `total` decimal(10,2) NOT NULL,
   `descuento` decimal(10,2) NOT NULL,
   `folio` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `horario_trabajador`
---
-
-CREATE TABLE IF NOT EXISTS `horario_trabajador` (
-`id` int(11) NOT NULL,
-  `id_trabajador` int(11) NOT NULL,
-  `lunes` tinyint(1) NOT NULL,
-  `martes` tinyint(1) NOT NULL,
-  `miercoles` tinyint(1) NOT NULL,
-  `jueves` tinyint(1) NOT NULL,
-  `viernes` tinyint(1) NOT NULL,
-  `sabado` tinyint(1) NOT NULL,
-  `domingo` tinyint(1) NOT NULL,
-  `hora_ini` time NOT NULL,
-  `hora_fin` time NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pago_trabajador`
---
-
-CREATE TABLE IF NOT EXISTS `pago_trabajador` (
-`id` int(11) NOT NULL,
-  `id_trabajador` int(11) NOT NULL,
-  `pago` decimal(10,2) NOT NULL,
-  `fecha` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -284,14 +335,14 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `codigo` varchar(45) DEFAULT NULL,
   `descripcion1` varchar(45) DEFAULT NULL,
   `descripcion2` varchar(45) DEFAULT NULL,
-  `costo` varchar(45) DEFAULT NULL,
+  `costo` decimal(10,2) DEFAULT NULL,
   `precio` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `cant` int(11) NOT NULL,
+  `cant` decimal(10,2) NOT NULL,
   `precio_mediomayoreo` decimal(10,2) NOT NULL DEFAULT '0.00',
   `precio_mayoreo` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `cant_mediomayoreo` int(11) DEFAULT NULL,
-  `cant_mayoreo` int(11) DEFAULT NULL,
-  `unidad` int(11) DEFAULT NULL COMMENT 'Unidades para el producto\n-Pieza\n-Paquete\n-kilo',
+  `cant_mediomayoreo` decimal(10,2) DEFAULT NULL,
+  `cant_mayoreo` decimal(10,2) DEFAULT NULL,
+  `unidad` int(11) DEFAULT NULL COMMENT 'Unidades para el producto\n-Pieza\n-Paquete',
   `imagen` longblob,
   `eliminado` tinyint(1) DEFAULT '0',
   `create_user` int(11) DEFAULT NULL,
@@ -300,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `update_time` datetime DEFAULT NULL,
   `delete_user` int(11) DEFAULT NULL,
   `delete_time` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -311,6 +362,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
 CREATE TABLE IF NOT EXISTS `proveedor` (
 `id` int(11) NOT NULL,
   `sucursal_id` int(11) NOT NULL,
+  `cuenta_id` int(11) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `razon_social` varchar(45) DEFAULT NULL,
   `rfc` varchar(45) DEFAULT NULL,
@@ -335,7 +387,7 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   `update_time` datetime DEFAULT NULL,
   `delete_user` int(11) DEFAULT NULL,
   `delete_time` datetime DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -351,20 +403,7 @@ CREATE TABLE IF NOT EXISTS `puesto` (
   `create_time` datetime DEFAULT NULL,
   `update_user` int(11) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `registro_trabajador`
---
-
-CREATE TABLE IF NOT EXISTS `registro_trabajador` (
-`id` int(11) NOT NULL,
-  `id_trabajador` int(11) NOT NULL,
-  `fecha` datetime NOT NULL,
-  `es_entrada` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -395,7 +434,7 @@ CREATE TABLE IF NOT EXISTS `sucursal` (
   `create_time` datetime DEFAULT NULL,
   `update_user` int(11) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -409,8 +448,6 @@ CREATE TABLE IF NOT EXISTS `trabajador` (
   `nombre` varchar(45) DEFAULT NULL,
   `apellidos` varchar(45) DEFAULT NULL,
   `puesto` int(11) NOT NULL,
-  `nomina` varchar(100) NOT NULL,
-  `sueldo` decimal(10,2) NOT NULL DEFAULT '0.00',
   `telefono` varchar(45) DEFAULT NULL,
   `celular` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
@@ -418,6 +455,8 @@ CREATE TABLE IF NOT EXISTS `trabajador` (
   `ciudad` varchar(45) DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
   `cp` int(11) DEFAULT NULL,
+  `sueldo` decimal(10,2) DEFAULT NULL,
+  `nomina` int(11) DEFAULT NULL,
   `fecha_inicio` date DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL,
   `imagen` longblob,
@@ -426,8 +465,10 @@ CREATE TABLE IF NOT EXISTS `trabajador` (
   `create_user` int(11) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `update_user` int(11) DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `update_time` datetime DEFAULT NULL,
+  `delete_user` int(11) DEFAULT NULL,
+  `delete_time` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -442,7 +483,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `pass` varchar(150) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `apellidos` varchar(45) DEFAULT NULL,
-  `nivel` int(11) DEFAULT NULL COMMENT 'Niveles de usuario\n-Administrador',
+  `nivel` int(11) DEFAULT NULL COMMENT 'Niveles de usuario',
   `email` varchar(100) DEFAULT NULL,
   `eliminado` tinyint(1) DEFAULT '0',
   `num_aut` int(11) DEFAULT NULL,
@@ -454,7 +495,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `update_time` datetime DEFAULT NULL,
   `delete_user` int(11) DEFAULT NULL,
   `delete_time` datetime DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -466,18 +507,24 @@ CREATE TABLE IF NOT EXISTS `venta` (
 `id` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `id_sucursal` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL DEFAULT '0',
+  `id_vendedor` int(11) DEFAULT NULL COMMENT 'Utilizar trabajador_id',
+  `cancelada` tinyint(1) NOT NULL DEFAULT '0',
   `abierta` tinyint(1) NOT NULL DEFAULT '1',
   `subtotal` decimal(10,2) NOT NULL DEFAULT '0.00',
   `impuesto` decimal(10,2) NOT NULL DEFAULT '0.00',
   `descuento` decimal(10,2) NOT NULL DEFAULT '0.00',
   `total` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `remision` tinyint(1) DEFAULT NULL,
+  `factura` tinyint(1) DEFAULT NULL,
+  `folio_factura` varchar(30) DEFAULT NULL,
   `tipo_pago` int(11) DEFAULT NULL,
   `create_user` int(11) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `update_user` int(11) DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `update_time` datetime DEFAULT NULL,
+  `cancel_user` int(11) DEFAULT NULL,
+  `cancel_time` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -488,9 +535,10 @@ CREATE TABLE IF NOT EXISTS `venta` (
 CREATE TABLE IF NOT EXISTS `venta_detallada` (
   `id_venta` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
-  `cant` int(11) NOT NULL,
+  `cant` decimal(10,2) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
-  `descuento` decimal(10,2) NOT NULL
+  `descuento` decimal(10,2) NOT NULL,
+  `unidad` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -507,6 +555,12 @@ ALTER TABLE `abono`
 -- Indices de la tabla `almacen`
 --
 ALTER TABLE `almacen`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `caja`
+--
+ALTER TABLE `caja`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -546,9 +600,21 @@ ALTER TABLE `contacto_proveedor`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `credito`
+-- Indices de la tabla `cotizacion`
 --
-ALTER TABLE `credito`
+ALTER TABLE `cotizacion`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `cotizacion_detallada`
+--
+ALTER TABLE `cotizacion_detallada`
+ ADD PRIMARY KEY (`id_venta`,`id_producto`);
+
+--
+-- Indices de la tabla `cuenta`
+--
+ALTER TABLE `cuenta`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -561,18 +627,6 @@ ALTER TABLE `direccion`
 -- Indices de la tabla `gasto`
 --
 ALTER TABLE `gasto`
- ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `horario_trabajador`
---
-ALTER TABLE `horario_trabajador`
- ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `pago_trabajador`
---
-ALTER TABLE `pago_trabajador`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -591,12 +645,6 @@ ALTER TABLE `proveedor`
 -- Indices de la tabla `puesto`
 --
 ALTER TABLE `puesto`
- ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `registro_trabajador`
---
-ALTER TABLE `registro_trabajador`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -642,12 +690,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `almacen`
 --
 ALTER TABLE `almacen`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `caja`
+--
+ALTER TABLE `caja`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
@@ -657,47 +710,42 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `contacto_cliente`
 --
 ALTER TABLE `contacto_cliente`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `contacto_proveedor`
 --
 ALTER TABLE `contacto_proveedor`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `credito`
---
-ALTER TABLE `credito`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `cotizacion`
+--
+ALTER TABLE `cotizacion`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `cuenta`
+--
+ALTER TABLE `cuenta`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `gasto`
 --
 ALTER TABLE `gasto`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `horario_trabajador`
---
-ALTER TABLE `horario_trabajador`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `pago_trabajador`
---
-ALTER TABLE `pago_trabajador`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
@@ -707,12 +755,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `puesto`
 --
 ALTER TABLE `puesto`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `registro_trabajador`
---
-ALTER TABLE `registro_trabajador`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `sucursal`
 --
@@ -727,12 +770,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

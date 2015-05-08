@@ -215,3 +215,4 @@ C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCaja.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmEntradaSalida.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCerrarCaja.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Usuarios.Privilegios.frmPrivilegios.resources

@@ -382,6 +382,20 @@ namespace EC_Admin
             }
         }
 
+        public static bool HayInternet()
+        {
+            bool hay = false;
+            try
+            {
+                System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry("www.google.com.mx");
+                hay = true;
+            }
+            catch
+            {
+            }
+            return hay;
+        }
+
         #region Siempre Encima
         [DllImport("user32.DLL")]
         private extern static void SetWindowPos(
