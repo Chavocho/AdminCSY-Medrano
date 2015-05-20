@@ -62,12 +62,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las compras. No se ha podido conectar a la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las compras. No se ha podido conectar a la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las compras.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las compras.", "Admin CSY", ex });
             }
         }
 
@@ -84,7 +84,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar la información de la venta.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar la información de la venta.", "Admin CSY", ex);
             }
         }
 
@@ -104,14 +104,16 @@ namespace EC_Admin.Forms
 
         private void dgvCompras_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvCompras.CurrentRow != null)
-                id = (int)dgvCompras[0, e.RowIndex].Value;
-            else
-                id = 0;
+
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            if (Caja.EstadoCaja == false)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una compra", "Admin CSY");
+                return;
+            }
             (new frmNuevaCompra()).ShowDialog(this);
         }
 

@@ -13,6 +13,7 @@ namespace System
 
         #region Base de datos
         public static string baseDatos = "", servidor = "", usuario = "", pass = "";
+        public static int idMySQL = -1;
         #endregion
 
         #region Correo

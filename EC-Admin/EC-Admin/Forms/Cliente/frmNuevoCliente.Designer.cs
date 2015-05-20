@@ -105,7 +105,7 @@
             this.txtLimiteCredito.BackColor = System.Drawing.Color.White;
             this.txtLimiteCredito.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtLimiteCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtLimiteCredito.Location = new System.Drawing.Point(277, 262);
+            this.txtLimiteCredito.Location = new System.Drawing.Point(542, 262);
             this.txtLimiteCredito.MaxLength = 15;
             this.txtLimiteCredito.Name = "txtLimiteCredito";
             this.txtLimiteCredito.Size = new System.Drawing.Size(259, 29);
@@ -118,7 +118,7 @@
             // 
             this.lblELimiteCredito.AutoSize = true;
             this.lblELimiteCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblELimiteCredito.Location = new System.Drawing.Point(274, 241);
+            this.lblELimiteCredito.Location = new System.Drawing.Point(539, 241);
             this.lblELimiteCredito.Name = "lblELimiteCredito";
             this.lblELimiteCredito.Size = new System.Drawing.Size(110, 18);
             this.lblELimiteCredito.TabIndex = 34;
@@ -136,7 +136,7 @@
             this.cboTipoCredito.Items.AddRange(new object[] {
             "Sin crédito",
             "Con crédito"});
-            this.cboTipoCredito.Location = new System.Drawing.Point(12, 262);
+            this.cboTipoCredito.Location = new System.Drawing.Point(277, 262);
             this.cboTipoCredito.Name = "cboTipoCredito";
             this.cboTipoCredito.Size = new System.Drawing.Size(259, 29);
             this.cboTipoCredito.TabIndex = 33;
@@ -146,7 +146,7 @@
             // 
             this.lblETipoCredito.AutoSize = true;
             this.lblETipoCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblETipoCredito.Location = new System.Drawing.Point(9, 241);
+            this.lblETipoCredito.Location = new System.Drawing.Point(274, 241);
             this.lblETipoCredito.Name = "lblETipoCredito";
             this.lblETipoCredito.Size = new System.Drawing.Size(99, 18);
             this.lblETipoCredito.TabIndex = 32;
@@ -157,7 +157,7 @@
             this.txtCorreo.BackColor = System.Drawing.Color.White;
             this.txtCorreo.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCorreo.Location = new System.Drawing.Point(542, 262);
+            this.txtCorreo.Location = new System.Drawing.Point(12, 262);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(259, 29);
             this.txtCorreo.TabIndex = 31;
@@ -166,7 +166,7 @@
             // 
             this.lblECorreo.AutoSize = true;
             this.lblECorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECorreo.Location = new System.Drawing.Point(539, 241);
+            this.lblECorreo.Location = new System.Drawing.Point(9, 241);
             this.lblECorreo.Name = "lblECorreo";
             this.lblECorreo.Size = new System.Drawing.Size(121, 18);
             this.lblECorreo.TabIndex = 30;
@@ -212,6 +212,7 @@
             this.txtLada02.Name = "txtLada02";
             this.txtLada02.Size = new System.Drawing.Size(55, 29);
             this.txtLada02.TabIndex = 27;
+            this.txtLada02.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // txtTelefono02
             // 
@@ -223,6 +224,7 @@
             this.txtTelefono02.Name = "txtTelefono02";
             this.txtTelefono02.Size = new System.Drawing.Size(198, 29);
             this.txtTelefono02.TabIndex = 29;
+            this.txtTelefono02.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // txtLada01
             // 
@@ -234,6 +236,7 @@
             this.txtLada01.Name = "txtLada01";
             this.txtLada01.Size = new System.Drawing.Size(55, 29);
             this.txtLada01.TabIndex = 23;
+            this.txtLada01.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // txtTelefono01
             // 
@@ -245,6 +248,7 @@
             this.txtTelefono01.Name = "txtTelefono01";
             this.txtTelefono01.Size = new System.Drawing.Size(198, 29);
             this.txtTelefono01.TabIndex = 25;
+            this.txtTelefono01.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // lblELada01
             // 
@@ -506,6 +510,7 @@
             this.btnCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCuenta.UseVisualStyleBackColor = false;
+            this.btnCuenta.Visible = false;
             this.btnCuenta.Click += new System.EventHandler(this.btnCuenta_Click);
             // 
             // lblECNumCuenta
@@ -569,6 +574,7 @@
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de cuenta";
+            this.groupBox1.Visible = false;
             // 
             // lblECBeneficiario
             // 
@@ -633,6 +639,7 @@
             this.btnQuitar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnQuitar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitar.UseVisualStyleBackColor = false;
+            this.btnQuitar.Visible = false;
             this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // frmNuevoCliente

@@ -57,12 +57,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al obtener las direcciones de facturación registradas. No se ha podido conectar con la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al obtener las direcciones de facturación registradas. No se ha podido conectar con la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al obtener las direcciones de facturación registradas.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al obtener las direcciones de facturación registradas.", "Admin CSY", ex });
             }
         }
 
@@ -130,7 +130,7 @@ namespace EC_Admin.Forms
         {
             if (dgvDomicilio.CurrentRow != null)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea eliminar este domicilio?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea eliminar este domicilio?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {
@@ -140,11 +140,11 @@ namespace EC_Admin.Forms
                     }
                     catch (MySqlException ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el domicilio. No se ha podido conectar a la base de datos.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el domicilio. No se ha podido conectar a la base de datos.", "Admin CSY", ex);
                     }
                     catch (Exception ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al eliminar el domicilio.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al eliminar el domicilio.", "Admin CSY", ex);
                     }
                 }
             }

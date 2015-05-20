@@ -42,12 +42,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las cotizaciones. No se ha podido conectar a la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las cotizaciones. No se ha podido conectar a la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las cotizaciones.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las cotizaciones.", "Admin CSY", ex });
             }
         }
 
@@ -65,12 +65,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las cotizaciones. No se ha podido conectar a la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las cotizaciones. No se ha podido conectar a la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las cotizaciones.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las cotizaciones.", "Admin CSY", ex });
             }
         }
 
@@ -87,7 +87,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de las cotizaciones.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de las cotizaciones.", "Admin CSY", ex);
             }
         }
 

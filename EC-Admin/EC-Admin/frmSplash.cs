@@ -12,6 +12,7 @@ namespace EC_Admin
 {
     public partial class frmSplash : Form
     {
+        int intentos = 0;
         int c = 0;
 
         public frmSplash()
@@ -20,6 +21,41 @@ namespace EC_Admin
         }
 
         #region Paso 01
+
+        /// <summary>
+        /// Método recursivo que verifica si el servicio de MySQL se encuentra activo, en caso de estarlo, guarda el ID del proceso, en caso contrario,
+        /// lo trata de iniciar e inicia la recursividad para verificar si se logro iniciar.
+        /// </summary>
+        private void MySQL()
+        {
+            try
+            {
+                if (intentos <= 3)
+                {
+                    int id = FuncionesGenerales.IDProceso("mysqld");
+                    if (id <= 0)
+                    {
+                        FuncionesGenerales.IniciarProceso("C:\\xampp\\mysql_start.bat");
+                        System.Threading.Thread.Sleep(3000);
+                        intentos += 1;
+                        MySQL();
+                    }
+                    else
+                    {
+                        Config.idMySQL = id;
+                    }
+                }
+                else
+                {
+                    throw new Exception("No se logro iniciar el servicio de MySQL");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Función que verifica que la configuración de la base de datos exista en el archivo de configuración,
         /// en caso de que no exista, lo crea.
@@ -28,7 +64,7 @@ namespace EC_Admin
         {
             if (!ConfiguracionXML.ExisteConfiguracion("basedatos"))
             {
-                DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "No tienes configurada tu conexión con la base de datos. ¿Deseas configurarla?", "EC-Admin");
+                DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "No tienes configurada tu conexión con la base de datos. ¿Deseas configurarla?", "Admin CSY");
                 if (r == System.Windows.Forms.DialogResult.Yes)
                 {
                     (new Forms.frmConfigBaseDatos(false)).ShowDialog(this);
@@ -36,7 +72,7 @@ namespace EC_Admin
                 }
                 else
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La aplicación se cerrará.", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La aplicación se cerrará.", "Admin CSY");
                     Application.Exit();
                 }
             }
@@ -59,7 +95,7 @@ namespace EC_Admin
             {
                 if (!ConexionBD.Ping())
                 {
-                    DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                    DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
                     if (re == System.Windows.Forms.DialogResult.Yes)
                     {
                         (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
@@ -68,7 +104,7 @@ namespace EC_Admin
             }
             catch (MySql.Data.MySqlClient.MySqlException)
             {
-                DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
                 if (re == System.Windows.Forms.DialogResult.Yes)
                 {
                     (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
@@ -76,7 +112,7 @@ namespace EC_Admin
             }
             catch (Exception)
             {
-                DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
                 if (re == System.Windows.Forms.DialogResult.Yes)
                 {
                     (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
@@ -154,6 +190,16 @@ namespace EC_Admin
         {
             try
             {
+                try
+                {
+                    MySQL();
+                }
+                catch (Exception ex)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "La aplicación no ha logrado iniciar el servicio de MySQL. La aplicación se cerrará.", "Admin CSY", ex);
+                    Application.Exit();
+                    return;
+                }
                 ConfiguracionBaseDatos();
                 ConfiguracionSucursal();
                 InicializarPropiedades();

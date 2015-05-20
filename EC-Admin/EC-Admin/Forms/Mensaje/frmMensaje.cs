@@ -135,6 +135,7 @@ namespace EC_Admin
             btnOK.Location = new Point(pnlMensaje.Width - btnOK.Width - 10, pnlMensaje.Height - btnOK.Height - 10);
             btnOK.Click += new EventHandler(btnOK_Click);
             pnlMensaje.Controls.Add(btnOK);
+            this.AcceptButton = btnOK;
         }
 
         /// <summary>

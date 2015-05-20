@@ -63,11 +63,11 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la cuenta. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la cuenta. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la cuenta.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la cuenta.", "Admin CSY", ex);
             }
         }
 
@@ -96,7 +96,7 @@ namespace EC_Admin.Forms
                 p.Colonia = txtColonia.Text;
                 p.Ciudad = txtCiudad.Text;
                 p.Estado = txtEstado.Text;
-                p.CP = int.Parse(txtCP.Text);
+                p.CP = txtCP.Text;
                 p.Telefono01 = txtTelefono01.Text;
                 p.Telefono02 = txtTelefono02.Text;
                 p.Lada01 = txtLada01.Text;
@@ -123,77 +123,55 @@ namespace EC_Admin.Forms
         {
             if (cboSucursal.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo sucursal es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo sucursal es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
                 return false;
             }
-            if (txtRFC.Text.Length < 12)
+            if (txtRFC.Text.Trim() != "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo RFC debe tener entre 12 o 13 caracteres", "EC-Admin");
-                return false;
+                if (txtRFC.Text.Length < 12)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo RFC debe tener entre 12 o 13 caracteres", "Admin CSY");
+                    return false;
+                }
             }
             if (txtCalle.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtNumInt.Text.Trim() != "" && txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior debe ser ingresado antes que el número interior", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior debe ser ingresado antes que el número interior", "Admin CSY");
                 return false;
             }
             if (txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtColonia.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo colonia es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtCiudad.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo ciudad es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtEstado.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo estado es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtCP.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo código postal es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un teléfono", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un teléfono", "Admin CSY");
                 return false;
             }
             else
             {
                 if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() != "")
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el primer teléfono antes que el segundo", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el primer teléfono antes que el segundo", "Admin CSY");
                     return false;
                 }
             }
-            if (txtCorreo.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo correo es obligatorio", "EC-Admin");
-                return false;
-            }
-            else
+            if (txtCorreo.Text != "")
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se reconoce el correo ingresado como uno válido", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se reconoce el correo ingresado como uno válido", "Admin CSY");
                     return false;
                 }
             }
@@ -201,7 +179,7 @@ namespace EC_Admin.Forms
             {
                 if (txtLimiteCredito.Text.Trim() == "")
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo límite de crédito es obligatorio", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo límite de crédito es obligatorio", "Admin CSY");
                     return false;
                 }
             }
@@ -241,16 +219,16 @@ namespace EC_Admin.Forms
                 try
                 {
                     InsertarProveedor();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el proveedor correctamente!", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el proveedor correctamente!", "Admin CSY");
                     this.Close();
                 }
                 catch (MySqlException ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el proveedor. No se ha podido conectar a la base de datos", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el proveedor. No se ha podido conectar a la base de datos", "Admin CSY", ex);
                 }
                 catch (Exception ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear el proveedor.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear el proveedor.", "Admin CSY", ex);
                 }
             }
         }
@@ -269,6 +247,11 @@ namespace EC_Admin.Forms
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             QuitarDatosCuenta();
+        }
+
+        private void txtTelefonos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesGenerales.VerificarEsNumero(ref sender, ref e, true);
         }
 
     }

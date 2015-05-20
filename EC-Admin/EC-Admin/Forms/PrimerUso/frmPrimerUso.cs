@@ -13,10 +13,45 @@ namespace EC_Admin
 {
     public partial class frmPrimerUso : Form
     {
+        int intentos = 0;
         public frmPrimerUso()
         {
             InitializeComponent();
             Bienvenido();
+        }
+
+        /// <summary>
+        /// Método recursivo que verifica si el servicio de MySQL se encuentra activo, en caso de estarlo, guarda el ID del proceso, en caso contrario,
+        /// lo trata de iniciar e inicia la recursividad para verificar si se logro iniciar.
+        /// </summary>
+        private void MySQL()
+        {
+            try
+            {
+                if (intentos <= 3)
+                {
+                    int id = FuncionesGenerales.IDProceso("mysqld");
+                    if (id <= 0)
+                    {
+                        FuncionesGenerales.IniciarProceso("C:\\xampp\\mysql_start.bat");
+                        System.Threading.Thread.Sleep(3000);
+                        intentos += 1;
+                        MySQL();
+                    }
+                    else
+                    {
+                        Config.idMySQL = id;
+                    }
+                }
+                else
+                {
+                    throw new Exception("No se logro iniciar el servicio de MySQL");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void Bienvenido()
@@ -130,7 +165,7 @@ namespace EC_Admin
             }
             else if (pnlForms.Controls[0].GetType() == typeof(frmTerminado))
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "¡Ha terminado la configuración inicial!", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "¡Ha terminado la configuración inicial!", "Admin CSY");
                 Properties.Settings.Default.PrimerUso = false;
                 Properties.Settings.Default.Save();
                 (new frmSplash()).Show();
@@ -160,6 +195,20 @@ namespace EC_Admin
             {
                 (new frmSplash()).Show();
                 this.Close();
+            }
+        }
+
+        private void frmPrimerUso_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                MySQL();
+            }
+            catch (Exception ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "La aplicación no ha logrado iniciar el servicio de MySQL. La aplicación se cerrará.", "Admin CSY", ex);
+                Application.Exit();
+                return;
             }
         }
     }

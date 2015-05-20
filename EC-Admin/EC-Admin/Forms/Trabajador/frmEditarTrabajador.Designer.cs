@@ -205,6 +205,7 @@
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(259, 29);
             this.txtCelular.TabIndex = 13;
+            this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // lblETelefono
             // 
@@ -225,6 +226,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(259, 29);
             this.txtTelefono.TabIndex = 11;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // cboPuesto
             // 

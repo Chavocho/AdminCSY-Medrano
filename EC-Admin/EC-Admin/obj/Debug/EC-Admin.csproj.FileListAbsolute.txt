@@ -127,11 +127,6 @@ C:\Users\Chavocho\Trabajos\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\AForge.Vi
 C:\Users\Chavocho\Trabajos\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\AForge.Video.dll
 C:\Users\Chavocho\Trabajos\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\AForge.Video.VFW.dll
 C:\Users\Chavocho\Trabajos\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmPagosPendientes.resources
-C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\EC-Admin.exe.config
-C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC-Admin.exe
-C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC-Admin.pdb
-C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\EC-Admin.exe
-C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\EC-Admin.pdb
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\itextsharp.xml
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC-Admin.csprojResolveAssemblyReference.cache
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmClientes.resources
@@ -216,3 +211,12 @@ C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmEntradaSalida.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCerrarCaja.resources
 C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Usuarios.Privilegios.frmPrivilegios.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmMapa.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmConfigTicket.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\Admin CSY.exe.config
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCorteCaja.resources
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\Admin CSY.exe
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\bin\Debug\Admin CSY.pdb
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\Admin CSY.exe
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\Admin CSY.pdb
+C:\Users\Salvador\Documents\GitHub\EC-Admin\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmVentasDiarias.resources

@@ -51,7 +51,7 @@ namespace EC_Admin.Forms
             }
             else
             {
-                MessageBox.Show("El código ingresado no es correcto, verifícalo.", "EC-Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El código ingresado no es correcto, verifícalo.", "Admin CSY", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtCodigo.Text = "";
             }
         }

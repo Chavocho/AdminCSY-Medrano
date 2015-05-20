@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.txtMonto = new System.Windows.Forms.TextBox();
-            this.lblETotEfeMos = new System.Windows.Forms.Label();
+            this.lblEEfectivo = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblEDescripcion = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -45,15 +45,15 @@
             this.txtMonto.TabIndex = 1;
             this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
-            // lblETotEfeMos
+            // lblEEfectivo
             // 
-            this.lblETotEfeMos.AutoSize = true;
-            this.lblETotEfeMos.Font = new System.Drawing.Font("Corbel", 13F);
-            this.lblETotEfeMos.Location = new System.Drawing.Point(8, 9);
-            this.lblETotEfeMos.Name = "lblETotEfeMos";
-            this.lblETotEfeMos.Size = new System.Drawing.Size(139, 22);
-            this.lblETotEfeMos.TabIndex = 2;
-            this.lblETotEfeMos.Text = "Monto a ingresar";
+            this.lblEEfectivo.AutoSize = true;
+            this.lblEEfectivo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.lblEEfectivo.Location = new System.Drawing.Point(8, 9);
+            this.lblEEfectivo.Name = "lblEEfectivo";
+            this.lblEEfectivo.Size = new System.Drawing.Size(139, 22);
+            this.lblEEfectivo.TabIndex = 2;
+            this.lblEEfectivo.Text = "Monto a ingresar";
             // 
             // txtDescripcion
             // 
@@ -65,15 +65,15 @@
             this.txtDescripcion.Size = new System.Drawing.Size(294, 114);
             this.txtDescripcion.TabIndex = 3;
             // 
-            // label1
+            // lblEDescripcion
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Corbel", 13F);
-            this.label1.Location = new System.Drawing.Point(218, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 22);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Descripción";
+            this.lblEDescripcion.AutoSize = true;
+            this.lblEDescripcion.Font = new System.Drawing.Font("Corbel", 13F);
+            this.lblEDescripcion.Location = new System.Drawing.Point(218, 9);
+            this.lblEDescripcion.Name = "lblEDescripcion";
+            this.lblEDescripcion.Size = new System.Drawing.Size(98, 22);
+            this.lblEDescripcion.TabIndex = 4;
+            this.lblEDescripcion.Text = "Descripción";
             // 
             // btnAceptar
             // 
@@ -102,9 +102,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(528, 232);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblEDescripcion);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.lblETotEfeMos);
+            this.Controls.Add(this.lblEEfectivo);
             this.Controls.Add(this.txtMonto);
             this.Font = new System.Drawing.Font("Corbel", 11F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
@@ -121,9 +121,9 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtMonto;
-        private System.Windows.Forms.Label lblETotEfeMos;
+        private System.Windows.Forms.Label lblEEfectivo;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEDescripcion;
         private System.Windows.Forms.Button btnAceptar;
     }
 }

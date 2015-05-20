@@ -86,16 +86,16 @@ namespace EC_Admin.Forms
             try
             {
                 Editar();
-                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado el horario correctamente!", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado el horario correctamente!", "Admin CSY");
                 this.Close();
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al modificar el horario. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al modificar el horario. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al modificar el horario.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al modificar el horario.", "Admin CSY", ex);
             }
         }
 
@@ -107,12 +107,12 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos. No se ha podido conectar con la base de datos. La ventana se cerrará.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos. No se ha podido conectar con la base de datos. La ventana se cerrará.", "Admin CSY", ex);
                 this.Close();
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos. La ventana se cerrará.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos. La ventana se cerrará.", "Admin CSY", ex);
                 this.Close();
             }
         }

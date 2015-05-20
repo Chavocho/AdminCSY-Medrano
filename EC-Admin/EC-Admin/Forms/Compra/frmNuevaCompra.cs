@@ -139,11 +139,11 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al buscar el producto. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al buscar el producto. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al buscar el producto.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al buscar el producto.", "Admin CSY", ex);
             }
         }
 
@@ -158,7 +158,7 @@ namespace EC_Admin.Forms
             {
                 subtotal += ((decimal)dr.Cells[3].Value * (decimal)dr.Cells[4].Value);
                 cantTot += (decimal)dr.Cells[4].Value;
-                descuento += (decimal)dr.Cells[5].Value;
+                descuento += (decimal)dr.Cells[3].Value * (((decimal)dr.Cells[5].Value) * ((decimal)dr.Cells[4].Value));
             }
             impuesto = subtotal * Config.iva;
             total = subtotal + impuesto - descuento;
@@ -194,21 +194,45 @@ namespace EC_Admin.Forms
 
         #endregion
 
+        private void MovimientoCaja()
+        {
+            try
+            {
+                string folio = "";
+                if (chbRemision.Checked)
+                    folio = txtRemision.Text;
+                else if (chbFactura.Checked)
+                    folio = txtFactura.Text;
+
+                Caja c = new Caja();
+                c.Descripcion = "COMPRA DE PRODUCTOS CON FOLIO: " + folio;
+                
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private bool VerificarDatos()
         {
             if (idComprador <= 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes seleccionar un comprador", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes seleccionar un comprador", "Admin CSY");
                 return false;
             }
             if (idProveedor <= 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes seleccionar un proveedor", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes seleccionar un proveedor", "Admin CSY");
                 return false;
             }
             if (dgvProductos.RowCount == 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un producto a la compra", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un producto a la compra", "Admin CSY");
                 return false;
             }
             switch (cboTipoPago.SelectedIndex)
@@ -216,21 +240,21 @@ namespace EC_Admin.Forms
                 case 1:
                     if (txtDatos.Text.Trim() == "")
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el número de cheque", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el número de cheque", "Admin CSY");
                         return false;
                     }
                     break;
                 case 2:
                     if (txtDatos.Text.Trim() == "")
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de crédito", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de crédito", "Admin CSY");
                         return false;
                     }
                     break;
                 case 3:
                     if (txtDatos.Text.Trim() == "")
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de débito", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de débito", "Admin CSY");
                         return false;
                     }
                     break;
@@ -239,7 +263,7 @@ namespace EC_Admin.Forms
             {
                 if (txtRemision.Text.Trim() == "")
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la remisión", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la remisión", "Admin CSY");
                     return false;
                 }
             }
@@ -247,7 +271,7 @@ namespace EC_Admin.Forms
             {
                 if (txtFactura.Text.Trim() == "")
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la factura", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la factura", "Admin CSY");
                     return false;
                 }
             }
@@ -294,21 +318,21 @@ namespace EC_Admin.Forms
         {
             if (VerificarDatos())
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Los datos ingresados son correctos?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Los datos ingresados son correctos?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {
                         NuevaCompra();
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha registrado la compra correctamente!", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha registrado la compra correctamente!", "Admin CSY");
                         this.Close();
                     }
                     catch (MySqlException ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar la compra. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar la compra. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                     }
                     catch (Exception ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar la compra.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar la compra.", "Admin CSY", ex);
                     }
                 }
             }
@@ -378,27 +402,45 @@ namespace EC_Admin.Forms
 
         private void chbRemision_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbRemision.Checked)
+            if (chbRemision.Checked && !chbFactura.Checked)
             {
                 chbFactura.Checked = false;
                 txtFactura.Enabled = false;
                 txtFactura.Text = "";
                 txtRemision.Enabled = true;
-                if (chbRemision.Checked == false)
-                {
-                    chbRemision.Checked = true;
-                }
+            }
+            else if (chbRemision.Checked && chbFactura.Checked)
+            {
+                chbFactura.Checked = false;
+                txtFactura.Enabled = false;
+                txtFactura.Text = "";
+                txtRemision.Enabled = true;
+            }
+            else if (!chbFactura.Checked && !chbRemision.Checked)
+            {
+                chbFactura.Checked = true;
             }
         }
 
         private void chbFactura_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbFactura.Enabled)
+            if (chbFactura.Checked && !chbRemision.Checked)
             {
                 chbRemision.Checked = false;
                 txtRemision.Enabled = false;
                 txtRemision.Text = "";
                 txtFactura.Enabled = true;
+            }
+            else if (chbFactura.Checked && chbRemision.Checked)
+            {
+                chbRemision.Checked = false;
+                txtRemision.Enabled = false;
+                txtRemision.Text = "";
+                txtFactura.Enabled = true;
+            }
+            else if (!chbFactura.Checked && !chbRemision.Checked)
+            {
+                chbRemision.Checked = true;
             }
         }
 
@@ -435,7 +477,7 @@ namespace EC_Admin.Forms
         private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dgvProductos.CurrentRow != null)
-                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, (decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value)).ShowDialog(this);
+                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, ((decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value) * 100)).ShowDialog(this);
         }
     }
 }

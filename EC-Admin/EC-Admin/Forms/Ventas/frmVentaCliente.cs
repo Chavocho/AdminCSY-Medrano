@@ -47,12 +47,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los clientes. No se ha podido conectar a la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los clientes. No se ha podido conectar a la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los clientes.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los clientes.", "Admin CSY", ex });
             }
         }
 
@@ -121,7 +121,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de los clientes.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de los clientes.", "Admin CSY", ex);
             }
         }
 

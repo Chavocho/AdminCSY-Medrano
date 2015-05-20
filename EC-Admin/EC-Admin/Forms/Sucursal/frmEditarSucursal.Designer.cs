@@ -145,6 +145,7 @@
             this.grbFiscal.TabIndex = 28;
             this.grbFiscal.TabStop = false;
             this.grbFiscal.Text = "Domicilio fiscal";
+            this.grbFiscal.Visible = false;
             // 
             // lblFColonia
             // 
@@ -384,6 +385,7 @@
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(259, 29);
             this.txtFax.TabIndex = 23;
+            this.txtFax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // lblEFax
             // 
@@ -424,6 +426,7 @@
             this.txtTelefono02.Name = "txtTelefono02";
             this.txtTelefono02.Size = new System.Drawing.Size(259, 29);
             this.txtTelefono02.TabIndex = 21;
+            this.txtTelefono02.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // txtTelefono01
             // 
@@ -434,6 +437,7 @@
             this.txtTelefono01.Name = "txtTelefono01";
             this.txtTelefono01.Size = new System.Drawing.Size(259, 29);
             this.txtTelefono01.TabIndex = 19;
+            this.txtTelefono01.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // txtColonia
             // 

@@ -64,11 +64,11 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la cuenta. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la cuenta. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la cuenta.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la cuenta.", "Admin CSY", ex);
             }
         }
 
@@ -97,7 +97,7 @@ namespace EC_Admin.Forms
                 c.Colonia = txtColonia.Text;
                 c.Ciudad = txtCiudad.Text;
                 c.Estado = txtEstado.Text;
-                c.CP = int.Parse(txtCP.Text);
+                c.CP = txtCP.Text;
                 c.Telefono01 = txtTelefono01.Text;
                 c.Telefono02 = txtTelefono02.Text;
                 c.Lada01 = txtLada01.Text;
@@ -119,91 +119,102 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool resultado = true;
             if (cboSucursal.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo sucursal es obligatorio", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref cboSucursal);
+                resultado = false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(ref cboSucursal);
             }
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref txtNombre);
+                resultado = false;
             }
-            if (txtRFC.Text.Length < 12)
+            else
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo RFC debe tener entre 12 o 13 caracteres", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresBien(ref txtNombre);
+            }
+            if (txtRFC.Text.Trim() != "")
+            {
+                if (txtRFC.Text.Length < 12)
+                {
+                    FuncionesGenerales.ColoresError(ref txtRFC);
+                    resultado = false;
+                }
+                else
+                {
+                    FuncionesGenerales.ColoresBien(ref txtRFC);
+                }
             }
             if (txtCalle.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref txtCalle);
+                resultado = false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(ref txtCalle);
             }
             if (txtNumInt.Text.Trim() != "" && txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior debe ser ingresado antes que el número interior", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref txtNumExt);
+                resultado = false;
             }
             if (txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior es obligatorio", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref txtNumExt);
+                resultado = false;
             }
-            if (txtColonia.Text.Trim() == "")
+            else
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo colonia es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtCiudad.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo ciudad es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtEstado.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo estado es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtCP.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo código postal es obligatorio", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresBien(ref txtNumExt);
             }
             if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un teléfono", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref txtTelefono01);
+                resultado = false;
             }
             else
             {
                 if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() != "")
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el primer teléfono antes que el segundo", "EC-Admin");
-                    return false;
+                    FuncionesGenerales.ColoresError(ref txtTelefono01);
+                    resultado = false;
+                }
+                else
+                {
+                    FuncionesGenerales.ColoresBien(ref txtTelefono01);
                 }
             }
-            if (txtCorreo.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo correo es obligatorio", "EC-Admin");
-                return false;
-            }
-            else
+            if (txtCorreo.Text != "")
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se reconoce el correo ingresado como uno válido", "EC-Admin");
-                    return false;
+                    FuncionesGenerales.ColoresError(ref txtCorreo);
+                    resultado = false;
+                }
+                else
+                {
+                    FuncionesGenerales.ColoresBien(ref txtCorreo);
                 }
             }
             if (cboTipoCredito.SelectedIndex == 1)
             {
                 if (txtLimiteCredito.Text.Trim() == "")
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo límite de crédito es obligatorio", "EC-Admin");
-                    return false;
+                    FuncionesGenerales.ColoresError(ref txtLimiteCredito);
+                    resultado = false;
+                }
+                else
+                {
+                    FuncionesGenerales.ColoresBien(ref txtLimiteCredito);
                 }
             }
-            return true;
+            return resultado;
         }
 
         private void txtLimiteCredito_KeyPress(object sender, KeyPressEventArgs e)
@@ -239,17 +250,21 @@ namespace EC_Admin.Forms
                 try
                 {
                     InsertarCliente();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el cliente con éxito!", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el cliente con éxito!", "Admin CSY");
                     this.Close();
                 }
                 catch (MySqlException ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el cliente. No se ha podido conectar a la base de datos", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el cliente. No se ha podido conectar a la base de datos", "Admin CSY", ex);
                 }
                 catch (Exception ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear el cliente.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear el cliente.", "Admin CSY", ex);
                 }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Los campos en rojo son obligatorios", "Admin CSY");
             }
         }
 
@@ -267,6 +282,11 @@ namespace EC_Admin.Forms
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             QuitarDatosCuenta();
+        }
+
+        private void txtTelefonos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesGenerales.VerificarEsNumero(ref sender, ref e, true);  
         }
     }
 }

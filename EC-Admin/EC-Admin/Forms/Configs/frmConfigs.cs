@@ -73,5 +73,13 @@ namespace EC_Admin.Forms
             else
                 frmConfigAlmacen.Instancia.Select();
         }
+
+        private void btnTicket_Click(object sender, EventArgs e)
+        {
+            if (!frmConfigTicket.Instancia.Visible)
+                frmConfigTicket.Instancia.Show();
+            else
+                frmConfigTicket.Instancia.Select(); 
+        }
     }
 }

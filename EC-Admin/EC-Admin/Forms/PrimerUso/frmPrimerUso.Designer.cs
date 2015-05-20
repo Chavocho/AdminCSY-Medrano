@@ -139,6 +139,7 @@
             this.Name = "frmPrimerUso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bienvenido a EC-Admin";
+            this.Load += new System.EventHandler(this.frmPrimerUso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

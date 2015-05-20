@@ -57,12 +57,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las categorías. No se ha podido conectar con la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las categorías. No se ha podido conectar con la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las categorías.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar las categorías.", "Admin CSY", ex });
             }
         }
 
@@ -79,7 +79,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar las categorías.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar las categorías.", "Admin CSY", ex);
             }
         }
 

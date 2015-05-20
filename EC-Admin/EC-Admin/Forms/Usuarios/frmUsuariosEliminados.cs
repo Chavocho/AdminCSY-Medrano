@@ -101,7 +101,7 @@ namespace EC_Admin.Forms
         {
             if (dgvUsuarios.CurrentRow != null)
             {
-                DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente deseas restablecer a " + dgvUsuarios[2, dgvUsuarios.CurrentRow.Index].Value.ToString() + "?", "EC-Admin");
+                DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente deseas restablecer a " + dgvUsuarios[2, dgvUsuarios.CurrentRow.Index].Value.ToString() + "?", "Admin CSY");
                 if (r == System.Windows.Forms.DialogResult.Yes)
                 {
                     Usuario.CambiarEstadoEliminadoUsuario(id, false);

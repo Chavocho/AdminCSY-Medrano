@@ -59,12 +59,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al buscar a los trabajadores.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al buscar a los trabajadores.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al buscar a los trabajadores.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al buscar a los trabajadores.", "Admin CSY", ex });
             }
         }
 
@@ -98,7 +98,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ha ocurrido un error genérico al mostrar los datos de los trabajadores.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ha ocurrido un error genérico al mostrar los datos de los trabajadores.", "Admin CSY", ex);
             }
         }
 
@@ -138,6 +138,11 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            if (Puesto.Cantidad <= 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un puesto para poder crear un trabajador", "Admin CSY");
+                return;
+            }
             (new frmNuevoTrabajador()).ShowDialog(this);
         }
 
@@ -153,21 +158,21 @@ namespace EC_Admin.Forms
         {
             if (dgvTrabajadores.CurrentRow != null && id > 0)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente deseas dar de baja a " + dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString() + "?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente deseas dar de baja a " + dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {
                         CambiarEstado();
                         dgvTrabajadores.Rows.Remove(dgvTrabajadores.CurrentRow);
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha dado de baja correctamente al trabajador!", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha dado de baja correctamente al trabajador!", "Admin CSY");
                     }
                     catch (MySqlException ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al dar de baja al trabajador. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al dar de baja al trabajador. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                     }
                     catch (Exception ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al dar de baja al trabajador. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al dar de baja al trabajador. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                     }
                 }
             }

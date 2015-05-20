@@ -45,37 +45,37 @@ namespace EC_Admin.Forms
         {
             if (txtCalle.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtNumInt.Text != "" && txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Se debe ingresar el campo número exterior antes que el número interior", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Se debe ingresar el campo número exterior antes que el número interior", "Admin CSY");
                 return false;
             }
             if (txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtCP.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo código postal es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtColonia.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo colonia es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtCiudad.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo ciudad es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtEstado.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo estado es obligatorio", "Admin CSY");
                 return false;
             }
             return true;
@@ -88,16 +88,16 @@ namespace EC_Admin.Forms
                 try
                 {
                     Insertar();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el domicilio fiscal correctamente!", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el domicilio fiscal correctamente!", "Admin CSY");
                     this.Close();
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el domicilio. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el domicilio. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                 }
                 catch (Exception ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear el domicilio.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear el domicilio.", "Admin CSY", ex);
                 }
             }
         }

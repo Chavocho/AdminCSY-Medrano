@@ -69,6 +69,7 @@
             this.txtNumCuenta.Name = "txtNumCuenta";
             this.txtNumCuenta.Size = new System.Drawing.Size(259, 29);
             this.txtNumCuenta.TabIndex = 9;
+            this.txtNumCuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblENumCuenta
             // 
@@ -137,6 +138,7 @@
             this.txtClabe.Name = "txtClabe";
             this.txtClabe.Size = new System.Drawing.Size(259, 29);
             this.txtClabe.TabIndex = 1;
+            this.txtClabe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblEClabe
             // 

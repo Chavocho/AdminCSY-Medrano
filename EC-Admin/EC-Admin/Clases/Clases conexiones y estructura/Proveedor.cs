@@ -23,7 +23,7 @@ namespace EC_Admin
         private string colonia;
         private string ciudad;
         private string estado;
-        private int cp;
+        private string cp;
         private string telefono01;
         private string telefono02;
         private string correo;
@@ -117,7 +117,7 @@ namespace EC_Admin
             set { estado = value; }
         }
 
-        public override int CP
+        public override string CP
         {
             get { return cp; }
             set { cp = value; }
@@ -367,7 +367,7 @@ namespace EC_Admin
                 foreach (DataRow dr in dt.Rows)
                 {
                     sucursal = (int)dr["sucursal_id"];
-                    cuenta = (int)dr["cuenta"];
+                    cuenta = (int)dr["cuenta_id"];
                     nombre = dr["nombre"].ToString();
                     razonSocial = dr["razon_social"].ToString();
                     rfc = dr["rfc"].ToString();
@@ -377,7 +377,7 @@ namespace EC_Admin
                     colonia = dr["colonia"].ToString();
                     ciudad = dr["ciudad"].ToString();
                     estado = dr["estado"].ToString();
-                    cp = (int)dr["cp"];
+                    cp = dr["cp"].ToString();
                     telefono01 = dr["telefono1"].ToString();
                     telefono02 = dr["telefono2"].ToString();
                     correo = dr["email"].ToString();
@@ -524,5 +524,82 @@ namespace EC_Admin
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// Método que obtiene el nombre del proveedor
+        /// </summary>
+        /// <param name="id">ID del proveedor</param>
+        /// <returns>Nombre y apellidos del proveedor</returns>
+        public static string NombreProveedor(int id)
+        {
+            string nombre = "";
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT nombre FROM proveedor WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    nombre = dr["nombre"].ToString();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return nombre;
+        }
+
+        /// <summary>
+        /// Método que obtiene la dirección del proveedor para la ubicación en el mapa
+        /// </summary>
+        /// <param name="id">ID del proveedor</param>
+        /// <returns>Datos concatenados que forman la dirección del proveedor</returns>
+        public static string DireccionProveedor(int id)
+        {
+            string direccion = "";
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT calle, num_ext, num_int, colonia, ciudad, estado, cp FROM proveedor WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    direccion += dr["calle"].ToString() + " #" + dr["num_ext"].ToString();
+                    if (dr["colonia"].ToString() != "")
+                    {
+                        direccion += ", " + dr["colonia"].ToString();
+                    }
+                    if (dr["cp"].ToString() != "")
+                    {
+                        direccion += ", " + dr["cp"].ToString();
+                    }
+                    if (dr["ciudad"].ToString() != "")
+                    {
+                        direccion += ", " + dr["ciudad"].ToString();
+                    }
+                    if (dr["estado"].ToString() != "")
+                    {
+                        direccion += ", " + dr["estado"].ToString();
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return direccion;
+        }
+
     }
 }

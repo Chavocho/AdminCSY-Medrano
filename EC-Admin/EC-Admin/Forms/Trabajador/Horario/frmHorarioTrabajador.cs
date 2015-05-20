@@ -38,11 +38,11 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar a los trabajadores. No se ha podido conectar con la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar a los trabajadores. No se ha podido conectar con la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar a los trabajadores.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar a los trabajadores.", "Admin CSY", ex });
             }
         }
 
@@ -138,7 +138,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los trabajadores.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los trabajadores.", "Admin CSY", ex);
             }
         }
 
@@ -170,7 +170,7 @@ namespace EC_Admin.Forms
                 }
                 else
                 {
-                    DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "El trabajador seleccionado ya tiene asignado un horario, ¿desea modificarlo?", "EC-Admin");
+                    DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "El trabajador seleccionado ya tiene asignado un horario, ¿desea modificarlo?", "Admin CSY");
                     if (r == System.Windows.Forms.DialogResult.Yes)
                     {
                         btnEditar.PerformClick();
@@ -189,7 +189,7 @@ namespace EC_Admin.Forms
                 }
                 else
                 {
-                    DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "El trabajador seleccionado no tiene asignado un horario, ¿desea crearlo?", "EC-Admin");
+                    DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "El trabajador seleccionado no tiene asignado un horario, ¿desea crearlo?", "Admin CSY");
                     if (r == System.Windows.Forms.DialogResult.Yes)
                     {
                         btnNuevo.PerformClick();

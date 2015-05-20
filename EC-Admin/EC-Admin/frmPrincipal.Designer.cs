@@ -44,13 +44,6 @@
             this.btnTrabajadores = new System.Windows.Forms.Button();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lnsSeparador = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.btnNuevaVenta = new System.Windows.Forms.Button();
-            this.btnNuevaCotizacion = new System.Windows.Forms.Button();
-            this.btnNuevaCompra = new System.Windows.Forms.Button();
-            this.btnAbrirCerrarCaja = new System.Windows.Forms.Button();
-            this.btnAbonosVentas = new System.Windows.Forms.Button();
-            this.btnAbonosCompras = new System.Windows.Forms.Button();
-            this.btnInventario = new System.Windows.Forms.Button();
             this.ttPrincipal = new System.Windows.Forms.ToolTip(this.components);
             this.btnConfig = new System.Windows.Forms.Button();
             this.pcbUsuario = new System.Windows.Forms.PictureBox();
@@ -326,153 +319,6 @@
             this.lnsSeparador.Y1 = 10;
             this.lnsSeparador.Y2 = 688;
             // 
-            // btnNuevaVenta
-            // 
-            this.btnNuevaVenta.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnNuevaVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnNuevaVenta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnNuevaVenta.FlatAppearance.BorderSize = 0;
-            this.btnNuevaVenta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnNuevaVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnNuevaVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevaVenta.Font = new System.Drawing.Font("Corbel", 13F);
-            this.btnNuevaVenta.ForeColor = System.Drawing.Color.White;
-            this.btnNuevaVenta.Location = new System.Drawing.Point(241, 121);
-            this.btnNuevaVenta.Name = "btnNuevaVenta";
-            this.btnNuevaVenta.Size = new System.Drawing.Size(200, 60);
-            this.btnNuevaVenta.TabIndex = 19;
-            this.btnNuevaVenta.Text = "Nueva venta";
-            this.btnNuevaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNuevaVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevaVenta.UseVisualStyleBackColor = false;
-            this.btnNuevaVenta.Visible = false;
-            // 
-            // btnNuevaCotizacion
-            // 
-            this.btnNuevaCotizacion.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnNuevaCotizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnNuevaCotizacion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnNuevaCotizacion.FlatAppearance.BorderSize = 0;
-            this.btnNuevaCotizacion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnNuevaCotizacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnNuevaCotizacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevaCotizacion.Font = new System.Drawing.Font("Corbel", 13F);
-            this.btnNuevaCotizacion.ForeColor = System.Drawing.Color.White;
-            this.btnNuevaCotizacion.Location = new System.Drawing.Point(241, 253);
-            this.btnNuevaCotizacion.Name = "btnNuevaCotizacion";
-            this.btnNuevaCotizacion.Size = new System.Drawing.Size(200, 60);
-            this.btnNuevaCotizacion.TabIndex = 21;
-            this.btnNuevaCotizacion.Text = "Nueva cotización";
-            this.btnNuevaCotizacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNuevaCotizacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevaCotizacion.UseVisualStyleBackColor = false;
-            this.btnNuevaCotizacion.Visible = false;
-            // 
-            // btnNuevaCompra
-            // 
-            this.btnNuevaCompra.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnNuevaCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnNuevaCompra.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnNuevaCompra.FlatAppearance.BorderSize = 0;
-            this.btnNuevaCompra.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnNuevaCompra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnNuevaCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevaCompra.Font = new System.Drawing.Font("Corbel", 13F);
-            this.btnNuevaCompra.ForeColor = System.Drawing.Color.White;
-            this.btnNuevaCompra.Location = new System.Drawing.Point(241, 187);
-            this.btnNuevaCompra.Name = "btnNuevaCompra";
-            this.btnNuevaCompra.Size = new System.Drawing.Size(200, 60);
-            this.btnNuevaCompra.TabIndex = 22;
-            this.btnNuevaCompra.Text = "Nueva compra";
-            this.btnNuevaCompra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNuevaCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNuevaCompra.UseVisualStyleBackColor = false;
-            this.btnNuevaCompra.Visible = false;
-            // 
-            // btnAbrirCerrarCaja
-            // 
-            this.btnAbrirCerrarCaja.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnAbrirCerrarCaja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnAbrirCerrarCaja.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnAbrirCerrarCaja.FlatAppearance.BorderSize = 0;
-            this.btnAbrirCerrarCaja.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnAbrirCerrarCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnAbrirCerrarCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbrirCerrarCaja.Font = new System.Drawing.Font("Corbel", 13F);
-            this.btnAbrirCerrarCaja.ForeColor = System.Drawing.Color.White;
-            this.btnAbrirCerrarCaja.Location = new System.Drawing.Point(241, 319);
-            this.btnAbrirCerrarCaja.Name = "btnAbrirCerrarCaja";
-            this.btnAbrirCerrarCaja.Size = new System.Drawing.Size(200, 60);
-            this.btnAbrirCerrarCaja.TabIndex = 23;
-            this.btnAbrirCerrarCaja.Text = "Abrir caja";
-            this.btnAbrirCerrarCaja.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAbrirCerrarCaja.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAbrirCerrarCaja.UseVisualStyleBackColor = false;
-            this.btnAbrirCerrarCaja.Visible = false;
-            // 
-            // btnAbonosVentas
-            // 
-            this.btnAbonosVentas.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnAbonosVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnAbonosVentas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnAbonosVentas.FlatAppearance.BorderSize = 0;
-            this.btnAbonosVentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnAbonosVentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnAbonosVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbonosVentas.Font = new System.Drawing.Font("Corbel", 13F);
-            this.btnAbonosVentas.ForeColor = System.Drawing.Color.White;
-            this.btnAbonosVentas.Location = new System.Drawing.Point(241, 385);
-            this.btnAbonosVentas.Name = "btnAbonosVentas";
-            this.btnAbonosVentas.Size = new System.Drawing.Size(200, 60);
-            this.btnAbonosVentas.TabIndex = 27;
-            this.btnAbonosVentas.Text = "Abonos a ventas";
-            this.btnAbonosVentas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAbonosVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAbonosVentas.UseVisualStyleBackColor = false;
-            this.btnAbonosVentas.Visible = false;
-            // 
-            // btnAbonosCompras
-            // 
-            this.btnAbonosCompras.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnAbonosCompras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnAbonosCompras.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnAbonosCompras.FlatAppearance.BorderSize = 0;
-            this.btnAbonosCompras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnAbonosCompras.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnAbonosCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbonosCompras.Font = new System.Drawing.Font("Corbel", 13F);
-            this.btnAbonosCompras.ForeColor = System.Drawing.Color.White;
-            this.btnAbonosCompras.Location = new System.Drawing.Point(241, 451);
-            this.btnAbonosCompras.Name = "btnAbonosCompras";
-            this.btnAbonosCompras.Size = new System.Drawing.Size(200, 60);
-            this.btnAbonosCompras.TabIndex = 28;
-            this.btnAbonosCompras.Text = "Abonos a compras";
-            this.btnAbonosCompras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAbonosCompras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAbonosCompras.UseVisualStyleBackColor = false;
-            this.btnAbonosCompras.Visible = false;
-            // 
-            // btnInventario
-            // 
-            this.btnInventario.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnInventario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnInventario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnInventario.FlatAppearance.BorderSize = 0;
-            this.btnInventario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnInventario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInventario.Font = new System.Drawing.Font("Corbel", 13F);
-            this.btnInventario.ForeColor = System.Drawing.Color.White;
-            this.btnInventario.Location = new System.Drawing.Point(241, 517);
-            this.btnInventario.Name = "btnInventario";
-            this.btnInventario.Size = new System.Drawing.Size(200, 60);
-            this.btnInventario.TabIndex = 29;
-            this.btnInventario.Text = "Inventario";
-            this.btnInventario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnInventario.UseVisualStyleBackColor = false;
-            this.btnInventario.Visible = false;
-            // 
             // btnConfig
             // 
             this.btnConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -511,13 +357,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 698);
-            this.Controls.Add(this.btnInventario);
-            this.Controls.Add(this.btnAbonosCompras);
-            this.Controls.Add(this.btnAbonosVentas);
-            this.Controls.Add(this.btnAbrirCerrarCaja);
-            this.Controls.Add(this.btnNuevaCompra);
-            this.Controls.Add(this.btnNuevaCotizacion);
-            this.Controls.Add(this.btnNuevaVenta);
             this.Controls.Add(this.btnTrabajadores);
             this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.btnCerrarSesion);
@@ -536,7 +375,7 @@
             this.MinimumSize = new System.Drawing.Size(1024, 736);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Admin-CSY";
+            this.Text = "Admin CSY";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
@@ -564,13 +403,6 @@
         private System.Windows.Forms.Button btnTrabajadores;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lnsSeparador;
-        private System.Windows.Forms.Button btnNuevaVenta;
-        private System.Windows.Forms.Button btnNuevaCotizacion;
-        private System.Windows.Forms.Button btnNuevaCompra;
-        private System.Windows.Forms.Button btnAbrirCerrarCaja;
-        private System.Windows.Forms.Button btnAbonosVentas;
-        private System.Windows.Forms.Button btnAbonosCompras;
-        private System.Windows.Forms.Button btnInventario;
         private System.Windows.Forms.ToolTip ttPrincipal;
     }
 }

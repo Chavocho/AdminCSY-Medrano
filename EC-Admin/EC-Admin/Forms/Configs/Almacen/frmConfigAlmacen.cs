@@ -57,12 +57,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los almacenes. No se ha podido conectar con la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los almacenes. No se ha podido conectar con la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los almacenes.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los almacenes.", "Admin CSY", ex });
             }
         }
 
@@ -79,7 +79,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de los almacenes.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de los almacenes.", "Admin CSY", ex);
             }
         }
 
@@ -91,6 +91,11 @@ namespace EC_Admin.Forms
 
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
+            if (Trabajador.Cantidad <= 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Debes tener registrado al menos a un trabajador para poder crear almacenes", "Admin CSY");
+                return;
+            }
             (new frmNuevoAlmacen()).ShowDialog(this);
             bgwBusqueda.RunWorkerAsync();
             tmrEspera.Enabled = true;

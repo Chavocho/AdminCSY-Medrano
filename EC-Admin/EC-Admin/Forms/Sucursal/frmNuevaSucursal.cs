@@ -58,11 +58,11 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la dirección fiscal. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la dirección fiscal. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al mostrar los datos de la dirección fiscal.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al mostrar los datos de la dirección fiscal.", "Admin CSY", ex);
             }
         }
 
@@ -102,67 +102,42 @@ namespace EC_Admin.Forms
         {
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
                 return false;
             }
-            if (txtRFC.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo RFC es obligatorio", "EC-Admin");
-                return false;
-            }
-            else
+            if (txtRFC.Text.Trim() != "")
             {
                 if (txtRFC.Text.Length < 12)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo RFC debe tener 12 o 13 caracteres", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo RFC debe tener 12 o 13 caracteres", "Admin CSY");
                     return false;
                 }
             }
             if (txtCalle.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtNumInt.Text.Trim() != "" && txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior necesita ser ingresado antes que el número interior", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior necesita ser ingresado antes que el número interior", "Admin CSY");
                 return false;
             }
             if (txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtCP.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo código postal es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtColonia.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo colonia es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtCiudad.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo ciudad es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtEstado.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo estado es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un número teléfonico", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un número teléfonico", "Admin CSY");
                 return false;
             }
             else
             {
                 if (txtTelefono02.Text.Trim() != "" && txtTelefono01.Text.Trim() == "")
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El primer campo de teléfono debe ser ingresado antes que el segundo", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El primer campo de teléfono debe ser ingresado antes que el segundo", "Admin CSY");
                     return false;
                 }
             }
@@ -170,14 +145,9 @@ namespace EC_Admin.Forms
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no se reconoce cómo correo válido", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no se reconoce cómo correo válido", "Admin CSY");
                     return false;
                 }
-            }
-            if (idD == 0)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes asignar el domicilio fiscal de esta sucursal", "EC-Admin");
-                return false;
             }
             return true;
         }
@@ -202,18 +172,18 @@ namespace EC_Admin.Forms
                 }
                 catch (System.IO.FileNotFoundException ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "El archivo seleccionado no pudo ser encontrado.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "El archivo seleccionado no pudo ser encontrado.", "Admin CSY", ex);
                 }
                 catch (Exception ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al tratar de crear el logotipo", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al tratar de crear el logotipo", "Admin CSY", ex);
                 }
             }
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea quitar éste logotipo?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+            if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea quitar éste logotipo?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
             {
                 pcbLogotipo.Image = null;
             }
@@ -233,7 +203,7 @@ namespace EC_Admin.Forms
                     if (frm == null)
                     {
                         Insertar();
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado la sucursal correctamente!", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado la sucursal correctamente!", "Admin CSY");
                         this.Close();
                     }
                     else
@@ -247,13 +217,18 @@ namespace EC_Admin.Forms
                 }
                 catch (MySqlException ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear la sucursal. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear la sucursal. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                 }
                 catch (Exception ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear la sucursal.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear la sucursal.", "Admin CSY", ex);
                 }
             }
+        }
+
+        private void txtTelefonos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesGenerales.VerificarEsNumero(ref sender, ref e, true);
         }
     }
 }

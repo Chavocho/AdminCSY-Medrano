@@ -53,19 +53,19 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT p.id, p.nombre, a.num_alm, p.codigo, p.costo, p.precio, p.cant FROM producto AS p INNER JOIN almacen AS a ON (p.almacen_id=a.id) " +
-                    "WHERE (p.nombre LIKE '%" + p + "%' OR p.codigo='" + p + "') AND eliminado=0";
+                string sql = "SELECT id, nombre, codigo, costo, precio, cant FROM producto " +
+                    "WHERE (nombre LIKE '%" + p + "%' OR codigo='" + p + "') AND eliminado=0";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los productos. No se ha podido conectar a la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los productos. No se ha podido conectar a la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los productos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los productos.", "Admin CSY", ex });
             }
         }
 
@@ -76,7 +76,7 @@ namespace EC_Admin.Forms
                 dgvProductos.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["num_alm"], dr["codigo"], dr["costo"], dr["precio"], dr["cant"] });
+                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["codigo"], dr["costo"], dr["precio"], dr["cant"] });
                 }
                 dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
             }
@@ -122,6 +122,11 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            if (Categoria.Cantidad <= 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un categoría antes de poder registrar un producto", "Admin CSY");
+                return;
+            }
             (new frmNuevoProducto()).ShowDialog(this);
         }
 
@@ -137,7 +142,7 @@ namespace EC_Admin.Forms
         {
             if (dgvProductos.CurrentRow != null && id > 0)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea eliminar el producto con nombre " + dgvProductos[1, dgvProductos.CurrentRow.Index].Value.ToString() + "?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea eliminar el producto con nombre " + dgvProductos[1, dgvProductos.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
                     Eliminar();
                 }

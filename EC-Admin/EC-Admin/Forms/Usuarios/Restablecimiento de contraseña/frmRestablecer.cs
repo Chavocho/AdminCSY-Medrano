@@ -40,14 +40,14 @@ namespace EC_Admin.Forms
         {
             if (txtPass.Text.Trim() == "")
             {
-                MessageBox.Show("El campo contraseña es obligatorio.", "EC-Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El campo contraseña es obligatorio.", "Admin CSY", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             else
             {
                 if (txtPass.Text != txtRepPass.Text)
                 {
-                    MessageBox.Show("Las contraseñas no coinciden.", "EC-Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Las contraseñas no coinciden.", "Admin CSY", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return false;
                 }
             }
@@ -61,7 +61,7 @@ namespace EC_Admin.Forms
                 try
                 {
                     ActualizarPass(txtPass.Text);
-                    MessageBox.Show("Contraseña actualizada con éxito.", "EC-Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Contraseña actualizada con éxito.", "Admin CSY", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frm.Cerrar();
                 }
                 catch (Exception ex)

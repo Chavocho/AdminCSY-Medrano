@@ -86,21 +86,21 @@ namespace EC_Admin.Forms
             {
                 if (txtAntiPass.Text != u.Contraseña)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "La contraseña actual no coincide.", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "La contraseña actual no coincide.", "Admin CSY");
                     return false;
                 }
                 else
                 {
                     if (txtPass.Text.Trim() == "")
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo contraseña es obligatorio.", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo contraseña es obligatorio.", "Admin CSY");
                         return false;
                     }
                     else
                     {
                         if (txtPass.Text != txtRepPass.Text)
                         {
-                            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Las contraseñas no coinciden. Éstas deben coincidir para poder continuar.", "EC-Admin");
+                            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Las contraseñas no coinciden. Éstas deben coincidir para poder continuar.", "Admin CSY");
                             return false;
                         }
                     }
@@ -108,19 +108,27 @@ namespace EC_Admin.Forms
             }
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio.", "Admin CSY");
                 return false;
             }
             if (txtApellidos.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo apellidos es obligatorio.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo apellidos es obligatorio.", "Admin CSY");
                 return false;
             }
             if (txtCorreo.Text.Trim() != "")
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no es valido. Verifique que este escrito correctamente.", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no es valido. Verifique que este escrito correctamente.", "Admin CSY");
+                    return false;
+                }
+            }
+            if (u.NivelUsuario == NivelesUsuario.Administrador)
+            {
+                if (n == NivelesUsuario.Encargado || n == NivelesUsuario.Desconocido)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No puedes bajar el nivel de un usuario administrador.", "Admin CSY");
                     return false;
                 }
             }
@@ -163,7 +171,7 @@ namespace EC_Admin.Forms
                 try
                 {
                     EditarUsuario();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado correctamente el usuario!", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado correctamente el usuario!", "Admin CSY");
                     this.Close();
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -219,13 +227,14 @@ namespace EC_Admin.Forms
                 }
                 else
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No hay ninguna cámara seleccionada", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No hay ninguna cámara seleccionada", "Admin CSY");
                 }
             }
             else
             {
                 c.TerminarFuenteDeVideo();
                 FuncionesGenerales.EfectoFoto(ref pcbImagen);
+                cboCamaras.Enabled = true;
             }
         }
 

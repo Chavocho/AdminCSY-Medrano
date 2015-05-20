@@ -23,7 +23,7 @@ namespace EC_Admin
         private string colonia;
         private string ciudad;
         private string estado;
-        private int cp;
+        private string cp;
         private string telefono01;
         private string telefono02;
         private string correo;
@@ -118,7 +118,7 @@ namespace EC_Admin
             set { estado = value; }
         }
 
-        public override int CP
+        public override string CP
         {
             get { return cp; }
             set { cp = value; }
@@ -378,7 +378,7 @@ namespace EC_Admin
                     colonia = dr["colonia"].ToString();
                     ciudad = dr["ciudad"].ToString();
                     estado = dr["estado"].ToString();
-                    cp = (int)dr["cp"];
+                    cp = dr["cp"].ToString();
                     telefono01 = dr["telefono1"].ToString();
                     telefono02 = dr["telefono2"].ToString();
                     correo = dr["email"].ToString();
@@ -526,6 +526,11 @@ namespace EC_Admin
             }
         }
 
+        /// <summary>
+        /// Método que obtiene el nombre del cliente
+        /// </summary>
+        /// <param name="id">ID del cliente</param>
+        /// <returns>Nombre y apellidos del cliente</returns>
         public static string NombreCliente(int id)
         {
             string nombre = "";
@@ -552,6 +557,52 @@ namespace EC_Admin
         }
 
         /// <summary>
+        /// Método que obtiene la dirección del cliente para la ubicación en el mapa
+        /// </summary>
+        /// <param name="id">ID del cliente</param>
+        /// <returns>Datos concatenados que forman la dirección del cliente</returns>
+        public static string DireccionCliente(int id)
+        {
+            string direccion = "";
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT calle, num_ext, num_int, colonia, ciudad, estado, cp FROM cliente WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    direccion += dr["calle"].ToString() + " #" + dr["num_ext"].ToString();
+                    if (dr["colonia"].ToString() != "")
+                    {
+                        direccion += ", " + dr["colonia"].ToString();
+                    }
+                    if (dr["cp"].ToString() != "")
+                    {
+                        direccion += ", " + dr["cp"].ToString();
+                    }
+                    if (dr["ciudad"].ToString() != "")
+                    {
+                        direccion += ", " + dr["ciudad"].ToString();
+                    }
+                    if (dr["estado"].ToString() != "")
+                    {
+                        direccion += ", " + dr["estado"].ToString();
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return direccion;
+        }
+
+        /// <summary>
         /// Método que crea el cliente general
         /// </summary>
         public static void ClienteGeneral()
@@ -570,7 +621,7 @@ namespace EC_Admin
                 c.Colonia = "";
                 c.Ciudad = "";
                 c.Estado = "";
-                c.CP = 0;
+                c.CP = "";
                 c.Telefono01 = "";
                 c.Telefono02 = "";
                 c.Correo = "";

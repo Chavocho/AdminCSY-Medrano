@@ -81,7 +81,7 @@ namespace EC_Admin
             set;
         }
 
-        abstract public int CP
+        abstract public string CP
         {
             get;
             set;

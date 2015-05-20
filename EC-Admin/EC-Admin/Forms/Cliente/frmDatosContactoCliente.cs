@@ -108,24 +108,24 @@ namespace EC_Admin.Forms
         {
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtApellidos.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo apellidos es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo apellidos es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un teléfono", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un teléfono", "Admin CSY");
                 return false;
             }
             if (txtCorreo.Text.Trim() != "")
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se reconoce el correo ingresado como uno válido", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se reconoce el correo ingresado como uno válido", "Admin CSY");
                     return false;
                 }
             }
@@ -141,16 +141,16 @@ namespace EC_Admin.Forms
                     try
                     {
                         Insertar();
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado correctamente el contacto!", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado correctamente el contacto!", "Admin CSY");
                         this.Close();
                     }
                     catch (MySql.Data.MySqlClient.MySqlException ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el contacto. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el contacto. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                     }
                     catch (Exception ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear el contacto.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear el contacto.", "Admin CSY", ex);
                     }
                 }
                 else
@@ -158,16 +158,16 @@ namespace EC_Admin.Forms
                     try
                     {
                         Editar();
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado correctamente el contacto!", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado correctamente el contacto!", "Admin CSY");
                         this.Close();
                     }
                     catch (MySql.Data.MySqlClient.MySqlException ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al modificar el contacto. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al modificar el contacto. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                     }
                     catch (Exception ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al modificar el contacto.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al modificar el contacto.", "Admin CSY", ex);
                     }
                 }
             }
@@ -183,11 +183,11 @@ namespace EC_Admin.Forms
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al obtener los datos del contacto. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al obtener los datos del contacto. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                 }
                 catch (Exception ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al obtener los datos del contacto.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al obtener los datos del contacto.", "Admin CSY", ex);
                 }
             }
         }

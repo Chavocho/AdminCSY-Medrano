@@ -53,18 +53,18 @@ namespace EC_Admin.Forms
             c = new CerrarFrmEspera(Cerrar);
             try
             {
-                string sql = "SELECT id, efectivo, voucher, descripcion, tipo_movimiento, create_time FROM caja WHERE descripcion LIKE '" + p + "'";
+                string sql = "SELECT id, efectivo, voucher, descripcion, tipo_movimiento, create_time FROM caja WHERE descripcion LIKE '%" + p + "%'";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar los datos de la caja. No se ha podido conectar a la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar los datos de la caja. No se ha podido conectar a la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar los datos de la caja.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar los datos de la caja.", "Admin CSY", ex });
             }
         }
 
@@ -82,12 +82,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar los datos de la caja. No se ha podido conectar a la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar los datos de la caja. No se ha podido conectar a la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar los datos de la caja.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al cargar los datos de la caja.", "Admin CSY", ex });
             }
         }
 
@@ -117,7 +117,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de caja.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de caja.", "Admin CSY", ex);
             }
         }
 
@@ -190,14 +190,66 @@ namespace EC_Admin.Forms
 
         private void btnEntrada_Click(object sender, EventArgs e)
         {
+            if (Caja.EstadoCaja == false)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
+                return;
+            }
             (new frmEntradaSalida(MovimientoCaja.Entrada)).ShowDialog(this);
             CalcularTotales();
         }
 
         private void btnSalida_Click(object sender, EventArgs e)
         {
+            if (Caja.EstadoCaja == false)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
+                return;
+            }
             (new frmEntradaSalida(MovimientoCaja.Salida)).ShowDialog(this);
             CalcularTotales();
+        }
+
+        private void frmCaja_Load(object sender, EventArgs e)
+        {
+            if (Caja.EstadoCaja == false)
+            {
+                btnAbrirCerrar.Text = "Abrir caja";
+            }
+            else
+            {
+                btnAbrirCerrar.Text = "Cerrar caja";
+            }
+        }
+
+        private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Array a = (Array)e.Argument;
+            if (a.Length == 1)
+            {
+                Buscar(a.GetValue(0).ToString());
+            }
+            else if (a.Length == 2)
+            {
+                Buscar((DateTime)a.GetValue(0), (DateTime)a.GetValue(1));
+            }
+        }
+
+        private void bgwBusqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cerrar();
+            LlenarDataGrid();
+        }
+
+        private void tmrEspera_Tick(object sender, EventArgs e)
+        {
+            tmrEspera.Enabled = false;
+            FuncionesGenerales.frmEspera("Espere, cargando movimientos de caja", this);
+        }
+
+        private void btnCortes_Click(object sender, EventArgs e)
+        {
+            (new frmCorteCaja()).ShowDialog(this);
         }
     }
 }

@@ -43,7 +43,7 @@
             this.lblTitulo02.Name = "lblTitulo02";
             this.lblTitulo02.Size = new System.Drawing.Size(97, 24);
             this.lblTitulo02.TabIndex = 1;
-            this.lblTitulo02.Text = "EC-Admin";
+            this.lblTitulo02.Text = "Admin CSY";
             // 
             // lblTitulo01
             // 

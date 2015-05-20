@@ -68,33 +68,9 @@ namespace EC_Admin.Forms
         public void NuevaCotizacion()
         {
             VerificarVisible();
-            if (idVendedor <= 0)
-            {
-                DialogResult r = (new frmLoginValidacion()).ShowDialog(this);
-                if (r == System.Windows.Forms.DialogResult.OK)
-                {
-                    (new frmVendedor(this)).ShowDialog(this);
-                    if (idVendedor <= 0)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Debes ingresar un trabajador que atienda las ventas para poder usar el cotizador", "EC-Admin");
-                    }
-                    else
-                    {
-                        CrearCotizacion();
-                    }
-                }
-            }
-            else
-            {
-                CrearCotizacion();
-            }
-        }
-
-        private void CrearCotizacion()
-        {
             if (c.Abierta)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea crear una nueva cotización?\n(Puedes guardar la cotización actual para continuarla posteriormente)", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea crear una nueva cotización?\n(Puedes guardar la cotización actual para continuarla posteriormente)", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
                     c.IDVendedor = idVendedor;
                     c.NuevaCotizacion();
@@ -136,7 +112,7 @@ namespace EC_Admin.Forms
                 lblVendedor.Text = Trabajador.NombreTrabajador(idVendedor);
                 for (int i = 0; i < c.IDProductos.Count; i++)
                 {
-                    AgregarProducto(c.IDProductos[i], CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Precio[i], c.Cantidad[i], c.DescuentoProducto[i], c.Unidad[i]);
+                    AgregarProducto(c.IDProductos[i], CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Cantidad[i], c.DescuentoProducto[i], c.Unidad[i]);
                 }
             }
             catch (MySqlException ex)
@@ -255,10 +231,11 @@ namespace EC_Admin.Forms
         /// <param name="precio">Precio del producto</param>
         /// <param name="cant">Cantidad del producto</param>
         /// <param name="desc">Descuento aplicado al producto</param>
-        public void AgregarProducto(int id, string codProd, string nombre, decimal precio, decimal cant, decimal desc, Unidades u)
+        public void AgregarProducto(int id, string codProd, string nombre, decimal cant, decimal desc, Unidades u)
         {
             if (!VerificarProducto(id, cant))
             {
+                decimal precio = PrecioProducto(id, cant);
                 dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u });
                 if (dgvProductos.RowCount == 1)
                 {
@@ -282,6 +259,7 @@ namespace EC_Admin.Forms
                 if (dr.Cells[0].Value.ToString() == id.ToString())
                 {
                     dr.Cells[4].Value = ((decimal)dr.Cells[4].Value + cant);
+                    dr.Cells[3].Value = PrecioProducto(id, (decimal)dr.Cells[4].Value);
                     existe = true;
                     if (cant < 0 && (decimal)dr.Cells[4].Value <= 0)
                         QuitarProducto(dr);
@@ -290,6 +268,73 @@ namespace EC_Admin.Forms
                 }
             }
             return existe;
+        }
+
+        private decimal PrecioProducto(int id, decimal cant)
+        {
+            decimal precio = 0M;
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT precio, precio_mediomayoreo, precio_mayoreo, cant_mediomayoreo, cant_mayoreo FROM producto WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    decimal cantMedioMayoreo = (decimal)dr["cant_mediomayoreo"], cantMayoreo = (decimal)dr["cant_mayoreo"],
+                        precioP = (decimal)dr["precio"], precioMedioMayoreo = (decimal)dr["precio_mediomayoreo"], precioMayoreo = (decimal)dr["precio_mayoreo"];
+                    if (cantMedioMayoreo > 0 && cantMayoreo > 0)
+                    {
+                        if (cant < cantMedioMayoreo)
+                        {
+                            precio = precioP;
+                        }
+                        else if (cant >= cantMedioMayoreo && cant < cantMayoreo)
+                        {
+                            precio = precioMedioMayoreo;
+                        }
+                        else if (cant >= cantMayoreo)
+                        {
+                            precio = precioMayoreo;
+                        }
+                    }
+                    else if (cantMedioMayoreo > 0)
+                    {
+                        if (cant >= cantMedioMayoreo)
+                        {
+                            precio = precioMedioMayoreo;
+                        }
+                        else
+                        {
+                            precio = precioP;
+                        }
+                    }
+                    else if (cantMayoreo > 0)
+                    {
+                        if (cant >= cantMayoreo)
+                        {
+                            precio = precioMayoreo;
+                        }
+                        else
+                        {
+                            precio = precioP;
+                        }
+                    }
+                    else
+                    {
+                        precio = precioP;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return precio;
         }
 
         public void ModificarProducto(decimal cant, decimal desc)
@@ -332,7 +377,7 @@ namespace EC_Admin.Forms
             }
         }
 
-        private void BusquedaProducto(string codProd)
+        private void BusquedaProducto(string codProd, decimal cant)
         {
             try
             {
@@ -340,17 +385,17 @@ namespace EC_Admin.Forms
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["precio"], 1M, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
+                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), cant, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
                     break;
                 }
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al buscar el producto. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al buscar el producto. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al buscar el producto.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al buscar el producto.", "Admin CSY", ex);
             }
         }
 
@@ -397,7 +442,7 @@ namespace EC_Admin.Forms
             {
                 subtotal += ((decimal)dr.Cells[3].Value * (decimal)dr.Cells[4].Value);
                 cantTot += (decimal)dr.Cells[4].Value;
-                descuento += (decimal)dr.Cells[5].Value;
+                descuento += (decimal)dr.Cells[3].Value * (((decimal)dr.Cells[5].Value) * ((decimal)dr.Cells[4].Value));
             }
             impuesto = subtotal * Config.iva;
             total = subtotal + impuesto - descuento;
@@ -461,7 +506,17 @@ namespace EC_Admin.Forms
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Desea crear una venta con los datos de ésta cotización?", "EC-Admin");
+            if (Caja.EstadoCaja == false)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
+                return;
+            }
+            if (idVendedor <= 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas asignar un vendedor antes de crear la venta", "Admin CSY");
+                return;
+            }
+            DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Desea crear una venta con los datos de ésta cotización?", "Admin CSY");
             if (r == System.Windows.Forms.DialogResult.Yes)
             {
                 GuardarCotización(false);
@@ -474,12 +529,7 @@ namespace EC_Admin.Forms
         {
             if (btnVendedor.Visible || btnVendedor.Enabled)
             {
-
-                DialogResult r = (new frmLoginValidacion()).ShowDialog(this);
-                if (r == System.Windows.Forms.DialogResult.OK)
-                {
-                    (new frmVendedor(this, idVendedor, lblVendedor.Text)).ShowDialog(this);
-                }
+                (new frmVendedor(this, idVendedor, lblVendedor.Text)).ShowDialog(this);
                 txtBusqueda.Select();
             }
         }
@@ -491,16 +541,16 @@ namespace EC_Admin.Forms
                 if (btnGuardar.Visible || btnGuardar.Enabled)
                 {
                     GuardarCotización(true);
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha guardado correctamente la venta!", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha guardado correctamente la venta!", "Admin CSY");
                 }
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al guardar la venta. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al guardar la venta. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al guardar la venta.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al guardar la venta.", "Admin CSY", ex);
             }
         }
 
@@ -562,7 +612,7 @@ namespace EC_Admin.Forms
                 try
                 {
                     ImagenProducto i = new ImagenProducto(Imagen);
-                    this.Invoke(i, Producto.ImagenProducto(id));
+                    this.Invoke(i, Producto.Imagen01Producto(id));
                 }
                 catch
                 {
@@ -573,7 +623,7 @@ namespace EC_Admin.Forms
         private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dgvProductos.CurrentRow != null)
-                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, (decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value)).ShowDialog(this);
+                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, ((decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value) * 100)).ShowDialog(this);
         }
 
         private void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -614,7 +664,15 @@ namespace EC_Admin.Forms
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                BusquedaProducto(txtBusqueda.Text);
+                string[] datos = txtBusqueda.Text.Split(new char[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
+                if (datos.Length > 1)
+                {
+                    BusquedaProducto(datos[1].ToString(), decimal.Parse(datos[0]));
+                }
+                else
+                {
+                    BusquedaProducto(datos[0].ToString(), 1);
+                }
                 txtBusqueda.Text = "";
             }
         }

@@ -89,14 +89,15 @@
             this.btnTicket.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnTicket.ForeColor = System.Drawing.Color.White;
             this.btnTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTicket.Location = new System.Drawing.Point(12, 116);
+            this.btnTicket.Location = new System.Drawing.Point(363, 12);
             this.btnTicket.Name = "btnTicket";
             this.btnTicket.Size = new System.Drawing.Size(149, 46);
             this.btnTicket.TabIndex = 2;
-            this.btnTicket.Text = "Impresión";
+            this.btnTicket.Text = "Impresión tickets";
             this.btnTicket.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTicket.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnTicket.UseVisualStyleBackColor = false;
+            this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
             // 
             // btnSucursales
             // 
@@ -109,7 +110,7 @@
             this.btnSucursales.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnSucursales.ForeColor = System.Drawing.Color.White;
             this.btnSucursales.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSucursales.Location = new System.Drawing.Point(12, 168);
+            this.btnSucursales.Location = new System.Drawing.Point(12, 116);
             this.btnSucursales.Name = "btnSucursales";
             this.btnSucursales.Size = new System.Drawing.Size(149, 46);
             this.btnSucursales.TabIndex = 3;
@@ -130,7 +131,7 @@
             this.btnDirecciones.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnDirecciones.ForeColor = System.Drawing.Color.White;
             this.btnDirecciones.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDirecciones.Location = new System.Drawing.Point(12, 220);
+            this.btnDirecciones.Location = new System.Drawing.Point(12, 168);
             this.btnDirecciones.Name = "btnDirecciones";
             this.btnDirecciones.Size = new System.Drawing.Size(149, 46);
             this.btnDirecciones.TabIndex = 4;
@@ -151,7 +152,7 @@
             this.btnCuentas.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnCuentas.ForeColor = System.Drawing.Color.White;
             this.btnCuentas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCuentas.Location = new System.Drawing.Point(167, 12);
+            this.btnCuentas.Location = new System.Drawing.Point(12, 220);
             this.btnCuentas.Name = "btnCuentas";
             this.btnCuentas.Size = new System.Drawing.Size(149, 46);
             this.btnCuentas.TabIndex = 5;
@@ -172,7 +173,7 @@
             this.btnAlmacen.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAlmacen.ForeColor = System.Drawing.Color.White;
             this.btnAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAlmacen.Location = new System.Drawing.Point(167, 64);
+            this.btnAlmacen.Location = new System.Drawing.Point(363, 64);
             this.btnAlmacen.Name = "btnAlmacen";
             this.btnAlmacen.Size = new System.Drawing.Size(149, 46);
             this.btnAlmacen.TabIndex = 6;
@@ -180,13 +181,14 @@
             this.btnAlmacen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAlmacen.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAlmacen.UseVisualStyleBackColor = false;
+            this.btnAlmacen.Visible = false;
             this.btnAlmacen.Click += new System.EventHandler(this.btnAlmacen_Click);
             // 
             // frmConfigs
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(522, 276);
+            this.ClientSize = new System.Drawing.Size(524, 278);
             this.Controls.Add(this.btnAlmacen);
             this.Controls.Add(this.btnCuentas);
             this.Controls.Add(this.btnDirecciones);
@@ -195,6 +197,8 @@
             this.Controls.Add(this.btnBaseDatos);
             this.Controls.Add(this.btnCorreo);
             this.Font = new System.Drawing.Font("Corbel", 11F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmConfigs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuración general";

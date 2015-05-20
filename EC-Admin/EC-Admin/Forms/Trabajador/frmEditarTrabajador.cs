@@ -126,6 +126,8 @@ namespace EC_Admin.Forms
         {
             try
             {
+                int cp;
+                int.TryParse(txtCP.Text, out cp);
                 decimal sueldo;
                 decimal.TryParse(txtSueldo.Text, out sueldo);
                 t.IDSucursal = idSucursal[cboSucursal.SelectedIndex];
@@ -139,7 +141,7 @@ namespace EC_Admin.Forms
                 t.Direccion = txtDireccion.Text;
                 t.Ciudad = txtCiudad.Text;
                 t.Estado = txtEstado.Text;
-                t.CP = int.Parse(txtCP.Text);
+                t.CP = cp;
                 t.Imagen = pcbImagen.Image;
                 t.Huella = huella;
                 t.Sueldo = sueldo;
@@ -159,61 +161,36 @@ namespace EC_Admin.Forms
         {
             if (cboSucursal.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Se debe seleccionar una sucursal asociada con éste trabajador.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Se debe seleccionar una sucursal asociada con éste trabajador.", "Admin CSY");
                 return false;
             }
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio.", "Admin CSY");
                 return false;
             }
             if (txtApellidos.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo apellidos es obligatorio.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo apellidos es obligatorio.", "Admin CSY");
                 return false;
             }
             if (cboPuesto.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Se debe seleccionar un puesto asociado con éste trabajador.", "EC-Admin");
-                return false;
-            }
-            if (txtNumNomina.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número de nómina es obligatorio.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Se debe seleccionar un puesto asociado con éste trabajador.", "Admin CSY");
                 return false;
             }
             if (txtTelefono.Text.Trim() == "" && txtCelular.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un número de teléfono.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un número de teléfono.", "Admin CSY");
                 return false;
             }
             if (txtCorreo.Text.Trim() != "")
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no se reconoce cómo uno válido.", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no se reconoce cómo uno válido.", "Admin CSY");
                     return false;
                 }
-            }
-            if (txtDireccion.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo dirección es obligatorio.", "EC-Admin");
-                return false;
-            }
-            if (txtCiudad.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo ciudad es obligatorio.", "EC-Admin");
-                return false;
-            }
-            if (txtEstado.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo estado es obligatorio.", "EC-Admin");
-                return false;
-            }
-            if (txtCP.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo código postal es obligatorio.", "EC-Admin");
-                return false;
             }
             return true;
         }
@@ -238,16 +215,16 @@ namespace EC_Admin.Forms
                 try
                 {
                     Editar();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado el trabajador correctamente!", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado el trabajador correctamente!", "Admin CSY");
                     this.Close();
                 }
                 catch (MySqlException ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al modificar el trabajador. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al modificar el trabajador. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                 }
                 catch (Exception ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al modificar el trabajador.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al modificar el trabajador.", "Admin CSY", ex);
                 }
             }
         }
@@ -263,7 +240,7 @@ namespace EC_Admin.Forms
                 }
                 else
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No hay ninguna cámara seleccionada", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No hay ninguna cámara seleccionada", "Admin CSY");
                 }
             }
             else
@@ -308,6 +285,11 @@ namespace EC_Admin.Forms
         private void txtSueldo_KeyPress(object sender, KeyPressEventArgs e)
         {
             FuncionesGenerales.VerificarEsNumero(ref sender, ref e, false);
+        }
+
+        private void txtTelefonos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesGenerales.VerificarEsNumero(ref sender, ref e, true);
         }
     }
 }

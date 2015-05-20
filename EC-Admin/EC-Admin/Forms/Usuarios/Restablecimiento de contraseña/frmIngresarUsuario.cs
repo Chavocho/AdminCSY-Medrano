@@ -52,7 +52,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mandar el número de verificación al correo del usuario.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mandar el número de verificación al correo del usuario.", "Admin CSY", ex);
             }
         }
 
@@ -93,12 +93,12 @@ namespace EC_Admin.Forms
                 }
                 else
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No hay disponible una conexión a internet. Vuelve a intentarlo más tarde.", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No hay disponible una conexión a internet. Vuelve a intentarlo más tarde.", "Admin CSY");
                 }
             }
             else
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Necesitas tener registrado un correo válido para poder continuar.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Necesitas tener registrado un correo válido para poder continuar.", "Admin CSY");
             }
         }
 

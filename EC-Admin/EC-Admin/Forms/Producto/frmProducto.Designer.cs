@@ -41,10 +41,8 @@
             this.lblEBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.btnCategoria = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CAlmacen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCosto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,7 +81,6 @@
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
             this.CNombre,
-            this.CAlmacen,
             this.CCodigo,
             this.CCosto,
             this.CPrecio,
@@ -217,24 +214,6 @@
             this.btnCategoria.UseVisualStyleBackColor = false;
             this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Corbel", 11F);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(12, 255);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(175, 46);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Nuevo producto";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
             // CID
             // 
             this.CID.HeaderText = "ID";
@@ -246,12 +225,6 @@
             this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.CNombre.HeaderText = "Nombre";
             this.CNombre.Name = "CNombre";
-            // 
-            // CAlmacen
-            // 
-            this.CAlmacen.HeaderText = "Num. Almacen";
-            this.CAlmacen.Name = "CAlmacen";
-            this.CAlmacen.Width = 130;
             // 
             // CCodigo
             // 
@@ -279,7 +252,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 462);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnCategoria);
             this.Controls.Add(this.lblEBusqueda);
             this.Controls.Add(this.txtBusqueda);
@@ -310,10 +282,8 @@
         private System.Windows.Forms.Label lblEBusqueda;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.Button btnCategoria;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CAlmacen;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCosto;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;

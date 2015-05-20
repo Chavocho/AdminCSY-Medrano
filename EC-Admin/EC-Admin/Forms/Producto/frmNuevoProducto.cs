@@ -37,36 +37,12 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar los proveedores. No se ha podido conectar con la base de datos. La ventana se cerrará.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar los proveedores. No se ha podido conectar con la base de datos. La ventana se cerrará.", "Admin CSY", ex);
                 this.Close();
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar los proveedores. La ventana se cerrará.", "EC-Admin", ex);
-                this.Close();
-            }
-        }
-
-        private void CargarAlmacenes()
-        {
-            try
-            {
-                string sql = "SELECT id, num_alm FROM almacen";
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    idAlm.Add((int)dr["id"]);
-                    cboAlmacen.Items.Add(dr["num_alm"]);
-                }
-            }
-            catch (MySqlException ex)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar los almacenes. No se ha podido conectar con la base de datos. La ventana se cerrará.", "EC-Admin", ex);
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar los almacenes. La ventana se cerrará.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar los proveedores. La ventana se cerrará.", "Admin CSY", ex);
                 this.Close();
             }
         }
@@ -85,12 +61,12 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar las categorías. No se ha podido conectar con la base de datos. La ventana se cerrará.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar las categorías. No se ha podido conectar con la base de datos. La ventana se cerrará.", "Admin CSY", ex);
                 this.Close();
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar las categorías. La ventana se cerrará.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar las categorías. La ventana se cerrará.", "Admin CSY", ex);
                 this.Close();
             }
         }
@@ -109,13 +85,11 @@ namespace EC_Admin.Forms
                 decimal.TryParse(txtCantMedioMayoreo.Text, out cantMedioMayoreo);
                 decimal.TryParse(txtCantMayoreo.Text, out cantMayoreo);
                 p.IDProveedor = idPro[cboProveedor.SelectedIndex];
-                p.IDAlmacen = idAlm[cboAlmacen.SelectedIndex];
                 p.IDCategoria = idCat[cboCategoria.SelectedIndex];
                 p.Nombre = txtNombre.Text;
                 p.Marca = txtMarca.Text;
                 p.Codigo = txtCodigo.Text;
                 p.Descripcion01 = txtDescripcion01.Text;
-                p.Descripcion02 = txtDescripcion02.Text;
                 p.Costo = costo;
                 p.Precio = precio;
                 p.Cantidad = cant;
@@ -124,7 +98,9 @@ namespace EC_Admin.Forms
                 p.CantidadMedioMayoreo = cantMedioMayoreo;
                 p.CantidadMayoreo = cantMayoreo;
                 p.Unidad = u;
-                p.Imagen = pcbImagen.Image;
+                p.Imagen01 = pcbImagen01.Image;
+                p.Imagen02 = pcbImagen02.Image;
+                p.Imagen03 = pcbImagen03.Image;
                 p.Insertar();
             }
             catch (MySqlException ex)
@@ -141,57 +117,79 @@ namespace EC_Admin.Forms
         {
             if (cboProveedor.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo proveedor es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (cboAlmacen.SelectedIndex < 0)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo almacen es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo proveedor es obligatorio", "Admin CSY");
                 return false;
             }
             if (cboCategoria.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo categoría es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo categoría es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtMarca.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo marca es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo marca es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtCodigo.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo código es obligatorio", "EC-Admin");
-                return false;
-            }
-            if (txtDescripcion01.Text.Trim() == "" && txtDescripcion02.Text.Trim() != "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El primer campo de descripción se debe ingresar antes que el segundo", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo código es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtCosto.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo costo es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo costo es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtPrecio.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo precio es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo precio es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtCant.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cantidad es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cantidad es obligatorio", "Admin CSY");
                 return false;
+            }
+            if (txtCantMedioMayoreo.Text.Trim() != "")
+            {
+                if (txtPrecioMedioMayoreo.Text.Trim() == "")
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo precio de medio mayoreo debe ser ingresado", "Admin CSY");
+                    return false;
+                }
+            }
+            else if (txtPrecioMedioMayoreo.Text.Trim() != "")
+            {
+                if (txtCantMedioMayoreo.Text.Trim() == "")
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cantidad de medio mayoreo debe ser ingresado", "Admin CSY");
+                    return false;
+                }
+            }
+            if (txtCantMayoreo.Text.Trim() != "")
+            {
+                if (txtPrecioMayoreo.Text.Trim() == "")
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo precio de mayoreo debe ser ingresado", "Admin CSY");
+                    return false;
+                }
+            }
+            else if (txtPrecioMayoreo.Text.Trim() != "")
+            {
+                if (txtCantMayoreo.Text.Trim() == "")
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cantidad de mayoreo debe ser ingresado", "Admin CSY");
+                    return false;
+                }
             }
             if (cboUnidad.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo unidad es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo unidad es obligatorio", "Admin CSY");
                 return false;
             }
             return true;
@@ -204,6 +202,7 @@ namespace EC_Admin.Forms
 
         private void pcbImagen_Click(object sender, EventArgs e)
         {
+            PictureBox pcb = (PictureBox)sender;
             try
             {
                 OpenFileDialog ofd = new OpenFileDialog();
@@ -214,37 +213,50 @@ namespace EC_Admin.Forms
                 DialogResult r = ofd.ShowDialog(this);
                 if (r == System.Windows.Forms.DialogResult.OK)
                 {
-                    pcbImagen.Image = Bitmap.FromFile(ofd.FileName);
+                    pcb.Image = Bitmap.FromFile(ofd.FileName);
                 }
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al obtener la imagen.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al obtener la imagen.", "Admin CSY", ex);
             }
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            pcbImagen.Image = null;
+            Button btn = (Button)sender;
+            string texto = btn.Text.Substring(btn.Text.Length - 2, 2);
+            if (texto == "01")
+            {
+                pcbImagen01.Image = null;
+            }
+            else if (texto == "02")
+            {
+                pcbImagen02.Image = null;
+            }
+            else if (texto == "03")
+            {
+                pcbImagen03.Image = null;
+            }
         }
 
         private void cboUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cboUnidad.SelectedIndex)
             {
+                //case 0:
+                //    u = Unidades.Gramo;
+                //    break;
+                //case 1:
+                //    u = Unidades.Kilogramo;
+                //    break;
+                //case 2:
+                //    u = Unidades.Mililitro;
+                //    break;
+                //case 3:
+                //    u = Unidades.Litro;
+                //    break;
                 case 0:
-                    u = Unidades.Gramo;
-                    break;
-                case 1:
-                    u = Unidades.Kilogramo;
-                    break;
-                case 2:
-                    u = Unidades.Mililitro;
-                    break;
-                case 3:
-                    u = Unidades.Litro;
-                    break;
-                case 4:
                     u = Unidades.Pieza;
                     break;
             }
@@ -257,16 +269,16 @@ namespace EC_Admin.Forms
                 try
                 {
                     Insertar();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el producto correctamente!", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el producto correctamente!", "Admin CSY");
                     this.Close();
                 }
                 catch (MySqlException ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el producto. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el producto. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                 }
                 catch (Exception ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el producto.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el producto.", "Admin CSY", ex);
                 }
             }
         }
@@ -274,7 +286,6 @@ namespace EC_Admin.Forms
         private void frmNuevoProducto_Load(object sender, EventArgs e)
         {
             CargarProveedores();
-            CargarAlmacenes();
             CargarCategorias();
         }
     }

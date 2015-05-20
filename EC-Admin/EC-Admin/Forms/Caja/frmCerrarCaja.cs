@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,7 +40,24 @@ namespace EC_Admin.Forms
             c.TipoMovimiento = MovimientoCaja.Entrada;
             c.Voucher = decimal.Negate(Caja.TotalVouchers);
             c.RegistrarMovimiento();
-            Caja.CambiarEstadoCaja(true);
+            Caja.CambiarEstadoCaja(false);
+        }
+
+        private void Imprimir()
+        {
+            try
+            {
+                Ticket t = new Ticket();
+                t.ImprimirCaja(true);
+            }
+            catch (MySqlException ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket. No se ha podido conectar a la base de datos.", "Admin CSY", ex);
+            }
+            catch (Exception ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket.", "Admin CSY", ex);
+            }
         }
 
         private void txtEfectivo_TextChanged(object sender, EventArgs e)
@@ -57,16 +75,20 @@ namespace EC_Admin.Forms
             try
             {
                 Registrar();
-                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cerrado la caja correctamente!", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cerrado la caja correctamente!", "Admin CSY");
+                if (FuncionesGenerales.ImprimirTicket(this, "¿Deseas imprimir el ticket de corte de caja?"))
+                {
+                    Imprimir();
+                }
                 this.Close();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cerrar la caja. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cerrar la caja. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cerrar la caja.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cerrar la caja.", "Admin CSY", ex);
             }
         }
     }

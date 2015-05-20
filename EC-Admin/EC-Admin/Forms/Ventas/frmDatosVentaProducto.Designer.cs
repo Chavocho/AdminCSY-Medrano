@@ -29,39 +29,27 @@
         private void InitializeComponent()
         {
             this.lblEDescuento = new System.Windows.Forms.Label();
-            this.txtDescuento = new System.Windows.Forms.TextBox();
             this.lblECant = new System.Windows.Forms.Label();
             this.nudCant = new System.Windows.Forms.NumericUpDown();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.nudDescuento = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.nudCant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDescuento)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEDescuento
             // 
-            this.lblEDescuento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEDescuento.AutoSize = true;
             this.lblEDescuento.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblEDescuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEDescuento.Location = new System.Drawing.Point(135, 10);
             this.lblEDescuento.Name = "lblEDescuento";
-            this.lblEDescuento.Size = new System.Drawing.Size(74, 18);
+            this.lblEDescuento.Size = new System.Drawing.Size(89, 18);
             this.lblEDescuento.TabIndex = 2;
-            this.lblEDescuento.Text = "Descuento";
-            // 
-            // txtDescuento
-            // 
-            this.txtDescuento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescuento.Font = new System.Drawing.Font("Corbel", 11F);
-            this.txtDescuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtDescuento.Location = new System.Drawing.Point(138, 31);
-            this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(246, 25);
-            this.txtDescuento.TabIndex = 3;
-            this.txtDescuento.Text = "0.00";
+            this.lblEDescuento.Text = "% Descuento";
             // 
             // lblECant
             // 
-            this.lblECant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblECant.AutoSize = true;
             this.lblECant.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblECant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
@@ -93,7 +81,6 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
@@ -102,7 +89,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(234, 83);
+            this.btnAceptar.Location = new System.Drawing.Point(111, 83);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
             this.btnAceptar.TabIndex = 4;
@@ -112,16 +99,25 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // nudDescuento
+            // 
+            this.nudDescuento.DecimalPlaces = 2;
+            this.nudDescuento.Font = new System.Drawing.Font("Corbel", 11F);
+            this.nudDescuento.Location = new System.Drawing.Point(138, 31);
+            this.nudDescuento.Name = "nudDescuento";
+            this.nudDescuento.Size = new System.Drawing.Size(123, 25);
+            this.nudDescuento.TabIndex = 9;
+            // 
             // frmDatosVentaProducto
             // 
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(396, 141);
+            this.ClientSize = new System.Drawing.Size(273, 141);
+            this.Controls.Add(this.nudDescuento);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lblEDescuento);
-            this.Controls.Add(this.txtDescuento);
             this.Controls.Add(this.lblECant);
             this.Controls.Add(this.nudCant);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -131,6 +127,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar datos de ";
             ((System.ComponentModel.ISupportInitialize)(this.nudCant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDescuento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,9 +136,9 @@
         #endregion
 
         private System.Windows.Forms.Label lblEDescuento;
-        private System.Windows.Forms.TextBox txtDescuento;
         private System.Windows.Forms.Label lblECant;
         private System.Windows.Forms.NumericUpDown nudCant;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.NumericUpDown nudDescuento;
     }
 }

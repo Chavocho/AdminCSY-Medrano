@@ -168,11 +168,11 @@ namespace EC_Admin
                         email.To.Add(new MailAddress(destinatarios[i]));
                     if (!esInterno)
                     {
-                        email.From = new MailAddress(Config.correoOrigenExterno, "EC-Admin", Encoding.UTF8);
+                        email.From = new MailAddress(Config.correoOrigenExterno, "Admin CSY", Encoding.UTF8);
                     }
                     else
                     {
-                        email.From = new MailAddress(Config.correoOrigenInterno, "EC-Admin", Encoding.UTF8);
+                        email.From = new MailAddress(Config.correoOrigenInterno, "Admin CSY", Encoding.UTF8);
                     }
                     email.Subject = asunto;
                     email.Body = cuerpo;

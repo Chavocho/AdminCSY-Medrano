@@ -408,6 +408,7 @@
             this.txtLada02.Name = "txtLada02";
             this.txtLada02.Size = new System.Drawing.Size(55, 29);
             this.txtLada02.TabIndex = 27;
+            this.txtLada02.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // txtTelefono02
             // 
@@ -418,6 +419,7 @@
             this.txtTelefono02.Name = "txtTelefono02";
             this.txtTelefono02.Size = new System.Drawing.Size(198, 29);
             this.txtTelefono02.TabIndex = 29;
+            this.txtTelefono02.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // txtLada01
             // 
@@ -428,6 +430,7 @@
             this.txtLada01.Name = "txtLada01";
             this.txtLada01.Size = new System.Drawing.Size(55, 29);
             this.txtLada01.TabIndex = 23;
+            this.txtLada01.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // txtTelefono01
             // 
@@ -438,6 +441,7 @@
             this.txtTelefono01.Name = "txtTelefono01";
             this.txtTelefono01.Size = new System.Drawing.Size(198, 29);
             this.txtTelefono01.TabIndex = 25;
+            this.txtTelefono01.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // lblELada01
             // 
@@ -902,7 +906,7 @@
             this.Name = "frmEditarProveedor";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Modificar datos de";
+            this.Text = "Modificar proveedor";
             this.Load += new System.EventHandler(this.frmEditarProveedor_Load);
             this.pnlDatos.ResumeLayout(false);
             this.pnlDatos.PerformLayout();

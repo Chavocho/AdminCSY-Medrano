@@ -58,12 +58,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los usuarios. No se ha podido conectar con la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los usuarios. No se ha podido conectar con la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al buscar los usuarios.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al buscar los usuarios.", "Admin CSY", ex });
             }
         }
 
@@ -112,7 +112,7 @@ namespace EC_Admin.Forms
 
         private void Eliminar()
         {
-            DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente deseas eliminar a " + dgvUsuarios[2, dgvUsuarios.CurrentRow.Index].Value.ToString() + "?", "EC-Admin");
+            DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente deseas eliminar a " + dgvUsuarios[2, dgvUsuarios.CurrentRow.Index].Value.ToString() + "?", "Admin CSY");
             if (r == System.Windows.Forms.DialogResult.Yes)
             {
                 Usuario.CambiarEstadoEliminadoUsuario(id, true);
@@ -171,7 +171,7 @@ namespace EC_Admin.Forms
                 }
                 else
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para modificar a éste usuario.", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para modificar a éste usuario.", "Admin CSY");
                 }
             }
         }
@@ -188,7 +188,7 @@ namespace EC_Admin.Forms
                     }
                     else
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para eliminar a éste usuario.", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para eliminar a éste usuario.", "Admin CSY");
                     }
                 }
             }

@@ -39,30 +39,43 @@ namespace EC_Admin.Forms.Configs
 
         private bool VerificarDatos()
         {
+            bool resultado = true;
             if (txtCorreo.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo correo es obligatorio", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref txtCorreo);
+                resultado = false;
             }
             else
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no se reconoce como válido", "EC-Admin");
-                    return false;
+                    FuncionesGenerales.ColoresError(ref txtCorreo);
+                    resultado = false;
+                }
+                else
+                {
+                    FuncionesGenerales.ColoresBien(ref txtCorreo);
                 }
             }
             if (txtHost.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo host es obligatorio", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref txtHost);
+                resultado = false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(ref txtHost);
             }
             if (txtPuerto.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo puerto es obligatorio", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref txtPuerto);
+                resultado = false;
             }
-            return true;
+            else
+            {
+                FuncionesGenerales.ColoresBien(ref txtPuerto);
+            }
+            return resultado;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -70,8 +83,12 @@ namespace EC_Admin.Forms.Configs
             if (VerificarDatos())
             {
                 GuardarDatos();
-                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "Se ha guardado la configuración con éxito", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "Se ha guardado la configuración con éxito", "Admin CSY");
                 this.Close();
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Los campos en color rojo son obligatorios", "Admin CSY");
             }
         }
 

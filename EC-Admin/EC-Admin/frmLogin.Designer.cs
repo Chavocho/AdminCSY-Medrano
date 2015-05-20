@@ -137,6 +137,7 @@
             this.llbReestablecer.TabIndex = 54;
             this.llbReestablecer.TabStop = true;
             this.llbReestablecer.Text = "¿Olvidaste tu contraseña?";
+            this.llbReestablecer.Visible = false;
             this.llbReestablecer.VisitedLinkColor = System.Drawing.Color.DarkViolet;
             this.llbReestablecer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbReestablecer_LinkClicked);
             // 

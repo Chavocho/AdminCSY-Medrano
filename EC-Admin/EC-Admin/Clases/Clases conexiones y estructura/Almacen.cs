@@ -50,8 +50,12 @@ namespace EC_Admin
 
         public static int Cantidad
         {
-            get { return cant; }
-            set { cant = value; }
+            get
+            {
+                if (cant < 0)
+                    Cant();
+                return cant;
+            }
         }
         #endregion
 

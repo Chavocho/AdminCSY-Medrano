@@ -21,7 +21,7 @@ namespace EC_Admin.Forms
             InitializeComponent();
             this.Text += nombre;
             nudCant.Value = cant;
-            txtDescuento.Text = descuento.ToString();
+            nudDescuento.Value = descuento;
             this.frm = frm;
             nudCant.Select();
         }
@@ -32,7 +32,7 @@ namespace EC_Admin.Forms
             this.frmC = frm;
             this.Text += nombre;
             nudCant.Value = cant;
-            txtDescuento.Text = descuento.ToString();
+            nudDescuento.Value = descuento;
             nudCant.Select();
         }
 
@@ -42,20 +42,18 @@ namespace EC_Admin.Forms
             this.frmCT = frm;
             this.Text += nombre;
             nudCant.Value = cant;
-            txtDescuento.Text = descuento.ToString();
+            nudDescuento.Value = descuento;
             nudCant.Select();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            decimal desc;
-            decimal.TryParse(txtDescuento.Text, out desc);
             if (frm != null)
-                frm.ModificarProducto(nudCant.Value, desc);
+                frm.ModificarProducto(nudCant.Value, nudDescuento.Value / 100M);
             else if (frmC != null)
-                frmC.ModificarProducto(nudCant.Value, desc);
+                frmC.ModificarProducto(nudCant.Value, nudDescuento.Value / 100M);
             else if (frmCT != null)
-                frmCT.ModificarProducto(nudCant.Value, desc);
+                frmCT.ModificarProducto(nudCant.Value, nudDescuento.Value / 100M);
             this.Close();
         }
     }

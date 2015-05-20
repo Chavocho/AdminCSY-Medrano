@@ -49,12 +49,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los productos. No se ha podido conectar a la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los productos. No se ha podido conectar a la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los productos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los productos.", "Admin CSY", ex });
             }
         }
 
@@ -116,11 +116,11 @@ namespace EC_Admin.Forms
                 DataGridViewRow dr = dgvProductos.CurrentRow;
                 if (frm != null)
                 {
-                    frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[3].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[4].Value, nudCant.Value, decimal.Parse(txtDescuento.Text), (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
+                    frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[3].Value.ToString(), dr.Cells[1].Value.ToString(), nudCant.Value, nudDescuento.Value / 100M, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
                 }
                 else if (frmC != null)
                 {
-                    frmC.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[3].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[4].Value, nudCant.Value, decimal.Parse(txtDescuento.Text), (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
+                    frmC.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[3].Value.ToString(), dr.Cells[1].Value.ToString(), nudCant.Value, nudDescuento.Value / 100M, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
                 }
                 this.Close();
             }

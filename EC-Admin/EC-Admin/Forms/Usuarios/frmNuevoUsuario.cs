@@ -67,37 +67,37 @@ namespace EC_Admin.Forms
         {
             if (txtUsuario.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo usuario es obligatorio.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo usuario es obligatorio.", "Admin CSY");
                 return false;
             }
             if (txtPass.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo contraseña es obligatorio.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo contraseña es obligatorio.", "Admin CSY");
                 return false;
             }
             else
             {
                 if (txtPass.Text != txtRepPass.Text)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Las contraseñas no coinciden. Éstas deben coincidir para poder continuar.", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Las contraseñas no coinciden. Éstas deben coincidir para poder continuar.", "Admin CSY");
                     return false;
                 }
             }
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtApellidos.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo apellidos es obligatorio.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo apellidos es obligatorio.", "Admin CSY");
                 return false;
             }
             if (txtCorreo.Text.Trim() != "")
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no es valido. Verifique que este escrito correctamente.", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no es valido. Verifique que este escrito correctamente.", "Admin CSY");
                     return false;
                 }
             }
@@ -140,7 +140,7 @@ namespace EC_Admin.Forms
                     if (frm == null)
                     {
                         InsertarUsuario();
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el usuario con éxito!", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado el usuario con éxito!", "Admin CSY");
                         this.Close();
                     }
                     else
@@ -209,13 +209,14 @@ namespace EC_Admin.Forms
                 }
                 else
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No hay ninguna cámara seleccionada", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No hay ninguna cámara seleccionada", "Admin CSY");
                 }
             }
             else
             {
                 c.TerminarFuenteDeVideo();
                 FuncionesGenerales.EfectoFoto(ref pcbImagen);
+                cboCamaras.Enabled = true;
             }
         }
 

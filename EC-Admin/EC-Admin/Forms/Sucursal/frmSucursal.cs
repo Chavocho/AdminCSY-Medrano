@@ -56,12 +56,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al conectar con la base de datos para cargar las sucursales.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al conectar con la base de datos para cargar las sucursales.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 Cerrar();
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al cargar las sucursales.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al cargar las sucursales.", "Admin CSY", ex });
             }
         }
 
@@ -141,7 +141,7 @@ namespace EC_Admin.Forms
         {
             if (dgvSucursal.CurrentRow != null)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas eliminar la sucursal con nombre " + dgvSucursal[1, dgvSucursal.CurrentRow.Index].Value.ToString() + "?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas eliminar la sucursal con nombre " + dgvSucursal[1, dgvSucursal.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {
@@ -149,11 +149,11 @@ namespace EC_Admin.Forms
                     }
                     catch (MySqlException ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar la sucursal. No se pudo conectar a la base de datos.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar la sucursal. No se pudo conectar a la base de datos.", "Admin CSY", ex);
                     }
                     catch (Exception ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al eliminar la sucursal.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al eliminar la sucursal.", "Admin CSY", ex);
                     }
                 }
             }

@@ -164,10 +164,8 @@
             this.cboTipoPago.FormattingEnabled = true;
             this.cboTipoPago.Items.AddRange(new object[] {
             "Efectivo",
-            "Cheque",
             "Crédito",
-            "Débito",
-            "Transferencia"});
+            "Débito"});
             this.cboTipoPago.Location = new System.Drawing.Point(150, 9);
             this.cboTipoPago.Name = "cboTipoPago";
             this.cboTipoPago.Size = new System.Drawing.Size(220, 29);
@@ -211,6 +209,7 @@
             // 
             // frmCobrar
             // 
+            this.AcceptButton = this.btnCobrar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;

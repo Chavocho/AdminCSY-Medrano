@@ -25,6 +25,7 @@ namespace EC_Admin.Forms
                     break;
                 case MovimientoCaja.Salida:
                     this.Text = "Salida";
+                    lblEEfectivo.Text = "Monto a retirar";
                     break;
             }
         }
@@ -58,12 +59,12 @@ namespace EC_Admin.Forms
         {
             if (txtMonto.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo monto es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo monto es obligatorio", "Admin CSY");
                 return false;
             }
             if (txtDescripcion.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo descripción es obligatorio", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo descripción es obligatorio", "Admin CSY");
                 return false;
             }
             return true;
@@ -81,16 +82,16 @@ namespace EC_Admin.Forms
                 try
                 {
                     Insertar();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha ingresado el movimiento correctamente!", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha ingresado el movimiento correctamente!", "Admin CSY");
                     this.Close();
                 }
                 catch (MySqlException ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al registrar el movimiento. No se ha podido conectar a la base de datos.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al registrar el movimiento. No se ha podido conectar a la base de datos.", "Admin CSY", ex);
                 }
                 catch (Exception ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al registrar el movimiento.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al registrar el movimiento.", "Admin CSY", ex);
                 }
             }
         }

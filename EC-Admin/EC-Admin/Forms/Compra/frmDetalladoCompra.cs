@@ -76,13 +76,13 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 Cerrar();
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar las compras. No se ha podido conectar con la base de datos. La ventana se cerrará.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar las compras. No se ha podido conectar con la base de datos. La ventana se cerrará.", "Admin CSY", ex);
                 this.Close();
             }
             catch (Exception ex)
             {
                 Cerrar();
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar las compras. La ventana se cerrará.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cargar las compras. La ventana se cerrará.", "Admin CSY", ex);
                 this.Close();
             }
         }
@@ -135,7 +135,7 @@ namespace EC_Admin.Forms
                     lblUnidadProd = new Label();
                     pcbImagen = new PictureBox();
 
-                    Image img = Producto.ImagenProducto(c.IDProductos[i]);
+                    Image img = Producto.Imagen01Producto(c.IDProductos[i]);
                     string nomProd = Producto.NombreProducto(c.IDProductos[i]); 
                     LabelDetalles(ref lblNombreProd, nomProd, posNom, y);
                     LabelDetalles(ref lblCantProd, c.Cantidad[i].ToString("0.00"), posCan, y);
@@ -184,7 +184,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la compra.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los datos de la compra.", "Admin CSY", ex);
             }
         }
 

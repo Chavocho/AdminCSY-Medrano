@@ -55,7 +55,7 @@ namespace EC_Admin.Forms
     
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Es correcta la información?", "EC-Admin");
+            DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Es correcta la información?", "Admin CSY");
             if (r == System.Windows.Forms.DialogResult.Yes)
             {
                 if (frm == null)
@@ -65,7 +65,7 @@ namespace EC_Admin.Forms
                     {
                         if (!ConexionBD.Ping())
                         {
-                            DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                            DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
                             if (re == System.Windows.Forms.DialogResult.Yes)
                             {
                                 return;
@@ -74,7 +74,7 @@ namespace EC_Admin.Forms
                     }
                     catch (MySql.Data.MySqlClient.MySqlException)
                     {
-                        DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                        DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
                         if (re == System.Windows.Forms.DialogResult.Yes)
                         {
                             return;
@@ -82,7 +82,7 @@ namespace EC_Admin.Forms
                     }
                     catch (Exception)
                     {
-                        DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "EC-Admin");
+                        DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
                         if (re == System.Windows.Forms.DialogResult.Yes)
                         {
                             return;
@@ -93,8 +93,23 @@ namespace EC_Admin.Forms
                 else
                 {
                     Guardar();
-                    frm.Siguiente();
-                    this.Close();
+                    try
+                    {
+                        if (!ConexionBD.Ping())
+                        {
+                            DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
+                            if (re == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                return;
+                            }
+                        }
+                        frm.Siguiente();
+                        this.Close();
+                    }
+                    catch (MySql.Data.MySqlClient.MySqlException ex)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "La conexión con los datos ingresados no se ha logrado efectuar.", "Admin CSY", ex);
+                    }
                 }
             }
         }
@@ -104,7 +119,7 @@ namespace EC_Admin.Forms
             if (reiniciar)
             {
                 Application.Exit();
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La aplicación se cerrará.", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La aplicación se cerrará.", "Admin CSY");
             }
         }
     }

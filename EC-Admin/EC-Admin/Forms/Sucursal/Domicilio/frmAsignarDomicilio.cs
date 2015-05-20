@@ -40,11 +40,11 @@ namespace EC_Admin.Forms
             }
             catch (MySqlException ex)
             {
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al obtener las direcciones de facturación registradas. No se ha podido conectar con la base de datos.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al obtener las direcciones de facturación registradas. No se ha podido conectar con la base de datos.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al obtener las direcciones de facturación registradas.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error genérico al obtener las direcciones de facturación registradas.", "Admin CSY", ex });
             }
         }
 

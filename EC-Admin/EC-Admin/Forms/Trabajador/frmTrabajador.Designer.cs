@@ -262,6 +262,7 @@
             this.btnHorarios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHorarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHorarios.UseVisualStyleBackColor = false;
+            this.btnHorarios.Visible = false;
             this.btnHorarios.Click += new System.EventHandler(this.btnHorarios_Click);
             // 
             // btnIngreso
@@ -281,6 +282,7 @@
             this.btnIngreso.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIngreso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnIngreso.UseVisualStyleBackColor = false;
+            this.btnIngreso.Visible = false;
             this.btnIngreso.Click += new System.EventHandler(this.btnIngreso_Click);
             // 
             // btnPagos
@@ -300,6 +302,7 @@
             this.btnPagos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPagos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPagos.UseVisualStyleBackColor = false;
+            this.btnPagos.Visible = false;
             this.btnPagos.Click += new System.EventHandler(this.btnPagos_Click);
             // 
             // frmTrabajador

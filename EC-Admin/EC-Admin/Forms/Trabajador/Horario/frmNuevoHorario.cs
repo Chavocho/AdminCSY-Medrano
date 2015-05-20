@@ -111,16 +111,16 @@ namespace EC_Admin.Forms
             try
             {
                 Insertar();
-                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha asignado el horario correctamente!", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha asignado el horario correctamente!", "Admin CSY");
                 this.Close();
             }
             catch (MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al asignar el horario. No se ha podido conectar a la base de datos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al asignar el horario. No se ha podido conectar a la base de datos.", "Admin CSY", ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al asignar el horario.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al asignar el horario.", "Admin CSY", ex);
             }
         }
     }

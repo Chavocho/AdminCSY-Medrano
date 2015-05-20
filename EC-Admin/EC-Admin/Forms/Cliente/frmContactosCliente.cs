@@ -28,12 +28,12 @@ namespace EC_Admin.Forms
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al obtener los contactos. La ventana se cerrará", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al obtener los contactos. La ventana se cerrará", "Admin CSY", ex);
                 this.Close();
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al obtener los contactos. La ventana se cerrará", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al obtener los contactos. La ventana se cerrará", "Admin CSY", ex);
                 this.Close();
             }
         }
@@ -100,7 +100,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al mostrar la información de los productos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al mostrar la información de los productos.", "Admin CSY", ex);
             }
         }
 

@@ -38,17 +38,26 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool resultado = true;
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref txtNombre);
+                resultado = false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(ref txtNombre);
             }
             if (txtDescripcion.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo descripción es obligatorio", "EC-Admin");
-                return false;
+                FuncionesGenerales.ColoresError(ref txtDescripcion);
+                resultado = false; ;
             }
-            return true;
+            else
+            {
+                FuncionesGenerales.ColoresBien(ref txtDescripcion);
+            }
+            return resultado;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -58,17 +67,21 @@ namespace EC_Admin.Forms
                 try
                 {
                     Insertar();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado correctamente la categoría!", "EC-Admin");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado correctamente la categoría!", "Admin CSY");
                     this.Close();
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear la categoría. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear la categoría. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                 }
                 catch (Exception ex)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear la categoría.", "EC-Admin", ex);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear la categoría.", "Admin CSY", ex);
                 }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los campos en color rojo", "Admin CSY");
             }
         }
     }

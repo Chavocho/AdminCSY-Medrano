@@ -56,16 +56,16 @@ namespace EC_Admin.Forms
             try
             {
                 Registrar();
-                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha abierto la caja correctamente!", "EC-Admin");
+                FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha abierto la caja correctamente!", "Admin CSY");
                 this.Close();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al abrir la caja. No se ha podido conectar con la base de datos.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al abrir la caja. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al abrir la caja.", "EC-Admin", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al abrir la caja.", "Admin CSY", ex);
             }
         }
     }

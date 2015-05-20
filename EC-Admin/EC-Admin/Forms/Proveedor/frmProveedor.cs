@@ -59,12 +59,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los proveedor.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los proveedor.", "Admin CSY", ex });
             }
             catch (Exception ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los proveedor.", "EC-Admin", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar los proveedor.", "Admin CSY", ex });
             }
         }
 
@@ -158,7 +158,6 @@ namespace EC_Admin.Forms
             if (e.KeyCode == Keys.Enter)
             {
                 tmrEspera.Enabled = true;
-                txtBusqueda.Enabled = false;
                 bgwBusqueda.RunWorkerAsync(txtBusqueda.Text);
             }
         }
@@ -188,21 +187,21 @@ namespace EC_Admin.Forms
         {
             if (dgvProveedores.CurrentRow != null)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas realmente eliminar a " + dgvProveedores[1, dgvProveedores.CurrentRow.Index].Value.ToString() + "?", "EC-Admin") == System.Windows.Forms.DialogResult.Yes)
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas realmente eliminar a " + dgvProveedores[1, dgvProveedores.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {
                         EliminarProveedor(id);
                         dgvProveedores.Rows.Remove(dgvProveedores.CurrentRow);
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha eliminado el proveedor correctamente!", "EC-Admin");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha eliminado el proveedor correctamente!", "Admin CSY");
                     }
                     catch (MySqlException ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el proveedor.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el proveedor.", "Admin CSY", ex);
                     }
                     catch (Exception ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el proveedor.", "EC-Admin", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el proveedor.", "Admin CSY", ex);
                     }
                 }
             }
@@ -231,6 +230,25 @@ namespace EC_Admin.Forms
         {
             tmrEspera.Enabled = false;
             FuncionesGenerales.frmEspera("Espere, buscando proveedores", this);
+        }
+
+        private void btnMapa_Click(object sender, EventArgs e)
+        {
+            if (dgvProveedores.CurrentRow != null)
+            {
+                try
+                {
+                    (new frmMapa(Proveedor.DireccionProveedor(id), "Ubicación de " + dgvProveedores[1, dgvProveedores.CurrentRow.Index].Value.ToString())).ShowDialog(this);
+                }
+                catch (MySqlException ex)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar la ubicación del cliente. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+                }
+                catch (Exception ex)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar la ubicación del cliente.", "Admin CSY", ex);
+                }
+            }
         }
 
     }

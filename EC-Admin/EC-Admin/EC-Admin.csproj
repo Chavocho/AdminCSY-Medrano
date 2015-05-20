@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EC_Admin</RootNamespace>
-    <AssemblyName>EC-Admin</AssemblyName>
+    <AssemblyName>Admin CSY</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,6 +33,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon-point-of-sale-2x.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge.Video">
@@ -102,6 +105,9 @@
     <Compile Include="Clases\Clases conexiones y estructura\Persona.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\PersonaContacto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Usuario.cs" />
+    <Compile Include="Clases\Clases generales\Impresión Ticket\Ticket.cs" />
+    <Compile Include="Clases\Clases generales\Impresión Ticket\TicketFunciones.cs" />
+    <Compile Include="Clases\Clases generales\Impresión Ticket\TicketVariables.cs" />
     <Compile Include="Forms\Caja\frmAbrirCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,12 @@
     </Compile>
     <Compile Include="Forms\Caja\frmCerrarCaja.Designer.cs">
       <DependentUpon>frmCerrarCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Caja\frmCorteCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caja\frmCorteCaja.Designer.cs">
+      <DependentUpon>frmCorteCaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Caja\frmEntradaSalida.cs">
       <SubType>Form</SubType>
@@ -246,6 +258,12 @@
     <Compile Include="Forms\Configs\frmConfigs.Designer.cs">
       <DependentUpon>frmConfigs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Configs\frmConfigTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configs\frmConfigTicket.Designer.cs">
+      <DependentUpon>frmConfigTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Cotizacion\frmCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +299,12 @@
     </Compile>
     <Compile Include="Forms\Cuentas\frmNuevaCuenta.Designer.cs">
       <DependentUpon>frmNuevaCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mapas\frmMapa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mapas\frmMapa.Designer.cs">
+      <DependentUpon>frmMapa.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Mensaje\frmLoginValidacion.cs">
       <SubType>Form</SubType>
@@ -353,6 +377,12 @@
     </Compile>
     <Compile Include="Forms\Proveedor\frmProveedor.Designer.cs">
       <DependentUpon>frmProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reportes\frmVentasDiarias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reportes\frmVentasDiarias.Designer.cs">
+      <DependentUpon>frmVentasDiarias.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Sucursal\Domicilio\frmAsignarDomicilio.cs">
       <SubType>Form</SubType>
@@ -593,6 +623,9 @@
     <EmbeddedResource Include="Forms\Caja\frmCerrarCaja.resx">
       <DependentUpon>frmCerrarCaja.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caja\frmCorteCaja.resx">
+      <DependentUpon>frmCorteCaja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Caja\frmEntradaSalida.resx">
       <DependentUpon>frmEntradaSalida.cs</DependentUpon>
     </EmbeddedResource>
@@ -656,6 +689,9 @@
     <EmbeddedResource Include="Forms\Configs\frmConfigs.resx">
       <DependentUpon>frmConfigs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configs\frmConfigTicket.resx">
+      <DependentUpon>frmConfigTicket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cotizacion\frmCotizacion.resx">
       <DependentUpon>frmCotizacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -673,6 +709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cuentas\frmNuevaCuenta.resx">
       <DependentUpon>frmNuevaCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mapas\frmMapa.resx">
+      <DependentUpon>frmMapa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mensaje\frmLoginValidacion.resx">
       <DependentUpon>frmLoginValidacion.cs</DependentUpon>
@@ -709,6 +748,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Proveedor\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reportes\frmVentasDiarias.resx">
+      <DependentUpon>frmVentasDiarias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Sucursal\Domicilio\frmAsignarDomicilio.resx">
       <DependentUpon>frmAsignarDomicilio.cs</DependentUpon>
@@ -866,7 +908,9 @@
   <ItemGroup>
     <None Include="Resources\Config.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="icon-point-of-sale-2x.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

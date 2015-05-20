@@ -56,11 +56,11 @@
             this.lblETotal.AutoSize = true;
             this.lblETotal.Font = new System.Drawing.Font("Corbel", 15F);
             this.lblETotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblETotal.Location = new System.Drawing.Point(36, 110);
+            this.lblETotal.Location = new System.Drawing.Point(6, 110);
             this.lblETotal.Name = "lblETotal";
-            this.lblETotal.Size = new System.Drawing.Size(127, 24);
+            this.lblETotal.Size = new System.Drawing.Size(157, 24);
             this.lblETotal.TabIndex = 19;
-            this.lblETotal.Text = "Efectivo total:";
+            this.lblETotal.Text = "Efectivo restante:";
             // 
             // lblEfeCaja
             // 
@@ -107,11 +107,11 @@
             // 
             this.lblEEfeDejar.AutoSize = true;
             this.lblEEfeDejar.Font = new System.Drawing.Font("Corbel", 15F);
-            this.lblEEfeDejar.Location = new System.Drawing.Point(19, 76);
+            this.lblEEfeDejar.Location = new System.Drawing.Point(8, 76);
             this.lblEEfeDejar.Name = "lblEEfeDejar";
-            this.lblEEfeDejar.Size = new System.Drawing.Size(144, 24);
+            this.lblEEfeDejar.Size = new System.Drawing.Size(154, 24);
             this.lblEEfeDejar.TabIndex = 15;
-            this.lblEEfeDejar.Text = "Efectivo a dejar:";
+            this.lblEEfeDejar.Text = "Efectivo a retirar:";
             // 
             // txtEfectivo
             // 

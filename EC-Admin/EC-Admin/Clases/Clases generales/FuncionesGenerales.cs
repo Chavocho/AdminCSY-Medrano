@@ -15,6 +15,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using MySql.Data.MySqlClient;
 using System.Media;
+using System.Diagnostics;
 
 namespace EC_Admin
 {
@@ -246,6 +247,17 @@ namespace EC_Admin
         /// Función que redimensiona una imagen a una resolución dada sin recorte
         /// </summary>
         /// <param name="imgPhoto">Imagen a redimensionar</param>
+        /// <param name="size">Tamaño al que se desea redimensionar la imagen</param>
+        /// <returns>Imagen redimensionada</returns>
+        public static Image RedimensionarImagen(Image imgPhoto, Size size)
+        {
+            return RedimensionarImagen(imgPhoto, size.Width, size.Height);
+        }
+
+        /// <summary>
+        /// Función que redimensiona una imagen a una resolución dada sin recorte
+        /// </summary>
+        /// <param name="imgPhoto">Imagen a redimensionar</param>
         /// <param name="Width">Ancho al que se desea redimensionar</param>
         /// <param name="Height">Alto al que se desea redimensionar</param>
         /// <returns>Imagen redimensionada</returns>
@@ -297,17 +309,6 @@ namespace EC_Admin
 
             grPhoto.Dispose();
             return bmPhoto;
-        }
-
-        /// <summary>
-        /// Función que redimensiona una imagen a una resolución dada sin recorte
-        /// </summary>
-        /// <param name="imgPhoto">Imagen a redimensionar</param>
-        /// <param name="size">Tamaño al que se desea redimensionar la imagen</param>
-        /// <returns>Imagen redimensionada</returns>
-        public static Image RedimensionarImagen(Image imgPhoto, Size size)
-        {
-            return RedimensionarImagen(imgPhoto, size.Width, size.Height);
         }
 
         /// <summary>
@@ -394,6 +395,112 @@ namespace EC_Admin
             {
             }
             return hay;
+        }
+
+        public static int IDProceso(string nombreProceso)
+        {
+            int id = -1;
+            try
+            {
+                Process[] pr = Process.GetProcesses();
+                foreach (Process p in pr)
+                {
+                    if (p.ProcessName.Contains(nombreProceso))
+                    {
+                        id = p.Id;
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return id;
+        }
+
+        public static void IniciarProceso(string rutaArchivo, string argumentos = "")
+        {
+            try
+            {
+                Process p = new Process();
+                ProcessStartInfo psi = new ProcessStartInfo(rutaArchivo);
+                psi.Arguments = argumentos;
+                psi.CreateNoWindow = true;
+                psi.WindowStyle = ProcessWindowStyle.Hidden;
+                p.StartInfo = psi;
+                p.Start();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static bool ExisteProceso(int id)
+        {
+            try
+            {
+                Process[] pr = Process.GetProcesses();
+                foreach (Process p in pr)
+                {
+                    if (p.Id == id)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return false;
+        }
+
+        public static bool ImprimirTicket(IWin32Window frm, string mensaje)
+        {
+            if (ConfiguracionXML.ExisteConfiguracion("ticket"))
+            {
+                if (bool.Parse(ConfiguracionXML.LeerConfiguración("ticket", "imprimir")))
+                {
+                    if (bool.Parse(ConfiguracionXML.LeerConfiguración("ticket", "preguntar")))
+                    {
+                        if (Mensaje(frm, Mensajes.Pregunta, mensaje, "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static void ColoresError(ref TextBox txt)
+        {
+            txt.BackColor = Colores.Error;
+            txt.ForeColor = Colores.Claro;
+        }
+
+        public static void ColoresBien(ref TextBox txt)
+        {
+            txt.BackColor = Colores.Claro;
+            txt.ForeColor = Colores.Obscuro;
+        }
+
+        public static void ColoresError(ref ComboBox txt)
+        {
+            txt.BackColor = Colores.Error;
+            txt.ForeColor = Colores.Claro;
+        }
+
+        public static void ColoresBien(ref ComboBox txt)
+        {
+            txt.BackColor = Colores.ClaroObscuro;
+            txt.ForeColor = Colores.Obscuro;
         }
 
         #region Siempre Encima
