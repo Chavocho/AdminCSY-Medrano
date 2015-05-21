@@ -42,8 +42,8 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT p.id, p.nombre, a.num_alm, p.codigo, p.precio, p.cant, p.unidad FROM producto AS p INNER JOIN almacen AS a ON (p.almacen_id=a.id) " +
-                    "WHERE (p.nombre LIKE '%" + p + "%' OR p.codigo='" + p + "') AND p.eliminado=0";
+                string sql = "SELECT id, nombre, codigo, precio, cant, unidad FROM producto " +
+                    "WHERE (nombre LIKE '%" + p + "%' OR codigo='" + p + "') AND eliminado=0";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -65,7 +65,7 @@ namespace EC_Admin.Forms
                 dgvProductos.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["num_alm"], dr["codigo"], dr["precio"], dr["cant"], dr["unidad"] });
+                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["codigo"], dr["precio"], dr["cant"], dr["unidad"] });
                 }
                 dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
             }
@@ -116,11 +116,11 @@ namespace EC_Admin.Forms
                 DataGridViewRow dr = dgvProductos.CurrentRow;
                 if (frm != null)
                 {
-                    frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[3].Value.ToString(), dr.Cells[1].Value.ToString(), nudCant.Value, nudDescuento.Value / 100M, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
+                    frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[2].Value.ToString(), dr.Cells[1].Value.ToString(), nudCant.Value, nudDescuento.Value / 100M, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[5].Value.ToString()));
                 }
                 else if (frmC != null)
                 {
-                    frmC.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[3].Value.ToString(), dr.Cells[1].Value.ToString(), nudCant.Value, nudDescuento.Value / 100M, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
+                    frmC.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[2].Value.ToString(), dr.Cells[1].Value.ToString(), nudCant.Value, nudDescuento.Value / 100M, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[5].Value.ToString()));
                 }
                 this.Close();
             }

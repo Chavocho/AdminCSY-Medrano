@@ -29,22 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grbFechas = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CTipoFolio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CFolio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlProductos = new System.Windows.Forms.Panel();
             this.lblECliente = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
@@ -54,12 +47,21 @@
             this.bgwBusquedaDetallada = new System.ComponentModel.BackgroundWorker();
             this.tmrEsperaVenta = new System.Windows.Forms.Timer(this.components);
             this.tmrEsperaDetallada = new System.Windows.Forms.Timer(this.components);
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTipoFolio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CFolio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grbFechas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.SuspendLayout();
             // 
             // grbFechas
             // 
+            this.grbFechas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grbFechas.Controls.Add(this.btnBuscar);
             this.grbFechas.Controls.Add(this.dtpFechaInicio);
             this.grbFechas.Font = new System.Drawing.Font("Corbel", 9F);
@@ -88,6 +90,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dtpFechaInicio
             // 
@@ -103,12 +106,12 @@
             this.dgvVentas.AllowUserToDeleteRows = false;
             this.dgvVentas.AllowUserToResizeColumns = false;
             this.dgvVentas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            this.dgvVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            this.dgvVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVentas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -116,31 +119,32 @@
             this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
+            this.CVendedor,
+            this.CCliente,
             this.CTotal,
-            this.CCantidad,
             this.CTipoPago,
             this.CFecha,
             this.CTipoFolio,
             this.CFolio});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvVentas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvVentas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvVentas.Location = new System.Drawing.Point(12, 74);
@@ -150,54 +154,9 @@
             this.dgvVentas.RowHeadersVisible = false;
             this.dgvVentas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVentas.Size = new System.Drawing.Size(984, 368);
+            this.dgvVentas.Size = new System.Drawing.Size(984, 401);
             this.dgvVentas.TabIndex = 4;
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CTotal
-            // 
-            dataGridViewCellStyle8.Format = "C2";
-            this.CTotal.DefaultCellStyle = dataGridViewCellStyle8;
-            this.CTotal.HeaderText = "Total";
-            this.CTotal.Name = "CTotal";
-            this.CTotal.Width = 150;
-            // 
-            // CCantidad
-            // 
-            this.CCantidad.HeaderText = "Total productos";
-            this.CCantidad.Name = "CCantidad";
-            this.CCantidad.Width = 150;
-            // 
-            // CTipoPago
-            // 
-            this.CTipoPago.HeaderText = "Tipo pago";
-            this.CTipoPago.Name = "CTipoPago";
-            this.CTipoPago.Width = 150;
-            // 
-            // CFecha
-            // 
-            this.CFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle9.Format = "dd \' de \' MMMM \' del \' yyyy, hh:mm tt";
-            this.CFecha.DefaultCellStyle = dataGridViewCellStyle9;
-            this.CFecha.HeaderText = "Fecha";
-            this.CFecha.Name = "CFecha";
-            // 
-            // CTipoFolio
-            // 
-            this.CTipoFolio.HeaderText = "Tipo folio";
-            this.CTipoFolio.Name = "CTipoFolio";
-            this.CTipoFolio.Width = 130;
-            // 
-            // CFolio
-            // 
-            this.CFolio.HeaderText = "Folio";
-            this.CFolio.Name = "CFolio";
-            this.CFolio.Width = 130;
+            this.dgvVentas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_RowEnter);
             // 
             // pnlProductos
             // 
@@ -205,10 +164,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlProductos.AutoScroll = true;
             this.pnlProductos.BackColor = System.Drawing.Color.White;
-            this.pnlProductos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlProductos.Location = new System.Drawing.Point(12, 448);
+            this.pnlProductos.Location = new System.Drawing.Point(12, 481);
             this.pnlProductos.Name = "pnlProductos";
-            this.pnlProductos.Size = new System.Drawing.Size(984, 237);
+            this.pnlProductos.Size = new System.Drawing.Size(984, 204);
             this.pnlProductos.TabIndex = 10;
             // 
             // lblECliente
@@ -249,13 +207,77 @@
             this.lblEVendedor.TabIndex = 14;
             this.lblEVendedor.Text = "Vendedor:";
             // 
+            // bgwBusquedaVentas
+            // 
+            this.bgwBusquedaVentas.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusquedaVentas_DoWork);
+            this.bgwBusquedaVentas.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusquedaVentas_RunWorkerCompleted);
+            // 
+            // bgwBusquedaDetallada
+            // 
+            this.bgwBusquedaDetallada.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusquedaDetallada_DoWork);
+            this.bgwBusquedaDetallada.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusquedaDetallada_RunWorkerCompleted);
+            // 
             // tmrEsperaVenta
             // 
             this.tmrEsperaVenta.Interval = 300;
+            this.tmrEsperaVenta.Tick += new System.EventHandler(this.tmrEsperaVenta_Tick);
             // 
             // tmrEsperaDetallada
             // 
             this.tmrEsperaDetallada.Interval = 300;
+            this.tmrEsperaDetallada.Tick += new System.EventHandler(this.tmrEsperaDetallada_Tick);
+            // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CVendedor
+            // 
+            this.CVendedor.HeaderText = "Vendedor";
+            this.CVendedor.Name = "CVendedor";
+            this.CVendedor.Visible = false;
+            // 
+            // CCliente
+            // 
+            this.CCliente.HeaderText = "Cliente";
+            this.CCliente.Name = "CCliente";
+            this.CCliente.Visible = false;
+            // 
+            // CTotal
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            this.CTotal.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CTotal.HeaderText = "Total";
+            this.CTotal.Name = "CTotal";
+            this.CTotal.Width = 150;
+            // 
+            // CTipoPago
+            // 
+            this.CTipoPago.HeaderText = "Tipo pago";
+            this.CTipoPago.Name = "CTipoPago";
+            this.CTipoPago.Width = 150;
+            // 
+            // CFecha
+            // 
+            this.CFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Format = "dd \' de \' MMMM \' del \' yyyy, hh:mm tt";
+            this.CFecha.DefaultCellStyle = dataGridViewCellStyle4;
+            this.CFecha.HeaderText = "Fecha";
+            this.CFecha.Name = "CFecha";
+            // 
+            // CTipoFolio
+            // 
+            this.CTipoFolio.HeaderText = "Tipo folio";
+            this.CTipoFolio.Name = "CTipoFolio";
+            this.CTipoFolio.Width = 130;
+            // 
+            // CFolio
+            // 
+            this.CFolio.HeaderText = "Folio";
+            this.CFolio.Name = "CFolio";
+            this.CFolio.Width = 130;
             // 
             // frmVentasDiarias
             // 
@@ -274,7 +296,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventas diarias";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmVentasDiarias_Load);
             this.grbFechas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.ResumeLayout(false);
@@ -298,8 +319,9 @@
         private System.Windows.Forms.Timer tmrEsperaVenta;
         private System.Windows.Forms.Timer tmrEsperaDetallada;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CVendedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTipoPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn CFecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTipoFolio;

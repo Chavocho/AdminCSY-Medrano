@@ -106,20 +106,20 @@ namespace EC_Admin.Forms
                 pcbImagen01.Image = p.Imagen01;
                 switch (p.Unidad)
                 {
-                    case Unidades.Gramo:
-                        cboUnidad.SelectedIndex = 0;
-                        break;
-                    case Unidades.Kilogramo:
-                        cboUnidad.SelectedIndex = 1;
-                        break;
-                    case Unidades.Mililitro:
-                        cboUnidad.SelectedIndex = 2;
-                        break;
-                    case Unidades.Litro:
-                        cboUnidad.SelectedIndex = 3;
-                        break;
+                    //case Unidades.Gramo:
+                    //    cboUnidad.SelectedIndex = 0;
+                    //    break;
+                    //case Unidades.Kilogramo:
+                    //    cboUnidad.SelectedIndex = 1;
+                    //    break;
+                    //case Unidades.Mililitro:
+                    //    cboUnidad.SelectedIndex = 2;
+                    //    break;
+                    //case Unidades.Litro:
+                    //    cboUnidad.SelectedIndex = 3;
+                    //    break;
                     case Unidades.Pieza:
-                        cboUnidad.SelectedIndex = 4;
+                        cboUnidad.SelectedIndex = 0;
                         break;
                 }
             }

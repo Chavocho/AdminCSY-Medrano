@@ -34,10 +34,11 @@ namespace EC_Admin.Forms
 
         int id;
         DataTable dt = new DataTable();
+        DataTable dtd = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
         CerrarFrmEspera c;
 
-        List<int> codProductos = new List<int>();
+        List<string> codProductos = new List<string>();
         List<string> nombreProductos = new List<string>();
         List<decimal> cantProductos = new List<decimal>();
         List<decimal> precioProductos = new List<decimal>();
@@ -55,15 +56,20 @@ namespace EC_Admin.Forms
             FuncionesGenerales.frmEsperaClose();
         }
 
-        private void BuscarVentas(DateTime fechaIni, DateTime fechaFin)
+        private void CerrarDetallada()
+        {
+            tmrEsperaDetallada.Enabled = false;
+            FuncionesGenerales.frmEsperaClose();
+        }
+
+        private void BuscarVentas(DateTime fechaIni)
         {
             c = new CerrarFrmEspera(CerrarVenta);
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT v.*, SUM(d.cant) AS cant FROM ventas AS v INNER JOIN venta_detallada AS d ON (v.id=d.id_venta) WHERE (v.create_time BETWEEN ?fecha_ini AND ?fecha_fin)";
-                sql.Parameters.AddWithValue("?fecha_ini", fechaIni.ToString("yyyy-MM-dd") + " 00:00:00");
-                sql.Parameters.AddWithValue("?fecha_fin", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
+                sql.CommandText = "SELECT * FROM venta WHERE DATE_FORMAT(create_time, '%Y-%m-%d')=?fecha_ini";
+                sql.Parameters.AddWithValue("?fecha_ini", fechaIni.ToString("yyyy-MM-dd"));
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -80,6 +86,7 @@ namespace EC_Admin.Forms
 
         private void BuscarVentaDetallada(int id)
         {
+            c = new CerrarFrmEspera(CerrarDetallada);
             try
             {
                 codProductos.Clear();
@@ -92,17 +99,16 @@ namespace EC_Admin.Forms
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "SELECT v.*, p.nombre, p.codigo FROM venta_detallada AS v INNER JOIN producto AS p ON (v.id_producto=p.id) WHERE v.id_venta=?id_venta";
                 sql.Parameters.AddWithValue("?id_venta", id);
-                DataTable dtd = ConexionBD.EjecutarConsultaSelect(sql);
+                dtd = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dtd.Rows)
                 {
-                    codProductos.Add((int)dr["codigo"]);
+                    codProductos.Add(dr["codigo"].ToString());
                     nombreProductos.Add(dr["nombre"].ToString());
                     cantProductos.Add((decimal)dr["cant"]);
                     precioProductos.Add((decimal)dr["precio"]);
                     descuentoProductos.Add((decimal)dr["descuento"]);
                     unidadesProductos.Add((Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
                 }
-                LlenarProductos(dtd);
             }
             catch (MySqlException ex)
             {
@@ -153,8 +159,9 @@ namespace EC_Admin.Forms
                         tipoFolio = "Factura";
                         folio = dr["folio_factura"].ToString();
                     }
-                    dgvVentas.Rows.Add(new object[] { dr["id"], dr["total"], dr["cant"], tipoPago, dr["create_time"], tipoFolio, folio});
+                    dgvVentas.Rows.Add(new object[] { dr["id"], dr["id_vendedor"], dr["id_cliente"], dr["total"], tipoPago, dr["create_time"], tipoFolio, folio});
                 }
+                dgvVentas_RowEnter(dgvVentas, new DataGridViewCellEventArgs(0, 0));
             }
             catch (Exception ex)
             {
@@ -163,12 +170,15 @@ namespace EC_Admin.Forms
             }
         }
 
-        private void LlenarProductos(DataTable dt)
+        private void LlenarProductos()
         {
             try
             {
+                pnlProductos.Controls.Clear();
+
                 Graphics g = this.CreateGraphics();
                 int y = 10;
+                int i = 0;
                 int salto = (int)g.MeasureString("A", new Font("Corbel", 13F, FontStyle.Bold)).Height + 5;
                 int posCod = 10;
                 int posNom = 175;
@@ -184,12 +194,12 @@ namespace EC_Admin.Forms
                 Label lblEDescProd = new Label();
                 Label lblEUnidadProd = new Label();
 
-                Label lblCodProd = new Label();
-                Label lblNomProd = new Label();
-                Label lblCantProd = new Label();
-                Label lblPrecioProd = new Label();
-                Label lblDescProd = new Label();
-                Label lblUnidadProd = new Label();
+                Label lblCodProd;
+                Label lblNomProd;
+                Label lblCantProd;
+                Label lblPrecioProd;
+                Label lblDescProd;
+                Label lblUnidadProd;
 
                 lblECodProd.Name = "lblECodProd";
                 lblENomProd.Name = "lblENomProd";
@@ -223,9 +233,67 @@ namespace EC_Admin.Forms
 
                 y += salto;
 
-                foreach (DataRow dr in dt.Rows)
+                foreach (DataRow dr in dtd.Rows)
                 {
-                    
+                    i += 1;
+
+                    Unidades u = (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString());
+
+                    lblCodProd = new Label();
+                    lblNomProd = new Label();
+                    lblCantProd = new Label();
+                    lblPrecioProd = new Label();
+                    lblDescProd = new Label();
+                    lblUnidadProd = new Label();
+
+                    lblCodProd.Name = "lblCodProd" + i.ToString("0000");
+                    lblNomProd.Name = "lblNomProd" + i.ToString("0000");
+                    lblCantProd.Name = "lblCantProd" + i.ToString("0000");
+                    lblPrecioProd.Name = "lblPrecioProd" + i.ToString("0000");
+                    lblDescProd.Name = "lblDescProd" + i.ToString("0000");
+                    lblUnidadProd.Name = "lblUnidadProd" + i.ToString("0000");
+
+                    lblCodProd.Text = dr["codigo"].ToString();
+                    lblNomProd.Text = dr["nombre"].ToString();
+                    lblCantProd.Text = dr["cant"].ToString();
+                    lblPrecioProd.Text = dr["precio"].ToString();
+                    lblDescProd.Text = dr["descuento"].ToString();
+                    switch (u)
+                    {
+                        case Unidades.Gramo:
+                            lblUnidadProd.Text = "Gramo";
+                            break;
+                        case Unidades.Kilogramo:
+                            lblUnidadProd.Text = "Kilogramo";
+                            break;
+                        case Unidades.Mililitro:
+                            lblUnidadProd.Text = "Mililitro";
+                            break;
+                        case Unidades.Litro:
+                            lblUnidadProd.Text = "Litro";
+                            break;
+                        case Unidades.Pieza:
+                            lblUnidadProd.Text = "Pieza";
+                            break;
+                    }
+
+                    lblCodProd.Font = lblNomProd.Font = lblCantProd.Font = lblPrecioProd.Font = lblDescProd.Font = lblUnidadProd.Font = new Font("Corbel", 13F, FontStyle.Regular);
+
+                    lblCodProd.Location = new Point(posCod, y);
+                    lblNomProd.Location = new Point(posNom, y);
+                    lblCantProd.Location = new Point(posCant, y);
+                    lblPrecioProd.Location = new Point(posPrecio, y);
+                    lblDescProd.Location = new Point(posDesc, y);
+                    lblUnidadProd.Location = new Point(posUnidad, y);
+
+                    pnlProductos.Controls.Add(lblCodProd);
+                    pnlProductos.Controls.Add(lblNomProd);
+                    pnlProductos.Controls.Add(lblCantProd);
+                    pnlProductos.Controls.Add(lblPrecioProd);
+                    pnlProductos.Controls.Add(lblDescProd);
+                    pnlProductos.Controls.Add(lblUnidadProd);
+
+                    y += salto;
                 }
             }
             catch (Exception ex)
@@ -234,8 +302,75 @@ namespace EC_Admin.Forms
             }
         }
 
-        private void frmVentasDiarias_Load(object sender, EventArgs e)
+        private void dgvVentas_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                if (dgvVentas.CurrentRow != null)
+                {
+                    id = (int)dgvVentas[0, e.RowIndex].Value;
+                    lblVendedor.Text = Trabajador.NombreTrabajador((int)dgvVentas[1, e.RowIndex].Value);
+                    lblCliente.Text = Cliente.NombreCliente((int)dgvVentas[2, e.RowIndex].Value);
+                    if (!bgwBusquedaDetallada.IsBusy)
+                    {
+                        tmrEsperaDetallada.Enabled = true;
+                        bgwBusquedaDetallada.RunWorkerAsync(id);
+                    }
+                }
+                else
+                {
+                    id = 0;
+                    lblVendedor.Text = "";
+                    lblCliente.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (!bgwBusquedaVentas.IsBusy)
+            {
+                tmrEsperaVenta.Enabled = true;
+                bgwBusquedaVentas.RunWorkerAsync(dtpFechaInicio.Value);
+            }
+        }
+
+        private void bgwBusquedaVentas_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BuscarVentas((DateTime)e.Argument);
+        }
+
+        private void bgwBusquedaVentas_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            CerrarVenta();
+            LlenarDataTable();
+        }
+
+        private void tmrEsperaVenta_Tick(object sender, EventArgs e)
+        {
+            tmrEsperaVenta.Enabled = false;
+            FuncionesGenerales.frmEspera("Espere, cargando ventas", this);
+        }
+
+        private void bgwBusquedaDetallada_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BuscarVentaDetallada((int)e.Argument);
+        }
+
+        private void bgwBusquedaDetallada_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            CerrarDetallada();
+            LlenarProductos();
+        }
+
+        private void tmrEsperaDetallada_Tick(object sender, EventArgs e)
+        {
+            tmrEsperaDetallada.Enabled = false;
+            FuncionesGenerales.frmEspera("Espere, cargando los productos de la venta", this);
         }
     }
 }
