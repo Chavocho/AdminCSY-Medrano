@@ -35,6 +35,8 @@ namespace EC_Admin.Forms
         delegate void ImagenProducto(Image img);
 
         int id;
+        //Variable para el control de excepciones
+        int cont = 0;
         decimal subtotal = 0M, impuesto = 0M, descuento = 0M, total = 0M, cantTot = 0M;
 
         Venta v;
@@ -71,6 +73,7 @@ namespace EC_Admin.Forms
             {
                 if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La venta no se ha finalizado, ¿desea crear una nueva?\n(Puedes guardar la venta actual para continuarla posteriormente)", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
+                    cboTipoPrecio.SelectedIndex = 0;
                     v.IDVendedor = idVendedor;
                     v.NuevaVenta();
                     ControlesHabilitados();
@@ -84,6 +87,7 @@ namespace EC_Admin.Forms
             }
             else
             {
+                cboTipoPrecio.SelectedIndex = 0;
                 v.IDVendedor = idVendedor;
                 v.NuevaVenta();
                 ControlesHabilitados();
@@ -95,16 +99,18 @@ namespace EC_Admin.Forms
                 CalcularTotales();
             }
         }
-
         /// <summary>
         /// Recupera una venta que no haya sido completada antes
         /// </summary>
         /// <param name="id">ID de la venta</param>
         public void RecuperarVenta(int id)
         {
+            cont += 1;
             try
             {
+                cboTipoPrecio.SelectedIndex = 0;
                 VerificarVisible();
+                dgvProductos.Rows.Clear();
                 v.IDVenta = id;
                 lblFolio.Text = id.ToString();
                 v.RecuperarVenta();
@@ -124,8 +130,16 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (cont < 3)
+                {
+                    RecuperarVenta(id);
+                }
+                else
+                {
+                    throw ex;
+                }
             }
+            cont = 0;
         }
 
         /// <summary>
@@ -146,6 +160,8 @@ namespace EC_Admin.Forms
             btnVendedor.Enabled = false;
             txtBusqueda.Enabled = false;
             grbTotales.Enabled = false;
+            lblETipoPrecio.Enabled = false;
+            cboTipoPrecio.Enabled = false;
         }
 
         /// <summary>
@@ -167,6 +183,8 @@ namespace EC_Admin.Forms
             btnVendedor.Visible = true;
             txtBusqueda.Enabled = true;
             grbTotales.Visible = true;
+            lblETipoPrecio.Visible = true;
+            cboTipoPrecio.Visible = true;
 
             lblECliente.Enabled = true;
             lblCliente.Enabled = true;
@@ -181,6 +199,8 @@ namespace EC_Admin.Forms
             btnVendedor.Enabled = true;
             txtBusqueda.Enabled = true;
             grbTotales.Enabled = true;
+            lblETipoPrecio.Enabled = true;
+            cboTipoPrecio.Enabled = true;
             idCliente = 0;
             lblCliente.Text = "";
         }
@@ -270,6 +290,10 @@ namespace EC_Admin.Forms
             {
                 decimal precio = PrecioProducto(id, cant);
                 dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u });
+                if (cboTipoPrecio.SelectedIndex > 0)
+                {
+                    PrecioProducto();
+                }
                 if (dgvProductos.RowCount == 1)
                 {
                     dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
@@ -292,7 +316,14 @@ namespace EC_Admin.Forms
                 if (dr.Cells[0].Value.ToString() == id.ToString())
                 {
                     dr.Cells[4].Value = ((decimal)dr.Cells[4].Value + cant);
-                    dr.Cells[3].Value = PrecioProducto(id, (decimal)dr.Cells[4].Value);
+                    if (cboTipoPrecio.SelectedIndex == 0)
+                    {
+                        dr.Cells[3].Value = PrecioProducto(id, (decimal)dr.Cells[4].Value);
+                    }
+                    else
+                    {
+                        PrecioProducto();
+                    }
                     existe = true;
                     if (cant < 0 && (decimal)dr.Cells[4].Value <= 0)
                         QuitarProducto(dr);
@@ -303,60 +334,150 @@ namespace EC_Admin.Forms
             return existe;
         }
 
+        private void PrecioProducto()
+        {
+            try
+            {
+                foreach (DataGridViewRow dr in dgvProductos.Rows)
+                {
+                    dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, decimal.Parse(lblCantTot.Text));
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private decimal PrecioProducto(int id, decimal cant)
         {
             decimal precio = 0M;
+            MySqlCommand sql;
+            DataTable dt;
             try
             {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT precio, precio_mediomayoreo, precio_mayoreo, cant_mediomayoreo, cant_mayoreo FROM producto WHERE id=?id";
-                sql.Parameters.AddWithValue("?id", id);
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
+                switch (cboTipoPrecio.SelectedIndex)
                 {
-                    decimal cantMedioMayoreo = (decimal)dr["cant_mediomayoreo"], cantMayoreo = (decimal)dr["cant_mayoreo"],
-                        precioP = (decimal)dr["precio"], precioMedioMayoreo = (decimal)dr["precio_mediomayoreo"], precioMayoreo = (decimal)dr["precio_mayoreo"];
-                    if (cantMedioMayoreo > 0 && cantMayoreo > 0)
-                    {
-                        if (cant < cantMedioMayoreo)
+                    case 0:
+                        sql = new MySqlCommand();
+                        sql.CommandText = "SELECT precio, precio_mediomayoreo, precio_mayoreo, cant_mediomayoreo, cant_mayoreo FROM producto WHERE id=?id";
+                        sql.Parameters.AddWithValue("?id", id);
+                        dt = ConexionBD.EjecutarConsultaSelect(sql);
+                        foreach (DataRow dr in dt.Rows)
                         {
-                            precio = precioP;
+                            decimal cantMedioMayoreo = (decimal)dr["cant_mediomayoreo"], cantMayoreo = (decimal)dr["cant_mayoreo"],
+                                precioP = (decimal)dr["precio"], precioMedioMayoreo = (decimal)dr["precio_mediomayoreo"], precioMayoreo = (decimal)dr["precio_mayoreo"];
+                            if (cantMedioMayoreo > 0 && cantMayoreo > 0)
+                            {
+                                if (cant < cantMedioMayoreo)
+                                {
+                                    precio = precioP;
+                                }
+                                else if (cant >= cantMedioMayoreo && cant < cantMayoreo)
+                                {
+                                    precio = precioMedioMayoreo;
+                                }
+                                else if (cant >= cantMayoreo)
+                                {
+                                    precio = precioMayoreo;
+                                }
+                            }
+                            else if (cantMedioMayoreo > 0)
+                            {
+                                if (cant >= cantMedioMayoreo)
+                                {
+                                    precio = precioMedioMayoreo;
+                                }
+                                else
+                                {
+                                    precio = precioP;
+                                }
+                            }
+                            else if (cantMayoreo > 0)
+                            {
+                                if (cant >= cantMayoreo)
+                                {
+                                    precio = precioMayoreo;
+                                }
+                                else
+                                {
+                                    precio = precioP;
+                                }
+                            }
+                            else
+                            {
+                                precio = precioP;
+                            }
                         }
-                        else if (cant >= cantMedioMayoreo && cant < cantMayoreo)
+                        break;
+                    case 1:
+                        sql = new MySqlCommand();
+                        sql.CommandText = "SELECT precio, precio_mediomayoreo FROM producto WHERE id=?id";
+                        sql.Parameters.AddWithValue("?id", id);
+                        dt = ConexionBD.EjecutarConsultaSelect(sql);
+                        foreach (DataRow dr in dt.Rows)
                         {
-                            precio = precioMedioMayoreo;
+                            decimal precioP = (decimal)dr["precio"], precioMedioMayoreo = (decimal)dr["precio_mediomayoreo"];
+                            if (Config.cantMedioMayoreo > 0)
+                            {
+                                if (cant < Config.cantMedioMayoreo)
+                                {
+                                    precio = precioP;
+                                }
+                                else if (cant >= Config.cantMedioMayoreo)
+                                {
+                                    if (precioMedioMayoreo > 0)
+                                    {
+                                        precio = precioMedioMayoreo;
+                                    }
+                                    else
+                                    {
+                                        precio = precioP;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                precio = precioP;
+                            }
                         }
-                        else if (cant >= cantMayoreo)
+                        break;
+                    case 2:
+                        sql = new MySqlCommand();
+                        sql.CommandText = "SELECT precio, precio_mayoreo FROM producto WHERE id=?id";
+                        sql.Parameters.AddWithValue("?id", id);
+                        dt = ConexionBD.EjecutarConsultaSelect(sql);
+                        foreach (DataRow dr in dt.Rows)
                         {
-                            precio = precioMayoreo;
+                            decimal precioP = (decimal)dr["precio"], precioMayoreo = (decimal)dr["precio_mayoreo"];
+                            if (Config.cantMayoreo > 0)
+                            {
+                                if (cant >= Config.cantMayoreo)
+                                {
+                                    if (precioMayoreo > 0)
+                                    {
+                                        precio = precioMayoreo;
+                                    }
+                                    else
+                                    {
+                                        precio = precioP;
+                                    }
+                                }
+                                else
+                                {
+                                    precio = precioP;
+                                }
+                            }
+                            else
+                            {
+                                precio = precioP;
+                            }
                         }
-                    }
-                    else if (cantMedioMayoreo > 0)
-                    {
-                        if (cant >= cantMedioMayoreo)
-                        {
-                            precio = precioMedioMayoreo;
-                        }
-                        else
-                        {
-                            precio = precioP;
-                        }
-                    }
-                    else if (cantMayoreo > 0)
-                    {
-                        if (cant >= cantMayoreo)
-                        {
-                            precio = precioMayoreo;
-                        }
-                        else
-                        {
-                            precio = precioP;
-                        }
-                    }
-                    else
-                    {
-                        precio = precioP;
-                    }
+                        break;
                 }
             }
             catch (MySqlException ex)
@@ -693,17 +814,25 @@ namespace EC_Admin.Forms
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                string[] datos = txtBusqueda.Text.Split(new char[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
-                if (datos.Length > 1)
+                if (txtBusqueda.Text.Trim() != "")
                 {
-                    BusquedaProducto(datos[1].ToString(), decimal.Parse(datos[0], System.Globalization.NumberStyles.Currency));
+                    string[] datos = txtBusqueda.Text.Split(new char[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (datos.Length > 1)
+                    {
+                        BusquedaProducto(datos[1].ToString(), decimal.Parse(datos[0], System.Globalization.NumberStyles.Currency));
+                    }
+                    else
+                    {
+                        BusquedaProducto(datos[0].ToString(), 1);
+                    }
+                    txtBusqueda.Text = "";
                 }
-                else
-                {
-                    BusquedaProducto(datos[0].ToString(), 1);
-                }
-                txtBusqueda.Text = "";
             }
+        }
+
+        private void cboTipoPrecio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PrecioProducto();
         }
     }
 }

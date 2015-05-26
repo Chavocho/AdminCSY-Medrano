@@ -184,6 +184,16 @@ namespace EC_Admin
             }
         }
 
+
+        private void ConfiguracionPOS()
+        {
+            if (ConfiguracionXML.ExisteConfiguracion("POS"))
+            {
+                Config.cantMedioMayoreo = int.Parse(ConfiguracionXML.LeerConfiguración("POS", "cant_medio_mayoreo"));
+                Config.cantMayoreo = int.Parse(ConfiguracionXML.LeerConfiguración("POS", "cant_mayoreo"));
+                Config.iva = decimal.Parse(ConfiguracionXML.LeerConfiguración("POS", "IVA"));
+            }
+        }
         #endregion
 
         private void frmSplash_Shown(object sender, EventArgs e)
@@ -204,6 +214,7 @@ namespace EC_Admin
                 ConfiguracionSucursal();
                 InicializarPropiedades();
                 CorreoInterno();
+                ConfiguracionPOS();
             }
             catch (Exception ex)
             {

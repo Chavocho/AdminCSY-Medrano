@@ -321,6 +321,7 @@ namespace EC_Admin.Forms
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
                     FuncionesGenerales.ColoresError(ref txtCorreo);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se reconoce el correo ingresado como uno válido", "Admin CSY");
                     resultado = false;
                 }
                 else

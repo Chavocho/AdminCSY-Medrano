@@ -84,6 +84,7 @@
     <Compile Include="Clases\Clases conexiones y estructura\Cotizacion.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cuenta.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Horario.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Paquete.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Privilegios.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Producto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Proveedor.cs" />
@@ -252,6 +253,12 @@
     <Compile Include="Forms\Configs\frmConfigCorreo.Designer.cs">
       <DependentUpon>frmConfigCorreo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Configs\frmConfigGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configs\frmConfigGeneral.Designer.cs">
+      <DependentUpon>frmConfigGeneral.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Configs\frmConfigs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -383,6 +390,12 @@
     </Compile>
     <Compile Include="Forms\Reportes\frmVentasDiarias.Designer.cs">
       <DependentUpon>frmVentasDiarias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reportes\frmVentasFechas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reportes\frmVentasFechas.Designer.cs">
+      <DependentUpon>frmVentasFechas.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Sucursal\Domicilio\frmAsignarDomicilio.cs">
       <SubType>Form</SubType>
@@ -686,6 +699,9 @@
     <EmbeddedResource Include="Forms\Configs\frmConfigCorreo.resx">
       <DependentUpon>frmConfigCorreo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configs\frmConfigGeneral.resx">
+      <DependentUpon>frmConfigGeneral.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configs\frmConfigs.resx">
       <DependentUpon>frmConfigs.cs</DependentUpon>
     </EmbeddedResource>
@@ -751,6 +767,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reportes\frmVentasDiarias.resx">
       <DependentUpon>frmVentasDiarias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reportes\frmVentasFechas.resx">
+      <DependentUpon>frmVentasFechas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Sucursal\Domicilio\frmAsignarDomicilio.resx">
       <DependentUpon>frmAsignarDomicilio.cs</DependentUpon>
