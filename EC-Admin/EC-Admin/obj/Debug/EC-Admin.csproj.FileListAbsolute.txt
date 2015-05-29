@@ -315,3 +315,9 @@ C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Properties.Resources.resources
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC-Admin.csproj.GenerateResource.Cache
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmConfigGeneral.resources
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmPaquetes.resources
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\bin\Debug\ControlesUsuario.exe
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\bin\Debug\ControlesUsuario.pdb
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevaPromocion.resources
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmProductoPromocion.resources
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmPromociones.resources

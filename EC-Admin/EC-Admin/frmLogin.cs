@@ -75,8 +75,9 @@ namespace EC_Admin
 
         private void btnPruebas_Click(object sender, EventArgs e)
         {
-            EC_Admin.Properties.Settings.Default.PrimerUso = true;
-            EC_Admin.Properties.Settings.Default.Save();
+            (new frmEspera("Algo")).ShowDialog(this);
+            //EC_Admin.Properties.Settings.Default.PrimerUso = true;
+            //EC_Admin.Properties.Settings.Default.Save();
         }
     }
 }

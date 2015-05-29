@@ -146,6 +146,7 @@ namespace EC_Admin
         private List<decimal> precio;
         private List<decimal> descuentoP;
         private List<Unidades> unidad;
+        private List<bool> paquete;
 
         public List<int> IDProductos
         {
@@ -176,6 +177,13 @@ namespace EC_Admin
             get { return unidad; }
             set { unidad = value; }
         }
+
+        public List<bool> Paquete
+        {
+            get { return paquete; }
+            set { paquete = value; }
+        }
+        
         #endregion
 
         /// <summary>
@@ -364,6 +372,7 @@ namespace EC_Admin
             precio = new List<decimal>();
             descuentoP = new List<decimal>();
             unidad = new List<Unidades>();
+            paquete = new List<bool>();
         }
 
         /// <summary>
@@ -376,15 +385,16 @@ namespace EC_Admin
                 MySqlCommand sql = new MySqlCommand();
                 for (int i = 0; i < idP.Count; i++)
                 {
-                    sql.CommandText = "INSERT INTO venta_detallada (id_venta, id_producto, cant, precio, descuento, unidad) " +
-                    "VALUES (?id_venta, ?id_producto, ?cant, ?precio, ?descuento, ?unidad) " +
-                    "ON DUPLICATE KEY UPDATE cant=?cant, precio=?precio, descuento=?descuento, unidad=?unidad;";
+                    sql.CommandText = "INSERT INTO venta_detallada (id_venta, id_producto, cant, precio, descuento, unidad, paquete) " +
+                    "VALUES (?id_venta, ?id_producto, ?cant, ?precio, ?descuento, ?unidad, ?paquete) " +
+                    "ON DUPLICATE KEY UPDATE cant=?cant, precio=?precio, descuento=?descuento, unidad=?unidad, paquete=?paquete;";
                     sql.Parameters.AddWithValue("?id_venta", id);
                     sql.Parameters.AddWithValue("?id_producto", idP[i]);
                     sql.Parameters.AddWithValue("?cant", cantidad[i]);
                     sql.Parameters.AddWithValue("?precio", precio[i]);
                     sql.Parameters.AddWithValue("?descuento", descuentoP[i]);
                     sql.Parameters.AddWithValue("?unidad", unidad[i]);
+                    sql.Parameters.AddWithValue("?paquete", paquete[i]);
                     ConexionBD.EjecutarConsulta(sql);
                     sql.Parameters.Clear();
                     if (this.abierta == false)
@@ -423,6 +433,7 @@ namespace EC_Admin
                     precio.Add((decimal)dr["precio"]);
                     descuentoP.Add((decimal)dr["descuento"]);
                     unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
+                    paquete.Add((bool)dr["paquete"]);
                 }
             }
             catch (MySqlException ex)

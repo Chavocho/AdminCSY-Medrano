@@ -121,7 +121,7 @@ namespace EC_Admin.Forms
                 lblVendedor.Text = Trabajador.NombreTrabajador(idVendedor);
                 for (int i = 0; i < v.IDProductos.Count; i++)
                 {
-                    AgregarProducto(v.IDProductos[i], CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Cantidad[i], v.DescuentoProducto[i], v.Unidad[i]);
+                    AgregarProducto(v.IDProductos[i], CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Cantidad[i], v.DescuentoProducto[i], v.Unidad[i], v.Paquete[i]);
                 }
             }
             catch (MySqlException ex)
@@ -226,6 +226,7 @@ namespace EC_Admin.Forms
                     v.Cantidad.Add((decimal)dr.Cells[4].Value);
                     v.DescuentoProducto.Add((decimal)dr.Cells[5].Value);
                     v.Unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
+                    v.Paquete.Add((bool)dr.Cells[7].Value);
                 }
                 v.DatosVenta();
                 if (abierta == false)
@@ -263,7 +264,7 @@ namespace EC_Admin.Forms
                 v.Total = c.Total;
                 for (int i = 0; i < c.IDProductos.Count; i++)
                 {
-                    AgregarProducto(c.IDProductos[i], CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Cantidad[i], c.DescuentoProducto[i], c.Unidad[i]);
+                    AgregarProducto(c.IDProductos[i], CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Cantidad[i], c.DescuentoProducto[i], c.Unidad[i], false);
                 }
             }
             catch (Exception ex)
@@ -284,12 +285,12 @@ namespace EC_Admin.Forms
         /// <param name="precio">Precio del producto</param>
         /// <param name="cant">Cantidad del producto</param>
         /// <param name="desc">Descuento aplicado al producto</param>
-        public void AgregarProducto(int id, string codProd, string nombre, decimal cant, decimal desc, Unidades u)
+        public void AgregarProducto(int id, string codProd, string nombre, decimal cant, decimal desc, Unidades u, bool paquete)
         {
             if (!VerificarProducto(id, cant))
             {
                 decimal precio = PrecioProducto(id, cant);
-                dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u });
+                dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u, false });
                 if (cboTipoPrecio.SelectedIndex > 0)
                 {
                     PrecioProducto();
@@ -318,7 +319,10 @@ namespace EC_Admin.Forms
                     dr.Cells[4].Value = ((decimal)dr.Cells[4].Value + cant);
                     if (cboTipoPrecio.SelectedIndex == 0)
                     {
-                        dr.Cells[3].Value = PrecioProducto(id, (decimal)dr.Cells[4].Value);
+                        if (!(bool)dr.Cells[7].Value)
+                        {
+                            dr.Cells[3].Value = PrecioProducto(id, (decimal)dr.Cells[4].Value);
+                        }
                     }
                     else
                     {
@@ -338,9 +342,25 @@ namespace EC_Admin.Forms
         {
             try
             {
-                foreach (DataGridViewRow dr in dgvProductos.Rows)
+                if (cboTipoPrecio.SelectedIndex > 0)
                 {
-                    dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, decimal.Parse(lblCantTot.Text));
+                    foreach (DataGridViewRow dr in dgvProductos.Rows)
+                    {
+                        if (!(bool)dr.Cells[7].Value)
+                        {
+                            dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, decimal.Parse(lblCantTot.Text));
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow dr in dgvProductos.Rows)
+                    {
+                        if (!(bool)dr.Cells[7].Value)
+                        {
+                            dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, (decimal)dr.Cells[4].Value);
+                        }
+                    }
                 }
             }
             catch (MySqlException ex)
@@ -364,54 +384,12 @@ namespace EC_Admin.Forms
                 {
                     case 0:
                         sql = new MySqlCommand();
-                        sql.CommandText = "SELECT precio, precio_mediomayoreo, precio_mayoreo, cant_mediomayoreo, cant_mayoreo FROM producto WHERE id=?id";
+                        sql.CommandText = "SELECT precio FROM producto WHERE id=?id";
                         sql.Parameters.AddWithValue("?id", id);
                         dt = ConexionBD.EjecutarConsultaSelect(sql);
                         foreach (DataRow dr in dt.Rows)
                         {
-                            decimal cantMedioMayoreo = (decimal)dr["cant_mediomayoreo"], cantMayoreo = (decimal)dr["cant_mayoreo"],
-                                precioP = (decimal)dr["precio"], precioMedioMayoreo = (decimal)dr["precio_mediomayoreo"], precioMayoreo = (decimal)dr["precio_mayoreo"];
-                            if (cantMedioMayoreo > 0 && cantMayoreo > 0)
-                            {
-                                if (cant < cantMedioMayoreo)
-                                {
-                                    precio = precioP;
-                                }
-                                else if (cant >= cantMedioMayoreo && cant < cantMayoreo)
-                                {
-                                    precio = precioMedioMayoreo;
-                                }
-                                else if (cant >= cantMayoreo)
-                                {
-                                    precio = precioMayoreo;
-                                }
-                            }
-                            else if (cantMedioMayoreo > 0)
-                            {
-                                if (cant >= cantMedioMayoreo)
-                                {
-                                    precio = precioMedioMayoreo;
-                                }
-                                else
-                                {
-                                    precio = precioP;
-                                }
-                            }
-                            else if (cantMayoreo > 0)
-                            {
-                                if (cant >= cantMayoreo)
-                                {
-                                    precio = precioMayoreo;
-                                }
-                                else
-                                {
-                                    precio = precioP;
-                                }
-                            }
-                            else
-                            {
-                                precio = precioP;
-                            }
+                            precio = (decimal)dr["precio"];
                         }
                         break;
                     case 1:
@@ -491,6 +469,28 @@ namespace EC_Admin.Forms
             return precio;
         }
 
+        public void PaqueteProducto(decimal precio, decimal cant)
+        {
+            if ((decimal)dgvProductos[3, dgvProductos.CurrentRow.Index].Value != precio)
+            {
+                dgvProductos[3, dgvProductos.CurrentRow.Index].Value = precio;
+                dgvProductos[4, dgvProductos.CurrentRow.Index].Value = cant;
+                dgvProductos[7, dgvProductos.CurrentRow.Index].Value = true;
+            }
+            else
+            {
+                if (!(bool)dgvProductos[7, dgvProductos.CurrentRow.Index].Value)
+                {
+                    dgvProductos[4, dgvProductos.CurrentRow.Index].Value = cant;
+                    dgvProductos[7, dgvProductos.CurrentRow.Index].Value = true;
+                }
+                else
+                {
+                    dgvProductos[4, dgvProductos.CurrentRow.Index].Value = cant + (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value;
+                }
+            }
+        }
+
         public void ModificarProducto(decimal cant, decimal desc)
         {
             dgvProductos[4, dgvProductos.CurrentRow.Index].Value = cant;
@@ -539,7 +539,7 @@ namespace EC_Admin.Forms
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), cant, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
+                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), cant, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()), false);
                     break;
                 }
             }
@@ -707,11 +707,17 @@ namespace EC_Admin.Forms
                 {
                     if (e.KeyCode == Keys.Oemplus)
                     {
-                        VerificarProducto(id, 1);
+                        if (!(bool)dgvProductos[7, dgvProductos.CurrentRow.Index].Value)
+                        {
+                            VerificarProducto(id, 1);
+                        }
                     }
                     else if (e.KeyCode == Keys.OemMinus)
                     {
-                        VerificarProducto(id, -1);
+                        if (!(bool)dgvProductos[7, dgvProductos.CurrentRow.Index].Value)
+                        {
+                            VerificarProducto(id, -1);
+                        }
                     }
                     else if (e.KeyCode == Keys.Delete)
                     {
@@ -833,6 +839,21 @@ namespace EC_Admin.Forms
         private void cboTipoPrecio_SelectedIndexChanged(object sender, EventArgs e)
         {
             PrecioProducto();
+        }
+
+        private void agregarPaqueteDeÉsteProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvProductos.CurrentRow != null)
+            {
+                if (Paquete.Cant(id) > 0)
+                {
+                    (new frmPaquetes(this, id)).ShowDialog(this);
+                }
+                else
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El producto seleccionado no tiene paquetes registrados.", "Admin CSY");
+                }
+            }
         }
     }
 }

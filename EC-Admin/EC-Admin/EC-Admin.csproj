@@ -62,9 +62,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.8.3\Assemblies\v4.5\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +76,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Clases conexiones y estructura\Almacen.cs" />
@@ -87,6 +93,7 @@
     <Compile Include="Clases\Clases conexiones y estructura\Paquete.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Privilegios.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Producto.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Promociones.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Proveedor.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\ProveedorContacto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Puesto.cs" />
@@ -355,6 +362,30 @@
     <Compile Include="Forms\Producto\frmProducto.Designer.cs">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Promocion\frmEditarPromocion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Promocion\frmEditarPromocion.Designer.cs">
+      <DependentUpon>frmEditarPromocion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Promocion\frmNuevaPromocion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Promocion\frmNuevaPromocion.Designer.cs">
+      <DependentUpon>frmNuevaPromocion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Promocion\frmProductoPromocion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Promocion\frmProductoPromocion.Designer.cs">
+      <DependentUpon>frmProductoPromocion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Promocion\frmPromociones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Promocion\frmPromociones.Designer.cs">
+      <DependentUpon>frmPromociones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Proveedor\frmEditarProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -565,6 +596,12 @@
     <Compile Include="Forms\Ventas\frmDatosVentaProducto.Designer.cs">
       <DependentUpon>frmDatosVentaProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Ventas\frmPaquetes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmPaquetes.Designer.cs">
+      <DependentUpon>frmPaquetes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Ventas\frmVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -750,6 +787,15 @@
     <EmbeddedResource Include="Forms\Producto\frmProducto.resx">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Promocion\frmNuevaPromocion.resx">
+      <DependentUpon>frmNuevaPromocion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Promocion\frmProductoPromocion.resx">
+      <DependentUpon>frmProductoPromocion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Promocion\frmPromociones.resx">
+      <DependentUpon>frmPromociones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Proveedor\frmContactosProveedor.resx">
       <DependentUpon>frmContactosProveedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -855,6 +901,9 @@
     <EmbeddedResource Include="Forms\Ventas\frmDatosVentaProducto.resx">
       <DependentUpon>frmDatosVentaProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmPaquetes.resx">
+      <DependentUpon>frmPaquetes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\frmVendedor.resx">
       <DependentUpon>frmVendedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -929,6 +978,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon-point-of-sale-2x.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControlesUsuario\ControlesUsuario.csproj">
+      <Project>{20388F05-20F2-4FF5-A60F-36562DA489CA}</Project>
+      <Name>ControlesUsuario</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

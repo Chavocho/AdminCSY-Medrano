@@ -106,21 +106,32 @@ namespace EC_Admin.Forms
                 pcbImagen01.Image = p.Imagen01;
                 switch (p.Unidad)
                 {
-                    //case Unidades.Gramo:
-                    //    cboUnidad.SelectedIndex = 0;
-                    //    break;
-                    //case Unidades.Kilogramo:
-                    //    cboUnidad.SelectedIndex = 1;
-                    //    break;
-                    //case Unidades.Mililitro:
-                    //    cboUnidad.SelectedIndex = 2;
-                    //    break;
-                    //case Unidades.Litro:
-                    //    cboUnidad.SelectedIndex = 3;
-                    //    break;
                     case Unidades.Pieza:
                         cboUnidad.SelectedIndex = 0;
                         break;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void CargarPaquetes()
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT * FROM paquete WHERE id_producto=?id_producto";
+                sql.Parameters.AddWithValue("?id_producto", p.ID);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    dgvPaquetes.Rows.Add(new object[] { dr["id"], dr["precio"], dr["cant"], true, false });
                 }
             }
             catch (MySqlException ex)
@@ -261,6 +272,11 @@ namespace EC_Admin.Forms
             FuncionesGenerales.VerificarEsNumero(ref sender, ref e, false);
         }
 
+        private void txtNumerosEnteros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesGenerales.VerificarEsNumero(ref sender, ref e, false);
+        }
+
         private void pcbImagen_Click(object sender, EventArgs e)
         {
             PictureBox pcb = (PictureBox)sender;
@@ -306,24 +322,13 @@ namespace EC_Admin.Forms
             CargarProveedores();
             CargarCategorias();
             CargarDatos();
+            CargarPaquetes();
         }
 
         private void cboUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cboUnidad.SelectedIndex)
             {
-                //case 0:
-                //    u = Unidades.Gramo;
-                //    break;
-                //case 1:
-                //    u = Unidades.Kilogramo;
-                //    break;
-                //case 2:
-                //    u = Unidades.Mililitro;
-                //    break;
-                //case 3:
-                //    u = Unidades.Litro;
-                //    break;
                 case 0:
                     u = Unidades.Pieza;
                     break;
@@ -337,6 +342,7 @@ namespace EC_Admin.Forms
                 try
                 {
                     Editar();
+                    InsertarPaquete();
                     FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado el producto correctamente!", "Admin CSY");
                     this.Close();
                 }
@@ -351,5 +357,151 @@ namespace EC_Admin.Forms
             }
         }
 
+        #region Paquetes
+        bool edito;
+
+        private void InsertarDataGrid(string precio, string cant)
+        {
+            dgvPaquetes.Rows.Add(new object[] { 0, decimal.Parse(precio), int.Parse(cant), false, false });
+        }
+
+        private void EditarDataGrid(int rowIndex, string precio, string cant)
+        {
+            dgvPaquetes[1, rowIndex].Value = decimal.Parse(precio);
+            dgvPaquetes[2, rowIndex].Value = int.Parse(cant);
+            dgvPaquetes[4, rowIndex].Value = true;
+        }
+
+        private void EliminarDataGrid(int rowIndex)
+        {
+            dgvPaquetes.Rows.RemoveAt(rowIndex);
+        }
+
+        private void InsertarPaquete()
+        {
+            try
+            {
+                foreach (DataGridViewRow dr in dgvPaquetes.Rows)
+                {
+                    Paquete pa = new Paquete();
+                    pa.IDProducto = p.ID;
+                    pa.Precio = (decimal)dr.Cells[1].Value;
+                    pa.CantidadPaquetes = (int)dr.Cells[2].Value;
+                    if (!(bool)dr.Cells[3].Value)
+                    {
+                        pa.Insertar();
+                    }
+                    else if ((bool)dr.Cells[4].Value)
+                    {
+                        pa.ID = (int)dr.Cells[0].Value;
+                        pa.Editar();
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private bool VerificarDatosPaquete()
+        {
+            bool res = true;
+            if (txtPrecioPaquete.Text.Trim() == "")
+            {
+                FuncionesGenerales.ColoresError(ref txtPrecioPaquete);
+                res = false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(ref txtPrecioPaquete);
+            }
+            if (txtCantPaquete.Text.Trim() == "")
+            {
+                FuncionesGenerales.ColoresError(ref txtCantPaquete);
+                res = false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(ref txtCantPaquete);
+            }
+            return res;
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            edito = false;
+            btnAceptarPaquete.Text = "Crear";
+            txtCantPaquete.Text = "";
+            txtPrecioPaquete.Text = "";
+            pnlPaquete.Visible = true;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvPaquetes.CurrentRow != null)
+            {
+                edito = true;
+                btnAceptarPaquete.Text = "Modificar";
+                txtCantPaquete.Text = dgvPaquetes[2, dgvPaquetes.CurrentRow.Index].Value.ToString();
+                txtPrecioPaquete.Text = dgvPaquetes[1, dgvPaquetes.CurrentRow.Index].Value.ToString();
+                pnlPaquete.Visible = true;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvPaquetes.CurrentRow != null)
+            {
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea eliminar este paquete?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                {
+                    try
+                    {
+                        if ((bool)dgvPaquetes[3, dgvPaquetes.CurrentRow.Index].Value)
+                        {
+                            Paquete.Eliminar((int)dgvPaquetes[0, dgvPaquetes.CurrentRow.Index].Value);
+                        }
+                        EliminarDataGrid(dgvPaquetes.CurrentRow.Index);
+                    }
+                    catch (MySqlException ex)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el paquete. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el paquete.", "Admin CSY", ex);
+                    }
+                }
+            }
+        }
+
+        private void btnAceptarPaquete_Click(object sender, EventArgs e)
+        {
+            if (VerificarDatosPaquete())
+            {
+                if (!edito)
+                {
+                    InsertarDataGrid(txtPrecioPaquete.Text, txtCantPaquete.Text);
+                    dgvPaquetes.Rows[dgvPaquetes.RowCount - 1].Selected = true;
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha añadido el paquete con éxito!", "Admin CSY");
+                }
+                else
+                {
+                    EditarDataGrid(dgvPaquetes.CurrentRow.Index, txtPrecioPaquete.Text, txtCantPaquete.Text);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado el paquete con éxito!", "Admin CSY");
+                }
+                pnlPaquete.Visible = false;
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "¡Los campos en rojo son obligatorios!", "Admin CSY");
+            }
+        }
+
+        #endregion
     }
 }
