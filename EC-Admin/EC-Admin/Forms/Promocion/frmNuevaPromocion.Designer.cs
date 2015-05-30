@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtApellidos = new System.Windows.Forms.TextBox();
+            this.txtCant = new System.Windows.Forms.TextBox();
             this.lblECantidad = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.lblEPrecio = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.lblEFechaIni = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chbExistencias = new System.Windows.Forms.CheckBox();
             this.lblEProducto = new System.Windows.Forms.Label();
             this.lblProducto = new System.Windows.Forms.Label();
             this.btnProducto = new System.Windows.Forms.Button();
@@ -43,41 +43,43 @@
             this.lblEFechaFin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtApellidos
+            // txtCant
             // 
-            this.txtApellidos.BackColor = System.Drawing.Color.White;
-            this.txtApellidos.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtApellidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtApellidos.Location = new System.Drawing.Point(277, 139);
-            this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(259, 29);
-            this.txtApellidos.TabIndex = 15;
+            this.txtCant.BackColor = System.Drawing.Color.White;
+            this.txtCant.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtCant.Location = new System.Drawing.Point(277, 144);
+            this.txtCant.Name = "txtCant";
+            this.txtCant.Size = new System.Drawing.Size(259, 29);
+            this.txtCant.TabIndex = 15;
+            this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCant_KeyPress);
             // 
             // lblECantidad
             // 
             this.lblECantidad.AutoSize = true;
             this.lblECantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECantidad.Location = new System.Drawing.Point(274, 118);
+            this.lblECantidad.Location = new System.Drawing.Point(274, 123);
             this.lblECantidad.Name = "lblECantidad";
             this.lblECantidad.Size = new System.Drawing.Size(63, 18);
             this.lblECantidad.TabIndex = 14;
             this.lblECantidad.Text = "Cantidad";
             // 
-            // txtNombre
+            // txtPrecio
             // 
-            this.txtNombre.BackColor = System.Drawing.Color.White;
-            this.txtNombre.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtNombre.Location = new System.Drawing.Point(12, 139);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(259, 29);
-            this.txtNombre.TabIndex = 13;
+            this.txtPrecio.BackColor = System.Drawing.Color.White;
+            this.txtPrecio.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtPrecio.Location = new System.Drawing.Point(12, 144);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(259, 29);
+            this.txtPrecio.TabIndex = 13;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // lblEPrecio
             // 
             this.lblEPrecio.AutoSize = true;
             this.lblEPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEPrecio.Location = new System.Drawing.Point(9, 118);
+            this.lblEPrecio.Location = new System.Drawing.Point(9, 123);
             this.lblEPrecio.Name = "lblEPrecio";
             this.lblEPrecio.Size = new System.Drawing.Size(47, 18);
             this.lblEPrecio.TabIndex = 12;
@@ -101,6 +103,7 @@
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // lblEFechaIni
             // 
@@ -112,16 +115,17 @@
             this.lblEFechaIni.TabIndex = 21;
             this.lblEFechaIni.Text = "Fecha de inicio";
             // 
-            // checkBox1
+            // chbExistencias
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Corbel", 13F);
-            this.checkBox1.Location = new System.Drawing.Point(12, 31);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(296, 26);
-            this.checkBox1.TabIndex = 22;
-            this.checkBox1.Text = "Promoción hasta agotar existencias";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chbExistencias.AutoSize = true;
+            this.chbExistencias.Font = new System.Drawing.Font("Corbel", 13F);
+            this.chbExistencias.Location = new System.Drawing.Point(12, 31);
+            this.chbExistencias.Name = "chbExistencias";
+            this.chbExistencias.Size = new System.Drawing.Size(296, 26);
+            this.chbExistencias.TabIndex = 22;
+            this.chbExistencias.Text = "Promoción hasta agotar existencias";
+            this.chbExistencias.UseVisualStyleBackColor = true;
+            this.chbExistencias.CheckedChanged += new System.EventHandler(this.chbExistencias_CheckedChanged);
             // 
             // lblEProducto
             // 
@@ -160,6 +164,7 @@
             this.btnProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProducto.UseVisualStyleBackColor = false;
             this.btnProducto.Visible = false;
+            this.btnProducto.Click += new System.EventHandler(this.btnProducto_Click);
             // 
             // dtpFechaIni
             // 
@@ -170,6 +175,7 @@
             this.dtpFechaIni.Name = "dtpFechaIni";
             this.dtpFechaIni.Size = new System.Drawing.Size(259, 29);
             this.dtpFechaIni.TabIndex = 26;
+            this.dtpFechaIni.ValueChanged += new System.EventHandler(this.dtpFechas_ValueChanged);
             // 
             // dtpFechaFin
             // 
@@ -180,6 +186,7 @@
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(259, 29);
             this.dtpFechaFin.TabIndex = 28;
+            this.dtpFechaFin.ValueChanged += new System.EventHandler(this.dtpFechas_ValueChanged);
             // 
             // lblEFechaFin
             // 
@@ -202,12 +209,12 @@
             this.Controls.Add(this.btnProducto);
             this.Controls.Add(this.lblProducto);
             this.Controls.Add(this.lblEProducto);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chbExistencias);
             this.Controls.Add(this.lblEFechaIni);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.txtApellidos);
+            this.Controls.Add(this.txtCant);
             this.Controls.Add(this.lblECantidad);
-            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.lblEPrecio);
             this.Font = new System.Drawing.Font("Corbel", 11F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
@@ -223,13 +230,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtApellidos;
+        private System.Windows.Forms.TextBox txtCant;
         private System.Windows.Forms.Label lblECantidad;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label lblEPrecio;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label lblEFechaIni;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chbExistencias;
         private System.Windows.Forms.Label lblEProducto;
         private System.Windows.Forms.Label lblProducto;
         private System.Windows.Forms.Button btnProducto;

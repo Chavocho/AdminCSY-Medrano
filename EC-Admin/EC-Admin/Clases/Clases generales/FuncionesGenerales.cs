@@ -479,28 +479,32 @@ namespace EC_Admin
             return false;
         }
 
-        public static void ColoresError(ref TextBox txt)
+        public static void ColoresError(Control ctr)
         {
-            txt.BackColor = Colores.Error;
-            txt.ForeColor = Colores.Claro;
+            if (ctr.GetType() == typeof(TextBox))
+            {
+                ctr.BackColor = Colores.Error;
+                ctr.ForeColor = Colores.Claro;
+            }
+            else if (ctr.GetType() == typeof(ComboBox))
+            {
+                ctr.BackColor = Colores.Error;
+                ctr.ForeColor = Colores.Claro;
+            }
         }
 
-        public static void ColoresBien(ref TextBox txt)
+        public static void ColoresBien(Control ctr)
         {
-            txt.BackColor = Colores.Claro;
-            txt.ForeColor = Colores.Obscuro;
-        }
-
-        public static void ColoresError(ref ComboBox txt)
-        {
-            txt.BackColor = Colores.Error;
-            txt.ForeColor = Colores.Claro;
-        }
-
-        public static void ColoresBien(ref ComboBox txt)
-        {
-            txt.BackColor = Colores.ClaroObscuro;
-            txt.ForeColor = Colores.Obscuro;
+            if (ctr.GetType() == typeof(TextBox))
+            {
+                ctr.BackColor = Colores.Claro;
+                ctr.ForeColor = Colores.Obscuro;
+            }
+            else if (ctr.GetType() == typeof(ComboBox))
+            {
+                ctr.BackColor = Colores.ClaroObscuro;
+                ctr.ForeColor = Colores.Obscuro;
+            }
         }
 
         #region Siempre Encima
