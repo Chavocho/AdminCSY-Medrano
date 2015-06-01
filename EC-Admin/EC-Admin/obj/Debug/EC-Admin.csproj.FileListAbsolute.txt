@@ -321,3 +321,6 @@ C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\bin\Debug\
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevaPromocion.resources
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmProductoPromocion.resources
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmPromociones.resources
+C:\Users\Ever\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\bin\Debug\Admin CSY.exe.config
+C:\Users\Ever\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\Admin CSY.exe
+C:\Users\Ever\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\Admin CSY.pdb
