@@ -364,7 +364,7 @@ namespace EC_Admin.Forms
                 {
                     foreach (DataGridViewRow dr in dgvProductos.Rows)
                     {
-                        if (!(bool)dr.Cells[7].Value && !(bool)dr.Cells[8].Value)
+                        if (!(bool)dr.Cells[7].Value && (int)dr.Cells[8].Value <= 0)
                         {
                             dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, decimal.Parse(lblCantTot.Text));
                         }
@@ -374,7 +374,7 @@ namespace EC_Admin.Forms
                 {
                     foreach (DataGridViewRow dr in dgvProductos.Rows)
                     {
-                        if (!(bool)dr.Cells[7].Value && !(bool)dr.Cells[8].Value)
+                        if (!(bool)dr.Cells[7].Value && (int)dr.Cells[8].Value <= 0)
                         {
                             dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, (decimal)dr.Cells[4].Value);
                         }
