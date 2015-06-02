@@ -50,21 +50,21 @@ namespace EC_Admin.Forms
             bool resultado = true;
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.ColoresError(ref txtNombre);
+                FuncionesGenerales.ColoresError(txtNombre);
                 resultado = false;
             }
             else
             {
-                FuncionesGenerales.ColoresBien(ref txtNombre);
+                FuncionesGenerales.ColoresBien(txtNombre);
             }
             if (txtDescripcion.Text.Trim() == "")
             {
-                FuncionesGenerales.ColoresError(ref txtDescripcion);
+                FuncionesGenerales.ColoresError(txtDescripcion);
                 resultado = false; ;
             }
             else
             {
-                FuncionesGenerales.ColoresBien(ref txtDescripcion);
+                FuncionesGenerales.ColoresBien(txtDescripcion);
             }
             return resultado;
         }

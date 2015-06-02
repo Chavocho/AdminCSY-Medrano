@@ -413,21 +413,21 @@ namespace EC_Admin.Forms
             bool res = true;
             if (txtPrecioPaquete.Text.Trim() == "")
             {
-                FuncionesGenerales.ColoresError(ref txtPrecioPaquete);
+                FuncionesGenerales.ColoresError(txtPrecioPaquete);
                 res = false;
             }
             else
             {
-                FuncionesGenerales.ColoresBien(ref txtPrecioPaquete);
+                FuncionesGenerales.ColoresBien(txtPrecioPaquete);
             }
             if (txtCantPaquete.Text.Trim() == "")
             {
-                FuncionesGenerales.ColoresError(ref txtCantPaquete);
+                FuncionesGenerales.ColoresError(txtCantPaquete);
                 res = false;
             }
             else
             {
-                FuncionesGenerales.ColoresBien(ref txtCantPaquete);
+                FuncionesGenerales.ColoresBien(txtCantPaquete);
             }
             return res;
         }

@@ -41,6 +41,8 @@
             this.dtpFechaIni = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.lblEFechaFin = new System.Windows.Forms.Label();
+            this.txtExistencias = new System.Windows.Forms.TextBox();
+            this.lblEExistencias = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCant
@@ -95,7 +97,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(386, 211);
+            this.btnAceptar.Location = new System.Drawing.Point(386, 253);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
             this.btnAceptar.TabIndex = 19;
@@ -163,7 +165,6 @@
             this.btnProducto.Text = "Buscar producto";
             this.btnProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProducto.UseVisualStyleBackColor = false;
-            this.btnProducto.Visible = false;
             this.btnProducto.Click += new System.EventHandler(this.btnProducto_Click);
             // 
             // dtpFechaIni
@@ -198,11 +199,33 @@
             this.lblEFechaFin.TabIndex = 27;
             this.lblEFechaFin.Text = "Fecha de fin";
             // 
+            // txtExistencias
+            // 
+            this.txtExistencias.BackColor = System.Drawing.Color.White;
+            this.txtExistencias.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtExistencias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtExistencias.Location = new System.Drawing.Point(12, 202);
+            this.txtExistencias.Name = "txtExistencias";
+            this.txtExistencias.Size = new System.Drawing.Size(259, 29);
+            this.txtExistencias.TabIndex = 30;
+            // 
+            // lblEExistencias
+            // 
+            this.lblEExistencias.AutoSize = true;
+            this.lblEExistencias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblEExistencias.Location = new System.Drawing.Point(9, 181);
+            this.lblEExistencias.Name = "lblEExistencias";
+            this.lblEExistencias.Size = new System.Drawing.Size(75, 18);
+            this.lblEExistencias.TabIndex = 29;
+            this.lblEExistencias.Text = "Existencias";
+            // 
             // frmNuevaPromocion
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(548, 269);
+            this.ClientSize = new System.Drawing.Size(548, 311);
+            this.Controls.Add(this.txtExistencias);
+            this.Controls.Add(this.lblEExistencias);
             this.Controls.Add(this.dtpFechaFin);
             this.Controls.Add(this.lblEFechaFin);
             this.Controls.Add(this.dtpFechaIni);
@@ -243,5 +266,7 @@
         private System.Windows.Forms.DateTimePicker dtpFechaIni;
         private System.Windows.Forms.DateTimePicker dtpFechaFin;
         private System.Windows.Forms.Label lblEFechaFin;
+        private System.Windows.Forms.TextBox txtExistencias;
+        private System.Windows.Forms.Label lblEExistencias;
     }
 }

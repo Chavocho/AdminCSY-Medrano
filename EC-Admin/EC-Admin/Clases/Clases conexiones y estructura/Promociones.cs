@@ -12,48 +12,55 @@ namespace EC_Admin
     {
         #region Propiedades
         private int id;
+        private int idProducto;
+        private bool existencias;
+        private DateTime fechaIni;
+        private DateTime fechaFin;
+        private decimal cantidad;
+        private decimal cantidadProducto;
+        private decimal precio;
 
         public int ID
         {
             get { return id; }
             set { id = value; }
         }
-        private int idProducto;
 
         public int IDProducto
         {
             get { return idProducto; }
             set { idProducto = value; }
         }
-        private bool existencias;
 
         public bool Existencias
         {
             get { return existencias; }
             set { existencias = value; }
         }
-        private DateTime fechaIni;
 
         public DateTime FechaInicio
         {
             get { return fechaIni; }
             set { fechaIni = value; }
         }
-        private DateTime fechaFin;
 
         public DateTime FechaFin
         {
             get { return fechaFin; }
             set { fechaFin = value; }
         }
-        private decimal cantidad;
 
         public decimal Cantidad
         {
             get { return cantidad; }
             set { cantidad = value; }
         }
-        private decimal precio;
+
+        public decimal CantidadProducto
+        {
+            get { return cantidadProducto; }
+            set { cantidadProducto = value; }
+        }
 
         public decimal Precio
         {
@@ -87,6 +94,16 @@ namespace EC_Admin
         }
         #endregion
 
+        public Promociones()
+        {
+
+        }
+
+        public Promociones(int id)
+        {
+            this.id = id;
+        }
+
         public void ObtenerDatos()
         {
             try
@@ -99,9 +116,16 @@ namespace EC_Admin
                 {
                     idProducto = (int)dr["id_producto"];
                     existencias = (bool)dr["existencias"];
-                    fechaIni = (DateTime)dr["fecha_ini"];
-                    fechaFin = (DateTime)dr["fecha_fin"];
+                    if (dr["fecha_ini"] != DBNull.Value)
+                        fechaIni = (DateTime)dr["fecha_ini"];
+                    else
+                        fechaIni = new DateTime();
+                    if (dr["fecha_fin"] != DBNull.Value)
+                        fechaFin = (DateTime)dr["fecha_fin"];
+                    else
+                        fechaFin = new DateTime();
                     cantidad = (decimal)dr["cant"];
+                    cantidadProducto = (decimal)dr["cant_prod"];
                     precio = (decimal)dr["precio"];
                 }
             }
@@ -120,8 +144,8 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO promocion (id_producto, existencias, fecha_ini, fecha_fin, cant, precio) " +
-                    "VALUES (?id_producto, ?existencias, ?fecha_ini, ?fecha_fin, ?cant, ?precio)";
+                sql.CommandText = "INSERT INTO promocion (id_producto, existencias, fecha_ini, fecha_fin, cant, cant_prod, precio) " +
+                    "VALUES (?id_producto, ?existencias, ?fecha_ini, ?fecha_fin, ?cant, ?cant_prod, ?precio)";
                 sql.Parameters.AddWithValue("?id_producto", idProducto);
                 sql.Parameters.AddWithValue("?existencias", existencias);
                 if (fechaIni != new DateTime())
@@ -133,6 +157,7 @@ namespace EC_Admin
                 else
                     sql.Parameters.AddWithValue("?fecha_fin", DBNull.Value);
                 sql.Parameters.AddWithValue("?cant", cantidad);
+                sql.Parameters.AddWithValue("?cant_prod", cantidadProducto);
                 sql.Parameters.AddWithValue("?precio", precio);
                 this.id = ConexionBD.EjecutarConsulta(sql);
             }
@@ -151,8 +176,8 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE promocion SET id_producto=?id_producto, existencia=?existencias, fecha_ini=?fecha_ini, " + 
-                    "fecha_fin=?fecha_fin, cant=?cant, precio=?precio WHERE id=?id";
+                sql.CommandText = "UPDATE promocion SET id_producto=?id_producto, existencias=?existencias, fecha_ini=?fecha_ini, " + 
+                    "fecha_fin=?fecha_fin, cant=?cant, cant_prod=?cant_prod, precio=?precio WHERE id=?id";
                 sql.Parameters.AddWithValue("?id_producto", idProducto);
                 sql.Parameters.AddWithValue("?existencias", existencias);
                 if (fechaIni != new DateTime())
@@ -164,6 +189,7 @@ namespace EC_Admin
                 else
                     sql.Parameters.AddWithValue("?fecha_fin", DBNull.Value);
                 sql.Parameters.AddWithValue("?cant", cantidad);
+                sql.Parameters.AddWithValue("?cant_prod", cantidadProducto);
                 sql.Parameters.AddWithValue("?precio", precio);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);

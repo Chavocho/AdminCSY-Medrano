@@ -62,14 +62,14 @@ namespace EC_Admin.Forms
             bool res = true;
             if (int.Parse(txtCantMedioMayoreo.Text) <= 0 && int.Parse(txtCantMayoreo.Text) <= 0)
             {
-                FuncionesGenerales.ColoresError(ref txtCantMayoreo);
-                FuncionesGenerales.ColoresError(ref txtCantMedioMayoreo);
+                FuncionesGenerales.ColoresError(txtCantMayoreo);
+                FuncionesGenerales.ColoresError(txtCantMedioMayoreo);
                 res = false;
             }
             else
             {
-                FuncionesGenerales.ColoresBien(ref txtCantMayoreo);
-                FuncionesGenerales.ColoresBien(ref txtCantMedioMayoreo);
+                FuncionesGenerales.ColoresBien(txtCantMayoreo);
+                FuncionesGenerales.ColoresBien(txtCantMedioMayoreo);
                 if (txtCantMayoreo.Text.Trim() == "")
                 {
                     txtCantMayoreo.Text = "0";

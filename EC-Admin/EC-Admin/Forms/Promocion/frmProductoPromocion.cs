@@ -68,10 +68,7 @@ namespace EC_Admin.Forms
                 {
                     dgvPromociones.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["marca"], dr["costo"], dr["precio"], dr["cant"] });
                 }
-                if (dgvPromociones.RowCount > 0)
-                {
-                    dgvPromociones[1, 0].Selected = true;
-                }
+                dgvPromociones_RowEnter(dgvPromociones, new DataGridViewCellEventArgs(0, 0));
             }
             catch (Exception ex)
             {
@@ -123,12 +120,13 @@ namespace EC_Admin.Forms
             {
                 if (frmN != null)
                 {
-                    frmN.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), (decimal)dgvPromociones[3, dgvPromociones.CurrentRow.Index].Value);
+                    frmN.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), (decimal)dgvPromociones[5, dgvPromociones.CurrentRow.Index].Value);
                 }
                 else if (frmE != null)
                 {
-                    //frmE.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), (decimal)dgvPromociones[3, dgvPromociones.CurrentRow.Index].Value);
+                    frmE.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), (decimal)dgvPromociones[5, dgvPromociones.CurrentRow.Index].Value);
                 }
+                this.Close();
             }
         }
     }

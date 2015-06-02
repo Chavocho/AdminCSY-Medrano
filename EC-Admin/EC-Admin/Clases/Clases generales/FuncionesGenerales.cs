@@ -481,21 +481,13 @@ namespace EC_Admin
 
         public static void ColoresError(Control ctr)
         {
-            if (ctr.GetType() == typeof(TextBox))
-            {
-                ctr.BackColor = Colores.Error;
-                ctr.ForeColor = Colores.Claro;
-            }
-            else if (ctr.GetType() == typeof(ComboBox))
-            {
-                ctr.BackColor = Colores.Error;
-                ctr.ForeColor = Colores.Claro;
-            }
+            ctr.BackColor = Colores.Error;
+            ctr.ForeColor = Colores.Claro;
         }
 
         public static void ColoresBien(Control ctr)
         {
-            if (ctr.GetType() == typeof(TextBox))
+            if (ctr.GetType() == typeof(TextBox) || ctr.GetType() == typeof(Label))
             {
                 ctr.BackColor = Colores.Claro;
                 ctr.ForeColor = Colores.Obscuro;

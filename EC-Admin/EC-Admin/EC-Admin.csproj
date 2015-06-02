@@ -632,6 +632,12 @@
     <Compile Include="Forms\Ventas\frmVentaProducto.Designer.cs">
       <DependentUpon>frmVentaProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Ventas\frmVentaPromociones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmVentaPromociones.Designer.cs">
+      <DependentUpon>frmVentaPromociones.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEspera.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -787,6 +793,9 @@
     <EmbeddedResource Include="Forms\Producto\frmProducto.resx">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Promocion\frmEditarPromocion.resx">
+      <DependentUpon>frmEditarPromocion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Promocion\frmNuevaPromocion.resx">
       <DependentUpon>frmNuevaPromocion.cs</DependentUpon>
     </EmbeddedResource>
@@ -918,6 +927,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\frmVentaProducto.resx">
       <DependentUpon>frmVentaProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmVentaPromociones.resx">
+      <DependentUpon>frmVentaPromociones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEspera.resx">
       <DependentUpon>frmEspera.cs</DependentUpon>

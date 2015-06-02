@@ -13,7 +13,26 @@ namespace EC_Admin.Forms
 {
     public partial class frmPromociones : Form
     {
-        int id;
+        #region Instancia
+        private static frmPromociones frmInstancia;
+        public static frmPromociones Instancia
+        {
+            get
+            {
+                if (frmInstancia == null)
+                    frmInstancia = new frmPromociones();
+                else if (frmInstancia.IsDisposed)
+                    frmInstancia = new frmPromociones();
+                return frmInstancia;
+            }
+            set
+            {
+                frmInstancia = value;
+            }
+        }
+        #endregion
+
+        int id = 0;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
         CerrarFrmEspera c;
@@ -21,7 +40,7 @@ namespace EC_Admin.Forms
         public frmPromociones()
         {
             InitializeComponent();
-            cboTipoPromocion.SelectedIndex = 0;
+            cboTipoPromocion.SelectedIndex = 1;
         }
 
         private void Cerrar()
@@ -88,10 +107,7 @@ namespace EC_Admin.Forms
                         dgvPromociones.Rows.Add(new object[] { dr["id"], dr["nombre"], new DateTime(), new DateTime(), dr["cant"], dr["precio"] });
                     }
                 }
-                if (dgvPromociones.RowCount > 0)
-                {
-                    dgvPromociones[1, 0].Selected = true;
-                }
+                dgvPromociones_RowEnter(dgvPromociones, new DataGridViewCellEventArgs(0, 0));
             }
             catch (Exception ex)
             {
@@ -151,17 +167,50 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-
+            (new frmNuevaPromocion()).ShowDialog(this);
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
+            if (dgvPromociones.CurrentRow != null)
+            {
+                (new frmEditarPromocion(id)).ShowDialog(this);
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (dgvPromociones.CurrentRow != null)
+            {
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea eliminar ésta promoción?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                {
+                    try
+                    {
+                        Promociones.Eliminar(id);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha eliminado correctamente la promoción!", "Admin CSY");
+                    }
+                    catch (MySqlException ex)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar la promoción. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar la promoción.", "Admin CSY", ex);
+                    }
+                }
+            }
+        }
 
+        private void dgvPromociones_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPromociones.CurrentRow != null)
+            {
+                id = (int)dgvPromociones[0, e.RowIndex].Value;
+            }
+            else
+            {
+                id = 0;
+            }
         }
 
 

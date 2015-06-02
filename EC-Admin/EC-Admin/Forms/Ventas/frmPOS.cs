@@ -99,6 +99,7 @@ namespace EC_Admin.Forms
                 CalcularTotales();
             }
         }
+
         /// <summary>
         /// Recupera una venta que no haya sido completada antes
         /// </summary>
@@ -155,6 +156,7 @@ namespace EC_Admin.Forms
             lblVendedor.Enabled = false;
             btnClientes.Enabled = false;
             btnProductos.Enabled = false;
+            btnPromociones.Enabled = false;
             btnCobrar.Enabled = false;
             btnGuardar.Enabled = false;
             btnVendedor.Enabled = false;
@@ -178,6 +180,7 @@ namespace EC_Admin.Forms
             lblVendedor.Visible = true;
             btnClientes.Visible = true;
             btnProductos.Visible = true;
+            btnPromociones.Visible = true;
             btnCobrar.Visible = true;
             btnGuardar.Visible = true;
             btnVendedor.Visible = true;
@@ -194,6 +197,7 @@ namespace EC_Admin.Forms
             lblVendedor.Enabled = true;
             btnClientes.Enabled = true;
             btnProductos.Enabled = true;
+            btnPromociones.Enabled = true;
             btnCobrar.Enabled = true;
             btnGuardar.Enabled = true;
             btnVendedor.Enabled = true;
@@ -287,18 +291,22 @@ namespace EC_Admin.Forms
         /// <param name="desc">Descuento aplicado al producto</param>
         public void AgregarProducto(int id, string codProd, string nombre, decimal cant, decimal desc, Unidades u, bool paquete)
         {
-            if (!VerificarProducto(id, cant))
+            if (!VerificarPromocion(id))
             {
-                decimal precio = PrecioProducto(id, cant);
-                dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u, false });
-                if (cboTipoPrecio.SelectedIndex > 0)
+                if (!VerificarProducto(id, cant))
                 {
-                    PrecioProducto();
-                }
-                if (dgvProductos.RowCount == 1)
-                {
-                    dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
-                    dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                    decimal precio = PrecioProducto(id, cant);
+                    dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u, false, -1 });
+                    if (cboTipoPrecio.SelectedIndex > 0)
+                    {
+                        PrecioProducto();
+                        CalcularTotales();
+                    }
+                    if (dgvProductos.RowCount == 1)
+                    {
+                        dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                        dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                    }
                 }
             }
         }
@@ -346,7 +354,7 @@ namespace EC_Admin.Forms
                 {
                     foreach (DataGridViewRow dr in dgvProductos.Rows)
                     {
-                        if (!(bool)dr.Cells[7].Value)
+                        if (!(bool)dr.Cells[7].Value && !(bool)dr.Cells[8].Value)
                         {
                             dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, decimal.Parse(lblCantTot.Text));
                         }
@@ -356,7 +364,7 @@ namespace EC_Admin.Forms
                 {
                     foreach (DataGridViewRow dr in dgvProductos.Rows)
                     {
-                        if (!(bool)dr.Cells[7].Value)
+                        if (!(bool)dr.Cells[7].Value && !(bool)dr.Cells[8].Value)
                         {
                             dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, (decimal)dr.Cells[4].Value);
                         }
@@ -467,6 +475,50 @@ namespace EC_Admin.Forms
                 throw ex;
             }
             return precio;
+        }
+
+        public void PromocionProducto(int id, string codProd, string nombre, decimal precio, decimal cant, decimal cantTotal, Unidades u, int idPromo, bool existencias)
+        {
+            if (!VerificarPromocion(idPromo, cant, cantTotal))
+            {
+                dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, 0M, u, false, idPromo, existencias });
+            }
+            CalcularTotales();
+        }
+
+        private bool VerificarPromocion(int idPromo, decimal cant, decimal cantTotal = 0)
+        {
+            bool res = false;
+            foreach (DataGridViewRow dr in dgvProductos.Rows)
+            {
+                if ((int)dr.Cells[8].Value == idPromo)
+                {
+                    res = true;
+                    if (((decimal)dr.Cells[4].Value + cant) > cantTotal)
+                    {
+                        dr.Cells[4].Value = cantTotal;
+                        break;
+                    }
+                    dr.Cells[4].Value = (decimal)dr.Cells[4].Value + cant;
+                    break;
+                }
+            }
+            return res;
+        }
+
+        private bool VerificarPromocion(int idProducto)
+        {
+            foreach (DataGridViewRow dr in dgvProductos.Rows)
+            {
+                if ((int)dr.Cells[0].Value == idProducto)
+                {
+                    if ((int)dr.Cells[8].Value > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public void PaqueteProducto(decimal precio, decimal cant)
@@ -707,12 +759,12 @@ namespace EC_Admin.Forms
                 {
                     if (e.KeyCode == Keys.Oemplus)
                     {
-                        if (!(bool)dgvProductos[7, dgvProductos.CurrentRow.Index].Value)
+                        if (!(bool)dgvProductos[7, dgvProductos.CurrentRow.Index].Value && (int)dgvProductos[8, dgvProductos.CurrentRow.Index].Value <= 0)
                         {
                             VerificarProducto(id, 1);
                         }
                     }
-                    else if (e.KeyCode == Keys.OemMinus)
+                    else if (e.KeyCode == Keys.OemMinus && (int)dgvProductos[8, dgvProductos.CurrentRow.Index].Value <= 0)
                     {
                         if (!(bool)dgvProductos[7, dgvProductos.CurrentRow.Index].Value)
                         {
@@ -743,6 +795,10 @@ namespace EC_Admin.Forms
                 btnProductos.PerformClick();
             }
             else if (e.KeyCode == Keys.F5)
+            {
+                btnPromociones.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F6)
             {
                 btnCobrar.PerformClick();
             }
@@ -854,6 +910,11 @@ namespace EC_Admin.Forms
                     FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El producto seleccionado no tiene paquetes registrados.", "Admin CSY");
                 }
             }
+        }
+
+        private void btnPromociones_Click(object sender, EventArgs e)
+        {
+            (new frmVentaPromociones(this)).ShowDialog(this);
         }
     }
 }

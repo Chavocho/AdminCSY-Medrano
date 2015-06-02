@@ -161,6 +161,7 @@
             this.btnPruebas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPruebas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPruebas.UseVisualStyleBackColor = false;
+            this.btnPruebas.Visible = false;
             this.btnPruebas.Click += new System.EventHandler(this.btnPruebas_Click);
             // 
             // frmLogin

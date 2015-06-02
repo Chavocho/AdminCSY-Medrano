@@ -109,50 +109,50 @@ namespace EC_Admin.Forms
             bool res = true;
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.ColoresError(ref txtNombre);
+                FuncionesGenerales.ColoresError(txtNombre);
                 res = false;
             }
             else
             {
-                FuncionesGenerales.ColoresBien(ref txtNombre);
+                FuncionesGenerales.ColoresBien(txtNombre);
             }
             if (txtApellidos.Text.Trim() == "")
             {
-                FuncionesGenerales.ColoresError(ref txtApellidos);
+                FuncionesGenerales.ColoresError(txtApellidos);
                 res = false;
             }
             else
             {
-                FuncionesGenerales.ColoresBien(ref txtApellidos);
+                FuncionesGenerales.ColoresBien(txtApellidos);
             }
             if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() == "")
             {
-                FuncionesGenerales.ColoresError(ref txtTelefono01);
+                FuncionesGenerales.ColoresError(txtTelefono01);
                 res = false;
             }
             else if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() != "")
             {
                 txtTelefono01.Text = txtTelefono02.Text;
                 txtTelefono02.Text = "";
-                FuncionesGenerales.ColoresBien(ref txtTelefono01);
-                FuncionesGenerales.ColoresBien(ref txtTelefono02);
+                FuncionesGenerales.ColoresBien(txtTelefono01);
+                FuncionesGenerales.ColoresBien(txtTelefono02);
             }
             else
             {
-                FuncionesGenerales.ColoresBien(ref txtTelefono01);
-                FuncionesGenerales.ColoresBien(ref txtTelefono02);
+                FuncionesGenerales.ColoresBien(txtTelefono01);
+                FuncionesGenerales.ColoresBien(txtTelefono02);
             }
             if (txtCorreo.Text.Trim() != "")
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.ColoresError(ref txtCorreo); 
+                    FuncionesGenerales.ColoresError(txtCorreo); 
                     FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se reconoce el correo ingresado como uno válido", "Admin CSY");
                     res = false;
                 }
                 else
                 {
-                    FuncionesGenerales.ColoresBien(ref txtCorreo);
+                    FuncionesGenerales.ColoresBien(txtCorreo);
                 }
             }
             return res;

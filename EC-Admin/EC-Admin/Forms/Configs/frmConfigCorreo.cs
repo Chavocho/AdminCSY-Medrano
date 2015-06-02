@@ -42,7 +42,7 @@ namespace EC_Admin.Forms.Configs
             bool res = true;
             if (txtCorreo.Text.Trim() == "")
             {
-                FuncionesGenerales.ColoresError(ref txtCorreo); 
+                FuncionesGenerales.ColoresError(txtCorreo); 
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se reconoce el correo ingresado como uno válido", "Admin CSY");
                 res = false;
             }
@@ -50,31 +50,31 @@ namespace EC_Admin.Forms.Configs
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.ColoresError(ref txtCorreo);
+                    FuncionesGenerales.ColoresError(txtCorreo);
                     res = false;
                 }
                 else
                 {
-                    FuncionesGenerales.ColoresBien(ref txtCorreo);
+                    FuncionesGenerales.ColoresBien(txtCorreo);
                 }
             }
             if (txtHost.Text.Trim() == "")
             {
-                FuncionesGenerales.ColoresError(ref txtHost);
+                FuncionesGenerales.ColoresError(txtHost);
                 res = false;
             }
             else
             {
-                FuncionesGenerales.ColoresBien(ref txtHost);
+                FuncionesGenerales.ColoresBien(txtHost);
             }
             if (txtPuerto.Text.Trim() == "")
             {
-                FuncionesGenerales.ColoresError(ref txtPuerto);
+                FuncionesGenerales.ColoresError(txtPuerto);
                 res = false;
             }
             else
             {
-                FuncionesGenerales.ColoresBien(ref txtPuerto);
+                FuncionesGenerales.ColoresBien(txtPuerto);
             }
             return res;
         }

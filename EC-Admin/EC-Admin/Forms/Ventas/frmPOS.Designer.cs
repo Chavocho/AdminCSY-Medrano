@@ -36,6 +36,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPaquete = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPromocion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmsProductos = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblEFolio = new System.Windows.Forms.Label();
             this.lblFolio = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
@@ -66,20 +77,11 @@
             this.bgwImagen = new System.ComponentModel.BackgroundWorker();
             this.lblETipoPrecio = new System.Windows.Forms.Label();
             this.cboTipoPrecio = new System.Windows.Forms.ComboBox();
-            this.cmsProductos = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.agregarPaqueteDeÉsteProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pcbProducto = new System.Windows.Forms.PictureBox();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPaquete = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPromociones = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
-            this.grbTotales.SuspendLayout();
             this.cmsProductos.SuspendLayout();
+            this.grbTotales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbProducto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,7 +120,8 @@
             this.CCant,
             this.CDescuento,
             this.CUnidad,
-            this.CPaquete});
+            this.CPaquete,
+            this.CPromocion});
             this.dgvProductos.ContextMenuStrip = this.cmsProductos;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
@@ -144,6 +147,77 @@
             this.dgvProductos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_RowEnter);
             this.dgvProductos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvProductos_RowsAdded);
             this.dgvProductos.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvProductos_RowsRemoved);
+            // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CCodigo
+            // 
+            this.CCodigo.HeaderText = "Cód. producto";
+            this.CCodigo.Name = "CCodigo";
+            this.CCodigo.Width = 150;
+            // 
+            // CNombre
+            // 
+            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CNombre.HeaderText = "Nombre";
+            this.CNombre.Name = "CNombre";
+            // 
+            // CPrecio
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CPrecio.HeaderText = "Precio";
+            this.CPrecio.Name = "CPrecio";
+            // 
+            // CCant
+            // 
+            dataGridViewCellStyle4.Format = "0.00";
+            this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
+            this.CCant.HeaderText = "Cantidad";
+            this.CCant.Name = "CCant";
+            // 
+            // CDescuento
+            // 
+            dataGridViewCellStyle5.Format = "##0.##%";
+            this.CDescuento.DefaultCellStyle = dataGridViewCellStyle5;
+            this.CDescuento.HeaderText = "Descuento";
+            this.CDescuento.Name = "CDescuento";
+            // 
+            // CUnidad
+            // 
+            this.CUnidad.HeaderText = "Unidad";
+            this.CUnidad.Name = "CUnidad";
+            this.CUnidad.Visible = false;
+            // 
+            // CPaquete
+            // 
+            this.CPaquete.HeaderText = "Paquete";
+            this.CPaquete.Name = "CPaquete";
+            this.CPaquete.Visible = false;
+            // 
+            // CPromocion
+            // 
+            this.CPromocion.HeaderText = "Promocion";
+            this.CPromocion.Name = "CPromocion";
+            this.CPromocion.Visible = false;
+            // 
+            // cmsProductos
+            // 
+            this.cmsProductos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem});
+            this.cmsProductos.Name = "cmsProductos";
+            this.cmsProductos.Size = new System.Drawing.Size(260, 26);
+            // 
+            // agregarPaqueteDeÉsteProductoToolStripMenuItem
+            // 
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Name = "agregarPaqueteDeÉsteProductoToolStripMenuItem";
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Text = "Agregar paquetes de éste producto";
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Click += new System.EventHandler(this.agregarPaqueteDeÉsteProductoToolStripMenuItem_Click);
             // 
             // lblEFolio
             // 
@@ -268,7 +342,7 @@
             this.btnCobrar.Name = "btnCobrar";
             this.btnCobrar.Size = new System.Drawing.Size(200, 60);
             this.btnCobrar.TabIndex = 15;
-            this.btnCobrar.Text = "Cobrar (F5)";
+            this.btnCobrar.Text = "Cobrar (F6)";
             this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCobrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCobrar.UseVisualStyleBackColor = false;
@@ -555,20 +629,6 @@
             this.cboTipoPrecio.Visible = false;
             this.cboTipoPrecio.SelectedIndexChanged += new System.EventHandler(this.cboTipoPrecio_SelectedIndexChanged);
             // 
-            // cmsProductos
-            // 
-            this.cmsProductos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarPaqueteDeÉsteProductoToolStripMenuItem});
-            this.cmsProductos.Name = "cmsProductos";
-            this.cmsProductos.Size = new System.Drawing.Size(260, 48);
-            // 
-            // agregarPaqueteDeÉsteProductoToolStripMenuItem
-            // 
-            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Name = "agregarPaqueteDeÉsteProductoToolStripMenuItem";
-            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
-            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Text = "Agregar paquetes de éste producto";
-            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Click += new System.EventHandler(this.agregarPaqueteDeÉsteProductoToolStripMenuItem_Click);
-            // 
             // pcbProducto
             // 
             this.pcbProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
@@ -580,62 +640,34 @@
             this.pcbProducto.TabIndex = 37;
             this.pcbProducto.TabStop = false;
             // 
-            // CID
+            // btnPromociones
             // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CCodigo
-            // 
-            this.CCodigo.HeaderText = "Cód. producto";
-            this.CCodigo.Name = "CCodigo";
-            this.CCodigo.Width = 150;
-            // 
-            // CNombre
-            // 
-            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CNombre.HeaderText = "Nombre";
-            this.CNombre.Name = "CNombre";
-            // 
-            // CPrecio
-            // 
-            dataGridViewCellStyle3.Format = "C2";
-            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
-            this.CPrecio.HeaderText = "Precio";
-            this.CPrecio.Name = "CPrecio";
-            // 
-            // CCant
-            // 
-            dataGridViewCellStyle4.Format = "0.00";
-            this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
-            this.CCant.HeaderText = "Cantidad";
-            this.CCant.Name = "CCant";
-            // 
-            // CDescuento
-            // 
-            dataGridViewCellStyle5.Format = "##0.##%";
-            this.CDescuento.DefaultCellStyle = dataGridViewCellStyle5;
-            this.CDescuento.HeaderText = "Descuento";
-            this.CDescuento.Name = "CDescuento";
-            // 
-            // CUnidad
-            // 
-            this.CUnidad.HeaderText = "Unidad";
-            this.CUnidad.Name = "CUnidad";
-            this.CUnidad.Visible = false;
-            // 
-            // CPaquete
-            // 
-            this.CPaquete.HeaderText = "Paquete";
-            this.CPaquete.Name = "CPaquete";
-            this.CPaquete.Visible = false;
+            this.btnPromociones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPromociones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnPromociones.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnPromociones.FlatAppearance.BorderSize = 0;
+            this.btnPromociones.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnPromociones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPromociones.Font = new System.Drawing.Font("Corbel", 13F);
+            this.btnPromociones.ForeColor = System.Drawing.Color.White;
+            this.btnPromociones.Location = new System.Drawing.Point(796, 541);
+            this.btnPromociones.Name = "btnPromociones";
+            this.btnPromociones.Size = new System.Drawing.Size(200, 60);
+            this.btnPromociones.TabIndex = 40;
+            this.btnPromociones.Text = "Promociones (F5)";
+            this.btnPromociones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPromociones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPromociones.UseVisualStyleBackColor = false;
+            this.btnPromociones.Visible = false;
+            this.btnPromociones.Click += new System.EventHandler(this.btnPromociones_Click);
             // 
             // frmPOS
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 697);
+            this.Controls.Add(this.btnPromociones);
             this.Controls.Add(this.lblETipoPrecio);
             this.Controls.Add(this.cboTipoPrecio);
             this.Controls.Add(this.btnVendedor);
@@ -665,9 +697,9 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmPOS_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            this.cmsProductos.ResumeLayout(false);
             this.grbTotales.ResumeLayout(false);
             this.grbTotales.PerformLayout();
-            this.cmsProductos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcbProducto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -718,5 +750,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn CUnidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPaquete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPromocion;
+        private System.Windows.Forms.Button btnPromociones;
     }
 }

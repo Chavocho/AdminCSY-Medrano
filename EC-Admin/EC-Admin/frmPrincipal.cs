@@ -131,6 +131,8 @@ namespace EC_Admin
 
         private void btnCotizacion_Click(object sender, EventArgs e)
         {
+            FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Estamos trabajando para mejorar la experiencia en cotizaciones. Por lo pronto no podrás acceder.", "¯\\_(ツ)_/¯");
+            return;
             if (Producto.CantidadP <= 0)
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un producto antes de iniciar el cotizador", "Admin CSY");
