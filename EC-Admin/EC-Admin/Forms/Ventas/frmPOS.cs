@@ -418,23 +418,9 @@ namespace EC_Admin.Forms
                         foreach (DataRow dr in dt.Rows)
                         {
                             decimal precioP = (decimal)dr["precio"], precioMedioMayoreo = (decimal)dr["precio_mediomayoreo"];
-                            if (Config.cantMedioMayoreo > 0)
+                            if (precioMedioMayoreo > 0)
                             {
-                                if (cant < Config.cantMedioMayoreo)
-                                {
-                                    precio = precioP;
-                                }
-                                else if (cant >= Config.cantMedioMayoreo)
-                                {
-                                    if (precioMedioMayoreo > 0)
-                                    {
-                                        precio = precioMedioMayoreo;
-                                    }
-                                    else
-                                    {
-                                        precio = precioP;
-                                    }
-                                }
+                                precio = precioMedioMayoreo;
                             }
                             else
                             {
@@ -450,23 +436,9 @@ namespace EC_Admin.Forms
                         foreach (DataRow dr in dt.Rows)
                         {
                             decimal precioP = (decimal)dr["precio"], precioMayoreo = (decimal)dr["precio_mayoreo"];
-                            if (Config.cantMayoreo > 0)
+                            if (precioMayoreo > 0)
                             {
-                                if (cant >= Config.cantMayoreo)
-                                {
-                                    if (precioMayoreo > 0)
-                                    {
-                                        precio = precioMayoreo;
-                                    }
-                                    else
-                                    {
-                                        precio = precioP;
-                                    }
-                                }
-                                else
-                                {
-                                    precio = precioP;
-                                }
+                                precio = precioMayoreo;
                             }
                             else
                             {
