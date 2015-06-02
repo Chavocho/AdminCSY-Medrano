@@ -237,7 +237,7 @@
             // 
             // CCant
             // 
-            dataGridViewCellStyle4.Format = "0.00";
+            dataGridViewCellStyle4.Format = "0";
             this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
             this.CCant.HeaderText = "Cant. a venta";
             this.CCant.Name = "CCant";

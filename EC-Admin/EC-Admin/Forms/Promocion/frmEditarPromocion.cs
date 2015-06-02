@@ -27,7 +27,7 @@ namespace EC_Admin.Forms
         {
             this.id = id;
             this.cant = cant;
-            txtExistencias.Text = cant.ToString();
+            txtExistencias.Text = cant.ToString("0");
             lblProducto.Text = nombre;
             lblMarca.Text = marca;
         }

@@ -64,9 +64,9 @@
             this.lblECantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblECantidad.Location = new System.Drawing.Point(274, 149);
             this.lblECantidad.Name = "lblECantidad";
-            this.lblECantidad.Size = new System.Drawing.Size(63, 18);
+            this.lblECantidad.Size = new System.Drawing.Size(241, 18);
             this.lblECantidad.TabIndex = 14;
-            this.lblECantidad.Text = "Cantidad";
+            this.lblECantidad.Text = "Cantidad de productos por promoción";
             // 
             // txtPrecio
             // 
@@ -245,7 +245,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(553, 335);
+            this.ClientSize = new System.Drawing.Size(548, 335);
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.lblEMarca);
             this.Controls.Add(this.txtExistencias);

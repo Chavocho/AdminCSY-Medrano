@@ -52,7 +52,7 @@
             this.dtpFechaFin.CustomFormat = "dd \'de\' MMMM \'del\' yyyy";
             this.dtpFechaFin.Font = new System.Drawing.Font("Corbel", 13F);
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaFin.Location = new System.Drawing.Point(277, 122);
+            this.dtpFechaFin.Location = new System.Drawing.Point(277, 112);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(259, 29);
             this.dtpFechaFin.TabIndex = 41;
@@ -62,7 +62,7 @@
             // 
             this.lblEFechaFin.AutoSize = true;
             this.lblEFechaFin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEFechaFin.Location = new System.Drawing.Point(274, 101);
+            this.lblEFechaFin.Location = new System.Drawing.Point(274, 91);
             this.lblEFechaFin.Name = "lblEFechaFin";
             this.lblEFechaFin.Size = new System.Drawing.Size(82, 18);
             this.lblEFechaFin.TabIndex = 40;
@@ -73,7 +73,7 @@
             this.dtpFechaIni.CustomFormat = "dd \'de\' MMMM \'del\' yyyy";
             this.dtpFechaIni.Font = new System.Drawing.Font("Corbel", 13F);
             this.dtpFechaIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaIni.Location = new System.Drawing.Point(12, 122);
+            this.dtpFechaIni.Location = new System.Drawing.Point(12, 112);
             this.dtpFechaIni.Name = "dtpFechaIni";
             this.dtpFechaIni.Size = new System.Drawing.Size(259, 29);
             this.dtpFechaIni.TabIndex = 39;
@@ -133,7 +133,7 @@
             // 
             this.lblEFechaIni.AutoSize = true;
             this.lblEFechaIni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEFechaIni.Location = new System.Drawing.Point(9, 101);
+            this.lblEFechaIni.Location = new System.Drawing.Point(9, 91);
             this.lblEFechaIni.Name = "lblEFechaIni";
             this.lblEFechaIni.Size = new System.Drawing.Size(98, 18);
             this.lblEFechaIni.TabIndex = 34;
@@ -149,7 +149,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(389, 274);
+            this.btnAceptar.Location = new System.Drawing.Point(389, 277);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
             this.btnAceptar.TabIndex = 33;
@@ -164,7 +164,7 @@
             this.txtCant.BackColor = System.Drawing.Color.White;
             this.txtCant.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtCant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCant.Location = new System.Drawing.Point(277, 180);
+            this.txtCant.Location = new System.Drawing.Point(277, 170);
             this.txtCant.Name = "txtCant";
             this.txtCant.Size = new System.Drawing.Size(259, 29);
             this.txtCant.TabIndex = 32;
@@ -174,18 +174,18 @@
             // 
             this.lblECantidad.AutoSize = true;
             this.lblECantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECantidad.Location = new System.Drawing.Point(274, 159);
+            this.lblECantidad.Location = new System.Drawing.Point(274, 149);
             this.lblECantidad.Name = "lblECantidad";
-            this.lblECantidad.Size = new System.Drawing.Size(63, 18);
+            this.lblECantidad.Size = new System.Drawing.Size(241, 18);
             this.lblECantidad.TabIndex = 31;
-            this.lblECantidad.Text = "Cantidad";
+            this.lblECantidad.Text = "Cantidad de productos por promoción";
             // 
             // txtPrecio
             // 
             this.txtPrecio.BackColor = System.Drawing.Color.White;
             this.txtPrecio.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtPrecio.Location = new System.Drawing.Point(12, 180);
+            this.txtPrecio.Location = new System.Drawing.Point(12, 170);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(259, 29);
             this.txtPrecio.TabIndex = 30;
@@ -195,7 +195,7 @@
             // 
             this.lblEPrecio.AutoSize = true;
             this.lblEPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEPrecio.Location = new System.Drawing.Point(9, 159);
+            this.lblEPrecio.Location = new System.Drawing.Point(9, 149);
             this.lblEPrecio.Name = "lblEPrecio";
             this.lblEPrecio.Size = new System.Drawing.Size(47, 18);
             this.lblEPrecio.TabIndex = 29;
@@ -206,7 +206,7 @@
             this.txtExistencias.BackColor = System.Drawing.Color.White;
             this.txtExistencias.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtExistencias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtExistencias.Location = new System.Drawing.Point(12, 238);
+            this.txtExistencias.Location = new System.Drawing.Point(12, 228);
             this.txtExistencias.Name = "txtExistencias";
             this.txtExistencias.Size = new System.Drawing.Size(259, 29);
             this.txtExistencias.TabIndex = 43;
@@ -215,7 +215,7 @@
             // 
             this.lblEExistencias.AutoSize = true;
             this.lblEExistencias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEExistencias.Location = new System.Drawing.Point(9, 217);
+            this.lblEExistencias.Location = new System.Drawing.Point(9, 207);
             this.lblEExistencias.Name = "lblEExistencias";
             this.lblEExistencias.Size = new System.Drawing.Size(75, 18);
             this.lblEExistencias.TabIndex = 42;
@@ -245,7 +245,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(551, 332);
+            this.ClientSize = new System.Drawing.Size(548, 335);
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.lblEMarca);
             this.Controls.Add(this.txtExistencias);
