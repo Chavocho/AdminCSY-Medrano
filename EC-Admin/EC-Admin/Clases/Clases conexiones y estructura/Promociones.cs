@@ -222,5 +222,24 @@ namespace EC_Admin
                 throw ex;
             }
         }
+
+        public static void CambiarExistencias(int idPromo, decimal cant)
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "UPDATE promocion SET cant_prod=cant_prod+'" + cant + "' WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", idPromo);
+                ConexionBD.EjecutarConsulta(sql);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

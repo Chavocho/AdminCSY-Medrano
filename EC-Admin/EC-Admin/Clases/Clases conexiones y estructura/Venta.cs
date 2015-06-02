@@ -147,6 +147,7 @@ namespace EC_Admin
         private List<decimal> descuentoP;
         private List<Unidades> unidad;
         private List<bool> paquete;
+        private List<int> promocion;
 
         public List<int> IDProductos
         {
@@ -182,6 +183,12 @@ namespace EC_Admin
         {
             get { return paquete; }
             set { paquete = value; }
+        }
+
+        public List<int> Promocion
+        {
+            get { return promocion; }
+            set { promocion = value; }
         }
         
         #endregion
@@ -338,7 +345,7 @@ namespace EC_Admin
             }
         }
 
-        private static void CancelarVenta(int id)
+        public static void CancelarVenta(int id)
         {
             try
             {
@@ -373,6 +380,7 @@ namespace EC_Admin
             descuentoP = new List<decimal>();
             unidad = new List<Unidades>();
             paquete = new List<bool>();
+            promocion = new List<int>();
         }
 
         /// <summary>
@@ -385,9 +393,9 @@ namespace EC_Admin
                 MySqlCommand sql = new MySqlCommand();
                 for (int i = 0; i < idP.Count; i++)
                 {
-                    sql.CommandText = "INSERT INTO venta_detallada (id_venta, id_producto, cant, precio, descuento, unidad, paquete) " +
-                    "VALUES (?id_venta, ?id_producto, ?cant, ?precio, ?descuento, ?unidad, ?paquete) " +
-                    "ON DUPLICATE KEY UPDATE cant=?cant, precio=?precio, descuento=?descuento, unidad=?unidad, paquete=?paquete;";
+                    sql.CommandText = "INSERT INTO venta_detallada (id_venta, id_producto, cant, precio, descuento, unidad, paquete, id_promocion) " +
+                    "VALUES (?id_venta, ?id_producto, ?cant, ?precio, ?descuento, ?unidad, ?paquete, ?promocion) " +
+                    "ON DUPLICATE KEY UPDATE cant=?cant, precio=?precio, descuento=?descuento, unidad=?unidad, paquete=?paquete, id_promocion=?promocion;";
                     sql.Parameters.AddWithValue("?id_venta", id);
                     sql.Parameters.AddWithValue("?id_producto", idP[i]);
                     sql.Parameters.AddWithValue("?cant", cantidad[i]);
@@ -395,11 +403,13 @@ namespace EC_Admin
                     sql.Parameters.AddWithValue("?descuento", descuentoP[i]);
                     sql.Parameters.AddWithValue("?unidad", unidad[i]);
                     sql.Parameters.AddWithValue("?paquete", paquete[i]);
+                    sql.Parameters.AddWithValue("?promocion", promocion[i]);
                     ConexionBD.EjecutarConsulta(sql);
                     sql.Parameters.Clear();
                     if (this.abierta == false)
                     {
                         Producto.CambiarCantidadInventario(idP[i], decimal.Negate(cantidad[i]));
+                        Promociones.CambiarExistencias(promocion[i], decimal.Negate(cantidad[i]));
                     }
                 }
                 InicializarVentaDetallada();
@@ -434,6 +444,7 @@ namespace EC_Admin
                     descuentoP.Add((decimal)dr["descuento"]);
                     unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
                     paquete.Add((bool)dr["paquete"]);
+                    promocion.Add((int)dr["id_promocion"]);
                 }
             }
             catch (MySqlException ex)
@@ -454,7 +465,8 @@ namespace EC_Admin
                 v.RecuperarVenta();
                 for (int i = 0; i < v.IDProductos.Count; i++)
                 {
-                    Producto.CambiarCantidadInventario(v.IDProductos[i], decimal.Negate(v.Cantidad[i]));
+                    Producto.CambiarCantidadInventario(v.IDProductos[i], v.Cantidad[i]);
+                    Promociones.CambiarExistencias(v.Promocion[i], v.Cantidad[i]);
                 }
             }
             catch (MySqlException ex)

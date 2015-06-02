@@ -37,7 +37,7 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT p.id, p.cant, p.cant_prod, p.precio, pr.id AS idP, pr.nombre, pr.codigo, pr.unidad FROM promocion AS p INNER JOIN producto AS pr ON (p.id_producto=pr.id) WHERE p.existencias=1 AND p.cant>0";
+                string sql = "SELECT p.id, p.cant, p.cant_prod, p.precio, pr.id AS idP, pr.nombre, pr.codigo, pr.unidad FROM promocion AS p INNER JOIN producto AS pr ON (p.id_producto=pr.id) WHERE p.existencias=1 AND p.cant_prod>0";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)

@@ -65,18 +65,17 @@ namespace EC_Admin.Forms
         {
             try
             {
-                decimal efe;
-                decimal.TryParse(txtEfectivo.Text, out efe);
                 Caja c = new Caja();
                 c.Descripcion = "VENTA MOSTRADOR";
-                c.Efectivo = efe;
-                if (cboTipoPago.SelectedIndex == 1 || cboTipoPago.SelectedIndex == 2)
+                if (cboTipoPago.SelectedIndex == 0)
                 {
-                    c.Voucher = total;
-                }
-                else
-                {
+                    c.Efectivo = total;
                     c.Voucher = 0M;
+                }
+                else if (cboTipoPago.SelectedIndex == 1 || cboTipoPago.SelectedIndex == 2)
+                {
+                    c.Efectivo = 0M;
+                    c.Voucher = total;
                 }
                 c.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
                 c.IDSucursal = Config.idSucursal;

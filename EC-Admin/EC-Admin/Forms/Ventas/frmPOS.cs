@@ -122,7 +122,16 @@ namespace EC_Admin.Forms
                 lblVendedor.Text = Trabajador.NombreTrabajador(idVendedor);
                 for (int i = 0; i < v.IDProductos.Count; i++)
                 {
-                    AgregarProducto(v.IDProductos[i], CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Cantidad[i], v.DescuentoProducto[i], v.Unidad[i], v.Paquete[i]);
+                    if (v.Promocion[i] <= 0)
+                    {
+                        AgregarProducto(v.IDProductos[i], CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Cantidad[i], v.DescuentoProducto[i], v.Unidad[i], v.Paquete[i]);
+                    }
+                    else
+                    {
+                        Promociones p = new Promociones(v.Promocion[i]);
+                        p.ObtenerDatos();
+                        PromocionProducto(v.IDProductos[i], CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Precio[i], v.Cantidad[i], p.Cantidad, v.Unidad[i], v.Promocion[i], p.Existencias);
+                    }
                 }
             }
             catch (MySqlException ex)
@@ -231,6 +240,7 @@ namespace EC_Admin.Forms
                     v.DescuentoProducto.Add((decimal)dr.Cells[5].Value);
                     v.Unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
                     v.Paquete.Add((bool)dr.Cells[7].Value);
+                    v.Promocion.Add((int)dr.Cells[8].Value);
                 }
                 v.DatosVenta();
                 if (abierta == false)
@@ -479,9 +489,12 @@ namespace EC_Admin.Forms
 
         public void PromocionProducto(int id, string codProd, string nombre, decimal precio, decimal cant, decimal cantTotal, Unidades u, int idPromo, bool existencias)
         {
-            if (!VerificarPromocion(idPromo, cant, cantTotal))
+            if (idPromo > 0)
             {
-                dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, 0M, u, false, idPromo, existencias });
+                if (!VerificarPromocion(idPromo, cant, cantTotal))
+                {
+                    dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, 0M, u, false, idPromo, existencias });
+                }
             }
             CalcularTotales();
         }
@@ -790,7 +803,7 @@ namespace EC_Admin.Forms
             {
                 btnClientes.PerformClick();
             }
-            else if (e.KeyCode == Keys.F4)
+            else if (e.KeyCode == Keys.F4 && !e.Alt)
             {
                 btnProductos.PerformClick();
             }
@@ -801,6 +814,10 @@ namespace EC_Admin.Forms
             else if (e.KeyCode == Keys.F6)
             {
                 btnCobrar.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                btnCancelar.PerformClick();
             }
             else if (e.KeyCode == Keys.F11)
             {
@@ -915,6 +932,11 @@ namespace EC_Admin.Forms
         private void btnPromociones_Click(object sender, EventArgs e)
         {
             (new frmVentaPromociones(this)).ShowDialog(this);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            (new frmCancelaciones()).ShowDialog(this);
         }
     }
 }

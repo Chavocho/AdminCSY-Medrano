@@ -123,7 +123,6 @@
             this.lblETipoPromocion.Size = new System.Drawing.Size(159, 22);
             this.lblETipoPromocion.TabIndex = 41;
             this.lblETipoPromocion.Text = "Tipo de promoción:";
-            this.lblETipoPromocion.Visible = false;
             // 
             // cboTipoPromocion
             // 
@@ -141,7 +140,6 @@
             this.cboTipoPromocion.Name = "cboTipoPromocion";
             this.cboTipoPromocion.Size = new System.Drawing.Size(220, 29);
             this.cboTipoPromocion.TabIndex = 40;
-            this.cboTipoPromocion.Visible = false;
             this.cboTipoPromocion.SelectedIndexChanged += new System.EventHandler(this.cboTipoPromocion_SelectedIndexChanged);
             // 
             // btnAceptar
@@ -185,7 +183,7 @@
             0,
             0});
             this.nudCantidad.Name = "nudCantidad";
-            this.nudCantidad.Size = new System.Drawing.Size(146, 29);
+            this.nudCantidad.Size = new System.Drawing.Size(83, 29);
             this.nudCantidad.TabIndex = 54;
             this.nudCantidad.Value = new decimal(new int[] {
             1,
@@ -201,9 +199,9 @@
             this.lblECantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblECantidad.Location = new System.Drawing.Point(9, 399);
             this.lblECantidad.Name = "lblECantidad";
-            this.lblECantidad.Size = new System.Drawing.Size(63, 18);
+            this.lblECantidad.Size = new System.Drawing.Size(164, 18);
             this.lblECantidad.TabIndex = 55;
-            this.lblECantidad.Text = "Cantidad";
+            this.lblECantidad.Text = "Cantidad de promociones";
             // 
             // CID
             // 
@@ -235,13 +233,15 @@
             this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
             this.CPrecio.HeaderText = "Precio";
             this.CPrecio.Name = "CPrecio";
+            this.CPrecio.Width = 120;
             // 
             // CCant
             // 
             dataGridViewCellStyle4.Format = "0.00";
             this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
-            this.CCant.HeaderText = "Cantidad Promoción";
+            this.CCant.HeaderText = "Cant. a venta";
             this.CCant.Name = "CCant";
+            this.CCant.Width = 120;
             // 
             // CCantTotal
             // 
@@ -249,6 +249,7 @@
             this.CCantTotal.DefaultCellStyle = dataGridViewCellStyle5;
             this.CCantTotal.HeaderText = "Existencias";
             this.CCantTotal.Name = "CCantTotal";
+            this.CCantTotal.Width = 120;
             // 
             // CUnidad
             // 

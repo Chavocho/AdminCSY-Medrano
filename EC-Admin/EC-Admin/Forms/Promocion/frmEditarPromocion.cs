@@ -23,10 +23,11 @@ namespace EC_Admin.Forms
             p = new Promociones(id);
         }
 
-        public void AsignarProducto(int id, string nombre,string marca, decimal cant)
+        public void AsignarProducto(int id, string nombre, string marca, decimal cant)
         {
             this.id = id;
             this.cant = cant;
+            txtExistencias.Text = cant.ToString();
             lblProducto.Text = nombre;
             lblMarca.Text = marca;
         }
@@ -96,11 +97,16 @@ namespace EC_Admin.Forms
             {
                 FuncionesGenerales.ColoresError(lblProducto);
                 FuncionesGenerales.ColoresError(lblEProducto);
+                FuncionesGenerales.ColoresError(lblMarca);
+                FuncionesGenerales.ColoresError(lblEMarca);
+                res = false;
             }
             else
             {
                 FuncionesGenerales.ColoresBien(lblProducto);
                 FuncionesGenerales.ColoresBien(lblEProducto);
+                FuncionesGenerales.ColoresBien(lblMarca);
+                FuncionesGenerales.ColoresBien(lblEMarca);
             }
             if (txtPrecio.Text.Trim() == "")
             {

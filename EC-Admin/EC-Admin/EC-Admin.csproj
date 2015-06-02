@@ -584,6 +584,12 @@
     <Compile Include="Forms\Usuarios\Restablecimiento de contraseña\frmVerificarUsuario.Designer.cs">
       <DependentUpon>frmVerificarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Ventas\frmCancelaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmCancelaciones.Designer.cs">
+      <DependentUpon>frmCancelaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Ventas\frmCobrar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -903,6 +909,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Usuarios\Restablecimiento de contraseña\frmVerificarUsuario.resx">
       <DependentUpon>frmVerificarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmCancelaciones.resx">
+      <DependentUpon>frmCancelaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\frmCobrar.resx">
       <DependentUpon>frmCobrar.cs</DependentUpon>
