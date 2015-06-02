@@ -33,6 +33,8 @@ namespace EC_Admin
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El usuario y/o contraseña no coinciden.", "Admin CSY");
                 txtPass.Text = "";
+                FuncionesGenerales.ColoresError(txtPass);
+                FuncionesGenerales.ColoresError(txtUsuario);
             }
         }
 

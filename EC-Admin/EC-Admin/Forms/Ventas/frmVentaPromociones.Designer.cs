@@ -29,12 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.lblETipoPromocion = new System.Windows.Forms.Label();
+            this.cboTipoPromocion = new System.Windows.Forms.ComboBox();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
+            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
+            this.lblECantidad = new System.Windows.Forms.Label();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CIDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,13 +51,6 @@
             this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCantTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblETipoPromocion = new System.Windows.Forms.Label();
-            this.cboTipoPromocion = new System.Windows.Forms.ComboBox();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
-            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
-            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
-            this.lblECantidad = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.SuspendLayout();
@@ -60,11 +61,11 @@
             this.dgvProductos.AllowUserToDeleteRows = false;
             this.dgvProductos.AllowUserToResizeColumns = false;
             this.dgvProductos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -72,14 +73,14 @@
             this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
@@ -90,14 +91,14 @@
             this.CCant,
             this.CCantTotal,
             this.CUnidad});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvProductos.Location = new System.Drawing.Point(12, 48);
@@ -110,55 +111,6 @@
             this.dgvProductos.Size = new System.Drawing.Size(984, 349);
             this.dgvProductos.TabIndex = 13;
             this.dgvProductos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_RowEnter);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CIDProducto
-            // 
-            this.CIDProducto.HeaderText = "IDProducto";
-            this.CIDProducto.Name = "CIDProducto";
-            this.CIDProducto.Visible = false;
-            // 
-            // CCodigo
-            // 
-            this.CCodigo.HeaderText = "Cód. producto";
-            this.CCodigo.Name = "CCodigo";
-            this.CCodigo.Width = 150;
-            // 
-            // CNombre
-            // 
-            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CNombre.HeaderText = "Nombre";
-            this.CNombre.Name = "CNombre";
-            // 
-            // CPrecio
-            // 
-            dataGridViewCellStyle8.Format = "C2";
-            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle8;
-            this.CPrecio.HeaderText = "Precio";
-            this.CPrecio.Name = "CPrecio";
-            // 
-            // CCant
-            // 
-            dataGridViewCellStyle9.Format = "0.00";
-            this.CCant.DefaultCellStyle = dataGridViewCellStyle9;
-            this.CCant.HeaderText = "Cantidad";
-            this.CCant.Name = "CCant";
-            // 
-            // CCantTotal
-            // 
-            this.CCantTotal.HeaderText = "Existencias";
-            this.CCantTotal.Name = "CCantTotal";
-            // 
-            // CUnidad
-            // 
-            this.CUnidad.HeaderText = "Unidad";
-            this.CUnidad.Name = "CUnidad";
-            this.CUnidad.Visible = false;
             // 
             // lblETipoPromocion
             // 
@@ -252,6 +204,57 @@
             this.lblECantidad.Size = new System.Drawing.Size(63, 18);
             this.lblECantidad.TabIndex = 55;
             this.lblECantidad.Text = "Cantidad";
+            // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CIDProducto
+            // 
+            this.CIDProducto.HeaderText = "IDProducto";
+            this.CIDProducto.Name = "CIDProducto";
+            this.CIDProducto.Visible = false;
+            // 
+            // CCodigo
+            // 
+            this.CCodigo.HeaderText = "Cód. producto";
+            this.CCodigo.Name = "CCodigo";
+            this.CCodigo.Width = 150;
+            // 
+            // CNombre
+            // 
+            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CNombre.HeaderText = "Nombre";
+            this.CNombre.Name = "CNombre";
+            // 
+            // CPrecio
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CPrecio.HeaderText = "Precio";
+            this.CPrecio.Name = "CPrecio";
+            // 
+            // CCant
+            // 
+            dataGridViewCellStyle4.Format = "0.00";
+            this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
+            this.CCant.HeaderText = "Cantidad Promoción";
+            this.CCant.Name = "CCant";
+            // 
+            // CCantTotal
+            // 
+            dataGridViewCellStyle5.Format = "0";
+            this.CCantTotal.DefaultCellStyle = dataGridViewCellStyle5;
+            this.CCantTotal.HeaderText = "Existencias";
+            this.CCantTotal.Name = "CCantTotal";
+            // 
+            // CUnidad
+            // 
+            this.CUnidad.HeaderText = "Unidad";
+            this.CUnidad.Name = "CUnidad";
+            this.CUnidad.Visible = false;
             // 
             // frmVentaPromociones
             // 

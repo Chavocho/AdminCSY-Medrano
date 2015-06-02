@@ -23,11 +23,12 @@ namespace EC_Admin.Forms
             p = new Promociones(id);
         }
 
-        public void AsignarProducto(int id, string nombre, decimal cant)
+        public void AsignarProducto(int id, string nombre,string marca, decimal cant)
         {
             this.id = id;
             this.cant = cant;
             lblProducto.Text = nombre;
+            lblMarca.Text = marca;
         }
 
         private void CargarDatos()

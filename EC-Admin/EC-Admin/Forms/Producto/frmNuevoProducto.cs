@@ -119,49 +119,94 @@ namespace EC_Admin.Forms
             if (cboProveedor.SelectedIndex < 0)
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo proveedor es obligatorio", "Admin CSY");
+                FuncionesGenerales.ColoresError(cboProveedor);
                 return false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(cboProveedor);
             }
             if (cboCategoria.SelectedIndex < 0)
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo categoría es obligatorio", "Admin CSY");
+                FuncionesGenerales.ColoresError(cboCategoria);
                 return false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(cboCategoria);
             }
             if (txtNombre.Text.Trim() == "")
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
+                FuncionesGenerales.ColoresError(txtNombre);
                 return false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(txtNombre);
             }
             if (txtMarca.Text.Trim() == "")
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo marca es obligatorio", "Admin CSY");
+                FuncionesGenerales.ColoresError(txtMarca);
                 return false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(txtMarca);
             }
             if (txtCodigo.Text.Trim() == "")
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo código es obligatorio", "Admin CSY");
+                FuncionesGenerales.ColoresError(txtCodigo);
                 return false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(txtCodigo);
             }
             if (txtCosto.Text.Trim() == "")
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo costo es obligatorio", "Admin CSY");
+                FuncionesGenerales.ColoresError(txtCosto);
                 return false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(txtCosto);
             }
             if (txtPrecio.Text.Trim() == "")
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo precio es obligatorio", "Admin CSY");
+                FuncionesGenerales.ColoresError(txtPrecio);
                 return false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(txtPrecio);
             }
             if (txtCant.Text.Trim() == "")
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cantidad es obligatorio", "Admin CSY");
+                FuncionesGenerales.ColoresError(txtCant);
                 return false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(txtCant);
             }
             if (txtCantMedioMayoreo.Text.Trim() != "")
             {
                 if (txtPrecioMedioMayoreo.Text.Trim() == "")
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo precio de medio mayoreo debe ser ingresado", "Admin CSY");
+                    FuncionesGenerales.ColoresError(txtPrecioMedioMayoreo);
                     return false;
+                }
+                else
+                {
+                    FuncionesGenerales.ColoresBien(txtPrecioMedioMayoreo);
                 }
             }
             else if (txtPrecioMedioMayoreo.Text.Trim() != "")
@@ -169,7 +214,12 @@ namespace EC_Admin.Forms
                 if (txtCantMedioMayoreo.Text.Trim() == "")
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cantidad de medio mayoreo debe ser ingresado", "Admin CSY");
+                    FuncionesGenerales.ColoresError(txtCantMayoreo);
                     return false;
+                }
+                else
+                {
+                    FuncionesGenerales.ColoresBien(txtPrecioMayoreo);
                 }
             }
             if (txtCantMayoreo.Text.Trim() != "")
@@ -177,7 +227,12 @@ namespace EC_Admin.Forms
                 if (txtPrecioMayoreo.Text.Trim() == "")
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo precio de mayoreo debe ser ingresado", "Admin CSY");
+                    FuncionesGenerales.ColoresError(txtPrecioMayoreo);
                     return false;
+                }
+                else
+                {
+                    FuncionesGenerales.ColoresBien(txtPrecioMayoreo);
                 }
             }
             else if (txtPrecioMayoreo.Text.Trim() != "")
@@ -185,6 +240,7 @@ namespace EC_Admin.Forms
                 if (txtCantMayoreo.Text.Trim() == "")
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cantidad de mayoreo debe ser ingresado", "Admin CSY");
+                    FuncionesGenerales.ColoresError(txtCantMayoreo);
                     return false;
                 }
             }

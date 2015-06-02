@@ -31,7 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.lblEBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
@@ -130,14 +132,14 @@
             this.CPrecio,
             this.CCant,
             this.Unidad});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvProductos.Location = new System.Drawing.Point(12, 47);
@@ -163,7 +165,6 @@
             // 
             // nudCant
             // 
-            this.nudCant.DecimalPlaces = 2;
             this.nudCant.Font = new System.Drawing.Font("Corbel", 11F);
             this.nudCant.Location = new System.Drawing.Point(15, 420);
             this.nudCant.Minimum = new decimal(new int[] {
@@ -198,13 +199,12 @@
             this.lblEDescuento.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblEDescuento.Location = new System.Drawing.Point(138, 399);
             this.lblEDescuento.Name = "lblEDescuento";
-            this.lblEDescuento.Size = new System.Drawing.Size(89, 18);
+            this.lblEDescuento.Size = new System.Drawing.Size(74, 18);
             this.lblEDescuento.TabIndex = 5;
-            this.lblEDescuento.Text = "% Descuento";
+            this.lblEDescuento.Text = "Descuento";
             // 
             // nudDescuento
             // 
-            this.nudDescuento.DecimalPlaces = 2;
             this.nudDescuento.Font = new System.Drawing.Font("Corbel", 11F);
             this.nudDescuento.Location = new System.Drawing.Point(141, 420);
             this.nudDescuento.Name = "nudDescuento";
@@ -231,12 +231,16 @@
             // 
             // CPrecio
             // 
+            dataGridViewCellStyle3.Format = "C2";
+            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
             this.CPrecio.HeaderText = "Precio";
             this.CPrecio.Name = "CPrecio";
             // 
             // CCant
             // 
-            this.CCant.HeaderText = "Cantidad";
+            dataGridViewCellStyle4.Format = "0";
+            this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
+            this.CCant.HeaderText = "Existencias";
             this.CCant.Name = "CCant";
             // 
             // Unidad

@@ -120,11 +120,11 @@ namespace EC_Admin.Forms
             {
                 if (frmN != null)
                 {
-                    frmN.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), (decimal)dgvPromociones[5, dgvPromociones.CurrentRow.Index].Value);
+                    frmN.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), dgvPromociones[2, dgvPromociones.CurrentRow.Index].Value.ToString(), (decimal)dgvPromociones[5, dgvPromociones.CurrentRow.Index].Value);
                 }
                 else if (frmE != null)
                 {
-                    frmE.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), (decimal)dgvPromociones[5, dgvPromociones.CurrentRow.Index].Value);
+                    frmE.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), dgvPromociones[2, dgvPromociones.CurrentRow.Index].Value.ToString(), (decimal)dgvPromociones[5, dgvPromociones.CurrentRow.Index].Value);
                 }
                 this.Close();
             }

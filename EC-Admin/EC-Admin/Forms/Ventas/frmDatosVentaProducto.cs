@@ -49,11 +49,11 @@ namespace EC_Admin.Forms
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (frm != null)
-                frm.ModificarProducto(nudCant.Value, nudDescuento.Value / 100M);
+                frm.ModificarProducto(nudCant.Value, nudDescuento.Value);
             else if (frmC != null)
-                frmC.ModificarProducto(nudCant.Value, nudDescuento.Value / 100M);
+                frmC.ModificarProducto(nudCant.Value, nudDescuento.Value);
             else if (frmCT != null)
-                frmCT.ModificarProducto(nudCant.Value, nudDescuento.Value / 100M);
+                frmCT.ModificarProducto(nudCant.Value, nudDescuento.Value);
             this.Close();
         }
     }

@@ -36,15 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPaquete = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPromocion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsProductos = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.agregarPaqueteDeÉsteProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblEFolio = new System.Windows.Forms.Label();
@@ -79,6 +70,15 @@
             this.cboTipoPrecio = new System.Windows.Forms.ComboBox();
             this.pcbProducto = new System.Windows.Forms.PictureBox();
             this.btnPromociones = new System.Windows.Forms.Button();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPaquete = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPromocion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.cmsProductos.SuspendLayout();
             this.grbTotales.SuspendLayout();
@@ -147,63 +147,6 @@
             this.dgvProductos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_RowEnter);
             this.dgvProductos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvProductos_RowsAdded);
             this.dgvProductos.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvProductos_RowsRemoved);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CCodigo
-            // 
-            this.CCodigo.HeaderText = "Cód. producto";
-            this.CCodigo.Name = "CCodigo";
-            this.CCodigo.Width = 150;
-            // 
-            // CNombre
-            // 
-            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CNombre.HeaderText = "Nombre";
-            this.CNombre.Name = "CNombre";
-            // 
-            // CPrecio
-            // 
-            dataGridViewCellStyle3.Format = "C2";
-            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
-            this.CPrecio.HeaderText = "Precio";
-            this.CPrecio.Name = "CPrecio";
-            // 
-            // CCant
-            // 
-            dataGridViewCellStyle4.Format = "0.00";
-            this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
-            this.CCant.HeaderText = "Cantidad";
-            this.CCant.Name = "CCant";
-            // 
-            // CDescuento
-            // 
-            dataGridViewCellStyle5.Format = "##0.##%";
-            this.CDescuento.DefaultCellStyle = dataGridViewCellStyle5;
-            this.CDescuento.HeaderText = "Descuento";
-            this.CDescuento.Name = "CDescuento";
-            // 
-            // CUnidad
-            // 
-            this.CUnidad.HeaderText = "Unidad";
-            this.CUnidad.Name = "CUnidad";
-            this.CUnidad.Visible = false;
-            // 
-            // CPaquete
-            // 
-            this.CPaquete.HeaderText = "Paquete";
-            this.CPaquete.Name = "CPaquete";
-            this.CPaquete.Visible = false;
-            // 
-            // CPromocion
-            // 
-            this.CPromocion.HeaderText = "Promocion";
-            this.CPromocion.Name = "CPromocion";
-            this.CPromocion.Visible = false;
             // 
             // cmsProductos
             // 
@@ -662,6 +605,63 @@
             this.btnPromociones.Visible = false;
             this.btnPromociones.Click += new System.EventHandler(this.btnPromociones_Click);
             // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CCodigo
+            // 
+            this.CCodigo.HeaderText = "Cód. producto";
+            this.CCodigo.Name = "CCodigo";
+            this.CCodigo.Width = 150;
+            // 
+            // CNombre
+            // 
+            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CNombre.HeaderText = "Nombre";
+            this.CNombre.Name = "CNombre";
+            // 
+            // CPrecio
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CPrecio.HeaderText = "Precio";
+            this.CPrecio.Name = "CPrecio";
+            // 
+            // CCant
+            // 
+            dataGridViewCellStyle4.Format = "0";
+            this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
+            this.CCant.HeaderText = "Cantidad";
+            this.CCant.Name = "CCant";
+            // 
+            // CDescuento
+            // 
+            dataGridViewCellStyle5.Format = "C2";
+            this.CDescuento.DefaultCellStyle = dataGridViewCellStyle5;
+            this.CDescuento.HeaderText = "Descuento";
+            this.CDescuento.Name = "CDescuento";
+            // 
+            // CUnidad
+            // 
+            this.CUnidad.HeaderText = "Unidad";
+            this.CUnidad.Name = "CUnidad";
+            this.CUnidad.Visible = false;
+            // 
+            // CPaquete
+            // 
+            this.CPaquete.HeaderText = "Paquete";
+            this.CPaquete.Name = "CPaquete";
+            this.CPaquete.Visible = false;
+            // 
+            // CPromocion
+            // 
+            this.CPromocion.HeaderText = "Promocion";
+            this.CPromocion.Name = "CPromocion";
+            this.CPromocion.Visible = false;
+            // 
             // frmPOS
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -690,7 +690,7 @@
             this.Font = new System.Drawing.Font("Corbel", 11F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(1024, 736);
+            this.MinimumSize = new System.Drawing.Size(1024, 726);
             this.Name = "frmPOS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Punto de Venta";
@@ -742,6 +742,7 @@
         private System.Windows.Forms.ComboBox cboTipoPrecio;
         private System.Windows.Forms.ContextMenuStrip cmsProductos;
         private System.Windows.Forms.ToolStripMenuItem agregarPaqueteDeÉsteProductoToolStripMenuItem;
+        private System.Windows.Forms.Button btnPromociones;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
@@ -751,6 +752,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CUnidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPaquete;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPromocion;
-        private System.Windows.Forms.Button btnPromociones;
     }
 }

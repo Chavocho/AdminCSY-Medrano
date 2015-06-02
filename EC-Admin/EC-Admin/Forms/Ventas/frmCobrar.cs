@@ -108,6 +108,7 @@ namespace EC_Admin.Forms
         private void frmCobrar_Load(object sender, EventArgs e)
         {
             txtEfectivo.Select();
+            cboTipoPago.SelectedIndex = 0;
         }
 
         private void cboTipoPago_SelectedIndexChanged(object sender, EventArgs e)

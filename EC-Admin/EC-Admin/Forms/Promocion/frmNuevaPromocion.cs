@@ -22,11 +22,12 @@ namespace EC_Admin.Forms
             chbExistencias.Checked = true;
         }
 
-        public void AsignarProducto(int id, string nombre, decimal cant)
+        public void AsignarProducto(int id, string nombre,string marca, decimal cant)
         {
             this.id = id;
             this.cant = cant;
             lblProducto.Text = nombre;
+            lblMarca.Text = marca;
         }
 
         private void Insertar()
@@ -188,5 +189,6 @@ namespace EC_Admin.Forms
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Los campos en rojo son obligatorios.", "Admin CSY");
             }
         }
+
     }
 }

@@ -648,7 +648,7 @@ namespace EC_Admin.Forms
             {
                 subtotal += ((decimal)dr.Cells[3].Value * (decimal)dr.Cells[4].Value);
                 cantTot += (decimal)dr.Cells[4].Value;
-                descuento += (decimal)dr.Cells[3].Value * (((decimal)dr.Cells[5].Value) * ((decimal)dr.Cells[4].Value));
+                descuento += ((decimal)dr.Cells[5].Value);
             }
             impuesto = subtotal * Config.iva;
             total = subtotal + impuesto - descuento;
@@ -830,7 +830,7 @@ namespace EC_Admin.Forms
         private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dgvProductos.CurrentRow != null)
-                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, ((decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value) * 100M)).ShowDialog(this);
+                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, (decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value)).ShowDialog(this);
         }
 
         private void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
