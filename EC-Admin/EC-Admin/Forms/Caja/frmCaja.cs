@@ -131,8 +131,8 @@ namespace EC_Admin.Forms
             }
             lblTotEfeMos.Text = efe.ToString("C2");
             lblTotVouMos.Text = vou.ToString("C2");
-            lblTotEfeCaj.Text = Caja.TotalEfectivo.ToString();
-            lblTotVouCaj.Text = Caja.TotalVouchers.ToString();
+            lblTotEfeCaj.Text = Caja.TotalEfectivo.ToString("C2");
+            lblTotVouCaj.Text = Caja.TotalVouchers.ToString("C2");
         }
 
         private void dtpFechas_ValueChanged(object sender, EventArgs e)
@@ -220,6 +220,7 @@ namespace EC_Admin.Forms
             {
                 btnAbrirCerrar.Text = "Cerrar caja";
             }
+            CalcularTotales();
         }
 
         private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)

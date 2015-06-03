@@ -33,8 +33,6 @@ namespace EC_Admin
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El usuario y/o contraseña no coinciden.", "Admin CSY");
                 txtPass.Text = "";
-                FuncionesGenerales.ColoresError(txtPass);
-                FuncionesGenerales.ColoresError(txtUsuario);
             }
         }
 
@@ -77,7 +75,12 @@ namespace EC_Admin
 
         private void btnPruebas_Click(object sender, EventArgs e)
         {
-            Cliente.ClienteGeneral();
+            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Algo", "¯\\_(ツ)_/¯");
+            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Algo", "¯\\_(ツ)_/¯");
+            FuncionesGenerales.Mensaje(this, Mensajes.Exito, "Algo", "¯\\_(ツ)_/¯");
+            FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Algo", "¯\\_(ツ)_/¯");
+            FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "Algo", "¯\\_(ツ)_/¯");
+            //Cliente.ClienteGeneral();
             //(new frmEspera("Algo")).ShowDialog(this);
             //EC_Admin.Properties.Settings.Default.PrimerUso = true;
             //EC_Admin.Properties.Settings.Default.Save();
