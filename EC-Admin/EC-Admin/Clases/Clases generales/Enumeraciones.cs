@@ -58,4 +58,11 @@ namespace EC_Admin
         Cerrada = 1,
         Credito = 2
     }
+
+    public enum EstadoTraspaso
+    {
+        Aceptada = 0,
+        Espera = 1,
+        Rechazada = 2
+    }
 }

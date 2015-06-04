@@ -103,6 +103,11 @@
             // 
             this.nudDescuento.Font = new System.Drawing.Font("Corbel", 11F);
             this.nudDescuento.Location = new System.Drawing.Point(153, 31);
+            this.nudDescuento.Maximum = new decimal(new int[] {
+            276447231,
+            23283,
+            0,
+            0});
             this.nudDescuento.Name = "nudDescuento";
             this.nudDescuento.Size = new System.Drawing.Size(123, 25);
             this.nudDescuento.TabIndex = 9;

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tcoPrincipal = new System.Windows.Forms.TabControl();
             this.tpaProducto = new System.Windows.Forms.TabPage();
             this.btnQuitar03 = new System.Windows.Forms.Button();
@@ -48,10 +48,6 @@
             this.pcbImagen01 = new System.Windows.Forms.PictureBox();
             this.lblEUnidad = new System.Windows.Forms.Label();
             this.cboUnidad = new System.Windows.Forms.ComboBox();
-            this.txtCantMayoreo = new System.Windows.Forms.TextBox();
-            this.lblECantMayoreo = new System.Windows.Forms.Label();
-            this.txtCantMedioMayoreo = new System.Windows.Forms.TextBox();
-            this.lblECantMedioMayoreo = new System.Windows.Forms.Label();
             this.txtPrecioMayoreo = new System.Windows.Forms.TextBox();
             this.lblEPrecioMayoreo = new System.Windows.Forms.Label();
             this.txtPrecioMedioMayoreo = new System.Windows.Forms.TextBox();
@@ -88,6 +84,7 @@
             this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CEdito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblInformacionCodigo = new System.Windows.Forms.Label();
             this.tcoPrincipal.SuspendLayout();
             this.tpaProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen03)).BeginInit();
@@ -111,6 +108,7 @@
             // 
             // tpaProducto
             // 
+            this.tpaProducto.Controls.Add(this.lblInformacionCodigo);
             this.tpaProducto.Controls.Add(this.btnQuitar03);
             this.tpaProducto.Controls.Add(this.btnQuitar02);
             this.tpaProducto.Controls.Add(this.lblInfoImagen03);
@@ -125,10 +123,6 @@
             this.tpaProducto.Controls.Add(this.pcbImagen01);
             this.tpaProducto.Controls.Add(this.lblEUnidad);
             this.tpaProducto.Controls.Add(this.cboUnidad);
-            this.tpaProducto.Controls.Add(this.txtCantMayoreo);
-            this.tpaProducto.Controls.Add(this.lblECantMayoreo);
-            this.tpaProducto.Controls.Add(this.txtCantMedioMayoreo);
-            this.tpaProducto.Controls.Add(this.lblECantMedioMayoreo);
             this.tpaProducto.Controls.Add(this.txtPrecioMayoreo);
             this.tpaProducto.Controls.Add(this.lblEPrecioMayoreo);
             this.tpaProducto.Controls.Add(this.txtPrecioMedioMayoreo);
@@ -167,10 +161,10 @@
             this.btnQuitar03.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar03.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar03.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar03.Location = new System.Drawing.Point(343, 498);
+            this.btnQuitar03.Location = new System.Drawing.Point(343, 497);
             this.btnQuitar03.Name = "btnQuitar03";
             this.btnQuitar03.Size = new System.Drawing.Size(97, 30);
-            this.btnQuitar03.TabIndex = 82;
+            this.btnQuitar03.TabIndex = 29;
             this.btnQuitar03.Text = "Quitar imagen";
             this.btnQuitar03.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitar03.UseVisualStyleBackColor = false;
@@ -189,7 +183,7 @@
             this.btnQuitar02.Location = new System.Drawing.Point(176, 498);
             this.btnQuitar02.Name = "btnQuitar02";
             this.btnQuitar02.Size = new System.Drawing.Size(97, 30);
-            this.btnQuitar02.TabIndex = 81;
+            this.btnQuitar02.TabIndex = 27;
             this.btnQuitar02.Text = "Quitar imagen";
             this.btnQuitar02.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitar02.UseVisualStyleBackColor = false;
@@ -203,7 +197,7 @@
             this.lblInfoImagen03.Location = new System.Drawing.Point(340, 474);
             this.lblInfoImagen03.Name = "lblInfoImagen03";
             this.lblInfoImagen03.Size = new System.Drawing.Size(141, 14);
-            this.lblInfoImagen03.TabIndex = 79;
+            this.lblInfoImagen03.TabIndex = 28;
             this.lblInfoImagen03.Text = "Clic para cambiar la imagen";
             // 
             // pcbImagen03
@@ -225,7 +219,7 @@
             this.lblInfoImagen02.Location = new System.Drawing.Point(173, 474);
             this.lblInfoImagen02.Name = "lblInfoImagen02";
             this.lblInfoImagen02.Size = new System.Drawing.Size(141, 14);
-            this.lblInfoImagen02.TabIndex = 77;
+            this.lblInfoImagen02.TabIndex = 26;
             this.lblInfoImagen02.Text = "Clic para cambiar la imagen";
             // 
             // pcbImagen02
@@ -244,20 +238,20 @@
             this.txtCant.BackColor = System.Drawing.Color.White;
             this.txtCant.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtCant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCant.Location = new System.Drawing.Point(9, 198);
+            this.txtCant.Location = new System.Drawing.Point(274, 140);
             this.txtCant.Name = "txtCant";
             this.txtCant.Size = new System.Drawing.Size(259, 29);
-            this.txtCant.TabIndex = 62;
+            this.txtCant.TabIndex = 15;
             this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerosEnteros_KeyPress);
             // 
             // lblECant
             // 
             this.lblECant.AutoSize = true;
             this.lblECant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECant.Location = new System.Drawing.Point(6, 177);
+            this.lblECant.Location = new System.Drawing.Point(271, 119);
             this.lblECant.Name = "lblECant";
             this.lblECant.Size = new System.Drawing.Size(63, 18);
-            this.lblECant.TabIndex = 61;
+            this.lblECant.TabIndex = 14;
             this.lblECant.Text = "Cantidad";
             // 
             // btnAceptar
@@ -274,7 +268,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(647, 484);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 75;
+            this.btnAceptar.TabIndex = 30;
             this.btnAceptar.Text = "Crear";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -294,7 +288,7 @@
             this.btnQuitar01.Location = new System.Drawing.Point(9, 498);
             this.btnQuitar01.Name = "btnQuitar01";
             this.btnQuitar01.Size = new System.Drawing.Size(97, 30);
-            this.btnQuitar01.TabIndex = 74;
+            this.btnQuitar01.TabIndex = 25;
             this.btnQuitar01.Text = "Quitar imagen";
             this.btnQuitar01.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitar01.UseVisualStyleBackColor = false;
@@ -308,7 +302,7 @@
             this.lblInfoImagen01.Location = new System.Drawing.Point(6, 474);
             this.lblInfoImagen01.Name = "lblInfoImagen01";
             this.lblInfoImagen01.Size = new System.Drawing.Size(141, 14);
-            this.lblInfoImagen01.TabIndex = 73;
+            this.lblInfoImagen01.TabIndex = 24;
             this.lblInfoImagen01.Text = "Clic para cambiar la imagen";
             // 
             // pcbImagen01
@@ -326,10 +320,10 @@
             // 
             this.lblEUnidad.AutoSize = true;
             this.lblEUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEUnidad.Location = new System.Drawing.Point(536, 235);
+            this.lblEUnidad.Location = new System.Drawing.Point(6, 235);
             this.lblEUnidad.Name = "lblEUnidad";
             this.lblEUnidad.Size = new System.Drawing.Size(52, 18);
-            this.lblEUnidad.TabIndex = 71;
+            this.lblEUnidad.TabIndex = 22;
             this.lblEUnidad.Text = "Unidad";
             // 
             // cboUnidad
@@ -342,53 +336,11 @@
             this.cboUnidad.FormattingEnabled = true;
             this.cboUnidad.Items.AddRange(new object[] {
             "Pieza"});
-            this.cboUnidad.Location = new System.Drawing.Point(539, 256);
+            this.cboUnidad.Location = new System.Drawing.Point(9, 256);
             this.cboUnidad.Name = "cboUnidad";
             this.cboUnidad.Size = new System.Drawing.Size(259, 29);
-            this.cboUnidad.TabIndex = 72;
+            this.cboUnidad.TabIndex = 23;
             this.cboUnidad.SelectedIndexChanged += new System.EventHandler(this.cboUnidad_SelectedIndexChanged);
-            // 
-            // txtCantMayoreo
-            // 
-            this.txtCantMayoreo.BackColor = System.Drawing.Color.White;
-            this.txtCantMayoreo.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtCantMayoreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCantMayoreo.Location = new System.Drawing.Point(274, 256);
-            this.txtCantMayoreo.Name = "txtCantMayoreo";
-            this.txtCantMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtCantMayoreo.TabIndex = 70;
-            this.txtCantMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerosEnteros_KeyPress);
-            // 
-            // lblECantMayoreo
-            // 
-            this.lblECantMayoreo.AutoSize = true;
-            this.lblECantMayoreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECantMayoreo.Location = new System.Drawing.Point(271, 235);
-            this.lblECantMayoreo.Name = "lblECantMayoreo";
-            this.lblECantMayoreo.Size = new System.Drawing.Size(120, 18);
-            this.lblECantMayoreo.TabIndex = 69;
-            this.lblECantMayoreo.Text = "Cantidad mayoreo";
-            // 
-            // txtCantMedioMayoreo
-            // 
-            this.txtCantMedioMayoreo.BackColor = System.Drawing.Color.White;
-            this.txtCantMedioMayoreo.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtCantMedioMayoreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCantMedioMayoreo.Location = new System.Drawing.Point(9, 256);
-            this.txtCantMedioMayoreo.Name = "txtCantMedioMayoreo";
-            this.txtCantMedioMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtCantMedioMayoreo.TabIndex = 68;
-            this.txtCantMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerosEnteros_KeyPress);
-            // 
-            // lblECantMedioMayoreo
-            // 
-            this.lblECantMedioMayoreo.AutoSize = true;
-            this.lblECantMedioMayoreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECantMedioMayoreo.Location = new System.Drawing.Point(6, 235);
-            this.lblECantMedioMayoreo.Name = "lblECantMedioMayoreo";
-            this.lblECantMedioMayoreo.Size = new System.Drawing.Size(179, 18);
-            this.lblECantMedioMayoreo.TabIndex = 67;
-            this.lblECantMedioMayoreo.Text = "Cantidad de medio mayoreo";
             // 
             // txtPrecioMayoreo
             // 
@@ -398,7 +350,7 @@
             this.txtPrecioMayoreo.Location = new System.Drawing.Point(539, 198);
             this.txtPrecioMayoreo.Name = "txtPrecioMayoreo";
             this.txtPrecioMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtPrecioMayoreo.TabIndex = 66;
+            this.txtPrecioMayoreo.TabIndex = 21;
             this.txtPrecioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblEPrecioMayoreo
@@ -408,7 +360,7 @@
             this.lblEPrecioMayoreo.Location = new System.Drawing.Point(536, 177);
             this.lblEPrecioMayoreo.Name = "lblEPrecioMayoreo";
             this.lblEPrecioMayoreo.Size = new System.Drawing.Size(104, 18);
-            this.lblEPrecioMayoreo.TabIndex = 65;
+            this.lblEPrecioMayoreo.TabIndex = 20;
             this.lblEPrecioMayoreo.Text = "Precio mayoreo";
             // 
             // txtPrecioMedioMayoreo
@@ -419,7 +371,7 @@
             this.txtPrecioMedioMayoreo.Location = new System.Drawing.Point(274, 198);
             this.txtPrecioMedioMayoreo.Name = "txtPrecioMedioMayoreo";
             this.txtPrecioMedioMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtPrecioMedioMayoreo.TabIndex = 64;
+            this.txtPrecioMedioMayoreo.TabIndex = 19;
             this.txtPrecioMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblEPrecioMedioMayoreo
@@ -429,7 +381,7 @@
             this.lblEPrecioMedioMayoreo.Location = new System.Drawing.Point(271, 177);
             this.lblEPrecioMedioMayoreo.Name = "lblEPrecioMedioMayoreo";
             this.lblEPrecioMedioMayoreo.Size = new System.Drawing.Size(145, 18);
-            this.lblEPrecioMedioMayoreo.TabIndex = 63;
+            this.lblEPrecioMedioMayoreo.TabIndex = 18;
             this.lblEPrecioMedioMayoreo.Text = "Precio medio mayoreo";
             // 
             // txtPrecio
@@ -437,20 +389,20 @@
             this.txtPrecio.BackColor = System.Drawing.Color.White;
             this.txtPrecio.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtPrecio.Location = new System.Drawing.Point(274, 140);
+            this.txtPrecio.Location = new System.Drawing.Point(9, 198);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(259, 29);
-            this.txtPrecio.TabIndex = 60;
+            this.txtPrecio.TabIndex = 17;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // lblEPrecio
             // 
             this.lblEPrecio.AutoSize = true;
             this.lblEPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEPrecio.Location = new System.Drawing.Point(271, 119);
+            this.lblEPrecio.Location = new System.Drawing.Point(6, 177);
             this.lblEPrecio.Name = "lblEPrecio";
             this.lblEPrecio.Size = new System.Drawing.Size(47, 18);
-            this.lblEPrecio.TabIndex = 59;
+            this.lblEPrecio.TabIndex = 16;
             this.lblEPrecio.Text = "Precio";
             // 
             // txtCosto
@@ -461,7 +413,7 @@
             this.txtCosto.Location = new System.Drawing.Point(9, 140);
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(259, 29);
-            this.txtCosto.TabIndex = 58;
+            this.txtCosto.TabIndex = 13;
             // 
             // lblECosto
             // 
@@ -470,7 +422,7 @@
             this.lblECosto.Location = new System.Drawing.Point(6, 119);
             this.lblECosto.Name = "lblECosto";
             this.lblECosto.Size = new System.Drawing.Size(44, 18);
-            this.lblECosto.TabIndex = 57;
+            this.lblECosto.TabIndex = 12;
             this.lblECosto.Text = "Costo";
             // 
             // txtDescripcion01
@@ -482,7 +434,7 @@
             this.txtDescripcion01.Multiline = true;
             this.txtDescripcion01.Name = "txtDescripcion01";
             this.txtDescripcion01.Size = new System.Drawing.Size(259, 87);
-            this.txtDescripcion01.TabIndex = 56;
+            this.txtDescripcion01.TabIndex = 11;
             // 
             // lblEDescripcion01
             // 
@@ -491,7 +443,7 @@
             this.lblEDescripcion01.Location = new System.Drawing.Point(536, 61);
             this.lblEDescripcion01.Name = "lblEDescripcion01";
             this.lblEDescripcion01.Size = new System.Drawing.Size(80, 18);
-            this.lblEDescripcion01.TabIndex = 55;
+            this.lblEDescripcion01.TabIndex = 10;
             this.lblEDescripcion01.Text = "Descripción";
             // 
             // lblECategoria
@@ -501,7 +453,7 @@
             this.lblECategoria.Location = new System.Drawing.Point(271, 3);
             this.lblECategoria.Name = "lblECategoria";
             this.lblECategoria.Size = new System.Drawing.Size(67, 18);
-            this.lblECategoria.TabIndex = 47;
+            this.lblECategoria.TabIndex = 2;
             this.lblECategoria.Text = "Categoría";
             // 
             // cboCategoria
@@ -515,7 +467,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(274, 24);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(259, 29);
-            this.cboCategoria.TabIndex = 48;
+            this.cboCategoria.TabIndex = 3;
             // 
             // lblEProveedor
             // 
@@ -524,7 +476,7 @@
             this.lblEProveedor.Location = new System.Drawing.Point(6, 3);
             this.lblEProveedor.Name = "lblEProveedor";
             this.lblEProveedor.Size = new System.Drawing.Size(72, 18);
-            this.lblEProveedor.TabIndex = 45;
+            this.lblEProveedor.TabIndex = 0;
             this.lblEProveedor.Text = "Proveedor";
             // 
             // cboProveedor
@@ -538,7 +490,7 @@
             this.cboProveedor.Location = new System.Drawing.Point(9, 24);
             this.cboProveedor.Name = "cboProveedor";
             this.cboProveedor.Size = new System.Drawing.Size(259, 29);
-            this.cboProveedor.TabIndex = 46;
+            this.cboProveedor.TabIndex = 1;
             // 
             // txtCodigo
             // 
@@ -548,7 +500,8 @@
             this.txtCodigo.Location = new System.Drawing.Point(274, 82);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(259, 29);
-            this.txtCodigo.TabIndex = 54;
+            this.txtCodigo.TabIndex = 9;
+            this.txtCodigo.Leave += new System.EventHandler(this.txtCodigo_Leave);
             // 
             // lblECodigo
             // 
@@ -557,7 +510,7 @@
             this.lblECodigo.Location = new System.Drawing.Point(271, 61);
             this.lblECodigo.Name = "lblECodigo";
             this.lblECodigo.Size = new System.Drawing.Size(52, 18);
-            this.lblECodigo.TabIndex = 53;
+            this.lblECodigo.TabIndex = 8;
             this.lblECodigo.Text = "Código";
             // 
             // txtMarca
@@ -568,7 +521,7 @@
             this.txtMarca.Location = new System.Drawing.Point(9, 82);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(259, 29);
-            this.txtMarca.TabIndex = 52;
+            this.txtMarca.TabIndex = 7;
             // 
             // lblEMarca
             // 
@@ -577,7 +530,7 @@
             this.lblEMarca.Location = new System.Drawing.Point(6, 61);
             this.lblEMarca.Name = "lblEMarca";
             this.lblEMarca.Size = new System.Drawing.Size(46, 18);
-            this.lblEMarca.TabIndex = 51;
+            this.lblEMarca.TabIndex = 6;
             this.lblEMarca.Text = "Marca";
             // 
             // txtNombre
@@ -588,7 +541,7 @@
             this.txtNombre.Location = new System.Drawing.Point(539, 24);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(259, 29);
-            this.txtNombre.TabIndex = 50;
+            this.txtNombre.TabIndex = 5;
             // 
             // lblENombre
             // 
@@ -597,7 +550,7 @@
             this.lblENombre.Location = new System.Drawing.Point(536, 3);
             this.lblENombre.Name = "lblENombre";
             this.lblENombre.Size = new System.Drawing.Size(58, 18);
-            this.lblENombre.TabIndex = 49;
+            this.lblENombre.TabIndex = 4;
             this.lblENombre.Text = "Nombre";
             // 
             // tpaPaquetes
@@ -758,12 +711,12 @@
             this.dgvPaquetes.AllowUserToDeleteRows = false;
             this.dgvPaquetes.AllowUserToResizeColumns = false;
             this.dgvPaquetes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            this.dgvPaquetes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            this.dgvPaquetes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPaquetes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -771,14 +724,14 @@
             this.dgvPaquetes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPaquetes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPaquetes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaquetes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaquetes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPaquetes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaquetes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
@@ -786,14 +739,14 @@
             this.CCantidad,
             this.CBase,
             this.CEdito});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPaquetes.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPaquetes.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvPaquetes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPaquetes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvPaquetes.Location = new System.Drawing.Point(6, 6);
@@ -815,8 +768,8 @@
             // CPrecio
             // 
             this.CPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Format = "C2";
-            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Format = "C2";
+            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle7;
             this.CPrecio.HeaderText = "Precio";
             this.CPrecio.Name = "CPrecio";
             // 
@@ -838,6 +791,17 @@
             this.CEdito.Name = "CEdito";
             this.CEdito.Visible = false;
             // 
+            // lblInformacionCodigo
+            // 
+            this.lblInformacionCodigo.AutoSize = true;
+            this.lblInformacionCodigo.Font = new System.Drawing.Font("Corbel", 9F);
+            this.lblInformacionCodigo.Location = new System.Drawing.Point(271, 271);
+            this.lblInformacionCodigo.Name = "lblInformacionCodigo";
+            this.lblInformacionCodigo.Size = new System.Drawing.Size(319, 14);
+            this.lblInformacionCodigo.TabIndex = 155;
+            this.lblInformacionCodigo.Text = "El código de producto ingresado ya existe. Favor de ingresar otro.";
+            this.lblInformacionCodigo.Visible = false;
+            // 
             // frmNuevoProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -846,11 +810,13 @@
             this.ClientSize = new System.Drawing.Size(813, 567);
             this.Controls.Add(this.tcoPrincipal);
             this.Font = new System.Drawing.Font("Corbel", 11F);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmNuevoProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar nuevo producto";
             this.Load += new System.EventHandler(this.frmNuevoProducto_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmNuevoProducto_KeyDown);
             this.tcoPrincipal.ResumeLayout(false);
             this.tpaProducto.ResumeLayout(false);
             this.tpaProducto.PerformLayout();
@@ -883,10 +849,6 @@
         private System.Windows.Forms.PictureBox pcbImagen01;
         private System.Windows.Forms.Label lblEUnidad;
         private System.Windows.Forms.ComboBox cboUnidad;
-        private System.Windows.Forms.TextBox txtCantMayoreo;
-        private System.Windows.Forms.Label lblECantMayoreo;
-        private System.Windows.Forms.TextBox txtCantMedioMayoreo;
-        private System.Windows.Forms.Label lblECantMedioMayoreo;
         private System.Windows.Forms.TextBox txtPrecioMayoreo;
         private System.Windows.Forms.Label lblEPrecioMayoreo;
         private System.Windows.Forms.TextBox txtPrecioMedioMayoreo;
@@ -923,6 +885,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn CBase;
         private System.Windows.Forms.DataGridViewTextBoxColumn CEdito;
+        private System.Windows.Forms.Label lblInformacionCodigo;
 
     }
 }

@@ -318,11 +318,11 @@ namespace EC_Admin
         /// <param name="ex">Excepción que ocurrió</param>
         public static System.Windows.Forms.DialogResult Mensaje(IWin32Window frm, Mensajes m, string mensaje, string titulo, Exception ex = null)
         {
-            return (new frmMensaje(m, mensaje, titulo)).ShowDialog(frm);
-            //if (m != Mensajes.Error)
-            //    return (new frmMensaje(m, mensaje, titulo)).ShowDialog(frm);
-            //else
-            //    return MessageBox.Show(ex.ToString());
+            //return (new frmMensaje(m, mensaje, titulo)).ShowDialog(frm);
+            if (m != Mensajes.Error)
+                return (new frmMensaje(m, mensaje, titulo)).ShowDialog(frm);
+            else
+                return MessageBox.Show(ex.ToString());
 
         }
 

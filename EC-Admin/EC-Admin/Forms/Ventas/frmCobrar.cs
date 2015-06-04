@@ -174,6 +174,7 @@ namespace EC_Admin.Forms
                     if (FuncionesGenerales.ImprimirTicket(this, "¿Desea imprimir el ticket de ésta venta?"))
                     {
                         ImprimirTicket();
+                        ImprimirTicket();
                     }
                     FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha guardado los datos de la venta correctamente!", "Admin CSY");
                     this.Close();

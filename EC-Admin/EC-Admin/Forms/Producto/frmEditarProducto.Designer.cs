@@ -55,8 +55,6 @@
             this.btnQuitar02 = new System.Windows.Forms.Button();
             this.lblInfoImagen02 = new System.Windows.Forms.Label();
             this.txtCant = new System.Windows.Forms.TextBox();
-            this.txtCantMayoreo = new System.Windows.Forms.TextBox();
-            this.txtCantMedioMayoreo = new System.Windows.Forms.TextBox();
             this.txtPrecioMayoreo = new System.Windows.Forms.TextBox();
             this.txtPrecioMedioMayoreo = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
@@ -69,8 +67,6 @@
             this.lblECant = new System.Windows.Forms.Label();
             this.lblEUnidad = new System.Windows.Forms.Label();
             this.cboUnidad = new System.Windows.Forms.ComboBox();
-            this.lblECantMayoreo = new System.Windows.Forms.Label();
-            this.lblECantMedioMayoreo = new System.Windows.Forms.Label();
             this.lblEPrecioMayoreo = new System.Windows.Forms.Label();
             this.lblEPrecioMedioMayoreo = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -88,6 +84,7 @@
             this.lblEMarca = new System.Windows.Forms.Label();
             this.lblENombre = new System.Windows.Forms.Label();
             this.tcoPrincipal = new System.Windows.Forms.TabControl();
+            this.lblInformacionCodigo = new System.Windows.Forms.Label();
             this.tpaPaquete.SuspendLayout();
             this.pnlPaquete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).BeginInit();
@@ -105,10 +102,10 @@
             this.tpaPaquete.Controls.Add(this.btnNuevo);
             this.tpaPaquete.Controls.Add(this.pnlPaquete);
             this.tpaPaquete.Controls.Add(this.dgvPaquetes);
-            this.tpaPaquete.Location = new System.Drawing.Point(4, 27);
+            this.tpaPaquete.Location = new System.Drawing.Point(4, 22);
             this.tpaPaquete.Name = "tpaPaquete";
             this.tpaPaquete.Padding = new System.Windows.Forms.Padding(3);
-            this.tpaPaquete.Size = new System.Drawing.Size(805, 536);
+            this.tpaPaquete.Size = new System.Drawing.Size(805, 541);
             this.tpaPaquete.TabIndex = 1;
             this.tpaPaquete.Text = "Paquetes";
             this.tpaPaquete.UseVisualStyleBackColor = true;
@@ -338,14 +335,13 @@
             // 
             // tpaProducto
             // 
+            this.tpaProducto.Controls.Add(this.lblInformacionCodigo);
             this.tpaProducto.Controls.Add(this.btnQuitar03);
             this.tpaProducto.Controls.Add(this.lblInfoImagen03);
             this.tpaProducto.Controls.Add(this.pcbImagen03);
             this.tpaProducto.Controls.Add(this.btnQuitar02);
             this.tpaProducto.Controls.Add(this.lblInfoImagen02);
             this.tpaProducto.Controls.Add(this.txtCant);
-            this.tpaProducto.Controls.Add(this.txtCantMayoreo);
-            this.tpaProducto.Controls.Add(this.txtCantMedioMayoreo);
             this.tpaProducto.Controls.Add(this.txtPrecioMayoreo);
             this.tpaProducto.Controls.Add(this.txtPrecioMedioMayoreo);
             this.tpaProducto.Controls.Add(this.txtPrecio);
@@ -358,8 +354,6 @@
             this.tpaProducto.Controls.Add(this.lblECant);
             this.tpaProducto.Controls.Add(this.lblEUnidad);
             this.tpaProducto.Controls.Add(this.cboUnidad);
-            this.tpaProducto.Controls.Add(this.lblECantMayoreo);
-            this.tpaProducto.Controls.Add(this.lblECantMedioMayoreo);
             this.tpaProducto.Controls.Add(this.lblEPrecioMayoreo);
             this.tpaProducto.Controls.Add(this.lblEPrecioMedioMayoreo);
             this.tpaProducto.Controls.Add(this.btnAceptar);
@@ -394,10 +388,10 @@
             this.btnQuitar03.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar03.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar03.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar03.Location = new System.Drawing.Point(342, 490);
+            this.btnQuitar03.Location = new System.Drawing.Point(342, 480);
             this.btnQuitar03.Name = "btnQuitar03";
             this.btnQuitar03.Size = new System.Drawing.Size(97, 30);
-            this.btnQuitar03.TabIndex = 151;
+            this.btnQuitar03.TabIndex = 25;
             this.btnQuitar03.Text = "Quitar imagen";
             this.btnQuitar03.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitar03.UseVisualStyleBackColor = false;
@@ -411,7 +405,7 @@
             this.lblInfoImagen03.Location = new System.Drawing.Point(339, 477);
             this.lblInfoImagen03.Name = "lblInfoImagen03";
             this.lblInfoImagen03.Size = new System.Drawing.Size(141, 14);
-            this.lblInfoImagen03.TabIndex = 149;
+            this.lblInfoImagen03.TabIndex = 24;
             this.lblInfoImagen03.Text = "Clic para cambiar la imagen";
             // 
             // pcbImagen03
@@ -435,10 +429,10 @@
             this.btnQuitar02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar02.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar02.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar02.Location = new System.Drawing.Point(175, 490);
+            this.btnQuitar02.Location = new System.Drawing.Point(175, 480);
             this.btnQuitar02.Name = "btnQuitar02";
             this.btnQuitar02.Size = new System.Drawing.Size(97, 30);
-            this.btnQuitar02.TabIndex = 145;
+            this.btnQuitar02.TabIndex = 23;
             this.btnQuitar02.Text = "Quitar imagen";
             this.btnQuitar02.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitar02.UseVisualStyleBackColor = false;
@@ -452,7 +446,7 @@
             this.lblInfoImagen02.Location = new System.Drawing.Point(172, 477);
             this.lblInfoImagen02.Name = "lblInfoImagen02";
             this.lblInfoImagen02.Size = new System.Drawing.Size(141, 14);
-            this.lblInfoImagen02.TabIndex = 144;
+            this.lblInfoImagen02.TabIndex = 22;
             this.lblInfoImagen02.Text = "Clic para cambiar la imagen";
             // 
             // txtCant
@@ -460,33 +454,11 @@
             this.txtCant.BackColor = System.Drawing.Color.White;
             this.txtCant.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtCant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCant.Location = new System.Drawing.Point(9, 198);
+            this.txtCant.Location = new System.Drawing.Point(274, 140);
             this.txtCant.Name = "txtCant";
             this.txtCant.Size = new System.Drawing.Size(259, 29);
             this.txtCant.TabIndex = 113;
             this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerosEnteros_KeyPress);
-            // 
-            // txtCantMayoreo
-            // 
-            this.txtCantMayoreo.BackColor = System.Drawing.Color.White;
-            this.txtCantMayoreo.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtCantMayoreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCantMayoreo.Location = new System.Drawing.Point(274, 256);
-            this.txtCantMayoreo.Name = "txtCantMayoreo";
-            this.txtCantMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtCantMayoreo.TabIndex = 129;
-            this.txtCantMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerosEnteros_KeyPress);
-            // 
-            // txtCantMedioMayoreo
-            // 
-            this.txtCantMedioMayoreo.BackColor = System.Drawing.Color.White;
-            this.txtCantMedioMayoreo.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtCantMedioMayoreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCantMedioMayoreo.Location = new System.Drawing.Point(9, 256);
-            this.txtCantMedioMayoreo.Name = "txtCantMedioMayoreo";
-            this.txtCantMedioMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtCantMedioMayoreo.TabIndex = 126;
-            this.txtCantMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerosEnteros_KeyPress);
             // 
             // txtPrecioMayoreo
             // 
@@ -496,7 +468,7 @@
             this.txtPrecioMayoreo.Location = new System.Drawing.Point(539, 198);
             this.txtPrecioMayoreo.Name = "txtPrecioMayoreo";
             this.txtPrecioMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtPrecioMayoreo.TabIndex = 121;
+            this.txtPrecioMayoreo.TabIndex = 17;
             this.txtPrecioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // txtPrecioMedioMayoreo
@@ -507,7 +479,7 @@
             this.txtPrecioMedioMayoreo.Location = new System.Drawing.Point(274, 198);
             this.txtPrecioMedioMayoreo.Name = "txtPrecioMedioMayoreo";
             this.txtPrecioMedioMayoreo.Size = new System.Drawing.Size(259, 29);
-            this.txtPrecioMedioMayoreo.TabIndex = 117;
+            this.txtPrecioMedioMayoreo.TabIndex = 15;
             this.txtPrecioMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // txtPrecio
@@ -515,10 +487,10 @@
             this.txtPrecio.BackColor = System.Drawing.Color.White;
             this.txtPrecio.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtPrecio.Location = new System.Drawing.Point(274, 140);
+            this.txtPrecio.Location = new System.Drawing.Point(9, 198);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(259, 29);
-            this.txtPrecio.TabIndex = 109;
+            this.txtPrecio.TabIndex = 13;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // txtCosto
@@ -541,7 +513,7 @@
             this.txtDescripcion01.Multiline = true;
             this.txtDescripcion01.Name = "txtDescripcion01";
             this.txtDescripcion01.Size = new System.Drawing.Size(259, 87);
-            this.txtDescripcion01.TabIndex = 102;
+            this.txtDescripcion01.TabIndex = 11;
             // 
             // txtCodigo
             // 
@@ -551,7 +523,8 @@
             this.txtCodigo.Location = new System.Drawing.Point(274, 82);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(259, 29);
-            this.txtCodigo.TabIndex = 97;
+            this.txtCodigo.TabIndex = 9;
+            this.txtCodigo.Leave += new System.EventHandler(this.txtCodigo_Leave);
             // 
             // txtMarca
             // 
@@ -561,7 +534,7 @@
             this.txtMarca.Location = new System.Drawing.Point(9, 82);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(259, 29);
-            this.txtMarca.TabIndex = 94;
+            this.txtMarca.TabIndex = 7;
             // 
             // txtNombre
             // 
@@ -571,7 +544,7 @@
             this.txtNombre.Location = new System.Drawing.Point(539, 24);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(259, 29);
-            this.txtNombre.TabIndex = 90;
+            this.txtNombre.TabIndex = 5;
             // 
             // pcbImagen02
             // 
@@ -588,7 +561,7 @@
             // 
             this.lblECant.AutoSize = true;
             this.lblECant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECant.Location = new System.Drawing.Point(6, 177);
+            this.lblECant.Location = new System.Drawing.Point(271, 119);
             this.lblECant.Name = "lblECant";
             this.lblECant.Size = new System.Drawing.Size(63, 18);
             this.lblECant.TabIndex = 111;
@@ -598,10 +571,10 @@
             // 
             this.lblEUnidad.AutoSize = true;
             this.lblEUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEUnidad.Location = new System.Drawing.Point(536, 235);
+            this.lblEUnidad.Location = new System.Drawing.Point(6, 235);
             this.lblEUnidad.Name = "lblEUnidad";
             this.lblEUnidad.Size = new System.Drawing.Size(52, 18);
-            this.lblEUnidad.TabIndex = 131;
+            this.lblEUnidad.TabIndex = 18;
             this.lblEUnidad.Text = "Unidad";
             // 
             // cboUnidad
@@ -614,31 +587,11 @@
             this.cboUnidad.FormattingEnabled = true;
             this.cboUnidad.Items.AddRange(new object[] {
             "Pieza"});
-            this.cboUnidad.Location = new System.Drawing.Point(539, 256);
+            this.cboUnidad.Location = new System.Drawing.Point(9, 256);
             this.cboUnidad.Name = "cboUnidad";
             this.cboUnidad.Size = new System.Drawing.Size(259, 29);
-            this.cboUnidad.TabIndex = 133;
+            this.cboUnidad.TabIndex = 19;
             this.cboUnidad.SelectedIndexChanged += new System.EventHandler(this.cboUnidad_SelectedIndexChanged);
-            // 
-            // lblECantMayoreo
-            // 
-            this.lblECantMayoreo.AutoSize = true;
-            this.lblECantMayoreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECantMayoreo.Location = new System.Drawing.Point(271, 235);
-            this.lblECantMayoreo.Name = "lblECantMayoreo";
-            this.lblECantMayoreo.Size = new System.Drawing.Size(120, 18);
-            this.lblECantMayoreo.TabIndex = 128;
-            this.lblECantMayoreo.Text = "Cantidad mayoreo";
-            // 
-            // lblECantMedioMayoreo
-            // 
-            this.lblECantMedioMayoreo.AutoSize = true;
-            this.lblECantMedioMayoreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECantMedioMayoreo.Location = new System.Drawing.Point(6, 235);
-            this.lblECantMedioMayoreo.Name = "lblECantMedioMayoreo";
-            this.lblECantMedioMayoreo.Size = new System.Drawing.Size(179, 18);
-            this.lblECantMedioMayoreo.TabIndex = 124;
-            this.lblECantMedioMayoreo.Text = "Cantidad de medio mayoreo";
             // 
             // lblEPrecioMayoreo
             // 
@@ -647,7 +600,7 @@
             this.lblEPrecioMayoreo.Location = new System.Drawing.Point(536, 177);
             this.lblEPrecioMayoreo.Name = "lblEPrecioMayoreo";
             this.lblEPrecioMayoreo.Size = new System.Drawing.Size(104, 18);
-            this.lblEPrecioMayoreo.TabIndex = 119;
+            this.lblEPrecioMayoreo.TabIndex = 16;
             this.lblEPrecioMayoreo.Text = "Precio mayoreo";
             // 
             // lblEPrecioMedioMayoreo
@@ -657,7 +610,7 @@
             this.lblEPrecioMedioMayoreo.Location = new System.Drawing.Point(271, 177);
             this.lblEPrecioMedioMayoreo.Name = "lblEPrecioMedioMayoreo";
             this.lblEPrecioMedioMayoreo.Size = new System.Drawing.Size(145, 18);
-            this.lblEPrecioMedioMayoreo.TabIndex = 116;
+            this.lblEPrecioMedioMayoreo.TabIndex = 14;
             this.lblEPrecioMedioMayoreo.Text = "Precio medio mayoreo";
             // 
             // btnAceptar
@@ -671,10 +624,10 @@
             this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(647, 474);
+            this.btnAceptar.Location = new System.Drawing.Point(647, 464);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 139;
+            this.btnAceptar.TabIndex = 26;
             this.btnAceptar.Text = "Modificar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -691,10 +644,10 @@
             this.btnQuitar01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar01.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar01.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar01.Location = new System.Drawing.Point(8, 490);
+            this.btnQuitar01.Location = new System.Drawing.Point(8, 480);
             this.btnQuitar01.Name = "btnQuitar01";
             this.btnQuitar01.Size = new System.Drawing.Size(97, 30);
-            this.btnQuitar01.TabIndex = 138;
+            this.btnQuitar01.TabIndex = 21;
             this.btnQuitar01.Text = "Quitar imagen";
             this.btnQuitar01.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitar01.UseVisualStyleBackColor = false;
@@ -708,7 +661,7 @@
             this.lblInfoImagen01.Location = new System.Drawing.Point(5, 477);
             this.lblInfoImagen01.Name = "lblInfoImagen01";
             this.lblInfoImagen01.Size = new System.Drawing.Size(141, 14);
-            this.lblInfoImagen01.TabIndex = 135;
+            this.lblInfoImagen01.TabIndex = 20;
             this.lblInfoImagen01.Text = "Clic para cambiar la imagen";
             // 
             // pcbImagen01
@@ -726,10 +679,10 @@
             // 
             this.lblEPrecio.AutoSize = true;
             this.lblEPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEPrecio.Location = new System.Drawing.Point(271, 119);
+            this.lblEPrecio.Location = new System.Drawing.Point(6, 177);
             this.lblEPrecio.Name = "lblEPrecio";
             this.lblEPrecio.Size = new System.Drawing.Size(47, 18);
-            this.lblEPrecio.TabIndex = 107;
+            this.lblEPrecio.TabIndex = 12;
             this.lblEPrecio.Text = "Precio";
             // 
             // lblECosto
@@ -749,7 +702,7 @@
             this.lblEDescripcion01.Location = new System.Drawing.Point(536, 61);
             this.lblEDescripcion01.Name = "lblEDescripcion01";
             this.lblEDescripcion01.Size = new System.Drawing.Size(80, 18);
-            this.lblEDescripcion01.TabIndex = 100;
+            this.lblEDescripcion01.TabIndex = 10;
             this.lblEDescripcion01.Text = "Descripción";
             // 
             // lblECategoria
@@ -759,7 +712,7 @@
             this.lblECategoria.Location = new System.Drawing.Point(271, 3);
             this.lblECategoria.Name = "lblECategoria";
             this.lblECategoria.Size = new System.Drawing.Size(67, 18);
-            this.lblECategoria.TabIndex = 84;
+            this.lblECategoria.TabIndex = 2;
             this.lblECategoria.Text = "Categoría";
             // 
             // cboCategoria
@@ -773,7 +726,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(274, 24);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(259, 29);
-            this.cboCategoria.TabIndex = 86;
+            this.cboCategoria.TabIndex = 3;
             // 
             // lblEProveedor
             // 
@@ -782,7 +735,7 @@
             this.lblEProveedor.Location = new System.Drawing.Point(6, 3);
             this.lblEProveedor.Name = "lblEProveedor";
             this.lblEProveedor.Size = new System.Drawing.Size(72, 18);
-            this.lblEProveedor.TabIndex = 80;
+            this.lblEProveedor.TabIndex = 0;
             this.lblEProveedor.Text = "Proveedor";
             // 
             // cboProveedor
@@ -796,7 +749,7 @@
             this.cboProveedor.Location = new System.Drawing.Point(9, 24);
             this.cboProveedor.Name = "cboProveedor";
             this.cboProveedor.Size = new System.Drawing.Size(259, 29);
-            this.cboProveedor.TabIndex = 82;
+            this.cboProveedor.TabIndex = 1;
             // 
             // lblECodigo
             // 
@@ -805,7 +758,7 @@
             this.lblECodigo.Location = new System.Drawing.Point(271, 61);
             this.lblECodigo.Name = "lblECodigo";
             this.lblECodigo.Size = new System.Drawing.Size(52, 18);
-            this.lblECodigo.TabIndex = 96;
+            this.lblECodigo.TabIndex = 8;
             this.lblECodigo.Text = "Código";
             // 
             // lblEMarca
@@ -815,7 +768,7 @@
             this.lblEMarca.Location = new System.Drawing.Point(6, 61);
             this.lblEMarca.Name = "lblEMarca";
             this.lblEMarca.Size = new System.Drawing.Size(46, 18);
-            this.lblEMarca.TabIndex = 92;
+            this.lblEMarca.TabIndex = 6;
             this.lblEMarca.Text = "Marca";
             // 
             // lblENombre
@@ -825,7 +778,7 @@
             this.lblENombre.Location = new System.Drawing.Point(536, 3);
             this.lblENombre.Name = "lblENombre";
             this.lblENombre.Size = new System.Drawing.Size(58, 18);
-            this.lblENombre.TabIndex = 87;
+            this.lblENombre.TabIndex = 4;
             this.lblENombre.Text = "Nombre";
             // 
             // tcoPrincipal
@@ -838,6 +791,17 @@
             this.tcoPrincipal.SelectedIndex = 0;
             this.tcoPrincipal.Size = new System.Drawing.Size(813, 567);
             this.tcoPrincipal.TabIndex = 0;
+            // 
+            // lblInformacionCodigo
+            // 
+            this.lblInformacionCodigo.AutoSize = true;
+            this.lblInformacionCodigo.Font = new System.Drawing.Font("Corbel", 9F);
+            this.lblInformacionCodigo.Location = new System.Drawing.Point(274, 271);
+            this.lblInformacionCodigo.Name = "lblInformacionCodigo";
+            this.lblInformacionCodigo.Size = new System.Drawing.Size(319, 14);
+            this.lblInformacionCodigo.TabIndex = 154;
+            this.lblInformacionCodigo.Text = "El código de producto ingresado ya existe. Favor de ingresar otro.";
+            this.lblInformacionCodigo.Visible = false;
             // 
             // frmEditarProducto
             // 
@@ -884,8 +848,6 @@
         private System.Windows.Forms.Button btnQuitar02;
         private System.Windows.Forms.Label lblInfoImagen02;
         private System.Windows.Forms.TextBox txtCant;
-        private System.Windows.Forms.TextBox txtCantMayoreo;
-        private System.Windows.Forms.TextBox txtCantMedioMayoreo;
         private System.Windows.Forms.TextBox txtPrecioMayoreo;
         private System.Windows.Forms.TextBox txtPrecioMedioMayoreo;
         private System.Windows.Forms.TextBox txtPrecio;
@@ -898,8 +860,6 @@
         private System.Windows.Forms.Label lblECant;
         private System.Windows.Forms.Label lblEUnidad;
         private System.Windows.Forms.ComboBox cboUnidad;
-        private System.Windows.Forms.Label lblECantMayoreo;
-        private System.Windows.Forms.Label lblECantMedioMayoreo;
         private System.Windows.Forms.Label lblEPrecioMayoreo;
         private System.Windows.Forms.Label lblEPrecioMedioMayoreo;
         private System.Windows.Forms.Button btnAceptar;
@@ -922,6 +882,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn CBase;
         private System.Windows.Forms.DataGridViewTextBoxColumn CEdito;
+        private System.Windows.Forms.Label lblInformacionCodigo;
 
 
     }

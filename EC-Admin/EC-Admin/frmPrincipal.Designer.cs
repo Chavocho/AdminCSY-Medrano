@@ -47,6 +47,7 @@
             this.ttPrincipal = new System.Windows.Forms.ToolTip(this.components);
             this.btnConfig = new System.Windows.Forms.Button();
             this.pcbUsuario = new System.Windows.Forms.PictureBox();
+            this.btnReimpresiónVenta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcbUsuario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -351,12 +352,33 @@
             this.pcbUsuario.TabIndex = 0;
             this.pcbUsuario.TabStop = false;
             // 
+            // btnReimpresiónVenta
+            // 
+            this.btnReimpresiónVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnReimpresiónVenta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnReimpresiónVenta.FlatAppearance.BorderSize = 0;
+            this.btnReimpresiónVenta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnReimpresiónVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnReimpresiónVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReimpresiónVenta.Font = new System.Drawing.Font("Corbel", 11F);
+            this.btnReimpresiónVenta.ForeColor = System.Drawing.Color.White;
+            this.btnReimpresiónVenta.Location = new System.Drawing.Point(241, 30);
+            this.btnReimpresiónVenta.Name = "btnReimpresiónVenta";
+            this.btnReimpresiónVenta.Size = new System.Drawing.Size(162, 46);
+            this.btnReimpresiónVenta.TabIndex = 19;
+            this.btnReimpresiónVenta.Text = "Reimpresión de tickets de venta";
+            this.btnReimpresiónVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReimpresiónVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReimpresiónVenta.UseVisualStyleBackColor = false;
+            this.btnReimpresiónVenta.Click += new System.EventHandler(this.btnReimpresiónVenta_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 698);
+            this.Controls.Add(this.btnReimpresiónVenta);
             this.Controls.Add(this.btnTrabajadores);
             this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.btnCerrarSesion);
@@ -404,6 +426,7 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lnsSeparador;
         private System.Windows.Forms.ToolTip ttPrincipal;
+        private System.Windows.Forms.Button btnReimpresiónVenta;
     }
 }
 

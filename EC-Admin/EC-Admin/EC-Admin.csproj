@@ -530,6 +530,12 @@
     <Compile Include="Forms\Trabajador\frmTrabajador.Designer.cs">
       <DependentUpon>frmTrabajador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Traspasos\frmTraspasos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Traspasos\frmTraspasos.Designer.cs">
+      <DependentUpon>frmTraspasos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Usuarios\frmEditarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -607,6 +613,12 @@
     </Compile>
     <Compile Include="Forms\Ventas\frmPaquetes.Designer.cs">
       <DependentUpon>frmPaquetes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmReimpresionTicketsVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmReimpresionTicketsVentas.Designer.cs">
+      <DependentUpon>frmReimpresionTicketsVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Ventas\frmVendedor.cs">
       <SubType>Form</SubType>
@@ -883,6 +895,9 @@
     <EmbeddedResource Include="Forms\Trabajador\frmTrabajador.resx">
       <DependentUpon>frmTrabajador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Traspasos\frmTraspasos.resx">
+      <DependentUpon>frmTraspasos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Usuarios\frmEditarUsuario.resx">
       <DependentUpon>frmEditarUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -921,6 +936,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\frmPaquetes.resx">
       <DependentUpon>frmPaquetes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmReimpresionTicketsVentas.resx">
+      <DependentUpon>frmReimpresionTicketsVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\frmVendedor.resx">
       <DependentUpon>frmVendedor.cs</DependentUpon>
@@ -1006,6 +1024,7 @@
       <Name>ControlesUsuario</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

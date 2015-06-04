@@ -334,17 +334,16 @@ namespace EC_Admin.Forms
             {
                 if (dr.Cells[0].Value.ToString() == id.ToString())
                 {
-                    dr.Cells[4].Value = ((decimal)dr.Cells[4].Value + cant);
-                    if (cboTipoPrecio.SelectedIndex == 0)
+                    decimal c = ((decimal)dr.Cells[4].Value + cant);
+                    decimal cantInv = Producto.CantidadProducto(id);
+                    if (c <= cantInv)
                     {
-                        if (!(bool)dr.Cells[7].Value)
-                        {
-                            dr.Cells[3].Value = PrecioProducto(id, (decimal)dr.Cells[4].Value);
-                        }
+                        dr.Cells[4].Value = c;
                     }
                     else
                     {
-                        PrecioProducto();
+                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La cantidad de productos que tratas de ingresar excede a la cantidad en inventario. La cantidad en inventario de \"" + dr.Cells[2].Value.ToString() + "\" son \"" + cantInv.ToString("0") + "\"", "Admin CSY");
+                        dr.Cells[4].Value = cantInv;
                     }
                     existe = true;
                     if (cant < 0 && (decimal)dr.Cells[4].Value <= 0)
@@ -360,26 +359,26 @@ namespace EC_Admin.Forms
         {
             try
             {
-                if (cboTipoPrecio.SelectedIndex > 0)
+                //if (cboTipoPrecio.SelectedIndex > 0)
+                //{
+                //    foreach (DataGridViewRow dr in dgvProductos.Rows)
+                //    {
+                //        if (!(bool)dr.Cells[7].Value && (int)dr.Cells[8].Value <= 0)
+                //        {
+                //            dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, decimal.Parse(lblCantTot.Text));
+                //        }
+                //    }
+                //}
+                //else
+                //{
+                foreach (DataGridViewRow dr in dgvProductos.Rows)
                 {
-                    foreach (DataGridViewRow dr in dgvProductos.Rows)
+                    if (!(bool)dr.Cells[7].Value && (int)dr.Cells[8].Value <= 0)
                     {
-                        if (!(bool)dr.Cells[7].Value && (int)dr.Cells[8].Value <= 0)
-                        {
-                            dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, decimal.Parse(lblCantTot.Text));
-                        }
+                        dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, (decimal)dr.Cells[4].Value);
                     }
                 }
-                else
-                {
-                    foreach (DataGridViewRow dr in dgvProductos.Rows)
-                    {
-                        if (!(bool)dr.Cells[7].Value && (int)dr.Cells[8].Value <= 0)
-                        {
-                            dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, (decimal)dr.Cells[4].Value);
-                        }
-                    }
-                }
+                //}
             }
             catch (MySqlException ex)
             {
@@ -884,6 +883,7 @@ namespace EC_Admin.Forms
         private void cboTipoPrecio_SelectedIndexChanged(object sender, EventArgs e)
         {
             PrecioProducto();
+            CalcularTotales();
         }
 
         private void agregarPaqueteDeÉsteProductoToolStripMenuItem_Click(object sender, EventArgs e)

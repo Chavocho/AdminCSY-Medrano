@@ -77,6 +77,7 @@ namespace EC_Admin.Forms
         {
             try
             {
+                dgvProductos.Rows.Clear();
                 if (cboTipoPromocion.SelectedIndex == 0)
                 {
                     foreach (DataRow dr in dt.Rows)

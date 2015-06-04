@@ -101,8 +101,6 @@ namespace EC_Admin.Forms
                 txtCant.Text = p.Cantidad.ToString();
                 txtPrecioMedioMayoreo.Text = p.PrecioMedioMayoreo.ToString();
                 txtPrecioMayoreo.Text = p.PrecioMayoreo.ToString();
-                txtCantMedioMayoreo.Text = p.CantidadMedioMayoreo.ToString();
-                txtCantMayoreo.Text = p.CantidadMayoreo.ToString();
                 pcbImagen01.Image = p.Imagen01;
                 switch (p.Unidad)
                 {
@@ -154,8 +152,6 @@ namespace EC_Admin.Forms
                 decimal.TryParse(txtCant.Text, out cant);
                 decimal.TryParse(txtPrecioMedioMayoreo.Text, out precioMedioMayoreo);
                 decimal.TryParse(txtPrecioMayoreo.Text, out precioMayoreo);
-                decimal.TryParse(txtCantMedioMayoreo.Text, out cantMedioMayoreo);
-                decimal.TryParse(txtCantMayoreo.Text, out cantMayoreo);
                 p.IDProveedor = idPro[cboProveedor.SelectedIndex];
                 p.IDCategoria = idCat[cboCategoria.SelectedIndex];
                 p.Nombre = txtNombre.Text;
@@ -167,8 +163,6 @@ namespace EC_Admin.Forms
                 p.Cantidad = cant;
                 p.PrecioMedioMayoreo = precioMedioMayoreo;
                 p.PrecioMayoreo = precioMayoreo;
-                p.CantidadMedioMayoreo = cantMedioMayoreo;
-                p.CantidadMayoreo = cantMayoreo;
                 p.Unidad = u;
                 p.Imagen01 = pcbImagen01.Image;
                 p.Imagen02 = pcbImagen02.Image;
@@ -235,7 +229,14 @@ namespace EC_Admin.Forms
             }
             else
             {
-                FuncionesGenerales.ColoresBien(txtCodigo);
+                if (lblInformacionCodigo.Visible)
+                {
+                    return false;
+                }
+                else
+                {
+                    FuncionesGenerales.ColoresBien(txtCodigo);
+                }
             }
             if (txtCosto.Text.Trim() == "")
             {
@@ -266,54 +267,6 @@ namespace EC_Admin.Forms
             else
             {
                 FuncionesGenerales.ColoresBien(txtCant);
-            }
-            if (txtCantMedioMayoreo.Text.Trim() != "")
-            {
-                if (txtPrecioMedioMayoreo.Text.Trim() == "")
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo precio de medio mayoreo debe ser ingresado", "Admin CSY");
-                    FuncionesGenerales.ColoresError(txtPrecioMedioMayoreo);
-                    return false;
-                }
-                else
-                {
-                    FuncionesGenerales.ColoresBien(txtPrecioMedioMayoreo);
-                }
-            }
-            else if (txtPrecioMedioMayoreo.Text.Trim() != "")
-            {
-                if (txtCantMedioMayoreo.Text.Trim() == "")
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cantidad de medio mayoreo debe ser ingresado", "Admin CSY");
-                    FuncionesGenerales.ColoresError(txtCantMayoreo);
-                    return false;
-                }
-                else
-                {
-                    FuncionesGenerales.ColoresBien(txtPrecioMayoreo);
-                }
-            }
-            if (txtCantMayoreo.Text.Trim() != "")
-            {
-                if (txtPrecioMayoreo.Text.Trim() == "")
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo precio de mayoreo debe ser ingresado", "Admin CSY");
-                    FuncionesGenerales.ColoresError(txtPrecioMayoreo);
-                    return false;
-                }
-                else
-                {
-                    FuncionesGenerales.ColoresBien(txtPrecioMayoreo);
-                }
-            }
-            else if (txtPrecioMayoreo.Text.Trim() != "")
-            {
-                if (txtCantMayoreo.Text.Trim() == "")
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cantidad de mayoreo debe ser ingresado", "Admin CSY");
-                    FuncionesGenerales.ColoresError(txtCantMayoreo);
-                    return false;
-                }
             }
             if (cboUnidad.SelectedIndex < 0)
             {
@@ -559,5 +512,19 @@ namespace EC_Admin.Forms
         }
 
         #endregion
+
+        private void txtCodigo_Leave(object sender, EventArgs e)
+        {
+            if (Producto.ExisteCodigo(txtCodigo.Text))
+            {
+                lblInformacionCodigo.Visible = true;
+                FuncionesGenerales.ColoresError(txtCodigo);
+            }
+            else
+            {
+                lblInformacionCodigo.Visible = false;
+                FuncionesGenerales.ColoresBien(txtCodigo);
+            }
+        }
     }
 }
