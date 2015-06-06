@@ -590,11 +590,17 @@
     <Compile Include="Forms\Usuarios\Restablecimiento de contraseña\frmVerificarUsuario.Designer.cs">
       <DependentUpon>frmVerificarUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Ventas\frmCancelaciones.cs">
+    <Compile Include="Forms\Ventas\Cancelaciones y devoluciones\frmCancelaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Ventas\frmCancelaciones.Designer.cs">
+    <Compile Include="Forms\Ventas\Cancelaciones y devoluciones\frmCancelaciones.Designer.cs">
       <DependentUpon>frmCancelaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ventas\Cancelaciones y devoluciones\frmDevoluciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\Cancelaciones y devoluciones\frmDevoluciones.Designer.cs">
+      <DependentUpon>frmDevoluciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Ventas\frmCobrar.cs">
       <SubType>Form</SubType>
@@ -925,8 +931,11 @@
     <EmbeddedResource Include="Forms\Usuarios\Restablecimiento de contraseña\frmVerificarUsuario.resx">
       <DependentUpon>frmVerificarUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Ventas\frmCancelaciones.resx">
+    <EmbeddedResource Include="Forms\Ventas\Cancelaciones y devoluciones\frmCancelaciones.resx">
       <DependentUpon>frmCancelaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\Cancelaciones y devoluciones\frmDevoluciones.resx">
+      <DependentUpon>frmDevoluciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\frmCobrar.resx">
       <DependentUpon>frmCobrar.cs</DependentUpon>

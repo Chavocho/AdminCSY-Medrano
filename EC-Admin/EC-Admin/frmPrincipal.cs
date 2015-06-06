@@ -90,7 +90,25 @@ namespace EC_Admin
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-
+            if (Caja.EstadoCaja == false)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
+                return;
+            }
+            if (Producto.CantidadP <= 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un producto antes de iniciar el punto de venta", "Admin CSY");
+                return;
+            }
+            if (Trabajador.Cantidad <= 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un trabajador antes de iniciar el punto de venta", "Admin CSY");
+                return;
+            }
+            if (!frmPOS.Instancia.Visible)
+                frmPOS.Instancia.Show();
+            else
+                frmPOS.Instancia.Select();
         }
 
         private void btnCompras_Click(object sender, EventArgs e)
