@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using System.Drawing.Printing;
 
 namespace EC_Admin.Forms
 {
@@ -181,30 +180,6 @@ namespace EC_Admin.Forms
                 frmPromociones.Instancia.Show();
             else
                 frmPromociones.Instancia.Select();
-        }
-
-        private void btnCodigo_Click(object sender, EventArgs e)
-        {
-            if (dgvProductos.CurrentRow != null)
-            {
-                try
-                {
-                    Ticket t = new Ticket();
-                    t.TicketCodigoProducto(id);
-                }
-                catch (MySqlException ex)
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
-                }
-                catch (InvalidPrinterException ex)
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket. La impresora seleccionada se encuentra apagada o no es accesible desde la red.", "Admin CSY", ex);
-                }
-                catch (Exception ex)
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket.", "Admin CSY", ex);
-                }
-            }
         }
     }
 }

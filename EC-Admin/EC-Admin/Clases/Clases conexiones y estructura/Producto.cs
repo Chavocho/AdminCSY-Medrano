@@ -410,25 +410,6 @@ namespace EC_Admin
             return nom;
         }
 
-        public static string CodigoProducto(int id)
-        {
-            string cod = "";
-            try
-            {
-                string sql = "SELECT codigo FROM producto WHERE id='" + id + "'";
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    cod = dr["codigo"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return cod;
-        }
-
         public static decimal CantidadProducto(int id)
         {
             decimal cant = 0;

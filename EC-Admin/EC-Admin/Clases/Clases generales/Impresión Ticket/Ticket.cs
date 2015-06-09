@@ -104,29 +104,6 @@ namespace EC_Admin
             }
         }
 
-        public void TicketCodigoProducto(int idProducto)
-        {
-            try
-            {
-                this.idProd = idProducto; 
-                pd.PrintPage += new PrintPageEventHandler(pd_PrintPageTicketCodigoProducto);
-                pd.DocumentName = "Ticket";
-                pd.DefaultPageSettings.PaperSize = new PaperSize("Ticket", 300, 10000);
-                if (impresoraTickets != "")
-                    pd.PrinterSettings.PrinterName = impresoraTickets;
-                else
-                    throw new InvalidPrinterException(pd.PrinterSettings);
-                pd.DefaultPageSettings.Landscape = false;
-                ppd.Document = pd;
-                ppd.ShowDialog();
-                //pd.Print();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         private void pd_PrintPageTicketVenta(object sender, PrintPageEventArgs e)
         {
             try
@@ -169,22 +146,6 @@ namespace EC_Admin
                 AgregarInformacionTicket(ref e, true);
                 AgregarLinea(ref e, new Pen(Brushes.DarkGray, 1));
                 AgregarDatosCierreCaja(ref e);
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        private void pd_PrintPageTicketCodigoProducto(object sender, PrintPageEventArgs e)
-        {
-            try
-            {
-                AgregarCodigoBarrasProducto(ref e);
             }
             catch (MySqlException ex)
             {

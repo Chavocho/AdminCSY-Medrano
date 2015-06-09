@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2015 a las 23:38:25
+-- Tiempo de generación: 30-05-2015 a las 05:57:47
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `caja` (
   `tipo_movimiento` int(11) DEFAULT NULL,
   `create_user` int(11) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 `id` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `update_time` datetime DEFAULT NULL,
   `delete_user` int(11) DEFAULT NULL,
   `delete_time` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -280,36 +280,6 @@ CREATE TABLE IF NOT EXISTS `cuenta` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `devolucion`
---
-
-CREATE TABLE IF NOT EXISTS `devolucion` (
-`id` int(11) NOT NULL,
-  `id_venta` int(11) NOT NULL,
-  `total` decimal(10,2) NOT NULL,
-  `saldo` decimal(10,2) NOT NULL,
-  `create_user` int(11) NOT NULL,
-  `create_time` datetime NOT NULL,
-  `update_user` int(11) NOT NULL,
-  `update_time` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `devolucion_detallada`
---
-
-CREATE TABLE IF NOT EXISTS `devolucion_detallada` (
-  `id_devolucion` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `precio` decimal(10,2) NOT NULL,
-  `cant` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `direccion`
 --
 
@@ -360,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `paquete` (
   `id_producto` int(11) NOT NULL,
   `cant` int(11) NOT NULL,
   `precio` decimal(10,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -428,7 +398,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `update_time` datetime DEFAULT NULL,
   `delete_user` int(11) DEFAULT NULL,
   `delete_time` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -443,9 +413,8 @@ CREATE TABLE IF NOT EXISTS `promocion` (
   `fecha_ini` date DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL,
   `cant` decimal(10,2) NOT NULL,
-  `cant_prod` decimal(10,2) NOT NULL,
   `precio` decimal(10,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -481,7 +450,7 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   `update_time` datetime DEFAULT NULL,
   `delete_user` int(11) DEFAULT NULL,
   `delete_time` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -497,7 +466,7 @@ CREATE TABLE IF NOT EXISTS `puesto` (
   `create_time` datetime DEFAULT NULL,
   `update_user` int(11) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -528,7 +497,7 @@ CREATE TABLE IF NOT EXISTS `sucursal` (
   `create_time` datetime DEFAULT NULL,
   `update_user` int(11) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -562,27 +531,7 @@ CREATE TABLE IF NOT EXISTS `trabajador` (
   `update_time` datetime DEFAULT NULL,
   `delete_user` int(11) DEFAULT NULL,
   `delete_time` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `traspasos`
---
-
-CREATE TABLE IF NOT EXISTS `traspasos` (
-`id` int(11) NOT NULL,
-  `id_sucursal_origen` int(11) NOT NULL,
-  `id_sucursal_destino` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `cant` decimal(10,2) NOT NULL,
-  `descripcion` varchar(255) NOT NULL,
-  `estado` int(1) NOT NULL,
-  `create_user` int(11) NOT NULL,
-  `create_time` datetime NOT NULL,
-  `accept_user` int(11) NOT NULL,
-  `accept_time` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -609,7 +558,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `update_time` datetime DEFAULT NULL,
   `delete_user` int(11) DEFAULT NULL,
   `delete_time` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -638,7 +587,7 @@ CREATE TABLE IF NOT EXISTS `venta` (
   `update_time` datetime DEFAULT NULL,
   `cancel_user` int(11) DEFAULT NULL,
   `cancel_time` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -653,8 +602,7 @@ CREATE TABLE IF NOT EXISTS `venta_detallada` (
   `precio` decimal(10,2) NOT NULL,
   `descuento` decimal(10,2) NOT NULL,
   `unidad` int(11) DEFAULT NULL,
-  `paquete` tinyint(1) NOT NULL DEFAULT '0',
-  `id_promocion` int(11) NOT NULL
+  `paquete` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -734,18 +682,6 @@ ALTER TABLE `cuenta`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `devolucion`
---
-ALTER TABLE `devolucion`
- ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `devolucion_detallada`
---
-ALTER TABLE `devolucion_detallada`
- ADD PRIMARY KEY (`id_devolucion`,`id_producto`);
-
---
 -- Indices de la tabla `direccion`
 --
 ALTER TABLE `direccion`
@@ -806,12 +742,6 @@ ALTER TABLE `trabajador`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `traspasos`
---
-ALTER TABLE `traspasos`
- ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -847,17 +777,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `caja`
 --
 ALTER TABLE `caja`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT de la tabla `compra`
 --
@@ -884,11 +814,6 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `cuenta`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `devolucion`
---
-ALTER TABLE `devolucion`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
@@ -902,7 +827,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `paquete`
 --
 ALTER TABLE `paquete`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT de la tabla `privilegios`
 --
@@ -912,47 +837,42 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT de la tabla `promocion`
 --
 ALTER TABLE `promocion`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT de la tabla `puesto`
 --
 ALTER TABLE `puesto`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT de la tabla `sucursal`
 --
 ALTER TABLE `sucursal`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT de la tabla `trabajador`
 --
 ALTER TABLE `trabajador`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `traspasos`
---
-ALTER TABLE `traspasos`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
