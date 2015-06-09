@@ -209,3 +209,8 @@ C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmReimpresionTicketsVentas.resources
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmDevoluciones.resources
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Ventas.Cancelaciones_y_devoluciones.frmDetalleProductoDevolucion.resources
+C:\Users\Ever\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Traspasos.frmTraspasos.resources
+C:\Users\Ever\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCancelaciones.resources
+C:\Users\Ever\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Ventas.Cancelaciones_y_devoluciones.frmDetalleProductoDevolucion.resources
+C:\Users\Ever\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmDevoluciones.resources
+C:\Users\Ever\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmReimpresionTicketsVentas.resources
