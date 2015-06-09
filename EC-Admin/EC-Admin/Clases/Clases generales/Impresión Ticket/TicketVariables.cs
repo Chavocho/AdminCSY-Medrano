@@ -15,13 +15,14 @@ namespace EC_Admin
         int y;
         const int saltoLinea = 15;
         int idVenta;
+        int idProd;
         bool esCierreCaja;
         //Variables para el corte de caja
         int idApertura;
         int idCierre;
 
-        string idProd;
         string impresora;
+        string impresoraTickets;
         string lineaSup01;
         string lineaSup02;
         string lineaSup03;

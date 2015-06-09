@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace EC_Admin
 {
@@ -47,6 +48,10 @@ namespace EC_Admin
                     lineaInf02 = ConfiguracionXML.LeerConfiguración("ticket", "lineaInf02");
                     lineaInf03 = ConfiguracionXML.LeerConfiguración("ticket", "lineaInf03");
                     impresora = ConfiguracionXML.LeerConfiguración("ticket", "impresora");
+                    if (ConfiguracionXML.ExisteConfiguracion("ticket", "impresora_tickets"))
+                        impresoraTickets = ConfiguracionXML.LeerConfiguración("ticket", "impresora_tickets");
+                    else
+                        impresoraTickets = "";
                 }
             }
             catch (FormatException ex)
@@ -202,7 +207,6 @@ namespace EC_Admin
         {
             try
             {
-                string turno = "";
                 if (!esCierreCaja)
                 {
                     e.Graphics.DrawString("SERVICIO: VENTA MOSTRADOR", fuenteNormal, Brushes.Black, 0, y);
@@ -556,15 +560,15 @@ namespace EC_Admin
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
         /// <exception cref="System.Exception"></exception>
-        private void AgregarCodigoBarrasProducto(ref PrintPageEventArgs e, int idProd)
+        private void AgregarCodigoBarrasProducto(ref PrintPageEventArgs e)
         {
             try
             {
                 int salto;
-                e.Graphics.DrawString("PRODUCTO: " + Producto.NombreProducto(idProd), fuenteGrande, Brushes.Black, 0, y);
+                e.Graphics.DrawString("PRODUCTO: " + Producto.NombreProducto(idProd).ToUpper(), fuenteGrande, Brushes.Black, 0, y);
                 y += 30;
-                CentrarTexto(ref e, "*" + idProd.ToString() + "*", new Font("IDAutomationHC39M", 10), Brushes.Black);
-                salto = Convert.ToInt32(e.Graphics.MeasureString(idProd.ToString(), new Font("IDAutomationHC39M", 10)).Height - 10);
+                CentrarTexto(ref e, "*" + Producto.CodigoProducto(idProd) + "*", new Font("IDAutomationHC39M Free Version", 10), Brushes.Black);
+                salto = Convert.ToInt32(e.Graphics.MeasureString(idProd.ToString(), new Font("IDAutomationHC39M Free Version", 10)).Height - 10);
                 y += salto;
                 e.Graphics.FillRectangle(Brushes.White, 0, y, e.PageBounds.Width, 10);
             }

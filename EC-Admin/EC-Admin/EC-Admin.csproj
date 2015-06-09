@@ -89,6 +89,7 @@
     <Compile Include="Clases\Clases conexiones y estructura\Compra.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cotizacion.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cuenta.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Devoluciones.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Horario.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Paquete.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Privilegios.cs" />
@@ -596,6 +597,12 @@
     <Compile Include="Forms\Ventas\Cancelaciones y devoluciones\frmCancelaciones.Designer.cs">
       <DependentUpon>frmCancelaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Ventas\Cancelaciones y devoluciones\frmDetalleProductoDevolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\Cancelaciones y devoluciones\frmDetalleProductoDevolucion.Designer.cs">
+      <DependentUpon>frmDetalleProductoDevolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Ventas\Cancelaciones y devoluciones\frmDevoluciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -933,6 +940,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\Cancelaciones y devoluciones\frmCancelaciones.resx">
       <DependentUpon>frmCancelaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\Cancelaciones y devoluciones\frmDetalleProductoDevolucion.resx">
+      <DependentUpon>frmDetalleProductoDevolucion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\Cancelaciones y devoluciones\frmDevoluciones.resx">
       <DependentUpon>frmDevoluciones.cs</DependentUpon>
