@@ -57,7 +57,7 @@ namespace EC_Admin.Forms
             {
                 FuncionesGenerales.ColoresBien(txtNombre);
             }
-            if (txtDescripcion.Text.Trim() == "")
+            /*if (txtDescripcion.Text.Trim() == "")
             {
                 FuncionesGenerales.ColoresError(txtDescripcion);
                 resultado = false; ;
@@ -65,7 +65,7 @@ namespace EC_Admin.Forms
             else
             {
                 FuncionesGenerales.ColoresBien(txtDescripcion);
-            }
+            }*/
             return resultado;
         }
 
