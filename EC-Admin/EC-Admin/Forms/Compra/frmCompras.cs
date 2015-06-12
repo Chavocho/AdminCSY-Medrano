@@ -104,7 +104,10 @@ namespace EC_Admin.Forms
 
         private void dgvCompras_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (dgvCompras.CurrentRow != null)
+                id = (int)dgvCompras[0, e.RowIndex].Value;
+            else
+                id = 0;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)

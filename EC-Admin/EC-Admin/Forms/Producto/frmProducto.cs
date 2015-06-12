@@ -44,18 +44,16 @@ namespace EC_Admin.Forms
 
         private void Cerrar()
         {
-            txtBusqueda.Enabled = true;
             tmrEspera.Enabled = false;
             FuncionesGenerales.frmEsperaClose();
-            txtBusqueda.Select();
         }
 
         private void Buscar(string p)
         {
             try
             {
-                string sql = "SELECT id, nombre, codigo, costo, precio, cant FROM producto " +
-                    "WHERE (nombre LIKE '%" + p + "%' OR codigo='" + p + "') AND eliminado=0";
+                string sql = "SELECT id, nombre, codigo, descripcion1, precio, cant FROM producto " +
+                    "WHERE (nombre LIKE '%" + p + "%' OR codigo LIKE '%" + p + "%') AND eliminado=0";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -77,9 +75,10 @@ namespace EC_Admin.Forms
                 dgvProductos.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["codigo"], dr["costo"], dr["precio"], dr["cant"] });
+                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["descripcion1"], dr["codigo"], dr["precio"], dr["cant"] });
                 }
                 dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                txtBusqueda.Select();
             }
             catch (Exception ex)
             {
@@ -115,7 +114,6 @@ namespace EC_Admin.Forms
         {
             if (e.KeyCode == Keys.Enter)
             {
-                txtBusqueda.Enabled = false;
                 tmrEspera.Enabled = true;
                 bgwBusqueda.RunWorkerAsync(txtBusqueda.Text);
             }

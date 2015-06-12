@@ -19,6 +19,7 @@ namespace EC_Admin
         private DateTime createTime;
         private int updateUser;
         private DateTime updateTime;
+        private Venta v;
 
         public int ID
         {
@@ -94,14 +95,17 @@ namespace EC_Admin
             cantidadProductos = new List<decimal>();
         }
 
-        public Devoluciones()
+        public Devoluciones(Venta v)
         {
-
+            this.v = v;
+            InicializarDetallada();
         }
 
-        public Devoluciones(int id)
+        public Devoluciones(int id, Venta v)
         {
             this.id = id;
+            this.v = v;
+            InicializarDetallada();
         }
 
         public void ObtenerDatos()
@@ -151,6 +155,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?saldo", saldo);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
                 this.id = ConexionBD.EjecutarConsulta(sql);
+                InsertarDetallado();
             }
             catch (MySqlException ex)
             {
@@ -166,7 +171,7 @@ namespace EC_Admin
         {
             try
             {
-                MySqlCommand sql = new MySqlCommand();
+                MySqlCommand sql = new MySqlCommand(), sqlVenta = new MySqlCommand();
                 sql.CommandText = "INSERT INTO devolucion_detallada (id_devolucion, id_producto, precio, cant) " + 
                     "VALUES (?id_devolucion, ?id_producto, ?precio, ?cant)";
                 for (int i = 0; i < idProductos.Count; i++)
@@ -178,6 +183,20 @@ namespace EC_Admin
                     ConexionBD.EjecutarConsulta(sql);
                     sql.Parameters.Clear();
                     Producto.CambiarCantidadInventario(idProductos[i], cantidadProductos[i]);
+                    sqlVenta.CommandText = "UPDATE venta_detallada SET cant=cant-?cant WHERE id_venta=?id_venta AND id_producto=?id_producto";
+                    sqlVenta.Parameters.AddWithValue("?cant", cantidadProductos[i]);
+                    sqlVenta.Parameters.AddWithValue("?id_producto", idProductos[i]);
+                    sqlVenta.Parameters.AddWithValue("?id_venta", v.IDVenta);
+                    ConexionBD.EjecutarConsulta(sql);
+                    sqlVenta.Parameters.Clear();
+                }
+                for (int i = 0; i < v.IDProductos.Count; i++)
+                {
+                    sqlVenta.CommandText = "DELETE FROM venta_detallada WHERE cant<=0 AND id_venta=?id_venta AND id_producto=?id_producto";
+                    sqlVenta.Parameters.AddWithValue("?id_producto", idProductos[i]);
+                    sqlVenta.Parameters.AddWithValue("?id_venta", v.IDVenta);
+                    ConexionBD.EjecutarConsulta(sqlVenta);
+                    sqlVenta.Parameters.Clear();
                 }
             }
             catch (MySqlException ex)
@@ -204,6 +223,10 @@ namespace EC_Admin
                     saldo = (decimal)dr["saldo"];
                 }
             }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw ex;
@@ -222,10 +245,13 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
             }
-            catch (Exception)
+            catch (MySqlException ex)
             {
-                
-                throw;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }

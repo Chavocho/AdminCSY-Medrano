@@ -16,6 +16,7 @@ namespace EC_Admin.Forms
         int id;
         frmPOS frm;
         decimal total;
+        decimal totalPorcentaje = 0;
         TipoPago t;
 
         public frmCobrar(frmPOS frm, int id, decimal total)
@@ -37,14 +38,12 @@ namespace EC_Admin.Forms
             if (cambio > 0)
             {
                 lblECambio.Text = "Falta:";
-                lblECambio.Location = new Point(30, 121);
                 lblCambio.BackColor = Colores.Error;
                 lblCambio.Text = cambio.ToString("C2");
             }
             else
             {
                 lblECambio.Text = "Cambio:";
-                lblECambio.Location = new Point(10, 121);
                 lblCambio.BackColor = Colores.Exito;
                 lblCambio.Text = (cambio * -1).ToString("C2");
             }
@@ -58,7 +57,6 @@ namespace EC_Admin.Forms
             lblCambio.Text = "$0.00";
             lblCambio.BackColor = Colores.Exito;
             lblECambio.Text = "Cambio:";
-            lblECambio.Location = new Point(206, 102);
         }
 
         private void MovimientoCaja()
@@ -118,6 +116,7 @@ namespace EC_Admin.Forms
                     lblEEfectivo.Enabled = true;
                     txtEfectivo.Enabled = true;
                     txtDatos.Visible = lblEDatos.Visible = false;
+                    txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = false;
                     CalcularCambio();
                     t = TipoPago.Efectivo;
                     break;
@@ -130,12 +129,16 @@ namespace EC_Admin.Forms
                     QuitarEfectivo();
                     lblEDatos.Text = "Núm. de tarjeta";
                     txtDatos.Visible = lblEDatos.Visible = true;
+                    txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = true;
+                    txtPorcentajeImpuesto.Text = "0";
                     t = TipoPago.Crédito;
                     break;
                 case 2:
                     QuitarEfectivo();
                     lblEDatos.Text = "Núm. de tarjeta";
                     txtDatos.Visible = lblEDatos.Visible = true;
+                    txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = true;
+                    txtPorcentajeImpuesto.Text = "0";
                     t = TipoPago.Débito;
                     break;
                 //case 4:
@@ -191,6 +194,19 @@ namespace EC_Admin.Forms
             else
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El efectivo debe ser mayor o igual al total", "Admin CSY");
+            }
+        }
+
+        private void txtPorcentajeImpuesto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesGenerales.VerificarEsNumero(ref sender, ref e, false);
+        }
+
+        private void txtPorcentajeImpuesto_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPorcentajeImpuesto.Text != "")
+            {
+                totalPorcentaje = total + (total * (decimal.Parse(txtPorcentajeImpuesto.Text) / 100));
             }
         }
     }

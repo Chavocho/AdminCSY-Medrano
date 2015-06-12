@@ -119,7 +119,7 @@ namespace EC_Admin.Forms
             {
                 DataGridViewRow dr = dgvVentas.CurrentRow;
                 Caja c = new Caja();
-                c.Descripcion = "CANCELACIÓN DE VENTA";
+                c.Descripcion = "CANCELACIÓN DE VENTA CON FOLIO: " + dgvVentas[0, dgvVentas.CurrentRow.Index].Value.ToString();
                 switch (dr.Cells[4].Value.ToString())
                 {
                     case "Efectivo":
@@ -231,6 +231,11 @@ namespace EC_Admin.Forms
                     }
                 }
             }
+        }
+
+        private void btnDevoluciones_Click(object sender, EventArgs e)
+        {
+            (new frmDevoluciones(id)).ShowDialog(this);
         }
     }
 }

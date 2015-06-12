@@ -112,9 +112,9 @@
             this.lblEImpresora.Font = new System.Drawing.Font("Corbel", 13F);
             this.lblEImpresora.Location = new System.Drawing.Point(8, 9);
             this.lblEImpresora.Name = "lblEImpresora";
-            this.lblEImpresora.Size = new System.Drawing.Size(91, 22);
+            this.lblEImpresora.Size = new System.Drawing.Size(167, 22);
             this.lblEImpresora.TabIndex = 32;
-            this.lblEImpresora.Text = "Impresora:";
+            this.lblEImpresora.Text = "Impresora de tickets:";
             // 
             // txtLineaSuperior06
             // 

@@ -75,7 +75,7 @@
             this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsuarios.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnUsuarios.ForeColor = System.Drawing.Color.White;
-            this.btnUsuarios.Location = new System.Drawing.Point(12, 616);
+            this.btnUsuarios.Location = new System.Drawing.Point(12, 615);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(200, 60);
             this.btnUsuarios.TabIndex = 6;
@@ -96,7 +96,7 @@
             this.btnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVentas.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnVentas.ForeColor = System.Drawing.Color.White;
-            this.btnVentas.Location = new System.Drawing.Point(12, 22);
+            this.btnVentas.Location = new System.Drawing.Point(12, 21);
             this.btnVentas.Name = "btnVentas";
             this.btnVentas.Size = new System.Drawing.Size(200, 60);
             this.btnVentas.TabIndex = 7;
@@ -118,7 +118,7 @@
             this.btnCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCompras.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnCompras.ForeColor = System.Drawing.Color.White;
-            this.btnCompras.Location = new System.Drawing.Point(12, 88);
+            this.btnCompras.Location = new System.Drawing.Point(12, 87);
             this.btnCompras.Name = "btnCompras";
             this.btnCompras.Size = new System.Drawing.Size(200, 60);
             this.btnCompras.TabIndex = 8;
@@ -139,7 +139,7 @@
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClientes.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnClientes.ForeColor = System.Drawing.Color.White;
-            this.btnClientes.Location = new System.Drawing.Point(12, 286);
+            this.btnClientes.Location = new System.Drawing.Point(12, 285);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(200, 60);
             this.btnClientes.TabIndex = 9;
@@ -160,7 +160,7 @@
             this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedores.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnProveedores.ForeColor = System.Drawing.Color.White;
-            this.btnProveedores.Location = new System.Drawing.Point(12, 352);
+            this.btnProveedores.Location = new System.Drawing.Point(12, 351);
             this.btnProveedores.Name = "btnProveedores";
             this.btnProveedores.Size = new System.Drawing.Size(200, 60);
             this.btnProveedores.TabIndex = 10;
@@ -181,7 +181,7 @@
             this.btnCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCaja.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnCaja.ForeColor = System.Drawing.Color.White;
-            this.btnCaja.Location = new System.Drawing.Point(12, 220);
+            this.btnCaja.Location = new System.Drawing.Point(12, 219);
             this.btnCaja.Name = "btnCaja";
             this.btnCaja.Size = new System.Drawing.Size(200, 60);
             this.btnCaja.TabIndex = 11;
@@ -202,7 +202,7 @@
             this.btnCotizacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCotizacion.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnCotizacion.ForeColor = System.Drawing.Color.White;
-            this.btnCotizacion.Location = new System.Drawing.Point(12, 154);
+            this.btnCotizacion.Location = new System.Drawing.Point(12, 153);
             this.btnCotizacion.Name = "btnCotizacion";
             this.btnCotizacion.Size = new System.Drawing.Size(200, 60);
             this.btnCotizacion.TabIndex = 12;
@@ -223,7 +223,7 @@
             this.btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProductos.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnProductos.ForeColor = System.Drawing.Color.White;
-            this.btnProductos.Location = new System.Drawing.Point(12, 484);
+            this.btnProductos.Location = new System.Drawing.Point(12, 483);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(200, 60);
             this.btnProductos.TabIndex = 13;
@@ -244,7 +244,7 @@
             this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReportes.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnReportes.ForeColor = System.Drawing.Color.White;
-            this.btnReportes.Location = new System.Drawing.Point(12, 550);
+            this.btnReportes.Location = new System.Drawing.Point(12, 549);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Size = new System.Drawing.Size(200, 60);
             this.btnReportes.TabIndex = 14;
@@ -265,7 +265,7 @@
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarSesion.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(846, 640);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(846, 639);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(150, 46);
             this.btnCerrarSesion.TabIndex = 15;
@@ -286,7 +286,7 @@
             this.btnTrabajadores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrabajadores.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnTrabajadores.ForeColor = System.Drawing.Color.White;
-            this.btnTrabajadores.Location = new System.Drawing.Point(12, 418);
+            this.btnTrabajadores.Location = new System.Drawing.Point(12, 417);
             this.btnTrabajadores.Name = "btnTrabajadores";
             this.btnTrabajadores.Size = new System.Drawing.Size(200, 60);
             this.btnTrabajadores.TabIndex = 17;
@@ -303,7 +303,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lnsSeparador});
-            this.shapeContainer1.Size = new System.Drawing.Size(1008, 698);
+            this.shapeContainer1.Size = new System.Drawing.Size(1008, 697);
             this.shapeContainer1.TabIndex = 18;
             this.shapeContainer1.TabStop = false;
             // 
@@ -318,7 +318,7 @@
             this.lnsSeparador.X1 = 226;
             this.lnsSeparador.X2 = 226;
             this.lnsSeparador.Y1 = 10;
-            this.lnsSeparador.Y2 = 688;
+            this.lnsSeparador.Y2 = 687;
             // 
             // btnConfig
             // 
@@ -332,7 +332,7 @@
             this.btnConfig.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnConfig.ForeColor = System.Drawing.Color.White;
             this.btnConfig.Image = ((System.Drawing.Image)(resources.GetObject("btnConfig.Image")));
-            this.btnConfig.Location = new System.Drawing.Point(794, 640);
+            this.btnConfig.Location = new System.Drawing.Point(794, 639);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(46, 46);
             this.btnConfig.TabIndex = 16;
@@ -377,7 +377,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 698);
+            this.ClientSize = new System.Drawing.Size(1008, 697);
             this.Controls.Add(this.btnReimpresiónVenta);
             this.Controls.Add(this.btnTrabajadores);
             this.Controls.Add(this.btnConfig);

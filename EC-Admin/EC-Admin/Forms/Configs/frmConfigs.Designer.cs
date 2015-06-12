@@ -90,11 +90,11 @@
             this.btnTicket.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnTicket.ForeColor = System.Drawing.Color.White;
             this.btnTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTicket.Location = new System.Drawing.Point(363, 12);
+            this.btnTicket.Location = new System.Drawing.Point(12, 220);
             this.btnTicket.Name = "btnTicket";
             this.btnTicket.Size = new System.Drawing.Size(149, 46);
             this.btnTicket.TabIndex = 2;
-            this.btnTicket.Text = "Impresión tickets";
+            this.btnTicket.Text = "Impresión";
             this.btnTicket.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTicket.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnTicket.UseVisualStyleBackColor = false;
@@ -132,7 +132,7 @@
             this.btnDirecciones.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnDirecciones.ForeColor = System.Drawing.Color.White;
             this.btnDirecciones.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDirecciones.Location = new System.Drawing.Point(12, 220);
+            this.btnDirecciones.Location = new System.Drawing.Point(363, 12);
             this.btnDirecciones.Name = "btnDirecciones";
             this.btnDirecciones.Size = new System.Drawing.Size(149, 46);
             this.btnDirecciones.TabIndex = 4;
@@ -140,6 +140,7 @@
             this.btnDirecciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDirecciones.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnDirecciones.UseVisualStyleBackColor = false;
+            this.btnDirecciones.Visible = false;
             this.btnDirecciones.Click += new System.EventHandler(this.btnDirecciones_Click);
             // 
             // btnCuentas

@@ -274,6 +274,7 @@
             this.btnDevoluciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDevoluciones.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnDevoluciones.UseVisualStyleBackColor = false;
+            this.btnDevoluciones.Click += new System.EventHandler(this.btnDevoluciones_Click);
             // 
             // frmCancelaciones
             // 
@@ -290,7 +291,7 @@
             this.MinimumSize = new System.Drawing.Size(1024, 500);
             this.Name = "frmCancelaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cancelar ventas";
+            this.Text = " ";
             this.grbFechas.ResumeLayout(false);
             this.grbFolio.ResumeLayout(false);
             this.grbFolio.PerformLayout();

@@ -1,4 +1,4 @@
-﻿namespace EC_Admin.Forms.Ventas.Cancelaciones_y_devoluciones
+﻿namespace EC_Admin.Forms
 {
     partial class frmDetalleProductoDevolucion
     {
@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.pcbProducto = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblECodigo = new System.Windows.Forms.Label();
+            this.lblCodigo = new System.Windows.Forms.Label();
+            this.lblMarca = new System.Windows.Forms.Label();
+            this.lblEMarca = new System.Windows.Forms.Label();
+            this.lblPrecio = new System.Windows.Forms.Label();
+            this.lblEPrecio = new System.Windows.Forms.Label();
+            this.lblDescripcion = new System.Windows.Forms.Label();
+            this.lblEDescripcion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbProducto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,105 +51,101 @@
             this.pcbProducto.TabIndex = 38;
             this.pcbProducto.TabStop = false;
             // 
-            // label1
+            // lblECodigo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 22);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "Código";
+            this.lblECodigo.AutoSize = true;
+            this.lblECodigo.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
+            this.lblECodigo.Location = new System.Drawing.Point(12, 9);
+            this.lblECodigo.Name = "lblECodigo";
+            this.lblECodigo.Size = new System.Drawing.Size(65, 22);
+            this.lblECodigo.TabIndex = 39;
+            this.lblECodigo.Text = "Código";
             // 
-            // label2
+            // lblCodigo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Corbel", 13F);
-            this.label2.Location = new System.Drawing.Point(12, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 22);
-            this.label2.TabIndex = 40;
-            this.label2.Text = "Nombre";
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.lblCodigo.Location = new System.Drawing.Point(12, 36);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(0, 22);
+            this.lblCodigo.TabIndex = 40;
             // 
-            // label3
+            // lblMarca
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Corbel", 13F);
-            this.label3.Location = new System.Drawing.Point(377, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 22);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "Nombre";
+            this.lblMarca.AutoSize = true;
+            this.lblMarca.Font = new System.Drawing.Font("Corbel", 13F);
+            this.lblMarca.Location = new System.Drawing.Point(377, 36);
+            this.lblMarca.Name = "lblMarca";
+            this.lblMarca.Size = new System.Drawing.Size(0, 22);
+            this.lblMarca.TabIndex = 42;
             // 
-            // label4
+            // lblEMarca
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(377, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 22);
-            this.label4.TabIndex = 41;
-            this.label4.Text = "Marca";
+            this.lblEMarca.AutoSize = true;
+            this.lblEMarca.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
+            this.lblEMarca.Location = new System.Drawing.Point(377, 9);
+            this.lblEMarca.Name = "lblEMarca";
+            this.lblEMarca.Size = new System.Drawing.Size(57, 22);
+            this.lblEMarca.TabIndex = 41;
+            this.lblEMarca.Text = "Marca";
             // 
-            // label5
+            // lblPrecio
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Corbel", 13F);
-            this.label5.Location = new System.Drawing.Point(223, 97);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 22);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "Nombre";
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Font = new System.Drawing.Font("Corbel", 13F);
+            this.lblPrecio.Location = new System.Drawing.Point(223, 97);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(0, 22);
+            this.lblPrecio.TabIndex = 44;
             // 
-            // label6
+            // lblEPrecio
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(223, 70);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 22);
-            this.label6.TabIndex = 43;
-            this.label6.Text = "Precio";
+            this.lblEPrecio.AutoSize = true;
+            this.lblEPrecio.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
+            this.lblEPrecio.Location = new System.Drawing.Point(223, 70);
+            this.lblEPrecio.Name = "lblEPrecio";
+            this.lblEPrecio.Size = new System.Drawing.Size(58, 22);
+            this.lblEPrecio.TabIndex = 43;
+            this.lblEPrecio.Text = "Precio";
             // 
-            // label7
+            // lblDescripcion
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Corbel", 13F);
-            this.label7.Location = new System.Drawing.Point(377, 97);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 22);
-            this.label7.TabIndex = 46;
-            this.label7.Text = "Nombre";
+            this.lblDescripcion.Font = new System.Drawing.Font("Corbel", 13F);
+            this.lblDescripcion.Location = new System.Drawing.Point(377, 97);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(438, 173);
+            this.lblDescripcion.TabIndex = 46;
             // 
-            // label8
+            // lblEDescripcion
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(377, 70);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 22);
-            this.label8.TabIndex = 45;
-            this.label8.Text = "Descripción";
+            this.lblEDescripcion.AutoSize = true;
+            this.lblEDescripcion.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
+            this.lblEDescripcion.Location = new System.Drawing.Point(377, 70);
+            this.lblEDescripcion.Name = "lblEDescripcion";
+            this.lblEDescripcion.Size = new System.Drawing.Size(99, 22);
+            this.lblEDescripcion.TabIndex = 45;
+            this.lblEDescripcion.Text = "Descripción";
             // 
             // frmDetalleProductoDevolucion
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(827, 282);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblDescripcion);
+            this.Controls.Add(this.lblEDescripcion);
+            this.Controls.Add(this.lblPrecio);
+            this.Controls.Add(this.lblEPrecio);
+            this.Controls.Add(this.lblMarca);
+            this.Controls.Add(this.lblEMarca);
+            this.Controls.Add(this.lblCodigo);
+            this.Controls.Add(this.lblECodigo);
             this.Controls.Add(this.pcbProducto);
             this.Font = new System.Drawing.Font("Corbel", 11F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmDetalleProductoDevolucion";
             this.Text = "Detalles de producto - ";
+            this.Load += new System.EventHandler(this.frmDetalleProductoDevolucion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbProducto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -159,13 +155,13 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pcbProducto;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblECodigo;
+        private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.Label lblMarca;
+        private System.Windows.Forms.Label lblEMarca;
+        private System.Windows.Forms.Label lblPrecio;
+        private System.Windows.Forms.Label lblEPrecio;
+        private System.Windows.Forms.Label lblDescripcion;
+        private System.Windows.Forms.Label lblEDescripcion;
     }
 }

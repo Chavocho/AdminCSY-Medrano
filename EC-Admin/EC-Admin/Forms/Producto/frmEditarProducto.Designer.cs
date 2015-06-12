@@ -49,6 +49,7 @@
             this.CBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CEdito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpaProducto = new System.Windows.Forms.TabPage();
+            this.lblInformacionCodigo = new System.Windows.Forms.Label();
             this.btnQuitar03 = new System.Windows.Forms.Button();
             this.lblInfoImagen03 = new System.Windows.Forms.Label();
             this.pcbImagen03 = new System.Windows.Forms.PictureBox();
@@ -84,7 +85,6 @@
             this.lblEMarca = new System.Windows.Forms.Label();
             this.lblENombre = new System.Windows.Forms.Label();
             this.tcoPrincipal = new System.Windows.Forms.TabControl();
-            this.lblInformacionCodigo = new System.Windows.Forms.Label();
             this.tpaPaquete.SuspendLayout();
             this.pnlPaquete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).BeginInit();
@@ -102,10 +102,10 @@
             this.tpaPaquete.Controls.Add(this.btnNuevo);
             this.tpaPaquete.Controls.Add(this.pnlPaquete);
             this.tpaPaquete.Controls.Add(this.dgvPaquetes);
-            this.tpaPaquete.Location = new System.Drawing.Point(4, 22);
+            this.tpaPaquete.Location = new System.Drawing.Point(4, 27);
             this.tpaPaquete.Name = "tpaPaquete";
             this.tpaPaquete.Padding = new System.Windows.Forms.Padding(3);
-            this.tpaPaquete.Size = new System.Drawing.Size(805, 541);
+            this.tpaPaquete.Size = new System.Drawing.Size(805, 536);
             this.tpaPaquete.TabIndex = 1;
             this.tpaPaquete.Text = "Paquetes";
             this.tpaPaquete.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
             this.pnlPaquete.Controls.Add(this.lblECantPaquete);
             this.pnlPaquete.Controls.Add(this.txtPrecioPaquete);
             this.pnlPaquete.Controls.Add(this.lblEPrecioPaquete);
-            this.pnlPaquete.Location = new System.Drawing.Point(8, 442);
+            this.pnlPaquete.Location = new System.Drawing.Point(8, 437);
             this.pnlPaquete.Name = "pnlPaquete";
             this.pnlPaquete.Size = new System.Drawing.Size(789, 81);
             this.pnlPaquete.TabIndex = 14;
@@ -298,7 +298,7 @@
             this.dgvPaquetes.RowHeadersVisible = false;
             this.dgvPaquetes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPaquetes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPaquetes.Size = new System.Drawing.Size(791, 354);
+            this.dgvPaquetes.Size = new System.Drawing.Size(791, 349);
             this.dgvPaquetes.TabIndex = 13;
             // 
             // CID
@@ -378,6 +378,17 @@
             this.tpaProducto.Text = "Datos de producto";
             this.tpaProducto.UseVisualStyleBackColor = true;
             // 
+            // lblInformacionCodigo
+            // 
+            this.lblInformacionCodigo.AutoSize = true;
+            this.lblInformacionCodigo.Font = new System.Drawing.Font("Corbel", 9F);
+            this.lblInformacionCodigo.Location = new System.Drawing.Point(274, 271);
+            this.lblInformacionCodigo.Name = "lblInformacionCodigo";
+            this.lblInformacionCodigo.Size = new System.Drawing.Size(319, 14);
+            this.lblInformacionCodigo.TabIndex = 154;
+            this.lblInformacionCodigo.Text = "El código de producto ingresado ya existe. Favor de ingresar otro.";
+            this.lblInformacionCodigo.Visible = false;
+            // 
             // btnQuitar03
             // 
             this.btnQuitar03.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -388,7 +399,7 @@
             this.btnQuitar03.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar03.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar03.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar03.Location = new System.Drawing.Point(342, 480);
+            this.btnQuitar03.Location = new System.Drawing.Point(342, 494);
             this.btnQuitar03.Name = "btnQuitar03";
             this.btnQuitar03.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar03.TabIndex = 25;
@@ -429,7 +440,7 @@
             this.btnQuitar02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar02.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar02.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar02.Location = new System.Drawing.Point(175, 480);
+            this.btnQuitar02.Location = new System.Drawing.Point(175, 494);
             this.btnQuitar02.Name = "btnQuitar02";
             this.btnQuitar02.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar02.TabIndex = 23;
@@ -576,6 +587,7 @@
             this.lblEUnidad.Size = new System.Drawing.Size(52, 18);
             this.lblEUnidad.TabIndex = 18;
             this.lblEUnidad.Text = "Unidad";
+            this.lblEUnidad.Visible = false;
             // 
             // cboUnidad
             // 
@@ -591,6 +603,7 @@
             this.cboUnidad.Name = "cboUnidad";
             this.cboUnidad.Size = new System.Drawing.Size(259, 29);
             this.cboUnidad.TabIndex = 19;
+            this.cboUnidad.Visible = false;
             this.cboUnidad.SelectedIndexChanged += new System.EventHandler(this.cboUnidad_SelectedIndexChanged);
             // 
             // lblEPrecioMayoreo
@@ -624,7 +637,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(647, 464);
+            this.btnAceptar.Location = new System.Drawing.Point(647, 459);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
             this.btnAceptar.TabIndex = 26;
@@ -644,7 +657,7 @@
             this.btnQuitar01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar01.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar01.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar01.Location = new System.Drawing.Point(8, 480);
+            this.btnQuitar01.Location = new System.Drawing.Point(8, 494);
             this.btnQuitar01.Name = "btnQuitar01";
             this.btnQuitar01.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar01.TabIndex = 21;
@@ -791,17 +804,6 @@
             this.tcoPrincipal.SelectedIndex = 0;
             this.tcoPrincipal.Size = new System.Drawing.Size(813, 567);
             this.tcoPrincipal.TabIndex = 0;
-            // 
-            // lblInformacionCodigo
-            // 
-            this.lblInformacionCodigo.AutoSize = true;
-            this.lblInformacionCodigo.Font = new System.Drawing.Font("Corbel", 9F);
-            this.lblInformacionCodigo.Location = new System.Drawing.Point(274, 271);
-            this.lblInformacionCodigo.Name = "lblInformacionCodigo";
-            this.lblInformacionCodigo.Size = new System.Drawing.Size(319, 14);
-            this.lblInformacionCodigo.TabIndex = 154;
-            this.lblInformacionCodigo.Text = "El código de producto ingresado ya existe. Favor de ingresar otro.";
-            this.lblInformacionCodigo.Visible = false;
             // 
             // frmEditarProducto
             // 
