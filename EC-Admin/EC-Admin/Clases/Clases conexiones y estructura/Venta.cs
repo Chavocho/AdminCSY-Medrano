@@ -318,7 +318,7 @@ namespace EC_Admin
             {
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "UPDATE venta SET id_cliente=?id_cliente, id_sucursal=?id_sucursal, id_vendedor=?id_vendedor, abierta=?abierta, subtotal=?subtotal, impuesto=?impuesto, descuento=?descuento, total=?total, " + 
-                    "factura=?factura, folio_factura=?folio_factura, tipo_pago=?tipo_pago, terminacion_tarjeta=?terminacion_tarjeta, terminal_tarjeta=?terminal_tarjeta, update_user=?update_user, update_time=NOW() WHERE id=?id";
+                     "tipo_pago=?tipo_pago, terminacion_tarjeta=?terminacion_tarjeta, terminal_tarjeta=?terminal_tarjeta, update_user=?update_user, update_time=NOW() WHERE id=?id";
                 sql.Parameters.AddWithValue("?id_cliente", idC);
                 sql.Parameters.AddWithValue("?id_sucursal", idS);
                 sql.Parameters.AddWithValue("?id_vendedor", idV);

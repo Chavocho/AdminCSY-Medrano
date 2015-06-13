@@ -86,7 +86,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmCantidadTickets";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cantidad de tickets";
+            this.Text = "Cantidad de etiquetas";
+            this.Load += new System.EventHandler(this.frmCantidadTickets_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.ResumeLayout(false);
 
