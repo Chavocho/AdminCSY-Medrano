@@ -50,6 +50,7 @@
             this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chbExistencias = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,14 +99,14 @@
             this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.dgvProductos.Location = new System.Drawing.Point(193, 47);
+            this.dgvProductos.Location = new System.Drawing.Point(193, 75);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(803, 403);
+            this.dgvProductos.Size = new System.Drawing.Size(803, 424);
             this.dgvProductos.TabIndex = 3;
             this.dgvProductos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_RowEnter);
             // 
@@ -118,7 +119,7 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(12, 151);
+            this.btnEliminar.Location = new System.Drawing.Point(12, 179);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(175, 46);
             this.btnEliminar.TabIndex = 9;
@@ -137,7 +138,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(12, 99);
+            this.btnEditar.Location = new System.Drawing.Point(12, 127);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(175, 46);
             this.btnEditar.TabIndex = 8;
@@ -156,7 +157,7 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(12, 47);
+            this.btnNuevo.Location = new System.Drawing.Point(12, 75);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(175, 46);
             this.btnNuevo.TabIndex = 7;
@@ -181,7 +182,7 @@
             this.lblEBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEBusqueda.AutoSize = true;
             this.lblEBusqueda.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblEBusqueda.Location = new System.Drawing.Point(503, 17);
+            this.lblEBusqueda.Location = new System.Drawing.Point(491, 17);
             this.lblEBusqueda.Name = "lblEBusqueda";
             this.lblEBusqueda.Size = new System.Drawing.Size(241, 18);
             this.lblEBusqueda.TabIndex = 10;
@@ -192,9 +193,9 @@
             this.txtBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBusqueda.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtBusqueda.Location = new System.Drawing.Point(750, 12);
+            this.txtBusqueda.Location = new System.Drawing.Point(738, 12);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(246, 29);
+            this.txtBusqueda.Size = new System.Drawing.Size(258, 29);
             this.txtBusqueda.TabIndex = 11;
             this.txtBusqueda.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyUp);
             // 
@@ -207,7 +208,7 @@
             this.btnCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategoria.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnCategoria.ForeColor = System.Drawing.Color.White;
-            this.btnCategoria.Location = new System.Drawing.Point(12, 255);
+            this.btnCategoria.Location = new System.Drawing.Point(12, 283);
             this.btnCategoria.Name = "btnCategoria";
             this.btnCategoria.Size = new System.Drawing.Size(175, 46);
             this.btnCategoria.TabIndex = 12;
@@ -226,7 +227,7 @@
             this.btnPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPromociones.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnPromociones.ForeColor = System.Drawing.Color.White;
-            this.btnPromociones.Location = new System.Drawing.Point(12, 307);
+            this.btnPromociones.Location = new System.Drawing.Point(12, 335);
             this.btnPromociones.Name = "btnPromociones";
             this.btnPromociones.Size = new System.Drawing.Size(175, 46);
             this.btnPromociones.TabIndex = 13;
@@ -245,7 +246,7 @@
             this.btnCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCodigo.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnCodigo.ForeColor = System.Drawing.Color.White;
-            this.btnCodigo.Location = new System.Drawing.Point(12, 203);
+            this.btnCodigo.Location = new System.Drawing.Point(12, 231);
             this.btnCodigo.Name = "btnCodigo";
             this.btnCodigo.Size = new System.Drawing.Size(175, 46);
             this.btnCodigo.TabIndex = 14;
@@ -291,11 +292,25 @@
             this.CCant.HeaderText = "Existencias";
             this.CCant.Name = "CCant";
             // 
+            // chbExistencias
+            // 
+            this.chbExistencias.AutoSize = true;
+            this.chbExistencias.Checked = true;
+            this.chbExistencias.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbExistencias.Font = new System.Drawing.Font("Corbel", 11F);
+            this.chbExistencias.Location = new System.Drawing.Point(738, 47);
+            this.chbExistencias.Name = "chbExistencias";
+            this.chbExistencias.Size = new System.Drawing.Size(258, 22);
+            this.chbExistencias.TabIndex = 15;
+            this.chbExistencias.Text = "Buscar productos solo con existencias";
+            this.chbExistencias.UseVisualStyleBackColor = true;
+            // 
             // frmProducto
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 462);
+            this.ClientSize = new System.Drawing.Size(1008, 511);
+            this.Controls.Add(this.chbExistencias);
             this.Controls.Add(this.btnCodigo);
             this.Controls.Add(this.btnPromociones);
             this.Controls.Add(this.btnCategoria);
@@ -336,5 +351,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCant;
+        private System.Windows.Forms.CheckBox chbExistencias;
     }
 }

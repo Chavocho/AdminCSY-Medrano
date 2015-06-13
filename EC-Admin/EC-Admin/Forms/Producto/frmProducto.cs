@@ -48,12 +48,21 @@ namespace EC_Admin.Forms
             FuncionesGenerales.frmEsperaClose();
         }
 
-        private void Buscar(string p)
+        private void Buscar(string p, bool existencias)
         {
             try
             {
-                string sql = "SELECT id, nombre, codigo, descripcion1, precio, cant FROM producto " +
-                    "WHERE (nombre LIKE '%" + p + "%' OR codigo LIKE '%" + p + "%') AND eliminado=0";
+                string sql;
+                if (existencias)
+                {
+                    sql = "SELECT id, nombre, codigo, descripcion1, precio, cant FROM producto " +
+                        "WHERE (nombre LIKE '%" + p + "%' OR codigo LIKE '%" + p + "%') AND cant>0 AND eliminado=0";
+                }
+                else
+                {
+                    sql = "SELECT id, nombre, codigo, descripcion1, precio, cant FROM producto " +
+                        "WHERE (nombre LIKE '%" + p + "%' OR codigo LIKE '%" + p + "%') AND eliminado=0";
+                }
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -115,7 +124,7 @@ namespace EC_Admin.Forms
             if (e.KeyCode == Keys.Enter)
             {
                 tmrEspera.Enabled = true;
-                bgwBusqueda.RunWorkerAsync(txtBusqueda.Text);
+                bgwBusqueda.RunWorkerAsync(new object[] { txtBusqueda.Text, chbExistencias.Checked });
             }
         }
 
@@ -158,7 +167,8 @@ namespace EC_Admin.Forms
 
         private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
         {
-            Buscar(e.Argument.ToString());
+            object[] a = (object[])e.Argument;
+            Buscar(a[0].ToString(), (bool)a[1]);
         }
 
         private void bgwBusqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
