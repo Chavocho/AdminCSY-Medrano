@@ -550,5 +550,32 @@ namespace EC_Admin
             }
             return existe;
         }
+
+        public static bool ExisteCodigo(string codigo, int id)
+        {
+            bool existe = false;
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT id FROM producto WHERE codigo=?codigo AND id=?id";
+                sql.Parameters.AddWithValue("?codigo", codigo);
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    existe = true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return existe;
+        }
+
     }
 }

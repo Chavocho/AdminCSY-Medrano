@@ -117,9 +117,9 @@ namespace EC_Admin
                 else
                     throw new InvalidPrinterException(pd.PrinterSettings);
                 pd.DefaultPageSettings.Landscape = false;
-                ppd.Document = pd;
-                ppd.ShowDialog();
-                //pd.Print();
+                //ppd.Document = pd;
+                //ppd.ShowDialog();
+                pd.Print();
             }
             catch (Exception ex)
             {

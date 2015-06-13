@@ -162,6 +162,7 @@
             this.btnCuentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCuentas.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCuentas.UseVisualStyleBackColor = false;
+            this.btnCuentas.Visible = false;
             this.btnCuentas.Click += new System.EventHandler(this.btnCuentas_Click);
             // 
             // btnAlmacen

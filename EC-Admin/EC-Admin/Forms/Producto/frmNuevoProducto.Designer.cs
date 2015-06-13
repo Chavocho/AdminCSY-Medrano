@@ -155,7 +155,7 @@
             // 
             this.lblInformacionCodigo.AutoSize = true;
             this.lblInformacionCodigo.Font = new System.Drawing.Font("Corbel", 9F);
-            this.lblInformacionCodigo.Location = new System.Drawing.Point(271, 271);
+            this.lblInformacionCodigo.Location = new System.Drawing.Point(6, 238);
             this.lblInformacionCodigo.Name = "lblInformacionCodigo";
             this.lblInformacionCodigo.Size = new System.Drawing.Size(319, 14);
             this.lblInformacionCodigo.TabIndex = 155;

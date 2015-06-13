@@ -187,8 +187,12 @@ namespace EC_Admin.Forms
             {
                 try
                 {
-                    Ticket t = new Ticket();
-                    t.TicketCodigoProducto(id);
+                    int cant = int.Parse((new frmCantidadTickets()).Cantidad().ToString());
+                    for (int i = 0; i < cant; i++)
+                    {
+                        Ticket t = new Ticket();
+                        t.TicketCodigoProducto(id);   
+                    }
                 }
                 catch (MySqlException ex)
                 {

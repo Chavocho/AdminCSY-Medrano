@@ -57,7 +57,7 @@
             this.btnCobrar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnCobrar.ForeColor = System.Drawing.Color.White;
             this.btnCobrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCobrar.Location = new System.Drawing.Point(402, 227);
+            this.btnCobrar.Location = new System.Drawing.Point(402, 221);
             this.btnCobrar.Name = "btnCobrar";
             this.btnCobrar.Size = new System.Drawing.Size(150, 46);
             this.btnCobrar.TabIndex = 7;
@@ -73,7 +73,7 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblTotal.Location = new System.Drawing.Point(76, 132);
+            this.lblTotal.Location = new System.Drawing.Point(76, 126);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(57, 24);
             this.lblTotal.TabIndex = 1;
@@ -85,7 +85,7 @@
             this.lblETotal.AutoSize = true;
             this.lblETotal.Font = new System.Drawing.Font("Corbel", 15F);
             this.lblETotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblETotal.Location = new System.Drawing.Point(12, 132);
+            this.lblETotal.Location = new System.Drawing.Point(12, 126);
             this.lblETotal.Name = "lblETotal";
             this.lblETotal.Size = new System.Drawing.Size(58, 24);
             this.lblETotal.TabIndex = 0;
@@ -97,7 +97,7 @@
             this.txtEfectivo.Enabled = false;
             this.txtEfectivo.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtEfectivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtEfectivo.Location = new System.Drawing.Point(279, 132);
+            this.txtEfectivo.Location = new System.Drawing.Point(279, 126);
             this.txtEfectivo.Name = "txtEfectivo";
             this.txtEfectivo.Size = new System.Drawing.Size(91, 29);
             this.txtEfectivo.TabIndex = 3;
@@ -111,7 +111,7 @@
             this.lblEEfectivo.AutoSize = true;
             this.lblEEfectivo.Font = new System.Drawing.Font("Corbel", 15F);
             this.lblEEfectivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEEfectivo.Location = new System.Drawing.Point(190, 132);
+            this.lblEEfectivo.Location = new System.Drawing.Point(190, 126);
             this.lblEEfectivo.Name = "lblEEfectivo";
             this.lblEEfectivo.Size = new System.Drawing.Size(83, 24);
             this.lblEEfectivo.TabIndex = 2;
@@ -128,7 +128,7 @@
             this.btnCredito.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnCredito.ForeColor = System.Drawing.Color.White;
             this.btnCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCredito.Location = new System.Drawing.Point(246, 227);
+            this.btnCredito.Location = new System.Drawing.Point(246, 221);
             this.btnCredito.Name = "btnCredito";
             this.btnCredito.Size = new System.Drawing.Size(150, 46);
             this.btnCredito.TabIndex = 8;
@@ -145,7 +145,7 @@
             this.lblCambio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(210)))), ((int)(((byte)(50)))));
             this.lblCambio.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
             this.lblCambio.ForeColor = System.Drawing.Color.White;
-            this.lblCambio.Location = new System.Drawing.Point(463, 132);
+            this.lblCambio.Location = new System.Drawing.Point(463, 126);
             this.lblCambio.Name = "lblCambio";
             this.lblCambio.Size = new System.Drawing.Size(57, 24);
             this.lblCambio.TabIndex = 6;
@@ -157,7 +157,7 @@
             this.lblECambio.AutoSize = true;
             this.lblECambio.Font = new System.Drawing.Font("Corbel", 15F);
             this.lblECambio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblECambio.Location = new System.Drawing.Point(376, 132);
+            this.lblECambio.Location = new System.Drawing.Point(376, 126);
             this.lblECambio.Name = "lblECambio";
             this.lblECambio.Size = new System.Drawing.Size(81, 24);
             this.lblECambio.TabIndex = 5;
@@ -194,7 +194,6 @@
             // 
             // txtDatos
             // 
-            this.txtDatos.Enabled = false;
             this.txtDatos.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtDatos.Location = new System.Drawing.Point(194, 82);
@@ -229,7 +228,6 @@
             // 
             // txtPorcentajeImpuesto
             // 
-            this.txtPorcentajeImpuesto.Enabled = false;
             this.txtPorcentajeImpuesto.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtPorcentajeImpuesto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtPorcentajeImpuesto.Location = new System.Drawing.Point(12, 82);
@@ -254,7 +252,6 @@
             // 
             // txtFolioTerminal
             // 
-            this.txtFolioTerminal.Enabled = false;
             this.txtFolioTerminal.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtFolioTerminal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtFolioTerminal.Location = new System.Drawing.Point(376, 82);
@@ -269,7 +266,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(564, 285);
+            this.ClientSize = new System.Drawing.Size(564, 279);
             this.Controls.Add(this.lblEFolioTerminal);
             this.Controls.Add(this.txtFolioTerminal);
             this.Controls.Add(this.lblEPorcentajeImpuesto);

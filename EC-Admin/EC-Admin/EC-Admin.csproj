@@ -345,6 +345,12 @@
     <Compile Include="Forms\PrimerUso\frmTerminado.Designer.cs">
       <DependentUpon>frmTerminado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Producto\frmCantidadTickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Producto\frmCantidadTickets.Designer.cs">
+      <DependentUpon>frmCantidadTickets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Producto\frmEditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -820,6 +826,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrimerUso\frmTerminado.resx">
       <DependentUpon>frmTerminado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Producto\frmCantidadTickets.resx">
+      <DependentUpon>frmCantidadTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Producto\frmEditarProducto.resx">
       <DependentUpon>frmEditarProducto.cs</DependentUpon>

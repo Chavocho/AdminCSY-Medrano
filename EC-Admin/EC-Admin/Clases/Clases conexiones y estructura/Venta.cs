@@ -21,9 +21,9 @@ namespace EC_Admin
         private decimal impuesto;
         private decimal descuento;
         private decimal total;
-        private bool factura;
-        private string folioFactura;
         private TipoPago tipo;
+        private string terminacionTarjeta;
+        private string terminalTarjeta;
         private int createUser;
         private DateTime createTime;
         private int updateUser;
@@ -91,24 +91,24 @@ namespace EC_Admin
             set { total = value; }
         }
 
-        public bool Factura
-        {
-            get { return factura; }
-            set { factura = value; }
-        }
-
-        public string FolioFactura
-        {
-            get { return folioFactura; }
-            set { folioFactura = value; }
-        }
-
         public TipoPago Tipo
         {
             get { return tipo; }
             set { tipo = value; }
         }
 
+        public string TerminacionTarjeta
+        {
+            get { return terminacionTarjeta; }
+            set { terminacionTarjeta = value; }
+        }
+
+        public string TerminalTarjeta
+        {
+            get { return terminalTarjeta; }
+            set { terminalTarjeta = value; }
+        }
+        
         public int CreateUser
         {
             get { return createUser; }
@@ -275,9 +275,9 @@ namespace EC_Admin
                     impuesto = (decimal)dr["impuesto"];
                     descuento = (decimal)dr["descuento"];
                     total = (decimal)dr["total"];
-                    factura = (bool)dr["factura"];
-                    folioFactura = dr["folio_factura"].ToString();
                     tipo = (TipoPago)Enum.Parse(typeof(TipoPago), dr["tipo_pago"].ToString());
+                    terminacionTarjeta = dr["terminacion_tarjeta"].ToString();
+                    terminalTarjeta = dr["terminal_tarjeta"].ToString();
                     createUser = (int)dr["create_user"];
                     createTime = (DateTime)dr["create_time"];
                     if (dr["update_user"] != DBNull.Value)
@@ -317,8 +317,8 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE venta SET id_cliente=?id_cliente, id_sucursal=?id_sucursal, id_vendedor=?id_vendedor, abierta=?abierta, subtotal=?subtotal, impuesto=?impuesto, " + 
-                    "descuento=?descuento, total=?total, factura=?factura, folio_factura=?folio_factura, tipo_pago=?tipo_pago, update_user=?update_user, update_time=NOW() WHERE id=?id";
+                sql.CommandText = "UPDATE venta SET id_cliente=?id_cliente, id_sucursal=?id_sucursal, id_vendedor=?id_vendedor, abierta=?abierta, subtotal=?subtotal, impuesto=?impuesto, descuento=?descuento, total=?total, " + 
+                    "factura=?factura, folio_factura=?folio_factura, tipo_pago=?tipo_pago, terminacion_tarjeta=?terminacion_tarjeta, terminal_tarjeta=?terminal_tarjeta, update_user=?update_user, update_time=NOW() WHERE id=?id";
                 sql.Parameters.AddWithValue("?id_cliente", idC);
                 sql.Parameters.AddWithValue("?id_sucursal", idS);
                 sql.Parameters.AddWithValue("?id_vendedor", idV);
@@ -327,9 +327,9 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?impuesto", impuesto);
                 sql.Parameters.AddWithValue("?descuento", descuento);
                 sql.Parameters.AddWithValue("?total", total);
-                sql.Parameters.AddWithValue("?factura", factura);
-                sql.Parameters.AddWithValue("?folio_factura", folioFactura);
                 sql.Parameters.AddWithValue("?tipo_pago", tipo);
+                sql.Parameters.AddWithValue("?terminacion_tarjeta", terminacionTarjeta);
+                sql.Parameters.AddWithValue("?terminal_tarjeta", terminalTarjeta);
                 sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);

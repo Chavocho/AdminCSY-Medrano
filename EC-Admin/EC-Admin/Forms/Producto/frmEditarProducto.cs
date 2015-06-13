@@ -515,6 +515,10 @@ namespace EC_Admin.Forms
 
         private void txtCodigo_Leave(object sender, EventArgs e)
         {
+            if (Producto.ExisteCodigo(txtCodigo.Text, p.ID))
+            {
+                return;
+            }
             if (Producto.ExisteCodigo(txtCodigo.Text))
             {
                 lblInformacionCodigo.Visible = true;

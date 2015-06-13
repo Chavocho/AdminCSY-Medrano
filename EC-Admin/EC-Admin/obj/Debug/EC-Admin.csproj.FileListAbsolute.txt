@@ -107,3 +107,4 @@ C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC-Admin.csproj.GenerateResource.Cache
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\Admin CSY.exe
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\Admin CSY.pdb
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCantidadTickets.resources

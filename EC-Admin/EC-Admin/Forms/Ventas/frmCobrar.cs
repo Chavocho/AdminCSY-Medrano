@@ -73,7 +73,7 @@ namespace EC_Admin.Forms
                 else if (cboTipoPago.SelectedIndex == 1 || cboTipoPago.SelectedIndex == 2)
                 {
                     c.Efectivo = 0M;
-                    c.Voucher = total;
+                    c.Voucher = totalPorcentaje;
                 }
                 c.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
                 c.IDSucursal = Config.idSucursal;
@@ -119,6 +119,7 @@ namespace EC_Admin.Forms
                     txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = false;
                     CalcularCambio();
                     t = TipoPago.Efectivo;
+                    this.Size = new Size(580, 275);
                     break;
                 //case 1:
                 //    QuitarEfectivo();
@@ -128,18 +129,20 @@ namespace EC_Admin.Forms
                 case 1:
                     QuitarEfectivo();
                     lblEDatos.Text = "Núm. de tarjeta";
-                    txtDatos.Visible = lblEDatos.Visible = true;
-                    txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = true;
+                    txtDatos.Visible = lblEDatos.Visible = txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = lblEFolioTerminal.Visible = txtFolioTerminal.Visible = true;
                     txtPorcentajeImpuesto.Text = "0";
                     t = TipoPago.Crédito;
+                    this.Size = new Size(580, 318);
+                    txtPorcentajeImpuesto_TextChanged(txtPorcentajeImpuesto, new EventArgs());
                     break;
                 case 2:
                     QuitarEfectivo();
                     lblEDatos.Text = "Núm. de tarjeta";
-                    txtDatos.Visible = lblEDatos.Visible = true;
-                    txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = true;
+                    txtDatos.Visible = lblEDatos.Visible = txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = lblEFolioTerminal.Visible = txtFolioTerminal.Visible = true;
                     txtPorcentajeImpuesto.Text = "0";
                     t = TipoPago.Débito;
+                    this.Size = new Size(580, 318);
+                    txtPorcentajeImpuesto_TextChanged(txtPorcentajeImpuesto, new EventArgs());
                     break;
                 //case 4:
                 //    QuitarEfectivo();
@@ -172,7 +175,14 @@ namespace EC_Admin.Forms
                             return;
                         }
                     }
-                    frm.GuardarVenta(false, t);
+                    if (cboTipoPago.SelectedIndex == 0)
+                    {
+                        frm.GuardarVenta(false, t);
+                    }
+                    else
+                    {
+                        frm.GuardarVenta(false, t, txtDatos.Text, txtFolioTerminal.Text, totalPorcentaje);
+                    }
                     MovimientoCaja();
                     if (FuncionesGenerales.ImprimirTicket(this, "¿Desea imprimir el ticket de ésta venta?"))
                     {
@@ -208,6 +218,11 @@ namespace EC_Admin.Forms
             {
                 totalPorcentaje = total + (total * (decimal.Parse(txtPorcentajeImpuesto.Text) / 100));
             }
+            else
+            {
+                totalPorcentaje = total;
+            }
+            lblTotal.Text = totalPorcentaje.ToString("C2");
         }
     }
 }

@@ -218,7 +218,7 @@ namespace EC_Admin.Forms
             lblCliente.Text = "";
         }
 
-        public void GuardarVenta(bool abierta, TipoPago t)
+        public void GuardarVenta(bool abierta, TipoPago t, string terminacionTarjeta = "", string folioTerminal = "", decimal totalImporte = -1M)
         {
             try
             {
@@ -227,10 +227,20 @@ namespace EC_Admin.Forms
                 v.IDSucursal = Config.idSucursal;
                 v.Cancelada = false;
                 v.Abierta = abierta;
-                v.Subtotal = subtotal;
-                v.Impuesto = impuesto;
-                v.Descuento = descuento;
-                v.Total = total;
+                if (totalImporte <= 0)
+                {
+                    v.Subtotal = subtotal;
+                    v.Impuesto = impuesto;
+                    v.Descuento = descuento;
+                    v.Total = total;
+                }
+                else
+                {
+                    v.Subtotal = subtotal;
+                    v.Impuesto = impuesto + (totalImporte - total);
+                    v.Descuento = descuento;
+                    v.Total = totalImporte;
+                }
                 v.Tipo = t;
                 foreach (DataGridViewRow dr in dgvProductos.Rows)
                 {
