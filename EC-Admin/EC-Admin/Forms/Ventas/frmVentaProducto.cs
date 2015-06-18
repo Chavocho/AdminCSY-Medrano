@@ -42,8 +42,8 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT id, nombre, codigo, precio, cant, unidad FROM producto " +
-                    "WHERE (nombre LIKE '%" + p + "%' OR codigo='" + p + "') AND eliminado=0";
+                string sql = "SELECT id, nombre, descripcion, codigo, precio, cant FROM producto " +
+                    "WHERE (nombre LIKE '%" + p + "%' OR codigo LIKE '%" + p + "%') AND cant>0 AND eliminado=0";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -65,7 +65,7 @@ namespace EC_Admin.Forms
                 dgvProductos.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["codigo"], dr["precio"], dr["cant"], dr["unidad"] });
+                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["descripcion"], dr["codigo"], dr["precio"], dr["cant"] });
                 }
                 dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
             }

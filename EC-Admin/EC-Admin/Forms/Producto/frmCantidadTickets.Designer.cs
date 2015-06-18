@@ -76,6 +76,7 @@
             // 
             // frmCantidadTickets
             // 
+            this.AcceptButton = this.btnAceptar;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(267, 54);
@@ -86,7 +87,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmCantidadTickets";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cantidad de tickets";
+            this.Text = "Cantidad de etiquetas";
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.ResumeLayout(false);
 
