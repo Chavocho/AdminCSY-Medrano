@@ -240,13 +240,15 @@ namespace EC_Admin.Forms
                     v.Impuesto = impuesto + (totalImporte - total);
                     v.Descuento = descuento;
                     v.Total = totalImporte;
+                    v.TerminacionTarjeta = terminacionTarjeta;
+                    v.TerminalTarjeta = folioTerminal;
                 }
                 v.Tipo = t;
                 foreach (DataGridViewRow dr in dgvProductos.Rows)
                 {
                     v.IDProductos.Add((int)dr.Cells[0].Value);
                     v.Precio.Add((decimal)dr.Cells[3].Value);
-                    v.Cantidad.Add((decimal)dr.Cells[4].Value);
+                    v.Cantidad.Add((int)dr.Cells[4].Value);
                     v.DescuentoProducto.Add((decimal)dr.Cells[5].Value);
                     v.Unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
                     v.Paquete.Add((bool)dr.Cells[7].Value);

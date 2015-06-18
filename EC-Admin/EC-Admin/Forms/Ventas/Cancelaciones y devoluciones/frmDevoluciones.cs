@@ -54,7 +54,7 @@ namespace EC_Admin.Forms
             foreach (DataGridViewRow dr in dgvProductos02.Rows)
             {
                 d.IDProductos.Add((int)dr.Cells[0].Value);
-                d.CantidadProductos.Add((decimal)dr.Cells[4].Value);
+                d.CantidadProductos.Add((int)dr.Cells[4].Value);
                 d.PrecioProductos.Add((decimal)dr.Cells[3].Value);
             }
             d.Insertar();

@@ -142,7 +142,7 @@ namespace EC_Admin
          
         #region Propiedades Venta Detallada
         private List<int> idP;
-        private List<decimal> cantidad;
+        private List<int> cantidad;
         private List<decimal> precio;
         private List<decimal> descuentoP;
         private List<Unidades> unidad;
@@ -155,7 +155,7 @@ namespace EC_Admin
             set { idP = value; }
         }
 
-        public List<decimal> Cantidad
+        public List<int> Cantidad
         {
             get { return cantidad; }
             set { cantidad = value; }
@@ -317,8 +317,8 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE venta SET id_cliente=?id_cliente, id_sucursal=?id_sucursal, id_vendedor=?id_vendedor, abierta=?abierta, subtotal=?subtotal, impuesto=?impuesto, descuento=?descuento, total=?total, " + 
-                     "tipo_pago=?tipo_pago, terminacion_tarjeta=?terminacion_tarjeta, terminal_tarjeta=?terminal_tarjeta, update_user=?update_user, update_time=NOW() WHERE id=?id";
+                sql.CommandText = "UPDATE venta SET id_cliente=?id_cliente, id_sucursal=?id_sucursal, id_vendedor=?id_vendedor, abierta=?abierta, subtotal=?subtotal, impuesto=?impuesto, descuento=?descuento, " +
+                    "total=?total, tipo_pago=?tipo_pago, terminacion_tarjeta=?terminacion_tarjeta, terminal_tarjeta=?terminal_tarjeta, update_user=?update_user, update_time=NOW() WHERE id=?id";
                 sql.Parameters.AddWithValue("?id_cliente", idC);
                 sql.Parameters.AddWithValue("?id_sucursal", idS);
                 sql.Parameters.AddWithValue("?id_vendedor", idV);
@@ -375,7 +375,7 @@ namespace EC_Admin
         private void InicializarVentaDetallada()
         {
             idP = new List<int>();
-            cantidad = new List<decimal>();
+            cantidad = new List<int>();
             precio = new List<decimal>();
             descuentoP = new List<decimal>();
             unidad = new List<Unidades>();
@@ -408,8 +408,8 @@ namespace EC_Admin
                     sql.Parameters.Clear();
                     if (this.abierta == false)
                     {
-                        Producto.CambiarCantidadInventario(idP[i], decimal.Negate(cantidad[i]));
-                        Promociones.CambiarExistencias(promocion[i], decimal.Negate(cantidad[i]));
+                        Producto.CambiarCantidadInventario(idP[i], cantidad[i] * -1);
+                        Promociones.CambiarExistencias(promocion[i], cantidad[i] * -1);
                     }
                 }
                 InicializarVentaDetallada();
@@ -439,7 +439,7 @@ namespace EC_Admin
                 foreach (DataRow dr in dt.Rows)
                 {
                     idP.Add((int)dr["id_producto"]);
-                    cantidad.Add((decimal)dr["cant"]);
+                    cantidad.Add((int)dr["cant"]);
                     precio.Add((decimal)dr["precio"]);
                     descuentoP.Add((decimal)dr["descuento"]);
                     unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));

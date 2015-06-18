@@ -38,18 +38,18 @@ namespace EC_Admin.Forms
                 Promociones p = new Promociones();
                 p.IDProducto = id;
                 p.Existencias = chbExistencias.Checked;
-                p.Cantidad = decimal.Parse(txtCant.Text);
+                p.Cantidad = int.Parse(txtCant.Text);
                 if (chbExistencias.Checked)
                 {
                     p.FechaInicio = new DateTime();
                     p.FechaFin = new DateTime();
-                    p.CantidadProducto = decimal.Parse(txtExistencias.Text);
+                    p.CantidadProducto = int.Parse(txtExistencias.Text);
                 }
                 else
                 {
                     p.FechaInicio = dtpFechaIni.Value;
                     p.FechaFin = dtpFechaFin.Value;
-                    p.CantidadProducto = 0M;
+                    p.CantidadProducto = 0;
                 }
                 p.Precio = decimal.Parse(txtPrecio.Text);
                 p.Insertar();
@@ -98,7 +98,7 @@ namespace EC_Admin.Forms
             }
             else
             {
-                if (decimal.Parse(txtCant.Text) <= 0)
+                if (int.Parse(txtCant.Text) <= 0)
                 {
                     FuncionesGenerales.ColoresError(txtCant);
                     res = false;

@@ -16,8 +16,8 @@ namespace EC_Admin
         private bool existencias;
         private DateTime fechaIni;
         private DateTime fechaFin;
-        private decimal cantidad;
-        private decimal cantidadProducto;
+        private int cantidad;
+        private int cantidadProducto;
         private decimal precio;
 
         public int ID
@@ -50,13 +50,13 @@ namespace EC_Admin
             set { fechaFin = value; }
         }
 
-        public decimal Cantidad
+        public int Cantidad
         {
             get { return cantidad; }
             set { cantidad = value; }
         }
 
-        public decimal CantidadProducto
+        public int CantidadProducto
         {
             get { return cantidadProducto; }
             set { cantidadProducto = value; }
@@ -124,8 +124,8 @@ namespace EC_Admin
                         fechaFin = (DateTime)dr["fecha_fin"];
                     else
                         fechaFin = new DateTime();
-                    cantidad = (decimal)dr["cant"];
-                    cantidadProducto = (decimal)dr["cant_prod"];
+                    cantidad = (int)dr["cant"];
+                    cantidadProducto = (int)dr["cant_prod"];
                     precio = (decimal)dr["precio"];
                 }
             }
@@ -223,7 +223,7 @@ namespace EC_Admin
             }
         }
 
-        public static void CambiarExistencias(int idPromo, decimal cant)
+        public static void CambiarExistencias(int idPromo, int cant)
         {
             try
             {

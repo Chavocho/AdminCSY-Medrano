@@ -199,7 +199,7 @@ namespace EC_Admin.Forms
                 {
                     c.IDProductos.Add((int)dr.Cells[0].Value);
                     c.Precio.Add((decimal)dr.Cells[3].Value);
-                    c.Cantidad.Add((decimal)dr.Cells[4].Value);
+                    c.Cantidad.Add((int)dr.Cells[4].Value);
                     c.DescuentoProducto.Add((decimal)dr.Cells[5].Value);
                     c.Unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
                 }

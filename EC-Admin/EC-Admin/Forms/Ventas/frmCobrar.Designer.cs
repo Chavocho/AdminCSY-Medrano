@@ -60,7 +60,7 @@
             this.btnCobrar.Location = new System.Drawing.Point(402, 221);
             this.btnCobrar.Name = "btnCobrar";
             this.btnCobrar.Size = new System.Drawing.Size(150, 46);
-            this.btnCobrar.TabIndex = 7;
+            this.btnCobrar.TabIndex = 14;
             this.btnCobrar.Text = "Cobrar";
             this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCobrar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -76,7 +76,7 @@
             this.lblTotal.Location = new System.Drawing.Point(76, 126);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(57, 24);
-            this.lblTotal.TabIndex = 1;
+            this.lblTotal.TabIndex = 9;
             this.lblTotal.Text = "$0.00";
             // 
             // lblETotal
@@ -88,7 +88,7 @@
             this.lblETotal.Location = new System.Drawing.Point(12, 126);
             this.lblETotal.Name = "lblETotal";
             this.lblETotal.Size = new System.Drawing.Size(58, 24);
-            this.lblETotal.TabIndex = 0;
+            this.lblETotal.TabIndex = 8;
             this.lblETotal.Text = "Total:";
             // 
             // txtEfectivo
@@ -100,7 +100,7 @@
             this.txtEfectivo.Location = new System.Drawing.Point(279, 126);
             this.txtEfectivo.Name = "txtEfectivo";
             this.txtEfectivo.Size = new System.Drawing.Size(91, 29);
-            this.txtEfectivo.TabIndex = 3;
+            this.txtEfectivo.TabIndex = 11;
             this.txtEfectivo.Text = "0.00";
             this.txtEfectivo.TextChanged += new System.EventHandler(this.txtEfectivo_TextChanged);
             this.txtEfectivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEfectivo_KeyPress);
@@ -114,7 +114,7 @@
             this.lblEEfectivo.Location = new System.Drawing.Point(190, 126);
             this.lblEEfectivo.Name = "lblEEfectivo";
             this.lblEEfectivo.Size = new System.Drawing.Size(83, 24);
-            this.lblEEfectivo.TabIndex = 2;
+            this.lblEEfectivo.TabIndex = 10;
             this.lblEEfectivo.Text = "Efectivo:";
             // 
             // btnCredito
@@ -131,7 +131,7 @@
             this.btnCredito.Location = new System.Drawing.Point(246, 221);
             this.btnCredito.Name = "btnCredito";
             this.btnCredito.Size = new System.Drawing.Size(150, 46);
-            this.btnCredito.TabIndex = 8;
+            this.btnCredito.TabIndex = 15;
             this.btnCredito.Text = "A pagos";
             this.btnCredito.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCredito.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -148,7 +148,7 @@
             this.lblCambio.Location = new System.Drawing.Point(463, 126);
             this.lblCambio.Name = "lblCambio";
             this.lblCambio.Size = new System.Drawing.Size(57, 24);
-            this.lblCambio.TabIndex = 6;
+            this.lblCambio.TabIndex = 13;
             this.lblCambio.Text = "$0.00";
             // 
             // lblECambio
@@ -160,7 +160,7 @@
             this.lblECambio.Location = new System.Drawing.Point(376, 126);
             this.lblECambio.Name = "lblECambio";
             this.lblECambio.Size = new System.Drawing.Size(81, 24);
-            this.lblECambio.TabIndex = 5;
+            this.lblECambio.TabIndex = 12;
             this.lblECambio.Text = "Cambio:";
             // 
             // cboTipoPago
@@ -178,7 +178,7 @@
             this.cboTipoPago.Location = new System.Drawing.Point(150, 9);
             this.cboTipoPago.Name = "cboTipoPago";
             this.cboTipoPago.Size = new System.Drawing.Size(220, 29);
-            this.cboTipoPago.TabIndex = 9;
+            this.cboTipoPago.TabIndex = 1;
             this.cboTipoPago.SelectedIndexChanged += new System.EventHandler(this.cboTipoPago_SelectedIndexChanged);
             // 
             // lblETipoPago
@@ -189,7 +189,7 @@
             this.lblETipoPago.Location = new System.Drawing.Point(8, 12);
             this.lblETipoPago.Name = "lblETipoPago";
             this.lblETipoPago.Size = new System.Drawing.Size(136, 22);
-            this.lblETipoPago.TabIndex = 10;
+            this.lblETipoPago.TabIndex = 0;
             this.lblETipoPago.Text = "Método de pago";
             // 
             // txtDatos
@@ -199,7 +199,7 @@
             this.txtDatos.Location = new System.Drawing.Point(194, 82);
             this.txtDatos.Name = "txtDatos";
             this.txtDatos.Size = new System.Drawing.Size(176, 29);
-            this.txtDatos.TabIndex = 11;
+            this.txtDatos.TabIndex = 5;
             this.txtDatos.Visible = false;
             // 
             // lblEDatos
@@ -210,7 +210,7 @@
             this.lblEDatos.Location = new System.Drawing.Point(190, 57);
             this.lblEDatos.Name = "lblEDatos";
             this.lblEDatos.Size = new System.Drawing.Size(133, 22);
-            this.lblEDatos.TabIndex = 12;
+            this.lblEDatos.TabIndex = 4;
             this.lblEDatos.Text = "Núm. de cheque";
             this.lblEDatos.Visible = false;
             // 
@@ -222,7 +222,7 @@
             this.lblEPorcentajeImpuesto.Location = new System.Drawing.Point(8, 57);
             this.lblEPorcentajeImpuesto.Name = "lblEPorcentajeImpuesto";
             this.lblEPorcentajeImpuesto.Size = new System.Drawing.Size(73, 22);
-            this.lblEPorcentajeImpuesto.TabIndex = 16;
+            this.lblEPorcentajeImpuesto.TabIndex = 2;
             this.lblEPorcentajeImpuesto.Text = "% Cargo";
             this.lblEPorcentajeImpuesto.Visible = false;
             // 
@@ -233,7 +233,7 @@
             this.txtPorcentajeImpuesto.Location = new System.Drawing.Point(12, 82);
             this.txtPorcentajeImpuesto.Name = "txtPorcentajeImpuesto";
             this.txtPorcentajeImpuesto.Size = new System.Drawing.Size(176, 29);
-            this.txtPorcentajeImpuesto.TabIndex = 15;
+            this.txtPorcentajeImpuesto.TabIndex = 3;
             this.txtPorcentajeImpuesto.Visible = false;
             this.txtPorcentajeImpuesto.TextChanged += new System.EventHandler(this.txtPorcentajeImpuesto_TextChanged);
             this.txtPorcentajeImpuesto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentajeImpuesto_KeyPress);
@@ -246,7 +246,7 @@
             this.lblEFolioTerminal.Location = new System.Drawing.Point(372, 57);
             this.lblEFolioTerminal.Name = "lblEFolioTerminal";
             this.lblEFolioTerminal.Size = new System.Drawing.Size(114, 22);
-            this.lblEFolioTerminal.TabIndex = 18;
+            this.lblEFolioTerminal.TabIndex = 6;
             this.lblEFolioTerminal.Text = "Folio terminal";
             this.lblEFolioTerminal.Visible = false;
             // 
@@ -257,7 +257,7 @@
             this.txtFolioTerminal.Location = new System.Drawing.Point(376, 82);
             this.txtFolioTerminal.Name = "txtFolioTerminal";
             this.txtFolioTerminal.Size = new System.Drawing.Size(176, 29);
-            this.txtFolioTerminal.TabIndex = 17;
+            this.txtFolioTerminal.TabIndex = 7;
             this.txtFolioTerminal.Visible = false;
             // 
             // frmCobrar

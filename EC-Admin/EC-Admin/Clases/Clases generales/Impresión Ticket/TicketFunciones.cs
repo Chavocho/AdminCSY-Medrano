@@ -287,22 +287,30 @@ namespace EC_Admin
         /// <exception cref="System.Exception"></exception>
         private void AgregarProductosVentas(ref PrintPageEventArgs e, DataTable dt)
         {
+            float posProdCod = 0F;
+            float posPrecio = (e.PageBounds.Width / 4) + 25;
+            float posCant = (e.PageBounds.Width / 4) * 2 + 15;
+            float posImp = (e.PageBounds.Width / 4) * 3 - 5;
             try
             {
-                e.Graphics.DrawString("PRODUCTO", fuenteNormalResaltada, Brushes.Black, 0F, y);
-                e.Graphics.DrawString("PRECIO", fuenteNormalResaltada, Brushes.Black, (e.PageBounds.Width / 4) + 25, y);
-                e.Graphics.DrawString("CANT", fuenteNormalResaltada, Brushes.Black, (e.PageBounds.Width / 4) * 2 + 15, y);
-                e.Graphics.DrawString("IMP", fuenteNormalResaltada, Brushes.Black, (e.PageBounds.Width / 4) * 3 - 5, y);
+                e.Graphics.DrawString("NOM/CÓD", fuenteNormalResaltada, Brushes.Black, posProdCod, y);
+                e.Graphics.DrawString("PRECIO", fuenteNormalResaltada, Brushes.Black, posPrecio, y);
+                e.Graphics.DrawString("CANT", fuenteNormalResaltada, Brushes.Black, posCant, y);
+                e.Graphics.DrawString("IMP", fuenteNormalResaltada, Brushes.Black, posImp, y);
                 y += saltoLinea;
                 foreach (DataRow dr in dt.Rows)
                 {
+                    string codigo = Producto.CodigoProducto((int)dr["id_producto"]);
                     string prod = Producto.NombreProducto((int)dr["id_producto"]);
                     decimal precio = (decimal)dr["precio"];
                     decimal cant = decimal.Parse(dr["cant"].ToString());
                     AgregarNombreProducto(ref e, prod);
-                    e.Graphics.DrawString(precio.ToString("C2"), fuenteNormal, Brushes.Black, (e.PageBounds.Width / 4) + 25, y);
-                    e.Graphics.DrawString(cant.ToString(), fuenteNormal, Brushes.Black, (e.PageBounds.Width / 4) * 2 + 15, y);
-                    e.Graphics.DrawString((precio * cant).ToString("C2"), fuenteNormal, Brushes.Black, (e.PageBounds.Width / 4) * 3 - 5, y);
+                    e.Graphics.DrawString(prod, fuenteNormal, Brushes.Black, posProdCod, y);
+                    y += saltoLinea;
+                    e.Graphics.DrawString(codigo, fuenteNormal, Brushes.Black, posProdCod, y);
+                    e.Graphics.DrawString(precio.ToString("C2"), fuenteNormal, Brushes.Black, posPrecio, y);
+                    e.Graphics.DrawString(cant.ToString(), fuenteNormal, Brushes.Black, posCant, y);
+                    e.Graphics.DrawString((precio * cant).ToString("C2"), fuenteNormal, Brushes.Black, posImp, y);
                     y += saltoLinea;
                 }
             }

@@ -67,7 +67,7 @@ namespace EC_Admin
 
         private List<int> idProductos;
         private List<decimal> precioProductos;
-        private List<decimal> cantidadProductos;
+        private List<int> cantidadProductos;
 
         public List<int> IDProductos
         {
@@ -81,26 +81,38 @@ namespace EC_Admin
             set { precioProductos = value; }
         }
 
-        public List<decimal> CantidadProductos
+        public List<int> CantidadProductos
         {
             get { return cantidadProductos; }
             set { cantidadProductos = value; }
         }
         #endregion
 
+        /// <summary>
+        /// Inicializa las propiedades de la devolución detallada
+        /// </summary>
         private void InicializarDetallada()
         {
             idProductos = new List<int>();
             precioProductos = new List<decimal>();
-            cantidadProductos = new List<decimal>();
+            cantidadProductos = new List<int>();
         }
 
+        /// <summary>
+        /// Inicializa la instancia de la clase Devoluciones
+        /// </summary>
+        /// <param name="v">Objeto de la clase Venta con los datos precargados de la venta</param>
         public Devoluciones(Venta v)
         {
             this.v = v;
             InicializarDetallada();
         }
 
+        /// <summary>
+        /// Inicializa la instancia de la clase Devoluciones
+        /// </summary>
+        /// <param name="id">ID de la devolución</param>
+        /// <param name="v">Objeto de la clase Venta con los datos precargados de la venta</param>
         public Devoluciones(int id, Venta v)
         {
             this.id = id;
@@ -108,6 +120,9 @@ namespace EC_Admin
             InicializarDetallada();
         }
 
+        /// <summary>
+        /// Obtiene los datos de la devolución de la base de datos
+        /// </summary>
         public void ObtenerDatos()
         {
             try
@@ -132,6 +147,7 @@ namespace EC_Admin
                     else
                         updateTime = new DateTime();
                 }
+                ObtenerDatosDetallada();
             }
             catch (MySqlException ex)
             {
@@ -143,6 +159,38 @@ namespace EC_Admin
             }
         }
 
+        /// <summary>
+        /// Obtiene los datos de la devolución detallada
+        /// </summary>
+        private void ObtenerDatosDetallada()
+        {
+            InicializarDetallada();
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT * FROM devolucion_detallada WHERE id_devolucion=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    idProductos.Add((int)dr["id_producto"]);
+                    precioProductos.Add((decimal)dr["precio"]);
+                    cantidadProductos.Add((int)dr["cant"]);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Inserta los datos de las propiedades en la base de datos
+        /// </summary>
         public void Insertar()
         {
             try
@@ -167,6 +215,9 @@ namespace EC_Admin
             }
         }
 
+        /// <summary>
+        /// Inserta los datos de las propiedades de la compra detallada en la base de datos
+        /// </summary>
         private void InsertarDetallado()
         {
             try
@@ -182,7 +233,7 @@ namespace EC_Admin
                     sql.Parameters.AddWithValue("?cant", cantidadProductos[i]);
                     ConexionBD.EjecutarConsulta(sql);
                     sql.Parameters.Clear();
-                    Producto.CambiarCantidadInventario(idProductos[i], cantidadProductos[i]);
+                    Inventario.CambiarCantidadInventario(idProductos[i], cantidadProductos[i]);
                     sqlVenta.CommandText = "UPDATE venta_detallada SET cant=cant-?cant WHERE id_venta=?id_venta AND id_producto=?id_producto";
                     sqlVenta.Parameters.AddWithValue("?cant", cantidadProductos[i]);
                     sqlVenta.Parameters.AddWithValue("?id_producto", idProductos[i]);
@@ -209,6 +260,11 @@ namespace EC_Admin
             }
         }
 
+        /// <summary>
+        /// Obtiene el saldo restante de la devolución
+        /// </summary>
+        /// <param name="id">ID de la devolución</param>
+        /// <returns>Saldo restante</returns>
         public static decimal SaldoDevolucion(int id)
         {
             decimal saldo = 0M;
@@ -234,12 +290,17 @@ namespace EC_Admin
             return saldo;
         }
 
+        /// <summary>
+        /// Resta el saldo de la devolución según el ID
+        /// </summary>
+        /// <param name="id">ID de la devolución</param>
+        /// <param name="saldo">Cantidad a restar</param>
         public static void CambiarSaldo(int id, decimal saldo)
         {
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE devolucion SET saldo=saldo+?saldo, update_user=?update_user, update_time=NOW() WHERE id=?id";
+                sql.CommandText = "UPDATE devolucion SET saldo=saldo-?saldo, update_user=?update_user, update_time=NOW() WHERE id=?id";
                 sql.Parameters.AddWithValue("?saldo", saldo);
                 sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
                 sql.Parameters.AddWithValue("?id", id);

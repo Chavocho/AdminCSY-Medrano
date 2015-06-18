@@ -32,10 +32,5 @@ namespace EC_Admin.Forms
                 Cantidad();
             }
         }
-
-        private void frmCantidadTickets_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

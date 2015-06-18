@@ -20,10 +20,6 @@ namespace EC_Admin
         private string codigo;
         private string descripcion01;
         private decimal costo;
-        private decimal precio;
-        private decimal cantidad;
-        private decimal precioMedioMayoreo;
-        private decimal precioMayoreo;
         private Unidades unidad;
         private Image imagen01;
         private Image imagen02;
@@ -83,30 +79,6 @@ namespace EC_Admin
         {
             get { return costo; }
             set { costo = value; }
-        }
-
-        public decimal Precio
-        {
-            get { return precio; }
-            set { precio = value; }
-        }
-
-        public decimal Cantidad
-        {
-            get { return cantidad; }
-            set { cantidad = value; }
-        }
-
-        public decimal PrecioMedioMayoreo
-        {
-            get { return precioMedioMayoreo; }
-            set { precioMedioMayoreo = value; }
-        }
-
-        public decimal PrecioMayoreo
-        {
-            get { return precioMayoreo; }
-            set { precioMayoreo = value; }
         }
 
         public Unidades Unidad
@@ -229,10 +201,6 @@ namespace EC_Admin
                     codigo = dr["codigo"].ToString();
                     descripcion01 = dr["descripcion1"].ToString();
                     costo = (decimal)dr["costo"];
-                    precio = (decimal)dr["precio"];
-                    cantidad = (decimal)dr["cant"];
-                    precioMedioMayoreo = (decimal)dr["precio_mediomayoreo"];
-                    precioMayoreo = (decimal)dr["precio_mayoreo"];
                     unidad = (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString());
                     if (dr["imagen01"] != DBNull.Value)
                         imagen01 = FuncionesGenerales.BytesImagen((byte[])dr["imagen01"]);
@@ -282,8 +250,8 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO producto (proveedor_id, categoria, nombre, marca, codigo, descripcion1, costo, precio, cant, precio_mediomayoreo, precio_mayoreo, unidad, imagen01, imagen02, imagen03, create_user, create_time) " +
-                    "VALUES (?proveedor_id, ?categoria, ?nombre, ?marca, ?codigo, ?descripcion1, ?costo, ?precio, ?cant, ?precio_mediomayoreo, ?precio_mayoreo, ?unidad, ?imagen01, ?imagen02, ?imagen03, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO producto (proveedor_id, categoria, nombre, marca, codigo, descripcion1, costo, unidad, imagen01, imagen02, imagen03, create_user, create_time) " +
+                    "VALUES (?proveedor_id, ?categoria, ?nombre, ?marca, ?codigo, ?descripcion1, ?costo, ?unidad, ?imagen01, ?imagen02, ?imagen03, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?proveedor_id", idProveedor);
                 sql.Parameters.AddWithValue("?categoria", idCategoria);
                 sql.Parameters.AddWithValue("?nombre", nombre);
@@ -291,10 +259,6 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?codigo", codigo);
                 sql.Parameters.AddWithValue("?descripcion1", descripcion01);
                 sql.Parameters.AddWithValue("?costo", costo);
-                sql.Parameters.AddWithValue("?precio", precio);
-                sql.Parameters.AddWithValue("?cant", cantidad);
-                sql.Parameters.AddWithValue("?precio_mediomayoreo", precioMedioMayoreo);
-                sql.Parameters.AddWithValue("?precio_mayoreo", precioMayoreo);
                 sql.Parameters.AddWithValue("?unidad", unidad);
                 sql.Parameters.AddWithValue("?imagen01", FuncionesGenerales.ImagenBytes(imagen01));
                 sql.Parameters.AddWithValue("?imagen02", FuncionesGenerales.ImagenBytes(imagen02));
@@ -318,8 +282,8 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE producto SET proveedor_id=?proveedor_id, categoria=?categoria, nombre=?nombre, marca=?marca, codigo=?codigo, descripcion1=?descripcion1, costo=?costo, precio=?precio, cant=?cant, " +
-                    "precio_mediomayoreo=?precio_mediomayoreo, precio_mayoreo=?precio_mayoreo, unidad=?unidad, imagen01=?imagen01, imagen02=?imagen02, imagen03=?imagen03, update_user=?update_user, update_time=NOW() WHERE id=?id"; 
+                sql.CommandText = "UPDATE producto SET proveedor_id=?proveedor_id, categoria=?categoria, nombre=?nombre, marca=?marca, codigo=?codigo, descripcion1=?descripcion1, costo=?costo, " +
+                    "unidad=?unidad, imagen01=?imagen01, imagen02=?imagen02, imagen03=?imagen03, update_user=?update_user, update_time=NOW() WHERE id=?id"; 
                 sql.Parameters.AddWithValue("?proveedor_id", idProveedor);
                 sql.Parameters.AddWithValue("?categoria", idCategoria);
                 sql.Parameters.AddWithValue("?nombre", nombre);
@@ -327,10 +291,6 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?codigo", codigo);
                 sql.Parameters.AddWithValue("?descripcion1", descripcion01);
                 sql.Parameters.AddWithValue("?costo", costo);
-                sql.Parameters.AddWithValue("?precio", precio);
-                sql.Parameters.AddWithValue("?cant", cantidad);
-                sql.Parameters.AddWithValue("?precio_mediomayoreo", precioMedioMayoreo);
-                sql.Parameters.AddWithValue("?precio_mayoreo", precioMayoreo);
                 sql.Parameters.AddWithValue("?unidad", unidad);
                 sql.Parameters.AddWithValue("?imagen01", FuncionesGenerales.ImagenBytes(imagen01));
                 sql.Parameters.AddWithValue("?imagen02", FuncionesGenerales.ImagenBytes(imagen02));
@@ -360,26 +320,6 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
                 CantP();
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public static void CambiarCantidadInventario(int id, decimal cant)
-        {
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE producto SET cant=cant+?cant WHERE id=?id";
-                sql.Parameters.AddWithValue("?cant", cant);
-                sql.Parameters.AddWithValue("?id", id);
-                ConexionBD.EjecutarConsulta(sql);
             }
             catch (MySqlException ex)
             {

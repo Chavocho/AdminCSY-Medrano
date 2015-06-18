@@ -91,6 +91,7 @@
     <Compile Include="Clases\Clases conexiones y estructura\Cuenta.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Devoluciones.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Horario.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Inventario.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Paquete.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Privilegios.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Producto.cs" />
