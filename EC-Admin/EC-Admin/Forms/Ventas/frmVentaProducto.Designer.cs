@@ -46,7 +46,6 @@
             this.nudDescuento = new System.Windows.Forms.NumericUpDown();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -129,7 +128,6 @@
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
             this.CNombre,
-            this.CDescripcion,
             this.CCodigo,
             this.CPrecio,
             this.CCant,
@@ -221,15 +219,9 @@
             // 
             // CNombre
             // 
+            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.CNombre.HeaderText = "Nombre";
             this.CNombre.Name = "CNombre";
-            this.CNombre.Width = 200;
-            // 
-            // CDescripcion
-            // 
-            this.CDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CDescripcion.HeaderText = "Descripción";
-            this.CDescripcion.Name = "CDescripcion";
             // 
             // CCodigo
             // 
@@ -301,7 +293,6 @@
         private System.Windows.Forms.NumericUpDown nudDescuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCant;

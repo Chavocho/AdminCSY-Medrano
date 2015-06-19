@@ -573,10 +573,10 @@ namespace EC_Admin
             try
             {
                 int salto;
-                e.Graphics.DrawString("PRODUCTO: " + Producto.NombreProducto(idProd).ToUpper(), fuenteNormal, Brushes.Black, 0, y);
+                e.Graphics.DrawString("PRODUCTO: " + Producto.NombreProducto(idProd).ToUpper(), fuenteGrande, Brushes.Black, 0, y);
                 y += 30;
-                CentrarTexto(ref e, "*" + Producto.CodigoProducto(idProd) + "*", new Font("IDAutomationHC39M", 10), Brushes.Black);
-                salto = Convert.ToInt32(e.Graphics.MeasureString(idProd.ToString(), new Font("IDAutomationHC39M", 10)).Height - 10);
+                CentrarTexto(ref e, "*" + Producto.CodigoProducto(idProd) + "*", new Font("IDAutomationHC39M Free Version", 10), Brushes.Black);
+                salto = Convert.ToInt32(e.Graphics.MeasureString(idProd.ToString(), new Font("IDAutomationHC39M Free Version", 10)).Height - 10);
                 y += salto;
                 e.Graphics.FillRectangle(Brushes.White, 0, y, e.PageBounds.Width, 10);
             }
