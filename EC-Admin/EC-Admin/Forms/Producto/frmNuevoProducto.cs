@@ -18,6 +18,7 @@ namespace EC_Admin.Forms
         List<int> idCat = new List<int>();
         Unidades u;
         Producto p;
+        Inventario i;
 
         public frmNuevoProducto()
         {
@@ -78,10 +79,12 @@ namespace EC_Admin.Forms
             try
             {
                 p = new Producto();
-                decimal costo, precio, cant, precioMedioMayoreo, precioMayoreo;
+                i = new Inventario();
+                decimal costo, precio, precioMedioMayoreo, precioMayoreo;
+                int cant;
                 decimal.TryParse(txtCosto.Text, out costo);
                 decimal.TryParse(txtPrecio.Text, out precio);
-                decimal.TryParse(txtCant.Text, out cant);
+                int.TryParse(txtCant.Text, out cant);
                 decimal.TryParse(txtPrecioMedioMayoreo.Text, out precioMedioMayoreo);
                 decimal.TryParse(txtPrecioMayoreo.Text, out precioMayoreo);
                 p.IDProveedor = idPro[cboProveedor.SelectedIndex];
@@ -91,15 +94,19 @@ namespace EC_Admin.Forms
                 p.Codigo = txtCodigo.Text;
                 p.Descripcion01 = txtDescripcion01.Text;
                 p.Costo = costo;
-                p.Precio = precio;
-                p.Cantidad = cant;
-                p.PrecioMedioMayoreo = precioMedioMayoreo;
-                p.PrecioMayoreo = precioMayoreo;
                 p.Unidad = u;
                 p.Imagen01 = pcbImagen01.Image;
                 p.Imagen02 = pcbImagen02.Image;
                 p.Imagen03 = pcbImagen03.Image;
                 p.Insertar();
+
+                i.IDProducto = p.ID;
+                i.IDSucursal = Config.idSucursal;
+                i.Precio = precio;
+                i.Cantidad = cant;
+                i.PrecioMedioMayoreo = precioMedioMayoreo;
+                i.PrecioMayoreo = precioMayoreo;
+                i.Insertar();
             }
             catch (MySqlException ex)
             {

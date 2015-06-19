@@ -408,7 +408,7 @@ namespace EC_Admin
                     sql.Parameters.Clear();
                     if (this.abierta == false)
                     {
-                        Producto.CambiarCantidadInventario(idP[i], cantidad[i] * -1);
+                        Inventario.CambiarCantidadInventario(idP[i], cantidad[i] * -1);
                         Promociones.CambiarExistencias(promocion[i], cantidad[i] * -1);
                     }
                 }
@@ -465,7 +465,7 @@ namespace EC_Admin
                 v.RecuperarVenta();
                 for (int i = 0; i < v.IDProductos.Count; i++)
                 {
-                    Producto.CambiarCantidadInventario(v.IDProductos[i], v.Cantidad[i]);
+                    Inventario.CambiarCantidadInventario(v.IDProductos[i], v.Cantidad[i]);
                     Promociones.CambiarExistencias(v.Promocion[i], v.Cantidad[i]);
                 }
             }

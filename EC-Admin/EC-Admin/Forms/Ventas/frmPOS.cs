@@ -311,23 +311,31 @@ namespace EC_Admin.Forms
         /// <param name="precio">Precio del producto</param>
         /// <param name="cant">Cantidad del producto</param>
         /// <param name="desc">Descuento aplicado al producto</param>
-        public void AgregarProducto(int id, string codProd, string nombre, decimal cant, decimal desc, Unidades u, bool paquete)
+        public void AgregarProducto(int id, string codProd, string nombre, int cant, decimal desc, Unidades u, bool paquete)
         {
             if (!VerificarPromocion(id))
             {
                 if (!VerificarProducto(id, cant))
                 {
-                    decimal precio = PrecioProducto(id, cant);
-                    dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u, false, -1 });
-                    if (cboTipoPrecio.SelectedIndex > 0)
+                    int cantInv = Inventario.CantidadProducto(id);
+                    if (cantInv <= cant)
                     {
-                        PrecioProducto();
-                        CalcularTotales();
+                        decimal precio = PrecioProducto(id, cant);
+                        dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u, false, -1 });
+                        if (cboTipoPrecio.SelectedIndex > 0)
+                        {
+                            PrecioProducto();
+                            CalcularTotales();
+                        }
+                        if (dgvProductos.RowCount == 1)
+                        {
+                            dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                            dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                        }
                     }
-                    if (dgvProductos.RowCount == 1)
+                    else
                     {
-                        dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
-                        dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
+                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La cantidad de productos que tratas de ingresar excede a la cantidad en inventario. La cantidad en inventario de \"" + nombre + "\" son \"" + cantInv.ToString() + "\"", "Admin CSY");
                     }
                 }
             }
@@ -339,15 +347,15 @@ namespace EC_Admin.Forms
         /// </summary>
         /// <param name="id">ID del producto</param>
         /// <param name="cant">Cantidad a añadir al producto</param>
-        private bool VerificarProducto(int id, decimal cant)
+        private bool VerificarProducto(int id, int cant)
         {
             bool existe = false;
             foreach (DataGridViewRow dr in dgvProductos.Rows)
             {
                 if (dr.Cells[0].Value.ToString() == id.ToString())
                 {
-                    decimal c = ((decimal)dr.Cells[4].Value + cant);
-                    decimal cantInv = Producto.CantidadProducto(id);
+                    int c = ((int)dr.Cells[4].Value + cant);
+                    int cantInv = Inventario.CantidadProducto(id);
                     if (c <= cantInv)
                     {
                         dr.Cells[4].Value = c;
@@ -579,7 +587,7 @@ namespace EC_Admin.Forms
             }
         }
 
-        private void BusquedaProducto(string codProd, decimal cant)
+        private void BusquedaProducto(string codProd, int cant)
         {
             try
             {
@@ -881,7 +889,7 @@ namespace EC_Admin.Forms
                     string[] datos = txtBusqueda.Text.Split(new char[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
                     if (datos.Length > 1)
                     {
-                        BusquedaProducto(datos[1].ToString(), decimal.Parse(datos[0], System.Globalization.NumberStyles.Currency));
+                        BusquedaProducto(datos[1].ToString(), int.Parse(datos[0]));
                     }
                     else
                     {

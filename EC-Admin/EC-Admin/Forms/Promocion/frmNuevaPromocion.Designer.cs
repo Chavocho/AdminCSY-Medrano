@@ -235,11 +235,11 @@
             // 
             this.lblEMarca.AutoSize = true;
             this.lblEMarca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEMarca.Location = new System.Drawing.Point(12, 35);
+            this.lblEMarca.Location = new System.Drawing.Point(32, 35);
             this.lblEMarca.Name = "lblEMarca";
-            this.lblEMarca.Size = new System.Drawing.Size(46, 18);
+            this.lblEMarca.Size = new System.Drawing.Size(50, 18);
             this.lblEMarca.TabIndex = 31;
-            this.lblEMarca.Text = "Marca";
+            this.lblEMarca.Text = "Marca:";
             // 
             // frmNuevaPromocion
             // 

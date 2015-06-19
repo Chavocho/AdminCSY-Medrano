@@ -369,25 +369,6 @@ namespace EC_Admin
             return cod;
         }
 
-        public static decimal CantidadProducto(int id)
-        {
-            decimal cant = 0;
-            try
-            {
-                string sql = "SELECT cant FROM producto WHERE id='" + id + "'";
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    cant = (decimal)dr["cant"];
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return cant;
-        }
-
         public static Image Imagen01Producto(int id)
         {
             Image img = null;

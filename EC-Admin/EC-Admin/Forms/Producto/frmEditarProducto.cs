@@ -14,6 +14,7 @@ namespace EC_Admin.Forms
     public partial class frmEditarProducto : Form
     {
         Producto p;
+        Inventario i;
         List<int> idPro = new List<int>();
         List<int> idAlm = new List<int>();
         List<int> idCat = new List<int>();
@@ -23,6 +24,7 @@ namespace EC_Admin.Forms
         {
             InitializeComponent();
             p = new Producto(id);
+            i = new Inventario(id);
         }
 
         private void CargarProveedores()
@@ -90,6 +92,7 @@ namespace EC_Admin.Forms
             try
             {
                 p.ObtenerDatos();
+                i.ObtenerDatos();
                 cboProveedor.SelectedIndex = AsignarComboBox(idPro, p.IDProveedor);
                 cboCategoria.SelectedIndex = AsignarComboBox(idCat, p.IDCategoria);
                 txtNombre.Text = p.Nombre;
@@ -97,10 +100,10 @@ namespace EC_Admin.Forms
                 txtCodigo.Text = p.Codigo;
                 txtDescripcion01.Text = p.Descripcion01;
                 txtCosto.Text = p.Costo.ToString();
-                txtPrecio.Text = p.Precio.ToString();
-                txtCant.Text = p.Cantidad.ToString();
-                txtPrecioMedioMayoreo.Text = p.PrecioMedioMayoreo.ToString();
-                txtPrecioMayoreo.Text = p.PrecioMayoreo.ToString();
+                txtPrecio.Text = i.Precio.ToString();
+                txtCant.Text = i.Cantidad.ToString();
+                txtPrecioMedioMayoreo.Text = i.PrecioMedioMayoreo.ToString();
+                txtPrecioMayoreo.Text = i.PrecioMayoreo.ToString();
                 pcbImagen01.Image = p.Imagen01;
                 switch (p.Unidad)
                 {
@@ -146,10 +149,12 @@ namespace EC_Admin.Forms
         {
             try
             {
-                decimal costo, precio, cant, precioMedioMayoreo, precioMayoreo, cantMedioMayoreo, cantMayoreo;
+
+                decimal costo, precio, precioMedioMayoreo, precioMayoreo;
+                int cant;
                 decimal.TryParse(txtCosto.Text, out costo);
                 decimal.TryParse(txtPrecio.Text, out precio);
-                decimal.TryParse(txtCant.Text, out cant);
+                int.TryParse(txtCant.Text, out cant);
                 decimal.TryParse(txtPrecioMedioMayoreo.Text, out precioMedioMayoreo);
                 decimal.TryParse(txtPrecioMayoreo.Text, out precioMayoreo);
                 p.IDProveedor = idPro[cboProveedor.SelectedIndex];
@@ -159,15 +164,17 @@ namespace EC_Admin.Forms
                 p.Codigo = txtCodigo.Text;
                 p.Descripcion01 = txtDescripcion01.Text;
                 p.Costo = costo;
-                p.Precio = precio;
-                p.Cantidad = cant;
-                p.PrecioMedioMayoreo = precioMedioMayoreo;
-                p.PrecioMayoreo = precioMayoreo;
                 p.Unidad = u;
                 p.Imagen01 = pcbImagen01.Image;
                 p.Imagen02 = pcbImagen02.Image;
                 p.Imagen03 = pcbImagen03.Image;
                 p.Editar();
+
+                i.Precio = precio;
+                i.Cantidad = cant;
+                i.PrecioMedioMayoreo = precioMedioMayoreo;
+                i.PrecioMayoreo = precioMayoreo;
+                i.Editar();
             }
             catch (MySqlException ex)
             {
@@ -351,7 +358,6 @@ namespace EC_Admin.Forms
                 try
                 {
                     Editar();
-                    InsertarPaquete();
                     FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado el producto correctamente!", "Admin CSY");
                     this.Close();
                 }
@@ -528,6 +534,22 @@ namespace EC_Admin.Forms
             {
                 lblInformacionCodigo.Visible = false;
                 FuncionesGenerales.ColoresBien(txtCodigo);
+            }
+        }
+
+        private void frmEditarProducto_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                InsertarPaquete();
+            }
+            catch (MySqlException ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar los paquetes. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+            }
+            catch (Exception ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar los paquetes.", "Admin CSY", ex);
             }
         }
     }

@@ -47,6 +47,7 @@
             this.txtUsuario.Size = new System.Drawing.Size(351, 29);
             this.txtUsuario.TabIndex = 0;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
             // 
             // lblEUsuario
             // 

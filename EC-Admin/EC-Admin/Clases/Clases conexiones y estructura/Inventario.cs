@@ -91,14 +91,49 @@ namespace EC_Admin
         
         #endregion
 
+        /// <summary>
+        /// Inicializa la instancia de la clase Inventario
+        /// </summary>
         public Inventario()
         {
 
         }
 
-        public Inventario(int id)
+        /// <summary>
+        /// Inicializa la instancia de la clase Inventario con el id de producto y registra el ID del inventario
+        /// </summary>
+        /// <param name="idProducto">ID del producto con el que está relacionado el inventario</param>
+        /// <exception cref="MySql.Data.MySqlClient.MySqlException"></exception>
+        /// <exception cref="System.Exception"></exception>
+        public Inventario(int idProducto)
         {
-            this.ID = id;
+            this.IDProducto = idProducto;
+            this.ID = ObtenerIDInventario();
+        }
+
+        private int ObtenerIDInventario()
+        {
+            int id = 0;
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT id FROM inventario WHERE id_producto=?id_producto";
+                sql.Parameters.AddWithValue("?id_producto", idProducto);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    id = (int)dr["id"];
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return id;
         }
 
         public void ObtenerDatos()
@@ -139,7 +174,7 @@ namespace EC_Admin
             }
         }
 
-        private void Insertar()
+        public void Insertar()
         {
             try
             {
@@ -217,7 +252,7 @@ namespace EC_Admin
             }
         }
 
-        public static int Cant(int id)
+        public static int CantidadProducto(int id)
         {
             int cant = 0;
             try

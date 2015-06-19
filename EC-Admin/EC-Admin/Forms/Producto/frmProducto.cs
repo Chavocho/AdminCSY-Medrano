@@ -55,13 +55,13 @@ namespace EC_Admin.Forms
                 string sql;
                 if (existencias)
                 {
-                    sql = "SELECT id, nombre, codigo, descripcion1, precio, cant FROM producto " +
-                        "WHERE (nombre LIKE '%" + p + "%' OR codigo LIKE '%" + p + "%') AND cant>0 AND eliminado=0";
+                    sql = "SELECT p.id, p.nombre, p.codigo, p.descripcion1, i.precio, i.cant FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto) " +
+                        "WHERE (p.nombre LIKE '%" + p + "%' OR p.codigo LIKE '%" + p + "%') AND i.cant>0 AND p.eliminado=0";
                 }
                 else
                 {
-                    sql = "SELECT id, nombre, codigo, descripcion1, precio, cant FROM producto " +
-                        "WHERE (nombre LIKE '%" + p + "%' OR codigo LIKE '%" + p + "%') AND eliminado=0";
+                    sql = "SELECT p.id, p.nombre, p.codigo, p.descripcion1, i.precio, i.cant FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto) " +
+                        "WHERE (p.nombre LIKE '%" + p + "%' OR p.codigo LIKE '%" + p + "%') AND p.eliminado=0";
                 }
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
