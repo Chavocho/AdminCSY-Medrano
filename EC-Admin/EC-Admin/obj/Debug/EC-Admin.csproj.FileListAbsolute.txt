@@ -70,7 +70,6 @@ C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmDatosPuesto.resources
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmPuesto.resources
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmTrabajador.resources
-C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Traspasos.frmTraspasos.resources
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmEditarUsuario.resources
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevoUsuario.resources
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmUsuariosEliminados.resources
@@ -108,3 +107,7 @@ C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\bin\Debug\
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\bin\Debug\itextsharp.xml
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\Admin CSY.exe
 C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\Admin CSY.pdb
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevoTraspaso.resources
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmProductosTraspasos.resources
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmTraspasos.resources
+C:\Users\Salvador\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmDescripcion.resources

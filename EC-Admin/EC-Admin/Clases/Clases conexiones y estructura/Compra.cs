@@ -413,10 +413,12 @@ namespace EC_Admin
             }
             catch (MySqlException ex)
             {
+                InicializarCompraDetallada();
                 throw ex;
             }
             catch (Exception ex)
             {
+                InicializarCompraDetallada();
                 throw ex;
             }
         }
@@ -441,7 +443,7 @@ namespace EC_Admin
                     sql.Parameters.AddWithValue("?descuento", descuentoP[i]);
                     ConexionBD.EjecutarConsulta(sql);
                     sql.Parameters.Clear();
-                    Inventario.CambiarCantidadInventario(idPs[i], cantidad[i]);
+                    Inventario.CambiarCantidadInventario(idPs[i], cantidad[i], Config.idSucursal);
                 }
             }
             catch (MySqlException ex)
@@ -462,7 +464,7 @@ namespace EC_Admin
                 c.ObtenerDatos();
                 for (int i = 0; i < c.IDProductos.Count; i++)
                 {
-                    Inventario.CambiarCantidadInventario(c.IDProductos[i], c.Cantidad[i] * -1);
+                    Inventario.CambiarCantidadInventario(c.IDProductos[i], c.Cantidad[i] * -1, Config.idSucursal);
                 }
             }
             catch (MySqlException ex)

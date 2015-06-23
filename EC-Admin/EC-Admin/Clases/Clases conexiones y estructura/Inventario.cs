@@ -105,9 +105,10 @@ namespace EC_Admin
         /// <param name="idProducto">ID del producto con el que está relacionado el inventario</param>
         /// <exception cref="MySql.Data.MySqlClient.MySqlException"></exception>
         /// <exception cref="System.Exception"></exception>
-        public Inventario(int idProducto)
+        public Inventario(int idProducto, int idSucursal)
         {
             this.IDProducto = idProducto;
+            this.idSucursal = idSucursal;
             this.ID = ObtenerIDInventario();
         }
 
@@ -117,8 +118,9 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT id FROM inventario WHERE id_producto=?id_producto";
+                sql.CommandText = "SELECT id FROM inventario WHERE id_producto=?id_producto AND id_sucursal=?id_sucursal";
                 sql.Parameters.AddWithValue("?id_producto", idProducto);
+                sql.Parameters.AddWithValue("?id_sucursal", idSucursal);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -232,14 +234,15 @@ namespace EC_Admin
         /// </summary>
         /// <param name="id">ID del producto</param>
         /// <param name="cant">Cantidad a sumar (Para restar ingresar un número negativo)</param>
-        public static void CambiarCantidadInventario(int id, int cant)
+        public static void CambiarCantidadInventario(int id, int cant, int idSucursal)
         {
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE producto SET cant=cant+?cant WHERE id=?id";
+                sql.CommandText = "UPDATE inventario SET cant=cant+?cant WHERE id=?id AND id_sucursal=?id_sucursal";
                 sql.Parameters.AddWithValue("?cant", cant);
                 sql.Parameters.AddWithValue("?id", id);
+                sql.Parameters.AddWithValue("?id_sucursal", idSucursal);
                 ConexionBD.EjecutarConsulta(sql);
             }
             catch (MySqlException ex)
@@ -252,14 +255,15 @@ namespace EC_Admin
             }
         }
 
-        public static int CantidadProducto(int id)
+        public static int CantidadProducto(int id, int idSucursal)
         {
             int cant = 0;
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT cant FROM inventario WHERE id=?id";
+                sql.CommandText = "SELECT cant FROM inventario WHERE id=?id AND id_sucursal=?id_sucursal";
                 sql.Parameters.AddWithValue("?id", id);
+                sql.Parameters.AddWithValue("?id_sucursal", idSucursal);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -277,13 +281,13 @@ namespace EC_Admin
             return cant;
         }
 
-        public static decimal[] PrecioProducto(int id)
+        public static decimal[] PrecioProducto(int id, int idSucursal)
         {
             decimal[] precio = new decimal[3] { 0M, 0M, 0M };
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT precio, precio_medio_mayoreo, precio_mayoreo FROM inventario WHERE id=?id";
+                sql.CommandText = "SELECT precio, precio_medio_mayoreo, precio_mayoreo FROM inventario WHERE id=?id AND id_sucursal=?id_sucursal";
                 sql.Parameters.AddWithValue("?id", id);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)

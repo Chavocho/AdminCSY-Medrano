@@ -169,8 +169,6 @@ namespace EC_Admin
                 return bimg;
             try
             {
-                if (img.Width > 1280 && img.Height > 800)
-                    img = RedimensionarImagen(img, (img.Width / 50), (img.Height / 50));
                 MemoryStream m = new MemoryStream();
                 img.Save(m, System.Drawing.Imaging.ImageFormat.Jpeg);
                 bimg = m.ToArray();
