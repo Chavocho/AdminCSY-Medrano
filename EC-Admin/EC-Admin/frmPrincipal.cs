@@ -72,12 +72,13 @@ namespace EC_Admin
 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            shapeContainer1.Dispose();
             if (!cierreSesion)
             {
                 Application.Exit();
                 ConexionBD.CerrarConexion();
             }
+            lnsSeparador.Dispose();
+            shapeContainer1.Dispose();
         }
 
         private void btnConfig_Click(object sender, EventArgs e)
