@@ -233,7 +233,7 @@ namespace EC_Admin
                     sql.Parameters.AddWithValue("?cant", cantidadProductos[i]);
                     ConexionBD.EjecutarConsulta(sql);
                     sql.Parameters.Clear();
-                    Inventario.CambiarCantidadInventario(idProductos[i], cantidadProductos[i]);
+                    Inventario.CambiarCantidadInventario(idProductos[i], cantidadProductos[i], Config.idSucursal);
                     sqlVenta.CommandText = "UPDATE venta_detallada SET cant=cant-?cant WHERE id_venta=?id_venta AND id_producto=?id_producto";
                     sqlVenta.Parameters.AddWithValue("?cant", cantidadProductos[i]);
                     sqlVenta.Parameters.AddWithValue("?id_producto", idProductos[i]);

@@ -8,26 +8,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EC_Admin.Forms
+namespace EC_Admin
 {
-    public partial class frmCantidadTickets : Form
+    public partial class frmDescripcion : Form
     {
-        public frmCantidadTickets()
+        public frmDescripcion()
         {
             InitializeComponent();
         }
 
-        public decimal Cantidad()
+        public string Descripcion()
         {
             if (!this.Visible)
                 this.ShowDialog();
             this.Close();
-            return nudCantidad.Value;
+            return txtDescripcion.Text;
+        }
+
+        private void frmDescripción_Shown(object sender, EventArgs e)
+        {
+            txtDescripcion.Select();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Cantidad();
+            Descripcion();
         }
     }
 }

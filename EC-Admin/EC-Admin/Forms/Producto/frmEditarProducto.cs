@@ -15,16 +15,16 @@ namespace EC_Admin.Forms
     {
         Producto p;
         Inventario i;
+        Unidades u;
         List<int> idPro = new List<int>();
         List<int> idAlm = new List<int>();
         List<int> idCat = new List<int>();
-        Unidades u;
 
         public frmEditarProducto(int id)
         {
             InitializeComponent();
             p = new Producto(id);
-            i = new Inventario(id);
+            i = new Inventario(id, Config.idSucursal);
         }
 
         private void CargarProveedores()
@@ -149,7 +149,6 @@ namespace EC_Admin.Forms
         {
             try
             {
-
                 decimal costo, precio, precioMedioMayoreo, precioMayoreo;
                 int cant;
                 decimal.TryParse(txtCosto.Text, out costo);
@@ -164,17 +163,15 @@ namespace EC_Admin.Forms
                 p.Codigo = txtCodigo.Text;
                 p.Descripcion01 = txtDescripcion01.Text;
                 p.Costo = costo;
+                i.Precio = precio;
+                i.Cantidad = cant;
+                i.PrecioMedioMayoreo = precioMedioMayoreo;
+                i.PrecioMayoreo = precioMayoreo;
                 p.Unidad = u;
                 p.Imagen01 = pcbImagen01.Image;
                 p.Imagen02 = pcbImagen02.Image;
                 p.Imagen03 = pcbImagen03.Image;
                 p.Editar();
-
-                i.Precio = precio;
-                i.Cantidad = cant;
-                i.PrecioMedioMayoreo = precioMedioMayoreo;
-                i.PrecioMayoreo = precioMayoreo;
-                i.Editar();
             }
             catch (MySqlException ex)
             {
@@ -358,6 +355,7 @@ namespace EC_Admin.Forms
                 try
                 {
                     Editar();
+                    InsertarPaquete();
                     FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha modificado el producto correctamente!", "Admin CSY");
                     this.Close();
                 }
@@ -534,22 +532,6 @@ namespace EC_Admin.Forms
             {
                 lblInformacionCodigo.Visible = false;
                 FuncionesGenerales.ColoresBien(txtCodigo);
-            }
-        }
-
-        private void frmEditarProducto_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            try
-            {
-                InsertarPaquete();
-            }
-            catch (MySqlException ex)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar los paquetes. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
-            }
-            catch (Exception ex)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar los paquetes.", "Admin CSY", ex);
             }
         }
     }

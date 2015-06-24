@@ -145,7 +145,7 @@ namespace EC_Admin.Forms
                     string codProd = Producto.CodigoProducto(c.IDProductos[i]), nomProd = Producto.NombreProducto(c.IDProductos[i]);
                     LabelDetalles(ref lblCodProd, codProd, posCod, y);
                     LabelDetalles(ref lblNombreProd, nomProd, posNom, y);
-                    LabelDetalles(ref lblCantProd, c.Cantidad[i].ToString("0.00"), posCan, y);
+                    LabelDetalles(ref lblCantProd, c.Cantidad[i].ToString(), posCan, y);
                     LabelDetalles(ref lblCostoProd, c.Precio[i].ToString("C2"), posCos, y);
                     LabelDetalles(ref lblDescuentoProd, c.DescuentoProducto[i].ToString("C2"), posDes, y);
                     switch (c.Unidad[i])

@@ -102,7 +102,9 @@
             this.txtEfectivo.Size = new System.Drawing.Size(91, 29);
             this.txtEfectivo.TabIndex = 11;
             this.txtEfectivo.Text = "0.00";
+            this.txtEfectivo.Click += new System.EventHandler(this.txtEfectivo_Click);
             this.txtEfectivo.TextChanged += new System.EventHandler(this.txtEfectivo_TextChanged);
+            this.txtEfectivo.Enter += new System.EventHandler(this.txtEfectivo_Enter);
             this.txtEfectivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEfectivo_KeyPress);
             // 
             // lblEEfectivo

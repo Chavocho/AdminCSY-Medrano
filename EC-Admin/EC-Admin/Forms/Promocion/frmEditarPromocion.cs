@@ -23,7 +23,7 @@ namespace EC_Admin.Forms
             p = new Promociones(id);
         }
 
-        public void AsignarProducto(int id, string nombre, string marca, int cant)
+        public void AsignarProducto(int id, string nombre, string marca, decimal cant)
         {
             this.id = id;
             this.cant = cant;
@@ -162,7 +162,7 @@ namespace EC_Admin.Forms
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT p.nombre, i.cant FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto) WHERE p.id=?id";
+                sql.CommandText = "SELECT nombre, cant FROM producto WHERE id=?id";
                 sql.Parameters.AddWithValue("?id", id);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tpaPaquete = new System.Windows.Forms.TabPage();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -102,10 +102,10 @@
             this.tpaPaquete.Controls.Add(this.btnNuevo);
             this.tpaPaquete.Controls.Add(this.pnlPaquete);
             this.tpaPaquete.Controls.Add(this.dgvPaquetes);
-            this.tpaPaquete.Location = new System.Drawing.Point(4, 27);
+            this.tpaPaquete.Location = new System.Drawing.Point(4, 22);
             this.tpaPaquete.Name = "tpaPaquete";
             this.tpaPaquete.Padding = new System.Windows.Forms.Padding(3);
-            this.tpaPaquete.Size = new System.Drawing.Size(805, 536);
+            this.tpaPaquete.Size = new System.Drawing.Size(805, 541);
             this.tpaPaquete.TabIndex = 1;
             this.tpaPaquete.Text = "Paquetes";
             this.tpaPaquete.UseVisualStyleBackColor = true;
@@ -119,7 +119,7 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(260, 356);
+            this.btnEliminar.Location = new System.Drawing.Point(262, 376);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(175, 46);
             this.btnEliminar.TabIndex = 17;
@@ -138,7 +138,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(441, 356);
+            this.btnEditar.Location = new System.Drawing.Point(443, 376);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(175, 46);
             this.btnEditar.TabIndex = 16;
@@ -157,7 +157,7 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(622, 356);
+            this.btnNuevo.Location = new System.Drawing.Point(624, 376);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(175, 46);
             this.btnNuevo.TabIndex = 15;
@@ -176,7 +176,7 @@
             this.pnlPaquete.Controls.Add(this.lblECantPaquete);
             this.pnlPaquete.Controls.Add(this.txtPrecioPaquete);
             this.pnlPaquete.Controls.Add(this.lblEPrecioPaquete);
-            this.pnlPaquete.Location = new System.Drawing.Point(8, 447);
+            this.pnlPaquete.Location = new System.Drawing.Point(8, 437);
             this.pnlPaquete.Name = "pnlPaquete";
             this.pnlPaquete.Size = new System.Drawing.Size(789, 81);
             this.pnlPaquete.TabIndex = 14;
@@ -253,12 +253,12 @@
             this.dgvPaquetes.AllowUserToDeleteRows = false;
             this.dgvPaquetes.AllowUserToResizeColumns = false;
             this.dgvPaquetes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            this.dgvPaquetes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            this.dgvPaquetes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvPaquetes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -266,14 +266,14 @@
             this.dgvPaquetes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPaquetes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPaquetes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaquetes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaquetes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvPaquetes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaquetes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
@@ -281,14 +281,14 @@
             this.CCantidad,
             this.CBase,
             this.CEdito});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPaquetes.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPaquetes.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgvPaquetes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPaquetes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvPaquetes.Location = new System.Drawing.Point(8, 6);
@@ -298,7 +298,7 @@
             this.dgvPaquetes.RowHeadersVisible = false;
             this.dgvPaquetes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPaquetes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPaquetes.Size = new System.Drawing.Size(791, 344);
+            this.dgvPaquetes.Size = new System.Drawing.Size(791, 349);
             this.dgvPaquetes.TabIndex = 13;
             // 
             // CID
@@ -310,8 +310,8 @@
             // CPrecio
             // 
             this.CPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Format = "C2";
-            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Format = "C2";
+            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle15;
             this.CPrecio.HeaderText = "Precio";
             this.CPrecio.Name = "CPrecio";
             // 
@@ -399,7 +399,7 @@
             this.btnQuitar03.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar03.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar03.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar03.Location = new System.Drawing.Point(342, 493);
+            this.btnQuitar03.Location = new System.Drawing.Point(342, 489);
             this.btnQuitar03.Name = "btnQuitar03";
             this.btnQuitar03.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar03.TabIndex = 25;
@@ -440,7 +440,7 @@
             this.btnQuitar02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar02.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar02.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar02.Location = new System.Drawing.Point(175, 493);
+            this.btnQuitar02.Location = new System.Drawing.Point(175, 489);
             this.btnQuitar02.Name = "btnQuitar02";
             this.btnQuitar02.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar02.TabIndex = 23;
@@ -637,7 +637,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(647, 479);
+            this.btnAceptar.Location = new System.Drawing.Point(647, 454);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
             this.btnAceptar.TabIndex = 26;
@@ -657,7 +657,7 @@
             this.btnQuitar01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar01.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar01.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar01.Location = new System.Drawing.Point(8, 493);
+            this.btnQuitar01.Location = new System.Drawing.Point(8, 489);
             this.btnQuitar01.Name = "btnQuitar01";
             this.btnQuitar01.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar01.TabIndex = 21;
@@ -818,7 +818,6 @@
             this.Name = "frmEditarProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar datos de producto";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEditarProducto_FormClosing);
             this.Load += new System.EventHandler(this.frmEditarProducto_Load);
             this.tpaPaquete.ResumeLayout(false);
             this.pnlPaquete.ResumeLayout(false);

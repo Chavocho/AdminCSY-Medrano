@@ -212,6 +212,8 @@ namespace EC_Admin
                     e.Graphics.DrawString("SERVICIO: VENTA MOSTRADOR", fuenteNormal, Brushes.Black, 0, y);
                     y += saltoLinea;
                     e.Graphics.DrawString("TICKET: " + idVenta.ToString(), fuenteNormal, Brushes.Black, 0, y);
+                    y += saltoLinea;
+                    e.Graphics.DrawString("CLIENTE: " + Cliente.NombreCliente((int)ObtenerDatoDataTable(dtVenta, "id_cliente")), fuenteNormal, Brushes.Black, 0, y);
                 }
                 else
                 {

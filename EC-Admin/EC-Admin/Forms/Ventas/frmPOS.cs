@@ -37,7 +37,8 @@ namespace EC_Admin.Forms
         int id;
         //Variable para el control de excepciones
         int cont = 0;
-        decimal subtotal = 0M, impuesto = 0M, descuento = 0M, total = 0M, cantTot = 0M;
+        decimal subtotal = 0M, impuesto = 0M, descuento = 0M, total = 0M;
+        int cantTot = 0;
 
         Venta v;
         private int idCliente;
@@ -317,8 +318,8 @@ namespace EC_Admin.Forms
             {
                 if (!VerificarProducto(id, cant))
                 {
-                    int cantInv = Inventario.CantidadProducto(id);
-                    if (cantInv <= cant)
+                    int cantInv = Inventario.CantidadProducto(id, Config.idSucursal);
+                    if (cant <= cantInv)
                     {
                         decimal precio = PrecioProducto(id, cant);
                         dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u, false, -1 });
@@ -332,10 +333,6 @@ namespace EC_Admin.Forms
                             dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
                             dgvProductos_CellClick(dgvProductos, new DataGridViewCellEventArgs(0, 0));
                         }
-                    }
-                    else
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La cantidad de productos que tratas de ingresar excede a la cantidad en inventario. La cantidad en inventario de \"" + nombre + "\" son \"" + cantInv.ToString() + "\"", "Admin CSY");
                     }
                 }
             }
@@ -355,7 +352,7 @@ namespace EC_Admin.Forms
                 if (dr.Cells[0].Value.ToString() == id.ToString())
                 {
                     int c = ((int)dr.Cells[4].Value + cant);
-                    int cantInv = Inventario.CantidadProducto(id);
+                    int cantInv = Inventario.CantidadProducto(id, Config.idSucursal);
                     if (c <= cantInv)
                     {
                         dr.Cells[4].Value = c;
@@ -366,7 +363,7 @@ namespace EC_Admin.Forms
                         dr.Cells[4].Value = cantInv;
                     }
                     existe = true;
-                    if (cant < 0 && (decimal)dr.Cells[4].Value <= 0)
+                    if (c <= 0)
                         QuitarProducto(dr);
                     CalcularTotales();
                     break;
@@ -379,26 +376,13 @@ namespace EC_Admin.Forms
         {
             try
             {
-                //if (cboTipoPrecio.SelectedIndex > 0)
-                //{
-                //    foreach (DataGridViewRow dr in dgvProductos.Rows)
-                //    {
-                //        if (!(bool)dr.Cells[7].Value && (int)dr.Cells[8].Value <= 0)
-                //        {
-                //            dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, decimal.Parse(lblCantTot.Text));
-                //        }
-                //    }
-                //}
-                //else
-                //{
                 foreach (DataGridViewRow dr in dgvProductos.Rows)
                 {
                     if (!(bool)dr.Cells[7].Value && (int)dr.Cells[8].Value <= 0)
                     {
-                        dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, (decimal)dr.Cells[4].Value);
+                        dr.Cells[3].Value = PrecioProducto((int)dr.Cells[0].Value, (int)dr.Cells[4].Value);
                     }
                 }
-                //}
             }
             catch (MySqlException ex)
             {
@@ -421,7 +405,7 @@ namespace EC_Admin.Forms
                 {
                     case 0:
                         sql = new MySqlCommand();
-                        sql.CommandText = "SELECT precio FROM producto WHERE id=?id";
+                        sql.CommandText = "SELECT precio FROM inventario WHERE id_producto=?id";
                         sql.Parameters.AddWithValue("?id", id);
                         dt = ConexionBD.EjecutarConsultaSelect(sql);
                         foreach (DataRow dr in dt.Rows)
@@ -431,12 +415,12 @@ namespace EC_Admin.Forms
                         break;
                     case 1:
                         sql = new MySqlCommand();
-                        sql.CommandText = "SELECT precio, precio_mediomayoreo FROM producto WHERE id=?id";
+                        sql.CommandText = "SELECT precio, precio_medio_mayoreo FROM inventario WHERE id=?id";
                         sql.Parameters.AddWithValue("?id", id);
                         dt = ConexionBD.EjecutarConsultaSelect(sql);
                         foreach (DataRow dr in dt.Rows)
                         {
-                            decimal precioP = (decimal)dr["precio"], precioMedioMayoreo = (decimal)dr["precio_mediomayoreo"];
+                            decimal precioP = (decimal)dr["precio"], precioMedioMayoreo = (decimal)dr["precio_medio_mayoreo"];
                             if (precioMedioMayoreo > 0)
                             {
                                 precio = precioMedioMayoreo;
@@ -449,7 +433,7 @@ namespace EC_Admin.Forms
                         break;
                     case 2:
                         sql = new MySqlCommand();
-                        sql.CommandText = "SELECT precio, precio_mayoreo FROM producto WHERE id=?id";
+                        sql.CommandText = "SELECT precio, precio_mayoreo FROM inventario WHERE id=?id";
                         sql.Parameters.AddWithValue("?id", id);
                         dt = ConexionBD.EjecutarConsultaSelect(sql);
                         foreach (DataRow dr in dt.Rows)
@@ -547,7 +531,7 @@ namespace EC_Admin.Forms
             }
         }
 
-        public void ModificarProducto(decimal cant, decimal desc)
+        public void ModificarProducto(int cant, decimal desc)
         {
             dgvProductos[4, dgvProductos.CurrentRow.Index].Value = cant;
             dgvProductos[5, dgvProductos.CurrentRow.Index].Value = desc;
@@ -591,7 +575,7 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT id, nombre, codigo, precio, unidad FROM producto WHERE codigo='" + codProd + "'";
+                string sql = "SELECT p.id, p.nombre, p.codigo, i.precio, p.unidad FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto) WHERE codigo='" + codProd + "'";
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -647,11 +631,11 @@ namespace EC_Admin.Forms
             impuesto = 0M;
             descuento = 0M;
             total = 0M;
-            cantTot = 0M;
+            cantTot = 0;
             foreach (DataGridViewRow dr in dgvProductos.Rows)
             {
-                subtotal += ((decimal)dr.Cells[3].Value * (decimal)dr.Cells[4].Value);
-                cantTot += (decimal)dr.Cells[4].Value;
+                subtotal += ((decimal)dr.Cells[3].Value * (int)dr.Cells[4].Value);
+                cantTot += (int)dr.Cells[4].Value;
                 descuento += ((decimal)dr.Cells[5].Value);
             }
             impuesto = subtotal * Config.iva;
@@ -838,7 +822,7 @@ namespace EC_Admin.Forms
         private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dgvProductos.CurrentRow != null)
-                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, (decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value)).ShowDialog(this);
+                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (int)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, (decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value)).ShowDialog(this);
         }
 
         private void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -902,8 +886,19 @@ namespace EC_Admin.Forms
 
         private void cboTipoPrecio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PrecioProducto();
-            CalcularTotales();
+            try
+            {
+                PrecioProducto();
+                CalcularTotales();
+            }
+            catch (MySqlException ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cambiar el precio de los productos. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+            }
+            catch (Exception ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cambiar el precio de los productos.", "Admin CSY", ex);
+            }
         }
 
         private void agregarPaqueteDeÉsteProductoToolStripMenuItem_Click(object sender, EventArgs e)

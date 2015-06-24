@@ -18,7 +18,6 @@ namespace EC_Admin.Forms
         List<int> idCat = new List<int>();
         Unidades u;
         Producto p;
-        Inventario i;
 
         public frmNuevoProducto()
         {
@@ -79,7 +78,7 @@ namespace EC_Admin.Forms
             try
             {
                 p = new Producto();
-                i = new Inventario();
+                Inventario i = new Inventario();
                 decimal costo, precio, precioMedioMayoreo, precioMayoreo;
                 int cant;
                 decimal.TryParse(txtCosto.Text, out costo);
@@ -100,10 +99,10 @@ namespace EC_Admin.Forms
                 p.Imagen03 = pcbImagen03.Image;
                 p.Insertar();
 
+                i.Cantidad = cant;
                 i.IDProducto = p.ID;
                 i.IDSucursal = Config.idSucursal;
                 i.Precio = precio;
-                i.Cantidad = cant;
                 i.PrecioMedioMayoreo = precioMedioMayoreo;
                 i.PrecioMayoreo = precioMayoreo;
                 i.Insertar();

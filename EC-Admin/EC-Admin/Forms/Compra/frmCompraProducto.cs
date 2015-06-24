@@ -112,7 +112,7 @@ namespace EC_Admin.Forms
                 decimal.TryParse(txtDescuento.Text, out desc);
                 Unidades u = (Unidades)Enum.Parse(typeof(Unidades), dgvProductos[5, i].Value.ToString());
 
-                frm.AgregarProducto(id, dgvProductos[2, i].Value.ToString(), dgvProductos[1, i].Value.ToString(), (decimal)dgvProductos[3, i].Value, nudCant.Value, desc, u);
+                frm.AgregarProducto(id, dgvProductos[2, i].Value.ToString(), dgvProductos[1, i].Value.ToString(), (decimal)dgvProductos[3, i].Value, int.Parse(nudCant.Value.ToString()), desc, u);
                 this.Close();
             }
         }
