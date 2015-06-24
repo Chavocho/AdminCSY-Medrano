@@ -14,10 +14,10 @@ namespace EC_Admin.Forms
     public partial class frmNuevaCompra : Form
     {
         int id;
-        decimal subtotal = 0M, impuesto = 0M, descuento = 0M, total = 0M;
-        int cantTot = 0;
+        decimal subtotal = 0M, impuesto = 0M, descuento = 0M, total = 0M, cantTot = 0M;
         TipoPago t;
 
+        Venta v;
         private int idProveedor;
         private int idComprador = -1;
 
@@ -25,6 +25,7 @@ namespace EC_Admin.Forms
         {
             InitializeComponent();
             cboTipoPago.SelectedIndex = 0;
+            chbRemision.Checked = true;
         }
 
         #region Compra
@@ -39,8 +40,8 @@ namespace EC_Admin.Forms
             c.Descuento = descuento;
             c.Total = total;
             c.Tipo = t;
-            c.Remision = rbtnRemision.Checked;
-            c.Factura = rbtnFactura.Checked;
+            c.Remision = chbRemision.Checked;
+            c.Factura = chbFactura.Checked;
             c.FolioRemision = txtRemision.Text;
             c.FolioFactura = txtFactura.Text;
             foreach (DataGridViewRow dr in dgvProductos.Rows)
@@ -66,7 +67,7 @@ namespace EC_Admin.Forms
         /// <param name="costo">Costo del producto</param>
         /// <param name="cant">Cantidad del producto</param>
         /// <param name="desc">Descuento aplicado al producto</param>
-        public void AgregarProducto(int id, string codProd, string nombre, decimal costo, int cant, decimal desc, Unidades u)
+        public void AgregarProducto(int id, string codProd, string nombre, decimal costo, decimal cant, decimal desc, Unidades u)
         {
             if (!VerificarProducto(id, cant))
             {
@@ -84,16 +85,16 @@ namespace EC_Admin.Forms
         /// </summary>
         /// <param name="id">ID del producto</param>
         /// <param name="cant">Cantidad a añadir al producto</param>
-        private bool VerificarProducto(int id, int cant)
+        private bool VerificarProducto(int id, decimal cant)
         {
             bool existe = false;
             foreach (DataGridViewRow dr in dgvProductos.Rows)
             {
                 if (dr.Cells[0].Value.ToString() == id.ToString())
                 {
-                    dr.Cells[4].Value = ((int)dr.Cells[4].Value + cant);
+                    dr.Cells[4].Value = ((decimal)dr.Cells[4].Value + cant);
                     existe = true;
-                    if (cant < 0 && (int)dr.Cells[4].Value <= 0)
+                    if (cant < 0 && (decimal)dr.Cells[4].Value <= 0)
                         QuitarProducto(dr);
                     CalcularTotales();
                     break;
@@ -102,7 +103,7 @@ namespace EC_Admin.Forms
             return existe;
         }
 
-        public void ModificarProducto(int cant, decimal desc)
+        public void ModificarProducto(decimal cant, decimal desc)
         {
             dgvProductos[4, dgvProductos.CurrentRow.Index].Value = cant;
             dgvProductos[5, dgvProductos.CurrentRow.Index].Value = desc;
@@ -132,7 +133,7 @@ namespace EC_Admin.Forms
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["costo"], 1, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
+                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["costo"], 1M, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
                     break;
                 }
             }
@@ -152,12 +153,12 @@ namespace EC_Admin.Forms
             impuesto = 0M;
             descuento = 0M;
             total = 0M;
-            cantTot = 0;
+            cantTot = 0M;
             foreach (DataGridViewRow dr in dgvProductos.Rows)
             {
-                subtotal += ((decimal)dr.Cells[3].Value * (int)dr.Cells[4].Value);
-                cantTot += (int)dr.Cells[4].Value;
-                descuento += ((decimal)dr.Cells[5].Value);
+                subtotal += ((decimal)dr.Cells[3].Value * (decimal)dr.Cells[4].Value);
+                cantTot += (decimal)dr.Cells[4].Value;
+                descuento += (decimal)dr.Cells[3].Value * (((decimal)dr.Cells[5].Value) * ((decimal)dr.Cells[4].Value));
             }
             impuesto = subtotal * Config.iva;
             total = subtotal + impuesto - descuento;
@@ -192,6 +193,30 @@ namespace EC_Admin.Forms
         }
 
         #endregion
+
+        private void MovimientoCaja()
+        {
+            try
+            {
+                string folio = "";
+                if (chbRemision.Checked)
+                    folio = txtRemision.Text;
+                else if (chbFactura.Checked)
+                    folio = txtFactura.Text;
+
+                Caja c = new Caja();
+                c.Descripcion = "COMPRA DE PRODUCTOS CON FOLIO: " + folio;
+                
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         private bool VerificarDatos()
         {
@@ -234,7 +259,7 @@ namespace EC_Admin.Forms
                     }
                     break;
             }
-            if (rbtnRemision.Checked)
+            if (chbRemision.Checked)
             {
                 if (txtRemision.Text.Trim() == "")
                 {
@@ -242,7 +267,7 @@ namespace EC_Admin.Forms
                     return false;
                 }
             }
-            if (rbtnFactura.Checked)
+            if (chbFactura.Checked)
             {
                 if (txtFactura.Text.Trim() == "")
                 {
@@ -375,6 +400,50 @@ namespace EC_Admin.Forms
             txtBusqueda.Select();
         }
 
+        private void chbRemision_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbRemision.Checked && !chbFactura.Checked)
+            {
+                chbFactura.Checked = false;
+                txtFactura.Enabled = false;
+                txtFactura.Text = "";
+                txtRemision.Enabled = true;
+            }
+            else if (chbRemision.Checked && chbFactura.Checked)
+            {
+                chbFactura.Checked = false;
+                txtFactura.Enabled = false;
+                txtFactura.Text = "";
+                txtRemision.Enabled = true;
+            }
+            else if (!chbFactura.Checked && !chbRemision.Checked)
+            {
+                chbFactura.Checked = true;
+            }
+        }
+
+        private void chbFactura_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbFactura.Checked && !chbRemision.Checked)
+            {
+                chbRemision.Checked = false;
+                txtRemision.Enabled = false;
+                txtRemision.Text = "";
+                txtFactura.Enabled = true;
+            }
+            else if (chbFactura.Checked && chbRemision.Checked)
+            {
+                chbRemision.Checked = false;
+                txtRemision.Enabled = false;
+                txtRemision.Text = "";
+                txtFactura.Enabled = true;
+            }
+            else if (!chbFactura.Checked && !chbRemision.Checked)
+            {
+                chbRemision.Checked = true;
+            }
+        }
+
         private void cboTipoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cboTipoPago.SelectedIndex)
@@ -408,27 +477,7 @@ namespace EC_Admin.Forms
         private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dgvProductos.CurrentRow != null)
-                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (int)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, ((decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value) * 100)).ShowDialog(this);
-        }
-
-        private void rbtnRemision_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbtnRemision.Checked)
-            {
-                txtFactura.Enabled = false;
-                txtFactura.Text = "";
-                txtRemision.Enabled = true;
-            }
-        }
-
-        private void rbtnFactura_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbtnFactura.Checked)
-            {
-                txtRemision.Enabled = false;
-                txtRemision.Text = "";
-                txtFactura.Enabled = true;
-            }
+                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, ((decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value) * 100)).ShowDialog(this);
         }
     }
 }

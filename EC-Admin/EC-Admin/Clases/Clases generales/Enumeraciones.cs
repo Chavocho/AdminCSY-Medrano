@@ -61,9 +61,8 @@ namespace EC_Admin
 
     public enum EstadoTraspaso
     {
-        Recibida = 0,
-        Aceptada = 1,
-        Espera = 2,
-        Rechazada = 3
+        Aceptada = 0,
+        Espera = 1,
+        Rechazada = 2
     }
 }

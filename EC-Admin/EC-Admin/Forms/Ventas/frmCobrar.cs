@@ -115,11 +115,11 @@ namespace EC_Admin.Forms
                 case 0:
                     lblEEfectivo.Enabled = true;
                     txtEfectivo.Enabled = true;
-                    txtDatos.Visible = lblEDatos.Visible = txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = lblEFolioTerminal.Visible = txtFolioTerminal.Visible = false;
+                    txtDatos.Visible = lblEDatos.Visible = false;
+                    txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = false;
                     CalcularCambio();
                     t = TipoPago.Efectivo;
                     this.Size = new Size(580, 275);
-                    txtEfectivo.Select();
                     break;
                 //case 1:
                 //    QuitarEfectivo();
@@ -223,16 +223,6 @@ namespace EC_Admin.Forms
                 totalPorcentaje = total;
             }
             lblTotal.Text = totalPorcentaje.ToString("C2");
-        }
-
-        private void txtEfectivo_Enter(object sender, EventArgs e)
-        {
-            txtEfectivo.SelectAll();
-        }
-
-        private void txtEfectivo_Click(object sender, EventArgs e)
-        {
-            txtEfectivo.SelectAll();
         }
     }
 }

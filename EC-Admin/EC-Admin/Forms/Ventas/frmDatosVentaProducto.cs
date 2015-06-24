@@ -16,7 +16,7 @@ namespace EC_Admin.Forms
         frmNuevaCompra frmC = null;
         frmCotizacion frmCT = null;
 
-        public frmDatosVentaProducto(frmPOS frm, string nombre, int cant, decimal descuento)
+        public frmDatosVentaProducto(frmPOS frm, string nombre, decimal cant, decimal descuento)
         {
             InitializeComponent();
             this.Text += nombre;
@@ -26,7 +26,7 @@ namespace EC_Admin.Forms
             nudCant.Select();
         }
 
-        public frmDatosVentaProducto(frmNuevaCompra frm, string nombre, int cant, decimal descuento)
+        public frmDatosVentaProducto(frmNuevaCompra frm, string nombre, decimal cant, decimal descuento)
         {
             InitializeComponent();
             this.frmC = frm;
@@ -36,7 +36,7 @@ namespace EC_Admin.Forms
             nudCant.Select();
         }
 
-        public frmDatosVentaProducto(frmCotizacion frm, string nombre, int cant, decimal descuento)
+        public frmDatosVentaProducto(frmCotizacion frm, string nombre, decimal cant, decimal descuento)
         {
             InitializeComponent();
             this.frmCT = frm;
@@ -49,11 +49,11 @@ namespace EC_Admin.Forms
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (frm != null)
-                frm.ModificarProducto(int.Parse(nudCant.Value.ToString()), nudDescuento.Value);
+                frm.ModificarProducto(nudCant.Value, nudDescuento.Value);
             else if (frmC != null)
-                frmC.ModificarProducto(int.Parse(nudCant.Value.ToString()), nudDescuento.Value);
+                frmC.ModificarProducto(nudCant.Value, nudDescuento.Value);
             else if (frmCT != null)
-                frmCT.ModificarProducto(int.Parse(nudCant.Value.ToString()), nudDescuento.Value);
+                frmCT.ModificarProducto(nudCant.Value, nudDescuento.Value);
             this.Close();
         }
     }

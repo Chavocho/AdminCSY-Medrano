@@ -34,12 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -50,8 +44,13 @@
             this.btnCategoria = new System.Windows.Forms.Button();
             this.btnPromociones = new System.Windows.Forms.Button();
             this.btnCodigo = new System.Windows.Forms.Button();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chbExistencias = new System.Windows.Forms.CheckBox();
-            this.btnTraspasos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,42 +109,6 @@
             this.dgvProductos.Size = new System.Drawing.Size(803, 424);
             this.dgvProductos.TabIndex = 3;
             this.dgvProductos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_RowEnter);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CNombre
-            // 
-            this.CNombre.HeaderText = "Nombre";
-            this.CNombre.Name = "CNombre";
-            this.CNombre.Width = 150;
-            // 
-            // CDescripcion
-            // 
-            this.CDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CDescripcion.HeaderText = "Descripción";
-            this.CDescripcion.Name = "CDescripcion";
-            // 
-            // CCodigo
-            // 
-            this.CCodigo.HeaderText = "Cód. producto";
-            this.CCodigo.Name = "CCodigo";
-            this.CCodigo.Width = 125;
-            // 
-            // CPrecio
-            // 
-            this.CPrecio.HeaderText = "Precio";
-            this.CPrecio.Name = "CPrecio";
-            // 
-            // CCant
-            // 
-            dataGridViewCellStyle3.Format = "0";
-            this.CCant.DefaultCellStyle = dataGridViewCellStyle3;
-            this.CCant.HeaderText = "Existencias";
-            this.CCant.Name = "CCant";
             // 
             // btnEliminar
             // 
@@ -293,6 +256,42 @@
             this.btnCodigo.UseVisualStyleBackColor = false;
             this.btnCodigo.Click += new System.EventHandler(this.btnCodigo_Click);
             // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CNombre
+            // 
+            this.CNombre.HeaderText = "Nombre";
+            this.CNombre.Name = "CNombre";
+            this.CNombre.Width = 150;
+            // 
+            // CDescripcion
+            // 
+            this.CDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CDescripcion.HeaderText = "Descripción";
+            this.CDescripcion.Name = "CDescripcion";
+            // 
+            // CCodigo
+            // 
+            this.CCodigo.HeaderText = "Cód. producto";
+            this.CCodigo.Name = "CCodigo";
+            this.CCodigo.Width = 125;
+            // 
+            // CPrecio
+            // 
+            this.CPrecio.HeaderText = "Precio";
+            this.CPrecio.Name = "CPrecio";
+            // 
+            // CCant
+            // 
+            dataGridViewCellStyle3.Format = "0";
+            this.CCant.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CCant.HeaderText = "Existencias";
+            this.CCant.Name = "CCant";
+            // 
             // chbExistencias
             // 
             this.chbExistencias.AutoSize = true;
@@ -306,31 +305,11 @@
             this.chbExistencias.Text = "Buscar productos solo con existencias";
             this.chbExistencias.UseVisualStyleBackColor = true;
             // 
-            // btnTraspasos
-            // 
-            this.btnTraspasos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnTraspasos.FlatAppearance.BorderSize = 0;
-            this.btnTraspasos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnTraspasos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnTraspasos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTraspasos.Font = new System.Drawing.Font("Corbel", 11F);
-            this.btnTraspasos.ForeColor = System.Drawing.Color.White;
-            this.btnTraspasos.Location = new System.Drawing.Point(12, 387);
-            this.btnTraspasos.Name = "btnTraspasos";
-            this.btnTraspasos.Size = new System.Drawing.Size(175, 46);
-            this.btnTraspasos.TabIndex = 16;
-            this.btnTraspasos.Text = "Traspasos";
-            this.btnTraspasos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTraspasos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTraspasos.UseVisualStyleBackColor = false;
-            this.btnTraspasos.Click += new System.EventHandler(this.btnTraspasos_Click);
-            // 
             // frmProducto
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 511);
-            this.Controls.Add(this.btnTraspasos);
             this.Controls.Add(this.chbExistencias);
             this.Controls.Add(this.btnCodigo);
             this.Controls.Add(this.btnPromociones);
@@ -373,6 +352,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCant;
         private System.Windows.Forms.CheckBox chbExistencias;
-        private System.Windows.Forms.Button btnTraspasos;
     }
 }

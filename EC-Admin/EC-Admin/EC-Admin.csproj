@@ -101,7 +101,6 @@
     <Compile Include="Clases\Clases conexiones y estructura\Puesto.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Sucursal.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Trabajador.cs" />
-    <Compile Include="Clases\Clases conexiones y estructura\Traspaso.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Venta.cs" />
     <Compile Include="Clases\Clases generales\Camara.cs" />
     <Compile Include="Clases\Clases generales\Correos.cs" />
@@ -539,18 +538,6 @@
     <Compile Include="Forms\Trabajador\frmTrabajador.Designer.cs">
       <DependentUpon>frmTrabajador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Traspasos\frmNuevoTraspaso.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Traspasos\frmNuevoTraspaso.Designer.cs">
-      <DependentUpon>frmNuevoTraspaso.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Traspasos\frmProductosTraspasos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Traspasos\frmProductosTraspasos.Designer.cs">
-      <DependentUpon>frmProductosTraspasos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Traspasos\frmTraspasos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -694,12 +681,6 @@
     </Compile>
     <Compile Include="Forms\Ventas\frmVentaPromociones.Designer.cs">
       <DependentUpon>frmVentaPromociones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmDescripcion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDescripcion.Designer.cs">
-      <DependentUpon>frmDescripcion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEspera.cs">
       <SubType>Form</SubType>
@@ -943,12 +924,6 @@
     <EmbeddedResource Include="Forms\Trabajador\frmTrabajador.resx">
       <DependentUpon>frmTrabajador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Traspasos\frmNuevoTraspaso.resx">
-      <DependentUpon>frmNuevoTraspaso.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Traspasos\frmProductosTraspasos.resx">
-      <DependentUpon>frmProductosTraspasos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Traspasos\frmTraspasos.resx">
       <DependentUpon>frmTraspasos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1020,9 +995,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\frmVentaPromociones.resx">
       <DependentUpon>frmVentaPromociones.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDescripcion.resx">
-      <DependentUpon>frmDescripcion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEspera.resx">
       <DependentUpon>frmEspera.cs</DependentUpon>

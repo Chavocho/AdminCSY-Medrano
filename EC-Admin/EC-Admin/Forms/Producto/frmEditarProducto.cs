@@ -24,7 +24,7 @@ namespace EC_Admin.Forms
         {
             InitializeComponent();
             p = new Producto(id);
-            i = new Inventario(id, Config.idSucursal);
+            i = new Inventario(id);
         }
 
         private void CargarProveedores()

@@ -408,7 +408,7 @@ namespace EC_Admin
                     sql.Parameters.Clear();
                     if (this.abierta == false)
                     {
-                        Inventario.CambiarCantidadInventario(idP[i], cantidad[i] * -1, Config.idSucursal);
+                        Inventario.CambiarCantidadInventario(idP[i], cantidad[i] * -1);
                         Promociones.CambiarExistencias(promocion[i], cantidad[i] * -1);
                     }
                 }
@@ -416,12 +416,10 @@ namespace EC_Admin
             }
             catch (MySqlException ex)
             {
-                InicializarVentaDetallada();
                 throw ex;
             }
             catch (Exception ex)
             {
-                InicializarVentaDetallada();
                 throw ex;
             }
         }
@@ -467,7 +465,7 @@ namespace EC_Admin
                 v.RecuperarVenta();
                 for (int i = 0; i < v.IDProductos.Count; i++)
                 {
-                    Inventario.CambiarCantidadInventario(v.IDProductos[i], v.Cantidad[i], Config.idSucursal);
+                    Inventario.CambiarCantidadInventario(v.IDProductos[i], v.Cantidad[i]);
                     Promociones.CambiarExistencias(v.Promocion[i], v.Cantidad[i]);
                 }
             }

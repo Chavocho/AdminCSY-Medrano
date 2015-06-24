@@ -27,7 +27,10 @@ namespace EC_Admin.Forms
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Cantidad();
+            if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Desea imprimir " + nudCantidad.Value.ToString("0") + " tickets?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+            {
+                Cantidad();
+            }
         }
     }
 }

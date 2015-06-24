@@ -198,13 +198,10 @@ namespace EC_Admin.Forms
                 try
                 {
                     int cant = int.Parse((new frmCantidadTickets()).Cantidad().ToString());
-                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Desea imprimir " + cant.ToString() + " tickets?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                    for (int i = 0; i < cant; i++)
                     {
-                        for (int i = 0; i < cant; i++)
-                        {
-                            Ticket t = new Ticket();
-                            t.TicketCodigoProducto(id);
-                        }
+                        Ticket t = new Ticket();
+                        t.TicketCodigoProducto(id);   
                     }
                 }
                 catch (MySqlException ex)
@@ -220,11 +217,6 @@ namespace EC_Admin.Forms
                     FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket.", "Admin CSY", ex);
                 }
             }
-        }
-
-        private void btnTraspasos_Click(object sender, EventArgs e)
-        {
-            (new frmTraspasos()).Show();
         }
     }
 }

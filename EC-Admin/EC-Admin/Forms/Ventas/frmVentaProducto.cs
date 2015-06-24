@@ -43,7 +43,7 @@ namespace EC_Admin.Forms
             try
             {
                 string sql = "SELECT p.id, p.nombre, p.codigo, i.precio, i.cant, p.unidad FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto)" +
-                    "WHERE (p.nombre LIKE '%" + p + "%' OR p.codigo='" + p + "') AND cant>0 AND p.eliminado=0";
+                    "WHERE (p.nombre LIKE '%" + p + "%' OR p.codigo='" + p + "') AND p.eliminado=0";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
