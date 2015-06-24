@@ -70,12 +70,14 @@ namespace EC_Admin.Forms
         {
             try
             {
+                int cp;
+                int.TryParse(txtCP.Text, out cp);
                 s.IDDireccion = idD;
                 s.Nombre = txtNombre.Text;
                 s.Calle = txtCalle.Text;
                 s.NumExt = txtNumExt.Text;
                 s.NumInt = txtNumInt.Text;
-                s.CP = int.Parse(txtCP.Text);
+                s.CP = cp;
                 s.Colonia = txtColonia.Text;
                 s.Estado = txtEstado.Text;
                 s.Ciudad = txtCiudad.Text;

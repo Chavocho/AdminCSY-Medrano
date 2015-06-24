@@ -151,7 +151,12 @@ namespace EC_Admin
 
         public static int Cantidad
         {
-            get { return cant; }
+            get
+            {
+                if (cant < 0)
+                    Cant();
+                return cant;
+            }
         }
         
         #endregion
@@ -269,6 +274,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?rfc", rfc);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
                 this.ID = ConexionBD.EjecutarConsulta(sql);
+                Cant();
             }
             catch (MySqlException ex)
             {
@@ -329,6 +335,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?estado", estado);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
+                Cant();
             }
             catch (MySqlException ex)
             {

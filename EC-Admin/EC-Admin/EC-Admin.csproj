@@ -539,6 +539,12 @@
     <Compile Include="Forms\Trabajador\frmTrabajador.Designer.cs">
       <DependentUpon>frmTrabajador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Traspasos\frmDetalleTraspaso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Traspasos\frmDetalleTraspaso.Designer.cs">
+      <DependentUpon>frmDetalleTraspaso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Traspasos\frmNuevoTraspaso.cs">
       <SubType>Form</SubType>
     </Compile>
