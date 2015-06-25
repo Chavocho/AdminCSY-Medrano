@@ -59,7 +59,10 @@ namespace EC_Admin.Forms
                 {
                     lblRemision.Text = "Si";
                     lblFactura.Text = "No";
-                    lblFolioRemision.Text = c.FolioRemision;
+                    if (c.FolioRemision != "")
+                    {
+                        lblFolioRemision.Text = c.FolioRemision;
+                    }
                 }
                 else if (c.Factura)
                 {

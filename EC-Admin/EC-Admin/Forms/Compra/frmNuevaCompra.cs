@@ -236,10 +236,13 @@ namespace EC_Admin.Forms
             }
             if (rbtnRemision.Checked)
             {
-                if (txtRemision.Text.Trim() == "")
+                if (!chbFolioRemision.Checked)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la remisión", "Admin CSY");
-                    return false;
+                    if (txtRemision.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la remisión", "Admin CSY");
+                        return false;
+                    }
                 }
             }
             if (rbtnFactura.Checked)
@@ -415,6 +418,8 @@ namespace EC_Admin.Forms
         {
             if (rbtnRemision.Checked)
             {
+                chbFolioRemision.Enabled = true;
+                chbFolioRemision.Checked = false;
                 txtFactura.Enabled = false;
                 txtFactura.Text = "";
                 txtRemision.Enabled = true;
@@ -425,10 +430,18 @@ namespace EC_Admin.Forms
         {
             if (rbtnFactura.Checked)
             {
+                chbFolioRemision.Enabled = false;
+                chbFolioRemision.Checked = false;
                 txtRemision.Enabled = false;
                 txtRemision.Text = "";
                 txtFactura.Enabled = true;
             }
+        }
+
+        private void chbFolioRemision_CheckedChanged(object sender, EventArgs e)
+        {
+            txtRemision.Enabled = !chbFolioRemision.Checked;
+            txtRemision.Text = "";
         }
     }
 }
