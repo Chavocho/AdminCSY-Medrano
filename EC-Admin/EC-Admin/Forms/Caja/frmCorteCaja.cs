@@ -34,7 +34,7 @@ namespace EC_Admin.Forms
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT id, efectivo, voucher, create_time FROM caja WHERE descripcion='CIERRE DE CAJA' AND (create_time BETWEEN ?fechaIni AND ?fechaFin)";
+                sql.CommandText = "SELECT id, efectivo, voucher, create_time FROM caja WHERE descripcion='CIERRE DE CAJA' AND (create_time BETWEEN ?fechaIni AND ?fechaFin) AND id_sucursal='" + Config.idSucursal + "'";
                 sql.Parameters.AddWithValue("?fechaIni", fechaIni.ToString("yyyy-MM-dd") + " 00:00:00");
                 sql.Parameters.AddWithValue("?fechaFin", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
                 dt = ConexionBD.EjecutarConsultaSelect(sql);

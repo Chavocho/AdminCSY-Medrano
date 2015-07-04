@@ -54,7 +54,7 @@ namespace EC_Admin.Forms
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT c.id, c.id_proveedor, c.id_comprador, c.total, c.create_time FROM compra AS c INNER JOIN compra_detallada AS d ON (c.id=d.id_compra) WHERE (c.create_time BETWEEN ?fechaIni AND ?fechaFin)";
+                sql.CommandText = "SELECT c.id, c.id_proveedor, c.id_comprador, c.total, c.create_time FROM compra AS c INNER JOIN compra_detallada AS d ON (c.id=d.id_compra) WHERE (c.create_time BETWEEN ?fechaIni AND ?fechaFin) AND c.id_sucursal='" + Config.idSucursal + "'";
                 sql.Parameters.AddWithValue("?fechaIni", fechaIni.ToString("yyyy-MM-dd") + " 00:00:00");
                 sql.Parameters.AddWithValue("?fechaFin", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
                 dt = ConexionBD.EjecutarConsultaSelect(sql);

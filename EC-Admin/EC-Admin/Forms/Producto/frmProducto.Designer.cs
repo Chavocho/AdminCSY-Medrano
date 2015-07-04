@@ -323,6 +323,7 @@
             this.btnTraspasos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTraspasos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTraspasos.UseVisualStyleBackColor = false;
+            this.btnTraspasos.Visible = false;
             this.btnTraspasos.Click += new System.EventHandler(this.btnTraspasos_Click);
             // 
             // frmProducto

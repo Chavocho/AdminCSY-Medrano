@@ -33,10 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvTraspasos = new System.Windows.Forms.DataGridView();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSucursalOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSucursalDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblETipoPrecio = new System.Windows.Forms.Label();
             this.cboTraspasos = new System.Windows.Forms.ComboBox();
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
@@ -48,6 +44,13 @@
             this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
             this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CIDSucursalSolicito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CIDSucursalOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CIDSucursalDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSucursalOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSucursalDestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +84,9 @@
             this.dgvTraspasos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTraspasos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
+            this.CIDSucursalSolicito,
+            this.CIDSucursalOrigen,
+            this.CIDSucursalDestino,
             this.CSucursalOrigen,
             this.CSucursalDestino,
             this.CDescripcion});
@@ -104,30 +110,6 @@
             this.dgvTraspasos.Size = new System.Drawing.Size(803, 384);
             this.dgvTraspasos.TabIndex = 4;
             this.dgvTraspasos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTraspasos_RowEnter);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CSucursalOrigen
-            // 
-            this.CSucursalOrigen.HeaderText = "Sucursal de origen";
-            this.CSucursalOrigen.Name = "CSucursalOrigen";
-            this.CSucursalOrigen.Width = 200;
-            // 
-            // CSucursalDestino
-            // 
-            this.CSucursalDestino.HeaderText = "Sucursal de destino";
-            this.CSucursalDestino.Name = "CSucursalDestino";
-            this.CSucursalDestino.Width = 200;
-            // 
-            // CDescripcion
-            // 
-            this.CDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CDescripcion.HeaderText = "Descripción";
-            this.CDescripcion.Name = "CDescripcion";
             // 
             // lblETipoPrecio
             // 
@@ -272,6 +254,48 @@
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CIDSucursalSolicito
+            // 
+            this.CIDSucursalSolicito.HeaderText = "ID Sucursal Solicito";
+            this.CIDSucursalSolicito.Name = "CIDSucursalSolicito";
+            this.CIDSucursalSolicito.Visible = false;
+            // 
+            // CIDSucursalOrigen
+            // 
+            this.CIDSucursalOrigen.HeaderText = "ID Sucursal Origen";
+            this.CIDSucursalOrigen.Name = "CIDSucursalOrigen";
+            this.CIDSucursalOrigen.Visible = false;
+            // 
+            // CIDSucursalDestino
+            // 
+            this.CIDSucursalDestino.HeaderText = "ID Sucursal Destino";
+            this.CIDSucursalDestino.Name = "CIDSucursalDestino";
+            this.CIDSucursalDestino.Visible = false;
+            // 
+            // CSucursalOrigen
+            // 
+            this.CSucursalOrigen.HeaderText = "Sucursal de origen";
+            this.CSucursalOrigen.Name = "CSucursalOrigen";
+            this.CSucursalOrigen.Width = 200;
+            // 
+            // CSucursalDestino
+            // 
+            this.CSucursalDestino.HeaderText = "Sucursal de destino";
+            this.CSucursalDestino.Name = "CSucursalDestino";
+            this.CSucursalDestino.Width = 200;
+            // 
+            // CDescripcion
+            // 
+            this.CDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CDescripcion.HeaderText = "Descripción";
+            this.CDescripcion.Name = "CDescripcion";
+            // 
             // frmTraspasos
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -310,12 +334,15 @@
         private System.Windows.Forms.Label lblEFechaIni;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnDetalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CSucursalOrigen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CSucursalDestino;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CDescripcion;
         private System.ComponentModel.BackgroundWorker bgwBusqueda;
         private System.Windows.Forms.Timer tmrEspera;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CIDSucursalSolicito;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CIDSucursalOrigen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CIDSucursalDestino;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CSucursalOrigen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CSucursalDestino;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CDescripcion;
     }
 }

@@ -83,8 +83,8 @@ namespace EC_Admin
             //FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "Algo", "¯\\_(ツ)_/¯");
             //Cliente.ClienteGeneral();
             //(new frmEspera("Algo")).ShowDialog(this);
-            //EC_Admin.Properties.Settings.Default.PrimerUso = true;
-            //EC_Admin.Properties.Settings.Default.Save();
+            EC_Admin.Properties.Settings.Default.PrimerUso = true;
+            EC_Admin.Properties.Settings.Default.Save();
         }
 
         private void txtUsuario_Leave(object sender, EventArgs e)

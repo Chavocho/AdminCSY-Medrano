@@ -37,7 +37,7 @@ namespace EC_Admin.Forms
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT id, id_sucursal_origen, id_sucursal_destino, descripcion FROM traspaso WHERE (create_time BETWEEN ?fecha_ini AND ?fecha_fin) AND estado=?estado";
+                sql.CommandText = "SELECT id, id_sucursal_solicito, <id_sucursal_origen, id_sucursal_destino, descripcion FROM traspaso WHERE (create_time BETWEEN ?fecha_ini AND ?fecha_fin) AND estado=?estado";
                 sql.Parameters.AddWithValue("?fecha_ini", fechaIni.ToString("yyyy-MM-dd") + " 00:00:00");
                 sql.Parameters.AddWithValue("?fecha_fin", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
                 sql.Parameters.AddWithValue("?estado", e);
@@ -62,7 +62,7 @@ namespace EC_Admin.Forms
                 dgvTraspasos.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    dgvTraspasos.Rows.Add(dr["id"], Sucursal.NombreSucursal((int)dr["id_sucursal_origen"]), Sucursal.NombreSucursal((int)dr["id_sucursal_destino"]), dr["descripcion"].ToString());
+                    dgvTraspasos.Rows.Add(dr["id"], dr["id_sucursal_solicito"], dr["id_sucursal_origen"], dr["id_sucursal_destino"], Sucursal.NombreSucursal((int)dr["id_sucursal_origen"]), Sucursal.NombreSucursal((int)dr["id_sucursal_destino"]), dr["descripcion"].ToString());
                 }
             }
             catch (Exception ex)
@@ -120,7 +120,29 @@ namespace EC_Admin.Forms
 
         private void btnDetalle_Click(object sender, EventArgs e)
         {
-           
+            if (dgvTraspasos.CurrentRow != null)
+            {
+                DataGridViewRow dr = dgvTraspasos.CurrentRow;
+                switch (this.e)
+                {
+                    case EstadoTraspaso.Recibida:
+                    case EstadoTraspaso.Rechazada:
+                        (new frmDetalleTraspaso(id)).ShowDialog(this);
+                        break;
+                    case EstadoTraspaso.Aceptada:
+                        if ((int)dr.Cells[1].Value == Config.idSucursal)
+                        {
+                            (new frmDetalleTraspaso(id)).ShowDialog(this);
+                        }
+                        break;
+                    case EstadoTraspaso.Espera:
+                        if (((int)dr.Cells[1].Value == (int)dr.Cells[2].Value && (int)dr.Cells[3].Value == Config.idSucursal) || ((int)dr.Cells[1].Value == (int)dr.Cells[3].Value && (int)dr.Cells[1].Value == Config.idSucursal))
+                        {
+                            (new frmDetalleTraspaso(id)).ShowDialog(this);
+                        }
+                        break;
+                }               
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

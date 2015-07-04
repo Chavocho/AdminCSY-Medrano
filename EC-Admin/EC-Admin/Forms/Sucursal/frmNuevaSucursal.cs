@@ -246,12 +246,20 @@ namespace EC_Admin.Forms
                         Insertar();
                         FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado la sucursal correctamente!", "Admin CSY");
                         this.Close();
+                        if (!ConfiguracionXML.ExisteConfiguracion("sucursal"))
+                        {
+                            Config.idSucursal = s.ID;
+                            Sucursal.AsignarSucursal(s.ID, true);
+                            ConfiguracionXML.GuardarConfiguracion("sucursal", "id", s.ID.ToString());
+                            ConfiguracionXML.GuardarConfiguracion("sucursal", "nombre", txtNombre.Text);
+                        }
                     }
                     else
                     {
                         Insertar();
                         ConfiguracionXML.GuardarConfiguracion("sucursal", "id", s.ID.ToString());
                         ConfiguracionXML.GuardarConfiguracion("sucursal", "nombre", txtNombre.Text);
+                        Sucursal.AsignarSucursal(s.ID, true);
                         frm.Siguiente();
                         this.Close();
                     }

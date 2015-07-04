@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tpaPaquete = new System.Windows.Forms.TabPage();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -253,12 +253,12 @@
             this.dgvPaquetes.AllowUserToDeleteRows = false;
             this.dgvPaquetes.AllowUserToResizeColumns = false;
             this.dgvPaquetes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            this.dgvPaquetes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            this.dgvPaquetes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPaquetes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -266,14 +266,14 @@
             this.dgvPaquetes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPaquetes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPaquetes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaquetes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaquetes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPaquetes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaquetes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
@@ -281,14 +281,14 @@
             this.CCantidad,
             this.CBase,
             this.CEdito});
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPaquetes.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPaquetes.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPaquetes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPaquetes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvPaquetes.Location = new System.Drawing.Point(8, 6);
@@ -310,8 +310,8 @@
             // CPrecio
             // 
             this.CPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle15.Format = "C2";
-            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Format = "C2";
+            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
             this.CPrecio.HeaderText = "Precio";
             this.CPrecio.Name = "CPrecio";
             // 
@@ -399,7 +399,7 @@
             this.btnQuitar03.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar03.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar03.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar03.Location = new System.Drawing.Point(342, 489);
+            this.btnQuitar03.Location = new System.Drawing.Point(342, 494);
             this.btnQuitar03.Name = "btnQuitar03";
             this.btnQuitar03.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar03.TabIndex = 25;
@@ -440,7 +440,7 @@
             this.btnQuitar02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar02.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar02.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar02.Location = new System.Drawing.Point(175, 489);
+            this.btnQuitar02.Location = new System.Drawing.Point(175, 494);
             this.btnQuitar02.Name = "btnQuitar02";
             this.btnQuitar02.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar02.TabIndex = 23;
@@ -637,7 +637,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(647, 454);
+            this.btnAceptar.Location = new System.Drawing.Point(649, 477);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
             this.btnAceptar.TabIndex = 26;
@@ -657,7 +657,7 @@
             this.btnQuitar01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar01.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar01.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar01.Location = new System.Drawing.Point(8, 489);
+            this.btnQuitar01.Location = new System.Drawing.Point(8, 494);
             this.btnQuitar01.Name = "btnQuitar01";
             this.btnQuitar01.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar01.TabIndex = 21;

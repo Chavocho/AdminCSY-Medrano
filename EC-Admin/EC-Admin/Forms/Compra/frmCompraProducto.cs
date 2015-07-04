@@ -34,7 +34,7 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT p.id, p.nombre, p.codigo, p.costo, i.cant, p.unidad FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto) WHERE p.nombre LIKE '%" + p + "%' OR p.codigo='" + p + "'";
+                string sql = "SELECT p.id, p.nombre, p.codigo, p.costo, i.cant, p.unidad FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto) WHERE p.nombre LIKE '%" + p + "%' OR p.codigo='" + p + "' AND id_sucursal='" + Config.idSucursal + "'";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)

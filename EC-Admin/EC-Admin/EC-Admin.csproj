@@ -57,7 +57,6 @@
       <HintPath>..\..\..\Desktop\itextsharp-all-5.5.4\itextsharp-dll-xtra\itextsharp.xtra.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.8.3\Assemblies\v4.5\MySql.Data.dll</HintPath>
@@ -948,6 +947,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Trabajador\frmTrabajador.resx">
       <DependentUpon>frmTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Traspasos\frmDetalleTraspaso.resx">
+      <DependentUpon>frmDetalleTraspaso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Traspasos\frmNuevoTraspaso.resx">
       <DependentUpon>frmNuevoTraspaso.cs</DependentUpon>

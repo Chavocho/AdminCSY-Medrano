@@ -160,9 +160,25 @@ namespace EC_Admin.Forms
             lblCantDif.Text = dgvProductos.RowCount.ToString("C2");
         }
 
+        private bool VerificarDatos()
+        {
+            if (dgvProductos.RowCount == 0)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un producto para realizar el traspaso", "Admin CSY");
+                return false;
+            }
+            if (idSucursalOrigen[cboSucursalOrigen.SelectedIndex] != Config.idSucursal && idSucursalDestino[cboSucursalDestino.SelectedIndex] != Config.idSucursal)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No puedes realizar transacciones en sucursales que no sean ésta", "Admin CSY");
+                return false;
+            }
+            return true;
+        }
+
         private void InsertarTraspaso(string descripcion)
         {
             Traspaso t = new Traspaso();
+            t.Estado = EstadoTraspaso.Espera;
             t.Descripcion = descripcion;
             t.IDSucursalDestino = idSucursalDestino[cboSucursalDestino.SelectedIndex];
             t.IDSucursalOrigen = idSucursalOrigen[cboSucursalOrigen.SelectedIndex];
@@ -267,7 +283,7 @@ namespace EC_Admin.Forms
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (dgvProductos.RowCount > 0)
+            if (VerificarDatos())
             {
                 if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas realizar éste traspaso?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
@@ -286,10 +302,6 @@ namespace EC_Admin.Forms
                         FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el traspaso.", "Admin CSY", ex);
                     }
                 }
-            }
-            else
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Debes ingresar al menos un producto para realizar el traspaso", "Admin CSY");
             }
         }
     }

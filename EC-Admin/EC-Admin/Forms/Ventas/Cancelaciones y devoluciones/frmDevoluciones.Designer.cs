@@ -120,7 +120,9 @@
             this.dgvProductos01.Size = new System.Drawing.Size(489, 386);
             this.dgvProductos01.TabIndex = 13;
             this.dgvProductos01.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvProductos01_DragDrop);
+            this.dgvProductos01.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvProductos01_DragEnter);
             this.dgvProductos01.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvProductos01_DragOver);
+            this.dgvProductos01.DragLeave += new System.EventHandler(this.dgvProductos01_DragLeave);
             this.dgvProductos01.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProductos_MouseDoubleClick);
             this.dgvProductos01.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvProductos01_MouseDown);
             this.dgvProductos01.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvProductos01_MouseMove);
@@ -218,7 +220,9 @@
             this.dgvProductos02.Size = new System.Drawing.Size(489, 385);
             this.dgvProductos02.TabIndex = 14;
             this.dgvProductos02.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvProductos02_DragDrop);
+            this.dgvProductos02.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvProductos02_DragEnter);
             this.dgvProductos02.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvProductos02_DragOver);
+            this.dgvProductos02.DragLeave += new System.EventHandler(this.dgvProductos02_DragLeave);
             this.dgvProductos02.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProductos_MouseDoubleClick);
             this.dgvProductos02.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvProductos02_MouseDown);
             this.dgvProductos02.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvProductos02_MouseMove);

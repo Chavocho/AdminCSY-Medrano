@@ -42,7 +42,12 @@ namespace EC_Admin.Forms
         {
             try
             {
+
                 Usuario u = new Usuario();
+                if (Config.idSucursal > 0)
+                    u.IDSucusal = Config.idSucursal;
+                else
+                    u.IDSucusal = 1;
                 u.UserName = txtUsuario.Text;
                 u.Contraseña = txtPass.Text;
                 u.NivelUsuario = n;

@@ -12,7 +12,7 @@ namespace EC_Admin.Forms
 {
     public partial class frmDevolucionCantidadProductos : Form
     {
-        decimal cant;
+        int cant;
         bool cerroBien = false;
 
         public frmDevolucionCantidadProductos()
@@ -30,13 +30,13 @@ namespace EC_Admin.Forms
             return true;
         }
 
-        public decimal Cantidad(decimal cantidad)
+        public int Cantidad(int cantidad)
         {
             cant = cantidad;
             if (!this.Visible)
                 this.ShowDialog();
             this.Close();
-            return nudCantidad.Value;
+            return (int)nudCantidad.Value;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

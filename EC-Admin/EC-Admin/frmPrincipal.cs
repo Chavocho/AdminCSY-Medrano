@@ -77,8 +77,6 @@ namespace EC_Admin
                 Application.Exit();
                 ConexionBD.CerrarConexion();
             }
-            lnsSeparador.Dispose();
-            shapeContainer1.Dispose();
         }
 
         private void btnConfig_Click(object sender, EventArgs e)

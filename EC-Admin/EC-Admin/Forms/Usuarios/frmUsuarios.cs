@@ -52,7 +52,7 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT id, username, nombre, apellidos, nivel, email FROM usuario WHERE eliminado=0";
+                string sql = "SELECT id, username, nombre, apellidos, nivel, email FROM usuario WHERE eliminado=0 AND id_sucursal='" + Config.idSucursal + "'";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)

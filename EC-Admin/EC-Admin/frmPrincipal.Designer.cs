@@ -46,8 +46,6 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.pcbUsuario = new System.Windows.Forms.PictureBox();
             this.btnReimpresiónVenta = new System.Windows.Forms.Button();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lnsSeparador = new Microsoft.VisualBasic.PowerPacks.LineShape();
             ((System.ComponentModel.ISupportInitialize)(this.pcbUsuario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -347,30 +345,17 @@
             this.btnReimpresiónVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReimpresiónVenta.UseVisualStyleBackColor = false;
             this.btnReimpresiónVenta.Click += new System.EventHandler(this.btnReimpresiónVenta_Click);
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lnsSeparador});
-            this.shapeContainer1.Size = new System.Drawing.Size(1008, 697);
-            this.shapeContainer1.TabIndex = 18;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // lnsSeparador
-            // 
-            this.lnsSeparador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lnsSeparador.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lnsSeparador.BorderWidth = 2;
-            this.lnsSeparador.Name = "lnsSeparador";
-            this.lnsSeparador.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.lnsSeparador.X1 = 226;
-            this.lnsSeparador.X2 = 226;
-            this.lnsSeparador.Y1 = 10;
-            this.lnsSeparador.Y2 = 687;
+
+            //this.lnsSeparador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
+            //this.lnsSeparador.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            //this.lnsSeparador.BorderWidth = 2;
+            //this.lnsSeparador.Name = "lnsSeparador";
+            //this.lnsSeparador.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            //this.lnsSeparador.X1 = 226;
+            //this.lnsSeparador.X2 = 226;
+            //this.lnsSeparador.Y1 = 10;
+            //this.lnsSeparador.Y2 = 687;
+
             // 
             // frmPrincipal
             // 
@@ -393,7 +378,6 @@
             this.Controls.Add(this.btnUsuarios);
             this.Controls.Add(this.lblNomUsuario);
             this.Controls.Add(this.pcbUsuario);
-            this.Controls.Add(this.shapeContainer1);
             this.MinimumSize = new System.Drawing.Size(1024, 736);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -425,8 +409,6 @@
         private System.Windows.Forms.Button btnTrabajadores;
         private System.Windows.Forms.ToolTip ttPrincipal;
         private System.Windows.Forms.Button btnReimpresiónVenta;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lnsSeparador;
     }
 }
 

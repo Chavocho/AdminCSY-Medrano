@@ -12,77 +12,80 @@ namespace EC_Admin
     {
         #region Propiedades
         private int id;
+        private int idSucursalSolicito;
+        private int idSucursalOrigen;
+        private int idSucursalDestino;
+        private string descripcion;
+        private EstadoTraspaso estado;
+        private int createUser;
+        private DateTime createTime;
+        private int acceptUser;
+        private DateTime acceptTime;
 
         public int ID
         {
             get { return id; }
             set { id = value; }
         }
-        private int idSucursalOrigen;
+
+        public int IDSucursalSolicito
+        {
+            get { return idSucursalSolicito; }
+            set { idSucursalSolicito = value; }
+        }
 
         public int IDSucursalOrigen
         {
             get { return idSucursalOrigen; }
             set { idSucursalOrigen = value; }
         }
-        private int idSucursalDestino;
 
         public int IDSucursalDestino
         {
             get { return idSucursalDestino; }
             set { idSucursalDestino = value; }
         }
-        private string descripcion;
 
         public string Descripcion
         {
             get { return descripcion; }
             set { descripcion = value; }
         }
-        private EstadoTraspaso estado;
 
         public EstadoTraspaso Estado
         {
             get { return estado; }
             set { estado = value; }
         }
-        private int createUser;
 
         public int CreateUser
         {
             get { return createUser; }
-            set { createUser = value; }
         }
-        private DateTime createTime;
 
         public DateTime CreateTime
         {
             get { return createTime; }
-            set { createTime = value; }
         }
-        private int acceptUser;
 
         public int AcceptUser
         {
             get { return acceptUser; }
-            set { acceptUser = value; }
         }
-        private DateTime acceptTime;
 
         public DateTime AcceptTime
         {
             get { return acceptTime; }
-            set { acceptTime = value; }
         }
 
         private List<int> idProductos;
+        private List<int> cantProductos;
 
         public List<int> IDProductos
         {
             get { return idProductos; }
             set { idProductos = value; }
         }
-        private List<int> cantProductos;
 
         public List<int> CantProductos
         {
@@ -118,6 +121,7 @@ namespace EC_Admin
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
+                    idSucursalSolicito = (int)dr["id_sucursal_solicito"];
                     idSucursalOrigen = (int)dr["id_sucursal_origen"];
                     idSucursalDestino = (int)dr["id_sucursal_destino"];
                     descripcion = dr["descripcion"].ToString();
@@ -174,8 +178,9 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO traspaso (id_sucursal_origen, id_sucursal_destino, descripcion, estado, create_user, create_time) " +
-                    "VALUES (?id_sucursal_origen, ?id_sucursal_destino, ?descripcion, ?estado, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO traspaso (id_sucursal_solicito, id_sucursal_origen, id_sucursal_destino, descripcion, estado, create_user, create_time) " +
+                    "VALUES (?id_sucursal_solicito, ?id_sucursal_origen, ?id_sucursal_destino, ?descripcion, ?estado, ?create_user, NOW())";
+                sql.Parameters.AddWithValue("?id_sucursal_solicito", idSucursalSolicito);
                 sql.Parameters.AddWithValue("?id_sucursal_origen", idSucursalOrigen);
                 sql.Parameters.AddWithValue("?id_sucursal_destino", idSucursalDestino);
                 sql.Parameters.AddWithValue("?descripcion", descripcion);
@@ -193,16 +198,17 @@ namespace EC_Admin
             }
         }
 
-        public static void CambiarEstado(int id, EstadoTraspaso e)
+        public static void CambiarEstado(int id, EstadoTraspaso e, string descripcion)
         {
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE traspaso SET estado=?estado WHERE id=?id";
+                sql.CommandText = "UPDATE traspaso SET estado=?estado, descripcion=?descripcion WHERE id=?id";
                 sql.Parameters.AddWithValue("?estado", e);
+                sql.Parameters.AddWithValue("?descripcion", descripcion);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
-                if (e == EstadoTraspaso.Aceptada)
+                if (e == EstadoTraspaso.Recibida)
                 {
                     Traspaso t = new Traspaso(id);
                     t.ObtenerDatos();

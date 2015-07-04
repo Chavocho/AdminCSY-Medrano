@@ -64,12 +64,23 @@ namespace EC_Admin.Forms
         {
             foreach (DataGridViewRow dr in dgvProductos02.Rows)
             {
-                total += (decimal)dr.Cells[3].Value * (decimal)dr.Cells[4].Value;
-                cantidad += (decimal)dr.Cells[4].Value;
+                total += (decimal)dr.Cells[3].Value * (int)dr.Cells[4].Value;
+                cantidad += (int)dr.Cells[4].Value;
             }
             lblCantDif.Text = dgvProductos02.RowCount.ToString();
             lblCantTot.Text = cantidad.ToString("0");
             lblTotal.Text = total.ToString("C2");
+        }
+
+        private void MovimientoCaja()
+        {
+            Caja c = new Caja();
+            c.Descripcion = "DEVOLUCIÓN DE PRODUCTOS DE VENTA CON FOLIO: " + v.IDVenta.ToString();
+            c.Efectivo = total;
+            c.IDSucursal = Config.idSucursal;
+            c.TipoMovimiento = EC_Admin.MovimientoCaja.Salida;
+            c.Voucher = 0M;
+            c.RegistrarMovimiento();
         }
 
         #region DragAndDrop
@@ -105,6 +116,8 @@ namespace EC_Admin.Forms
 
         private void dgvProductos01_DragDrop(object sender, DragEventArgs e)
         {
+            if (!dragEntroDGV01)
+                return;
             bool entro = false;
             if (e.Effect == DragDropEffects.Move)
             {
@@ -114,7 +127,7 @@ namespace EC_Admin.Forms
                     {
                         if (dgvr.Cells[0].Value.ToString() == dgvProductos02.CurrentRow.Cells[0].Value.ToString())
                         {
-                            dgvr.Cells[4].Value = (decimal)dgvr.Cells[4].Value + (decimal)dgvProductos02.CurrentRow.Cells[4].Value;
+                            dgvr.Cells[4].Value = (int)dgvr.Cells[4].Value + (int)dgvProductos02.CurrentRow.Cells[4].Value;
                             dgvProductos02.Rows.RemoveAt(rowIndexFromMouseDown);
                             entro = true;
                             break;
@@ -129,8 +142,23 @@ namespace EC_Admin.Forms
                 }
                 CalcularTotales();
             }
+            dragEntroDGV02 = false;
         }
 
+        private void dgvProductos01_DragEnter(object sender, DragEventArgs e)
+        {
+            if (dragSalioDGV02)
+            {
+                dragEntroDGV01 = true;
+                dragSalioDGV02 = false;
+            }
+        }
+
+        private void dgvProductos01_DragLeave(object sender, EventArgs e)
+        {
+            dragSalioDGV01 = true;
+        }
+    
         private void dgvProductos02_MouseMove(object sender, MouseEventArgs e)
         {
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
@@ -164,12 +192,14 @@ namespace EC_Admin.Forms
         private void dgvProductos02_DragDrop(object sender, DragEventArgs e)
         {
             bool entro = false;
+            if (!dragEntroDGV02)
+                return;
             if (e.Effect == DragDropEffects.Move)
             {
                 if (rowIndexFromMouseDown >= 0)
                 {
-                    decimal cant = (decimal)dgvProductos01.CurrentRow.Cells[4].Value;
-                    decimal nuevaCant = (new frmDevolucionCantidadProductos()).Cantidad(cant);
+                    int cant = (int)dgvProductos01.CurrentRow.Cells[4].Value;
+                    int nuevaCant = (new frmDevolucionCantidadProductos()).Cantidad(cant);
                     foreach (DataGridViewRow dgvr in dgvProductos02.Rows)
                     {
                         if (dgvr.Cells[0].Value.ToString() == dgvProductos01.CurrentRow.Cells[0].ToString())
@@ -182,7 +212,7 @@ namespace EC_Admin.Forms
                             {
                                 dgvProductos01[4, rowIndexFromMouseDown].Value = cant - nuevaCant;
                             }
-                            dgvr.Cells[4].Value = (decimal)dgvr.Cells[4].Value + nuevaCant;
+                            dgvr.Cells[4].Value = (int)dgvr.Cells[4].Value + nuevaCant;
                             entro = true;
                             break;
                         }
@@ -204,8 +234,23 @@ namespace EC_Admin.Forms
                 }
                 CalcularTotales();
             }
+            dragEntroDGV01 = false;
         }
 
+        private void dgvProductos02_DragEnter(object sender, DragEventArgs e)
+        {
+            if (dragSalioDGV01)
+            {
+                dragEntroDGV02 = true;
+                dragSalioDGV01 = false;
+            }
+        }
+    
+        private void dgvProductos02_DragLeave(object sender, EventArgs e)
+        {
+            dragSalioDGV02 = true;
+        }
+    
         #endregion
 
         private void dgvProductos_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -226,12 +271,13 @@ namespace EC_Admin.Forms
             if (dgvProductos02.RowCount > 0)
             {
                 GuardarDevolucion();
+                MovimientoCaja();
                 FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se han regresado los productos correctamente!", "Admin CSY");
                 this.Close();
             }
             else
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Debes ingresar al menos un producto para realizar la devolución.", "Admin CSY");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un producto para realizar la devolución.", "Admin CSY");
             }
         }
     }
