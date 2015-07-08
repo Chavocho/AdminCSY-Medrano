@@ -20,6 +20,29 @@ namespace EC_Admin
             InitializeComponent();
         }
 
+        private void ActualizarLabel(string mensaje)
+        {
+            lblEstado.Text = mensaje;
+            lblEstado.Left = (this.Width - lblEstado.Width) / 2;
+        }
+
+        private DialogResult MostrarError(string mensaje, Exception ex, bool cerrar)
+        {
+            DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Error, mensaje, "Admin CSY", ex);
+            if (cerrar)
+                Application.Exit();
+            return r;
+        }
+
+        private void ReconfigurarConexion()
+        {
+            DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
+            if (re == System.Windows.Forms.DialogResult.Yes)
+            {
+                (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
+            }
+        }
+
         #region Paso 01
 
         /// <summary>
@@ -36,7 +59,7 @@ namespace EC_Admin
                     if (id <= 0)
                     {
                         FuncionesGenerales.IniciarProceso("C:\\xampp\\mysql_start.bat");
-                        System.Threading.Thread.Sleep(3000);
+                        System.Threading.Thread.Sleep(1000);
                         intentos += 1;
                         MySQL();
                     }
@@ -95,28 +118,12 @@ namespace EC_Admin
             {
                 if (!ConexionBD.Ping())
                 {
-                    DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
-                    if (re == System.Windows.Forms.DialogResult.Yes)
-                    {
-                        (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
-                    }
-                }
-            }
-            catch (MySql.Data.MySqlClient.MySqlException)
-            {
-                DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
-                if (re == System.Windows.Forms.DialogResult.Yes)
-                {
-                    (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
+                    this.Invoke(new Action(ReconfigurarConexion));
                 }
             }
             catch (Exception)
             {
-                DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
-                if (re == System.Windows.Forms.DialogResult.Yes)
-                {
-                    (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
-                }
+                this.Invoke(new Action(ReconfigurarConexion));
             }
         }
 
@@ -129,6 +136,10 @@ namespace EC_Admin
             {
                 Config.idSucursal = int.Parse(ConfiguracionXML.LeerConfiguración("sucursal", "id"));
                 Config.nombreSucursal = ConfiguracionXML.LeerConfiguración("sucursal", "nombre");
+            }
+            else
+            {
+                
             }
         }
         #endregion
@@ -184,13 +195,10 @@ namespace EC_Admin
             }
         }
 
-
         private void ConfiguracionPOS()
         {
             if (ConfiguracionXML.ExisteConfiguracion("POS"))
             {
-                Config.cantMedioMayoreo = int.Parse(ConfiguracionXML.LeerConfiguración("POS", "cant_medio_mayoreo"));
-                Config.cantMayoreo = int.Parse(ConfiguracionXML.LeerConfiguración("POS", "cant_mayoreo"));
                 Config.iva = decimal.Parse(ConfiguracionXML.LeerConfiguración("POS", "IVA"));
             }
         }
@@ -200,33 +208,50 @@ namespace EC_Admin
         {
             try
             {
-                try
-                {
-                    MySQL();
-                }
-                catch (Exception ex)
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "La aplicación no ha logrado iniciar el servicio de MySQL. La aplicación se cerrará.", "Admin CSY", ex);
-                    Application.Exit();
-                    return;
-                }
-                ConfiguracionBaseDatos();
-                ConfiguracionSucursal();
-                InicializarPropiedades();
-                CorreoInterno();
-                ConfiguracionPOS();
+                bgwCargando.RunWorkerAsync();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            (new frmLogin()).Show();
-            this.Close();
         }
 
         private void t_Tick(object sender, EventArgs e)
         {
             c += 1;
+        }
+
+        private void bgwCargando_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Func<string, Exception, bool, DialogResult> err = new Func<string, Exception, bool, DialogResult>(MostrarError);
+            Action<string> lbl = new Action<string>(ActualizarLabel);
+            try
+            {
+                this.Invoke(lbl, "Inicializando la conexión con la base de datos");
+                MySQL();
+            }
+            catch (Exception ex)
+            {
+                this.Invoke(err, new object[] { "No se ha logrado inicializar la conexión a la base de datos. La aplicación se cerrará.", ex, true });
+            }
+            this.Invoke(lbl, "Inicializando la configuración de la base de datos");
+            ConfiguracionBaseDatos();
+            this.Invoke(lbl, "Verificando la conexión con la base de datos");
+            VerificarConexion();
+            this.Invoke(lbl, "Inicializando cantidades de base de datos");
+            InicializarPropiedades();
+            this.Invoke(lbl, "Inicializando los datos de sucursal");
+            ConfiguracionSucursal();
+            this.Invoke(lbl, "Inicializando la configuración del punto de venta");
+            ConfiguracionPOS();
+            this.Invoke(lbl, "Inicializando los datos de correo");
+            CorreoInterno();
+        }
+
+        private void bgwCargando_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            (new frmLogin()).Show();
+            this.Close();
         }
     }
 }

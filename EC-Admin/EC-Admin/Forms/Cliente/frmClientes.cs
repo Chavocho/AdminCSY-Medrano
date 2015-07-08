@@ -252,5 +252,10 @@ namespace EC_Admin.Forms
                 }
             }
         }
+
+        private void frmClientes_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

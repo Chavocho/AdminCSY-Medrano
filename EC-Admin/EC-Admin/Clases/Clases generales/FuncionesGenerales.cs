@@ -498,6 +498,18 @@ namespace EC_Admin
             }
         }
 
+        public static void DataGridViewUp(DataGridView dgv)
+        {
+            if (dgv.CurrentRow.Index > 0)
+                dgv[1, dgv.CurrentRow.Index - 1].Selected = true;
+        }
+
+        public static void DataGridViewDown(DataGridView dgv)
+        {
+            if (dgv.CurrentRow.Index < dgv.RowCount - 1)
+                dgv[1, dgv.CurrentRow.Index + 1].Selected = true;
+        }
+
         #region Siempre Encima
         [DllImport("user32.DLL")]
         private extern static void SetWindowPos(

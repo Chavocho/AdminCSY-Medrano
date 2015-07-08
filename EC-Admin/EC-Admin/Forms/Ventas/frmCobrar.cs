@@ -19,6 +19,22 @@ namespace EC_Admin.Forms
         decimal totalPorcentaje = 0;
         TipoPago t;
 
+        private int idDevolucion = 0;
+
+        public int IDDevolucion
+        {
+            get { return idDevolucion; }
+            set { idDevolucion = value; }
+        }
+
+        private decimal saldo = 0;
+
+        public decimal Saldo
+        {
+            get { return saldo; }
+            set { saldo = value; }
+        }
+
         public frmCobrar(frmPOS frm, int id, decimal total)
         {
             InitializeComponent();
@@ -167,21 +183,30 @@ namespace EC_Admin.Forms
             {
                 try
                 {
-                    if (txtDatos.Visible)
+                    switch (cboTipoPago.SelectedIndex)
                     {
-                        if (txtDatos.Text.Trim() == "")
-                        {
-                            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el número de la tarjeta", "Admin CSY");
-                            return;
-                        }
-                    }
-                    if (cboTipoPago.SelectedIndex == 0)
-                    {
-                        frm.GuardarVenta(false, t);
-                    }
-                    else
-                    {
-                        frm.GuardarVenta(false, t, txtDatos.Text, txtFolioTerminal.Text, totalPorcentaje);
+                        case 0:
+                            frm.GuardarVenta(false, t);
+                            break;
+                        case 1:
+                        case 2:
+                            if (decimal.Parse(txtPorcentajeImpuesto.Text) < 0)
+                            {
+                                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El porcentaje de impuesto debe ser mayor o igual a 0", "Admin CSY");
+                                return;
+                            }
+                            if (txtDatos.Text.Trim() == "")
+                            {
+                                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el número de la tarjeta", "Admin CSY");
+                                return;
+                            }
+                            if (txtFolioTerminal.Text == "")
+                            {
+                                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la terminal de tarjetas", "Admin CSY");
+                                return;
+                            }
+                            frm.GuardarVenta(false, t, txtDatos.Text, txtFolioTerminal.Text, totalPorcentaje - total);
+                            break;
                     }
                     MovimientoCaja();
                     if (FuncionesGenerales.ImprimirTicket(this, "¿Desea imprimir el ticket de ésta venta?"))
@@ -233,6 +258,11 @@ namespace EC_Admin.Forms
         private void txtEfectivo_Click(object sender, EventArgs e)
         {
             txtEfectivo.SelectAll();
+        }
+
+        private void chbSaldo_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

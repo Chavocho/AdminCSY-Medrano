@@ -44,6 +44,9 @@
             this.txtPorcentajeImpuesto = new System.Windows.Forms.TextBox();
             this.lblEFolioTerminal = new System.Windows.Forms.Label();
             this.txtFolioTerminal = new System.Windows.Forms.TextBox();
+            this.chbSaldo = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblESaldo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCobrar
@@ -73,7 +76,7 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblTotal.Location = new System.Drawing.Point(76, 126);
+            this.lblTotal.Location = new System.Drawing.Point(72, 126);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(57, 24);
             this.lblTotal.TabIndex = 9;
@@ -85,7 +88,7 @@
             this.lblETotal.AutoSize = true;
             this.lblETotal.Font = new System.Drawing.Font("Corbel", 15F);
             this.lblETotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblETotal.Location = new System.Drawing.Point(12, 126);
+            this.lblETotal.Location = new System.Drawing.Point(8, 126);
             this.lblETotal.Name = "lblETotal";
             this.lblETotal.Size = new System.Drawing.Size(58, 24);
             this.lblETotal.TabIndex = 8;
@@ -236,6 +239,7 @@
             this.txtPorcentajeImpuesto.Name = "txtPorcentajeImpuesto";
             this.txtPorcentajeImpuesto.Size = new System.Drawing.Size(176, 29);
             this.txtPorcentajeImpuesto.TabIndex = 3;
+            this.txtPorcentajeImpuesto.Text = "0";
             this.txtPorcentajeImpuesto.Visible = false;
             this.txtPorcentajeImpuesto.TextChanged += new System.EventHandler(this.txtPorcentajeImpuesto_TextChanged);
             this.txtPorcentajeImpuesto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentajeImpuesto_KeyPress);
@@ -262,6 +266,42 @@
             this.txtFolioTerminal.TabIndex = 7;
             this.txtFolioTerminal.Visible = false;
             // 
+            // chbSaldo
+            // 
+            this.chbSaldo.AutoSize = true;
+            this.chbSaldo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.chbSaldo.Location = new System.Drawing.Point(376, 12);
+            this.chbSaldo.Name = "chbSaldo";
+            this.chbSaldo.Size = new System.Drawing.Size(168, 26);
+            this.chbSaldo.TabIndex = 16;
+            this.chbSaldo.Text = "Cliente tiene saldo";
+            this.chbSaldo.UseVisualStyleBackColor = true;
+            this.chbSaldo.CheckedChanged += new System.EventHandler(this.chbSaldo_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.label1.Location = new System.Drawing.Point(77, 167);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 24);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "$0.00";
+            // 
+            // lblESaldo
+            // 
+            this.lblESaldo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblESaldo.AutoSize = true;
+            this.lblESaldo.Font = new System.Drawing.Font("Corbel", 15F);
+            this.lblESaldo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblESaldo.Location = new System.Drawing.Point(8, 167);
+            this.lblESaldo.Name = "lblESaldo";
+            this.lblESaldo.Size = new System.Drawing.Size(63, 24);
+            this.lblESaldo.TabIndex = 17;
+            this.lblESaldo.Text = "Saldo:";
+            // 
             // frmCobrar
             // 
             this.AcceptButton = this.btnCobrar;
@@ -269,6 +309,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(564, 279);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblESaldo);
+            this.Controls.Add(this.chbSaldo);
             this.Controls.Add(this.lblEFolioTerminal);
             this.Controls.Add(this.txtFolioTerminal);
             this.Controls.Add(this.lblEPorcentajeImpuesto);
@@ -314,5 +357,8 @@
         private System.Windows.Forms.TextBox txtPorcentajeImpuesto;
         private System.Windows.Forms.Label lblEFolioTerminal;
         private System.Windows.Forms.TextBox txtFolioTerminal;
+        private System.Windows.Forms.CheckBox chbSaldo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblESaldo;
     }
 }

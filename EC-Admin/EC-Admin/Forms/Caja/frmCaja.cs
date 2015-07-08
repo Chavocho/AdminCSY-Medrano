@@ -252,5 +252,28 @@ namespace EC_Admin.Forms
         {
             (new frmCorteCaja()).ShowDialog(this);
         }
+
+        private void frmCaja_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!e.Alt)
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    btnAbrirCerrar.PerformClick();
+                }
+                else if (e.KeyCode == Keys.F2)
+                {
+                    btnEntrada.PerformClick();
+                }
+                else if (e.KeyCode == Keys.F3)
+                {
+                    btnSalida.PerformClick();
+                }
+                else if (e.KeyCode == Keys.F4)
+                {
+                    btnCortes.PerformClick();
+                }
+            }
+        }
     }
 }

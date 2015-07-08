@@ -24,6 +24,7 @@ namespace EC_Admin
         private TipoPago tipo;
         private string terminacionTarjeta;
         private string terminalTarjeta;
+        private decimal cargoTarjeta;
         private int createUser;
         private DateTime createTime;
         private int updateUser;
@@ -108,7 +109,13 @@ namespace EC_Admin
             get { return terminalTarjeta; }
             set { terminalTarjeta = value; }
         }
-        
+
+        public decimal CargoTarjeta
+        {
+            get { return cargoTarjeta; }
+            set { cargoTarjeta = value; }
+        }
+
         public int CreateUser
         {
             get { return createUser; }
@@ -278,6 +285,7 @@ namespace EC_Admin
                     tipo = (TipoPago)Enum.Parse(typeof(TipoPago), dr["tipo_pago"].ToString());
                     terminacionTarjeta = dr["terminacion_tarjeta"].ToString();
                     terminalTarjeta = dr["terminal_tarjeta"].ToString();
+                    cargoTarjeta = (decimal)dr["cargo_tarjeta"];
                     createUser = (int)dr["create_user"];
                     createTime = (DateTime)dr["create_time"];
                     if (dr["update_user"] != DBNull.Value)
@@ -318,7 +326,7 @@ namespace EC_Admin
             {
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "UPDATE venta SET id_cliente=?id_cliente, id_sucursal=?id_sucursal, id_vendedor=?id_vendedor, abierta=?abierta, subtotal=?subtotal, impuesto=?impuesto, descuento=?descuento, " +
-                    "total=?total, tipo_pago=?tipo_pago, terminacion_tarjeta=?terminacion_tarjeta, terminal_tarjeta=?terminal_tarjeta, update_user=?update_user, update_time=NOW() WHERE id=?id";
+                    "total=?total, tipo_pago=?tipo_pago, terminacion_tarjeta=?terminacion_tarjeta, terminal_tarjeta=?terminal_tarjeta, cargo_tarjeta=?cargo_tarjeta, update_user=?update_user, update_time=NOW() WHERE id=?id";
                 sql.Parameters.AddWithValue("?id_cliente", idC);
                 sql.Parameters.AddWithValue("?id_sucursal", idS);
                 sql.Parameters.AddWithValue("?id_vendedor", idV);
@@ -330,6 +338,7 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?tipo_pago", tipo);
                 sql.Parameters.AddWithValue("?terminacion_tarjeta", terminacionTarjeta);
                 sql.Parameters.AddWithValue("?terminal_tarjeta", terminalTarjeta);
+                sql.Parameters.AddWithValue("?cargo_tarjeta", cargoTarjeta);
                 sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);

@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <configuraciones>
   <basedatos>
-    <server>/bmEtI8XUlOHHG6ynrK0gw==</server>
-    <base>VsmsJeNeWgNkx7oGHE5eDFP1I+gLGkXZ</base>
-    <usuario>M7PjMfY2PVY=</usuario>
-    <pass>U/Uj6AsaRdk=</pass>
+    <server>g6yD7ISLaLiJDFKvRYsaFQ==</server>
+    <base>iCTPtMiXh8yxSZTTM0OPEA==</base>
+    <usuario>iCTPtMiXh8yBwTSjjDkxfQ==</usuario>
+    <pass>UGwyy9cMOm5A9Lip1bAQEw==</pass>
   </basedatos>
   <sucursal>
     <id>z9f4VO/8BoU=</id>
-    <nombre>2zqoOXCtLDM8m5avbt/L9g==</nombre>
+    <nombre>2zqoOXCtLDOCFNp8o1cHATPNIdPrFmNwDkcARtybWew=</nombre>
   </sucursal>
   <correo>
     <correo_interno>U/Uj6AsaRdk=</correo_interno>

@@ -136,6 +136,27 @@ namespace EC_Admin.Forms
             LlenarDataGrid();
         }
 
+        private void frmCorteCaja_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (!e.Alt)
+            {
+                if (e.Control && e.KeyCode == Keys.I)
+                {
+                    btnImprimir.PerformClick();
+                }
+                if (e.KeyCode == Keys.Up)
+                {
+                    btnBuscar.Focus();
+                    FuncionesGenerales.DataGridViewUp(dgvCaja);
+                }
+                if (e.KeyCode == Keys.Down)
+                {
+                    btnBuscar.Focus();
+                    FuncionesGenerales.DataGridViewDown(dgvCaja);
+                }
+            }
+        }
+
         private void tmrEspera_Tick(object sender, EventArgs e)
         {
             tmrEspera.Enabled = false;
