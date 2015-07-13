@@ -271,7 +271,7 @@ namespace EC_Admin
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "INSERT INTO venta (id, id_sucursal, id_vendedor, tipo_pago, create_user, create_time) VALUES (?id, ?id_sucursal, ?id_vendedor, ?tipo_pago, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?id", IDVentaSucursal());
-                sql.Parameters.AddWithValue("?id_sucursal",Config.idSucursal);
+                sql.Parameters.AddWithValue("?id_sucursal", Config.idSucursal);
                 sql.Parameters.AddWithValue("?id_vendedor", idV);
                 sql.Parameters.AddWithValue("?tipo_pago", TipoPago.Efectivo);   
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);

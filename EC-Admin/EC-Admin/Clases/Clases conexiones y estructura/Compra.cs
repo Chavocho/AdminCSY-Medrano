@@ -204,6 +204,34 @@ namespace EC_Admin
         }
 
         #region Compra
+
+        private int IDCompraSucursal()
+        {
+            int id = 1;
+            try
+            {
+                string sql = "SELECT MAX(id) AS i FROM compra WHERE id_sucursal='" + Config.idSucursal + "'";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["i"] == DBNull.Value)
+                        id = 1;
+                    else
+                        id = (int.Parse(dr["i"].ToString()) + 1);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return id;
+        }
+
+
         /// <summary>
         /// Método que obtiene los datos de una compra y los guarda en sus propiedades
         /// </summary>
@@ -269,8 +297,9 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO compra (id_proveedor, id_sucursal, id_comprador, subtotal, impuesto, descuento, total, tipo_pago, remision, factura, folio_remision, folio_factura, create_user, create_time) " +
-                    "VALUES (?id_proveedor, ?id_sucursal, ?id_comprador, ?subtotal, ?impuesto, ?descuento, ?total, ?tipo_pago, ?remision, ?factura, ?folio_remision, ?folio_factura, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO compra (id, id_proveedor, id_sucursal, id_comprador, subtotal, impuesto, descuento, total, tipo_pago, remision, factura, folio_remision, folio_factura, create_user, create_time) " +
+                    "VALUES (?id, ?id_proveedor, ?id_sucursal, ?id_comprador, ?subtotal, ?impuesto, ?descuento, ?total, ?tipo_pago, ?remision, ?factura, ?folio_remision, ?folio_factura, ?create_user, NOW())";
+                sql.Parameters.AddWithValue("?id",IDCompraSucursal());
                 sql.Parameters.AddWithValue("?id_proveedor", IDProveedor);
                 sql.Parameters.AddWithValue("?id_sucursal", Config.idSucursal);
                 sql.Parameters.AddWithValue("?id_comprador", IDComprador);
