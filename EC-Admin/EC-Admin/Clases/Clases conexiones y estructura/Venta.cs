@@ -235,7 +235,7 @@ namespace EC_Admin
             total = 0;
         }
 
-        public static int IDVentaSucursal()
+        private int IDVentaSucursal()
         {
             int id = 1;
             try
@@ -244,7 +244,10 @@ namespace EC_Admin
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    id = (int)((long)dr["i"] + 1);
+                    if (dr["i"] == DBNull.Value)
+                        id = 1;
+                    else
+                        id = (int.Parse(dr["i"].ToString()) + 1);
                 }
             }
             catch (MySqlException ex)
@@ -266,7 +269,9 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO venta (id_vendedor, tipo_pago, create_user, create_time) VALUES (?id_vendedor, ?tipo_pago, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO venta (id, id_sucursal, id_vendedor, tipo_pago, create_user, create_time) VALUES (?id, ?id_sucursal, ?id_vendedor, ?tipo_pago, ?create_user, NOW())";
+                sql.Parameters.AddWithValue("?id", IDVentaSucursal());
+                sql.Parameters.AddWithValue("?id_sucursal",Config.idSucursal);
                 sql.Parameters.AddWithValue("?id_vendedor", idV);
                 sql.Parameters.AddWithValue("?tipo_pago", TipoPago.Efectivo);   
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);

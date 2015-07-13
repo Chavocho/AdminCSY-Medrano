@@ -146,6 +146,7 @@
             this.btnPruebas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPruebas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnPruebas.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnPruebas.Enabled = false;
             this.btnPruebas.FlatAppearance.BorderSize = 0;
             this.btnPruebas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
             this.btnPruebas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -161,7 +162,6 @@
             this.btnPruebas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPruebas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPruebas.UseVisualStyleBackColor = false;
-            this.btnPruebas.Visible = false;
             this.btnPruebas.Click += new System.EventHandler(this.btnPruebas_Click);
             // 
             // frmLogin
