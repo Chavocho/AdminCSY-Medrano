@@ -173,7 +173,7 @@ namespace EC_Admin.Forms
                 (new frmCerrarCaja()).ShowDialog(this);
                 if (Caja.EstadoCaja == false)
                 {
-                    btnAbrirCerrar.Text = "Abrir caja";
+                    btnAbrirCerrar.Text = "Abrir caja (F1)";
                     CalcularTotales();
                 }
             }
@@ -182,7 +182,7 @@ namespace EC_Admin.Forms
                 (new frmAbrirCaja()).ShowDialog(this);
                 if (Caja.EstadoCaja)
                 {
-                    btnAbrirCerrar.Text = "Cerrar caja";
+                    btnAbrirCerrar.Text = "Cerrar caja (F1)";
                     CalcularTotales();
                 }
             }
@@ -214,11 +214,11 @@ namespace EC_Admin.Forms
         {
             if (Caja.EstadoCaja == false)
             {
-                btnAbrirCerrar.Text = "Abrir caja";
+                btnAbrirCerrar.Text = "Abrir caja (F1)";
             }
             else
             {
-                btnAbrirCerrar.Text = "Cerrar caja";
+                btnAbrirCerrar.Text = "Cerrar caja (F1)";
             }
             CalcularTotales();
         }

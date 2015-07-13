@@ -55,7 +55,7 @@ namespace EC_Admin.Forms
             {
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "SELECT id, id_cliente, id_vendedor, total, tipo_pago, create_time, update_time FROM venta " +
-                    "WHERE ((create_time BETWEEN ?fecha_ini AND ?fecha_fin) OR (update_time BETWEEN ?fecha_ini AND ?fecha_fin)) AND abierta=0 AND cancelada=0 AND sucursal_id='" + Config.idSucursal + "'";
+                    "WHERE ((create_time BETWEEN ?fecha_ini AND ?fecha_fin) OR (update_time BETWEEN ?fecha_ini AND ?fecha_fin)) AND abierta=0 AND cancelada=0 AND id_sucursal='" + Config.idSucursal + "'";
                 sql.Parameters.AddWithValue("?fecha_ini", fechaIni.ToString("yyyy-MM-dd") + " 00:00:00");
                 sql.Parameters.AddWithValue("?fecha_fin", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
@@ -235,7 +235,10 @@ namespace EC_Admin.Forms
 
         private void btnDevoluciones_Click(object sender, EventArgs e)
         {
-            (new frmDevoluciones(id)).ShowDialog(this);
+            if (dgvVentas.CurrentRow != null)
+            { 
+                (new frmDevoluciones(id)).ShowDialog(this);
+            }
         }
     }
 }

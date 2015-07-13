@@ -235,6 +235,29 @@ namespace EC_Admin
             total = 0;
         }
 
+        public static int IDVentaSucursal()
+        {
+            int id = 1;
+            try
+            {
+                string sql = "SELECT MAX(id) AS i FROM venta WHERE id_sucursal='" + Config.idSucursal + "'";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    id = (int)((long)dr["i"] + 1);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return id;
+        }
+
         /// <summary>
         /// Inserta una nueva venta y asigna el ID de la venta
         /// </summary>

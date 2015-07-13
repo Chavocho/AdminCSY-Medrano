@@ -340,3 +340,5 @@ C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmSplash.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Properties.Resources.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC-Admin.csproj.GenerateResource.Cache
+C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmAsignarSucursal.resources
+C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmDevolucionesVenta.resources

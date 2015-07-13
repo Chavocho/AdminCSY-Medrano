@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EC_Admin.Forms
@@ -15,7 +9,7 @@ namespace EC_Admin.Forms
     {
         int id;
         frmPOS frm;
-        decimal total;
+        decimal total, saldo;
         decimal totalPorcentaje = 0;
         TipoPago t;
 
@@ -24,15 +18,11 @@ namespace EC_Admin.Forms
         public int IDDevolucion
         {
             get { return idDevolucion; }
-            set { idDevolucion = value; }
-        }
-
-        private decimal saldo = 0;
-
-        public decimal Saldo
-        {
-            get { return saldo; }
-            set { saldo = value; }
+            set
+            {
+                saldo = Devoluciones.SaldoDevolucion(value);
+                idDevolucion = value;
+            }
         }
 
         public frmCobrar(frmPOS frm, int id, decimal total)
@@ -48,9 +38,24 @@ namespace EC_Admin.Forms
 
         private void CalcularCambio()
         {
-            decimal efectivo, cambio;
+            decimal efectivo, cambio = 0M;
             decimal.TryParse(txtEfectivo.Text, out efectivo);
-            cambio = total - efectivo;
+            if (chbSaldo.Checked)
+            {
+                if (saldo > total)
+                {
+                    cambio = 0;
+                    lblSaldo.Text = (saldo - total).ToString("C2");
+                }
+                else
+                {
+                    cambio = total - saldo - efectivo;
+                }
+            }
+            else
+            {
+                cambio = total - efectivo;
+            }
             if (cambio > 0)
             {
                 lblECambio.Text = "Falta:";
@@ -73,6 +78,28 @@ namespace EC_Admin.Forms
             lblCambio.Text = "$0.00";
             lblCambio.BackColor = Colores.Exito;
             lblECambio.Text = "Cambio:";
+        }
+
+        private void CobroConSaldo()
+        {
+            if (saldo >= total)
+            {
+                lblSaldo.Text = (saldo - total).ToString("C2");
+                cboTipoPago.SelectedIndex = 0;
+                cboTipoPago.Enabled = false;
+                lblEEfectivo.Enabled = false;
+                txtEfectivo.Enabled = false;
+                txtEfectivo.Text = "0.00";
+                lblCambio.Text = "$0.00";
+                lblCambio.BackColor = Colores.Exito;
+                lblECambio.Text = "Cambio:";
+            }
+            else
+            {
+                cboTipoPago.Enabled = true;
+                lblSaldo.Text = "$0.00";
+                total = total - saldo;
+            }
         }
 
         private void MovimientoCaja()
@@ -190,7 +217,9 @@ namespace EC_Admin.Forms
                             break;
                         case 1:
                         case 2:
-                            if (decimal.Parse(txtPorcentajeImpuesto.Text) < 0)
+                            decimal porcentajeImpuesto;
+                            decimal.TryParse(txtPorcentajeImpuesto.Text, out porcentajeImpuesto);
+                            if (porcentajeImpuesto < 0)
                             {
                                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El porcentaje de impuesto debe ser mayor o igual a 0", "Admin CSY");
                                 return;
@@ -205,7 +234,7 @@ namespace EC_Admin.Forms
                                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la terminal de tarjetas", "Admin CSY");
                                 return;
                             }
-                            frm.GuardarVenta(false, t, txtDatos.Text, txtFolioTerminal.Text, totalPorcentaje - total);
+                            frm.GuardarVenta(false, t, txtDatos.Text, txtFolioTerminal.Text, total * (porcentajeImpuesto / 100));
                             break;
                     }
                     MovimientoCaja();
@@ -217,7 +246,7 @@ namespace EC_Admin.Forms
                     FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha guardado los datos de la venta correctamente!", "Admin CSY");
                     this.Close();
                 }
-                catch (MySql.Data.MySqlClient.MySqlException ex)
+                catch (MySqlException ex)
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al guardar los datos de la venta. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
                 }
@@ -262,7 +291,33 @@ namespace EC_Admin.Forms
 
         private void chbSaldo_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (chbSaldo.Checked)
+            {
+                IDDevolucion = (new frmDevolucionesVenta()).IDDevolucion();
+                if (idDevolucion > 0)
+                {
+                    lblESaldo.Visible = true;
+                    lblSaldo.Visible = true;
+                    lblSaldo.Text = saldo.ToString("C2");
+                    CobroConSaldo();
+                }
+                else
+                {
+                    chbSaldo.Checked = false;
+                }
+            }
+            else
+            {
+                if (saldo > 0)
+                {
+                    total += saldo;
+                    lblTotal.Text = total.ToString("C2");
+                }
+                idDevolucion = 0;
+                saldo = 0;
+                lblESaldo.Visible = false;
+                lblSaldo.Visible = false;
+            }
         }
     }
 }

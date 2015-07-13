@@ -14,10 +14,16 @@ namespace EC_Admin
     {
         int intentos = 0;
         int c = 0;
+        DelegadoMensajes m = new DelegadoMensajes(FuncionesGenerales.Mensaje);
 
         public frmSplash()
         {
             InitializeComponent();
+        }
+
+        private void AsignarSucursal()
+        {
+            (new Forms.frmAsignarSucursal()).ShowDialog();
         }
 
         private void ActualizarLabel(string mensaje)
@@ -25,15 +31,7 @@ namespace EC_Admin
             lblEstado.Text = mensaje;
             lblEstado.Left = (this.Width - lblEstado.Width) / 2;
         }
-
-        private DialogResult MostrarError(string mensaje, Exception ex, bool cerrar)
-        {
-            DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Error, mensaje, "Admin CSY", ex);
-            if (cerrar)
-                Application.Exit();
-            return r;
-        }
-
+        
         private void ReconfigurarConexion()
         {
             DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
@@ -87,15 +85,15 @@ namespace EC_Admin
         {
             if (!ConfiguracionXML.ExisteConfiguracion("basedatos"))
             {
-                DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "No tienes configurada tu conexión con la base de datos. ¿Deseas configurarla?", "Admin CSY");
-                if (r == System.Windows.Forms.DialogResult.Yes)
+                DialogResult r = (DialogResult)Enum.Parse(typeof(DialogResult), this.Invoke(m, new object[] { this, Mensajes.Pregunta, "No tienes configurada tu conexión con la base de datos. ¿Deseas configurarla?", "Admin CSY", null }).ToString());
+                if (r == DialogResult.Yes)
                 {
-                    (new Forms.frmConfigBaseDatos(false)).ShowDialog(this);
+                    this.Invoke(new Action(() => { new Forms.frmConfigBaseDatos(false); }));
                     ConfiguracionBaseDatos();
                 }
                 else
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La aplicación se cerrará.", "Admin CSY");
+                    this.Invoke(m, new object[] { this, Mensajes.Informativo, "La aplicación se cerrará.", "Admin CSY" });
                     Application.Exit();
                 }
             }
@@ -139,7 +137,18 @@ namespace EC_Admin
             }
             else
             {
-                
+                DialogResult r = (DialogResult)Enum.Parse(typeof(DialogResult), this.Invoke(m, new object[] { this, Mensajes.Pregunta, "No tienes asignada ninguna sucursal, ¿deseas asignarla ahora?", "Admin CSY", null }).ToString());
+                if (r == DialogResult.Yes)
+                {
+                    this.Invoke((new Action(AsignarSucursal)));
+                }
+                else
+                {
+                    this.Invoke(m, new object[] { this, Mensajes.Informativo, "La aplicación se cerrará.", "Admin CSY" });
+                    bgwCargando.CancelAsync();
+                    Application.Exit();
+                }
+
             }
         }
         #endregion
@@ -223,7 +232,10 @@ namespace EC_Admin
 
         private void bgwCargando_DoWork(object sender, DoWorkEventArgs e)
         {
-            Func<string, Exception, bool, DialogResult> err = new Func<string, Exception, bool, DialogResult>(MostrarError);
+            if (bgwCargando.CancellationPending)
+            {
+                e.Cancel = true;
+            }
             Action<string> lbl = new Action<string>(ActualizarLabel);
             try
             {
@@ -232,16 +244,17 @@ namespace EC_Admin
             }
             catch (Exception ex)
             {
-                this.Invoke(err, new object[] { "No se ha logrado inicializar la conexión a la base de datos. La aplicación se cerrará.", ex, true });
+                this.Invoke(m, new object[] { this, Mensajes.Error, "No se ha logrado inicializar la conexión a la base de datos. La aplicación se cerrará.", "Admin CSY", ex });
+                Application.Exit();
             }
             this.Invoke(lbl, "Inicializando la configuración de la base de datos");
             ConfiguracionBaseDatos();
+            this.Invoke(lbl, "Inicializando los datos de sucursal");
+            ConfiguracionSucursal();
             this.Invoke(lbl, "Verificando la conexión con la base de datos");
             VerificarConexion();
             this.Invoke(lbl, "Inicializando cantidades de base de datos");
             InicializarPropiedades();
-            this.Invoke(lbl, "Inicializando los datos de sucursal");
-            ConfiguracionSucursal();
             this.Invoke(lbl, "Inicializando la configuración del punto de venta");
             ConfiguracionPOS();
             this.Invoke(lbl, "Inicializando los datos de correo");

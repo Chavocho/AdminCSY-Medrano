@@ -240,7 +240,7 @@ namespace EC_Admin
         /// <param name="dt">DataTable con los datos del pie del ticket.</param>
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.Exception"></exception>
-        private void AgregarPieTicket(ref PrintPageEventArgs e, DataTable dt)
+        private void AgregarPieTicket(ref PrintPageEventArgs e, DataTable dt = null)
         {
             try
             {
@@ -306,7 +306,6 @@ namespace EC_Admin
                     string prod = Producto.NombreProducto((int)dr["id_producto"]);
                     decimal precio = (decimal)dr["precio"];
                     decimal cant = decimal.Parse(dr["cant"].ToString());
-                    AgregarNombreProducto(ref e, prod);
                     e.Graphics.DrawString(prod, fuenteNormal, Brushes.Black, posProdCod, y);
                     y += saltoLinea;
                     e.Graphics.DrawString(codigo, fuenteNormal, Brushes.Black, posProdCod, y);
@@ -561,6 +560,60 @@ namespace EC_Admin
             }
         }
 
+        private void AgregarDatosDevolucion(ref PrintPageEventArgs e)
+        {
+            try
+            {
+                if (dtDevolucion == null || dtDevolucionDetallada == null)
+                    throw new ArgumentNullException("No se ha obtenido ningún dato de la devolución. El argumento dado es nulo.");
+                DataRow dr = dtDevolucion.Rows[0];
+                e.Graphics.DrawString("FOLIO DE DEVOLUCION: " + dr[0].ToString(), fuenteNormal, Brushes.Black, 0, y);
+                y += saltoLinea;
+                e.Graphics.DrawString("FECHA: " + ((DateTime)dr[5]).ToString("dd/MM/yyyy"), fuenteNormal, Brushes.Black, 0, y);
+                y += saltoLinea;
+                e.Graphics.DrawString("SALDO: " + ((decimal)dr[3]).ToString("C2"), fuenteNormal, Brushes.Black, 0, y);
+                y += saltoLinea;
+                AgregarLinea(ref e, Pens.DarkGray);
+                AgregarDatosDevolucionDetallada(ref e);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void AgregarDatosDevolucionDetallada(ref PrintPageEventArgs e)
+        {
+            float posCod = 0F;
+            float posPrecio = (e.PageBounds.Width / 4) * 2 + 15;
+            float posCant = (e.PageBounds.Width / 4) * 3 - 5;
+
+            try
+            {
+                e.Graphics.DrawString("PROD/CÓD.", fuenteNormalResaltada, Brushes.Black, posCod, y);
+                e.Graphics.DrawString("PRECIO", fuenteNormalResaltada, Brushes.Black, posPrecio, y);
+                e.Graphics.DrawString("CANT.", fuenteNormalResaltada, Brushes.Black, posCant, y);
+                y += saltoLinea;
+
+                foreach (DataRow dr in dtDevolucionDetallada.Rows)
+                {
+                    e.Graphics.DrawString(Producto.NombreProducto((int)dr[1]), fuenteNormal, Brushes.Black, posCod, y);
+                    y += saltoLinea;
+                    e.Graphics.DrawString(Producto.CodigoProducto((int)dr[1]), fuenteNormal, Brushes.Black, posCod, y);
+                    e.Graphics.DrawString(((decimal)dr[2]).ToString("C2"), fuenteNormal, Brushes.Black, posPrecio, y);
+                    e.Graphics.DrawString(dr[3].ToString(), fuenteNormal, Brushes.Black, posCant, y);
+                    y += saltoLinea;
+                }
+
+                y += saltoLinea;
+                CentrarTexto(ref e, "TOTAL: " + ((decimal)dtDevolucion.Rows[0][2]).ToString("C2"), fuenteNormal, Brushes.Black);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Función que agrega el código de barras de un producto al ticket
         /// </summary>
@@ -658,7 +711,7 @@ namespace EC_Admin
         #endregion
 
         #region Consultas
-        
+
         /// <summary>
         /// Función que obtiene el total de efectivo en caja
         /// </summary>
@@ -824,6 +877,47 @@ namespace EC_Admin
                 throw ex;
             }
             return total;
+        }
+
+        /// <summary>
+        /// Método que obtiene todos los datos de una devolución según el id dado
+        /// </summary>
+        private void DatosDevolucion()
+        {
+            try
+            {
+                string sql = "SELECT * FROM devolucion WHERE id='" + idDev + "'";
+                dtDevolucion = ConexionBD.EjecutarConsultaSelect(sql);
+                DatosDevolucionDetallada();
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Método que obtiene todos los datos de el detallado de una devolución según el id dado
+        /// </summary>
+        private void DatosDevolucionDetallada()
+        {
+            try
+            {
+                string sql = "SELECT * FROM devolucion_detallada WHERE id_devolucion='" + idDev + "'";
+                dtDevolucionDetallada = ConexionBD.EjecutarConsultaSelect(sql);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>

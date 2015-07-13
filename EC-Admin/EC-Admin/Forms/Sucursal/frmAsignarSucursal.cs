@@ -21,7 +21,7 @@ namespace EC_Admin.Forms
         public frmAsignarSucursal()
         {
             InitializeComponent();
-            c = new CerrarFrmEspera(c);
+            c = new CerrarFrmEspera(Cerrar);
         }
 
         private void Cerrar()
@@ -34,20 +34,18 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT id, nombre, rfc, direccion, telefono1, telefono2 FROM sucursal";
+                string sql = "SELECT id, nombre, rfc, calle, numero_ext, numero_int, telefono1, telefono2 FROM sucursal";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
             {
                 this.Invoke(c);
                 this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las sucursales. No se ha podido conectar con la base de datos. La ventana se cerrará.", "Admin CSY", ex });
-                this.Close();
             }
             catch (Exception ex)
             {
                 this.Invoke(c);
                 this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las sucursales. La ventana se cerrará.", "Admin CSY", ex });
-                this.Close();
             }
         }
 
@@ -77,6 +75,7 @@ namespace EC_Admin.Forms
                         direccion += " Int. " + dr["numero_int"].ToString();
                     dgvSucursal.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["rfc"], direccion, telefonos });
                 }
+                dgvSucursal_RowEnter(dgvSucursal, new DataGridViewCellEventArgs(0, 0));
             }
             catch (Exception ex)
             {
@@ -92,6 +91,19 @@ namespace EC_Admin.Forms
             }
         }
 
+        private void CambioSucursal()
+        {
+            try
+            {
+                ConfiguracionXML.GuardarConfiguracion("sucursal", "id", id.ToString());
+                ConfiguracionXML.GuardarConfiguracion("sucursal", "nombre", dgvSucursal[1, dgvSucursal.CurrentRow.Index].Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
         {
             Buscar();
@@ -101,6 +113,10 @@ namespace EC_Admin.Forms
         {
             Cerrar();
             LlenarDataGrid();
+            if (dgvSucursal.RowCount <= 0)
+            {
+                this.Close();
+            }
         }
 
         private void tmrEspera_Tick(object sender, EventArgs e)
@@ -121,6 +137,23 @@ namespace EC_Admin.Forms
                 id = (int)dgvSucursal[0, e.RowIndex].Value;
             else
                 id = 0;
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas asignar la sucursal con nombre \"" + dgvSucursal[1, dgvSucursal.CurrentRow.Index].Value.ToString() + "\"?", "Admin CSY") == DialogResult.Yes)
+            {
+                try
+                {
+                    CambioSucursal();
+                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cambiado la sucursal correctamente!. La aplicación se cerrará.", "Admin CSY");
+                    Application.Exit();
+                }
+                catch (Exception ex)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error asignar la sucursal.", "Admin CSY", ex);
+                }
+            }
         }
     }
 }

@@ -88,6 +88,8 @@
             // 
             // bgwCargando
             // 
+            this.bgwCargando.WorkerReportsProgress = true;
+            this.bgwCargando.WorkerSupportsCancellation = true;
             this.bgwCargando.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwCargando_DoWork);
             this.bgwCargando.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwCargando_RunWorkerCompleted);
             // 

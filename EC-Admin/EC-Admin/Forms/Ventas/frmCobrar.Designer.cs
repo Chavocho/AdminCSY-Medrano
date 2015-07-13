@@ -45,7 +45,7 @@
             this.lblEFolioTerminal = new System.Windows.Forms.Label();
             this.txtFolioTerminal = new System.Windows.Forms.TextBox();
             this.chbSaldo = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSaldo = new System.Windows.Forms.Label();
             this.lblESaldo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -278,17 +278,18 @@
             this.chbSaldo.UseVisualStyleBackColor = true;
             this.chbSaldo.CheckedChanged += new System.EventHandler(this.chbSaldo_CheckedChanged);
             // 
-            // label1
+            // lblSaldo
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.label1.Location = new System.Drawing.Point(77, 167);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 24);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "$0.00";
+            this.lblSaldo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSaldo.AutoSize = true;
+            this.lblSaldo.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
+            this.lblSaldo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblSaldo.Location = new System.Drawing.Point(77, 169);
+            this.lblSaldo.Name = "lblSaldo";
+            this.lblSaldo.Size = new System.Drawing.Size(57, 24);
+            this.lblSaldo.TabIndex = 18;
+            this.lblSaldo.Text = "$0.00";
+            this.lblSaldo.Visible = false;
             // 
             // lblESaldo
             // 
@@ -296,11 +297,12 @@
             this.lblESaldo.AutoSize = true;
             this.lblESaldo.Font = new System.Drawing.Font("Corbel", 15F);
             this.lblESaldo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblESaldo.Location = new System.Drawing.Point(8, 167);
+            this.lblESaldo.Location = new System.Drawing.Point(8, 169);
             this.lblESaldo.Name = "lblESaldo";
             this.lblESaldo.Size = new System.Drawing.Size(63, 24);
             this.lblESaldo.TabIndex = 17;
             this.lblESaldo.Text = "Saldo:";
+            this.lblESaldo.Visible = false;
             // 
             // frmCobrar
             // 
@@ -309,7 +311,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(564, 279);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSaldo);
             this.Controls.Add(this.lblESaldo);
             this.Controls.Add(this.chbSaldo);
             this.Controls.Add(this.lblEFolioTerminal);
@@ -358,7 +360,7 @@
         private System.Windows.Forms.Label lblEFolioTerminal;
         private System.Windows.Forms.TextBox txtFolioTerminal;
         private System.Windows.Forms.CheckBox chbSaldo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.Label lblESaldo;
     }
 }

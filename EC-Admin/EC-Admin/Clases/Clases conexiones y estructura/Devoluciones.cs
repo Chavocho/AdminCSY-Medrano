@@ -8,11 +8,6 @@ using System.Threading.Tasks;
 
 namespace EC_Admin
 {
-    class Ejemplo
-    {
-        
-    }
-
     class Devoluciones
     {
         #region Propiedades
@@ -238,24 +233,7 @@ namespace EC_Admin
                     sql.Parameters.AddWithValue("?cant", cantidadProductos[i]);
                     ConexionBD.EjecutarConsulta(sql);
                     sql.Parameters.Clear();
-                    sqlVenta.CommandText = "UPDATE venta_detallada SET cant=cant-'" + cantidadProductos[i] + "' WHERE id_venta=?id_venta AND id_producto=?id_producto";
-                    sqlVenta.Parameters.AddWithValue("?id_venta", v.IDVenta);
-                    sqlVenta.Parameters.AddWithValue("?id_producto", idProductos[i]);
-                    ConexionBD.EjecutarConsulta(sqlVenta);
-                    sqlVenta.Parameters.Clear();
-                    sqlVenta.CommandText = "UPDATE venta SET total=total-'" + (precioProductos[i] * cantidadProductos[i] ) + "' WHERE id=?id";
-                    sqlVenta.Parameters.AddWithValue("?id", v.IDVenta);
-                    ConexionBD.EjecutarConsulta(sqlVenta);
-                    sqlVenta.Parameters.Clear();
                     Inventario.CambiarCantidadInventario(idProductos[i], cantidadProductos[i], Config.idSucursal);
-                }
-                for (int i = 0; i < v.IDProductos.Count; i++)
-                {
-                    sqlVenta.CommandText = "DELETE FROM venta_detallada WHERE cant<=0 AND id_venta=?id_venta AND id_producto=?id_producto";
-                    sqlVenta.Parameters.AddWithValue("?id_producto", idProductos[i]);
-                    sqlVenta.Parameters.AddWithValue("?id_venta", v.IDVenta);
-                    ConexionBD.EjecutarConsulta(sqlVenta);
-                    sqlVenta.Parameters.Clear();
                 }
             }
             catch (MySqlException ex)
