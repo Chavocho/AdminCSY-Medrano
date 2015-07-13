@@ -34,14 +34,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDevoluciones = new System.Windows.Forms.DataGridView();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblEFolioTerminal = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.btnCobrar = new System.Windows.Forms.Button();
             this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevoluciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,6 +97,26 @@
             this.dgvDevoluciones.TabIndex = 13;
             this.dgvDevoluciones.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevoluciones_RowEnter);
             // 
+            // CID
+            // 
+            this.CID.HeaderText = "Folio";
+            this.CID.Name = "CID";
+            this.CID.Width = 150;
+            // 
+            // CSaldo
+            // 
+            this.CSaldo.HeaderText = "Saldo";
+            this.CSaldo.Name = "CSaldo";
+            this.CSaldo.Width = 150;
+            // 
+            // CFecha
+            // 
+            this.CFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle23.Format = "dd \'del\' MMMM \'del\' yyyy, hh:mm tt";
+            this.CFecha.DefaultCellStyle = dataGridViewCellStyle23;
+            this.CFecha.HeaderText = "Fecha";
+            this.CFecha.Name = "CFecha";
+            // 
             // lblEFolioTerminal
             // 
             this.lblEFolioTerminal.AutoSize = true;
@@ -107,7 +127,6 @@
             this.lblEFolioTerminal.Size = new System.Drawing.Size(211, 18);
             this.lblEFolioTerminal.TabIndex = 14;
             this.lblEFolioTerminal.Text = "Búsqueda de devolución por folio";
-            this.lblEFolioTerminal.Visible = false;
             // 
             // txtBusqueda
             // 
@@ -117,7 +136,6 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(206, 29);
             this.txtBusqueda.TabIndex = 15;
-            this.txtBusqueda.Visible = false;
             this.txtBusqueda.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyUp);
             // 
             // btnCobrar
@@ -151,26 +169,6 @@
             this.bgwBusqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusqueda_DoWork);
             this.bgwBusqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusqueda_RunWorkerCompleted);
             // 
-            // CID
-            // 
-            this.CID.HeaderText = "Folio";
-            this.CID.Name = "CID";
-            this.CID.Width = 150;
-            // 
-            // CSaldo
-            // 
-            this.CSaldo.HeaderText = "Saldo";
-            this.CSaldo.Name = "CSaldo";
-            this.CSaldo.Width = 150;
-            // 
-            // CFecha
-            // 
-            this.CFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle23.Format = "dd \'del\' MMMM \'del\' yyyy, hh:mm tt";
-            this.CFecha.DefaultCellStyle = dataGridViewCellStyle23;
-            this.CFecha.HeaderText = "Fecha";
-            this.CFecha.Name = "CFecha";
-            // 
             // frmDevolucionesVenta
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -182,6 +180,7 @@
             this.Controls.Add(this.dgvDevoluciones);
             this.Font = new System.Drawing.Font("Corbel", 11F);
             this.Name = "frmDevolucionesVenta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Búsqueda de devoluciones";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevoluciones)).EndInit();
             this.ResumeLayout(false);

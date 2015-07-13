@@ -34,7 +34,7 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT id, id_cliente, id_vendedor, total, tipo_pago, create_time, update_time FROM venta WHERE id='" + id + "' AND abierta=0 AND cancelada=0 AND sucursal_id='" + Config.idSucursal + "'";
+                string sql = "SELECT id, id_cliente, id_vendedor, total, tipo_pago, create_time, update_time FROM venta WHERE id='" + id + "' AND abierta=0 AND cancelada=0 AND id_sucursal='" + Config.idSucursal + "'";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -159,7 +159,7 @@ namespace EC_Admin.Forms
 
         private void txtBusqueda_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && !bgwBusqueda.IsBusy)
             {
                 tmrEspera.Enabled = true;
                 bgwBusqueda.RunWorkerAsync(new object[] { txtBusqueda.Text });

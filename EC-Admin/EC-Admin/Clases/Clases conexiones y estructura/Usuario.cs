@@ -314,7 +314,7 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE eliminado=0";
+                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE eliminado=0 AND sucursal_id='" + Config.idSucursal + "'";
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -347,7 +347,7 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE nivel=?nivel AND eliminado=0";
+                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE nivel=?nivel AND eliminado=0 AND sucursal_id='" + Config.idSucursal + "'";
                 sql.Parameters.AddWithValue("?nivel", NivelesUsuario.Administrador);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
@@ -381,7 +381,7 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE nivel=?nivel AND eliminado=0";
+                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE nivel=?nivel AND eliminado=0 AND sucursal_id='" + Config.idSucursal + "'";
                 sql.Parameters.AddWithValue("?nivel", NivelesUsuario.Encargado);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
@@ -415,7 +415,7 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE nivel=?nivel AND eliminado=0";
+                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE nivel=?nivel AND eliminado=0 AND sucursal_id='" + Config.idSucursal + "'";
                 sql.Parameters.AddWithValue("?nivel", NivelesUsuario.Desconocido);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)

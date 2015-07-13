@@ -71,18 +71,7 @@ namespace EC_Admin.Forms
             lblCantTot.Text = cantidad.ToString("0");
             lblTotal.Text = total.ToString("C2");
         }
-
-        private void MovimientoCaja()
-        {
-            Caja c = new Caja();
-            c.Descripcion = "DEVOLUCIÓN DE PRODUCTOS DE VENTA CON FOLIO: " + v.IDVenta.ToString();
-            c.Efectivo = total;
-            c.IDSucursal = Config.idSucursal;
-            c.TipoMovimiento = EC_Admin.MovimientoCaja.Salida;
-            c.Voucher = 0M;
-            c.RegistrarMovimiento();
-        }
-
+        
         #region DragAndDrop
 
         private void dgvProductos01_MouseMove(object sender, MouseEventArgs e)
@@ -271,7 +260,6 @@ namespace EC_Admin.Forms
             if (dgvProductos02.RowCount > 0)
             {
                 GuardarDevolucion();
-                MovimientoCaja();
                 FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se han regresado los productos correctamente!", "Admin CSY");
                 this.Close();
             }

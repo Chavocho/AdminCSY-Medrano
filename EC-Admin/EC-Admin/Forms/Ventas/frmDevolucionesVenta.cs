@@ -57,6 +57,7 @@ namespace EC_Admin.Forms
                 {
                     dgvDevoluciones.Rows.Add(new object[] { dr["id"], dr["saldo"], dr["create_time"] });
                 }
+                dgvDevoluciones_RowEnter(dgvDevoluciones, new DataGridViewCellEventArgs(0, 0));
             }
             catch (Exception ex)
             {
@@ -68,6 +69,7 @@ namespace EC_Admin.Forms
         {
             if (!this.Visible)
                 this.ShowDialog();
+            this.Close();
             return id;
         }
 
@@ -81,7 +83,7 @@ namespace EC_Admin.Forms
 
         private void txtBusqueda_KeyUp(object sender, KeyEventArgs e)
         {
-            if (!bgwBusqueda.IsBusy)
+            if (e.KeyCode == Keys.Enter && !bgwBusqueda.IsBusy)
             {
                 bgwBusqueda.RunWorkerAsync(txtBusqueda.Text);
                 tmrEspera.Enabled = true;

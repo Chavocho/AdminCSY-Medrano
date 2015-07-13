@@ -9,7 +9,7 @@ namespace EC_Admin.Forms
     {
         int id;
         frmPOS frm;
-        decimal total, saldo;
+        decimal total, saldo, tmpTotal;
         decimal totalPorcentaje = 0;
         TipoPago t;
 
@@ -40,22 +40,7 @@ namespace EC_Admin.Forms
         {
             decimal efectivo, cambio = 0M;
             decimal.TryParse(txtEfectivo.Text, out efectivo);
-            if (chbSaldo.Checked)
-            {
-                if (saldo > total)
-                {
-                    cambio = 0;
-                    lblSaldo.Text = (saldo - total).ToString("C2");
-                }
-                else
-                {
-                    cambio = total - saldo - efectivo;
-                }
-            }
-            else
-            {
-                cambio = total - efectivo;
-            }
+            cambio = total - efectivo;
             if (cambio > 0)
             {
                 lblECambio.Text = "Falta:";
@@ -85,7 +70,7 @@ namespace EC_Admin.Forms
             if (saldo >= total)
             {
                 lblSaldo.Text = (saldo - total).ToString("C2");
-                cboTipoPago.SelectedIndex = 0;
+                cboTipoPago.SelectedIndex = -1;
                 cboTipoPago.Enabled = false;
                 lblEEfectivo.Enabled = false;
                 txtEfectivo.Enabled = false;
@@ -98,7 +83,10 @@ namespace EC_Admin.Forms
             {
                 cboTipoPago.Enabled = true;
                 lblSaldo.Text = "$0.00";
+                tmpTotal = total;
                 total = total - saldo;
+                lblTotal.Text = total.ToString("C2");
+                CalcularCambio();
             }
         }
 
@@ -108,15 +96,31 @@ namespace EC_Admin.Forms
             {
                 Caja c = new Caja();
                 c.Descripcion = "VENTA MOSTRADOR";
-                if (cboTipoPago.SelectedIndex == 0)
+                if (chbSaldo.Checked)
                 {
-                    c.Efectivo = total;
-                    c.Voucher = 0M;
+                    if (cboTipoPago.SelectedIndex == 0)
+                    {
+                        c.Efectivo = total;
+                        c.Voucher = 0M;
+                    }
+                    else if (cboTipoPago.SelectedIndex == 1 || cboTipoPago.SelectedIndex == 2)
+                    {
+                        c.Efectivo = 0M;
+                        c.Voucher = totalPorcentaje;
+                    }
                 }
-                else if (cboTipoPago.SelectedIndex == 1 || cboTipoPago.SelectedIndex == 2)
+                else
                 {
-                    c.Efectivo = 0M;
-                    c.Voucher = totalPorcentaje;
+                    if (cboTipoPago.SelectedIndex == 0)
+                    {
+                        c.Efectivo = total;
+                        c.Voucher = 0M;
+                    }
+                    else if (cboTipoPago.SelectedIndex == 1 || cboTipoPago.SelectedIndex == 2)
+                    {
+                        c.Efectivo = 0M;
+                        c.Voucher = totalPorcentaje;
+                    }
                 }
                 c.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
                 c.IDSucursal = Config.idSucursal;
@@ -191,6 +195,9 @@ namespace EC_Admin.Forms
                 //    QuitarEfectivo();
                 //    txtDatos.Visible = lblEDatos.Visible = false;
                 //    break;
+                default:
+                    t = TipoPago.Efectivo;
+                    break;
             }
         }
 
@@ -236,6 +243,13 @@ namespace EC_Admin.Forms
                             }
                             frm.GuardarVenta(false, t, txtDatos.Text, txtFolioTerminal.Text, total * (porcentajeImpuesto / 100));
                             break;
+                    }
+                    if (chbSaldo.Checked)
+                    {
+                        if (saldo >= tmpTotal)
+                            Devoluciones.CambiarSaldo(idDevolucion, tmpTotal);
+                        else
+                            Devoluciones.CambiarSaldo(idDevolucion, saldo);
                     }
                     MovimientoCaja();
                     if (FuncionesGenerales.ImprimirTicket(this, "¿Desea imprimir el ticket de ésta venta?"))
@@ -310,8 +324,9 @@ namespace EC_Admin.Forms
             {
                 if (saldo > 0)
                 {
-                    total += saldo;
+                    total = tmpTotal;
                     lblTotal.Text = total.ToString("C2");
+                    CalcularCambio();
                 }
                 idDevolucion = 0;
                 saldo = 0;
