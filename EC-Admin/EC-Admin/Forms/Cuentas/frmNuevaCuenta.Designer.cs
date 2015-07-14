@@ -52,19 +52,19 @@
             // 
             // txtClabe
             // 
-            this.txtClabe.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtClabe.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClabe.Location = new System.Drawing.Point(12, 30);
             this.txtClabe.Name = "txtClabe";
-            this.txtClabe.Size = new System.Drawing.Size(259, 29);
+            this.txtClabe.Size = new System.Drawing.Size(259, 27);
             this.txtClabe.TabIndex = 1;
             this.txtClabe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // txtBanco
             // 
-            this.txtBanco.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtBanco.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBanco.Location = new System.Drawing.Point(277, 30);
             this.txtBanco.Name = "txtBanco";
-            this.txtBanco.Size = new System.Drawing.Size(259, 29);
+            this.txtBanco.Size = new System.Drawing.Size(259, 27);
             this.txtBanco.TabIndex = 3;
             // 
             // lblEBanco
@@ -78,10 +78,10 @@
             // 
             // txtSucursal
             // 
-            this.txtSucursal.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtSucursal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSucursal.Location = new System.Drawing.Point(277, 88);
             this.txtSucursal.Name = "txtSucursal";
-            this.txtSucursal.Size = new System.Drawing.Size(259, 29);
+            this.txtSucursal.Size = new System.Drawing.Size(259, 27);
             this.txtSucursal.TabIndex = 7;
             // 
             // lblESucursal
@@ -95,10 +95,10 @@
             // 
             // txtBeneficiario
             // 
-            this.txtBeneficiario.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtBeneficiario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBeneficiario.Location = new System.Drawing.Point(12, 88);
             this.txtBeneficiario.Name = "txtBeneficiario";
-            this.txtBeneficiario.Size = new System.Drawing.Size(259, 29);
+            this.txtBeneficiario.Size = new System.Drawing.Size(259, 27);
             this.txtBeneficiario.TabIndex = 5;
             // 
             // lblEBeneficiario
@@ -112,10 +112,10 @@
             // 
             // txtNumCuenta
             // 
-            this.txtNumCuenta.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNumCuenta.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumCuenta.Location = new System.Drawing.Point(12, 146);
             this.txtNumCuenta.Name = "txtNumCuenta";
-            this.txtNumCuenta.Size = new System.Drawing.Size(259, 29);
+            this.txtNumCuenta.Size = new System.Drawing.Size(259, 27);
             this.txtNumCuenta.TabIndex = 9;
             this.txtNumCuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 

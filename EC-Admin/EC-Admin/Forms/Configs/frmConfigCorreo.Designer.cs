@@ -53,12 +53,12 @@
             // 
             // txtPass
             // 
-            this.txtPass.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPass.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.Location = new System.Drawing.Point(302, 35);
             this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '•';
-            this.txtPass.Size = new System.Drawing.Size(282, 29);
+            this.txtPass.Size = new System.Drawing.Size(282, 27);
             this.txtPass.TabIndex = 3;
             // 
             // lblEHost
@@ -74,11 +74,11 @@
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCorreo.Location = new System.Drawing.Point(13, 35);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(281, 29);
+            this.txtCorreo.Size = new System.Drawing.Size(281, 27);
             this.txtCorreo.TabIndex = 1;
             // 
             // lblEPuerto
@@ -94,11 +94,11 @@
             // 
             // txtPuerto
             // 
-            this.txtPuerto.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPuerto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPuerto.Location = new System.Drawing.Point(302, 99);
             this.txtPuerto.Margin = new System.Windows.Forms.Padding(4);
             this.txtPuerto.Name = "txtPuerto";
-            this.txtPuerto.Size = new System.Drawing.Size(282, 29);
+            this.txtPuerto.Size = new System.Drawing.Size(282, 27);
             this.txtPuerto.TabIndex = 7;
             this.txtPuerto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPuerto_KeyPress);
             // 
@@ -115,11 +115,11 @@
             // 
             // txtHost
             // 
-            this.txtHost.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtHost.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHost.Location = new System.Drawing.Point(13, 99);
             this.txtHost.Margin = new System.Windows.Forms.Padding(4);
             this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(281, 29);
+            this.txtHost.Size = new System.Drawing.Size(281, 27);
             this.txtHost.TabIndex = 5;
             // 
             // btnAceptar

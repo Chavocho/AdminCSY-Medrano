@@ -66,7 +66,7 @@
             // 
             this.txtLineaInferior03.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtLineaInferior03.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLineaInferior03.Font = new System.Drawing.Font("Corbel", 9F);
+            this.txtLineaInferior03.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLineaInferior03.Location = new System.Drawing.Point(573, 387);
             this.txtLineaInferior03.Name = "txtLineaInferior03";
             this.txtLineaInferior03.Size = new System.Drawing.Size(283, 22);
@@ -77,7 +77,7 @@
             // 
             this.txtLineaInferior02.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtLineaInferior02.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLineaInferior02.Font = new System.Drawing.Font("Corbel", 9F);
+            this.txtLineaInferior02.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLineaInferior02.Location = new System.Drawing.Point(573, 358);
             this.txtLineaInferior02.Name = "txtLineaInferior02";
             this.txtLineaInferior02.Size = new System.Drawing.Size(283, 22);
@@ -88,7 +88,7 @@
             // 
             this.txtLineaInferior01.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtLineaInferior01.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLineaInferior01.Font = new System.Drawing.Font("Corbel", 9F);
+            this.txtLineaInferior01.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLineaInferior01.Location = new System.Drawing.Point(573, 329);
             this.txtLineaInferior01.Name = "txtLineaInferior01";
             this.txtLineaInferior01.Size = new System.Drawing.Size(283, 22);
@@ -99,7 +99,7 @@
             // 
             this.txtLineaSuperior07.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtLineaSuperior07.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLineaSuperior07.Font = new System.Drawing.Font("Corbel", 9F);
+            this.txtLineaSuperior07.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLineaSuperior07.Location = new System.Drawing.Point(573, 201);
             this.txtLineaSuperior07.Name = "txtLineaSuperior07";
             this.txtLineaSuperior07.Size = new System.Drawing.Size(283, 22);
@@ -120,7 +120,7 @@
             // 
             this.txtLineaSuperior06.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtLineaSuperior06.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLineaSuperior06.Font = new System.Drawing.Font("Corbel", 9F);
+            this.txtLineaSuperior06.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLineaSuperior06.Location = new System.Drawing.Point(573, 172);
             this.txtLineaSuperior06.Name = "txtLineaSuperior06";
             this.txtLineaSuperior06.Size = new System.Drawing.Size(283, 22);
@@ -131,7 +131,7 @@
             // 
             this.txtLineaSuperior05.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtLineaSuperior05.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLineaSuperior05.Font = new System.Drawing.Font("Corbel", 9F);
+            this.txtLineaSuperior05.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLineaSuperior05.Location = new System.Drawing.Point(573, 143);
             this.txtLineaSuperior05.Name = "txtLineaSuperior05";
             this.txtLineaSuperior05.Size = new System.Drawing.Size(283, 22);
@@ -142,7 +142,7 @@
             // 
             this.txtLineaSuperior04.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtLineaSuperior04.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLineaSuperior04.Font = new System.Drawing.Font("Corbel", 9F);
+            this.txtLineaSuperior04.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLineaSuperior04.Location = new System.Drawing.Point(573, 114);
             this.txtLineaSuperior04.Name = "txtLineaSuperior04";
             this.txtLineaSuperior04.Size = new System.Drawing.Size(283, 22);
@@ -153,7 +153,7 @@
             // 
             this.txtLineaSuperior03.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtLineaSuperior03.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLineaSuperior03.Font = new System.Drawing.Font("Corbel", 9F);
+            this.txtLineaSuperior03.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLineaSuperior03.Location = new System.Drawing.Point(573, 85);
             this.txtLineaSuperior03.Name = "txtLineaSuperior03";
             this.txtLineaSuperior03.Size = new System.Drawing.Size(283, 22);
@@ -164,7 +164,7 @@
             // 
             this.txtLineaSuperior02.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtLineaSuperior02.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLineaSuperior02.Font = new System.Drawing.Font("Corbel", 9F);
+            this.txtLineaSuperior02.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLineaSuperior02.Location = new System.Drawing.Point(573, 56);
             this.txtLineaSuperior02.Name = "txtLineaSuperior02";
             this.txtLineaSuperior02.Size = new System.Drawing.Size(283, 22);
@@ -175,7 +175,7 @@
             // 
             this.txtLineaSuperior01.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtLineaSuperior01.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLineaSuperior01.Font = new System.Drawing.Font("Corbel", 9F);
+            this.txtLineaSuperior01.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLineaSuperior01.Location = new System.Drawing.Point(573, 27);
             this.txtLineaSuperior01.Name = "txtLineaSuperior01";
             this.txtLineaSuperior01.Size = new System.Drawing.Size(283, 22);
@@ -210,12 +210,12 @@
             this.cboImpresoras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
             this.cboImpresoras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboImpresoras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboImpresoras.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboImpresoras.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboImpresoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.cboImpresoras.FormattingEnabled = true;
             this.cboImpresoras.Location = new System.Drawing.Point(12, 34);
             this.cboImpresoras.Name = "cboImpresoras";
-            this.cboImpresoras.Size = new System.Drawing.Size(259, 29);
+            this.cboImpresoras.Size = new System.Drawing.Size(259, 28);
             this.cboImpresoras.TabIndex = 53;
             this.cboImpresoras.SelectedIndexChanged += new System.EventHandler(this.cboImpresoras_SelectedIndexChanged);
             // 
@@ -256,12 +256,12 @@
             this.cboImpresoraCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
             this.cboImpresoraCodigo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboImpresoraCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboImpresoraCodigo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboImpresoraCodigo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboImpresoraCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.cboImpresoraCodigo.FormattingEnabled = true;
             this.cboImpresoraCodigo.Location = new System.Drawing.Point(12, 96);
             this.cboImpresoraCodigo.Name = "cboImpresoraCodigo";
-            this.cboImpresoraCodigo.Size = new System.Drawing.Size(259, 29);
+            this.cboImpresoraCodigo.Size = new System.Drawing.Size(259, 28);
             this.cboImpresoraCodigo.TabIndex = 57;
             this.cboImpresoraCodigo.SelectedIndexChanged += new System.EventHandler(this.cboImpresoraCodigo_SelectedIndexChanged);
             // 

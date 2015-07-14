@@ -35,6 +35,7 @@
             // 
             this.pnlContactos.AutoScroll = true;
             this.pnlContactos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContactos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlContactos.Location = new System.Drawing.Point(0, 0);
             this.pnlContactos.Name = "pnlContactos";
             this.pnlContactos.Size = new System.Drawing.Size(784, 262);

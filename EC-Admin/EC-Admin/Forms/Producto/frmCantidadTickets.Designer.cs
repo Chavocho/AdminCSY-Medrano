@@ -54,6 +54,7 @@
             // 
             // nudCantidad
             // 
+            this.nudCantidad.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudCantidad.Location = new System.Drawing.Point(12, 15);
             this.nudCantidad.Maximum = new decimal(new int[] {
             -1530494977,

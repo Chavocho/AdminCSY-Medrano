@@ -64,10 +64,10 @@
             // 
             // txtNumCuenta
             // 
-            this.txtNumCuenta.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNumCuenta.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumCuenta.Location = new System.Drawing.Point(14, 147);
             this.txtNumCuenta.Name = "txtNumCuenta";
-            this.txtNumCuenta.Size = new System.Drawing.Size(259, 29);
+            this.txtNumCuenta.Size = new System.Drawing.Size(259, 27);
             this.txtNumCuenta.TabIndex = 9;
             this.txtNumCuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
@@ -82,10 +82,10 @@
             // 
             // txtSucursal
             // 
-            this.txtSucursal.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtSucursal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSucursal.Location = new System.Drawing.Point(279, 89);
             this.txtSucursal.Name = "txtSucursal";
-            this.txtSucursal.Size = new System.Drawing.Size(259, 29);
+            this.txtSucursal.Size = new System.Drawing.Size(259, 27);
             this.txtSucursal.TabIndex = 7;
             // 
             // lblESucursal
@@ -99,10 +99,10 @@
             // 
             // txtBeneficiario
             // 
-            this.txtBeneficiario.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtBeneficiario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBeneficiario.Location = new System.Drawing.Point(14, 89);
             this.txtBeneficiario.Name = "txtBeneficiario";
-            this.txtBeneficiario.Size = new System.Drawing.Size(259, 29);
+            this.txtBeneficiario.Size = new System.Drawing.Size(259, 27);
             this.txtBeneficiario.TabIndex = 5;
             // 
             // lblEBeneficiario
@@ -116,10 +116,10 @@
             // 
             // txtBanco
             // 
-            this.txtBanco.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtBanco.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBanco.Location = new System.Drawing.Point(279, 31);
             this.txtBanco.Name = "txtBanco";
-            this.txtBanco.Size = new System.Drawing.Size(259, 29);
+            this.txtBanco.Size = new System.Drawing.Size(259, 27);
             this.txtBanco.TabIndex = 3;
             // 
             // lblEBanco
@@ -133,10 +133,10 @@
             // 
             // txtClabe
             // 
-            this.txtClabe.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtClabe.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClabe.Location = new System.Drawing.Point(14, 31);
             this.txtClabe.Name = "txtClabe";
-            this.txtClabe.Size = new System.Drawing.Size(259, 29);
+            this.txtClabe.Size = new System.Drawing.Size(259, 27);
             this.txtClabe.TabIndex = 1;
             this.txtClabe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
@@ -145,9 +145,9 @@
             this.lblEClabe.AutoSize = true;
             this.lblEClabe.Location = new System.Drawing.Point(11, 10);
             this.lblEClabe.Name = "lblEClabe";
-            this.lblEClabe.Size = new System.Drawing.Size(42, 18);
+            this.lblEClabe.Size = new System.Drawing.Size(41, 18);
             this.lblEClabe.TabIndex = 0;
-            this.lblEClabe.Text = "Clabe";
+            this.lblEClabe.Text = "Clave";
             // 
             // frmEditarCuenta
             // 

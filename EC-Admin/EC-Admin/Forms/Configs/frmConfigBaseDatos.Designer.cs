@@ -73,11 +73,11 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(13, 99);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(281, 29);
+            this.txtUsuario.Size = new System.Drawing.Size(281, 27);
             this.txtUsuario.TabIndex = 5;
             // 
             // lblEBase
@@ -93,11 +93,11 @@
             // 
             // txtBase
             // 
-            this.txtBase.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtBase.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBase.Location = new System.Drawing.Point(302, 35);
             this.txtBase.Margin = new System.Windows.Forms.Padding(4);
             this.txtBase.Name = "txtBase";
-            this.txtBase.Size = new System.Drawing.Size(281, 29);
+            this.txtBase.Size = new System.Drawing.Size(281, 27);
             this.txtBase.TabIndex = 3;
             // 
             // lblEPass
@@ -113,11 +113,11 @@
             // 
             // txtPass
             // 
-            this.txtPass.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPass.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.Location = new System.Drawing.Point(302, 99);
             this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(281, 29);
+            this.txtPass.Size = new System.Drawing.Size(281, 27);
             this.txtPass.TabIndex = 7;
             // 
             // lblEUsuario
@@ -133,11 +133,11 @@
             // 
             // txtServer
             // 
-            this.txtServer.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtServer.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtServer.Location = new System.Drawing.Point(13, 35);
             this.txtServer.Margin = new System.Windows.Forms.Padding(4);
             this.txtServer.Name = "txtServer";
-            this.txtServer.Size = new System.Drawing.Size(281, 29);
+            this.txtServer.Size = new System.Drawing.Size(281, 27);
             this.txtServer.TabIndex = 1;
             // 
             // frmConfigBaseDatos

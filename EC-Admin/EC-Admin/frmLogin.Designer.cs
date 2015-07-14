@@ -51,22 +51,22 @@
             // lblEUsuario
             // 
             this.lblEUsuario.AutoSize = true;
-            this.lblEUsuario.Font = new System.Drawing.Font("Corbel", 13F);
+            this.lblEUsuario.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEUsuario.Location = new System.Drawing.Point(239, 11);
             this.lblEUsuario.Name = "lblEUsuario";
-            this.lblEUsuario.Size = new System.Drawing.Size(67, 22);
+            this.lblEUsuario.Size = new System.Drawing.Size(68, 23);
             this.lblEUsuario.TabIndex = 1;
             this.lblEUsuario.Text = "Usuario";
             // 
             // lblEPass
             // 
             this.lblEPass.AutoSize = true;
-            this.lblEPass.Font = new System.Drawing.Font("Corbel", 13F);
+            this.lblEPass.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEPass.Location = new System.Drawing.Point(224, 82);
             this.lblEPass.Name = "lblEPass";
-            this.lblEPass.Size = new System.Drawing.Size(97, 22);
+            this.lblEPass.Size = new System.Drawing.Size(97, 23);
             this.lblEPass.TabIndex = 3;
             this.lblEPass.Text = "Contraseña";
             // 
@@ -146,7 +146,6 @@
             this.btnPruebas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPruebas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnPruebas.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnPruebas.Enabled = false;
             this.btnPruebas.FlatAppearance.BorderSize = 0;
             this.btnPruebas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
             this.btnPruebas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));

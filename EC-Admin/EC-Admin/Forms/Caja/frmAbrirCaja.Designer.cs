@@ -49,11 +49,11 @@
             // 
             // txtEfectivo
             // 
-            this.txtEfectivo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtEfectivo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEfectivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtEfectivo.Location = new System.Drawing.Point(160, 44);
             this.txtEfectivo.Name = "txtEfectivo";
-            this.txtEfectivo.Size = new System.Drawing.Size(145, 29);
+            this.txtEfectivo.Size = new System.Drawing.Size(145, 27);
             this.txtEfectivo.TabIndex = 3;
             this.txtEfectivo.TextChanged += new System.EventHandler(this.txtEfectivo_TextChanged);
             this.txtEfectivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEfectivo_KeyPress);
@@ -92,10 +92,10 @@
             // lblEfeCaja
             // 
             this.lblEfeCaja.AutoSize = true;
-            this.lblEfeCaja.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
+            this.lblEfeCaja.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEfeCaja.Location = new System.Drawing.Point(160, 9);
             this.lblEfeCaja.Name = "lblEfeCaja";
-            this.lblEfeCaja.Size = new System.Drawing.Size(57, 24);
+            this.lblEfeCaja.Size = new System.Drawing.Size(50, 21);
             this.lblEfeCaja.TabIndex = 11;
             this.lblEfeCaja.Text = "$0.00";
             // 
@@ -103,11 +103,11 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(210)))), ((int)(((byte)(50)))));
-            this.lblTotal.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.White;
             this.lblTotal.Location = new System.Drawing.Point(160, 78);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(57, 24);
+            this.lblTotal.Size = new System.Drawing.Size(50, 21);
             this.lblTotal.TabIndex = 13;
             this.lblTotal.Text = "$0.00";
             // 

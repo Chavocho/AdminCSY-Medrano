@@ -221,5 +221,50 @@ namespace EC_Admin.Forms
                 }
             }
         }
+
+        private void txtTelefono01_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCorreo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtApellidos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLada01_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelefono02_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLada02_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCelular_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtExt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

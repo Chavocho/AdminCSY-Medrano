@@ -91,12 +91,12 @@
             // 
             // txtPass
             // 
-            this.txtPass.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPass.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.Location = new System.Drawing.Point(97, 108);
             this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '•';
-            this.txtPass.Size = new System.Drawing.Size(351, 29);
+            this.txtPass.Size = new System.Drawing.Size(351, 27);
             this.txtPass.TabIndex = 3;
             this.txtPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -113,11 +113,11 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(97, 37);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(351, 29);
+            this.txtUsuario.Size = new System.Drawing.Size(351, 27);
             this.txtUsuario.TabIndex = 1;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

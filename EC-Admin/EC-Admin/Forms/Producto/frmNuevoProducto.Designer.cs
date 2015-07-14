@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tcoPrincipal = new System.Windows.Forms.TabControl();
             this.tpaProducto = new System.Windows.Forms.TabPage();
             this.lblInformacionCodigo = new System.Windows.Forms.Label();
@@ -247,11 +248,11 @@
             // txtCant
             // 
             this.txtCant.BackColor = System.Drawing.Color.White;
-            this.txtCant.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCant.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCant.Location = new System.Drawing.Point(274, 140);
             this.txtCant.Name = "txtCant";
-            this.txtCant.Size = new System.Drawing.Size(259, 29);
+            this.txtCant.Size = new System.Drawing.Size(259, 27);
             this.txtCant.TabIndex = 15;
             this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerosEnteros_KeyPress);
             // 
@@ -343,14 +344,14 @@
             this.cboUnidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
             this.cboUnidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUnidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboUnidad.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboUnidad.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.cboUnidad.FormattingEnabled = true;
             this.cboUnidad.Items.AddRange(new object[] {
             "Pieza"});
             this.cboUnidad.Location = new System.Drawing.Point(9, 256);
             this.cboUnidad.Name = "cboUnidad";
-            this.cboUnidad.Size = new System.Drawing.Size(259, 29);
+            this.cboUnidad.Size = new System.Drawing.Size(259, 28);
             this.cboUnidad.TabIndex = 23;
             this.cboUnidad.Visible = false;
             this.cboUnidad.SelectedIndexChanged += new System.EventHandler(this.cboUnidad_SelectedIndexChanged);
@@ -358,11 +359,11 @@
             // txtPrecioMayoreo
             // 
             this.txtPrecioMayoreo.BackColor = System.Drawing.Color.White;
-            this.txtPrecioMayoreo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPrecioMayoreo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecioMayoreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtPrecioMayoreo.Location = new System.Drawing.Point(539, 198);
             this.txtPrecioMayoreo.Name = "txtPrecioMayoreo";
-            this.txtPrecioMayoreo.Size = new System.Drawing.Size(259, 29);
+            this.txtPrecioMayoreo.Size = new System.Drawing.Size(259, 27);
             this.txtPrecioMayoreo.TabIndex = 21;
             this.txtPrecioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
@@ -379,11 +380,11 @@
             // txtPrecioMedioMayoreo
             // 
             this.txtPrecioMedioMayoreo.BackColor = System.Drawing.Color.White;
-            this.txtPrecioMedioMayoreo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPrecioMedioMayoreo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecioMedioMayoreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtPrecioMedioMayoreo.Location = new System.Drawing.Point(274, 198);
             this.txtPrecioMedioMayoreo.Name = "txtPrecioMedioMayoreo";
-            this.txtPrecioMedioMayoreo.Size = new System.Drawing.Size(259, 29);
+            this.txtPrecioMedioMayoreo.Size = new System.Drawing.Size(259, 27);
             this.txtPrecioMedioMayoreo.TabIndex = 19;
             this.txtPrecioMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
@@ -400,11 +401,11 @@
             // txtPrecio
             // 
             this.txtPrecio.BackColor = System.Drawing.Color.White;
-            this.txtPrecio.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtPrecio.Location = new System.Drawing.Point(9, 198);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(259, 29);
+            this.txtPrecio.Size = new System.Drawing.Size(259, 27);
             this.txtPrecio.TabIndex = 17;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
@@ -421,11 +422,11 @@
             // txtCosto
             // 
             this.txtCosto.BackColor = System.Drawing.Color.White;
-            this.txtCosto.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCosto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCosto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCosto.Location = new System.Drawing.Point(9, 140);
             this.txtCosto.Name = "txtCosto";
-            this.txtCosto.Size = new System.Drawing.Size(259, 29);
+            this.txtCosto.Size = new System.Drawing.Size(259, 27);
             this.txtCosto.TabIndex = 13;
             // 
             // lblECosto
@@ -441,7 +442,7 @@
             // txtDescripcion01
             // 
             this.txtDescripcion01.BackColor = System.Drawing.Color.White;
-            this.txtDescripcion01.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtDescripcion01.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtDescripcion01.Location = new System.Drawing.Point(539, 82);
             this.txtDescripcion01.Multiline = true;
@@ -474,12 +475,12 @@
             this.cboCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboCategoria.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboCategoria.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(274, 24);
             this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(259, 29);
+            this.cboCategoria.Size = new System.Drawing.Size(259, 28);
             this.cboCategoria.TabIndex = 3;
             // 
             // lblEProveedor
@@ -497,22 +498,22 @@
             this.cboProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
             this.cboProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboProveedor.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboProveedor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.cboProveedor.FormattingEnabled = true;
             this.cboProveedor.Location = new System.Drawing.Point(9, 24);
             this.cboProveedor.Name = "cboProveedor";
-            this.cboProveedor.Size = new System.Drawing.Size(259, 29);
+            this.cboProveedor.Size = new System.Drawing.Size(259, 28);
             this.cboProveedor.TabIndex = 1;
             // 
             // txtCodigo
             // 
             this.txtCodigo.BackColor = System.Drawing.Color.White;
-            this.txtCodigo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCodigo.Location = new System.Drawing.Point(274, 82);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(259, 29);
+            this.txtCodigo.Size = new System.Drawing.Size(259, 27);
             this.txtCodigo.TabIndex = 9;
             this.txtCodigo.Leave += new System.EventHandler(this.txtCodigo_Leave);
             // 
@@ -529,11 +530,11 @@
             // txtMarca
             // 
             this.txtMarca.BackColor = System.Drawing.Color.White;
-            this.txtMarca.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtMarca.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMarca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtMarca.Location = new System.Drawing.Point(9, 82);
             this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(259, 29);
+            this.txtMarca.Size = new System.Drawing.Size(259, 27);
             this.txtMarca.TabIndex = 7;
             // 
             // lblEMarca
@@ -549,11 +550,11 @@
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.Color.White;
-            this.txtNombre.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtNombre.Location = new System.Drawing.Point(539, 24);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(259, 29);
+            this.txtNombre.Size = new System.Drawing.Size(259, 27);
             this.txtNombre.TabIndex = 5;
             // 
             // lblENombre
@@ -677,12 +678,12 @@
             // txtCantPaquete
             // 
             this.txtCantPaquete.BackColor = System.Drawing.Color.White;
-            this.txtCantPaquete.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCantPaquete.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantPaquete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCantPaquete.Location = new System.Drawing.Point(271, 23);
             this.txtCantPaquete.MaxLength = 13;
             this.txtCantPaquete.Name = "txtCantPaquete";
-            this.txtCantPaquete.Size = new System.Drawing.Size(259, 29);
+            this.txtCantPaquete.Size = new System.Drawing.Size(259, 27);
             this.txtCantPaquete.TabIndex = 7;
             this.txtCantPaquete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerosEnteros_KeyPress);
             // 
@@ -699,12 +700,12 @@
             // txtPrecioPaquete
             // 
             this.txtPrecioPaquete.BackColor = System.Drawing.Color.White;
-            this.txtPrecioPaquete.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPrecioPaquete.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecioPaquete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtPrecioPaquete.Location = new System.Drawing.Point(6, 23);
             this.txtPrecioPaquete.MaxLength = 13;
             this.txtPrecioPaquete.Name = "txtPrecioPaquete";
-            this.txtPrecioPaquete.Size = new System.Drawing.Size(259, 29);
+            this.txtPrecioPaquete.Size = new System.Drawing.Size(259, 27);
             this.txtPrecioPaquete.TabIndex = 5;
             this.txtPrecioPaquete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
@@ -724,12 +725,12 @@
             this.dgvPaquetes.AllowUserToDeleteRows = false;
             this.dgvPaquetes.AllowUserToResizeColumns = false;
             this.dgvPaquetes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            this.dgvPaquetes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            this.dgvPaquetes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPaquetes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -737,14 +738,14 @@
             this.dgvPaquetes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPaquetes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPaquetes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaquetes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaquetes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPaquetes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaquetes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
@@ -752,20 +753,28 @@
             this.CCantidad,
             this.CBase,
             this.CEdito});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPaquetes.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPaquetes.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPaquetes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPaquetes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvPaquetes.Location = new System.Drawing.Point(6, 6);
             this.dgvPaquetes.MultiSelect = false;
             this.dgvPaquetes.Name = "dgvPaquetes";
             this.dgvPaquetes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaquetes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPaquetes.RowHeadersVisible = false;
             this.dgvPaquetes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPaquetes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -781,8 +790,8 @@
             // CPrecio
             // 
             this.CPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.Format = "C2";
-            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Format = "C2";
+            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
             this.CPrecio.HeaderText = "Precio";
             this.CPrecio.Name = "CPrecio";
             // 

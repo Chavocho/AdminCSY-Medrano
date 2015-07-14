@@ -223,10 +223,10 @@
             // lblHoras
             // 
             this.lblHoras.AutoSize = true;
-            this.lblHoras.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblHoras.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoras.Location = new System.Drawing.Point(9, 236);
             this.lblHoras.Name = "lblHoras";
-            this.lblHoras.Size = new System.Drawing.Size(24, 18);
+            this.lblHoras.Size = new System.Drawing.Size(22, 17);
             this.lblHoras.TabIndex = 3;
             this.lblHoras.Text = "60";
             this.lblHoras.Visible = false;

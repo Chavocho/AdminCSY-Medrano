@@ -37,11 +37,11 @@
             // 
             // txtMonto
             // 
-            this.txtMonto.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtMonto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMonto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtMonto.Location = new System.Drawing.Point(12, 34);
             this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(204, 29);
+            this.txtMonto.Size = new System.Drawing.Size(204, 27);
             this.txtMonto.TabIndex = 1;
             this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
@@ -57,7 +57,7 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtDescripcion.Location = new System.Drawing.Point(222, 34);
             this.txtDescripcion.Multiline = true;

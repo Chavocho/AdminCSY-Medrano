@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblESucursalOrigen = new System.Windows.Forms.Label();
             this.cboSucursalOrigen = new System.Windows.Forms.ComboBox();
             this.lblESucursalDestino = new System.Windows.Forms.Label();
@@ -73,7 +74,7 @@
             this.cboSucursalOrigen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
             this.cboSucursalOrigen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSucursalOrigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboSucursalOrigen.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboSucursalOrigen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboSucursalOrigen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.cboSucursalOrigen.FormattingEnabled = true;
             this.cboSucursalOrigen.Items.AddRange(new object[] {
@@ -82,7 +83,7 @@
             "Precio mayoreo"});
             this.cboSucursalOrigen.Location = new System.Drawing.Point(148, 6);
             this.cboSucursalOrigen.Name = "cboSucursalOrigen";
-            this.cboSucursalOrigen.Size = new System.Drawing.Size(349, 29);
+            this.cboSucursalOrigen.Size = new System.Drawing.Size(349, 28);
             this.cboSucursalOrigen.TabIndex = 40;
             this.cboSucursalOrigen.Visible = false;
             this.cboSucursalOrigen.SelectedIndexChanged += new System.EventHandler(this.cboSucursalOrigen_SelectedIndexChanged);
@@ -106,7 +107,7 @@
             this.cboSucursalDestino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
             this.cboSucursalDestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSucursalDestino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboSucursalDestino.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboSucursalDestino.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboSucursalDestino.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.cboSucursalDestino.FormattingEnabled = true;
             this.cboSucursalDestino.Items.AddRange(new object[] {
@@ -115,7 +116,7 @@
             "Precio mayoreo"});
             this.cboSucursalDestino.Location = new System.Drawing.Point(646, 6);
             this.cboSucursalDestino.Name = "cboSucursalDestino";
-            this.cboSucursalDestino.Size = new System.Drawing.Size(350, 29);
+            this.cboSucursalDestino.Size = new System.Drawing.Size(350, 28);
             this.cboSucursalDestino.TabIndex = 42;
             this.cboSucursalDestino.Visible = false;
             this.cboSucursalDestino.SelectedIndexChanged += new System.EventHandler(this.cboSucursalDestino_SelectedIndexChanged);
@@ -140,7 +141,7 @@
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -156,7 +157,7 @@
             this.CCant});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -168,6 +169,14 @@
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -216,11 +225,11 @@
             // 
             this.txtBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtBusqueda.Enabled = false;
-            this.txtBusqueda.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtBusqueda.Location = new System.Drawing.Point(12, 551);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(406, 29);
+            this.txtBusqueda.Size = new System.Drawing.Size(406, 27);
             this.txtBusqueda.TabIndex = 45;
             this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
             // 
@@ -287,10 +296,10 @@
             // lblCantDif
             // 
             this.lblCantDif.AutoSize = true;
-            this.lblCantDif.Font = new System.Drawing.Font("Corbel", 11F, System.Drawing.FontStyle.Bold);
+            this.lblCantDif.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantDif.Location = new System.Drawing.Point(145, 18);
             this.lblCantDif.Name = "lblCantDif";
-            this.lblCantDif.Size = new System.Drawing.Size(16, 18);
+            this.lblCantDif.Size = new System.Drawing.Size(15, 17);
             this.lblCantDif.TabIndex = 9;
             this.lblCantDif.Text = "0";
             // 
@@ -307,10 +316,10 @@
             // lblCantTot
             // 
             this.lblCantTot.AutoSize = true;
-            this.lblCantTot.Font = new System.Drawing.Font("Corbel", 11F, System.Drawing.FontStyle.Bold);
+            this.lblCantTot.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantTot.Location = new System.Drawing.Point(145, 41);
             this.lblCantTot.Name = "lblCantTot";
-            this.lblCantTot.Size = new System.Drawing.Size(16, 18);
+            this.lblCantTot.Size = new System.Drawing.Size(15, 17);
             this.lblCantTot.TabIndex = 11;
             this.lblCantTot.Text = "0";
             // 
@@ -329,7 +338,7 @@
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 697);
+            this.ClientSize = new System.Drawing.Size(1008, 698);
             this.Controls.Add(this.grbTotales);
             this.Controls.Add(this.btnProductos);
             this.Controls.Add(this.btnAceptar);

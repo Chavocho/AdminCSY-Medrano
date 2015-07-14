@@ -52,12 +52,13 @@
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.Color.White;
-            this.txtNombre.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtNombre.Location = new System.Drawing.Point(12, 30);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(259, 29);
+            this.txtNombre.Size = new System.Drawing.Size(259, 27);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // lblENombre
             // 
@@ -72,12 +73,13 @@
             // txtApellidos
             // 
             this.txtApellidos.BackColor = System.Drawing.Color.White;
-            this.txtApellidos.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtApellidos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtApellidos.Location = new System.Drawing.Point(277, 30);
             this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(259, 29);
+            this.txtApellidos.Size = new System.Drawing.Size(259, 27);
             this.txtApellidos.TabIndex = 3;
+            this.txtApellidos.TextChanged += new System.EventHandler(this.txtApellidos_TextChanged);
             // 
             // lblEApellidos
             // 
@@ -122,42 +124,46 @@
             // txtLada02
             // 
             this.txtLada02.BackColor = System.Drawing.Color.White;
-            this.txtLada02.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtLada02.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLada02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtLada02.Location = new System.Drawing.Point(277, 88);
             this.txtLada02.Name = "txtLada02";
-            this.txtLada02.Size = new System.Drawing.Size(55, 29);
+            this.txtLada02.Size = new System.Drawing.Size(55, 27);
             this.txtLada02.TabIndex = 9;
+            this.txtLada02.TextChanged += new System.EventHandler(this.txtLada02_TextChanged);
             // 
             // txtTelefono02
             // 
             this.txtTelefono02.BackColor = System.Drawing.Color.White;
-            this.txtTelefono02.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtTelefono02.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtTelefono02.Location = new System.Drawing.Point(338, 88);
             this.txtTelefono02.Name = "txtTelefono02";
-            this.txtTelefono02.Size = new System.Drawing.Size(198, 29);
+            this.txtTelefono02.Size = new System.Drawing.Size(198, 27);
             this.txtTelefono02.TabIndex = 11;
+            this.txtTelefono02.TextChanged += new System.EventHandler(this.txtTelefono02_TextChanged);
             // 
             // txtLada01
             // 
             this.txtLada01.BackColor = System.Drawing.Color.White;
-            this.txtLada01.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtLada01.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLada01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtLada01.Location = new System.Drawing.Point(12, 88);
             this.txtLada01.Name = "txtLada01";
-            this.txtLada01.Size = new System.Drawing.Size(55, 29);
+            this.txtLada01.Size = new System.Drawing.Size(55, 27);
             this.txtLada01.TabIndex = 5;
+            this.txtLada01.TextChanged += new System.EventHandler(this.txtLada01_TextChanged);
             // 
             // txtTelefono01
             // 
             this.txtTelefono01.BackColor = System.Drawing.Color.White;
-            this.txtTelefono01.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtTelefono01.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtTelefono01.Location = new System.Drawing.Point(73, 88);
             this.txtTelefono01.Name = "txtTelefono01";
-            this.txtTelefono01.Size = new System.Drawing.Size(198, 29);
+            this.txtTelefono01.Size = new System.Drawing.Size(198, 27);
             this.txtTelefono01.TabIndex = 7;
+            this.txtTelefono01.TextChanged += new System.EventHandler(this.txtTelefono01_TextChanged);
             // 
             // lblELada01
             // 
@@ -213,32 +219,35 @@
             // txtExt
             // 
             this.txtExt.BackColor = System.Drawing.Color.White;
-            this.txtExt.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtExt.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtExt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtExt.Location = new System.Drawing.Point(12, 146);
             this.txtExt.Name = "txtExt";
-            this.txtExt.Size = new System.Drawing.Size(55, 29);
+            this.txtExt.Size = new System.Drawing.Size(55, 27);
             this.txtExt.TabIndex = 13;
+            this.txtExt.TextChanged += new System.EventHandler(this.txtExt_TextChanged);
             // 
             // txtCelular
             // 
             this.txtCelular.BackColor = System.Drawing.Color.White;
-            this.txtCelular.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCelular.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCelular.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCelular.Location = new System.Drawing.Point(73, 146);
             this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(198, 29);
+            this.txtCelular.Size = new System.Drawing.Size(198, 27);
             this.txtCelular.TabIndex = 15;
+            this.txtCelular.TextChanged += new System.EventHandler(this.txtCelular_TextChanged);
             // 
             // txtCorreo
             // 
             this.txtCorreo.BackColor = System.Drawing.Color.White;
-            this.txtCorreo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCorreo.Location = new System.Drawing.Point(277, 146);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(259, 29);
+            this.txtCorreo.Size = new System.Drawing.Size(259, 27);
             this.txtCorreo.TabIndex = 17;
+            this.txtCorreo.TextChanged += new System.EventHandler(this.txtCorreo_TextChanged);
             // 
             // lblECorreo
             // 

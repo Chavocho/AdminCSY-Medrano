@@ -117,7 +117,7 @@
             // dtpHoraFin
             // 
             this.dtpHoraFin.CustomFormat = "hh:mm tt";
-            this.dtpHoraFin.Font = new System.Drawing.Font("Corbel", 11F);
+            this.dtpHoraFin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpHoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpHoraFin.Location = new System.Drawing.Point(216, 39);
             this.dtpHoraFin.Name = "dtpHoraFin";
@@ -130,7 +130,7 @@
             // dtpHoraIni
             // 
             this.dtpHoraIni.CustomFormat = "hh:mm tt";
-            this.dtpHoraIni.Font = new System.Drawing.Font("Corbel", 11F);
+            this.dtpHoraIni.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpHoraIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpHoraIni.Location = new System.Drawing.Point(6, 39);
             this.dtpHoraIni.Name = "dtpHoraIni";
@@ -244,10 +244,10 @@
             // lblHoras
             // 
             this.lblHoras.AutoSize = true;
-            this.lblHoras.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblHoras.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoras.Location = new System.Drawing.Point(9, 236);
             this.lblHoras.Name = "lblHoras";
-            this.lblHoras.Size = new System.Drawing.Size(24, 18);
+            this.lblHoras.Size = new System.Drawing.Size(22, 17);
             this.lblHoras.TabIndex = 3;
             this.lblHoras.Text = "60";
             this.lblHoras.Visible = false;

@@ -162,11 +162,11 @@
             // txtCant
             // 
             this.txtCant.BackColor = System.Drawing.Color.White;
-            this.txtCant.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCant.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCant.Location = new System.Drawing.Point(277, 170);
             this.txtCant.Name = "txtCant";
-            this.txtCant.Size = new System.Drawing.Size(259, 29);
+            this.txtCant.Size = new System.Drawing.Size(259, 27);
             this.txtCant.TabIndex = 32;
             this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCant_KeyPress);
             // 
@@ -183,11 +183,11 @@
             // txtPrecio
             // 
             this.txtPrecio.BackColor = System.Drawing.Color.White;
-            this.txtPrecio.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtPrecio.Location = new System.Drawing.Point(12, 170);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(259, 29);
+            this.txtPrecio.Size = new System.Drawing.Size(259, 27);
             this.txtPrecio.TabIndex = 30;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
@@ -204,11 +204,11 @@
             // txtExistencias
             // 
             this.txtExistencias.BackColor = System.Drawing.Color.White;
-            this.txtExistencias.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtExistencias.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtExistencias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtExistencias.Location = new System.Drawing.Point(12, 228);
             this.txtExistencias.Name = "txtExistencias";
-            this.txtExistencias.Size = new System.Drawing.Size(259, 29);
+            this.txtExistencias.Size = new System.Drawing.Size(259, 27);
             this.txtExistencias.TabIndex = 43;
             // 
             // lblEExistencias

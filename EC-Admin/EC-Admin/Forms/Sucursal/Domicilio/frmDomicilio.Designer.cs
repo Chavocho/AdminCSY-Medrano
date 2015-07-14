@@ -32,18 +32,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDomicilio = new System.Windows.Forms.DataGridView();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
-            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CColonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCiudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDomicilio)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             this.dgvDomicilio.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -84,7 +85,7 @@
             this.CEstado});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -96,12 +97,55 @@
             this.dgvDomicilio.MultiSelect = false;
             this.dgvDomicilio.Name = "dgvDomicilio";
             this.dgvDomicilio.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDomicilio.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDomicilio.RowHeadersVisible = false;
             this.dgvDomicilio.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDomicilio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDomicilio.Size = new System.Drawing.Size(803, 438);
             this.dgvDomicilio.TabIndex = 0;
             this.dgvDomicilio.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDomicilio_RowEnter);
+            // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CDireccion
+            // 
+            this.CDireccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CDireccion.HeaderText = "Dirección";
+            this.CDireccion.Name = "CDireccion";
+            // 
+            // CCP
+            // 
+            this.CCP.HeaderText = "Cód. Postal";
+            this.CCP.Name = "CCP";
+            // 
+            // CColonia
+            // 
+            this.CColonia.HeaderText = "Colonia";
+            this.CColonia.Name = "CColonia";
+            this.CColonia.Width = 120;
+            // 
+            // CCiudad
+            // 
+            this.CCiudad.HeaderText = "Ciudad";
+            this.CCiudad.Name = "CCiudad";
+            this.CCiudad.Width = 120;
+            // 
+            // CEstado
+            // 
+            this.CEstado.HeaderText = "Estado";
+            this.CEstado.Name = "CEstado";
+            this.CEstado.Width = 120;
             // 
             // btnEliminar
             // 
@@ -169,41 +213,6 @@
             // 
             this.tmrEspera.Interval = 300;
             this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CDireccion
-            // 
-            this.CDireccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CDireccion.HeaderText = "Dirección";
-            this.CDireccion.Name = "CDireccion";
-            // 
-            // CCP
-            // 
-            this.CCP.HeaderText = "Cód. Postal";
-            this.CCP.Name = "CCP";
-            // 
-            // CColonia
-            // 
-            this.CColonia.HeaderText = "Colonia";
-            this.CColonia.Name = "CColonia";
-            this.CColonia.Width = 120;
-            // 
-            // CCiudad
-            // 
-            this.CCiudad.HeaderText = "Ciudad";
-            this.CCiudad.Name = "CCiudad";
-            this.CCiudad.Width = 120;
-            // 
-            // CEstado
-            // 
-            this.CEstado.HeaderText = "Estado";
-            this.CEstado.Name = "CEstado";
-            this.CEstado.Width = 120;
             // 
             // frmDomicilio
             // 

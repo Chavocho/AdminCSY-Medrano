@@ -241,77 +241,77 @@
             // lblEFColonia
             // 
             this.lblEFColonia.AutoSize = true;
-            this.lblEFColonia.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEFColonia.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEFColonia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEFColonia.Location = new System.Drawing.Point(9, 76);
             this.lblEFColonia.Name = "lblEFColonia";
-            this.lblEFColonia.Size = new System.Drawing.Size(54, 18);
+            this.lblEFColonia.Size = new System.Drawing.Size(52, 17);
             this.lblEFColonia.TabIndex = 8;
             this.lblEFColonia.Text = "Colonia";
             // 
             // lblEFEstado
             // 
             this.lblEFEstado.AutoSize = true;
-            this.lblEFEstado.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEFEstado.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEFEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEFEstado.Location = new System.Drawing.Point(539, 76);
             this.lblEFEstado.Name = "lblEFEstado";
-            this.lblEFEstado.Size = new System.Drawing.Size(50, 18);
+            this.lblEFEstado.Size = new System.Drawing.Size(48, 17);
             this.lblEFEstado.TabIndex = 12;
             this.lblEFEstado.Text = "Estado";
             // 
             // lblEFCiudad
             // 
             this.lblEFCiudad.AutoSize = true;
-            this.lblEFCiudad.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEFCiudad.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEFCiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEFCiudad.Location = new System.Drawing.Point(274, 76);
             this.lblEFCiudad.Name = "lblEFCiudad";
-            this.lblEFCiudad.Size = new System.Drawing.Size(51, 18);
+            this.lblEFCiudad.Size = new System.Drawing.Size(49, 17);
             this.lblEFCiudad.TabIndex = 10;
             this.lblEFCiudad.Text = "Ciudad";
             // 
             // lblEFCP
             // 
             this.lblEFCP.AutoSize = true;
-            this.lblEFCP.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEFCP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEFCP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEFCP.Location = new System.Drawing.Point(539, 18);
             this.lblEFCP.Name = "lblEFCP";
-            this.lblEFCP.Size = new System.Drawing.Size(92, 18);
+            this.lblEFCP.Size = new System.Drawing.Size(91, 17);
             this.lblEFCP.TabIndex = 6;
             this.lblEFCP.Text = "Código postal";
             // 
             // lblEFNumInt
             // 
             this.lblEFNumInt.AutoSize = true;
-            this.lblEFNumInt.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEFNumInt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEFNumInt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEFNumInt.Location = new System.Drawing.Point(405, 18);
             this.lblEFNumInt.Name = "lblEFNumInt";
-            this.lblEFNumInt.Size = new System.Drawing.Size(105, 18);
+            this.lblEFNumInt.Size = new System.Drawing.Size(102, 17);
             this.lblEFNumInt.TabIndex = 4;
             this.lblEFNumInt.Text = "Número interior";
             // 
             // lblEFNumExt
             // 
             this.lblEFNumExt.AutoSize = true;
-            this.lblEFNumExt.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEFNumExt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEFNumExt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEFNumExt.Location = new System.Drawing.Point(274, 18);
             this.lblEFNumExt.Name = "lblEFNumExt";
-            this.lblEFNumExt.Size = new System.Drawing.Size(108, 18);
+            this.lblEFNumExt.Size = new System.Drawing.Size(105, 17);
             this.lblEFNumExt.TabIndex = 2;
             this.lblEFNumExt.Text = "Número exterior";
             // 
             // lblEFCalle
             // 
             this.lblEFCalle.AutoSize = true;
-            this.lblEFCalle.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEFCalle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEFCalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblEFCalle.Location = new System.Drawing.Point(9, 18);
             this.lblEFCalle.Name = "lblEFCalle";
-            this.lblEFCalle.Size = new System.Drawing.Size(37, 18);
+            this.lblEFCalle.Size = new System.Drawing.Size(36, 17);
             this.lblEFCalle.TabIndex = 0;
             this.lblEFCalle.Text = "Calle";
             // 
@@ -339,11 +339,11 @@
             // txtWeb
             // 
             this.txtWeb.BackColor = System.Drawing.Color.White;
-            this.txtWeb.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtWeb.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWeb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtWeb.Location = new System.Drawing.Point(277, 262);
             this.txtWeb.Name = "txtWeb";
-            this.txtWeb.Size = new System.Drawing.Size(259, 29);
+            this.txtWeb.Size = new System.Drawing.Size(259, 27);
             this.txtWeb.TabIndex = 27;
             // 
             // lblEWeb
@@ -359,11 +359,11 @@
             // txtCorreo
             // 
             this.txtCorreo.BackColor = System.Drawing.Color.White;
-            this.txtCorreo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCorreo.Location = new System.Drawing.Point(12, 262);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(259, 29);
+            this.txtCorreo.Size = new System.Drawing.Size(259, 27);
             this.txtCorreo.TabIndex = 25;
             // 
             // lblECorreo
@@ -379,11 +379,11 @@
             // txtFax
             // 
             this.txtFax.BackColor = System.Drawing.Color.White;
-            this.txtFax.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtFax.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtFax.Location = new System.Drawing.Point(542, 204);
             this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(259, 29);
+            this.txtFax.Size = new System.Drawing.Size(259, 27);
             this.txtFax.TabIndex = 23;
             this.txtFax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
@@ -420,33 +420,33 @@
             // txtTelefono02
             // 
             this.txtTelefono02.BackColor = System.Drawing.Color.White;
-            this.txtTelefono02.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtTelefono02.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtTelefono02.Location = new System.Drawing.Point(277, 204);
             this.txtTelefono02.Name = "txtTelefono02";
-            this.txtTelefono02.Size = new System.Drawing.Size(259, 29);
+            this.txtTelefono02.Size = new System.Drawing.Size(259, 27);
             this.txtTelefono02.TabIndex = 21;
             this.txtTelefono02.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // txtTelefono01
             // 
             this.txtTelefono01.BackColor = System.Drawing.Color.White;
-            this.txtTelefono01.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtTelefono01.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtTelefono01.Location = new System.Drawing.Point(12, 204);
             this.txtTelefono01.Name = "txtTelefono01";
-            this.txtTelefono01.Size = new System.Drawing.Size(259, 29);
+            this.txtTelefono01.Size = new System.Drawing.Size(259, 27);
             this.txtTelefono01.TabIndex = 19;
             this.txtTelefono01.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonos_KeyPress);
             // 
             // txtColonia
             // 
             this.txtColonia.BackColor = System.Drawing.Color.White;
-            this.txtColonia.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtColonia.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtColonia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtColonia.Location = new System.Drawing.Point(12, 146);
             this.txtColonia.Name = "txtColonia";
-            this.txtColonia.Size = new System.Drawing.Size(259, 29);
+            this.txtColonia.Size = new System.Drawing.Size(259, 27);
             this.txtColonia.TabIndex = 13;
             // 
             // lblEColonia
@@ -462,11 +462,11 @@
             // txtEstado
             // 
             this.txtEstado.BackColor = System.Drawing.Color.White;
-            this.txtEstado.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtEstado.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtEstado.Location = new System.Drawing.Point(542, 146);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(259, 29);
+            this.txtEstado.Size = new System.Drawing.Size(259, 27);
             this.txtEstado.TabIndex = 17;
             // 
             // lblEEstado
@@ -482,11 +482,11 @@
             // txtCiudad
             // 
             this.txtCiudad.BackColor = System.Drawing.Color.White;
-            this.txtCiudad.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCiudad.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCiudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCiudad.Location = new System.Drawing.Point(277, 146);
             this.txtCiudad.Name = "txtCiudad";
-            this.txtCiudad.Size = new System.Drawing.Size(259, 29);
+            this.txtCiudad.Size = new System.Drawing.Size(259, 27);
             this.txtCiudad.TabIndex = 15;
             // 
             // lblECiudad
@@ -502,11 +502,11 @@
             // txtCP
             // 
             this.txtCP.BackColor = System.Drawing.Color.White;
-            this.txtCP.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCP.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCP.Location = new System.Drawing.Point(542, 88);
             this.txtCP.Name = "txtCP";
-            this.txtCP.Size = new System.Drawing.Size(259, 29);
+            this.txtCP.Size = new System.Drawing.Size(259, 27);
             this.txtCP.TabIndex = 11;
             this.txtCP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCP_KeyPress);
             // 
@@ -523,11 +523,11 @@
             // txtNumInt
             // 
             this.txtNumInt.BackColor = System.Drawing.Color.White;
-            this.txtNumInt.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNumInt.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumInt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtNumInt.Location = new System.Drawing.Point(410, 88);
             this.txtNumInt.Name = "txtNumInt";
-            this.txtNumInt.Size = new System.Drawing.Size(126, 29);
+            this.txtNumInt.Size = new System.Drawing.Size(126, 27);
             this.txtNumInt.TabIndex = 9;
             // 
             // lblENumInt
@@ -543,11 +543,11 @@
             // txtNumExt
             // 
             this.txtNumExt.BackColor = System.Drawing.Color.White;
-            this.txtNumExt.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNumExt.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumExt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtNumExt.Location = new System.Drawing.Point(277, 88);
             this.txtNumExt.Name = "txtNumExt";
-            this.txtNumExt.Size = new System.Drawing.Size(127, 29);
+            this.txtNumExt.Size = new System.Drawing.Size(127, 27);
             this.txtNumExt.TabIndex = 7;
             // 
             // lblENumExt
@@ -563,11 +563,11 @@
             // txtCalle
             // 
             this.txtCalle.BackColor = System.Drawing.Color.White;
-            this.txtCalle.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCalle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtCalle.Location = new System.Drawing.Point(12, 88);
             this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(259, 29);
+            this.txtCalle.Size = new System.Drawing.Size(259, 27);
             this.txtCalle.TabIndex = 5;
             // 
             // lblECalle
@@ -583,12 +583,12 @@
             // txtRFC
             // 
             this.txtRFC.BackColor = System.Drawing.Color.White;
-            this.txtRFC.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtRFC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRFC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtRFC.Location = new System.Drawing.Point(542, 30);
             this.txtRFC.MaxLength = 13;
             this.txtRFC.Name = "txtRFC";
-            this.txtRFC.Size = new System.Drawing.Size(259, 29);
+            this.txtRFC.Size = new System.Drawing.Size(259, 27);
             this.txtRFC.TabIndex = 3;
             // 
             // lblERFC
@@ -604,11 +604,11 @@
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.Color.White;
-            this.txtNombre.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtNombre.Location = new System.Drawing.Point(12, 30);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(524, 29);
+            this.txtNombre.Size = new System.Drawing.Size(524, 27);
             this.txtNombre.TabIndex = 1;
             // 
             // lblENombre

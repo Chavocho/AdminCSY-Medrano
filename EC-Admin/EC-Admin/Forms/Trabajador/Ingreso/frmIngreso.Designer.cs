@@ -46,10 +46,10 @@
             // 
             // txtBusqueda
             // 
-            this.txtBusqueda.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBusqueda.Location = new System.Drawing.Point(649, 285);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(296, 29);
+            this.txtBusqueda.Size = new System.Drawing.Size(296, 27);
             this.txtBusqueda.TabIndex = 1;
             this.txtBusqueda.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyUp);
             // 
@@ -105,10 +105,10 @@
             // lblHoraES
             // 
             this.lblHoraES.AutoSize = true;
-            this.lblHoraES.Font = new System.Drawing.Font("Corbel", 15F);
+            this.lblHoraES.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoraES.Location = new System.Drawing.Point(433, 51);
             this.lblHoraES.Name = "lblHoraES";
-            this.lblHoraES.Size = new System.Drawing.Size(95, 24);
+            this.lblHoraES.Size = new System.Drawing.Size(87, 23);
             this.lblHoraES.TabIndex = 4;
             this.lblHoraES.Text = "10:00 a.m.";
             // 
@@ -125,10 +125,10 @@
             // lblHoraActual
             // 
             this.lblHoraActual.AutoSize = true;
-            this.lblHoraActual.Font = new System.Drawing.Font("Corbel", 15F);
+            this.lblHoraActual.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoraActual.Location = new System.Drawing.Point(433, 90);
             this.lblHoraActual.Name = "lblHoraActual";
-            this.lblHoraActual.Size = new System.Drawing.Size(95, 24);
+            this.lblHoraActual.Size = new System.Drawing.Size(87, 23);
             this.lblHoraActual.TabIndex = 6;
             this.lblHoraActual.Text = "09:47 a.m.";
             // 

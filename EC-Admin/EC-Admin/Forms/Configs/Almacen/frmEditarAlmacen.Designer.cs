@@ -81,7 +81,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.BackColor = System.Drawing.Color.White;
-            this.txtDescripcion.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtDescripcion.Location = new System.Drawing.Point(277, 53);
             this.txtDescripcion.Multiline = true;
@@ -103,11 +103,11 @@
             // lblJefeAlmacen
             // 
             this.lblJefeAlmacen.AutoSize = true;
-            this.lblJefeAlmacen.Font = new System.Drawing.Font("Corbel", 11F, System.Drawing.FontStyle.Bold);
+            this.lblJefeAlmacen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblJefeAlmacen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.lblJefeAlmacen.Location = new System.Drawing.Point(124, 9);
             this.lblJefeAlmacen.Name = "lblJefeAlmacen";
-            this.lblJefeAlmacen.Size = new System.Drawing.Size(79, 18);
+            this.lblJefeAlmacen.Size = new System.Drawing.Size(85, 20);
             this.lblJefeAlmacen.TabIndex = 1;
             this.lblJefeAlmacen.Text = "Sin asignar";
             // 
@@ -125,11 +125,11 @@
             // txtNumAlm
             // 
             this.txtNumAlm.BackColor = System.Drawing.Color.White;
-            this.txtNumAlm.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtNumAlm.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumAlm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtNumAlm.Location = new System.Drawing.Point(12, 53);
             this.txtNumAlm.Name = "txtNumAlm";
-            this.txtNumAlm.Size = new System.Drawing.Size(259, 29);
+            this.txtNumAlm.Size = new System.Drawing.Size(259, 27);
             this.txtNumAlm.TabIndex = 4;
             this.txtNumAlm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumAlm_KeyPress);
             // 

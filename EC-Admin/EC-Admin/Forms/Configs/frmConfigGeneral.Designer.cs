@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grbPOS = new System.Windows.Forms.GroupBox();
+            this.lblEInformacion = new System.Windows.Forms.Label();
             this.lblEIVA = new System.Windows.Forms.Label();
             this.txtIVA = new System.Windows.Forms.TextBox();
             this.lblECantMayoreo = new System.Windows.Forms.Label();
@@ -36,7 +37,6 @@
             this.lblECantMedioMayoreo = new System.Windows.Forms.Label();
             this.txtCantMedioMayoreo = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.lblEInformacion = new System.Windows.Forms.Label();
             this.grbPOS.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,17 @@
             this.grbPOS.TabStop = false;
             this.grbPOS.Text = "Punto de venta";
             // 
+            // lblEInformacion
+            // 
+            this.lblEInformacion.AutoSize = true;
+            this.lblEInformacion.Font = new System.Drawing.Font("Corbel", 9F);
+            this.lblEInformacion.Location = new System.Drawing.Point(6, 18);
+            this.lblEInformacion.Name = "lblEInformacion";
+            this.lblEInformacion.Size = new System.Drawing.Size(279, 28);
+            this.lblEInformacion.TabIndex = 7;
+            this.lblEInformacion.Text = "*Ingrese las cantidades para que se asignen los precios \r\nde medio mayoreo y mayo" +
+    "reo a la venta según se asigne";
+            // 
             // lblEIVA
             // 
             this.lblEIVA.AutoSize = true;
@@ -69,10 +80,10 @@
             // 
             // txtIVA
             // 
-            this.txtIVA.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtIVA.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIVA.Location = new System.Drawing.Point(394, 81);
             this.txtIVA.Name = "txtIVA";
-            this.txtIVA.Size = new System.Drawing.Size(105, 29);
+            this.txtIVA.Size = new System.Drawing.Size(105, 27);
             this.txtIVA.TabIndex = 5;
             this.txtIVA.Text = "0";
             this.txtIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerosDecimal_KeyPress);
@@ -89,10 +100,10 @@
             // 
             // txtCantMayoreo
             // 
-            this.txtCantMayoreo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCantMayoreo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantMayoreo.Location = new System.Drawing.Point(200, 81);
             this.txtCantMayoreo.Name = "txtCantMayoreo";
-            this.txtCantMayoreo.Size = new System.Drawing.Size(188, 29);
+            this.txtCantMayoreo.Size = new System.Drawing.Size(188, 27);
             this.txtCantMayoreo.TabIndex = 3;
             this.txtCantMayoreo.Text = "0";
             this.txtCantMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
@@ -109,10 +120,10 @@
             // 
             // txtCantMedioMayoreo
             // 
-            this.txtCantMedioMayoreo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCantMedioMayoreo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantMedioMayoreo.Location = new System.Drawing.Point(6, 81);
             this.txtCantMedioMayoreo.Name = "txtCantMedioMayoreo";
-            this.txtCantMedioMayoreo.Size = new System.Drawing.Size(188, 29);
+            this.txtCantMedioMayoreo.Size = new System.Drawing.Size(188, 27);
             this.txtCantMedioMayoreo.TabIndex = 1;
             this.txtCantMedioMayoreo.Text = "0";
             this.txtCantMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
@@ -137,17 +148,6 @@
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
-            // 
-            // lblEInformacion
-            // 
-            this.lblEInformacion.AutoSize = true;
-            this.lblEInformacion.Font = new System.Drawing.Font("Corbel", 9F);
-            this.lblEInformacion.Location = new System.Drawing.Point(6, 18);
-            this.lblEInformacion.Name = "lblEInformacion";
-            this.lblEInformacion.Size = new System.Drawing.Size(279, 28);
-            this.lblEInformacion.TabIndex = 7;
-            this.lblEInformacion.Text = "*Ingrese las cantidades para que se asignen los precios \r\nde medio mayoreo y mayo" +
-    "reo a la venta según se asigne";
             // 
             // frmConfigGeneral
             // 
