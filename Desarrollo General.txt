@@ -1,0 +1,132 @@
+Ventas
+	Generar Ventas
+	Cancelar Ventas
+	Mostrar Ventas
+	Reporte de ventas en el periodo con gráficas
+	Reporte de ventas por vendedor en el periodo con gráficas
+	Reporte de ventas por cliente en el periodo con gráfica
+	Impresión de reportes
+	Crear PDF de dichos reportes
+Compras
+	Generar Compra
+	Cancelar Compra
+	Mostrar Compras
+	Reporte de compras en el periodo con gráfica
+	Reporte de compras x proveedor
+	Impresión de reportes
+	Crear pdf
+Almacen
+	Visualizar inventario
+	Consultar bajas existencias
+	Movimientos entre sucursales (Generar Ticket)
+	Reporte de movimientos
+Productos
+	Agregar productos (Con imagenes)
+	Consultar productos
+	Categorias
+	Eliminar productos (borrado lógico)
+	Modificar productos
+	Imprimir Códigos	
+Clientes	
+	Nuevo cliente
+	Modificar cliente
+	Eliminar cliente (borrado lógico)
+	Ubicación del cliente
+	Contactos de cliente
+Proveedores
+	Nuevo Proveedor
+	Modificar Proveedor
+	Eliminar Proveedor (borrado lógico)
+	Ubicación del proveedor
+	Contacto proveedor
+Credito clientes
+	Nuevo Crédito
+	Visualizar Creditos
+	Modificar Crédito
+	Cancelar Crédito
+	Pago a créditos	
+Credito a proveedores
+	Nuevo Crédito
+	Visualizar Creditos
+	Modificar Crédito
+	Cancelar Crédito
+	Pago a créditos	
+Sucursales
+	Nueva
+	Visualizar 
+	Borrar (Borrado Lógico)
+	Modificar
+Trabajadores (Pueden tener o no tener usuario)
+	Nuevo (Con fotografia)
+	Visualizar
+	Borrar (Borrado lógico)
+	Modificar
+	Restricciones o permisos (En caso de ser usuario)
+	Registrar Salario x día, hora, semana o quincena segun elija el usuario
+	
+Prestamos a trabajadores
+	
+Caja
+	Movimientos
+	Entrada (Especificando el concepto del movimiento)
+	Salida  (Especificando el concepto del movimiento)
+	Abrir/Cerrar
+Bancos
+	Movimientos en el periodo
+	Entrada (Especificando el concepto del movimiento)
+	Salida  (Especificando el concepto del movimiento)
+Pago de clientes
+	Nuevo
+	Visualizar (Reporte de los pagos que ha realizado cada cliente)
+	Modificar
+	Cancelar
+Pago a proveedores
+	Nuevo
+	Visualizar (Reporte de los pagos que se le han realizado a cada proveedor)
+	Modificar
+	Cancelar
+	
+Devoluciones a proveedores o sucursal (Por producto en mal estado)
+	Nueva devolución (Imprimir Ticket del movimiento)
+	Cancelar
+	Visualizar devoluciones
+
+Devoluciones o cambio a clientes
+
+	
+Nominas
+	Ingresar las horas o días trabajados para con ello generar un pago a un trabajador tomando como referencia el sueldo previamente guardado
+
+	
+Cotizaciones
+	Nueva Cotización (Generar PDF e Imagen de ese PDF para enviarlo por Whatsaap web-Esto ultimo lo realizara el usuario-)
+	Visualizar
+	Modificar
+	Cancelar
+
+Apartados
+	Nuevo Apartado
+	Cancelar
+	Modificar
+	Visualizar apartados
+	Configurar una fecha limite para los apartados
+
+
+Reportes
+	Ventas
+	Compras
+	Créditos a clientes
+	Créditos a proveedores
+	Bancos
+	Caja
+	Inventario	
+	DashBoard
+		En este se mostrar una visualización rapida en gráficas de los indicadores del negocio
+			Ventas, compras y demas durante un periodo (Mensual, Trimestral, Semestral y Anual)
+
+
+Cambiar tipología de la letra en todo el programa
+Por Segoe UI o en su defecto Microsoft San Serif
+
+
+
