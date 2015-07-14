@@ -121,11 +121,11 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool res = true;
             if (cboSucursal.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo sucursal es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(cboSucursal);
-                return false;
+                res = false;
             }
             else
             {
@@ -133,30 +133,27 @@ namespace EC_Admin.Forms
             }
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtNombre);
-                return false;
+                res = false;
             }
             else
             {
                 FuncionesGenerales.ColoresBien(txtNombre);
             }
 
-            /*
-            if (txtRFC.Text.Trim() != "")
-            {
-                if (txtRFC.Text.Length < 12)
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo RFC debe tener entre 12 o 13 caracteres", "Admin CSY");
-                    return false;
-                }
-            }*/
+            //if (txtRFC.Text.Trim() != "")
+            //{
+            //    if (txtRFC.Text.Length < 12)
+            //    {
+            //        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo RFC debe tener entre 12 o 13 caracteres", "Admin CSY");
+            //        return false;
+            //    }
+            //}
 
             if (txtCalle.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtCalle);
-                return false;
+                res = false;
             }
             else
             {
@@ -166,7 +163,7 @@ namespace EC_Admin.Forms
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior debe ser ingresado antes que el número interior", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtNumExt);
-                return false;
+                res = false;
             }
             else
             {
@@ -174,9 +171,8 @@ namespace EC_Admin.Forms
             }
             if (txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtNumExt);
-                return false;
+                res = false;
             }
             else
             {
@@ -184,15 +180,13 @@ namespace EC_Admin.Forms
             }
             if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un teléfono", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtTelefono01);
-                return false;
+                res = false;
             }
             else if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() != "")
             {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el primer teléfono antes que el segundo", "Admin CSY");
                     FuncionesGenerales.ColoresError(txtTelefono01);
-                    return false;
+                    res = false;
             }
             else
             {
@@ -203,9 +197,8 @@ namespace EC_Admin.Forms
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se reconoce el correo ingresado como uno válido", "Admin CSY");
                     FuncionesGenerales.ColoresError(txtCorreo);
-                    return false;
+                    res = false;
                 }
             }
             else
@@ -216,9 +209,8 @@ namespace EC_Admin.Forms
             {
                 if (txtLimiteCredito.Text.Trim() == "")
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo límite de crédito es obligatorio", "Admin CSY");
                     FuncionesGenerales.ColoresError(txtLimiteCredito);
-                    return false;
+                    res = false;
                 }
             }
             else
@@ -226,7 +218,7 @@ namespace EC_Admin.Forms
                 FuncionesGenerales.ColoresBien(txtLimiteCredito);
             }
 
-            return true;
+            return res;
         }
 
         private void txtLimiteCredito_KeyPress(object sender, KeyPressEventArgs e)

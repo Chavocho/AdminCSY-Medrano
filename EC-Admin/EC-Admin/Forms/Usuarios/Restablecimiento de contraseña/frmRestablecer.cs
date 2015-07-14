@@ -38,20 +38,22 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool res = true;
             if (txtPass.Text.Trim() == "")
             {
-                MessageBox.Show("El campo contraseña es obligatorio.", "Admin CSY", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
+                FuncionesGenerales.ColoresError(txtPass);
+                res = false;
             }
             else
             {
                 if (txtPass.Text != txtRepPass.Text)
                 {
-                    MessageBox.Show("Las contraseñas no coinciden.", "Admin CSY", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
+                    FuncionesGenerales.ColoresError(txtRepPass);
+                    FuncionesGenerales.ColoresError(txtPass);
+                    res = false;
                 }
             }
-            return true;
+            return res;
         }
 
         private void btnReestablecer_Click(object sender, EventArgs e)

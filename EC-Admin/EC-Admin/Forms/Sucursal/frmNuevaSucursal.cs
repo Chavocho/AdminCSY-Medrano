@@ -102,11 +102,11 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool res = true;
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtNombre);
-                return false;
+                res = false;
             }
             else
             {
@@ -131,9 +131,8 @@ namespace EC_Admin.Forms
              
             if (txtCalle.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtCalle);
-                return false;
+                res = false;
             }
             else
             {
@@ -141,9 +140,8 @@ namespace EC_Admin.Forms
             }
             if (txtNumInt.Text.Trim() != "" && txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior necesita ser ingresado antes que el número interior", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtNumExt);
-                return false;
+                res = false;
             }
             else
             {
@@ -152,9 +150,8 @@ namespace EC_Admin.Forms
             }
             if (txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtNumExt);
-                return false;
+                res = false;
             }
             else
             {
@@ -162,15 +159,13 @@ namespace EC_Admin.Forms
             }
             if (txtTelefono01.Text.Trim() == "" && txtTelefono02.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un número teléfonico", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtTelefono01);
-                return false;
+                res = false;
             }
             else if (txtTelefono02.Text.Trim() != "" && txtTelefono01.Text.Trim() == "")
             {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El primer campo de teléfono debe ser ingresado antes que el segundo", "Admin CSY");
                     FuncionesGenerales.ColoresError(txtTelefono01);
-                    return false;
+                    res = false;
             }
             else
             {
@@ -181,16 +176,15 @@ namespace EC_Admin.Forms
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no se reconoce cómo correo válido", "Admin CSY");
                     FuncionesGenerales.ColoresError(txtCorreo);
-                    return false;
+                    res = false;
                 }
             }
             else
             {
                 FuncionesGenerales.ColoresBien(txtCorreo);
             }
-            return true;
+            return res;
         }
 
         private void txtCP_KeyPress(object sender, KeyPressEventArgs e)

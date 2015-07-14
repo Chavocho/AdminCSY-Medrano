@@ -70,11 +70,11 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool res = true;
             if (txtUsuario.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo usuario es obligatorio.", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtUsuario);
-                return false;
+                res = false;
             }
             else
             {
@@ -82,17 +82,16 @@ namespace EC_Admin.Forms
             }
             if (txtPass.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo contraseña es obligatorio.", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtPass);
-                return false;
+                res = false;
             }
             else
             {
                 if (txtPass.Text != txtRepPass.Text)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Las contraseñas no coinciden. Éstas deben coincidir para poder continuar.", "Admin CSY");
                     FuncionesGenerales.ColoresError(txtPass);
-                    return false;
+                    FuncionesGenerales.ColoresError(txtRepPass);
+                    res = false;
                 }
                 else
                 {
@@ -102,9 +101,8 @@ namespace EC_Admin.Forms
             }
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtNombre);
-                return false;
+                res = false;
             }
             else
             {
@@ -112,9 +110,8 @@ namespace EC_Admin.Forms
             }
             if (txtApellidos.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo apellidos es obligatorio.", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtApellidos);
-                return false;
+                res = false;
             }
             else
 	        {
@@ -126,7 +123,7 @@ namespace EC_Admin.Forms
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no es valido. Verifique que este escrito correctamente.", "Admin CSY");
                     FuncionesGenerales.ColoresError(txtCorreo);
-                    return false;
+                    res = false;
                 }
                 else
                 {
@@ -135,9 +132,9 @@ namespace EC_Admin.Forms
             }
             if (lblInfo.Visible)
             {
-                return false;
+                res = false;
             }
-            return true;
+            return res;
         }
 
         private void pcbImagen_Click(object sender, EventArgs e)

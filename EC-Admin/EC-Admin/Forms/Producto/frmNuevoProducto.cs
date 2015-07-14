@@ -119,11 +119,11 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool res = true;
             if (cboProveedor.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo proveedor es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(cboProveedor);
-                return false;
+                res = false;
             }
             else
             {
@@ -131,9 +131,8 @@ namespace EC_Admin.Forms
             }
             if (cboCategoria.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo categoría es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(cboCategoria);
-                return false;
+                res = false;
             }
             else
             {
@@ -141,9 +140,8 @@ namespace EC_Admin.Forms
             }
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtNombre);
-                return false;
+                res = false;
             }
             else
             {
@@ -151,9 +149,8 @@ namespace EC_Admin.Forms
             }
             if (txtMarca.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo marca es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtMarca);
-                return false;
+                res = false;
             }
             else
             {
@@ -161,15 +158,14 @@ namespace EC_Admin.Forms
             }
             if (txtCodigo.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo código es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtCodigo);
-                return false;
+                res = false;
             }
             else
             {
                 if (lblInformacionCodigo.Visible)
                 {
-                    return false;
+                    res = false;
                 }
                 else
                 {
@@ -178,9 +174,8 @@ namespace EC_Admin.Forms
             }
             if (txtCosto.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo costo es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtCosto);
-                return false;
+                res = false;
             }
             else
             {
@@ -188,9 +183,8 @@ namespace EC_Admin.Forms
             }
             if (txtPrecio.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo precio es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtPrecio);
-                return false;
+                res = false;
             }
             else
             {
@@ -198,9 +192,8 @@ namespace EC_Admin.Forms
             }
             if (txtCant.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo cantidad es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtCant);
-                return false;
+                res = false;
             }
             else
             {
@@ -208,10 +201,14 @@ namespace EC_Admin.Forms
             }
             if (cboUnidad.SelectedIndex < 0)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo unidad es obligatorio", "Admin CSY");
-                return false;
+                FuncionesGenerales.ColoresError(cboUnidad);
+                res = false;
             }
-            return true;
+            else
+            {
+                FuncionesGenerales.ColoresBien(cboUnidad);
+            }
+            return res;
         }
 
         private void txtNumeros_KeyPress(object sender, KeyPressEventArgs e)

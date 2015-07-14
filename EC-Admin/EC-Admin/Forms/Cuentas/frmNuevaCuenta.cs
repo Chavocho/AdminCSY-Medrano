@@ -41,53 +41,56 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool res = true;
             if (txtClabe.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo clabe es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtClabe);
-                return false;
+                res = false;
             }
             else
             {
                 FuncionesGenerales.ColoresBien(txtClabe);
             }
+
             if (txtBanco.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo banco es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtBanco);
-                return false;
+                res = false;
             }
             else
             {
                 FuncionesGenerales.ColoresBien(txtBanco);
             }
+
             if (txtBeneficiario.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo beneficiario es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtBeneficiario);
-                return false;
+                res = false;
             }
             else
             {
                 FuncionesGenerales.ColoresBien(txtBeneficiario);
             }
-            /*if (txtSucursal.Text.Trim() == "")
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo sucursal es obligatorio", "Admin CSY");
 
-                return false;
+            if (txtSucursal.Text.Trim() == "")
+            {
+                FuncionesGenerales.ColoresError(txtSucursal);
+                res = false;
             }
             else
             {
                 FuncionesGenerales.ColoresBien(txtSucursal);
-            }*/
-            /*
+            }
             if (txtNumCuenta.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número de cuenta es obligatorio", "Admin CSY");
-                return false;
-            }*/
-            return true;
+                FuncionesGenerales.ColoresError(txtNumCuenta);
+                res = false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(txtNumCuenta);
+            }
+            return res;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

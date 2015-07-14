@@ -86,17 +86,18 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool res = true;
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
-                return false;
+                FuncionesGenerales.ColoresError(txtNombre);
+                res = false;
             }
             if (txtDepartamento.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo departamento es obligatorio", "Admin CSY");
-                return false;
+                FuncionesGenerales.ColoresError(txtDepartamento);
+                res = false;
             }
-            return true;
+            return res;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

@@ -68,42 +68,44 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool res = true;
             if (txtCalle.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo calle es obligatorio", "Admin CSY");
-                return false;
+                FuncionesGenerales.ColoresError(txtCalle);
+                res = false;
             }
             if (txtNumInt.Text != "" && txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Se debe ingresar el campo número exterior antes que el número interior", "Admin CSY");
-                return false;
+                FuncionesGenerales.ColoresError(txtNumExt);
+                FuncionesGenerales.ColoresError(txtNumInt);
+                res = false;
             }
             if (txtNumExt.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo número exterior es obligatorio", "Admin CSY");
-                return false;
+                FuncionesGenerales.ColoresError(txtNumExt);
+                res = false;
             }
             if (txtCP.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo código postal es obligatorio", "Admin CSY");
-                return false;
+                FuncionesGenerales.ColoresError(txtCP);
+                res = false;
             }
             if (txtColonia.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo colonia es obligatorio", "Admin CSY");
-                return false;
+                FuncionesGenerales.ColoresError(txtColonia);
+                res = false;
             }
             if (txtCiudad.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo ciudad es obligatorio", "Admin CSY");
-                return false;
+                FuncionesGenerales.ColoresError(txtCiudad);
+                res = false;
             }
             if (txtEstado.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo estado es obligatorio", "Admin CSY");
-                return false;
+                FuncionesGenerales.ColoresError(txtEstado);
+                res = false;
             }
-            return true;
+            return res;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

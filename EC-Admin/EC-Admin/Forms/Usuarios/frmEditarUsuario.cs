@@ -82,29 +82,28 @@ namespace EC_Admin.Forms
 
         private bool VerificarDatos()
         {
+            bool res = true;
             if (chbPass.Checked)
             {
                 if (txtAntiPass.Text != u.Contraseña)
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "La contraseña actual no coincide.", "Admin CSY");
                     FuncionesGenerales.ColoresError(txtAntiPass);
-                    return false;
+                    res = false;
                 }
                 else
                 {
                     if (txtPass.Text.Trim() == "")
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo contraseña es obligatorio.", "Admin CSY");
                         FuncionesGenerales.ColoresError(txtPass);
-                        return false;
+                        res = false;
                     }
                     else
                     {
                         if (txtPass.Text != txtRepPass.Text)
                         {
-                            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Las contraseñas no coinciden. Éstas deben coincidir para poder continuar.", "Admin CSY");
                             FuncionesGenerales.ColoresError(txtRepPass);
-                            return false;
+                            FuncionesGenerales.ColoresError(txtPass);
+                            res = false;
                         }
                         else
                         {
@@ -117,9 +116,8 @@ namespace EC_Admin.Forms
             }
             if (txtNombre.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo nombre es obligatorio", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtNombre);
-                return false;
+                res = false;
             }
             else
             {
@@ -127,9 +125,8 @@ namespace EC_Admin.Forms
             }
             if (txtApellidos.Text.Trim() == "")
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El campo apellidos es obligatorio.", "Admin CSY");
                 FuncionesGenerales.ColoresError(txtApellidos);
-                return false;
+                res = false;
             }
             else
 	        {
@@ -139,9 +136,8 @@ namespace EC_Admin.Forms
             {
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El correo ingresado no es valido. Verifique que este escrito correctamente.", "Admin CSY");
                     FuncionesGenerales.ColoresError(txtCorreo);
-                    return false;
+                    res = false;
                 }
                 else
                 {
@@ -153,10 +149,10 @@ namespace EC_Admin.Forms
                 if (n == NivelesUsuario.Encargado || n == NivelesUsuario.Desconocido)
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No puedes bajar el nivel de un usuario administrador.", "Admin CSY");
-                    return false;
+                    res = false;
                 }
             }
-            return true;
+            return res;
         }
 
         private void frmEditarUsuario_Load(object sender, EventArgs e)
