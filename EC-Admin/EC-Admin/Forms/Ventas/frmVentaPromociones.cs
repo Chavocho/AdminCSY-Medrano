@@ -109,6 +109,10 @@ namespace EC_Admin.Forms
             {
                 dgvProductos.Columns[5].Visible = false;
             }
+            while (bgwBusqueda.IsBusy)
+            {
+                Application.DoEvents();
+            }
             tmrEspera.Enabled = true;
             bgwBusqueda.RunWorkerAsync(cboTipoPromocion.SelectedIndex);
         }

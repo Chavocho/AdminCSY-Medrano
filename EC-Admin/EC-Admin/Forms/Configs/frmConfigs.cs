@@ -63,7 +63,7 @@ namespace EC_Admin.Forms
 
         private void btnBaseDatos_Click(object sender, EventArgs e)
         {
-            (new frmConfigBaseDatos(true)).ShowDialog(this);
+            (new frmConfigBaseDatos()).ShowDialog(this);
         }
 
         private void btnAlmacen_Click(object sender, EventArgs e)

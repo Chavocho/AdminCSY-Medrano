@@ -117,6 +117,7 @@
             this.txtPass.Location = new System.Drawing.Point(302, 99);
             this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '•';
             this.txtPass.Size = new System.Drawing.Size(281, 27);
             this.txtPass.TabIndex = 7;
             // 
@@ -142,6 +143,7 @@
             // 
             // frmConfigBaseDatos
             // 
+            this.AcceptButton = this.btnAceptar;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(597, 233);

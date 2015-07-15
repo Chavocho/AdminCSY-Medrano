@@ -20,12 +20,7 @@ namespace EC_Admin
         {
             InitializeComponent();
         }
-
-        private void AsignarSucursal()
-        {
-            (new Forms.frmAsignarSucursal()).ShowDialog();
-        }
-
+        
         private void ActualizarLabel(string mensaje)
         {
             lblEstado.Text = mensaje;
@@ -35,9 +30,13 @@ namespace EC_Admin
         private void ReconfigurarConexion()
         {
             DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
-            if (re == System.Windows.Forms.DialogResult.Yes)
+            if (re == DialogResult.Yes)
             {
-                (new Forms.frmConfigBaseDatos(true)).ShowDialog(this);
+                (new Forms.frmConfigBaseDatos()).ShowDialog(this);
+            }
+            else
+            {
+                bgwCargando.CancelAsync();
             }
         }
 
@@ -88,13 +87,14 @@ namespace EC_Admin
                 DialogResult r = (DialogResult)Enum.Parse(typeof(DialogResult), this.Invoke(m, new object[] { this, Mensajes.Pregunta, "No tienes configurada tu conexión con la base de datos. ¿Deseas configurarla?", "Admin CSY", null }).ToString());
                 if (r == DialogResult.Yes)
                 {
-                    this.Invoke(new Action(() => { new Forms.frmConfigBaseDatos(false); }));
+                    this.Invoke(new Action(() => { (new Forms.frmConfigBaseDatos()).ShowDialog(this); }));
                     ConfiguracionBaseDatos();
                 }
                 else
                 {
-                    this.Invoke(m, new object[] { this, Mensajes.Informativo, "La aplicación se cerrará.", "Admin CSY" });
-                    Application.Exit();
+                    this.Invoke(m, new object[] { this, Mensajes.Informativo, "La aplicación se cerrará.", "Admin CSY", null });
+                    bgwCargando.CancelAsync();
+                    return;
                 }
             }
             else
@@ -140,13 +140,13 @@ namespace EC_Admin
                 DialogResult r = (DialogResult)Enum.Parse(typeof(DialogResult), this.Invoke(m, new object[] { this, Mensajes.Pregunta, "No tienes asignada ninguna sucursal, ¿deseas asignarla ahora?", "Admin CSY", null }).ToString());
                 if (r == DialogResult.Yes)
                 {
-                    this.Invoke((new Action(AsignarSucursal)));
+                    this.Invoke((new Action(() => { (new Forms.frmAsignarSucursal(false)).ShowDialog(); })));
+                    ConfiguracionSucursal();
                 }
                 else
                 {
-                    this.Invoke(m, new object[] { this, Mensajes.Informativo, "La aplicación se cerrará.", "Admin CSY" });
+                    this.Invoke(m, new object[] { this, Mensajes.Informativo, "La aplicación se cerrará.", "Admin CSY", null });
                     bgwCargando.CancelAsync();
-                    Application.Exit();
                 }
 
             }
@@ -232,10 +232,6 @@ namespace EC_Admin
 
         private void bgwCargando_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (bgwCargando.CancellationPending)
-            {
-                e.Cancel = true;
-            }
             Action<string> lbl = new Action<string>(ActualizarLabel);
             try
             {
@@ -245,26 +241,64 @@ namespace EC_Admin
             catch (Exception ex)
             {
                 this.Invoke(m, new object[] { this, Mensajes.Error, "No se ha logrado inicializar la conexión a la base de datos. La aplicación se cerrará.", "Admin CSY", ex });
-                Application.Exit();
+                e.Cancel = true;
+                return;
             }
             this.Invoke(lbl, "Inicializando la configuración de la base de datos");
             ConfiguracionBaseDatos();
+            if (bgwCargando.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             this.Invoke(lbl, "Inicializando los datos de sucursal");
             ConfiguracionSucursal();
+            if (bgwCargando.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             this.Invoke(lbl, "Verificando la conexión con la base de datos");
             VerificarConexion();
+            if (bgwCargando.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             this.Invoke(lbl, "Inicializando cantidades de base de datos");
             InicializarPropiedades();
+            if (bgwCargando.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             this.Invoke(lbl, "Inicializando la configuración del punto de venta");
             ConfiguracionPOS();
+            if (bgwCargando.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             this.Invoke(lbl, "Inicializando los datos de correo");
             CorreoInterno();
+            if (bgwCargando.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
         }
 
         private void bgwCargando_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            (new frmLogin()).Show();
-            this.Close();
+            if (!e.Cancelled)
+            {
+                (new frmLogin()).Show();
+                this.Close();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }

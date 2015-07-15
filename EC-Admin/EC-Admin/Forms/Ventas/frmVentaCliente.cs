@@ -127,10 +127,10 @@ namespace EC_Admin.Forms
 
         private void txtBusqueda_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && !bgwBusqueda.IsBusy)
             {
                 tmrEspera.Enabled = true;
-                bgwBúsqueda.RunWorkerAsync(txtBusqueda.Text);
+                bgwBusqueda.RunWorkerAsync(txtBusqueda.Text);
             }
         }
 
@@ -158,12 +158,12 @@ namespace EC_Admin.Forms
             }
         }
 
-        private void bgwBúsqueda_DoWork(object sender, DoWorkEventArgs e)
+        private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
         {
             Buscar(e.Argument.ToString());
         }
 
-        private void bgwBúsqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void bgwBusqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Cerrar();
             LlenarDataGrid();

@@ -178,7 +178,7 @@ namespace EC_Admin.Forms
 
         private void btnCambiar_Click(object sender, EventArgs e)
         {
-            (new frmAsignarSucursal()).ShowDialog(this);
+            (new frmAsignarSucursal(true)).ShowDialog(this);
         }
     }
 }

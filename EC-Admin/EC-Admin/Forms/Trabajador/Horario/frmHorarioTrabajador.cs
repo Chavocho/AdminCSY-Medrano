@@ -144,7 +144,7 @@ namespace EC_Admin.Forms
 
         private void txtBusqueda_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && !bgwBusqueda.IsBusy)
             {
                 txtBusqueda.Enabled = false;
                 tmrEspera.Enabled = true;
@@ -171,7 +171,7 @@ namespace EC_Admin.Forms
                 else
                 {
                     DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "El trabajador seleccionado ya tiene asignado un horario, ¿desea modificarlo?", "Admin CSY");
-                    if (r == System.Windows.Forms.DialogResult.Yes)
+                    if (r == DialogResult.Yes)
                     {
                         btnEditar.PerformClick();
                     }

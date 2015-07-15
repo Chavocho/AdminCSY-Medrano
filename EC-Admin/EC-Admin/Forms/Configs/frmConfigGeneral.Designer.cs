@@ -32,10 +32,6 @@
             this.lblEInformacion = new System.Windows.Forms.Label();
             this.lblEIVA = new System.Windows.Forms.Label();
             this.txtIVA = new System.Windows.Forms.TextBox();
-            this.lblECantMayoreo = new System.Windows.Forms.Label();
-            this.txtCantMayoreo = new System.Windows.Forms.TextBox();
-            this.lblECantMedioMayoreo = new System.Windows.Forms.Label();
-            this.txtCantMedioMayoreo = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.grbPOS.SuspendLayout();
             this.SuspendLayout();
@@ -45,10 +41,6 @@
             this.grbPOS.Controls.Add(this.lblEInformacion);
             this.grbPOS.Controls.Add(this.lblEIVA);
             this.grbPOS.Controls.Add(this.txtIVA);
-            this.grbPOS.Controls.Add(this.lblECantMayoreo);
-            this.grbPOS.Controls.Add(this.txtCantMayoreo);
-            this.grbPOS.Controls.Add(this.lblECantMedioMayoreo);
-            this.grbPOS.Controls.Add(this.txtCantMedioMayoreo);
             this.grbPOS.Font = new System.Drawing.Font("Corbel", 9F);
             this.grbPOS.Location = new System.Drawing.Point(12, 12);
             this.grbPOS.Name = "grbPOS";
@@ -72,7 +64,7 @@
             // 
             this.lblEIVA.AutoSize = true;
             this.lblEIVA.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblEIVA.Location = new System.Drawing.Point(394, 56);
+            this.lblEIVA.Location = new System.Drawing.Point(6, 58);
             this.lblEIVA.Name = "lblEIVA";
             this.lblEIVA.Size = new System.Drawing.Size(97, 18);
             this.lblEIVA.TabIndex = 6;
@@ -81,52 +73,12 @@
             // txtIVA
             // 
             this.txtIVA.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIVA.Location = new System.Drawing.Point(394, 81);
+            this.txtIVA.Location = new System.Drawing.Point(6, 83);
             this.txtIVA.Name = "txtIVA";
             this.txtIVA.Size = new System.Drawing.Size(105, 27);
             this.txtIVA.TabIndex = 5;
             this.txtIVA.Text = "0";
             this.txtIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerosDecimal_KeyPress);
-            // 
-            // lblECantMayoreo
-            // 
-            this.lblECantMayoreo.AutoSize = true;
-            this.lblECantMayoreo.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblECantMayoreo.Location = new System.Drawing.Point(200, 56);
-            this.lblECantMayoreo.Name = "lblECantMayoreo";
-            this.lblECantMayoreo.Size = new System.Drawing.Size(138, 18);
-            this.lblECantMayoreo.TabIndex = 4;
-            this.lblECantMayoreo.Text = "Cantidad de mayoreo";
-            // 
-            // txtCantMayoreo
-            // 
-            this.txtCantMayoreo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantMayoreo.Location = new System.Drawing.Point(200, 81);
-            this.txtCantMayoreo.Name = "txtCantMayoreo";
-            this.txtCantMayoreo.Size = new System.Drawing.Size(188, 27);
-            this.txtCantMayoreo.TabIndex = 3;
-            this.txtCantMayoreo.Text = "0";
-            this.txtCantMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
-            // 
-            // lblECantMedioMayoreo
-            // 
-            this.lblECantMedioMayoreo.AutoSize = true;
-            this.lblECantMedioMayoreo.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblECantMedioMayoreo.Location = new System.Drawing.Point(6, 56);
-            this.lblECantMedioMayoreo.Name = "lblECantMedioMayoreo";
-            this.lblECantMedioMayoreo.Size = new System.Drawing.Size(179, 18);
-            this.lblECantMedioMayoreo.TabIndex = 2;
-            this.lblECantMedioMayoreo.Text = "Cantidad de medio mayoreo";
-            // 
-            // txtCantMedioMayoreo
-            // 
-            this.txtCantMedioMayoreo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantMedioMayoreo.Location = new System.Drawing.Point(6, 81);
-            this.txtCantMedioMayoreo.Name = "txtCantMedioMayoreo";
-            this.txtCantMedioMayoreo.Size = new System.Drawing.Size(188, 27);
-            this.txtCantMedioMayoreo.TabIndex = 1;
-            this.txtCantMedioMayoreo.Text = "0";
-            this.txtCantMedioMayoreo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // btnAceptar
             // 
@@ -172,10 +124,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grbPOS;
-        private System.Windows.Forms.Label lblECantMedioMayoreo;
-        private System.Windows.Forms.TextBox txtCantMedioMayoreo;
-        private System.Windows.Forms.Label lblECantMayoreo;
-        private System.Windows.Forms.TextBox txtCantMayoreo;
         private System.Windows.Forms.Label lblEIVA;
         private System.Windows.Forms.TextBox txtIVA;
         private System.Windows.Forms.Button btnAceptar;

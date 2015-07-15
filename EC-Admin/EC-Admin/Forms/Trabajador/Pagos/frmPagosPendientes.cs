@@ -92,7 +92,7 @@ namespace EC_Admin.Forms
 
         private void txtBusqueda_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && !bgwBusqueda.IsBusy)
             {
                 Buscar();
             }

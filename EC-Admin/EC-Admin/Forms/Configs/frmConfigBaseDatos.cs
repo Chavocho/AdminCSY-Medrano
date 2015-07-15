@@ -13,12 +13,11 @@ namespace EC_Admin.Forms
     public partial class frmConfigBaseDatos : Form
     {
         frmPrimerUso frm = null;
-        bool reiniciar;
+        bool reiniciar = false;
 
-        public frmConfigBaseDatos(bool reiniciar)
+        public frmConfigBaseDatos()
         {
             InitializeComponent();
-            this.reiniciar = reiniciar;
         }
 
         public frmConfigBaseDatos(frmPrimerUso frm)
@@ -48,6 +47,18 @@ namespace EC_Admin.Forms
             Config.pass = txtPass.Text;
         }
 
+        private void VerificarDatos()
+        {
+            if (Config.servidor != txtServer.Text || Config.baseDatos != txtBase.Text || Config.usuario != txtUsuario.Text || Config.pass != txtPass.Text)
+            {
+                reiniciar = true;
+            }
+            else
+            {
+                reiniciar = false;
+            }
+        }
+
         private void frmConfigBaseDatos_Load(object sender, EventArgs e)
         {
             Cargar();
@@ -56,17 +67,18 @@ namespace EC_Admin.Forms
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Es correcta la información?", "Admin CSY");
-            if (r == System.Windows.Forms.DialogResult.Yes)
+            if (r == DialogResult.Yes)
             {
                 if (frm == null)
                 {
+                    VerificarDatos();
                     Guardar();
                     try
                     {
                         if (!ConexionBD.Ping())
                         {
                             DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
-                            if (re == System.Windows.Forms.DialogResult.Yes)
+                            if (re == DialogResult.Yes)
                             {
                                 return;
                             }

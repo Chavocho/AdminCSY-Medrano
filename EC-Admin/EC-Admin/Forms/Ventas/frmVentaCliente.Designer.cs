@@ -41,7 +41,7 @@
             this.CTelefonos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.bgwBúsqueda = new System.ComponentModel.BackgroundWorker();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
             this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
@@ -173,10 +173,10 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // bgwBúsqueda
+            // bgwBusqueda
             // 
-            this.bgwBúsqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBúsqueda_DoWork);
-            this.bgwBúsqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBúsqueda_RunWorkerCompleted);
+            this.bgwBusqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusqueda_DoWork);
+            this.bgwBusqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusqueda_RunWorkerCompleted);
             // 
             // tmrEspera
             // 
@@ -218,7 +218,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CTelefonos;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCorreo;
         private System.Windows.Forms.Button btnAceptar;
-        private System.ComponentModel.BackgroundWorker bgwBúsqueda;
+        private System.ComponentModel.BackgroundWorker bgwBusqueda;
         private System.Windows.Forms.Timer tmrEspera;
     }
 }

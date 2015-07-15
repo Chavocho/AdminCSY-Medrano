@@ -386,7 +386,14 @@ namespace EC_Admin.Forms
             if (!bgwBusquedaVentas.IsBusy)
             {
                 tmrEsperaVenta.Enabled = true;
-                bgwBusquedaVentas.RunWorkerAsync(new object[] { dtpFechaInicio.Value, chbTrabajador.Checked, idTrabajadores[cboVendedor.SelectedIndex] });
+                if (idTrabajadores.Count > 0)
+                {
+                    bgwBusquedaVentas.RunWorkerAsync(new object[] { dtpFechaInicio.Value, chbTrabajador.Checked, idTrabajadores[cboVendedor.SelectedIndex] });
+                }
+                else
+                {
+                    bgwBusquedaVentas.RunWorkerAsync(new object[] { dtpFechaInicio.Value, chbTrabajador.Checked, 0 });
+                }
             }
         }
 
@@ -431,7 +438,15 @@ namespace EC_Admin.Forms
             try
             {
                 CargarTrabajadores();
-                cboVendedor.SelectedIndex = 0;
+                if (idTrabajadores.Count > 0)
+                {
+                    cboVendedor.SelectedIndex = 0;
+                }
+                else
+                {
+                    chbTrabajador.Checked = false;
+                    chbTrabajador.Enabled = false;
+                }
             }
             catch (MySqlException ex)
             {

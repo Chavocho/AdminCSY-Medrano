@@ -51,7 +51,7 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT t.id, t.nombre, t.apellidos, p.nombre AS puesto, t.telefono, t.celular, t.email FROM trabajador AS t INNER JOIN puesto AS p ON (t.puesto=p.id) WHERE (t.nombre LIKE '%" + p + "%' OR t.apellidos LIKE '%" + p + "%') AND t.eliminado=0 AND t.id_sucursal='" + Config.idSucursal + "'";
+                string sql = "SELECT t.id, t.nombre, t.apellidos, p.nombre AS puesto, t.telefono, t.celular, t.email FROM trabajador AS t INNER JOIN puesto AS p ON (t.puesto=p.id) WHERE (t.nombre LIKE '%" + p + "%' OR t.apellidos LIKE '%" + p + "%') AND t.eliminado=0 AND t.sucursal_id='" + Config.idSucursal + "'";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -118,7 +118,7 @@ namespace EC_Admin.Forms
 
         private void txtBusqueda_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && !bgwBusqueda.IsBusy)
             {
                 tmrEspera.Enabled = true;
                 bgwBusqueda.RunWorkerAsync(txtBusqueda.Text);

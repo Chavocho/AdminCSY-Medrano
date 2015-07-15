@@ -101,7 +101,7 @@ namespace EC_Admin.Forms
 
         private void txtBusqueda_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && !bgwBusqueda.IsBusy)
             {
                 tmrEspera.Enabled = true;
                 bgwBusqueda.RunWorkerAsync(new object[] { txtBusqueda.Text });
@@ -110,8 +110,11 @@ namespace EC_Admin.Forms
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            tmrEspera.Enabled = true;
-            bgwBusqueda.RunWorkerAsync(new object[] { dtpFechaInicio.Value, dtpFechaFin.Value });
+            if (!bgwBusqueda.IsBusy)
+            {
+                tmrEspera.Enabled = true;
+                bgwBusqueda.RunWorkerAsync(new object[] { dtpFechaInicio.Value, dtpFechaFin.Value });
+            }
         }
 
         private void dtpFecha_ValueChanged(object sender, EventArgs e)

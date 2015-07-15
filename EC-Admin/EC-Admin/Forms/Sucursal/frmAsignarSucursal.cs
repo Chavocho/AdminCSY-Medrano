@@ -14,13 +14,15 @@ namespace EC_Admin.Forms
     public partial class frmAsignarSucursal : Form
     {
         int id;
+        bool cerrar;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
         CerrarFrmEspera c;
 
-        public frmAsignarSucursal()
+        public frmAsignarSucursal(bool cerrar)
         {
             InitializeComponent();
+            this.cerrar = cerrar;
             c = new CerrarFrmEspera(Cerrar);
         }
 
@@ -146,8 +148,16 @@ namespace EC_Admin.Forms
                 try
                 {
                     CambioSucursal();
-                    FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cambiado la sucursal correctamente!. La aplicación se cerrará.", "Admin CSY");
-                    Application.Exit();
+                    if (cerrar)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cambiado la sucursal correctamente!. La aplicación se cerrará.", "Admin CSY");
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cambiado la sucursal correctamente!.", "Admin CSY");
+                        this.Close();
+                    }
                 }
                 catch (Exception ex)
                 {
