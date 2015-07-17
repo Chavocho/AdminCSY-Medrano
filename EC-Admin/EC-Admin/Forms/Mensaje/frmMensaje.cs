@@ -169,6 +169,7 @@ namespace EC_Admin
             pnlMensaje.Controls.Add(btnSi);
             pnlMensaje.Controls.Add(btnNo);
             pnlMensaje.Controls.Add(btnCancelar);
+            btnSi.Select();
         }
 
         private void frmError_Load(object sender, EventArgs e)

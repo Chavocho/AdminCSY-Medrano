@@ -116,11 +116,11 @@ namespace EC_Admin.Forms
                 DataGridViewRow dr = dgvProductos.CurrentRow;
                 if (frm != null)
                 {
-                    frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[2].Value.ToString(), dr.Cells[1].Value.ToString(), (int)nudCant.Value, nudDescuento.Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[5].Value.ToString()), false);
+                    frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[2].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[3].Value, (int)nudCant.Value, nudDescuento.Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[5].Value.ToString()), false);
                 }
                 else if (frmC != null)
                 {
-                    frmC.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[2].Value.ToString(), dr.Cells[1].Value.ToString(), nudCant.Value, nudDescuento.Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[5].Value.ToString()));
+                    frmC.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[2].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[3].Value, (int)nudCant.Value, nudDescuento.Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[5].Value.ToString()), false);
                 }
                 this.Close();
             }

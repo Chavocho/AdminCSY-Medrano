@@ -317,7 +317,7 @@
             this.btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProductos.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnProductos.ForeColor = System.Drawing.Color.White;
-            this.btnProductos.Location = new System.Drawing.Point(796, 475);
+            this.btnProductos.Location = new System.Drawing.Point(590, 475);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(200, 60);
             this.btnProductos.TabIndex = 4;
@@ -652,7 +652,7 @@
             this.btnPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPromociones.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnPromociones.ForeColor = System.Drawing.Color.White;
-            this.btnPromociones.Location = new System.Drawing.Point(796, 541);
+            this.btnPromociones.Location = new System.Drawing.Point(796, 475);
             this.btnPromociones.Name = "btnPromociones";
             this.btnPromociones.Size = new System.Drawing.Size(200, 60);
             this.btnPromociones.TabIndex = 40;

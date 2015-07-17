@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.grbPOS = new System.Windows.Forms.GroupBox();
-            this.lblEInformacion = new System.Windows.Forms.Label();
             this.lblEIVA = new System.Windows.Forms.Label();
             this.txtIVA = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -38,33 +37,21 @@
             // 
             // grbPOS
             // 
-            this.grbPOS.Controls.Add(this.lblEInformacion);
             this.grbPOS.Controls.Add(this.lblEIVA);
             this.grbPOS.Controls.Add(this.txtIVA);
             this.grbPOS.Font = new System.Drawing.Font("Corbel", 9F);
             this.grbPOS.Location = new System.Drawing.Point(12, 12);
             this.grbPOS.Name = "grbPOS";
-            this.grbPOS.Size = new System.Drawing.Size(505, 116);
+            this.grbPOS.Size = new System.Drawing.Size(505, 78);
             this.grbPOS.TabIndex = 1;
             this.grbPOS.TabStop = false;
             this.grbPOS.Text = "Punto de venta";
-            // 
-            // lblEInformacion
-            // 
-            this.lblEInformacion.AutoSize = true;
-            this.lblEInformacion.Font = new System.Drawing.Font("Corbel", 9F);
-            this.lblEInformacion.Location = new System.Drawing.Point(6, 18);
-            this.lblEInformacion.Name = "lblEInformacion";
-            this.lblEInformacion.Size = new System.Drawing.Size(279, 28);
-            this.lblEInformacion.TabIndex = 7;
-            this.lblEInformacion.Text = "*Ingrese las cantidades para que se asignen los precios \r\nde medio mayoreo y mayo" +
-    "reo a la venta según se asigne";
             // 
             // lblEIVA
             // 
             this.lblEIVA.AutoSize = true;
             this.lblEIVA.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblEIVA.Location = new System.Drawing.Point(6, 58);
+            this.lblEIVA.Location = new System.Drawing.Point(6, 18);
             this.lblEIVA.Name = "lblEIVA";
             this.lblEIVA.Size = new System.Drawing.Size(97, 18);
             this.lblEIVA.TabIndex = 6;
@@ -73,7 +60,7 @@
             // txtIVA
             // 
             this.txtIVA.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIVA.Location = new System.Drawing.Point(6, 83);
+            this.txtIVA.Location = new System.Drawing.Point(6, 43);
             this.txtIVA.Name = "txtIVA";
             this.txtIVA.Size = new System.Drawing.Size(105, 27);
             this.txtIVA.TabIndex = 5;
@@ -103,6 +90,7 @@
             // 
             // frmConfigGeneral
             // 
+            this.AcceptButton = this.btnAceptar;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(529, 261);
@@ -127,6 +115,5 @@
         private System.Windows.Forms.Label lblEIVA;
         private System.Windows.Forms.TextBox txtIVA;
         private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.Label lblEInformacion;
     }
 }

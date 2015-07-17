@@ -32,17 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvPromociones = new System.Windows.Forms.DataGridView();
-            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CFechaIni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CFechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblEBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
@@ -52,6 +45,13 @@
             this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CFechaIni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CFechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CExistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPromociones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +76,7 @@
             this.dgvPromociones.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -88,11 +88,12 @@
             this.CProducto,
             this.CFechaIni,
             this.CFechaFin,
+            this.CExistencia,
             this.CCantidad,
             this.CPrecio});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -104,60 +105,12 @@
             this.dgvPromociones.MultiSelect = false;
             this.dgvPromociones.Name = "dgvPromociones";
             this.dgvPromociones.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPromociones.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvPromociones.RowHeadersVisible = false;
             this.dgvPromociones.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPromociones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPromociones.Size = new System.Drawing.Size(803, 402);
             this.dgvPromociones.TabIndex = 3;
             this.dgvPromociones.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPromociones_RowEnter);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CProducto
-            // 
-            this.CProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CProducto.HeaderText = "Producto";
-            this.CProducto.Name = "CProducto";
-            // 
-            // CFechaIni
-            // 
-            dataGridViewCellStyle3.Format = "dd \'de\' MMMM \'del\' yyyy";
-            this.CFechaIni.DefaultCellStyle = dataGridViewCellStyle3;
-            this.CFechaIni.HeaderText = "Fecha de inicio";
-            this.CFechaIni.Name = "CFechaIni";
-            this.CFechaIni.Width = 200;
-            // 
-            // CFechaFin
-            // 
-            dataGridViewCellStyle4.Format = "dd \'de\' MMMM \'del\' yyyy";
-            this.CFechaFin.DefaultCellStyle = dataGridViewCellStyle4;
-            this.CFechaFin.HeaderText = "Fecha fin";
-            this.CFechaFin.Name = "CFechaFin";
-            this.CFechaFin.Width = 200;
-            // 
-            // CCantidad
-            // 
-            this.CCantidad.HeaderText = "Cantidad";
-            this.CCantidad.Name = "CCantidad";
-            // 
-            // CPrecio
-            // 
-            dataGridViewCellStyle5.Format = "C2";
-            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle5;
-            this.CPrecio.HeaderText = "Precio";
-            this.CPrecio.Name = "CPrecio";
             // 
             // btnNuevo
             // 
@@ -278,6 +231,51 @@
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CProducto
+            // 
+            this.CProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CProducto.HeaderText = "Producto";
+            this.CProducto.Name = "CProducto";
+            // 
+            // CFechaIni
+            // 
+            dataGridViewCellStyle3.Format = "dd \'de\' MMMM \'del\' yyyy";
+            this.CFechaIni.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CFechaIni.HeaderText = "Fecha de inicio";
+            this.CFechaIni.Name = "CFechaIni";
+            this.CFechaIni.Width = 200;
+            // 
+            // CFechaFin
+            // 
+            dataGridViewCellStyle4.Format = "dd \'de\' MMMM \'del\' yyyy";
+            this.CFechaFin.DefaultCellStyle = dataGridViewCellStyle4;
+            this.CFechaFin.HeaderText = "Fecha fin";
+            this.CFechaFin.Name = "CFechaFin";
+            this.CFechaFin.Width = 200;
+            // 
+            // CExistencia
+            // 
+            this.CExistencia.HeaderText = "Existencia";
+            this.CExistencia.Name = "CExistencia";
+            // 
+            // CCantidad
+            // 
+            this.CCantidad.HeaderText = "Cantidad";
+            this.CCantidad.Name = "CCantidad";
+            // 
+            // CPrecio
+            // 
+            dataGridViewCellStyle5.Format = "C2";
+            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle5;
+            this.CPrecio.HeaderText = "Precio";
+            this.CPrecio.Name = "CPrecio";
+            // 
             // frmPromociones
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -311,13 +309,14 @@
         private System.Windows.Forms.ComboBox cboTipoPromocion;
         private System.ComponentModel.BackgroundWorker bgwBusqueda;
         private System.Windows.Forms.Timer tmrEspera;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn CFechaIni;
         private System.Windows.Forms.DataGridViewTextBoxColumn CFechaFin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CExistencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnEditar;
     }
 }

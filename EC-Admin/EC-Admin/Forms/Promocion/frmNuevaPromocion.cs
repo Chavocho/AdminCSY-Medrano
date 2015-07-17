@@ -14,7 +14,7 @@ namespace EC_Admin.Forms
     public partial class frmNuevaPromocion : Form
     {
         int id = -1;
-        decimal cant;
+        int cant;
 
         public frmNuevaPromocion()
         {
@@ -22,7 +22,7 @@ namespace EC_Admin.Forms
             chbExistencias.Checked = true;
         }
 
-        public void AsignarProducto(int id, string nombre, string marca, decimal cant)
+        public void AsignarProducto(int id, string nombre, string marca, int cant)
         {
             this.id = id;
             this.cant = cant;

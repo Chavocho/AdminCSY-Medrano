@@ -268,6 +268,7 @@ namespace EC_Admin
         {
             try
             {
+                id = IDVentaSucursal();
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "INSERT INTO venta (id, id_sucursal, id_vendedor, tipo_pago, create_user, create_time) VALUES (?id, ?id_sucursal, ?id_vendedor, ?tipo_pago, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?id", IDVentaSucursal());
@@ -275,8 +276,9 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?id_vendedor", idV);
                 sql.Parameters.AddWithValue("?tipo_pago", TipoPago.Efectivo);   
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
-                id = ConexionBD.EjecutarConsulta(sql);
+                ConexionBD.EjecutarConsulta(sql);
                 InicializarVenta();
+                InicializarVentaDetallada();
             }
             catch (MySqlException ex)
             {

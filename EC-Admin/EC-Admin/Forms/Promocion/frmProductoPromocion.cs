@@ -44,7 +44,7 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT id, nombre, marca, costo, precio, cant FROM producto WHERE nombre LIKE '%" + p + "%' OR marca LIKE '%" + p + "%'";
+                string sql = "SELECT p.id, p.nombre, p.marca, p.costo, i.precio, i.cant FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto) WHERE p.nombre LIKE '%" + p + "%' OR p.marca LIKE '%" + p + "%'";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -120,11 +120,11 @@ namespace EC_Admin.Forms
             {
                 if (frmN != null)
                 {
-                    frmN.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), dgvPromociones[2, dgvPromociones.CurrentRow.Index].Value.ToString(), (decimal)dgvPromociones[5, dgvPromociones.CurrentRow.Index].Value);
+                    frmN.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), dgvPromociones[2, dgvPromociones.CurrentRow.Index].Value.ToString(), (int)dgvPromociones[5, dgvPromociones.CurrentRow.Index].Value);
                 }
                 else if (frmE != null)
                 {
-                    frmE.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), dgvPromociones[2, dgvPromociones.CurrentRow.Index].Value.ToString(), (decimal)dgvPromociones[5, dgvPromociones.CurrentRow.Index].Value);
+                    frmE.AsignarProducto(id, dgvPromociones[1, dgvPromociones.CurrentRow.Index].Value.ToString(), dgvPromociones[2, dgvPromociones.CurrentRow.Index].Value.ToString(), (int)dgvPromociones[5, dgvPromociones.CurrentRow.Index].Value);
                 }
                 this.Close();
             }

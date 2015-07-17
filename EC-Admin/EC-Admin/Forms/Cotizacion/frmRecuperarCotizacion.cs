@@ -57,7 +57,7 @@ namespace EC_Admin.Forms
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT id, total, create_time FROM cotizacion WHERE (create_time BETWEEN ?fechaIni AND ?fechaFin)";
+                sql.CommandText = "SELECT id, total, create_time FROM cotizacion WHERE (create_time BETWEEN ?fechaIni AND ?fechaFin) OR (update_time BETWEEN ?fechaIni AND ?fechaFin)";
                 sql.Parameters.AddWithValue("?fechaIni", fechaIni.ToString("yyyy-MM-dd") + " 00:00:00");
                 sql.Parameters.AddWithValue("?fechaFin", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
@@ -159,6 +159,31 @@ namespace EC_Admin.Forms
                 dgvCotizacion.Enabled = false;
                 btnAceptar.PerformClick();
             }
+        }
+
+        private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
+        {
+            object[] a = (object[])e.Argument;
+            if (a.Length == 1)
+            {
+                Buscar(a[0].ToString());
+            }
+            else if (a.Length == 2)
+            {
+                Buscar((DateTime)a[0], (DateTime)a[1]);
+            }
+        }
+
+        private void bgwBusqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cerrar();
+            LlenarDataGrid();
+        }
+
+        private void tmrEspera_Tick(object sender, EventArgs e)
+        {
+            tmrEspera.Enabled = false;
+            FuncionesGenerales.frmEspera("Espere, estamos cargando las cotizaciones", this);
         }
     }
 }

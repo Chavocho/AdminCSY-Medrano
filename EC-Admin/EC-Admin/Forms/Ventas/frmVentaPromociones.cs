@@ -14,7 +14,8 @@ namespace EC_Admin.Forms
     public partial class frmVentaPromociones : Form
     {
         int id;
-        frmPOS frm;
+        frmPOS frm = null;
+        frmCotizacion frmC = null;
         DataTable dt = new DataTable();
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
         CerrarFrmEspera c;
@@ -25,6 +26,14 @@ namespace EC_Admin.Forms
             c = new CerrarFrmEspera(Cerrar);
             cboTipoPromocion.SelectedIndex = 0;
             this.frm = frm;
+        }
+
+        public frmVentaPromociones(frmCotizacion frm)
+        {
+            InitializeComponent();
+            c = new CerrarFrmEspera(Cerrar);
+            cboTipoPromocion.SelectedIndex = 0;
+            this.frmC = frm;
         }
 
         private void Cerrar()
@@ -157,7 +166,7 @@ namespace EC_Admin.Forms
         {
             if (dgvProductos.CurrentRow != null)
             {
-                if ((decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value * nudCantidad.Value <= (decimal)dgvProductos[6, dgvProductos.CurrentRow.Index].Value)
+                if ((int)dgvProductos[5, dgvProductos.CurrentRow.Index].Value * (int)nudCantidad.Value <= (int)dgvProductos[6, dgvProductos.CurrentRow.Index].Value)
                 {
                     bool existencias;
                     if (cboTipoPromocion.SelectedIndex == 0)
@@ -165,7 +174,10 @@ namespace EC_Admin.Forms
                     else
                         existencias = false;
                     DataGridViewRow dr = dgvProductos.CurrentRow;
-                    frm.PromocionProducto((int)dr.Cells[1].Value, dr.Cells[2].Value.ToString(), dr.Cells[3].Value.ToString(), (decimal)dr.Cells[4].Value, nudCantidad.Value * (decimal)dr.Cells[5].Value, (decimal)dr.Cells[6].Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[7].Value.ToString()), (int)dr.Cells[0].Value, existencias);
+                    if (frm != null)
+                        frm.PromocionProducto((int)dr.Cells[1].Value, dr.Cells[2].Value.ToString(), dr.Cells[3].Value.ToString(), (decimal)dr.Cells[4].Value, (int)nudCantidad.Value * (int)dr.Cells[5].Value, (int)dr.Cells[6].Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[7].Value.ToString()), (int)dr.Cells[0].Value, existencias);
+                    else if (frmC != null)
+                        frmC.PromocionProducto((int)dr.Cells[1].Value, dr.Cells[2].Value.ToString(), dr.Cells[3].Value.ToString(), (decimal)dr.Cells[4].Value, (int)nudCantidad.Value * (int)dr.Cells[5].Value, (int)dr.Cells[6].Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[7].Value.ToString()), (int)dr.Cells[0].Value, existencias);
                     this.Close();
                 }
                 else
