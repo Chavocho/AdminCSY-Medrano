@@ -41,7 +41,7 @@
             this.lblTitulo02.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
             this.lblTitulo02.Location = new System.Drawing.Point(252, 61);
             this.lblTitulo02.Name = "lblTitulo02";
-            this.lblTitulo02.Size = new System.Drawing.Size(97, 24);
+            this.lblTitulo02.Size = new System.Drawing.Size(107, 24);
             this.lblTitulo02.TabIndex = 1;
             this.lblTitulo02.Text = "Admin CSY";
             // 
@@ -89,6 +89,7 @@
             // 
             // frmBienvenido
             // 
+            this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;

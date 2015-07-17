@@ -119,7 +119,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(346, 73);
+            this.btnBuscar.Location = new System.Drawing.Point(270, 74);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(97, 30);
             this.btnBuscar.TabIndex = 2;

@@ -14,12 +14,20 @@ namespace EC_Admin.Forms
     public partial class frmPaquetes : Form
     {
         int idP;
-        frmPOS frm;
+        frmPOS frm = null;
+        frmCotizacion frmC = null;
 
         public frmPaquetes(frmPOS frm, int idP)
         {
             InitializeComponent();
             this.frm = frm;
+            this.idP = idP;
+        }
+
+        public frmPaquetes(frmCotizacion frm, int idP)
+        {
+            InitializeComponent();
+            this.frmC = frm;
             this.idP = idP;
         }
 
@@ -51,9 +59,13 @@ namespace EC_Admin.Forms
         {
             if (dgvPaquetes.CurrentRow != null)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas asignar este paquete?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas asignar este paquete?", "Admin CSY") == DialogResult.Yes)
                 {
-                    frm.PaqueteProducto((decimal)dgvPaquetes[1, dgvPaquetes.CurrentRow.Index].Value, decimal.Parse(dgvPaquetes[2, dgvPaquetes.CurrentRow.Index].Value.ToString()));
+                    decimal precio = (decimal)dgvPaquetes[1, dgvPaquetes.CurrentRow.Index].Value / (int)dgvPaquetes[2, dgvPaquetes.CurrentRow.Index].Value;
+                    if (frm != null)
+                        frm.PaqueteProducto(precio, (int)dgvPaquetes[2, dgvPaquetes.CurrentRow.Index].Value);
+                    else if (frmC != null)
+                        frmC.PaqueteProducto(precio, (int)dgvPaquetes[2, dgvPaquetes.CurrentRow.Index].Value);
                     this.Close();
                 }
             }

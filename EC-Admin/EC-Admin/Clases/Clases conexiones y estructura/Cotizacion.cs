@@ -21,8 +21,6 @@ namespace EC_Admin
         private decimal impuesto;
         private decimal descuento;
         private decimal total;
-        private bool factura;
-        private string folioFactura;
         private int createUser;
         private DateTime createTime;
         private int updateUser;
@@ -89,19 +87,7 @@ namespace EC_Admin
             get { return total; }
             set { total = value; }
         }
-
-        public bool Factura
-        {
-            get { return factura; }
-            set { factura = value; }
-        }
-
-        public string FolioFactura
-        {
-            get { return folioFactura; }
-            set { folioFactura = value; }
-        }
-
+        
         public int CreateUser
         {
             get { return createUser; }
@@ -139,6 +125,8 @@ namespace EC_Admin
         private List<decimal> precio;
         private List<decimal> descuentoP;
         private List<Unidades> unidad;
+        private List<bool> paquete;
+        private List<int> promocion;
 
         public List<int> IDProductos
         {
@@ -169,6 +157,19 @@ namespace EC_Admin
             get { return unidad; }
             set { unidad = value; }
         }
+
+        public List<bool> Paquete
+        {
+            get { return paquete; }
+            set { paquete = value; }
+        }
+
+        public List<int> Promocion
+        {
+            get { return promocion; }
+            set { promocion = value; }
+        }
+
         #endregion
 
         /// <summary>
@@ -215,9 +216,38 @@ namespace EC_Admin
             precio = new List<decimal>();
             descuentoP = new List<decimal>();
             unidad = new List<Unidades>();
+            paquete = new List<bool>();
+            promocion = new List<int>();
         }
 
         #region Cotización
+
+        private int IDCotizacionSucursal()
+        {
+            int id = 1;
+            try
+            {
+                string sql = "SELECT MAX(id) AS i FROM cotizacion WHERE id_sucursal='" + Config.idSucursal + "'";
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["i"] == DBNull.Value)
+                        id = 1;
+                    else
+                        id = (int.Parse(dr["i"].ToString()) + 1);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return id;
+        }
+
         /// <summary>
         /// Inserta una nueva venta y asigna el ID de la venta
         /// </summary>
@@ -225,11 +255,14 @@ namespace EC_Admin
         {
             try
             {
+                id = IDCotizacionSucursal();
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO cotizacion (id_vendedor, create_user, create_time) VALUES (?id_vendedor, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO cotizacion (id, id_sucursal, id_vendedor, create_user, create_time) VALUES (?id, ?id_sucursal, ?id_vendedor, ?create_user, NOW())";
+                sql.Parameters.AddWithValue("?id", id);
+                sql.Parameters.AddWithValue("?id_sucursal", Config.idSucursal);
                 sql.Parameters.AddWithValue("?id_vendedor", idV);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
-                id = ConexionBD.EjecutarConsulta(sql);
+                ConexionBD.EjecutarConsulta(sql);
                 Inicializar();
                 InicializarDetallada();
             }
@@ -265,8 +298,6 @@ namespace EC_Admin
                     impuesto = (decimal)dr["impuesto"];
                     descuento = (decimal)dr["descuento"];
                     total = (decimal)dr["total"];
-                    factura = (bool)dr["factura"];
-                    folioFactura = dr["folio_factura"].ToString();
                     createUser = (int)dr["create_user"];
                     createTime = (DateTime)dr["create_time"];
                     if (dr["update_user"] != DBNull.Value)
@@ -307,7 +338,7 @@ namespace EC_Admin
             {
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "UPDATE cotizacion SET id_cliente=?id_cliente, id_sucursal=?id_sucursal, id_vendedor=?id_vendedor, subtotal=?subtotal, impuesto=?impuesto, " + 
-                    "descuento=?descuento, total=?total, factura=?factura, folio_factura=?folio_factura, update_user=?update_user, update_time=NOW() WHERE id=?id";
+                    "descuento=?descuento, total=?total, update_user=?update_user, update_time=NOW() WHERE id=?id";
                 sql.Parameters.AddWithValue("?id_cliente", idC);
                 sql.Parameters.AddWithValue("?id_sucursal", idS);
                 sql.Parameters.AddWithValue("?id_vendedor", idV);
@@ -316,8 +347,6 @@ namespace EC_Admin
                 sql.Parameters.AddWithValue("?impuesto", impuesto);
                 sql.Parameters.AddWithValue("?descuento", descuento);
                 sql.Parameters.AddWithValue("?total", total);
-                sql.Parameters.AddWithValue("?factura", factura);
-                sql.Parameters.AddWithValue("?folio_factura", folioFactura);
                 sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
                 sql.Parameters.AddWithValue("?id", id);
                 ConexionBD.EjecutarConsulta(sql);
@@ -346,15 +375,17 @@ namespace EC_Admin
                 MySqlCommand sql = new MySqlCommand();
                 for (int i = 0; i < idP.Count; i++)
                 {
-                    sql.CommandText = "INSERT INTO cotizacion_detallada (id_venta, id_producto, cant, precio, descuento, unidad) " +
-                    "VALUES (?id_venta, ?id_producto, ?cant, ?precio, ?descuento, ?unidad) " +
-                    "ON DUPLICATE KEY UPDATE cant=?cant, precio=?precio, descuento=?descuento, unidad=?unidad;";
+                    sql.CommandText = "INSERT INTO cotizacion_detallada (id_venta, id_producto, cant, precio, descuento, unidad, paquete, id_promocion) " +
+                    "VALUES (?id_venta, ?id_producto, ?cant, ?precio, ?descuento, ?unidad, ?paquete, ?promocion) " +
+                    "ON DUPLICATE KEY UPDATE cant=?cant, precio=?precio, descuento=?descuento, unidad=?unidad, paquete=?paquete, id_promocion=?promocion;";
                     sql.Parameters.AddWithValue("?id_venta", id);
                     sql.Parameters.AddWithValue("?id_producto", idP[i]);
                     sql.Parameters.AddWithValue("?cant", cantidad[i]);
                     sql.Parameters.AddWithValue("?precio", precio[i]);
                     sql.Parameters.AddWithValue("?descuento", descuentoP[i]);
                     sql.Parameters.AddWithValue("?unidad", unidad[i]);
+                    sql.Parameters.AddWithValue("?paquete", paquete[i]);
+                    sql.Parameters.AddWithValue("?promocion", promocion[i]);
                     ConexionBD.EjecutarConsulta(sql);
                     sql.Parameters.Clear();
                 }
@@ -388,6 +419,8 @@ namespace EC_Admin
                     precio.Add((decimal)dr["precio"]);
                     descuentoP.Add((decimal)dr["descuento"]);
                     unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
+                    paquete.Add((bool)dr["paquete"]);
+                    promocion.Add((int)dr["id_promocion"]);
                 }
             }
             catch (MySqlException ex)

@@ -623,6 +623,7 @@
             // 
             // frmNuevaSucursal
             // 
+            this.AcceptButton = this.btnAceptar;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(813, 669);

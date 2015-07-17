@@ -73,7 +73,7 @@ namespace EC_Admin.Forms
         {
             try
             {
-                string sql = "SELECT p.id, pr.nombre, p.cant, p.precio FROM promocion AS p INNER JOIN producto AS pr ON (p.id_producto=pr.id) WHERE pr.nombre LIKE '%" + p + "%' AND p.existencias=1";
+                string sql = "SELECT p.id, pr.nombre, p.cant, p.cant_prod, p.precio FROM promocion AS p INNER JOIN producto AS pr ON (p.id_producto=pr.id) WHERE pr.nombre LIKE '%" + p + "%' AND p.existencias=1";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -97,14 +97,14 @@ namespace EC_Admin.Forms
                 {
                     foreach (DataRow dr in dt.Rows)
                     {
-                        dgvPromociones.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["fecha_ini"], dr["fecha_fin"], -1, dr["precio"] });
+                        dgvPromociones.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["fecha_ini"], dr["fecha_fin"], -1, -1, dr["precio"] });
                     }
                 }
                 else if (cboTipoPromocion.SelectedIndex == 1)
                 {
                     foreach (DataRow dr in dt.Rows)
                     {
-                        dgvPromociones.Rows.Add(new object[] { dr["id"], dr["nombre"], new DateTime(), new DateTime(), dr["cant"], dr["precio"] });
+                        dgvPromociones.Rows.Add(new object[] { dr["id"], dr["nombre"], new DateTime(), new DateTime(), dr["cant_prod"], dr["cant"], dr["precio"] });
                     }
                 }
                 dgvPromociones_RowEnter(dgvPromociones, new DataGridViewCellEventArgs(0, 0));
@@ -123,12 +123,14 @@ namespace EC_Admin.Forms
                 dgvPromociones.Columns[2].Visible = true;
                 dgvPromociones.Columns[3].Visible = true;
                 dgvPromociones.Columns[4].Visible = false;
+                dgvPromociones.Columns[5].Visible = false;
             }
             else if (cboTipoPromocion.SelectedIndex == 1)
             {
                 dgvPromociones.Columns[2].Visible = false;
                 dgvPromociones.Columns[3].Visible = false;
                 dgvPromociones.Columns[4].Visible = true;
+                dgvPromociones.Columns[5].Visible = true;
             }
         }
 

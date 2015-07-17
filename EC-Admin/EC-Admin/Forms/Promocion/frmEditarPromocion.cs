@@ -14,7 +14,7 @@ namespace EC_Admin.Forms
     public partial class frmEditarPromocion : Form
     {
         int id = -1;
-        decimal cant;
+        int cant;
         Promociones p;
 
         public frmEditarPromocion(int id)
@@ -23,7 +23,7 @@ namespace EC_Admin.Forms
             p = new Promociones(id);
         }
 
-        public void AsignarProducto(int id, string nombre, string marca, decimal cant)
+        public void AsignarProducto(int id, string nombre, string marca, int cant)
         {
             this.id = id;
             this.cant = cant;
@@ -162,12 +162,13 @@ namespace EC_Admin.Forms
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT nombre, cant FROM producto WHERE id=?id";
+                sql.CommandText = "SELECT p.nombre, p.marca, i.cant FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto) WHERE p.id=?id";
                 sql.Parameters.AddWithValue("?id", id);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
                     lblProducto.Text = dr["nombre"].ToString();
+                    lblMarca.Text = dr["marca"].ToString();
                     cant = (int)dr["cant"];
                 }
             }

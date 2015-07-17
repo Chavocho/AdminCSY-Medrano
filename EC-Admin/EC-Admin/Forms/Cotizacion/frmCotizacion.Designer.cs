@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -71,10 +71,18 @@
             this.CCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPaquetes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPromocion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bgwImagen = new System.ComponentModel.BackgroundWorker();
+            this.lblETipoPrecio = new System.Windows.Forms.Label();
+            this.cboTipoPrecio = new System.Windows.Forms.ComboBox();
+            this.btnPromociones = new System.Windows.Forms.Button();
+            this.cmsProductos = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pcbProducto)).BeginInit();
             this.grbTotales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            this.cmsProductos.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnVendedor
@@ -180,10 +188,10 @@
             // lblCantDif
             // 
             this.lblCantDif.AutoSize = true;
-            this.lblCantDif.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantDif.Location = new System.Drawing.Point(317, 64);
+            this.lblCantDif.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblCantDif.Location = new System.Drawing.Point(317, 66);
             this.lblCantDif.Name = "lblCantDif";
-            this.lblCantDif.Size = new System.Drawing.Size(15, 17);
+            this.lblCantDif.Size = new System.Drawing.Size(14, 15);
             this.lblCantDif.TabIndex = 9;
             this.lblCantDif.Text = "0";
             // 
@@ -200,10 +208,10 @@
             // lblCantTot
             // 
             this.lblCantTot.AutoSize = true;
-            this.lblCantTot.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantTot.Location = new System.Drawing.Point(317, 87);
+            this.lblCantTot.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblCantTot.Location = new System.Drawing.Point(317, 89);
             this.lblCantTot.Name = "lblCantTot";
-            this.lblCantTot.Size = new System.Drawing.Size(15, 17);
+            this.lblCantTot.Size = new System.Drawing.Size(14, 15);
             this.lblCantTot.TabIndex = 11;
             this.lblCantTot.Text = "0";
             // 
@@ -220,10 +228,10 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(90, 87);
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.Location = new System.Drawing.Point(90, 89);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(40, 17);
+            this.lblTotal.Size = new System.Drawing.Size(38, 15);
             this.lblTotal.TabIndex = 7;
             this.lblTotal.Text = "$0.00";
             // 
@@ -240,10 +248,10 @@
             // lblDescuento
             // 
             this.lblDescuento.AutoSize = true;
-            this.lblDescuento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescuento.Location = new System.Drawing.Point(90, 64);
+            this.lblDescuento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblDescuento.Location = new System.Drawing.Point(90, 66);
             this.lblDescuento.Name = "lblDescuento";
-            this.lblDescuento.Size = new System.Drawing.Size(40, 17);
+            this.lblDescuento.Size = new System.Drawing.Size(38, 15);
             this.lblDescuento.TabIndex = 5;
             this.lblDescuento.Text = "$0.00";
             // 
@@ -260,10 +268,10 @@
             // lblImpuesto
             // 
             this.lblImpuesto.AutoSize = true;
-            this.lblImpuesto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImpuesto.Location = new System.Drawing.Point(90, 41);
+            this.lblImpuesto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblImpuesto.Location = new System.Drawing.Point(90, 43);
             this.lblImpuesto.Name = "lblImpuesto";
-            this.lblImpuesto.Size = new System.Drawing.Size(40, 17);
+            this.lblImpuesto.Size = new System.Drawing.Size(38, 15);
             this.lblImpuesto.TabIndex = 3;
             this.lblImpuesto.Text = "$0.00";
             // 
@@ -280,10 +288,10 @@
             // lblSubtotal
             // 
             this.lblSubtotal.AutoSize = true;
-            this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubtotal.Location = new System.Drawing.Point(90, 18);
+            this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSubtotal.Location = new System.Drawing.Point(90, 20);
             this.lblSubtotal.Name = "lblSubtotal";
-            this.lblSubtotal.Size = new System.Drawing.Size(40, 17);
+            this.lblSubtotal.Size = new System.Drawing.Size(38, 15);
             this.lblSubtotal.TabIndex = 1;
             this.lblSubtotal.Text = "$0.00";
             // 
@@ -346,7 +354,7 @@
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(200, 60);
             this.btnCrear.TabIndex = 53;
-            this.btnCrear.Text = "Crear venta (F5)";
+            this.btnCrear.Text = "Crear venta (F6)";
             this.btnCrear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCrear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCrear.UseVisualStyleBackColor = false;
@@ -364,7 +372,7 @@
             this.btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProductos.Font = new System.Drawing.Font("Corbel", 13F);
             this.btnProductos.ForeColor = System.Drawing.Color.White;
-            this.btnProductos.Location = new System.Drawing.Point(796, 475);
+            this.btnProductos.Location = new System.Drawing.Point(590, 475);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(200, 60);
             this.btnProductos.TabIndex = 42;
@@ -481,7 +489,7 @@
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -495,10 +503,13 @@
             this.CPrecio,
             this.CCant,
             this.CDescuento,
-            this.CUnidad});
+            this.CUnidad,
+            this.CPaquetes,
+            this.CPromocion});
+            this.dgvProductos.ContextMenuStrip = this.cmsProductos;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -510,14 +521,6 @@
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -574,15 +577,99 @@
             this.CUnidad.Name = "CUnidad";
             this.CUnidad.Visible = false;
             // 
+            // CPaquetes
+            // 
+            this.CPaquetes.HeaderText = "Paquete";
+            this.CPaquetes.Name = "CPaquetes";
+            this.CPaquetes.Visible = false;
+            // 
+            // CPromocion
+            // 
+            this.CPromocion.HeaderText = "Promocion";
+            this.CPromocion.Name = "CPromocion";
+            this.CPromocion.Visible = false;
+            // 
             // bgwImagen
             // 
             this.bgwImagen.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwImagen_DoWork);
+            // 
+            // lblETipoPrecio
+            // 
+            this.lblETipoPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblETipoPrecio.AutoSize = true;
+            this.lblETipoPrecio.Font = new System.Drawing.Font("Corbel", 13F);
+            this.lblETipoPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblETipoPrecio.Location = new System.Drawing.Point(394, 9);
+            this.lblETipoPrecio.Name = "lblETipoPrecio";
+            this.lblETipoPrecio.Size = new System.Drawing.Size(125, 22);
+            this.lblETipoPrecio.TabIndex = 56;
+            this.lblETipoPrecio.Text = "El cliente paga:";
+            this.lblETipoPrecio.Visible = false;
+            // 
+            // cboTipoPrecio
+            // 
+            this.cboTipoPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboTipoPrecio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            this.cboTipoPrecio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoPrecio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboTipoPrecio.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboTipoPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.cboTipoPrecio.FormattingEnabled = true;
+            this.cboTipoPrecio.Items.AddRange(new object[] {
+            "Precio normal",
+            "Precio medio mayoreo",
+            "Precio mayoreo"});
+            this.cboTipoPrecio.Location = new System.Drawing.Point(525, 6);
+            this.cboTipoPrecio.Name = "cboTipoPrecio";
+            this.cboTipoPrecio.Size = new System.Drawing.Size(220, 29);
+            this.cboTipoPrecio.TabIndex = 55;
+            this.cboTipoPrecio.Visible = false;
+            this.cboTipoPrecio.SelectedIndexChanged += new System.EventHandler(this.cboTipoPrecio_SelectedIndexChanged);
+            // 
+            // btnPromociones
+            // 
+            this.btnPromociones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPromociones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnPromociones.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnPromociones.FlatAppearance.BorderSize = 0;
+            this.btnPromociones.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnPromociones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPromociones.Font = new System.Drawing.Font("Corbel", 13F);
+            this.btnPromociones.ForeColor = System.Drawing.Color.White;
+            this.btnPromociones.Location = new System.Drawing.Point(796, 475);
+            this.btnPromociones.Name = "btnPromociones";
+            this.btnPromociones.Size = new System.Drawing.Size(200, 60);
+            this.btnPromociones.TabIndex = 57;
+            this.btnPromociones.Text = "Promociones (F5)";
+            this.btnPromociones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPromociones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPromociones.UseVisualStyleBackColor = false;
+            this.btnPromociones.Visible = false;
+            this.btnPromociones.Click += new System.EventHandler(this.btnPromociones_Click);
+            // 
+            // cmsProductos
+            // 
+            this.cmsProductos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem});
+            this.cmsProductos.Name = "cmsProductos";
+            this.cmsProductos.Size = new System.Drawing.Size(260, 48);
+            // 
+            // agregarPaqueteDeÉsteProductoToolStripMenuItem
+            // 
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Name = "agregarPaqueteDeÉsteProductoToolStripMenuItem";
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Text = "Agregar paquetes de éste producto";
+            this.agregarPaqueteDeÉsteProductoToolStripMenuItem.Click += new System.EventHandler(this.agregarPaqueteDeÉsteProductoToolStripMenuItem_Click);
             // 
             // frmCotizacion
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 698);
+            this.Controls.Add(this.btnPromociones);
+            this.Controls.Add(this.lblETipoPrecio);
+            this.Controls.Add(this.cboTipoPrecio);
             this.Controls.Add(this.btnVendedor);
             this.Controls.Add(this.lblVendedor);
             this.Controls.Add(this.lblEVendedor);
@@ -603,7 +690,7 @@
             this.Font = new System.Drawing.Font("Corbel", 11F);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1024, 736);
+            this.MinimumSize = new System.Drawing.Size(1024, 726);
             this.Name = "frmCotizacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cotizaciones";
@@ -613,6 +700,7 @@
             this.grbTotales.ResumeLayout(false);
             this.grbTotales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            this.cmsProductos.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -657,5 +745,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CCant;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn CUnidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPaquetes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPromocion;
+        private System.Windows.Forms.Label lblETipoPrecio;
+        private System.Windows.Forms.ComboBox cboTipoPrecio;
+        private System.Windows.Forms.Button btnPromociones;
+        private System.Windows.Forms.ContextMenuStrip cmsProductos;
+        private System.Windows.Forms.ToolStripMenuItem agregarPaqueteDeÉsteProductoToolStripMenuItem;
     }
 }

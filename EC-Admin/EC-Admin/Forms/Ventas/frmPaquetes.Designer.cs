@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnCobrar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.dgvPaquetes = new System.Windows.Forms.DataGridView();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,26 +41,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnCobrar
+            // btnAceptar
             // 
-            this.btnCobrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCobrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btnCobrar.FlatAppearance.BorderSize = 0;
-            this.btnCobrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.btnCobrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnCobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCobrar.Font = new System.Drawing.Font("Corbel", 11F);
-            this.btnCobrar.ForeColor = System.Drawing.Color.White;
-            this.btnCobrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCobrar.Location = new System.Drawing.Point(435, 234);
-            this.btnCobrar.Name = "btnCobrar";
-            this.btnCobrar.Size = new System.Drawing.Size(150, 46);
-            this.btnCobrar.TabIndex = 8;
-            this.btnCobrar.Text = "Cobrar";
-            this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCobrar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnCobrar.UseVisualStyleBackColor = false;
-            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnAceptar.FlatAppearance.BorderSize = 0;
+            this.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptar.Font = new System.Drawing.Font("Corbel", 11F);
+            this.btnAceptar.ForeColor = System.Drawing.Color.White;
+            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAceptar.Location = new System.Drawing.Point(435, 234);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(150, 46);
+            this.btnAceptar.TabIndex = 8;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
             // dgvPaquetes
             // 
@@ -138,11 +138,12 @@
             // 
             // frmPaquetes
             // 
+            this.AcceptButton = this.btnAceptar;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(597, 292);
             this.Controls.Add(this.dgvPaquetes);
-            this.Controls.Add(this.btnCobrar);
+            this.Controls.Add(this.btnAceptar);
             this.Font = new System.Drawing.Font("Corbel", 11F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -158,7 +159,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnCobrar;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.DataGridView dgvPaquetes;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;

@@ -125,7 +125,7 @@ namespace EC_Admin.Forms
                 {
                     if (v.Promocion[i] <= 0)
                     {
-                        AgregarProducto(v.IDProductos[i], CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Cantidad[i], v.DescuentoProducto[i], v.Unidad[i], v.Paquete[i]);
+                        AgregarProducto(v.IDProductos[i], CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Precio[i], v.Cantidad[i], v.DescuentoProducto[i], v.Unidad[i], v.Paquete[i]);
                     }
                     else
                     {
@@ -292,7 +292,16 @@ namespace EC_Admin.Forms
                 v.Total = c.Total;
                 for (int i = 0; i < c.IDProductos.Count; i++)
                 {
-                    AgregarProducto(c.IDProductos[i], CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Cantidad[i], c.DescuentoProducto[i], c.Unidad[i], false);
+                    if (v.Promocion[i] <= 0)
+                    {
+                        AgregarProducto(c.IDProductos[i], CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Precio[i], c.Cantidad[i], c.DescuentoProducto[i], c.Unidad[i], c.Paquete[i]);
+                    }
+                    else
+                    {
+                        Promociones p = new Promociones(c.Promocion[i]);
+                        p.ObtenerDatos();
+                        PromocionProducto(c.IDProductos[i], CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Precio[i], c.Cantidad[i], p.Cantidad, c.Unidad[i], c.Promocion[i], p.Existencias);
+                    }
                 }
             }
             catch (Exception ex)
@@ -313,7 +322,7 @@ namespace EC_Admin.Forms
         /// <param name="precio">Precio del producto</param>
         /// <param name="cant">Cantidad del producto</param>
         /// <param name="desc">Descuento aplicado al producto</param>
-        public void AgregarProducto(int id, string codProd, string nombre, int cant, decimal desc, Unidades u, bool paquete)
+        public void AgregarProducto(int id, string codProd, string nombre, decimal precio, int cant, decimal desc, Unidades u, bool paquete)
         {
             if (!VerificarPromocion(id))
             {
@@ -322,7 +331,8 @@ namespace EC_Admin.Forms
                     int cantInv = Inventario.CantidadProducto(id, Config.idSucursal);
                     if (cant <= cantInv)
                     {
-                        decimal precio = PrecioProducto(id, cant);
+                        if (!paquete)
+                            precio = PrecioProducto(id, cant);
                         dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u, false, -1 });
                         if (cboTipoPrecio.SelectedIndex > 0)
                         {
@@ -395,7 +405,7 @@ namespace EC_Admin.Forms
             }
         }
 
-        private decimal PrecioProducto(int id, decimal cant)
+        private decimal PrecioProducto(int id, int cant)
         {
             decimal precio = 0M;
             MySqlCommand sql;
@@ -463,7 +473,7 @@ namespace EC_Admin.Forms
             return precio;
         }
 
-        public void PromocionProducto(int id, string codProd, string nombre, decimal precio, decimal cant, decimal cantTotal, Unidades u, int idPromo, bool existencias)
+        public void PromocionProducto(int id, string codProd, string nombre, decimal precio, int cant, int cantTotal, Unidades u, int idPromo, bool existencias)
         {
             if (idPromo > 0)
             {
@@ -475,7 +485,7 @@ namespace EC_Admin.Forms
             CalcularTotales();
         }
 
-        private bool VerificarPromocion(int idPromo, decimal cant, decimal cantTotal = 0)
+        private bool VerificarPromocion(int idPromo, int cant, int cantTotal = 0)
         {
             bool res = false;
             foreach (DataGridViewRow dr in dgvProductos.Rows)
@@ -483,12 +493,12 @@ namespace EC_Admin.Forms
                 if ((int)dr.Cells[8].Value == idPromo)
                 {
                     res = true;
-                    if (((decimal)dr.Cells[4].Value + cant) > cantTotal)
+                    if (((int)dr.Cells[4].Value + cant) > cantTotal)
                     {
                         dr.Cells[4].Value = cantTotal;
                         break;
                     }
-                    dr.Cells[4].Value = (decimal)dr.Cells[4].Value + cant;
+                    dr.Cells[4].Value = (int)dr.Cells[4].Value + cant;
                     break;
                 }
             }
@@ -510,7 +520,7 @@ namespace EC_Admin.Forms
             return false;
         }
 
-        public void PaqueteProducto(decimal precio, decimal cant)
+        public void PaqueteProducto(decimal precio, int cant)
         {
             if ((decimal)dgvProductos[3, dgvProductos.CurrentRow.Index].Value != precio)
             {
@@ -527,7 +537,7 @@ namespace EC_Admin.Forms
                 }
                 else
                 {
-                    dgvProductos[4, dgvProductos.CurrentRow.Index].Value = cant + (decimal)dgvProductos[4, dgvProductos.CurrentRow.Index].Value;
+                    dgvProductos[4, dgvProductos.CurrentRow.Index].Value = cant + (int)dgvProductos[4, dgvProductos.CurrentRow.Index].Value;
                 }
             }
         }
@@ -580,7 +590,7 @@ namespace EC_Admin.Forms
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), cant, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()), false);
+                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["precio"], cant, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()), false);
                     break;
                 }
             }
@@ -658,7 +668,6 @@ namespace EC_Admin.Forms
         {
             this.idCliente = id;
             this.lblCliente.Text = nombre;
-            
         }
 
         #endregion
