@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EC_Admin
 {
-    class Compra
+    public class Compra
     {
         #region Propiedades Compra
         private int id;
@@ -334,13 +334,25 @@ namespace EC_Admin
         {
             try
             {
-                Caja c = new Caja();
-                c.Descripcion = "COMPRA DE PRODUCTOS CON FOLIO: " + this.id.ToString();
-                c.Efectivo = decimal.Negate(this.total);
-                c.IDSucursal = this.idS;
-                c.TipoMovimiento = MovimientoCaja.Salida;
-                c.Voucher = 0M;
-                c.RegistrarMovimiento();
+                if (Tipo == TipoPago.Efectivo)
+                {
+                        Caja c = new Caja();
+                        c.Descripcion = "COMPRA DE PRODUCTOS CON FOLIO: " + this.id.ToString();
+                        c.Efectivo = decimal.Negate(this.total);
+                        c.IDSucursal = this.idS;
+                        c.TipoMovimiento = MovimientoCaja.Salida;
+                        c.RegistrarMovimiento();
+                }
+                else
+                {
+                        Banco b = new Banco();
+                        b.Descripcion = "COMPRA DE PRODUCTOS CON FOLIO: " + this.id.ToString();
+                        b.Voucher = decimal.Negate(this.total);
+                        b.IDSucursal = this.idS;
+                        b.TipoMovimiento = MovimientoCaja.Salida;
+                        b.RegistrarMovimiento();
+                }
+                
             }
             catch (MySqlException ex)
             {
@@ -367,7 +379,7 @@ namespace EC_Admin
                 c.Efectivo = total;
                 c.IDSucursal = idSucursal;
                 c.TipoMovimiento = MovimientoCaja.Salida;
-                c.Voucher = 0M;
+                //c.Voucher = 0M;
                 c.RegistrarMovimiento();
             }
             catch (MySqlException ex)

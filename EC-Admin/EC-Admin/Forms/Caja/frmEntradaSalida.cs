@@ -14,10 +14,12 @@ namespace EC_Admin.Forms
     public partial class frmEntradaSalida : Form
     {
         MovimientoCaja mc;
-        public frmEntradaSalida(MovimientoCaja mc)
+        bool banco;
+        public frmEntradaSalida(MovimientoCaja mc, bool banco)
         {
             InitializeComponent();
             this.mc = mc;
+            this.banco = banco;
             switch (mc)
             {
                 case MovimientoCaja.Entrada:
@@ -35,15 +37,31 @@ namespace EC_Admin.Forms
             try
             {
                 Caja c = new Caja();
-                c.Descripcion = txtDescripcion.Text;
-                if (mc == MovimientoCaja.Entrada)
-                    c.Efectivo = decimal.Parse(txtMonto.Text);
+                Banco b = new Banco();
+                if (banco)
+                {
+                    b.Descripcion = txtDescripcion.Text;
+                    if (mc == MovimientoCaja.Entrada)
+                        b.Voucher = decimal.Parse(txtMonto.Text);
+                    else
+                        b.Voucher = decimal.Parse(txtMonto.Text) * -1M;
+                    b.IDSucursal = Config.idSucursal;
+                    b.TipoMovimiento = mc;
+                    b.RegistrarMovimiento();
+
+                }
                 else
-                    c.Efectivo = decimal.Parse(txtMonto.Text) * -1M;
-                c.IDSucursal = Config.idSucursal;
-                c.TipoMovimiento = mc;
-                c.Voucher = 0M;
-                c.RegistrarMovimiento();
+                {
+                    c.Descripcion = txtDescripcion.Text;
+                    if (mc == MovimientoCaja.Entrada)
+                        c.Efectivo = decimal.Parse(txtMonto.Text);
+                    else
+                        c.Efectivo = decimal.Parse(txtMonto.Text) * -1M;
+                    c.IDSucursal = Config.idSucursal;
+                    c.TipoMovimiento = mc;
+                    c.RegistrarMovimiento();
+                }
+                
             }
             catch (MySqlException ex)
             {

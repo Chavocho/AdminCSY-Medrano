@@ -17,6 +17,7 @@ namespace EC_Admin
         private string beneficiario;
         private string sucursal;
         private string numCuenta;
+        private TipoCuenta tipoCuenta;
         private static int cant = -1;
 
         public int ID
@@ -64,6 +65,13 @@ namespace EC_Admin
                 return cant;
             }
         }
+       
+        public TipoCuenta TipoCuenta
+        {
+            get { return tipoCuenta; }
+            set { tipoCuenta = value; }
+        }
+        
         
         #endregion
 
@@ -149,13 +157,14 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO cuenta (clabe, banco, beneficiario, sucursal, num_cuenta) " +
-                    "VALUES (?clabe, ?banco, ?beneficiario, ?sucursal, ?num_cuenta)";
+                sql.CommandText = "INSERT INTO cuenta (clabe, banco, beneficiario, sucursal, num_cuenta, tipo) " +
+                    "VALUES (?clabe, ?banco, ?beneficiario, ?sucursal, ?num_cuenta, ?tipo)";
                 sql.Parameters.AddWithValue("?clabe", clabe);
                 sql.Parameters.AddWithValue("?banco", banco);
                 sql.Parameters.AddWithValue("?beneficiario", beneficiario);
                 sql.Parameters.AddWithValue("?sucursal", sucursal);
                 sql.Parameters.AddWithValue("?num_cuenta", numCuenta);
+                sql.Parameters.AddWithValue("?tipo",tipoCuenta);
                 this.id = ConexionBD.EjecutarConsulta(sql);
                 Cant();
             }

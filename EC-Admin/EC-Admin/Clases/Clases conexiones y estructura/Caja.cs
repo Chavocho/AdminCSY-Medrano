@@ -14,7 +14,6 @@ namespace EC_Admin
         private int id;
         private int idSucursal;
         private decimal efectivo;
-        private decimal voucher;
         private string descripcion;
         private MovimientoCaja tipoMovimiento;
         private int create_user;
@@ -37,12 +36,6 @@ namespace EC_Admin
         {
             get { return efectivo; }
             set { efectivo = value; }
-        }
-
-        public decimal Voucher
-        {
-            get { return voucher; }
-            set { voucher = value; }
         }
 
         public string Descripcion
@@ -110,7 +103,7 @@ namespace EC_Admin
         {
             try
             {
-                string sql = "SELECT SUM(efectivo) AS e, SUM(voucher) AS v FROM caja WHERE id_sucursal='" + Config.idSucursal.ToString() + "'";
+                string sql = "SELECT SUM(efectivo) AS e FROM caja WHERE id_sucursal='" + Config.idSucursal.ToString() + "'";
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -119,10 +112,6 @@ namespace EC_Admin
                     else
                         totalEfe = 0M;
 
-                    if (dr["v"] != DBNull.Value)
-                        totalVou = (decimal)dr["v"];
-                    else
-                        totalVou = 0M;
                 }
             }
             catch (MySqlException ex)
@@ -208,11 +197,10 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO caja (id_sucursal, efectivo, voucher, descripcion, tipo_movimiento, create_user, create_time) " +
-                    "VALUES (?id_sucursal, ?efectivo, ?voucher, ?descripcion, ?tipo_movimiento, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO caja (id_sucursal, efectivo, descripcion, tipo_movimiento, create_user, create_time) " +
+                    "VALUES (?id_sucursal, ?efectivo, ?descripcion, ?tipo_movimiento, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?id_sucursal", idSucursal);
                 sql.Parameters.AddWithValue("?efectivo", efectivo);
-                sql.Parameters.AddWithValue("?voucher", voucher);
                 sql.Parameters.AddWithValue("?descripcion", descripcion);
                 sql.Parameters.AddWithValue("?tipo_movimiento", tipoMovimiento);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);

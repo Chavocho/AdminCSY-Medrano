@@ -124,15 +124,15 @@ namespace EC_Admin.Forms
                 {
                     case "Efectivo":
                         c.Efectivo = (decimal)dr.Cells[3].Value;
-                        c.Voucher = 0M;
+                        //c.Voucher = 0M;
                         break;
                     case "Crédito":
                         c.Efectivo = 0M;
-                        c.Voucher = (decimal)dr.Cells[3].Value;
+                        //c.Voucher = (decimal)dr.Cells[3].Value;
                         break;
                     case "Débito":
                         c.Efectivo = 0M;
-                        c.Voucher = (decimal)dr.Cells[3].Value;
+                        //c.Voucher = (decimal)dr.Cells[3].Value;
                         break;
                 }
                 c.TipoMovimiento = EC_Admin.MovimientoCaja.Salida;

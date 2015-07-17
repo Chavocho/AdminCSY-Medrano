@@ -27,6 +27,7 @@ namespace EC_Admin.Forms
                 c.Beneficiario = txtBeneficiario.Text;
                 c.Sucursal = txtSucursal.Text;
                 c.NumeroCuenta = txtNumCuenta.Text;
+                //c.TipoCuenta =
                 c.Insertar();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)

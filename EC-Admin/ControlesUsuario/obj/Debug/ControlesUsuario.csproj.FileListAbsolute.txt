@@ -58,3 +58,5 @@ C:\Users\User\Documents\AdminCSY-Medrano\EC-Admin\ControlesUsuario\obj\Debug\Con
 C:\Users\User\Documents\AdminCSY-Medrano\EC-Admin\ControlesUsuario\obj\Debug\ControlesUsuario.csproj.GenerateResource.Cache
 C:\Users\User\Documents\AdminCSY-Medrano\EC-Admin\ControlesUsuario\obj\Debug\ControlesUsuario.exe
 C:\Users\User\Documents\AdminCSY-Medrano\EC-Admin\ControlesUsuario\obj\Debug\ControlesUsuario.pdb
+C:\Users\User\Documents\AdminCSY-Medrano\EC-Admin\ControlesUsuario\bin\Debug\ControlesUsuario.exe.CodeAnalysisLog.xml
+C:\Users\User\Documents\AdminCSY-Medrano\EC-Admin\ControlesUsuario\bin\Debug\ControlesUsuario.exe.lastcodeanalysissucceeded

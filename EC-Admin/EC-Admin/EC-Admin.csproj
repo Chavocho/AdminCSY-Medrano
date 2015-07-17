@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Clases conexiones y estructura\Almacen.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Banco.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Caja.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Categoria.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Cliente.cs" />
@@ -226,6 +227,12 @@
     </Compile>
     <Compile Include="Forms\Compra\frmNuevaCompra.Designer.cs">
       <DependentUpon>frmNuevaCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Compra\frmPagosProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\frmPagosProveedor.Designer.cs">
+      <DependentUpon>frmPagosProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Configs\Almacen\frmAlmacenTrabajador.cs">
       <SubType>Form</SubType>
@@ -804,6 +811,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Compra\frmNuevaCompra.resx">
       <DependentUpon>frmNuevaCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\frmPagosProveedor.resx">
+      <DependentUpon>frmPagosProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configs\Almacen\frmAlmacenTrabajador.resx">
       <DependentUpon>frmAlmacenTrabajador.cs</DependentUpon>

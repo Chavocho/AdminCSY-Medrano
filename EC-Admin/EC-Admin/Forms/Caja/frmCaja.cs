@@ -53,7 +53,7 @@ namespace EC_Admin.Forms
             c = new CerrarFrmEspera(Cerrar);
             try
             {
-                string sql = "SELECT id, efectivo, voucher, descripcion, tipo_movimiento, create_time FROM caja WHERE descripcion LIKE '%" + p + "%' AND id_sucursal='" + Config.idSucursal + "'";
+                string sql = "SELECT id, efectivo, descripcion, tipo_movimiento, create_time FROM caja WHERE descripcion LIKE '%" + p + "%' AND id_sucursal='" + Config.idSucursal + "'";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -74,7 +74,7 @@ namespace EC_Admin.Forms
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT id, efectivo, voucher, descripcion, tipo_movimiento, create_time FROM caja WHERE (create_time BETWEEN ?fechaIni AND ?fechaFin) AND id_sucursal='" + Config.idSucursal + "'";
+                sql.CommandText = "SELECT id, efectivo, descripcion, tipo_movimiento, create_time FROM caja WHERE (create_time BETWEEN ?fechaIni AND ?fechaFin) AND id_sucursal='" + Config.idSucursal + "'";
                 sql.Parameters.AddWithValue("?fechaIni", fechaIni.ToString("yyyy-MM-dd") + " 00:00:00");
                 sql.Parameters.AddWithValue("?fechaFin", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
@@ -109,7 +109,7 @@ namespace EC_Admin.Forms
                             tipoMovimiento = "Salida";
                             break;
                     }
-                    dgvCaja.Rows.Add(new object[] { dr["id"], dr["create_time"], dr["descripcion"].ToString(), dr["efectivo"], dr["voucher"], tipoMovimiento});
+                    dgvCaja.Rows.Add(new object[] { dr["id"], dr["create_time"], dr["descripcion"].ToString(), dr["efectivo"], tipoMovimiento});
                     Application.DoEvents();
                 }
                 dgvCaja_RowEnter(dgvCaja, new DataGridViewCellEventArgs(0, 0));
@@ -130,9 +130,9 @@ namespace EC_Admin.Forms
                 vou += (decimal)dr.Cells[4].Value;
             }
             lblTotEfeMos.Text = efe.ToString("C2");
-            lblTotVouMos.Text = vou.ToString("C2");
+            //lblTotVouMos.Text = vou.ToString("C2");
             lblTotEfeCaj.Text = Caja.TotalEfectivo.ToString("C2");
-            lblTotVouCaj.Text = Caja.TotalVouchers.ToString("C2");
+            //lblTotVouCaj.Text = Caja.TotalVouchers.ToString("C2");
         }
 
         private void dtpFechas_ValueChanged(object sender, EventArgs e)
@@ -193,23 +193,37 @@ namespace EC_Admin.Forms
 
         private void btnEntrada_Click(object sender, EventArgs e)
         {
-            if (Caja.EstadoCaja == false)
+            if (rdbCaja.Checked)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
-                return;
+                if (Caja.EstadoCaja == false)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
+                    return;
+                }
+                (new frmEntradaSalida(MovimientoCaja.Entrada,false)).ShowDialog(this);
             }
-            (new frmEntradaSalida(MovimientoCaja.Entrada)).ShowDialog(this);
+            else if(rdbBanco.Checked)
+            {
+                (new frmEntradaSalida(MovimientoCaja.Entrada, true)).ShowDialog(this);
+            }
             CalcularTotales();
         }
 
         private void btnSalida_Click(object sender, EventArgs e)
         {
-            if (Caja.EstadoCaja == false)
+            if (rdbCaja.Checked)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
-                return;
+                if (Caja.EstadoCaja == false)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
+                    return;
+                }
+                (new frmEntradaSalida(MovimientoCaja.Salida, false)).ShowDialog(this);
             }
-            (new frmEntradaSalida(MovimientoCaja.Salida)).ShowDialog(this);
+            else if (rdbBanco.Checked)
+            {
+                (new frmEntradaSalida(MovimientoCaja.Salida, true)).ShowDialog(this);
+            }
             CalcularTotales();
         }
 
@@ -277,6 +291,16 @@ namespace EC_Admin.Forms
                     btnCortes.PerformClick();
                 }
             }
+        }
+
+        private void rdbCaja_CheckedChanged(object sender, EventArgs e)
+        {
+            btnAbrirCerrar.Visible = false;
+        }
+
+        private void rdbBanco_CheckedChanged(object sender, EventArgs e)
+        {
+            btnAbrirCerrar.Visible = true;
         }
     }
 }

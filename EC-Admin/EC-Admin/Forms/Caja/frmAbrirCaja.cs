@@ -36,7 +36,7 @@ namespace EC_Admin.Forms
             c.Efectivo = efe;
             c.IDSucursal = Config.idSucursal;
             c.TipoMovimiento = MovimientoCaja.Entrada;
-            c.Voucher = 0M;
+            //c.Voucher = 0M;
             c.RegistrarMovimiento();
             Caja.CambiarEstadoCaja(true);
         }

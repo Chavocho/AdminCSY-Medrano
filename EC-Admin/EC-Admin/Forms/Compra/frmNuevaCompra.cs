@@ -27,7 +27,7 @@ namespace EC_Admin.Forms
             cboTipoPago.SelectedIndex = 0;
         }
 
-        #region Compra
+        #region Compras
 
         private void NuevaCompra()
         {
@@ -44,7 +44,7 @@ namespace EC_Admin.Forms
             c.FolioRemision = txtRemision.Text;
             c.FolioFactura = txtFactura.Text;
             foreach (DataGridViewRow dr in dgvProductos.Rows)
-            {
+            { 
                 c.IDProductos.Add((int)dr.Cells[0].Value);
                 c.Cantidad.Add((int)dr.Cells[4].Value);
                 c.Unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
@@ -358,6 +358,10 @@ namespace EC_Admin.Forms
             else if (e.KeyCode == Keys.F3)
             {
                 btnProductos.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F11)
+            {
+                btnPagos.PerformClick();
             }
             else if (e.KeyCode == Keys.F12)
             {

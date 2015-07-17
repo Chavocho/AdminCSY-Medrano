@@ -38,7 +38,7 @@ namespace EC_Admin.Forms
             c.Efectivo = decimal.Negate(efe);
             c.IDSucursal = Config.idSucursal;
             c.TipoMovimiento = MovimientoCaja.Entrada;
-            c.Voucher = decimal.Negate(Caja.TotalVouchers);
+            //c.Voucher = decimal.Negate(Caja.TotalVouchers);
             c.RegistrarMovimiento();
             Caja.CambiarEstadoCaja(false);
         }

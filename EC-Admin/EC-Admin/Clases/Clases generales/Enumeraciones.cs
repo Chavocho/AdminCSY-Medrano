@@ -21,6 +21,12 @@ namespace EC_Admin
         Débito = 3,
         Transferencia = 4
     }
+    public enum TipoCuenta
+    {
+        Sucursal = 0,
+        Cliente = 1,
+        Proveedor = 2
+    }
 
     public enum Mensajes
     {
