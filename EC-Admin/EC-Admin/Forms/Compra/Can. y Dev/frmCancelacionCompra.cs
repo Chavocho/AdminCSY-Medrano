@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EC_Admin.Forms.Compra.Cancelaciones_y_devoluciones
+namespace EC_Admin.Forms
 {
-    public partial class frmDevolucionesCompra : Form
+    public partial class frmCancelacionCompra : Form
     {
-        public frmDevolucionesCompra()
+        public frmCancelacionCompra()
         {
             InitializeComponent();
         }

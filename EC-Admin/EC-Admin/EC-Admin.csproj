@@ -198,6 +198,18 @@
     <Compile Include="Forms\Cliente\frmEditarCliente.Designer.cs">
       <DependentUpon>frmEditarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Compra\Can. y Dev\frmCancelacionCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\Can. y Dev\frmCancelacionCompra.designer.cs">
+      <DependentUpon>frmCancelacionCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Compra\Can. y Dev\frmDevolucionesCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\Can. y Dev\frmDevolucionesCompra.designer.cs">
+      <DependentUpon>frmDevolucionesCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Compra\frmCompraProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -796,6 +808,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cliente\frmEditarCliente.resx">
       <DependentUpon>frmEditarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\Can. y Dev\frmCancelacionCompra.resx">
+      <DependentUpon>frmCancelacionCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\Can. y Dev\frmDevolucionesCompra.resx">
+      <DependentUpon>frmDevolucionesCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Compra\frmCompraProveedor.resx">
       <DependentUpon>frmCompraProveedor.cs</DependentUpon>

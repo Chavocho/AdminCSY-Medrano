@@ -649,7 +649,7 @@ namespace EC_Admin.Forms
                 cantTot += (int)dr.Cells[4].Value;
                 descuento += ((decimal)dr.Cells[5].Value);
             }
-            impuesto = subtotal * Config.iva;
+            impuesto = subtotal * (Config.iva / 100M);
             total = subtotal + impuesto - descuento;
 
             lblSubtotal.Text = subtotal.ToString("C2");
