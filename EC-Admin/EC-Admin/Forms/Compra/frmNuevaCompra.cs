@@ -387,22 +387,24 @@ namespace EC_Admin.Forms
             switch (cboTipoPago.SelectedIndex)
             {
                 case 0:
-                    txtDatos.Visible = lblEDatos.Visible = false;
+                    txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = txtCuenta.Visible = lblCuenta.Visible = lblBeneficiario.Visible = false;
                     t = TipoPago.Efectivo;
                     break;
                 case 1:
                     lblEDatos.Text = "Núm. de cheque";
-                    txtDatos.Visible = lblEDatos.Visible = true;
+                    txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = txtCuenta.Visible = lblCuenta.Visible = lblBeneficiario.Visible = true;
                     t = TipoPago.Cheque;
                     break;
                 case 2:
                     lblEDatos.Text = "Núm. de tarjeta";
                     txtDatos.Visible = lblEDatos.Visible = true;
+                    txtBeneficiario.Visible = txtCuenta.Visible = false;
                     t = TipoPago.Crédito;
                     break;
                 case 3:
                     lblEDatos.Text = "Núm. de tarjeta";
                     txtDatos.Visible = lblEDatos.Visible = true;
+                    txtBeneficiario.Visible = txtCuenta.Visible = false;
                     t = TipoPago.Débito;
                     break;
                 case 4:

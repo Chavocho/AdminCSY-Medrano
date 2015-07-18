@@ -2,7 +2,7 @@
 <configuraciones>
   <basedatos>
     <server>/bmEtI8XUlOHHG6ynrK0gw==</server>
-    <base>VsmsJeNeWgNkx7oGHE5eDFP1I+gLGkXZ</base>
+    <base>VsmsJeNeWgOrJKxv9tpzQVP1I+gLGkXZ</base>
     <usuario>M7PjMfY2PVY=</usuario>
     <pass>U/Uj6AsaRdk=</pass>
   </basedatos>
@@ -16,4 +16,7 @@
     <puerto_interno>U/Uj6AsaRdk=</puerto_interno>
     <host_interno>U/Uj6AsaRdk=</host_interno>
   </correo>
+  <POS>
+    <IVA>D8Zceo+oZIk=</IVA>
+  </POS>
 </configuraciones>

@@ -14,7 +14,7 @@ namespace EC_Admin
         #region Propiedades Banco
         private int id;
         private int idSucursal;
-        private decimal voucher;
+        private decimal total;
         private string descripcion;
         private MovimientoCaja tipoMovimiento;
         private int create_user;
@@ -33,10 +33,10 @@ namespace EC_Admin
             set { idSucursal = value; }
         }
 
-        public decimal Voucher
+        public decimal Total
         {
-            get { return voucher; }
-            set { voucher = value; }
+            get { return total; }
+            set { total = value; }
         }
 
         public string Descripcion
@@ -85,7 +85,7 @@ namespace EC_Admin
         {
             try
             {
-                string sql = "SELECT SUM(voucher) AS v FROM banco WHERE id_sucursal='" + Config.idSucursal.ToString() + "'";
+                string sql = "SELECT SUM(total) AS v FROM banco WHERE id_sucursal='" + Config.idSucursal.ToString() + "'";
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -123,10 +123,10 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO banco (id_sucursal, voucher, descripcion, tipo_movimiento, create_user, create_time) " +
-                    "VALUES (?id_sucursal, ?voucher, ?descripcion, ?tipo_movimiento, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO banco (id_sucursal, total, descripcion, tipo_movimiento, create_user, create_time) " +
+                    "VALUES (?id_sucursal, ?total, ?descripcion, ?tipo_movimiento, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?id_sucursal", idSucursal);
-                sql.Parameters.AddWithValue("?voucher", voucher);
+                sql.Parameters.AddWithValue("?total", total);
                 sql.Parameters.AddWithValue("?descripcion", descripcion);
                 sql.Parameters.AddWithValue("?tipo_movimiento", tipoMovimiento);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);

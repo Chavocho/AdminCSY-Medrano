@@ -347,7 +347,7 @@ namespace EC_Admin
                 {
                         Banco b = new Banco();
                         b.Descripcion = "COMPRA DE PRODUCTOS CON FOLIO: " + this.id.ToString();
-                        b.Voucher = decimal.Negate(this.total);
+                        b.Total = decimal.Negate(this.total);
                         b.IDSucursal = this.idS;
                         b.TipoMovimiento = MovimientoCaja.Salida;
                         b.RegistrarMovimiento();

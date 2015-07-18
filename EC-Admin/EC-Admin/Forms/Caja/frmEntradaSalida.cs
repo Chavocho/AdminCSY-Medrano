@@ -42,9 +42,9 @@ namespace EC_Admin.Forms
                 {
                     b.Descripcion = txtDescripcion.Text;
                     if (mc == MovimientoCaja.Entrada)
-                        b.Voucher = decimal.Parse(txtMonto.Text);
+                        b.Total = decimal.Parse(txtMonto.Text);
                     else
-                        b.Voucher = decimal.Parse(txtMonto.Text) * -1M;
+                        b.Total = decimal.Parse(txtMonto.Text) * -1M;
                     b.IDSucursal = Config.idSucursal;
                     b.TipoMovimiento = mc;
                     b.RegistrarMovimiento();

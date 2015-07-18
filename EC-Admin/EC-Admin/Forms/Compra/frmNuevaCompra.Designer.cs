@@ -71,15 +71,15 @@
             this.txtFactura = new System.Windows.Forms.TextBox();
             this.lblERemision = new System.Windows.Forms.Label();
             this.txtRemision = new System.Windows.Forms.TextBox();
+            this.lblCuenta = new System.Windows.Forms.Label();
+            this.lblBeneficiario = new System.Windows.Forms.Label();
             this.lblEDatos = new System.Windows.Forms.Label();
+            this.txtCuenta = new System.Windows.Forms.TextBox();
+            this.txtBeneficiario = new System.Windows.Forms.TextBox();
             this.txtDatos = new System.Windows.Forms.TextBox();
             this.lblETipoPago = new System.Windows.Forms.Label();
             this.cboTipoPago = new System.Windows.Forms.ComboBox();
             this.btnPagos = new System.Windows.Forms.Button();
-            this.txtBeneficiario = new System.Windows.Forms.TextBox();
-            this.lblBeneficiario = new System.Windows.Forms.Label();
-            this.txtCuenta = new System.Windows.Forms.TextBox();
-            this.lblCuenta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.grbTotales.SuspendLayout();
             this.grbPago.SuspendLayout();
@@ -495,9 +495,9 @@
             this.chbFolioRemision.Font = new System.Drawing.Font("Corbel", 11F);
             this.chbFolioRemision.Location = new System.Drawing.Point(94, 74);
             this.chbFolioRemision.Name = "chbFolioRemision";
-            this.chbFolioRemision.Size = new System.Drawing.Size(149, 22);
+            this.chbFolioRemision.Size = new System.Drawing.Size(132, 22);
             this.chbFolioRemision.TabIndex = 23;
-            this.chbFolioRemision.Text = "Sin folio de remisión";
+            this.chbFolioRemision.Text = "Sin comprobante";
             this.chbFolioRemision.UseVisualStyleBackColor = true;
             this.chbFolioRemision.CheckedChanged += new System.EventHandler(this.chbFolioRemision_CheckedChanged);
             // 
@@ -570,6 +570,30 @@
             this.txtRemision.Size = new System.Drawing.Size(277, 29);
             this.txtRemision.TabIndex = 17;
             // 
+            // lblCuenta
+            // 
+            this.lblCuenta.AutoSize = true;
+            this.lblCuenta.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblCuenta.Location = new System.Drawing.Point(569, 18);
+            this.lblCuenta.Name = "lblCuenta";
+            this.lblCuenta.Size = new System.Drawing.Size(95, 18);
+            this.lblCuenta.TabIndex = 14;
+            this.lblCuenta.Text = "Cuenta Propia";
+            this.lblCuenta.Visible = false;
+            // 
+            // lblBeneficiario
+            // 
+            this.lblBeneficiario.AutoSize = true;
+            this.lblBeneficiario.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblBeneficiario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblBeneficiario.Location = new System.Drawing.Point(569, 99);
+            this.lblBeneficiario.Name = "lblBeneficiario";
+            this.lblBeneficiario.Size = new System.Drawing.Size(80, 18);
+            this.lblBeneficiario.TabIndex = 14;
+            this.lblBeneficiario.Text = "Beneficiario";
+            this.lblBeneficiario.Visible = false;
+            // 
             // lblEDatos
             // 
             this.lblEDatos.AutoSize = true;
@@ -581,6 +605,28 @@
             this.lblEDatos.TabIndex = 14;
             this.lblEDatos.Text = "Núm. de cheque";
             this.lblEDatos.Visible = false;
+            // 
+            // txtCuenta
+            // 
+            this.txtCuenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtCuenta.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtCuenta.Location = new System.Drawing.Point(572, 39);
+            this.txtCuenta.Name = "txtCuenta";
+            this.txtCuenta.Size = new System.Drawing.Size(277, 29);
+            this.txtCuenta.TabIndex = 13;
+            this.txtCuenta.Visible = false;
+            // 
+            // txtBeneficiario
+            // 
+            this.txtBeneficiario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtBeneficiario.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtBeneficiario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.txtBeneficiario.Location = new System.Drawing.Point(572, 121);
+            this.txtBeneficiario.Name = "txtBeneficiario";
+            this.txtBeneficiario.Size = new System.Drawing.Size(277, 29);
+            this.txtBeneficiario.TabIndex = 13;
+            this.txtBeneficiario.Visible = false;
             // 
             // txtDatos
             // 
@@ -644,52 +690,6 @@
             this.btnPagos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPagos.UseVisualStyleBackColor = false;
             this.btnPagos.Click += new System.EventHandler(this.btnCobrar_Click);
-            // 
-            // txtBeneficiario
-            // 
-            this.txtBeneficiario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtBeneficiario.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtBeneficiario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtBeneficiario.Location = new System.Drawing.Point(572, 121);
-            this.txtBeneficiario.Name = "txtBeneficiario";
-            this.txtBeneficiario.Size = new System.Drawing.Size(277, 29);
-            this.txtBeneficiario.TabIndex = 13;
-            this.txtBeneficiario.Visible = false;
-            // 
-            // lblBeneficiario
-            // 
-            this.lblBeneficiario.AutoSize = true;
-            this.lblBeneficiario.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblBeneficiario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblBeneficiario.Location = new System.Drawing.Point(569, 99);
-            this.lblBeneficiario.Name = "lblBeneficiario";
-            this.lblBeneficiario.Size = new System.Drawing.Size(80, 18);
-            this.lblBeneficiario.TabIndex = 14;
-            this.lblBeneficiario.Text = "Beneficiario";
-            this.lblBeneficiario.Visible = false;
-            // 
-            // txtCuenta
-            // 
-            this.txtCuenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtCuenta.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCuenta.Location = new System.Drawing.Point(572, 39);
-            this.txtCuenta.Name = "txtCuenta";
-            this.txtCuenta.Size = new System.Drawing.Size(277, 29);
-            this.txtCuenta.TabIndex = 13;
-            this.txtCuenta.Visible = false;
-            // 
-            // lblCuenta
-            // 
-            this.lblCuenta.AutoSize = true;
-            this.lblCuenta.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblCuenta.Location = new System.Drawing.Point(569, 18);
-            this.lblCuenta.Name = "lblCuenta";
-            this.lblCuenta.Size = new System.Drawing.Size(95, 18);
-            this.lblCuenta.TabIndex = 14;
-            this.lblCuenta.Text = "Cuenta Propia";
-            this.lblCuenta.Visible = false;
             // 
             // frmNuevaCompra
             // 

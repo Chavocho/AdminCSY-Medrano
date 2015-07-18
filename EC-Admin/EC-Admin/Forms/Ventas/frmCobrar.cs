@@ -103,7 +103,7 @@ namespace EC_Admin.Forms
                     if (cboTipoPago.SelectedIndex == 0)
                     {
                         c.Efectivo = total;
-                        b.Voucher = 0M;
+                        b.Total = 0M;
                         c.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
                         c.IDSucursal = Config.idSucursal;
                         c.RegistrarMovimiento();
@@ -111,7 +111,7 @@ namespace EC_Admin.Forms
                     else if (cboTipoPago.SelectedIndex == 1 || cboTipoPago.SelectedIndex == 2)
                     {
                         c.Efectivo = 0M;
-                        b.Voucher = totalPorcentaje;
+                        b.Total = totalPorcentaje;
                         b.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
                         b.IDSucursal = Config.idSucursal;
                         b.RegistrarMovimiento();
@@ -122,7 +122,7 @@ namespace EC_Admin.Forms
                     if (cboTipoPago.SelectedIndex == 0)
                     {
                         c.Efectivo = total;
-                        b.Voucher = 0M;
+                        b.Total = 0M;
                         c.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
                         c.IDSucursal = Config.idSucursal;
                         c.RegistrarMovimiento();
@@ -130,7 +130,7 @@ namespace EC_Admin.Forms
                     else if (cboTipoPago.SelectedIndex == 1 || cboTipoPago.SelectedIndex == 2)
                     {
                         c.Efectivo = 0M;
-                        b.Voucher = totalPorcentaje;
+                        b.Total = totalPorcentaje;
                         b.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
                         b.IDSucursal = Config.idSucursal;
                         b.RegistrarMovimiento();
