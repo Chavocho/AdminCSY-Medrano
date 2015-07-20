@@ -162,6 +162,7 @@
             this.btnDevolver.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDevolver.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnDevolver.UseVisualStyleBackColor = false;
+            this.btnDevolver.Click += new System.EventHandler(this.btnDevolver_Click);
             // 
             // dgvProductos02
             // 
@@ -175,8 +176,8 @@
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
             this.dgvProductos02.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvProductos02.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvProductos02.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductos02.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
             this.dgvProductos02.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -217,6 +218,13 @@
             this.dgvProductos02.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos02.Size = new System.Drawing.Size(489, 385);
             this.dgvProductos02.TabIndex = 24;
+            this.dgvProductos02.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvProductos02_DragDrop);
+            this.dgvProductos02.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvProductos02_DragEnter);
+            this.dgvProductos02.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvProductos02_DragOver);
+            this.dgvProductos02.DragLeave += new System.EventHandler(this.dgvProductos02_DragLeave);
+            this.dgvProductos02.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProductos_MouseDoubleClick);
+            this.dgvProductos02.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvProductos02_MouseDown);
+            this.dgvProductos02.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvProductos02_MouseMove);
             // 
             // CID02
             // 
@@ -268,8 +276,8 @@
             dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
             this.dgvProductos01.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgvProductos01.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvProductos01.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductos01.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
             this.dgvProductos01.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -310,6 +318,13 @@
             this.dgvProductos01.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos01.Size = new System.Drawing.Size(489, 386);
             this.dgvProductos01.TabIndex = 23;
+            this.dgvProductos01.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvProductos01_DragDrop);
+            this.dgvProductos01.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvProductos01_DragEnter);
+            this.dgvProductos01.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvProductos01_DragOver);
+            this.dgvProductos01.DragLeave += new System.EventHandler(this.dgvProductos01_DragLeave);
+            this.dgvProductos01.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProductos_MouseDoubleClick);
+            this.dgvProductos01.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvProductos01_MouseDown);
+            this.dgvProductos01.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvProductos01_MouseMove);
             // 
             // CID01
             // 
@@ -364,6 +379,7 @@
             this.Name = "frmDevolucionesCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Devoluciones a proveedor";
+            this.Load += new System.EventHandler(this.frmDevolucionesCompra_Load);
             this.grbTotales.ResumeLayout(false);
             this.grbTotales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos02)).EndInit();

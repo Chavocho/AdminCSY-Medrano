@@ -83,7 +83,9 @@ namespace EC_Admin
             //FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "Algo", "¯\\_(ツ)_/¯");
             //Cliente.ClienteGeneral();
             //(new frmEspera("Algo")).ShowDialog(this);
-            Application.Restart();
+            //Application.Restart();
+            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error de prueba.", "¯\\_(ツ)_/¯", new Exception("Algo"));
+            
         }
 
         private void txtUsuario_Leave(object sender, EventArgs e)

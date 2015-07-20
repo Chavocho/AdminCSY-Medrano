@@ -5,18 +5,16 @@ using System.Collections.Generic;
 
 namespace EC_Admin
 {
-    class Devoluciones
+    class DevolucionesCompra
     {
         #region Propiedades
         private int id;
         private int idVenta;
         private decimal total;
-        private decimal saldo;
         private int createUser;
         private DateTime createTime;
         private int updateUser;
         private DateTime updateTime;
-        private Venta v;
 
         public int ID
         {
@@ -34,12 +32,6 @@ namespace EC_Admin
         {
             get { return total; }
             set { total = value; }
-        }
-
-        public decimal Saldo
-        {
-            get { return saldo; }
-            set { saldo = value; }
         }
 
         public int CreateUser
@@ -98,10 +90,8 @@ namespace EC_Admin
         /// <summary>
         /// Inicializa la instancia de la clase Devoluciones
         /// </summary>
-        /// <param name="v">Objeto de la clase Venta con los datos precargados de la venta</param>
-        public Devoluciones(Venta v)
+        public DevolucionesCompra()
         {
-            this.v = v;
             InicializarDetallada();
         }
 
@@ -109,11 +99,9 @@ namespace EC_Admin
         /// Inicializa la instancia de la clase Devoluciones
         /// </summary>
         /// <param name="id">ID de la devolución</param>
-        /// <param name="v">Objeto de la clase Venta con los datos precargados de la venta</param>
-        public Devoluciones(int id, Venta v)
+        public DevolucionesCompra(Compra c, int id)
         {
             this.id = id;
-            this.v = v;
             InicializarDetallada();
         }
 
@@ -125,14 +113,13 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT * FROM devolucion WHERE id=?id";
+                sql.CommandText = "SELECT * FROM devolucionp WHERE id=?id";
                 sql.Parameters.AddWithValue("?id", id);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
                     idVenta = (int)dr["id_venta"];
                     total = (decimal)dr["total"];
-                    saldo = (decimal)dr["saldo"];
                     createUser = (int)dr["create_user"];
                     createTime = (DateTime)dr["create_time"];
                     if (dr["update_user"] != DBNull.Value)
@@ -193,11 +180,10 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO devolucion (id_venta, total, saldo, create_user, create_time) " + 
-                    "VALUES (?id_venta, ?total, ?saldo, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO devolucionp (id_venta, total, create_user, create_time) " +
+                    "VALUES (?id_venta, ?total, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?id_venta", idVenta);
                 sql.Parameters.AddWithValue("?total", total);
-                sql.Parameters.AddWithValue("?saldo", saldo);
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
                 this.id = ConexionBD.EjecutarConsulta(sql);
                 InsertarDetallado();
@@ -220,7 +206,7 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand(), sqlVenta = new MySqlCommand();
-                sql.CommandText = "INSERT INTO devolucion_detallada (id_devolucion, id_producto, precio, cant) " + 
+                sql.CommandText = "INSERT INTO devolucionp_detallada (id_devolucion, id_producto, precio, cant) " +
                     "VALUES (?id_devolucion, ?id_producto, ?precio, ?cant)";
                 for (int i = 0; i < idProductos.Count; i++)
                 {
@@ -230,7 +216,7 @@ namespace EC_Admin
                     sql.Parameters.AddWithValue("?cant", cantidadProductos[i]);
                     ConexionBD.EjecutarConsulta(sql);
                     sql.Parameters.Clear();
-                    Inventario.CambiarCantidadInventario(idProductos[i], cantidadProductos[i], Config.idSucursal);
+                    Inventario.CambiarCantidadInventario(idProductos[i], cantidadProductos[i] * -1, Config.idSucursal);
                 }
             }
             catch (MySqlException ex)
@@ -243,60 +229,5 @@ namespace EC_Admin
             }
         }
 
-        /// <summary>
-        /// Obtiene el saldo restante de la devolución
-        /// </summary>
-        /// <param name="id">ID de la devolución</param>
-        /// <returns>Saldo restante</returns>
-        public static decimal SaldoDevolucion(int id)
-        {
-            decimal saldo = 0M;
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT saldo FROM devolucion WHERE id=?id";
-                sql.Parameters.AddWithValue("?id", id);
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    saldo = (decimal)dr["saldo"];
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return saldo;
-        }
-
-        /// <summary>
-        /// Resta el saldo de la devolución según el ID
-        /// </summary>
-        /// <param name="id">ID de la devolución</param>
-        /// <param name="saldo">Cantidad a restar</param>
-        public static void CambiarSaldo(int id, decimal saldo)
-        {
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE devolucion SET saldo=saldo-?saldo, update_user=?update_user, update_time=NOW() WHERE id=?id";
-                sql.Parameters.AddWithValue("?saldo", saldo);
-                sql.Parameters.AddWithValue("?update_user", Usuario.IDUsuarioActual);
-                sql.Parameters.AddWithValue("?id", id);
-                ConexionBD.EjecutarConsulta(sql);
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
     }
 }

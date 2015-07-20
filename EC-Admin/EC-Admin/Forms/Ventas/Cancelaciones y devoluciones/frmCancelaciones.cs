@@ -40,12 +40,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las ventas. No se ha podido conectar a la base de datos.", "Admin CSY", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las ventas. No se ha podido conectar a la base de datos.", Config.shrug, ex });
             }
             catch (Exception ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las ventas.", "Admin CSY", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las ventas.", Config.shrug, ex });
             }
         }
 
@@ -63,12 +63,12 @@ namespace EC_Admin.Forms
             catch (MySqlException ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las ventas. No se ha podido conectar a la base de datos.", "Admin CSY", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las ventas. No se ha podido conectar a la base de datos.", Config.shrug, ex });
             }
             catch (Exception ex)
             {
                 this.Invoke(c);
-                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las ventas.", "Admin CSY", ex });
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las ventas.", Config.shrug, ex });
             }
         }
 
@@ -109,7 +109,7 @@ namespace EC_Admin.Forms
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar las ventas.", "Admin CSY", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar las ventas.", Config.shrug, ex);
             }
         }
 
@@ -223,11 +223,11 @@ namespace EC_Admin.Forms
                     }
                     catch (MySqlException ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la venta. No se ha podido conectar a la base de datos. Vuelva a cargar la lista de ventas para asegurarse de que ésta se haya cancelado.", "Admin CSY", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la venta. No se ha podido conectar a la base de datos. Vuelva a cargar la lista de ventas para asegurarse de que ésta se haya cancelado.", Config.shrug, ex);
                     }
                     catch (Exception ex)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la venta. Vuelva a cargar la lista de ventas para asegurarse de que ésta se haya cancelado.", "Admin CSY", ex);
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la venta. Vuelva a cargar la lista de ventas para asegurarse de que ésta se haya cancelado.", Config.shrug, ex);
                     }
                 }
             }

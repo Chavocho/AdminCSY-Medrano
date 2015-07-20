@@ -9,6 +9,7 @@ namespace System
 {
     public class Config
     {
+        public static string shrug = "¯\\_(ツ)_/¯";
         public static decimal iva = 0M;
         public static int cantMedioMayoreo = 0;
         public static int cantMayoreo = 0;

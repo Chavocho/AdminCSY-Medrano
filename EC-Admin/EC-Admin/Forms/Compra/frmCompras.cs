@@ -148,5 +148,10 @@ namespace EC_Admin.Forms
                 (new frmDetalladoCompra(id)).ShowDialog(this);
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            (new frmCancelacionCompra()).ShowDialog(this);
+        }
     }
 }
