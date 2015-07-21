@@ -115,10 +115,6 @@ namespace EC_Admin.Forms
         {
             Cerrar();
             LlenarDataGrid();
-            if (dgvSucursal.RowCount <= 0)
-            {
-                this.Close();
-            }
         }
 
         private void tmrEspera_Tick(object sender, EventArgs e)
@@ -150,12 +146,12 @@ namespace EC_Admin.Forms
                     CambioSucursal();
                     if (cerrar)
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cambiado la sucursal correctamente!. La aplicación se cerrará.", "Admin CSY");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha asignado la sucursal correctamente!. La aplicación se cerrará.", "Admin CSY");
                         Application.Exit();
                     }
                     else
                     {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cambiado la sucursal correctamente!.", "Admin CSY");
+                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha asignado la sucursal correctamente!.", "Admin CSY");
                         this.Close();
                     }
                 }
@@ -164,6 +160,13 @@ namespace EC_Admin.Forms
                     FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error asignar la sucursal.", "Admin CSY", ex);
                 }
             }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            (new frmNuevaSucursal()).ShowDialog(this);
+            bgwBusqueda.RunWorkerAsync();
+            tmrEspera.Enabled = true;
         }
     }
 }

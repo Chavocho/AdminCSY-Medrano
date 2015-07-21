@@ -1,22 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <configuraciones>
+  <basedatos>
+    <server>g6yD7ISLaLiJDFKvRYsaFQ==</server>
+    <base>iCTPtMiXh8yrJKxv9tpzQVP1I+gLGkXZ</base>
+    <usuario>iCTPtMiXh8yBwTSjjDkxfQ==</usuario>
+    <pass>UGwyy9cMOm5A9Lip1bAQEw==</pass>
+  </basedatos>
   <correo>
     <correo_interno>U/Uj6AsaRdk=</correo_interno>
     <pass_interno>U/Uj6AsaRdk=</pass_interno>
     <puerto_interno>U/Uj6AsaRdk=</puerto_interno>
     <host_interno>U/Uj6AsaRdk=</host_interno>
   </correo>
-  <POS>
-    <IVA>D8Zceo+oZIk=</IVA>
-  </POS>
-  <basedatos>
-    <server>/bmEtI8XUlOHHG6ynrK0gw==</server>
-    <base>VsmsJeNeWgNkx7oGHE5eDFP1I+gLGkXZ</base>
-    <usuario>M7PjMfY2PVY=</usuario>
-    <pass>U/Uj6AsaRdk=</pass>
-  </basedatos>
   <sucursal>
     <id>z9f4VO/8BoU=</id>
-    <nombre>2zqoOXCtLDM8m5avbt/L9g==</nombre>
+    <nombre>2zqoOXCtLDOCFNp8o1cHAdNYFgFxse2Z</nombre>
   </sucursal>
 </configuraciones>

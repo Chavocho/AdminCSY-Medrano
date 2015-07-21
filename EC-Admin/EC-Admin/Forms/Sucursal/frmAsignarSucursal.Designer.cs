@@ -41,6 +41,7 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSucursal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,12 +159,32 @@
             this.bgwBusqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusqueda_DoWork);
             this.bgwBusqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusqueda_RunWorkerCompleted);
             // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
+            this.btnNuevo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Font = new System.Drawing.Font("Corbel", 11F);
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(640, 403);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(175, 46);
+            this.btnNuevo.TabIndex = 3;
+            this.btnNuevo.Text = "Crear sucursal";
+            this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // frmAsignarSucursal
             // 
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 462);
+            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.dgvSucursal);
             this.Font = new System.Drawing.Font("Corbel", 11F);
@@ -189,5 +210,6 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Timer tmrEspera;
         private System.ComponentModel.BackgroundWorker bgwBusqueda;
+        private System.Windows.Forms.Button btnNuevo;
     }
 }

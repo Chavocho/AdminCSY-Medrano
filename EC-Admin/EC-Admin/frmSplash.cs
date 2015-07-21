@@ -32,7 +32,7 @@ namespace EC_Admin
             DialogResult re = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La conexión con los datos ingresados no se ha logrado efectuar, ¿desea modificarlos?", "Admin CSY");
             if (re == DialogResult.Yes)
             {
-                (new Forms.frmConfigBaseDatos()).ShowDialog(this);
+                (new Forms.frmConfigBaseDatos(this)).ShowDialog(this);
             }
             else
             {
@@ -87,7 +87,7 @@ namespace EC_Admin
                 DialogResult r = (DialogResult)Enum.Parse(typeof(DialogResult), this.Invoke(m, new object[] { this, Mensajes.Pregunta, "No tienes configurada tu conexión con la base de datos. ¿Deseas configurarla?", "Admin CSY", null }).ToString());
                 if (r == DialogResult.Yes)
                 {
-                    this.Invoke(new Action(() => { (new Forms.frmConfigBaseDatos()).ShowDialog(this); }));
+                    this.Invoke(new Action(() => { (new Forms.frmConfigBaseDatos(this)).ShowDialog(this); }));
                     ConfiguracionBaseDatos();
                 }
                 else

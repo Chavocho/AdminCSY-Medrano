@@ -48,21 +48,14 @@ namespace EC_Admin.Forms
             FuncionesGenerales.frmEsperaClose();
         }
 
-        private void Buscar(string p, bool existencias)
+        private void Buscar(string p)
         {
             try
             {
-                string sql;
-                if (existencias)
-                {
-                    sql = "SELECT p.id, p.nombre, p.codigo, p.descripcion1, i.precio, i.cant FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto)" +
-                        "WHERE (p.nombre LIKE '%" + p + "%' OR p.codigo LIKE '%" + p + "%') AND i.cant>0 AND p.eliminado=0";
-                }
-                else
-                {
-                    sql = "SELECT p.id, p.nombre, p.codigo, p.descripcion1, i.precio, i.cant FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto)" +
-                        "WHERE (p.nombre LIKE '%" + p + "%' OR p.codigo LIKE '%" + p + "%') AND p.eliminado=0";
-                }
+                string sql = "SELECT id, nombre, codigo, descripcion1," + 
+                    " (SELECT cant FROM inventario WHERE id_producto = id AND id_sucursal = '" + Config.idSucursal + "' LIMIT 1) AS cant," +
+                    " (SELECT precio FROM inventario WHERE id_producto = id AND id_sucursal = '" + Config.idSucursal + "' LIMIT 1) AS precio" +
+                    " FROM producto WHERE (nombre LIKE '%" + p + "%' OR codigo LIKE '%" + p + "%') AND eliminado = 0;";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -84,14 +77,34 @@ namespace EC_Admin.Forms
                 dgvProductos.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["descripcion1"], dr["codigo"], dr["precio"], dr["cant"] });
+                    object cant, precio;
+                    if (dr["cant"] != DBNull.Value)
+                        cant = dr["cant"];
+                    else
+                        cant = "Sin asignar";
+                    if (dr["precio"] != DBNull.Value)
+                        precio = ((decimal)dr["precio"]).ToString("C2");
+                    else
+                        precio = "Sin Asignar";
+
+                    if (chbExistencias.Checked)
+                    {
+                        if (dr["cant"] != DBNull.Value)
+                        {
+                            dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["descripcion1"], dr["codigo"], precio, cant });
+                        }
+                    }
+                    else
+                    {
+                        dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["descripcion1"], dr["codigo"], precio, cant });
+                    }
                 }
                 dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
                 txtBusqueda.Select();
             }
             catch (Exception ex)
             {
-                throw ex;
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mostrar los productos", Config.shrug, ex);
             }
         }
 
@@ -124,7 +137,7 @@ namespace EC_Admin.Forms
             if (e.KeyCode == Keys.Enter && !bgwBusqueda.IsBusy)
             {
                 tmrEspera.Enabled = true;
-                bgwBusqueda.RunWorkerAsync(new object[] { txtBusqueda.Text, chbExistencias.Checked });
+                bgwBusqueda.RunWorkerAsync(txtBusqueda.Text);
             }
         }
 
@@ -167,8 +180,7 @@ namespace EC_Admin.Forms
 
         private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
         {
-            object[] a = (object[])e.Argument;
-            Buscar(a[0].ToString(), (bool)a[1]);
+            Buscar(e.Argument.ToString());
         }
 
         private void bgwBusqueda_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

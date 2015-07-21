@@ -13,6 +13,7 @@ namespace EC_Admin.Forms
     public partial class frmConfigBaseDatos : Form
     {
         frmPrimerUso frm = null;
+        frmSplash frmS = null;
         bool reiniciar = false;
 
         public frmConfigBaseDatos()
@@ -24,6 +25,13 @@ namespace EC_Admin.Forms
         {
             InitializeComponent();
             this.frm = frm;
+            reiniciar = false;
+        }
+
+        public frmConfigBaseDatos(frmSplash frm)
+        {
+            InitializeComponent();
+            this.frmS = frm;
             reiniciar = false;
         }
 
@@ -69,7 +77,7 @@ namespace EC_Admin.Forms
             DialogResult r = FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Es correcta la información?", "Admin CSY");
             if (r == DialogResult.Yes)
             {
-                if (frm == null)
+                if (frm == null && frmS == null)
                 {
                     VerificarDatos();
                     Guardar();
@@ -115,7 +123,10 @@ namespace EC_Admin.Forms
                                 return;
                             }
                         }
-                        frm.Siguiente();
+                        if (frm != null)
+                        {
+                            frm.Siguiente();
+                        }
                         this.Close();
                     }
                     catch (MySql.Data.MySqlClient.MySqlException ex)
