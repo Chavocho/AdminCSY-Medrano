@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,10 +71,8 @@
             this.txtFactura = new System.Windows.Forms.TextBox();
             this.lblERemision = new System.Windows.Forms.Label();
             this.txtRemision = new System.Windows.Forms.TextBox();
-            this.lblCuenta = new System.Windows.Forms.Label();
             this.lblBeneficiario = new System.Windows.Forms.Label();
             this.lblEDatos = new System.Windows.Forms.Label();
-            this.txtCuenta = new System.Windows.Forms.TextBox();
             this.txtBeneficiario = new System.Windows.Forms.TextBox();
             this.txtDatos = new System.Windows.Forms.TextBox();
             this.lblETipoPago = new System.Windows.Forms.Label();
@@ -91,11 +89,11 @@
             this.dgvProductos.AllowUserToDeleteRows = false;
             this.dgvProductos.AllowUserToResizeColumns = false;
             this.dgvProductos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -103,14 +101,14 @@
             this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
@@ -120,14 +118,14 @@
             this.CCant,
             this.CDescuento,
             this.CUnidad});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvProductos.Location = new System.Drawing.Point(12, 66);
@@ -164,8 +162,8 @@
             // 
             // CCosto
             // 
-            dataGridViewCellStyle3.Format = "C2";
-            this.CCosto.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Format = "C2";
+            this.CCosto.DefaultCellStyle = dataGridViewCellStyle8;
             this.CCosto.HeaderText = "Costo";
             this.CCosto.Name = "CCosto";
             // 
@@ -176,8 +174,8 @@
             // 
             // CDescuento
             // 
-            dataGridViewCellStyle4.Format = "C2";
-            this.CDescuento.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Format = "C2";
+            this.CDescuento.DefaultCellStyle = dataGridViewCellStyle9;
             this.CDescuento.HeaderText = "Descuento";
             this.CDescuento.Name = "CDescuento";
             // 
@@ -473,10 +471,8 @@
             this.grbPago.Controls.Add(this.txtFactura);
             this.grbPago.Controls.Add(this.lblERemision);
             this.grbPago.Controls.Add(this.txtRemision);
-            this.grbPago.Controls.Add(this.lblCuenta);
             this.grbPago.Controls.Add(this.lblBeneficiario);
             this.grbPago.Controls.Add(this.lblEDatos);
-            this.grbPago.Controls.Add(this.txtCuenta);
             this.grbPago.Controls.Add(this.txtBeneficiario);
             this.grbPago.Controls.Add(this.txtDatos);
             this.grbPago.Controls.Add(this.lblETipoPago);
@@ -570,24 +566,12 @@
             this.txtRemision.Size = new System.Drawing.Size(277, 29);
             this.txtRemision.TabIndex = 17;
             // 
-            // lblCuenta
-            // 
-            this.lblCuenta.AutoSize = true;
-            this.lblCuenta.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblCuenta.Location = new System.Drawing.Point(569, 18);
-            this.lblCuenta.Name = "lblCuenta";
-            this.lblCuenta.Size = new System.Drawing.Size(95, 18);
-            this.lblCuenta.TabIndex = 14;
-            this.lblCuenta.Text = "Cuenta Propia";
-            this.lblCuenta.Visible = false;
-            // 
             // lblBeneficiario
             // 
             this.lblBeneficiario.AutoSize = true;
             this.lblBeneficiario.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblBeneficiario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblBeneficiario.Location = new System.Drawing.Point(569, 99);
+            this.lblBeneficiario.Location = new System.Drawing.Point(569, 17);
             this.lblBeneficiario.Name = "lblBeneficiario";
             this.lblBeneficiario.Size = new System.Drawing.Size(80, 18);
             this.lblBeneficiario.TabIndex = 14;
@@ -606,23 +590,12 @@
             this.lblEDatos.Text = "Núm. de cheque";
             this.lblEDatos.Visible = false;
             // 
-            // txtCuenta
-            // 
-            this.txtCuenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtCuenta.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtCuenta.Location = new System.Drawing.Point(572, 39);
-            this.txtCuenta.Name = "txtCuenta";
-            this.txtCuenta.Size = new System.Drawing.Size(277, 29);
-            this.txtCuenta.TabIndex = 13;
-            this.txtCuenta.Visible = false;
-            // 
             // txtBeneficiario
             // 
             this.txtBeneficiario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtBeneficiario.Font = new System.Drawing.Font("Corbel", 13F);
             this.txtBeneficiario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtBeneficiario.Location = new System.Drawing.Point(572, 121);
+            this.txtBeneficiario.Location = new System.Drawing.Point(572, 39);
             this.txtBeneficiario.Name = "txtBeneficiario";
             this.txtBeneficiario.Size = new System.Drawing.Size(277, 29);
             this.txtBeneficiario.TabIndex = 13;
@@ -775,7 +748,5 @@
         private System.Windows.Forms.Button btnPagos;
         private System.Windows.Forms.Label lblBeneficiario;
         private System.Windows.Forms.TextBox txtBeneficiario;
-        private System.Windows.Forms.TextBox txtCuenta;
-        private System.Windows.Forms.Label lblCuenta;
     }
 }

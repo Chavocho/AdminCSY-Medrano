@@ -13,6 +13,7 @@ namespace EC_Admin.Forms
     public partial class frmEditarCuenta : Form
     {
         Cuenta c;
+        TipoCuenta t;
         public frmEditarCuenta(int id)
         {
             InitializeComponent();
@@ -49,6 +50,7 @@ namespace EC_Admin.Forms
                 c.Beneficiario = txtBeneficiario.Text;
                 c.Sucursal = txtSucursal.Text;
                 c.NumeroCuenta = txtNumCuenta.Text;
+                c.TipoCuenta = t;
                 c.Editar();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -127,6 +129,16 @@ namespace EC_Admin.Forms
         private void txtNumeros_KeyPress(object sender, KeyPressEventArgs e)
         {
             FuncionesGenerales.VerificarEsNumero(ref sender, ref e, true);
+        }
+
+        private void cboTipoCuenta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cboTipoCuenta.SelectedIndex)
+            {
+                case 0: t = TipoCuenta.Sucursal; break;
+                case 1: t = TipoCuenta.Cliente; break;
+                case 2: t = TipoCuenta.Proveedor; break;
+            }
         }
 
     }

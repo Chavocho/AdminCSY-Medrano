@@ -39,6 +39,8 @@
             this.txtNumCuenta = new System.Windows.Forms.TextBox();
             this.lblENumCuenta = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.cboTipoCuenta = new System.Windows.Forms.ComboBox();
+            this.lblETipoCuenta = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblEClabe
@@ -149,16 +151,45 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // cboTipoCuenta
+            // 
+            this.cboTipoCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            this.cboTipoCuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboTipoCuenta.Font = new System.Drawing.Font("Corbel", 13F);
+            this.cboTipoCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.cboTipoCuenta.FormattingEnabled = true;
+            this.cboTipoCuenta.Items.AddRange(new object[] {
+            "Sucursal",
+            "Cliente",
+            "Proveedor"});
+            this.cboTipoCuenta.Location = new System.Drawing.Point(277, 144);
+            this.cboTipoCuenta.Name = "cboTipoCuenta";
+            this.cboTipoCuenta.Size = new System.Drawing.Size(259, 29);
+            this.cboTipoCuenta.TabIndex = 12;
+            this.cboTipoCuenta.SelectedIndexChanged += new System.EventHandler(this.cboTipoCuenta_SelectedIndexChanged);
+            // 
+            // lblETipoCuenta
+            // 
+            this.lblETipoCuenta.AutoSize = true;
+            this.lblETipoCuenta.Location = new System.Drawing.Point(277, 125);
+            this.lblETipoCuenta.Name = "lblETipoCuenta";
+            this.lblETipoCuenta.Size = new System.Drawing.Size(99, 18);
+            this.lblETipoCuenta.TabIndex = 6;
+            this.lblETipoCuenta.Text = "Tipo de Cuenta";
+            // 
             // frmNuevaCuenta
             // 
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(548, 265);
+            this.Controls.Add(this.cboTipoCuenta);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtNumCuenta);
             this.Controls.Add(this.lblENumCuenta);
             this.Controls.Add(this.txtSucursal);
+            this.Controls.Add(this.lblETipoCuenta);
             this.Controls.Add(this.lblESucursal);
             this.Controls.Add(this.txtBeneficiario);
             this.Controls.Add(this.lblEBeneficiario);
@@ -190,5 +221,7 @@
         private System.Windows.Forms.TextBox txtNumCuenta;
         private System.Windows.Forms.Label lblENumCuenta;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.ComboBox cboTipoCuenta;
+        private System.Windows.Forms.Label lblETipoCuenta;
     }
 }
