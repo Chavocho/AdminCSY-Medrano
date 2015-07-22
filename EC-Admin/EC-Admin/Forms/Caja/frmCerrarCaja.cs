@@ -34,12 +34,19 @@ namespace EC_Admin.Forms
             decimal efe;
             decimal.TryParse(txtEfectivo.Text, out efe);
             Caja c = new Caja();
+            Banco b = new Banco();
             c.Descripcion = "CIERRE DE CAJA";
             c.Efectivo = decimal.Negate(efe);
             c.IDSucursal = Config.idSucursal;
             c.TipoMovimiento = MovimientoCaja.Entrada;
-            //c.Voucher = decimal.Negate(Caja.TotalVouchers);
+            b.Total = (decimal)Caja.TotalVouchers;
+            c.Voucher = decimal.Negate(Caja.TotalVouchers);
             c.RegistrarMovimiento();
+
+            b.Descripcion = "TOTAL VENTAS MOSTRADOR";
+            b.IDSucursal = Config.idSucursal;
+            b.TipoMovimiento = MovimientoCaja.Entrada;
+            b.RegistrarMovimiento();
             Caja.CambiarEstadoCaja(false);
         }
 

@@ -64,6 +64,7 @@
             this.lblEComprador = new System.Windows.Forms.Label();
             this.btnVendedor = new System.Windows.Forms.Button();
             this.grbPago = new System.Windows.Forms.GroupBox();
+            this.btnInfoPago = new System.Windows.Forms.Button();
             this.chbFolioRemision = new System.Windows.Forms.CheckBox();
             this.rbtnFactura = new System.Windows.Forms.RadioButton();
             this.rbtnRemision = new System.Windows.Forms.RadioButton();
@@ -71,10 +72,6 @@
             this.txtFactura = new System.Windows.Forms.TextBox();
             this.lblERemision = new System.Windows.Forms.Label();
             this.txtRemision = new System.Windows.Forms.TextBox();
-            this.lblBeneficiario = new System.Windows.Forms.Label();
-            this.lblEDatos = new System.Windows.Forms.Label();
-            this.txtBeneficiario = new System.Windows.Forms.TextBox();
-            this.txtDatos = new System.Windows.Forms.TextBox();
             this.lblETipoPago = new System.Windows.Forms.Label();
             this.cboTipoPago = new System.Windows.Forms.ComboBox();
             this.btnPagos = new System.Windows.Forms.Button();
@@ -464,6 +461,7 @@
             // grbPago
             // 
             this.grbPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.grbPago.Controls.Add(this.btnInfoPago);
             this.grbPago.Controls.Add(this.chbFolioRemision);
             this.grbPago.Controls.Add(this.rbtnFactura);
             this.grbPago.Controls.Add(this.rbtnRemision);
@@ -471,19 +469,34 @@
             this.grbPago.Controls.Add(this.txtFactura);
             this.grbPago.Controls.Add(this.lblERemision);
             this.grbPago.Controls.Add(this.txtRemision);
-            this.grbPago.Controls.Add(this.lblBeneficiario);
-            this.grbPago.Controls.Add(this.lblEDatos);
-            this.grbPago.Controls.Add(this.txtBeneficiario);
-            this.grbPago.Controls.Add(this.txtDatos);
             this.grbPago.Controls.Add(this.lblETipoPago);
             this.grbPago.Controls.Add(this.cboTipoPago);
             this.grbPago.Font = new System.Drawing.Font("Corbel", 9F);
             this.grbPago.Location = new System.Drawing.Point(424, 464);
             this.grbPago.Name = "grbPago";
-            this.grbPago.Size = new System.Drawing.Size(861, 155);
+            this.grbPago.Size = new System.Drawing.Size(572, 155);
             this.grbPago.TabIndex = 24;
             this.grbPago.TabStop = false;
             this.grbPago.Text = "Información del pago";
+            // 
+            // btnInfoPago
+            // 
+            this.btnInfoPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInfoPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnInfoPago.FlatAppearance.BorderSize = 0;
+            this.btnInfoPago.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnInfoPago.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnInfoPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInfoPago.Font = new System.Drawing.Font("Corbel", 9F);
+            this.btnInfoPago.ForeColor = System.Drawing.Color.White;
+            this.btnInfoPago.Location = new System.Drawing.Point(289, 39);
+            this.btnInfoPago.Name = "btnInfoPago";
+            this.btnInfoPago.Size = new System.Drawing.Size(174, 30);
+            this.btnInfoPago.TabIndex = 24;
+            this.btnInfoPago.Text = "Editar información de pago";
+            this.btnInfoPago.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInfoPago.UseVisualStyleBackColor = false;
+            this.btnInfoPago.Visible = false;
             // 
             // chbFolioRemision
             // 
@@ -565,52 +578,6 @@
             this.txtRemision.Name = "txtRemision";
             this.txtRemision.Size = new System.Drawing.Size(277, 29);
             this.txtRemision.TabIndex = 17;
-            // 
-            // lblBeneficiario
-            // 
-            this.lblBeneficiario.AutoSize = true;
-            this.lblBeneficiario.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblBeneficiario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblBeneficiario.Location = new System.Drawing.Point(569, 17);
-            this.lblBeneficiario.Name = "lblBeneficiario";
-            this.lblBeneficiario.Size = new System.Drawing.Size(80, 18);
-            this.lblBeneficiario.TabIndex = 14;
-            this.lblBeneficiario.Text = "Beneficiario";
-            this.lblBeneficiario.Visible = false;
-            // 
-            // lblEDatos
-            // 
-            this.lblEDatos.AutoSize = true;
-            this.lblEDatos.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblEDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEDatos.Location = new System.Drawing.Point(286, 18);
-            this.lblEDatos.Name = "lblEDatos";
-            this.lblEDatos.Size = new System.Drawing.Size(108, 18);
-            this.lblEDatos.TabIndex = 14;
-            this.lblEDatos.Text = "Núm. de cheque";
-            this.lblEDatos.Visible = false;
-            // 
-            // txtBeneficiario
-            // 
-            this.txtBeneficiario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtBeneficiario.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtBeneficiario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtBeneficiario.Location = new System.Drawing.Point(572, 39);
-            this.txtBeneficiario.Name = "txtBeneficiario";
-            this.txtBeneficiario.Size = new System.Drawing.Size(277, 29);
-            this.txtBeneficiario.TabIndex = 13;
-            this.txtBeneficiario.Visible = false;
-            // 
-            // txtDatos
-            // 
-            this.txtDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDatos.Font = new System.Drawing.Font("Corbel", 13F);
-            this.txtDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.txtDatos.Location = new System.Drawing.Point(289, 39);
-            this.txtDatos.Name = "txtDatos";
-            this.txtDatos.Size = new System.Drawing.Size(277, 29);
-            this.txtDatos.TabIndex = 13;
-            this.txtDatos.Visible = false;
             // 
             // lblETipoPago
             // 
@@ -731,8 +698,6 @@
         private System.Windows.Forms.ComboBox cboTipoPago;
         private System.Windows.Forms.Label lblERemision;
         private System.Windows.Forms.TextBox txtRemision;
-        private System.Windows.Forms.Label lblEDatos;
-        private System.Windows.Forms.TextBox txtDatos;
         private System.Windows.Forms.Label lblEFactura;
         private System.Windows.Forms.TextBox txtFactura;
         private System.Windows.Forms.RadioButton rbtnFactura;
@@ -746,7 +711,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CUnidad;
         private System.Windows.Forms.CheckBox chbFolioRemision;
         private System.Windows.Forms.Button btnPagos;
-        private System.Windows.Forms.Label lblBeneficiario;
-        private System.Windows.Forms.TextBox txtBeneficiario;
+        private System.Windows.Forms.Button btnInfoPago;
     }
 }

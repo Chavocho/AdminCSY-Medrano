@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvCaja = new System.Windows.Forms.DataGridView();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,14 +59,14 @@
             this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
             this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.btnCortes = new System.Windows.Forms.Button();
-            this.grbSeleccion = new System.Windows.Forms.GroupBox();
-            this.rdbCaja = new System.Windows.Forms.RadioButton();
-            this.rdbBanco = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTotVouMos = new System.Windows.Forms.Label();
+            this.lblVoucher = new System.Windows.Forms.Label();
+            this.lblTotVouCaj = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCaja)).BeginInit();
             this.grbFechas.SuspendLayout();
             this.grbFolio.SuspendLayout();
             this.grbTotales.SuspendLayout();
-            this.grbSeleccion.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvCaja
@@ -75,11 +75,11 @@
             this.dgvCaja.AllowUserToDeleteRows = false;
             this.dgvCaja.AllowUserToResizeColumns = false;
             this.dgvCaja.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
-            this.dgvCaja.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(240)))));
+            this.dgvCaja.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvCaja.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -87,14 +87,14 @@
             this.dgvCaja.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCaja.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvCaja.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCaja.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCaja.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvCaja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCaja.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CID,
@@ -103,14 +103,14 @@
             this.CEfectivo,
             this.CVouchers,
             this.CTipoMovimiento});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Corbel", 11F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCaja.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Corbel", 11F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCaja.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgvCaja.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCaja.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
             this.dgvCaja.Location = new System.Drawing.Point(12, 74);
@@ -132,8 +132,8 @@
             // 
             // CFecha
             // 
-            dataGridViewCellStyle9.Format = "dd \' de \' MMMM \' del \' yyyy, hh:mm tt";
-            this.CFecha.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Format = "dd \' de \' MMMM \' del \' yyyy, hh:mm tt";
+            this.CFecha.DefaultCellStyle = dataGridViewCellStyle15;
             this.CFecha.HeaderText = "Fecha";
             this.CFecha.Name = "CFecha";
             this.CFecha.Width = 200;
@@ -146,15 +146,15 @@
             // 
             // CEfectivo
             // 
-            dataGridViewCellStyle10.Format = "C2";
-            this.CEfectivo.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle16.Format = "C2";
+            this.CEfectivo.DefaultCellStyle = dataGridViewCellStyle16;
             this.CEfectivo.HeaderText = "Efectivo";
             this.CEfectivo.Name = "CEfectivo";
             // 
             // CVouchers
             // 
-            dataGridViewCellStyle11.Format = "C2";
-            this.CVouchers.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle17.Format = "C2";
+            this.CVouchers.DefaultCellStyle = dataGridViewCellStyle17;
             this.CVouchers.HeaderText = "Vouchers";
             this.CVouchers.Name = "CVouchers";
             // 
@@ -285,8 +285,12 @@
             // grbTotales
             // 
             this.grbTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.grbTotales.Controls.Add(this.lblTotVouCaj);
             this.grbTotales.Controls.Add(this.lblTotEfeCaj);
+            this.grbTotales.Controls.Add(this.lblVoucher);
+            this.grbTotales.Controls.Add(this.lblTotVouMos);
             this.grbTotales.Controls.Add(this.lblETotEfeCaj);
+            this.grbTotales.Controls.Add(this.label1);
             this.grbTotales.Controls.Add(this.lblTotEfeMos);
             this.grbTotales.Controls.Add(this.lblETotEfeMos);
             this.grbTotales.Font = new System.Drawing.Font("Corbel", 9F);
@@ -295,13 +299,13 @@
             this.grbTotales.Size = new System.Drawing.Size(572, 72);
             this.grbTotales.TabIndex = 18;
             this.grbTotales.TabStop = false;
-            this.grbTotales.Text = "Información de venta";
+            this.grbTotales.Text = "Información de caja";
             // 
             // lblTotEfeCaj
             // 
             this.lblTotEfeCaj.AutoSize = true;
             this.lblTotEfeCaj.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotEfeCaj.Location = new System.Drawing.Point(397, 31);
+            this.lblTotEfeCaj.Location = new System.Drawing.Point(401, 18);
             this.lblTotEfeCaj.Name = "lblTotEfeCaj";
             this.lblTotEfeCaj.Size = new System.Drawing.Size(40, 17);
             this.lblTotEfeCaj.TabIndex = 5;
@@ -311,7 +315,7 @@
             // 
             this.lblETotEfeCaj.AutoSize = true;
             this.lblETotEfeCaj.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblETotEfeCaj.Location = new System.Drawing.Point(283, 31);
+            this.lblETotEfeCaj.Location = new System.Drawing.Point(280, 18);
             this.lblETotEfeCaj.Name = "lblETotEfeCaj";
             this.lblETotEfeCaj.Size = new System.Drawing.Size(108, 18);
             this.lblETotEfeCaj.TabIndex = 4;
@@ -321,7 +325,7 @@
             // 
             this.lblTotEfeMos.AutoSize = true;
             this.lblTotEfeMos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotEfeMos.Location = new System.Drawing.Point(143, 32);
+            this.lblTotEfeMos.Location = new System.Drawing.Point(153, 19);
             this.lblTotEfeMos.Name = "lblTotEfeMos";
             this.lblTotEfeMos.Size = new System.Drawing.Size(40, 17);
             this.lblTotEfeMos.TabIndex = 1;
@@ -331,7 +335,7 @@
             // 
             this.lblETotEfeMos.AutoSize = true;
             this.lblETotEfeMos.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblETotEfeMos.Location = new System.Drawing.Point(13, 32);
+            this.lblETotEfeMos.Location = new System.Drawing.Point(10, 19);
             this.lblETotEfeMos.Name = "lblETotEfeMos";
             this.lblETotEfeMos.Size = new System.Drawing.Size(124, 18);
             this.lblETotEfeMos.TabIndex = 0;
@@ -389,48 +393,51 @@
             this.btnCortes.UseVisualStyleBackColor = false;
             this.btnCortes.Click += new System.EventHandler(this.btnCortes_Click);
             // 
-            // grbSeleccion
+            // label1
             // 
-            this.grbSeleccion.Controls.Add(this.rdbCaja);
-            this.grbSeleccion.Controls.Add(this.rdbBanco);
-            this.grbSeleccion.Font = new System.Drawing.Font("Corbel", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbSeleccion.Location = new System.Drawing.Point(12, 13);
-            this.grbSeleccion.Name = "grbSeleccion";
-            this.grbSeleccion.Size = new System.Drawing.Size(160, 55);
-            this.grbSeleccion.TabIndex = 21;
-            this.grbSeleccion.TabStop = false;
-            this.grbSeleccion.Text = "Tipo de Movimiento";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Corbel", 11F);
+            this.label1.Location = new System.Drawing.Point(10, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(137, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Vouchers mostrados:";
             // 
-            // rdbCaja
+            // lblTotVouMos
             // 
-            this.rdbCaja.AutoSize = true;
-            this.rdbCaja.Checked = true;
-            this.rdbCaja.Location = new System.Drawing.Point(16, 21);
-            this.rdbCaja.Name = "rdbCaja";
-            this.rdbCaja.Size = new System.Drawing.Size(47, 18);
-            this.rdbCaja.TabIndex = 0;
-            this.rdbCaja.TabStop = true;
-            this.rdbCaja.Text = "Caja";
-            this.rdbCaja.UseVisualStyleBackColor = true;
-            this.rdbCaja.CheckedChanged += new System.EventHandler(this.rdbBanco_CheckedChanged);
+            this.lblTotVouMos.AutoSize = true;
+            this.lblTotVouMos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotVouMos.Location = new System.Drawing.Point(153, 43);
+            this.lblTotVouMos.Name = "lblTotVouMos";
+            this.lblTotVouMos.Size = new System.Drawing.Size(40, 17);
+            this.lblTotVouMos.TabIndex = 1;
+            this.lblTotVouMos.Text = "$0.00";
             // 
-            // rdbBanco
+            // lblVoucher
             // 
-            this.rdbBanco.AutoSize = true;
-            this.rdbBanco.Location = new System.Drawing.Point(82, 21);
-            this.rdbBanco.Name = "rdbBanco";
-            this.rdbBanco.Size = new System.Drawing.Size(55, 18);
-            this.rdbBanco.TabIndex = 0;
-            this.rdbBanco.Text = "Banco";
-            this.rdbBanco.UseVisualStyleBackColor = true;
-            this.rdbBanco.CheckedChanged += new System.EventHandler(this.rdbCaja_CheckedChanged);
+            this.lblVoucher.AutoSize = true;
+            this.lblVoucher.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblVoucher.Location = new System.Drawing.Point(280, 42);
+            this.lblVoucher.Name = "lblVoucher";
+            this.lblVoucher.Size = new System.Drawing.Size(115, 18);
+            this.lblVoucher.TabIndex = 4;
+            this.lblVoucher.Text = "Vouchers en caja:";
+            // 
+            // lblTotVouCaj
+            // 
+            this.lblTotVouCaj.AutoSize = true;
+            this.lblTotVouCaj.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotVouCaj.Location = new System.Drawing.Point(401, 42);
+            this.lblTotVouCaj.Name = "lblTotVouCaj";
+            this.lblTotVouCaj.Size = new System.Drawing.Size(40, 17);
+            this.lblTotVouCaj.TabIndex = 5;
+            this.lblTotVouCaj.Text = "$0.00";
             // 
             // frmCaja
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1078, 697);
-            this.Controls.Add(this.grbSeleccion);
             this.Controls.Add(this.btnCortes);
             this.Controls.Add(this.btnAbrirCerrar);
             this.Controls.Add(this.grbTotales);
@@ -454,8 +461,6 @@
             this.grbFolio.PerformLayout();
             this.grbTotales.ResumeLayout(false);
             this.grbTotales.PerformLayout();
-            this.grbSeleccion.ResumeLayout(false);
-            this.grbSeleccion.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -486,8 +491,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CVouchers;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTipoMovimiento;
         private System.Windows.Forms.Button btnCortes;
-        private System.Windows.Forms.GroupBox grbSeleccion;
-        private System.Windows.Forms.RadioButton rdbCaja;
-        private System.Windows.Forms.RadioButton rdbBanco;
+        private System.Windows.Forms.Label lblTotVouCaj;
+        private System.Windows.Forms.Label lblVoucher;
+        private System.Windows.Forms.Label lblTotVouMos;
+        private System.Windows.Forms.Label label1;
     }
 }

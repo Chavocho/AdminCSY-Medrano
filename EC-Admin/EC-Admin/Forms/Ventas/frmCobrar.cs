@@ -94,16 +94,15 @@ namespace EC_Admin.Forms
         {
             try
             {
-                Banco b = new Banco();
                 Caja c = new Caja();
                 c.Descripcion = "VENTA MOSTRADOR";
-                b.Descripcion = "VENTA MOSTRADOR";
+                //b.Descripcion = "VENTA MOSTRADOR";
                 if (chbSaldo.Checked)
                 {
                     if (cboTipoPago.SelectedIndex == 0)
                     {
                         c.Efectivo = total;
-                        b.Total = 0M;
+                        c.Voucher = 0M;
                         c.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
                         c.IDSucursal = Config.idSucursal;
                         c.RegistrarMovimiento();
@@ -111,10 +110,10 @@ namespace EC_Admin.Forms
                     else if (cboTipoPago.SelectedIndex == 1 || cboTipoPago.SelectedIndex == 2)
                     {
                         c.Efectivo = 0M;
-                        b.Total = totalPorcentaje;
-                        b.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
-                        b.IDSucursal = Config.idSucursal;
-                        b.RegistrarMovimiento();
+                        c.Voucher = totalPorcentaje;
+                        c.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
+                        c.IDSucursal = Config.idSucursal;
+                        c.RegistrarMovimiento();
                     }
                 }
                 else
@@ -122,7 +121,7 @@ namespace EC_Admin.Forms
                     if (cboTipoPago.SelectedIndex == 0)
                     {
                         c.Efectivo = total;
-                        b.Total = 0M;
+                        c.Voucher = 0M;
                         c.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
                         c.IDSucursal = Config.idSucursal;
                         c.RegistrarMovimiento();
@@ -130,10 +129,10 @@ namespace EC_Admin.Forms
                     else if (cboTipoPago.SelectedIndex == 1 || cboTipoPago.SelectedIndex == 2)
                     {
                         c.Efectivo = 0M;
-                        b.Total = totalPorcentaje;
-                        b.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
-                        b.IDSucursal = Config.idSucursal;
-                        b.RegistrarMovimiento();
+                        c.Voucher= totalPorcentaje;
+                        c.TipoMovimiento = EC_Admin.MovimientoCaja.Entrada;
+                        c.IDSucursal = Config.idSucursal;
+                        c.RegistrarMovimiento();
                     }
                 }
                 

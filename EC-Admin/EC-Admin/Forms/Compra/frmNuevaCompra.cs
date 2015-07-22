@@ -210,30 +210,30 @@ namespace EC_Admin.Forms
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un producto a la compra", "Admin CSY");
                 return false;
             }
-            switch (cboTipoPago.SelectedIndex)
-            {
-                case 1:
-                    if (txtDatos.Text.Trim() == "")
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el número de cheque", "Admin CSY");
-                        return false;
-                    }
-                    break;
-                case 2:
-                    if (txtDatos.Text.Trim() == "")
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de crédito", "Admin CSY");
-                        return false;
-                    }
-                    break;
-                case 3:
-                    if (txtDatos.Text.Trim() == "")
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de débito", "Admin CSY");
-                        return false;
-                    }
-                    break;
-            }
+            //switch (cboTipoPago.SelectedIndex)
+            //{
+            //    case 1:
+            //        if (txtDatos.Text.Trim() == "")
+            //        {
+            //            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el número de cheque", "Admin CSY");
+            //            return false;
+            //        }
+            //        break;
+            //    case 2:
+            //        if (txtDatos.Text.Trim() == "")
+            //        {
+            //            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de crédito", "Admin CSY");
+            //            return false;
+            //        }
+            //        break;
+            //    case 3:
+            //        if (txtDatos.Text.Trim() == "")
+            //        {
+            //            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de débito", "Admin CSY");
+            //            return false;
+            //        }
+            //        break;
+            //}
             if (rbtnRemision.Checked)
             {
                 if (!chbFolioRemision.Checked)
@@ -387,28 +387,28 @@ namespace EC_Admin.Forms
             switch (cboTipoPago.SelectedIndex)
             {
                 case 0:
-                    txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = lblBeneficiario.Visible = false;
+                    //txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = lblBeneficiario.Visible = false;
                     t = TipoPago.Efectivo;
                     break;
                 case 1:
-                    lblEDatos.Text = "Núm. de cheque";
-                    txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = lblBeneficiario.Visible = true;
+                    //lblEDatos.Text = "Núm. de cheque";
+                    //txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = lblBeneficiario.Visible = true;
                     t = TipoPago.Cheque;
                     break;
                 case 2:
-                    lblEDatos.Text = "Núm. de tarjeta";
-                    txtDatos.Visible = lblEDatos.Visible = true;
-                    txtBeneficiario.Visible = lblBeneficiario.Visible = false;
+                    //lblEDatos.Text = "Núm. de tarjeta";
+                    //txtDatos.Visible = lblEDatos.Visible = true;
+                    //txtBeneficiario.Visible = lblBeneficiario.Visible = false;
                     t = TipoPago.Crédito;
                     break;
                 case 3:
-                    lblEDatos.Text = "Núm. de tarjeta";
-                    txtDatos.Visible = lblEDatos.Visible = true;
-                    txtBeneficiario.Visible = lblBeneficiario.Visible = false;
+                    //lblEDatos.Text = "Núm. de tarjeta";
+                    //txtDatos.Visible = lblEDatos.Visible = true;
+                    //txtBeneficiario.Visible = lblBeneficiario.Visible = false;
                     t = TipoPago.Débito;
                     break;
                 case 4:
-                    txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = lblBeneficiario.Visible = false;
+                    //txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = lblBeneficiario.Visible = false;
                     t = TipoPago.Transferencia;
                     break;
             }

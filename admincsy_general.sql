@@ -1,3 +1,4 @@
+
 -- phpMyAdmin SQL Dump
 -- version 4.3.11
 -- http://www.phpmyadmin.net
@@ -19,8 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `admincsy_general`
 --
-CREATE DATABASE IF NOT EXISTS `gymcsyco_pruebas` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `gymcsyco_pruebas`;
+CREATE DATABASE IF NOT EXISTS `admincsy_general` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `admincsy_general`;
 
 -- --------------------------------------------------------
 

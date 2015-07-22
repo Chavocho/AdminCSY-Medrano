@@ -130,9 +130,9 @@ namespace EC_Admin.Forms
                 vou += (decimal)dr.Cells[4].Value;
             }
             lblTotEfeMos.Text = efe.ToString("C2");
-            //lblTotVouMos.Text = vou.ToString("C2");
+            lblTotVouMos.Text = vou.ToString("C2");
             lblTotEfeCaj.Text = Caja.TotalEfectivo.ToString("C2");
-            //lblTotVouCaj.Text = Caja.TotalVouchers.ToString("C2");
+            lblTotVouCaj.Text = Caja.TotalVouchers.ToString("C2");
         }
 
         private void dtpFechas_ValueChanged(object sender, EventArgs e)
@@ -193,37 +193,39 @@ namespace EC_Admin.Forms
 
         private void btnEntrada_Click(object sender, EventArgs e)
         {
-            if (rdbCaja.Checked)
-            {
+            //if (rdbCaja.Checked)
+            //{
                 if (Caja.EstadoCaja == false)
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
                     return;
                 }
+                else
                 (new frmEntradaSalida(MovimientoCaja.Entrada,false)).ShowDialog(this);
-            }
-            else if(rdbBanco.Checked)
-            {
-                (new frmEntradaSalida(MovimientoCaja.Entrada, true)).ShowDialog(this);
-            }
+            //}
+            //else if(rdbBanco.Checked)
+            //{
+            //    (new frmEntradaSalida(MovimientoCaja.Entrada, true)).ShowDialog(this);
+            //}
             CalcularTotales();
         }
 
         private void btnSalida_Click(object sender, EventArgs e)
         {
-            if (rdbCaja.Checked)
-            {
+            //if (rdbCaja.Checked)
+            //{
                 if (Caja.EstadoCaja == false)
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
                     return;
                 }
+                else
                 (new frmEntradaSalida(MovimientoCaja.Salida, false)).ShowDialog(this);
-            }
-            else if (rdbBanco.Checked)
-            {
-                (new frmEntradaSalida(MovimientoCaja.Salida, true)).ShowDialog(this);
-            }
+            //}
+            //else if (rdbBanco.Checked)
+            //{
+            //    (new frmEntradaSalida(MovimientoCaja.Salida, true)).ShowDialog(this);
+            //}
             CalcularTotales();
         }
 

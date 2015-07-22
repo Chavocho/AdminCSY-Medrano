@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <configuraciones>
   <basedatos>
-    <server>g6yD7ISLaLiJDFKvRYsaFQ==</server>
-    <base>iCTPtMiXh8yrJKxv9tpzQVP1I+gLGkXZ</base>
-    <usuario>iCTPtMiXh8yBwTSjjDkxfQ==</usuario>
-    <pass>UGwyy9cMOm5A9Lip1bAQEw==</pass>
+    <server>/bmEtI8XUlOHHG6ynrK0gw==</server>
+    <base>VsmsJeNeWgNkx7oGHE5eDFP1I+gLGkXZ</base>
+    <usuario>M7PjMfY2PVY=</usuario>
+    <pass>U/Uj6AsaRdk=</pass>
   </basedatos>
   <correo>
     <correo_interno>U/Uj6AsaRdk=</correo_interno>
@@ -14,6 +14,6 @@
   </correo>
   <sucursal>
     <id>z9f4VO/8BoU=</id>
-    <nombre>2zqoOXCtLDOCFNp8o1cHAdNYFgFxse2Z</nombre>
+    <nombre>TyAVL9POVxDP1/hU7/wGhQ==</nombre>
   </sucursal>
 </configuraciones>
