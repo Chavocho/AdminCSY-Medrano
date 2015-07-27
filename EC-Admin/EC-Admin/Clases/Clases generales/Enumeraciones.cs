@@ -72,4 +72,11 @@ namespace EC_Admin
         Espera = 2,
         Rechazada = 3
     }
+
+    public enum EstadoApartado
+    {
+        Espera = 0,
+        Salio = 1,
+        Cancelada = 2,
+    }
 }

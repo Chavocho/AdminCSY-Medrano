@@ -93,6 +93,15 @@ namespace EC_Admin.Forms
             {
                 FuncionesGenerales.ColoresBien(txtBeneficiario);
             }
+            if (cboTipoCuenta.SelectedIndex < 0)
+            {
+                FuncionesGenerales.ColoresError(cboTipoCuenta);
+                res = false;
+            }
+            else
+            {
+                FuncionesGenerales.ColoresBien(cboTipoCuenta);
+            }
             return res;
         }
 

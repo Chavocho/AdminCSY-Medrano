@@ -266,6 +266,10 @@ namespace EC_Admin.Forms
                     FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear el proveedor.", "Admin CSY", ex);
                 }
             }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Los campos en rojo son obligatorios", "Admin CSY");
+            }   
         }
 
         private void frmNuevoProveedor_Load(object sender, EventArgs e)

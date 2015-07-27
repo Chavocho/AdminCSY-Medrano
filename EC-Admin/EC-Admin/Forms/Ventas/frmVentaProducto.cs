@@ -18,6 +18,7 @@ namespace EC_Admin.Forms
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
         frmPOS frm = null;
         frmCotizacion frmC = null;
+        frmNuevoApartado frmA = null;
 
         public frmVentaProducto(frmPOS frm)
         {
@@ -29,6 +30,12 @@ namespace EC_Admin.Forms
         {
             InitializeComponent();
             this.frmC = frm;
+        }
+
+        public frmVentaProducto(frmNuevoApartado frm)
+        {
+            InitializeComponent();
+            this.frmA = frm;
         }
 
         private void Cerrar()
@@ -116,11 +123,15 @@ namespace EC_Admin.Forms
                 DataGridViewRow dr = dgvProductos.CurrentRow;
                 if (frm != null)
                 {
-                    frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[2].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[3].Value, (int)nudCant.Value, nudDescuento.Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[5].Value.ToString()), false);
+                    frm.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[2].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[3].Value, (int)nudCant.Value, nudDescuento.Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[5].Value.ToString()), false, 0);
                 }
                 else if (frmC != null)
                 {
                     frmC.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[2].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[3].Value, (int)nudCant.Value, nudDescuento.Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[5].Value.ToString()), false);
+                }
+                else if (frmA != null)
+                {
+                    frmA.AgregarProducto((int)dr.Cells[0].Value, dr.Cells[2].Value.ToString(), dr.Cells[1].Value.ToString(), (decimal)dr.Cells[3].Value, (int)nudCant.Value, nudDescuento.Value, (Unidades)Enum.Parse(typeof(Unidades), dr.Cells[5].Value.ToString()));
                 }
                 this.Close();
             }

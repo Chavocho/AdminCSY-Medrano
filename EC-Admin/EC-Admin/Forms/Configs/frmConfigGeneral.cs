@@ -85,7 +85,7 @@ namespace EC_Admin.Forms
                 }
                 else
                 {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "¡Los campos en rojo son obligatorios!", "Admin CSY");
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Los campos en rojo son obligatorios", "Admin CSY");
                 }
             }
             catch (Exception ex)

@@ -51,6 +51,7 @@ namespace EC_Admin.Forms.Configs
                 if (!FuncionesGenerales.EsCorreoValido(txtCorreo.Text))
                 {
                     FuncionesGenerales.ColoresError(txtCorreo);
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se reconoce el correo ingresado como uno válido", "Admin CSY");
                     res = false;
                 }
                 else
@@ -89,7 +90,7 @@ namespace EC_Admin.Forms.Configs
             }
             else
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Los campos en color rojo son obligatorios o tienen errores.", "Admin CSY");
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Los campos en color rojo son obligatorios.", "Admin CSY");
             }
         }
 

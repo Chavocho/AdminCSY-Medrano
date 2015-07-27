@@ -267,6 +267,10 @@ namespace EC_Admin.Forms
                     FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear la sucursal.", "Admin CSY", ex);
                 }
             }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Los campos en rojo son obligatorios", "Admin CSY");
+            }
         }
 
         private void frmEditarSucursal_Load(object sender, EventArgs e)

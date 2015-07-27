@@ -76,6 +76,7 @@ namespace EC_Admin.Forms
                 {
                     cboTipoPrecio.SelectedIndex = 0;
                     v.IDVendedor = idVendedor;
+                    v.IDSucursal = Config.idSucursal;
                     v.NuevaVenta();
                     ControlesHabilitados();
                     AsignarCliente(0, "Público en general");
@@ -90,6 +91,7 @@ namespace EC_Admin.Forms
             {
                 cboTipoPrecio.SelectedIndex = 0;
                 v.IDVendedor = idVendedor;
+                v.IDSucursal = Config.idSucursal;
                 v.NuevaVenta();
                 ControlesHabilitados();
                 AsignarCliente(0, "Público en general");
@@ -125,7 +127,7 @@ namespace EC_Admin.Forms
                 {
                     if (v.Promocion[i] <= 0)
                     {
-                        AgregarProducto(v.IDProductos[i], CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Precio[i], v.Cantidad[i], v.DescuentoProducto[i], v.Unidad[i], v.Paquete[i]);
+                        AgregarProducto(v.IDProductos[i], CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Precio[i], v.Cantidad[i], v.DescuentoProducto[i], v.Unidad[i], v.Paquete[i], v.CantApartado[i]);
                     }
                     else
                     {
@@ -174,6 +176,7 @@ namespace EC_Admin.Forms
             grbTotales.Enabled = false;
             lblETipoPrecio.Enabled = false;
             cboTipoPrecio.Enabled = false;
+            chbImpuesto.Enabled = false;
         }
 
         /// <summary>
@@ -181,6 +184,10 @@ namespace EC_Admin.Forms
         /// </summary>
         private void ControlesHabilitados()
         {
+            while (!Instancia.Visible)
+            {
+                Application.DoEvents();
+            }
             dgvProductos.Enabled = true;
             lblECliente.Visible = true;
             lblCliente.Visible = true;
@@ -198,6 +205,7 @@ namespace EC_Admin.Forms
             grbTotales.Visible = true;
             lblETipoPrecio.Visible = true;
             cboTipoPrecio.Visible = true;
+            chbImpuesto.Visible = true;
 
             lblECliente.Enabled = true;
             lblCliente.Enabled = true;
@@ -215,6 +223,8 @@ namespace EC_Admin.Forms
             grbTotales.Enabled = true;
             lblETipoPrecio.Enabled = true;
             cboTipoPrecio.Enabled = true;
+            chbImpuesto.Enabled = true;
+            cmsProductos.Enabled = true;
             idCliente = 0;
             lblCliente.Text = "";
         }
@@ -255,6 +265,7 @@ namespace EC_Admin.Forms
                     v.Unidad.Add((Unidades)Enum.Parse(typeof(Unidades), dr.Cells[6].Value.ToString()));
                     v.Paquete.Add((bool)dr.Cells[7].Value);
                     v.Promocion.Add((int)dr.Cells[8].Value);
+                    v.CantApartado.Add((int)dr.Cells[9].Value);
                 }
                 v.DatosVenta();
                 if (abierta == false)
@@ -278,6 +289,7 @@ namespace EC_Admin.Forms
             {
                 VerificarVisible();
                 ControlesHabilitados();
+                v.IDSucursal = c.IDSucursal;
                 v.NuevaVenta();
                 lblFolio.Text = v.IDVenta.ToString();
                 v.Abierta = true;
@@ -292,9 +304,9 @@ namespace EC_Admin.Forms
                 v.Total = c.Total;
                 for (int i = 0; i < c.IDProductos.Count; i++)
                 {
-                    if (v.Promocion[i] <= 0)
+                    if (c.Promocion[i] <= 0)
                     {
-                        AgregarProducto(c.IDProductos[i], CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Precio[i], c.Cantidad[i], c.DescuentoProducto[i], c.Unidad[i], c.Paquete[i]);
+                        AgregarProducto(c.IDProductos[i], CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Precio[i], c.Cantidad[i], c.DescuentoProducto[i], c.Unidad[i], c.Paquete[i], 0);
                     }
                     else
                     {
@@ -304,9 +316,42 @@ namespace EC_Admin.Forms
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al importar la cotización.", Config.shrug, ex);
+            }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al importar la cotización.", "Admin CSY", ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al importar la cotización.", Config.shrug, ex);
+            }
+        }
+
+        public void VentaApartado(Apartados a)
+        {
+            try
+            {
+                VerificarVisible();
+                v.IDSucursal = a.IDSucursal;
+                v.NuevaVenta();
+                ControlesHabilitados();
+                lblFolio.Text = v.IDVenta.ToString();
+                v.Abierta = true;
+                v.IDCliente = a.IDCliente;
+                lblCliente.Text = Cliente.NombreCliente(a.IDCliente);
+                for (int i = 0; i < a.IDProductos.Count; i++)
+                {
+                    AgregarProducto(a.IDProductos[i], Producto.CodigoProducto(a.IDProductos[i]), Producto.NombreProducto(a.IDProductos[i]), 0M, a.CantProductos[i], 0M, Unidades.Pieza, false, a.CantProductos[i]);
+                }
+                cboTipoPrecio.SelectedIndex = 0;
+                CalcularTotales();
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -322,7 +367,7 @@ namespace EC_Admin.Forms
         /// <param name="precio">Precio del producto</param>
         /// <param name="cant">Cantidad del producto</param>
         /// <param name="desc">Descuento aplicado al producto</param>
-        public void AgregarProducto(int id, string codProd, string nombre, decimal precio, int cant, decimal desc, Unidades u, bool paquete)
+        public void AgregarProducto(int id, string codProd, string nombre, decimal precio, int cant, decimal desc, Unidades u, bool paquete, int cantApartado)
         {
             if (!VerificarPromocion(id))
             {
@@ -333,7 +378,7 @@ namespace EC_Admin.Forms
                     {
                         if (!paquete)
                             precio = PrecioProducto(id, cant);
-                        dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u, false, -1 });
+                        dgvProductos.Rows.Add(new object[] { id, codProd, nombre, precio, cant, desc, u, false, -1, cantApartado });
                         if (cboTipoPrecio.SelectedIndex > 0)
                         {
                             PrecioProducto();
@@ -590,7 +635,7 @@ namespace EC_Admin.Forms
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["precio"], cant, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()), false);
+                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["precio"], cant, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()), false, 0);
                     break;
                 }
             }
@@ -649,7 +694,8 @@ namespace EC_Admin.Forms
                 cantTot += (int)dr.Cells[4].Value;
                 descuento += ((decimal)dr.Cells[5].Value);
             }
-            impuesto = subtotal * (Config.iva / 100M);
+            if (chbImpuesto.Checked)
+                impuesto = subtotal * (Config.iva / 100M);
             total = subtotal + impuesto - descuento;
 
             lblSubtotal.Text = subtotal.ToString("C2");
@@ -841,9 +887,15 @@ namespace EC_Admin.Forms
             {
                 id = (int)dgvProductos[0, e.RowIndex].Value;
                 dgvProductos.Rows[e.RowIndex].Selected = true;
+                if ((int)dgvProductos[9, e.RowIndex].Value > 0)
+                    cmsProductos.Enabled = false;
+                else
+                    cmsProductos.Enabled = true;
             }
             else
+            {
                 id = 0;
+            }
             txtBusqueda.Select();
         }
 
@@ -909,6 +961,11 @@ namespace EC_Admin.Forms
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cambiar el precio de los productos.", "Admin CSY", ex);
             }
+        }
+
+        private void chbImpuesto_CheckedChanged(object sender, EventArgs e)
+        {
+            CalcularTotales();
         }
 
         private void agregarPaqueteDeÉsteProductoToolStripMenuItem_Click(object sender, EventArgs e)

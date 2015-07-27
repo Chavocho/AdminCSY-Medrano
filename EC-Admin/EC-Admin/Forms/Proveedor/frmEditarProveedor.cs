@@ -400,6 +400,10 @@ namespace EC_Admin.Forms
                     FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al modificar el proveedor.", "Admin CSY", ex);
                 }
             }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Los campos en rojo son obligatorios", "Admin CSY");
+            }
         }
 
         private void frmEditarProveedor_Load(object sender, EventArgs e)

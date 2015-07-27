@@ -361,6 +361,10 @@ namespace EC_Admin.Forms
                     FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al modificar el producto.", "Admin CSY", ex);
                 }
             }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Los campos en rojo son obligatorios", "Admin CSY");
+            }
         }
 
         #region Paquetes

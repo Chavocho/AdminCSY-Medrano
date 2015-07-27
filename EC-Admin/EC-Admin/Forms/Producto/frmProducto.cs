@@ -198,9 +198,14 @@ namespace EC_Admin.Forms
         private void btnPromociones_Click(object sender, EventArgs e)
         {
             if (!frmPromociones.Instancia.Visible)
+            {
                 frmPromociones.Instancia.Show();
+            }
             else
+            {
                 frmPromociones.Instancia.Select();
+            }
+            this.Close();
         }
 
         private void btnCodigo_Click(object sender, EventArgs e)
@@ -237,6 +242,13 @@ namespace EC_Admin.Forms
         private void btnTraspasos_Click(object sender, EventArgs e)
         {
             (new frmTraspasos()).Show();
+            this.Close();
+        }
+
+        private void btnApartados_Click(object sender, EventArgs e)
+        {
+            (new frmApartados()).Show();
+            this.Close();
         }
     }
 }

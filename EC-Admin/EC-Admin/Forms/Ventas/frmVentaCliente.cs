@@ -18,6 +18,7 @@ namespace EC_Admin.Forms
         DelegadoMensajes d = new DelegadoMensajes(FuncionesGenerales.Mensaje);
         frmPOS frm = null;
         frmCotizacion frmC = null;
+        frmNuevoApartado frmA = null;
 
         public frmVentaCliente(frmPOS frm)
         {
@@ -29,6 +30,12 @@ namespace EC_Admin.Forms
         {
             InitializeComponent();
             this.frmC = frm;
+        }
+
+        public frmVentaCliente(frmNuevoApartado frm)
+        {
+            InitializeComponent();
+            this.frmA = frm;
         }
 
         private void Cerrar()
@@ -153,6 +160,10 @@ namespace EC_Admin.Forms
                 else if (frmC != null)
                 {
                     frmC.AsignarCliente(id, dgvClientes[1, dgvClientes.CurrentRow.Index].Value.ToString());
+                }
+                else if (frmA != null)
+                {
+                    frmA.AsignarCliente(id, dgvClientes[1, dgvClientes.CurrentRow.Index].Value.ToString());
                 }
                 this.Close();
             }

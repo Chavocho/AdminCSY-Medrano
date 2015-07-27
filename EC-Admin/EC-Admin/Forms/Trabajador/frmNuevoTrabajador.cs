@@ -195,6 +195,10 @@ namespace EC_Admin.Forms
                     FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al crear el trabajador.", "Admin CSY", ex);
                 }
             }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Los campos en rojo son obligatorios", "Admin CSY");
+            }
         }
 
         private void btnCamara_Click(object sender, EventArgs e)

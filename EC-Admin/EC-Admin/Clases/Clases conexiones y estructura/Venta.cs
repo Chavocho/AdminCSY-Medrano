@@ -155,6 +155,7 @@ namespace EC_Admin
         private List<Unidades> unidad;
         private List<bool> paquete;
         private List<int> promocion;
+        private List<int> cantApartado;
 
         public List<int> IDProductos
         {
@@ -197,7 +198,12 @@ namespace EC_Admin
             get { return promocion; }
             set { promocion = value; }
         }
-        
+
+        public List<int> CantApartado
+        {
+            get { return cantApartado; }
+            set { cantApartado = value; }
+        }
         #endregion
 
         /// <summary>
@@ -272,7 +278,7 @@ namespace EC_Admin
                 MySqlCommand sql = new MySqlCommand();
                 sql.CommandText = "INSERT INTO venta (id, id_sucursal, id_vendedor, tipo_pago, create_user, create_time) VALUES (?id, ?id_sucursal, ?id_vendedor, ?tipo_pago, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?id", IDVentaSucursal());
-                sql.Parameters.AddWithValue("?id_sucursal", Config.idSucursal);
+                sql.Parameters.AddWithValue("?id_sucursal", IDSucursal);
                 sql.Parameters.AddWithValue("?id_vendedor", idV);
                 sql.Parameters.AddWithValue("?tipo_pago", TipoPago.Efectivo);   
                 sql.Parameters.AddWithValue("?create_user", Usuario.IDUsuarioActual);
@@ -420,6 +426,7 @@ namespace EC_Admin
             unidad = new List<Unidades>();
             paquete = new List<bool>();
             promocion = new List<int>();
+            cantApartado = new List<int>();
         }
 
         /// <summary>
@@ -447,7 +454,7 @@ namespace EC_Admin
                     sql.Parameters.Clear();
                     if (this.abierta == false)
                     {
-                        Inventario.CambiarCantidadInventario(idP[i], cantidad[i] * -1, Config.idSucursal);
+                        Inventario.CambiarCantidadInventario(idP[i], (cantidad[i] - cantApartado[i]) * -1, Config.idSucursal);
                         Promociones.CambiarExistencias(promocion[i], cantidad[i] * -1);
                     }
                 }
