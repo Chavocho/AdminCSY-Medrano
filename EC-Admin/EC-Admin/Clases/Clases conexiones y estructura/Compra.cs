@@ -15,12 +15,19 @@ namespace EC_Admin
         private int idP;
         private int idS;
         private int idC;
+        private int idCuentaOrigen;
+        private int idCuentaDestino;
+        private string numCheque;
+        private string referencia;
+        private decimal comision;
+        private string conceptoPago;
         private bool cancelada = false;
         private decimal subtotal;
         private decimal impuesto;
         private decimal descuento;
         private decimal total;
         private bool remision;
+        private string folioTerminal;
         private string folioRemision;
         private bool factura;
         private string folioFactura;
@@ -55,6 +62,56 @@ namespace EC_Admin
             get { return idC; }
             set { idC = value; }
         }
+
+        public int IDCuentaDestino
+        {
+            get { return idCuentaDestino; }
+            set { idCuentaDestino = value; }
+        }
+
+
+        public int IDCuentaOrigen
+        {
+            get { return idCuentaOrigen; }
+            set { idCuentaOrigen = value; }
+        }
+
+        public string Referencia
+        {
+            get { return referencia; }
+            set { referencia = value; }
+        }
+
+
+        public string NumCheque
+        {
+            get { return numCheque; }
+            set { numCheque = value; }
+        }
+
+        
+        public string FolioTerminal
+        {
+            get { return folioTerminal; }
+            set { folioTerminal = value; }
+        }
+
+        
+
+        public decimal Comision
+        {
+            get { return comision; }
+            set { comision = value; }
+        }
+
+        
+
+        public string ConceptoPago
+        {
+            get { return conceptoPago; }
+            set { conceptoPago = value; }
+        }
+
 
         public bool Cancelada
         {
@@ -115,6 +172,14 @@ namespace EC_Admin
             get { return tipo; }
             set { tipo = value; }
         }
+        private string beneficiario;
+
+        public string Beneficiario
+        {
+            get { return beneficiario; }
+            set { beneficiario = value; }
+        }
+
 
         public int CreateUser
         {
@@ -248,12 +313,38 @@ namespace EC_Admin
                     idP = (int)dr["id_proveedor"];
                     idS = (int)dr["id_sucursal"];
                     idC = (int)dr["id_comprador"];
+                    idCuentaDestino = (int)dr["id_ctdestino"];
+                    idCuentaOrigen = (int)dr["id_ctorigen"];
                     cancelada = (bool)dr["cancelada"];
                     subtotal = (decimal)dr["subtotal"];
                     impuesto = (decimal)dr["impuesto"];
                     descuento = (decimal)dr["descuento"];
                     total = (decimal)dr["total"];
                     tipo = (TipoPago)Enum.Parse(typeof(TipoPago), dr["tipo_pago"].ToString());
+                    if (dr["num_cheque"] != DBNull.Value)
+                        numCheque = (string)dr["num_cheque"];
+                    else
+                        numCheque = "";
+                    if (dr["beneficiario"] != DBNull.Value)
+                        beneficiario = (string)dr["beneficiario"];
+                    else
+                        beneficiario = "";
+                    if (dr["folio_terminal"] != DBNull.Value)
+                        folioTerminal = (string)dr["folio_terminal"];
+                    else
+                        folioTerminal = "";
+                    if (dr["comision"] != DBNull.Value)
+                        comision = (decimal)dr["comision"];
+                    else
+                        comision = 0M;
+                    if (dr["referencia"] != DBNull.Value)
+                        referencia = (string)dr["referencia"];
+                    else
+                        referencia = "";
+                    if (dr["concepto_pago"] != DBNull.Value)
+                        conceptoPago = (string)dr["concepto_pago"];
+                    else 
+                        conceptoPago = "";
                     remision = (bool)dr["remision"];
                     factura = (bool)dr["factura"];
                     folioRemision = dr["folio_remision"].ToString();
@@ -297,17 +388,25 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO compra (id, id_proveedor, id_sucursal, id_comprador, subtotal, impuesto, descuento, total, tipo_pago, remision, factura, folio_remision, folio_factura, create_user, create_time) " +
-                    "VALUES (?id, ?id_proveedor, ?id_sucursal, ?id_comprador, ?subtotal, ?impuesto, ?descuento, ?total, ?tipo_pago, ?remision, ?factura, ?folio_remision, ?folio_factura, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO compra (id, id_proveedor, id_sucursal, id_comprador, id_ctdestino, id_ctorigen, subtotal, impuesto, descuento, total, tipo_pago, num_cheque, beneficiario, folio_terminal, comision, referencia, concepto_pago, remision, factura, folio_remision, folio_factura, create_user, create_time) " +
+                    "VALUES (?id, ?id_proveedor, ?id_sucursal, ?id_comprador, ?id_ctdestino, ?id_ctorigen, ?subtotal, ?impuesto, ?descuento, ?total, ?tipo_pago, ?num_cheque, ?beneficiario, ?folio_terminal, ?comision, ?referencia, ?concepto_pago, ?remision, ?factura, ?folio_remision, ?folio_factura, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?id",IDCompraSucursal());
                 sql.Parameters.AddWithValue("?id_proveedor", IDProveedor);
                 sql.Parameters.AddWithValue("?id_sucursal", Config.idSucursal);
                 sql.Parameters.AddWithValue("?id_comprador", IDComprador);
+                sql.Parameters.AddWithValue("?id_ctdestino", IDCuentaDestino);
+                sql.Parameters.AddWithValue("?id_ctorigen", IDCuentaOrigen);
                 sql.Parameters.AddWithValue("?subtotal", Subtotal);
                 sql.Parameters.AddWithValue("?impuesto", Impuesto);
                 sql.Parameters.AddWithValue("?descuento", Descuento);
                 sql.Parameters.AddWithValue("?total", Total);
                 sql.Parameters.AddWithValue("?tipo_pago", Tipo);
+                sql.Parameters.AddWithValue("?num_cheque", NumCheque);
+                sql.Parameters.AddWithValue("?beneficiario", Beneficiario);
+                sql.Parameters.AddWithValue("?folio_terminal", FolioTerminal);
+                sql.Parameters.AddWithValue("?comision", Comision);
+                sql.Parameters.AddWithValue("?referencia", Referencia);
+                sql.Parameters.AddWithValue("?concepto_pago", ConceptoPago);
                 sql.Parameters.AddWithValue("?remision", Remision);
                 sql.Parameters.AddWithValue("?factura", Factura);
                 sql.Parameters.AddWithValue("?folio_remision", FolioRemision);

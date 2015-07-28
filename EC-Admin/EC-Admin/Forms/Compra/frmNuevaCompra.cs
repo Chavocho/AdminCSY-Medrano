@@ -21,9 +21,87 @@ namespace EC_Admin.Forms
         private int idProveedor;
         private int idComprador = -1;
 
+        #region Info Pago
+
+        private int idCuentaOrigen;
+        private int idCuentaDestino;
+
+        public int IDCuentaOrigen
+        {
+            get { return idCuentaOrigen; }
+            set { idCuentaOrigen = value; }
+        }
+
+        public int IDCuentaDestino
+        {
+            get { return idCuentaDestino; }
+            set { idCuentaDestino = value; }
+        }
+
+        private string numCheque;
+
+        public string NumCheque
+        {
+            get { return numCheque; }
+            set { numCheque = value; }
+        }
+
+        private decimal comision;
+
+        public decimal Comision
+        {
+            get { return comision; }
+            set { comision = value; }
+        }
+
+        private string folioTerminal;
+
+        public string FolioTerminal
+        {
+            get { return folioTerminal; }
+            set { folioTerminal = value; }
+        }
+
+        private string referencia;
+
+        public string Referencia
+        {
+            get { return referencia; }
+            set { referencia = value; }
+        }
+
+        private string conceptoPago;
+
+        public string ConceptoPago
+        {
+            get { return conceptoPago; }
+            set { conceptoPago = value; }
+        }
+
+        private string beneficiario;
+
+        public string Beneficiario
+        {
+            get { return beneficiario; }
+            set { beneficiario = value; }
+        }
+
+        private bool configurado;
+
+        public bool Configurado
+        {
+            get { return configurado; }
+            set { configurado = value; }
+        }
+
+        
+
+        #endregion
+
         public frmNuevaCompra()
         {
             InitializeComponent();
+            configurado = false;
             cboTipoPago.SelectedIndex = 0;
         }
 
@@ -34,11 +112,19 @@ namespace EC_Admin.Forms
             Compra c = new Compra();
             c.IDProveedor = idProveedor;
             c.IDComprador = idComprador;
+            c.IDCuentaOrigen = idCuentaOrigen;
+            c.IDCuentaDestino = idCuentaDestino;
             c.Subtotal = subtotal;
             c.Impuesto = impuesto;
             c.Descuento = descuento;
             c.Total = total;
             c.Tipo = t;
+            c.NumCheque = numCheque;
+            c.Beneficiario = beneficiario;
+            c.FolioTerminal = folioTerminal;
+            c.Comision = comision;
+            c.Referencia = referencia;
+            c.ConceptoPago = conceptoPago;
             c.Remision = rbtnRemision.Checked;
             c.Factura = rbtnFactura.Checked;
             c.FolioRemision = txtRemision.Text;
@@ -294,13 +380,14 @@ namespace EC_Admin.Forms
 
         private void btnCobrar_Click(object sender, EventArgs e)
         {
-            if (VerificarDatos())
+            if (VerificarDatos() && configurado)
             {
                 if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Los datos ingresados son correctos?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {
                         NuevaCompra();
+                        this.configurado = false;
                         FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha registrado la compra correctamente!", "Admin CSY");
                         this.Close();
                     }
@@ -314,6 +401,9 @@ namespace EC_Admin.Forms
                     }
                 }
             }
+            else
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se ha configurado la informacion de pago", "Admin CSY");
+
         }
 
         private void txtBusqueda_KeyPress(object sender, KeyPressEventArgs e)
@@ -387,29 +477,29 @@ namespace EC_Admin.Forms
             switch (cboTipoPago.SelectedIndex)
             {
                 case 0:
-                    //txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = lblBeneficiario.Visible = false;
+                    btnInfoPago.Visible = false;
                     t = TipoPago.Efectivo;
+                    configurado = true;
                     break;
                 case 1:
-                    //lblEDatos.Text = "Núm. de cheque";
-                    //txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = lblBeneficiario.Visible = true;
+                    btnInfoPago.Visible = true;
                     t = TipoPago.Cheque;
+                    configurado = false;
                     break;
                 case 2:
-                    //lblEDatos.Text = "Núm. de tarjeta";
-                    //txtDatos.Visible = lblEDatos.Visible = true;
-                    //txtBeneficiario.Visible = lblBeneficiario.Visible = false;
+                    btnInfoPago.Visible = true;
                     t = TipoPago.Crédito;
+                    configurado = false;
                     break;
                 case 3:
-                    //lblEDatos.Text = "Núm. de tarjeta";
-                    //txtDatos.Visible = lblEDatos.Visible = true;
-                    //txtBeneficiario.Visible = lblBeneficiario.Visible = false;
+                    btnInfoPago.Visible = true;
                     t = TipoPago.Débito;
+                    configurado = false;
                     break;
                 case 4:
-                    //txtDatos.Visible = lblEDatos.Visible = txtBeneficiario.Visible = lblBeneficiario.Visible = false;
+                    btnInfoPago.Visible = true;
                     t = TipoPago.Transferencia;
+                    configurado = false;
                     break;
             }
         }
@@ -417,7 +507,7 @@ namespace EC_Admin.Forms
         private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dgvProductos.CurrentRow != null)
-                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (int)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, ((decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value) * 100)).ShowDialog(this);
+                (new frmDatosVentaProducto(this, dgvProductos[2, dgvProductos.CurrentRow.Index].Value.ToString(), (int)dgvProductos[4, dgvProductos.CurrentRow.Index].Value, (decimal)dgvProductos[5, dgvProductos.CurrentRow.Index].Value)).ShowDialog(this);
         }
 
         private void rbtnRemision_CheckedChanged(object sender, EventArgs e)
@@ -447,7 +537,21 @@ namespace EC_Admin.Forms
         private void chbFolioRemision_CheckedChanged(object sender, EventArgs e)
         {
             txtRemision.Enabled = !chbFolioRemision.Checked;
+            if (rbtnRemision.Checked && chbFolioRemision.Checked)
+                rbtnRemision.Checked = false;
+            else
+                rbtnRemision.Checked = true;
             txtRemision.Text = "";
+        }
+
+        private void btnInfoPago_Click(object sender, EventArgs e)
+        {
+            (new frmInfoPago(cboTipoPago.SelectedIndex,this)).ShowDialog();
+        }
+
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

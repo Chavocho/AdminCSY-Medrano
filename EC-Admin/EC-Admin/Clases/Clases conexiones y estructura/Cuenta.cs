@@ -71,6 +71,15 @@ namespace EC_Admin
             get { return tipoCuenta; }
             set { tipoCuenta = value; }
         }
+
+        private int idSucursal;
+
+        public int IDSucursal
+        {
+            get { return idSucursal; }
+            set { idSucursal = value; }
+        }
+
         
         
         #endregion
@@ -132,6 +141,8 @@ namespace EC_Admin
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
+                    idSucursal = (int)dr["id_sucursal"];
+                    tipoCuenta = (TipoCuenta)Enum.Parse(typeof(TipoCuenta), dr["tipo"].ToString());
                     clabe = dr["clabe"].ToString();
                     banco = dr["banco"].ToString();
                     beneficiario = dr["beneficiario"].ToString();
@@ -157,8 +168,9 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO cuenta (clabe, banco, beneficiario, sucursal, num_cuenta, tipo) " +
-                    "VALUES (?clabe, ?banco, ?beneficiario, ?sucursal, ?num_cuenta, ?tipo)";
+                sql.CommandText = "INSERT INTO cuenta (id_sucursal, clabe, banco, beneficiario, sucursal, num_cuenta, tipo) " +
+                    "VALUES (?id_sucursal, ?clabe, ?banco, ?beneficiario, ?sucursal, ?num_cuenta, ?tipo)";
+                sql.Parameters.AddWithValue("?id_sucursal",Config.idSucursal);
                 sql.Parameters.AddWithValue("?clabe", clabe);
                 sql.Parameters.AddWithValue("?banco", banco);
                 sql.Parameters.AddWithValue("?beneficiario", beneficiario);
@@ -186,8 +198,9 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE cuenta SET clabe=?clabe, banco=?banco, beneficiario=?beneficiario, " +
+                sql.CommandText = "UPDATE cuenta SET id_sucursal=?id_sucursal, clabe=?clabe, banco=?banco, beneficiario=?beneficiario, " +
                     "sucursal=?sucursal, num_cuenta=?num_cuenta WHERE id=?id";
+                sql.Parameters.AddWithValue("?id_sucursal",Config.idSucursal);
                 sql.Parameters.AddWithValue("?clabe", clabe);
                 sql.Parameters.AddWithValue("?banco", banco);
                 sql.Parameters.AddWithValue("?beneficiario", beneficiario);

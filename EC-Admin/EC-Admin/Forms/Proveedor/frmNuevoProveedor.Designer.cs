@@ -571,6 +571,7 @@
             this.lblCNumCuenta.Size = new System.Drawing.Size(23, 17);
             this.lblCNumCuenta.TabIndex = 39;
             this.lblCNumCuenta.Text = "---";
+            
             // 
             // lblECBanco
             // 

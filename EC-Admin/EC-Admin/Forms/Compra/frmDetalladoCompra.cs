@@ -36,23 +36,61 @@ namespace EC_Admin.Forms
             {
                 Compra c = new Compra(id);
                 c.ObtenerDatos();
+                Cuenta ctOrigen = new Cuenta(c.IDCuentaOrigen);
+                ctOrigen.ObtenerDatos();
+                lblBancoOrigen.Text = ctOrigen.Banco;
+                lblCuentaOrigen.Text = ctOrigen.NumeroCuenta;
+                lblSucOrigen.Text = ctOrigen.Sucursal;
+                lblBenefOrigen.Text = ctOrigen.Beneficiario;
                 lblFecha.Text = c.CreateTime.ToString("dd") + " de " + c.CreateTime.ToString("MMMM") + " del " + c.CreateTime.ToString("yyyy") + " " + c.CreateTime.ToString("hh:mm tt");
                 switch (c.Tipo)
                 {
                     case TipoPago.Efectivo:
                         lblTipoPago.Text = "Efectivo";
+                        lblInfoPago.Visible = false;
+                        grbCuentaOrigen.Visible = false;
+                        lblDato1.Visible = false;
+                        lblEDato1.Visible = false;
+                        lblDato2.Visible = false;
+                        lblEDato2.Visible = false;
                         break;
                     case TipoPago.Cheque:
                         lblTipoPago.Text = "Cheque";
+                        lblDato1.Text = "N° de cheque";
+                        lblEDato1.Text = c.NumCheque;
+                        lblDato2.Text = "Beneficiario";
+                        lblEDato2.Text = c.Beneficiario;
                         break;
                     case TipoPago.Crédito:
                         lblTipoPago.Text = "Tarjeta de crédito";
+                        lblDato1.Text = "Folio de terminal";
+                        lblEDato1.Text = c.FolioTerminal;
+                        lblDato2.Text = "Comision";
+                        lblEDato2.Text = c.Comision.ToString();
                         break;
                     case TipoPago.Débito:
                         lblTipoPago.Text = "Tarjeta de débito";
+                        lblDato1.Text = "Folio de terminal";
+                        lblEDato1.Text = c.FolioTerminal;
+                        lblDato2.Text = "Comision";
+                        lblEDato2.Text = c.Comision.ToString();
                         break;
                     case TipoPago.Transferencia:
+                        grbCuentaDestino.Visible = true;
                         lblTipoPago.Text = "Transferencia";
+                        lblConcepto.Visible = true;
+                        lblEConcepto.Visible = true;
+                        lblDato1.Text = "Referencia";
+                        lblEDato1.Text = c.Referencia;
+                        lblDato2.Text = "Comision";
+                        lblEDato2.Text = c.Comision.ToString();
+                        lblEConcepto.Text = c.ConceptoPago;
+                        Cuenta ctDest = new Cuenta(c.IDCuentaDestino);
+                        ctDest.ObtenerDatos();
+                        lblBancoDestino.Text = ctDest.Banco;
+                        lblCuentaDestino.Text = ctDest.NumeroCuenta;
+                        lblSucDestino.Text = ctDest.Sucursal;
+                        lblBenefDestino.Text = ctDest.Beneficiario;
                         break;
                 }
                 if (c.Remision)

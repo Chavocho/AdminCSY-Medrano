@@ -293,5 +293,7 @@ namespace EC_Admin.Forms
             FuncionesGenerales.VerificarEsNumero(ref sender, ref e, true);
         }
 
+        
+
     }
 }
