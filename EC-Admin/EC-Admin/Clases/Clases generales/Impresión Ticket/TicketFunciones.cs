@@ -614,6 +614,43 @@ namespace EC_Admin
             }
         }
 
+        private void AgregarDatosApartado(ref PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("FOLIO: " + idApartado.ToString(), fuenteNormal, Brushes.Black, 0, y);
+            y += saltoLinea;
+            e.Graphics.DrawString("CLIENTE: " + Cliente.NombreCliente((int)ObtenerDatoDataTable(dtApartado, "id_cliente")), fuenteNormal, Brushes.Black, 0, y);
+            y += saltoLinea;
+            e.Graphics.DrawString("FECHA: " + ((DateTime)ObtenerDatoDataTable(dtApartado, "create_time")).ToString("dd 'de' MMMM 'del' yyyy, hh:mm tt"), fuenteNormal, Brushes.Black, 0, y);
+            y += saltoLinea;
+            AgregarDatosApartadoDetallado(ref e);
+        }
+
+        private void AgregarDatosApartadoDetallado(ref PrintPageEventArgs e)
+        {
+            float posCodNom = 0F;
+            float posCant = (e.PageBounds.Width / 4) * 3 - 5;
+
+            try
+            {
+                e.Graphics.DrawString("PROD/CÓD.", fuenteNormalResaltada, Brushes.Black, posCodNom, y);
+                e.Graphics.DrawString("CANT.", fuenteNormalResaltada, Brushes.Black, posCant, y);
+                y += saltoLinea;
+
+                foreach (DataRow dr in dtApartadoDetallado.Rows)
+                {
+                    e.Graphics.DrawString(Producto.NombreProducto((int)dr[1]), fuenteNormal, Brushes.Black, posCodNom, y);
+                    y += saltoLinea;
+                    e.Graphics.DrawString(Producto.CodigoProducto((int)dr[1]), fuenteNormal, Brushes.Black, posCodNom, y);
+                    e.Graphics.DrawString(dr[2].ToString(), fuenteNormal, Brushes.Black, posCant, y);
+                    y += saltoLinea;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Función que agrega el código de barras de un producto al ticket
         /// </summary>
@@ -909,6 +946,41 @@ namespace EC_Admin
             {
                 string sql = "SELECT * FROM devolucion_detallada WHERE id_devolucion='" + idDev + "'";
                 dtDevolucionDetallada = ConexionBD.EjecutarConsultaSelect(sql);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void DatosApartado()
+        {
+            try
+            {
+                string sql = "SELECT * FROM apartado WHERE id='" + idApartado + "' AND id_sucursal='" + Config.idSucursal + "'";
+                dtApartado = ConexionBD.EjecutarConsultaSelect(sql);
+                DatosApartadoDetallado();
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void DatosApartadoDetallado()
+        {
+            try
+            {
+                string sql = "SELECT * FROM apartado_detallado WHERE id_apartado='" + idApartado + "'";
+                dtApartadoDetallado = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
             {

@@ -13,7 +13,8 @@ namespace EC_Admin.Forms
 {
     public partial class frmNuevoApartado : Form
     {
-        int id;
+        Apartados a;
+        int id, idApartado;
         //Variable para el control de excepciones
         int cont = 0;
         int cantTot = 0;
@@ -29,7 +30,7 @@ namespace EC_Admin.Forms
 
         async private void InsertarApartado()
         {
-            Apartados a = new Apartados();
+            a = new Apartados();
             a.IDCliente = idCliente;
             a.IDSucursal = Config.idSucursal;
             foreach (DataGridViewRow dr in dgvProductos.Rows)
@@ -236,6 +237,11 @@ namespace EC_Admin.Forms
 
         #endregion
 
+        private void ImprimirTicket(int id)
+        {
+            (new Ticket()).TicketApartado(id);
+        }
+
         private void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvProductos.CurrentRow != null)
@@ -277,6 +283,10 @@ namespace EC_Admin.Forms
                         btnApartar.Enabled = false;
                         InsertarApartado();
                         FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado correctamente el apartado!", "Admin CSY");
+                        if (FuncionesGenerales.ImprimirTicket(this, "¿Desea imprimir el ticket del apartado?"))
+                        {
+                            ImprimirTicket(a.ID);
+                        }
                         this.Close();
                     }
                     catch (Exception ex)

@@ -127,15 +127,38 @@ namespace EC_Admin
             }
         }
 
-        public void TicketDevolucion(int idDevolucion)
+        public void TicketDevolucion(int idDevolucion, bool soloSaldo)
         {
             try
             {
                 this.idDev = idDevolucion;
+                this.soloSaldo = soloSaldo;
                 dtDevolucion = new DataTable();
                 dtDevolucionDetallada = new DataTable();
                 DatosDevolucion();
                 pd.PrintPage += new PrintPageEventHandler(pd_PrintPageTicketDevolucion);
+                pd.DocumentName = "Ticket";
+                pd.DefaultPageSettings.PaperSize = new PaperSize("Ticket", 300, 10000);
+                pd.DefaultPageSettings.Landscape = false;
+                //ppd.Document = pd;
+                //ppd.ShowDialog();
+                pd.Print();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void TicketApartado(int id)
+        {
+            try
+            {
+                this.idApartado = id;
+                dtApartado = new DataTable();
+                dtApartadoDetallado = new DataTable();
+                DatosApartado();
+                pd.PrintPage += new PrintPageEventHandler(pd_PrintPageTicketApartado);
                 pd.DocumentName = "Ticket";
                 pd.DefaultPageSettings.PaperSize = new PaperSize("Ticket", 300, 10000);
                 pd.DefaultPageSettings.Landscape = false;
@@ -236,6 +259,15 @@ namespace EC_Admin
             {
                 throw ex;
             }
+        }
+
+        private void pd_PrintPageTicketApartado(object sender, PrintPageEventArgs e)
+        {
+            AgregarEncabezadoTicket(ref e);
+            AgregarLinea(ref e, Pens.DarkGray);
+            AgregarDatosApartado(ref e);
+            AgregarLinea(ref e, Pens.DarkGray);
+            AgregarPieTicket(ref e);
         }
     }
 }

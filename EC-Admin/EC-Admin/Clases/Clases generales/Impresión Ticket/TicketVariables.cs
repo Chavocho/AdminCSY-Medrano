@@ -12,7 +12,9 @@ namespace EC_Admin
         int idVenta;
         int idProd;
         int idDev;
+        int idApartado;
         bool esCierreCaja;
+        bool soloSaldo;
         //Variables para el corte de caja
         int idApertura;
         int idCierre;
@@ -35,6 +37,8 @@ namespace EC_Admin
         DataTable dtVenta;
         DataTable dtVentaDetallada;
         DataTable dtCaja;
+        DataTable dtApartado;
+        DataTable dtApartadoDetallado;
         DataTable dtDevolucion;
         DataTable dtDevolucionDetallada;
         Font fuenteNormal;

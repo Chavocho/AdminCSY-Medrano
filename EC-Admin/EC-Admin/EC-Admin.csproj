@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Clases conexiones y estructura\Almacen.cs" />
+    <Compile Include="Clases\Clases conexiones y estructura\Apartados.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Banco.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Caja.cs" />
     <Compile Include="Clases\Clases conexiones y estructura\Categoria.cs" />
@@ -121,6 +122,18 @@
     <Compile Include="Clases\Clases generales\Impresión Ticket\Ticket.cs" />
     <Compile Include="Clases\Clases generales\Impresión Ticket\TicketFunciones.cs" />
     <Compile Include="Clases\Clases generales\Impresión Ticket\TicketVariables.cs" />
+    <Compile Include="Forms\Apartados\frmApartados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Apartados\frmApartados.designer.cs">
+      <DependentUpon>frmApartados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Apartados\frmNuevoApartado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Apartados\frmNuevoApartado.designer.cs">
+      <DependentUpon>frmNuevoApartado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Caja\frmAbrirCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -771,6 +784,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Apartados\frmApartados.resx">
+      <DependentUpon>frmApartados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Apartados\frmNuevoApartado.resx">
+      <DependentUpon>frmNuevoApartado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Caja\frmAbrirCaja.resx">
       <DependentUpon>frmAbrirCaja.cs</DependentUpon>
     </EmbeddedResource>
