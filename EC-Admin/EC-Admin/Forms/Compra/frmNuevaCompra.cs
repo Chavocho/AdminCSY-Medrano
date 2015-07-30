@@ -122,7 +122,10 @@ namespace EC_Admin.Forms
             c.NumCheque = numCheque;
             c.Beneficiario = beneficiario;
             c.FolioTerminal = folioTerminal;
-            c.Comision = comision;
+            if (t == TipoPago.Crédito || t == TipoPago.Débito)
+                c.Comision = (total * comision) / 100;
+            else
+                c.Comision = comision;
             c.Referencia = referencia;
             c.ConceptoPago = conceptoPago;
             c.Remision = rbtnRemision.Checked;
@@ -296,30 +299,6 @@ namespace EC_Admin.Forms
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar al menos un producto a la compra", "Admin CSY");
                 return false;
             }
-            //switch (cboTipoPago.SelectedIndex)
-            //{
-            //    case 1:
-            //        if (txtDatos.Text.Trim() == "")
-            //        {
-            //            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el número de cheque", "Admin CSY");
-            //            return false;
-            //        }
-            //        break;
-            //    case 2:
-            //        if (txtDatos.Text.Trim() == "")
-            //        {
-            //            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de crédito", "Admin CSY");
-            //            return false;
-            //        }
-            //        break;
-            //    case 3:
-            //        if (txtDatos.Text.Trim() == "")
-            //        {
-            //            FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar los últimos cuatro números de la tarjeta de débito", "Admin CSY");
-            //            return false;
-            //        }
-            //        break;
-            //}
             if (rbtnRemision.Checked)
             {
                 if (!chbFolioRemision.Checked)
@@ -380,29 +359,33 @@ namespace EC_Admin.Forms
 
         private void btnCobrar_Click(object sender, EventArgs e)
         {
-            if (VerificarDatos() && configurado)
+            if (VerificarDatos())
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Los datos ingresados son correctos?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                if (configurado)
                 {
-                    try
+                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Los datos ingresados son correctos?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                     {
-                        NuevaCompra();
-                        this.configurado = false;
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha registrado la compra correctamente!", "Admin CSY");
-                        this.Close();
-                    }
-                    catch (MySqlException ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar la compra. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
-                    }
-                    catch (Exception ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar la compra.", "Admin CSY", ex);
+                        try
+                        {
+                            NuevaCompra();
+                            this.configurado = false;
+                            FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha registrado la compra correctamente!", "Admin CSY");
+                            this.Close();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar la compra. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al insertar la compra.", "Admin CSY", ex);
+                        }
                     }
                 }
+                else
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se ha configurado la informacion de pago", "Admin CSY");
             }
-            else
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No se ha configurado la informacion de pago", "Admin CSY");
+           
 
         }
 

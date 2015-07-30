@@ -116,6 +116,57 @@ namespace EC_Admin.Forms
             }
             
         }
+        private bool VerificarDatos()
+        {
+            switch (index)
+            {
+                case 1:
+                    if (txtDato1.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el número de cheque", "Admin CSY");
+                        return false;
+                    }
+                    if (txtDato2.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar un beneficiario", "Admin CSY");
+                        return false;
+                    }
+                    break;
+                case 2:
+                case 3:
+                    if (txtDato1.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar el folio de la terminal", "Admin CSY");
+                        return false;
+                    }
+                    if (txtDato2.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar una comision", "Admin CSY");
+                        return false;
+                    }
+                    
+                    break;
+                case 4:
+                    if (txtDato1.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar la referencia", "Admin CSY");
+                        return false;
+                    }
+                    if (txtDato2.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar una comision", "Admin CSY");
+                        return false;
+                    }
+                    if (txtConcepto.Text.Trim() == "")
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debes ingresar un concepto de pago por la transferencia", "Admin CSY");
+                        return false;
+                    }
+                    break;
+            }
+            return true;
+        }
+
 
         private void Cerrar()
         {
@@ -275,32 +326,35 @@ namespace EC_Admin.Forms
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (dgvCuentas.CurrentRow != null && idCuentaOrigen > 0)
+            if (VerificarDatos())
             {
-                if (frmNC != null)
+                if (dgvCuentas.CurrentRow != null && idCuentaOrigen > 0)
                 {
-                    frmNC.IDCuentaOrigen = idCuentaOrigen;
-                    switch (index)
+                    if (frmNC != null)
                     {
-                        case 1:
-                            frmNC.NumCheque = txtDato1.Text;
-                            frmNC.Beneficiario = txtDato2.Text;
-                            break;
-                        case 2:
-                        case 3:
-                            frmNC.FolioTerminal = txtDato1.Text;
-                            frmNC.Comision = Convert.ToDecimal(txtDato2.Text);
-                            break;
-                        case 4:
-                            frmNC.IDCuentaDestino = idCuentaDestino;
-                            frmNC.Referencia = txtDato1.Text;
-                            frmNC.Comision = Convert.ToDecimal(txtDato2.Text);
-                            frmNC.ConceptoPago = txtConcepto.Text;
-                            break;
+                        frmNC.IDCuentaOrigen = idCuentaOrigen;
+                        switch (index)
+                        {
+                            case 1:
+                                frmNC.NumCheque = txtDato1.Text;
+                                frmNC.Beneficiario = txtDato2.Text;
+                                break;
+                            case 2:
+                            case 3:
+                                frmNC.FolioTerminal = txtDato1.Text;
+                                frmNC.Comision = Convert.ToDecimal(txtDato2.Text);
+                                break;
+                            case 4:
+                                frmNC.IDCuentaDestino = idCuentaDestino;
+                                frmNC.Referencia = txtDato1.Text;
+                                frmNC.Comision = Convert.ToDecimal(txtDato2.Text);
+                                frmNC.ConceptoPago = txtConcepto.Text;
+                                break;
+                        }
+                        frmNC.Configurado = true;
                     }
-                    frmNC.Configurado = true;
+                    this.Close();
                 }
-                this.Close();
             }
         }
     }
