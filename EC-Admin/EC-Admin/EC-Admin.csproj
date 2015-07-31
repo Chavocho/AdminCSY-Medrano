@@ -350,6 +350,12 @@
     <Compile Include="Forms\Cuentas\frmNuevaCuenta.Designer.cs">
       <DependentUpon>frmNuevaCuenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Caja\frmBanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Caja\frmBanco.Designer.cs">
+      <DependentUpon>frmBanco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Mapas\frmMapa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -792,6 +798,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Caja\frmAbrirCaja.resx">
       <DependentUpon>frmAbrirCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Caja\frmBanco.resx">
+      <DependentUpon>frmBanco.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Caja\frmCaja.resx">
       <DependentUpon>frmCaja.cs</DependentUpon>

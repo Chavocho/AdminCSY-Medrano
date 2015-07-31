@@ -46,6 +46,7 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.pcbUsuario = new System.Windows.Forms.PictureBox();
             this.btnReimpresiónVenta = new System.Windows.Forms.Button();
+            this.btnBanco = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcbUsuario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -346,6 +347,28 @@
             this.btnReimpresiónVenta.UseVisualStyleBackColor = false;
             this.btnReimpresiónVenta.Click += new System.EventHandler(this.btnReimpresiónVenta_Click);
             // 
+            // btnBanco
+            // 
+            this.btnBanco.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnBanco.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnBanco.FlatAppearance.BorderSize = 0;
+            this.btnBanco.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnBanco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnBanco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBanco.Font = new System.Drawing.Font("Corbel", 13F);
+            this.btnBanco.ForeColor = System.Drawing.Color.White;
+            this.btnBanco.Location = new System.Drawing.Point(232, 87);
+            this.btnBanco.Name = "btnBanco";
+            this.btnBanco.Size = new System.Drawing.Size(200, 60);
+            this.btnBanco.TabIndex = 11;
+            this.btnBanco.Text = "Banco";
+            this.btnBanco.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBanco.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBanco.UseVisualStyleBackColor = false;
+            this.btnBanco.Visible = false;
+            this.btnBanco.Click += new System.EventHandler(this.btnBanco_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +382,7 @@
             this.Controls.Add(this.btnReportes);
             this.Controls.Add(this.btnProductos);
             this.Controls.Add(this.btnCotizacion);
+            this.Controls.Add(this.btnBanco);
             this.Controls.Add(this.btnCaja);
             this.Controls.Add(this.btnProveedores);
             this.Controls.Add(this.btnClientes);
@@ -398,6 +422,7 @@
         private System.Windows.Forms.Button btnTrabajadores;
         private System.Windows.Forms.ToolTip ttPrincipal;
         private System.Windows.Forms.Button btnReimpresiónVenta;
+        private System.Windows.Forms.Button btnBanco;
     }
 }
 

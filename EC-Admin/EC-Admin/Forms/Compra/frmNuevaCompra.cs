@@ -110,6 +110,7 @@ namespace EC_Admin.Forms
         private void NuevaCompra()
         {
             Compra c = new Compra();
+            c.IDSucursal = Config.idSucursal;
             c.IDProveedor = idProveedor;
             c.IDComprador = idComprador;
             c.IDCuentaOrigen = idCuentaOrigen;

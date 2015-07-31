@@ -53,6 +53,10 @@ namespace EC_Admin
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            if (Usuario.NivelUsuarioActual == NivelesUsuario.Administrador)
+            {
+                btnBanco.Visible = true;
+            }
             try
             {
                 this.Text += " - " + Sucursal.NombreSucursal(Config.idSucursal);
@@ -207,6 +211,14 @@ namespace EC_Admin
         private void btnReimpresiónVenta_Click(object sender, EventArgs e)
         {
             (new frmReimpresionTicketsVentas()).ShowDialog(this);
+        }
+
+        private void btnBanco_Click(object sender, EventArgs e)
+        {
+            if (!frmBanco.Instancia.Visible)
+                frmBanco.Instancia.Show();
+            else
+                frmBanco.Instancia.Select();
         }
     }
 }
