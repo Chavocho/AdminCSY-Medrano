@@ -214,15 +214,15 @@ namespace EC_Admin.Forms
             dgvProductos.Rows.Remove(dr);
         }
 
-        private void BusquedaProducto(string codProd)
+        private void BusquedaProducto(string codProd, int cant)
         {
             try
             {
-                string sql = "SELECT id, nombre, codigo, costo, unidad FROM producto WHERE codigo='" + codProd + "'";
+                string sql = "SELECT p.id, p.nombre, p.codigo, i.precio, p.unidad FROM producto AS p INNER JOIN inventario AS i ON (p.id=i.id_producto) WHERE codigo='" + codProd + "'";
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["costo"], 1, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
+                    AgregarProducto((int)dr["id"], dr["codigo"].ToString(), dr["nombre"].ToString(), (decimal)dr["precio"], cant, 0M, (Unidades)Enum.Parse(typeof(Unidades), dr["unidad"].ToString()));
                     break;
                 }
             }
@@ -394,9 +394,19 @@ namespace EC_Admin.Forms
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                BusquedaProducto(txtBusqueda.Text);
-                txtBusqueda.Text = "";
-                txtBusqueda.Select();
+                if (txtBusqueda.Text.Trim() != "")
+                {
+                    string[] datos = txtBusqueda.Text.Split(new char[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (datos.Length > 1)
+                    {
+                        BusquedaProducto(datos[1].ToString(), int.Parse(datos[0]));
+                    }
+                    else
+                    {
+                        BusquedaProducto(datos[0].ToString(), 1);
+                    }
+                    txtBusqueda.Text = "";
+                }
             }
         }
 

@@ -34,7 +34,7 @@ namespace EC_Admin.Forms
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT id, efectivo, create_time FROM caja WHERE descripcion='CIERRE DE CAJA' AND (create_time BETWEEN ?fechaIni AND ?fechaFin) AND id_sucursal='" + Config.idSucursal + "'";
+                sql.CommandText = "SELECT id, efectivo, voucher, create_time FROM caja WHERE descripcion='CIERRE DE CAJA' AND (create_time BETWEEN ?fechaIni AND ?fechaFin) AND id_sucursal='" + Config.idSucursal + "'";
                 sql.Parameters.AddWithValue("?fechaIni", fechaIni.ToString("yyyy-MM-dd") + " 00:00:00");
                 sql.Parameters.AddWithValue("?fechaFin", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
@@ -60,7 +60,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     fechas = DateTime.Parse(dr["create_time"].ToString());
-                    dgvCaja.Rows.Add(new object[] { dr["id"], fechas, (decimal.Parse(dr["efectivo"].ToString()) * -1) });
+                    dgvCaja.Rows.Add(new object[] { dr["id"], fechas, (decimal.Parse(dr["efectivo"].ToString()) * -1), (decimal)dr["voucher"] });
                     Application.DoEvents();
                 }
             }

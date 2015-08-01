@@ -53,7 +53,7 @@ namespace EC_Admin.Forms
             c = new CerrarFrmEspera(Cerrar);
             try
             {
-                string sql = "SELECT id, efectivo, descripcion, tipo_movimiento, create_time FROM caja WHERE descripcion LIKE '%" + p + "%' AND id_sucursal='" + Config.idSucursal + "'";
+                string sql = "SELECT id, efectivo, voucher,descripcion, tipo_movimiento, create_time FROM caja WHERE descripcion LIKE '%" + p + "%' AND id_sucursal='" + Config.idSucursal + "'";
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -74,7 +74,7 @@ namespace EC_Admin.Forms
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT id, efectivo, descripcion, tipo_movimiento, create_time FROM caja WHERE (create_time BETWEEN ?fechaIni AND ?fechaFin) AND id_sucursal='" + Config.idSucursal + "'";
+                sql.CommandText = "SELECT id, efectivo, voucher, descripcion, tipo_movimiento, create_time FROM caja WHERE (create_time BETWEEN ?fechaIni AND ?fechaFin) AND id_sucursal='" + Config.idSucursal + "'";
                 sql.Parameters.AddWithValue("?fechaIni", fechaIni.ToString("yyyy-MM-dd") + " 00:00:00");
                 sql.Parameters.AddWithValue("?fechaFin", fechaFin.ToString("yyyy-MM-dd") + " 23:59:59");
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
@@ -109,7 +109,7 @@ namespace EC_Admin.Forms
                             tipoMovimiento = "Salida";
                             break;
                     }
-                    dgvCaja.Rows.Add(new object[] { dr["id"], dr["create_time"], dr["descripcion"].ToString(), dr["efectivo"], tipoMovimiento});
+                    dgvCaja.Rows.Add(new object[] { dr["id"], dr["create_time"], dr["descripcion"].ToString(), (decimal)dr["efectivo"],(decimal)dr["voucher"], tipoMovimiento});
                     Application.DoEvents();
                 }
                 dgvCaja_RowEnter(dgvCaja, new DataGridViewCellEventArgs(0, 0));
