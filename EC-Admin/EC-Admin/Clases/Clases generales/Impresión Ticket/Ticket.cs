@@ -263,11 +263,22 @@ namespace EC_Admin
 
         private void pd_PrintPageTicketApartado(object sender, PrintPageEventArgs e)
         {
-            AgregarEncabezadoTicket(ref e);
-            AgregarLinea(ref e, Pens.DarkGray);
-            AgregarDatosApartado(ref e);
-            AgregarLinea(ref e, Pens.DarkGray);
-            AgregarPieTicket(ref e);
+            try
+            {
+                AgregarEncabezadoTicket(ref e);
+                AgregarLinea(ref e, Pens.DarkGray);
+                AgregarDatosApartado(ref e);
+                AgregarLinea(ref e, Pens.DarkGray);
+                AgregarPieTicket(ref e);
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

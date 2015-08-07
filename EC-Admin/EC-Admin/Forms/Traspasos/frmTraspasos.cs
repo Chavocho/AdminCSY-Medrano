@@ -108,40 +108,54 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (Sucursal.Cantidad >= 2)
+            if (Privilegios._CrearTraspaso)
             {
-                (new frmNuevoTraspaso()).ShowDialog(this);
+                if (Sucursal.Cantidad >= 2)
+                {
+                    (new frmNuevoTraspaso()).ShowDialog(this);
+                }
+                else
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas tener al menos dos sucursales registradas para poder hacer traspasos", "Admin CSY");
+                }
             }
             else
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas tener al menos dos sucursales registradas para poder hacer traspasos", "Admin CSY");
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnDetalle_Click(object sender, EventArgs e)
         {
-            if (dgvTraspasos.CurrentRow != null)
+            if (Privilegios._EstadoTraspaso)
             {
-                DataGridViewRow dr = dgvTraspasos.CurrentRow;
-                switch (this.e)
+                if (dgvTraspasos.CurrentRow != null)
                 {
-                    case EstadoTraspaso.Recibida:
-                    case EstadoTraspaso.Rechazada:
-                        (new frmDetalleTraspaso(id)).ShowDialog(this);
-                        break;
-                    case EstadoTraspaso.Aceptada:
-                        if ((int)dr.Cells[1].Value == Config.idSucursal)
-                        {
+                    DataGridViewRow dr = dgvTraspasos.CurrentRow;
+                    switch (this.e)
+                    {
+                        case EstadoTraspaso.Recibida:
+                        case EstadoTraspaso.Rechazada:
                             (new frmDetalleTraspaso(id)).ShowDialog(this);
-                        }
-                        break;
-                    case EstadoTraspaso.Espera:
-                        if (((int)dr.Cells[1].Value == (int)dr.Cells[2].Value && (int)dr.Cells[3].Value == Config.idSucursal) || ((int)dr.Cells[1].Value == (int)dr.Cells[3].Value && (int)dr.Cells[1].Value == Config.idSucursal))
-                        {
-                            (new frmDetalleTraspaso(id)).ShowDialog(this);
-                        }
-                        break;
-                }               
+                            break;
+                        case EstadoTraspaso.Aceptada:
+                            if ((int)dr.Cells[1].Value == Config.idSucursal)
+                            {
+                                (new frmDetalleTraspaso(id)).ShowDialog(this);
+                            }
+                            break;
+                        case EstadoTraspaso.Espera:
+                            if (((int)dr.Cells[1].Value == (int)dr.Cells[2].Value && (int)dr.Cells[3].Value == Config.idSucursal) || ((int)dr.Cells[1].Value == (int)dr.Cells[3].Value && (int)dr.Cells[1].Value == Config.idSucursal))
+                            {
+                                (new frmDetalleTraspaso(id)).ShowDialog(this);
+                            }
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 

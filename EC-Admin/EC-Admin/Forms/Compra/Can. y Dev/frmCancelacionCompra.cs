@@ -135,33 +135,47 @@ namespace EC_Admin.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (dgvCompras.CurrentRow != null)
+            if (Privilegios._CancelarCompra)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas cancelar ésta compra? (Los productos de la compra se quitarán de inventario)", "Admin CSY") == DialogResult.Yes)
+                if (dgvCompras.CurrentRow != null)
                 {
-                    try
+                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas cancelar ésta compra? (Los productos de la compra se quitarán de inventario)", "Admin CSY") == DialogResult.Yes)
                     {
-                        Compra.CancelarCompra(id);
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cancelado la compra correctamente!", "Admin CSY");
-                        dgvCompras.Rows.Remove(dgvCompras.CurrentRow);
-                    }
-                    catch (MySqlException ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la compra. No se ha podido conectar con la base de datos.", Config.shrug, ex);
-                    }
-                    catch (Exception ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la compra.", Config.shrug, ex);
+                        try
+                        {
+                            Compra.CancelarCompra(id);
+                            FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cancelado la compra correctamente!", "Admin CSY");
+                            dgvCompras.Rows.Remove(dgvCompras.CurrentRow);
+                        }
+                        catch (MySqlException ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la compra. No se ha podido conectar con la base de datos.", Config.shrug, ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la compra.", Config.shrug, ex);
+                        }
                     }
                 }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnDevoluciones_Click(object sender, EventArgs e)
         {
-            if (dgvCompras.CurrentRow != null)
+            if (!Privilegios._DevolucionCompra)
             {
-                (new frmDevolucionesCompra(id)).ShowDialog(this);
+                if (dgvCompras.CurrentRow != null)
+                {
+                    (new frmDevolucionesCompra(id)).ShowDialog(this);
+                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 

@@ -170,52 +170,73 @@ namespace EC_Admin.Forms
 
         async private void btnAceptar_Click(object sender, EventArgs e)
         {
-            try
+            if (Privilegios._EstadoApartado)
             {
-                if (dgvCategorias.CurrentRow != null)
+                try
                 {
-                    await Apartados.CambiarEstado(id, EstadoApartado.Salio);
-                    Apartados a = new Apartados(id);
-                    await a.ObtenerDatosAsync();
-                    frmPOS.Instancia.VentaApartado(a);
-                    this.Close();
+                    if (dgvCategorias.CurrentRow != null)
+                    {
+                        await Apartados.CambiarEstado(id, EstadoApartado.Salio);
+                        Apartados a = new Apartados(id);
+                        await a.ObtenerDatosAsync();
+                        frmPOS.Instancia.VentaApartado(a);
+                        this.Close();
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mandar a venta el apartado. No se ha podido conectar a la base de datos.", Config.shrug, ex);
+                }
+                catch (Exception ex)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mandar a venta el apartado.", Config.shrug, ex);
                 }
             }
-            catch (MySqlException ex)
+            else
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mandar a venta el apartado. No se ha podido conectar a la base de datos.", Config.shrug, ex);
-            }
-            catch (Exception ex)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al mandar a venta el apartado.", Config.shrug, ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         async private void btnCancelar_Click(object sender, EventArgs e)
         {
-            try
+            if (Privilegios._EstadoApartado)
             {
-                if (dgvCategorias.CurrentRow != null)
+                try
                 {
-                    await Apartados.CambiarEstado(id, EstadoApartado.Cancelada);
-                    dgvCategorias[3, dgvCategorias.CurrentRow.Index].Value = EstadoApartado.Cancelada;
-                    dgvCategorias[2, dgvCategorias.CurrentRow.Index].Value = "Cancelada";
-                    btnAceptar.Visible = btnCancelar.Visible = false;
+                    if (dgvCategorias.CurrentRow != null)
+                    {
+                        await Apartados.CambiarEstado(id, EstadoApartado.Cancelada);
+                        dgvCategorias[3, dgvCategorias.CurrentRow.Index].Value = EstadoApartado.Cancelada;
+                        dgvCategorias[2, dgvCategorias.CurrentRow.Index].Value = "Cancelada";
+                        btnAceptar.Visible = btnCancelar.Visible = false;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar el apartado. No se ha podido conectar a la base de datos.", Config.shrug, ex);
+                }
+                catch (Exception ex)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar el apartado.", Config.shrug, ex);
                 }
             }
-            catch (MySqlException ex)
+            else
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar el apartado. No se ha podido conectar a la base de datos.", Config.shrug, ex);
-            }
-            catch (Exception ex)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar el apartado.", Config.shrug, ex);
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            (new frmNuevoApartado()).ShowDialog(this);
+            if (Privilegios._CrearApartado)
+            {
+                (new frmNuevoApartado()).ShowDialog(this);
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)

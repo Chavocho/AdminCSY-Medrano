@@ -57,6 +57,7 @@
             this.btnCorreo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCorreo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCorreo.UseVisualStyleBackColor = false;
+            this.btnCorreo.Click += new System.EventHandler(this.btnCorreo_Click);
             // 
             // btnBaseDatos
             // 

@@ -12,6 +12,14 @@ namespace EC_Admin.Forms
 {
     public partial class frmNuevoUsuario : Form
     {
+        Privilegios p = new Privilegios();
+
+        public Privilegios P
+        {
+            get { return p; }
+            set { p = value; }
+        }
+
         frmPrimerUso frm = null;
         NivelesUsuario n;
         Camara c;
@@ -38,11 +46,10 @@ namespace EC_Admin.Forms
             cboNivel.SelectedIndex = 0;
         }
 
-        private void InsertarUsuario()
+        async private void InsertarUsuario()
         {
             try
             {
-
                 Usuario u = new Usuario();
                 if (Config.idSucursal > 0)
                     u.IDSucusal = Config.idSucursal;
@@ -57,6 +64,8 @@ namespace EC_Admin.Forms
                 u.Imagen = pcbImagen.Image;
                 u.Huella = huella;
                 u.InsertarUsuario();
+                p.IDUsuario = u.ID;
+                await p.InsertarEditar();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
@@ -258,6 +267,18 @@ namespace EC_Admin.Forms
             if (c.FuenteDeVideo != null)
             {
                 c.TerminarFuenteDeVideo();
+            }
+        }
+
+        private void btnPrivilegios_Click(object sender, EventArgs e)
+        {
+            if (Privilegios._AdministrarPermisos)
+            {
+                (new frmPrivilegios(this)).ShowDialog(this);
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
     }

@@ -39,6 +39,11 @@ namespace EC_Admin.Forms
 
         private void btnSucursales_Click(object sender, EventArgs e)
         {
+            if (!Privilegios._CrearSucursal && !Privilegios._ModificarSucursal && !Privilegios._CambiarSucursal)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+                return;
+            }
             if (!frmSucursal.Instancia.Visible)
                 frmSucursal.Instancia.Show();
             else
@@ -63,7 +68,14 @@ namespace EC_Admin.Forms
 
         private void btnBaseDatos_Click(object sender, EventArgs e)
         {
-            (new frmConfigBaseDatos()).ShowDialog(this);
+            if (Privilegios._ConfigBaseDatos)
+            {
+                (new frmConfigBaseDatos()).ShowDialog(this);
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnAlmacen_Click(object sender, EventArgs e)
@@ -76,18 +88,44 @@ namespace EC_Admin.Forms
 
         private void btnTicket_Click(object sender, EventArgs e)
         {
-            if (!frmConfigTicket.Instancia.Visible)
-                frmConfigTicket.Instancia.Show();
+            if (Privilegios._ConfigImpresion)
+            {
+                if (!frmConfigTicket.Instancia.Visible)
+                    frmConfigTicket.Instancia.Show();
+                else
+                    frmConfigTicket.Instancia.Select();
+            }
             else
-                frmConfigTicket.Instancia.Select(); 
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnGenerales_Click(object sender, EventArgs e)
         {
-            if (!frmConfigGeneral.Instancia.Visible)
-                frmConfigGeneral.Instancia.Show();
+            if (Privilegios._ConfigGeneral)
+            {
+                if (!frmConfigGeneral.Instancia.Visible)
+                    frmConfigGeneral.Instancia.Show();
+                else
+                    frmConfigGeneral.Instancia.Focus();
+            }
             else
-                frmConfigGeneral.Instancia.Focus();
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
+        }
+
+        private void btnCorreo_Click(object sender, EventArgs e)
+        {
+            if (Privilegios._ConfigCorreo)
+            {
+                
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
     }
 }

@@ -174,38 +174,59 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            (new frmNuevoCliente()).ShowDialog(this);
+            if (Privilegios._CrearCliente)
+            {
+                (new frmNuevoCliente()).ShowDialog(this);
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvClientes.CurrentRow != null && id > 0)
+            if (Privilegios._ModificarCliente)
             {
-                (new frmEditarCliente(id)).ShowDialog(this);
+                if (dgvClientes.CurrentRow != null && id > 0)
+                {
+                    (new frmEditarCliente(id)).ShowDialog(this);
+                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvClientes.CurrentRow != null && id > 0)
+            if (Privilegios._EliminarCliente)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas realmente eliminar a " + dgvClientes[1, dgvClientes.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                if (dgvClientes.CurrentRow != null && id > 0)
                 {
-                    try
+                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas realmente eliminar a " + dgvClientes[1, dgvClientes.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                     {
-                        EliminarCliente(id);
-                        dgvClientes.Rows.Remove(dgvClientes.CurrentRow);
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha eliminado el cliente correctamente!", "Admin CSY");
-                    }
-                    catch (MySqlException ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el cliente.", "Admin CSY", ex);
-                    }
-                    catch (Exception ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el cliente.", "Admin CSY", ex);
+                        try
+                        {
+                            EliminarCliente(id);
+                            dgvClientes.Rows.Remove(dgvClientes.CurrentRow);
+                            FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha eliminado el cliente correctamente!", "Admin CSY");
+                        }
+                        catch (MySqlException ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el cliente.", "Admin CSY", ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el cliente.", "Admin CSY", ex);
+                        }
                     }
                 }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 

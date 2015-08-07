@@ -124,38 +124,59 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            (new frmNuevaSucursal()).ShowDialog(this);
-            bgwBusqueda.RunWorkerAsync();
+            if (Privilegios._CrearSucursal)
+            {
+                (new frmNuevaSucursal()).ShowDialog(this);
+                bgwBusqueda.RunWorkerAsync();
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvSucursal.CurrentRow != null)
+            if (Privilegios._ModificarSucursal)
             {
-                (new frmEditarSucursal(id)).ShowDialog(this);
-                bgwBusqueda.RunWorkerAsync();
+                if (dgvSucursal.CurrentRow != null)
+                {
+                    (new frmEditarSucursal(id)).ShowDialog(this);
+                    bgwBusqueda.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvSucursal.CurrentRow != null)
+            if (Privilegios._EliminarSucursal)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas eliminar la sucursal con nombre " + dgvSucursal[1, dgvSucursal.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                if (dgvSucursal.CurrentRow != null)
                 {
-                    try
+                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas eliminar la sucursal con nombre " + dgvSucursal[1, dgvSucursal.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                     {
-                        EliminarSucursal();
-                    }
-                    catch (MySqlException ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar la sucursal. No se pudo conectar a la base de datos.", "Admin CSY", ex);
-                    }
-                    catch (Exception ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al eliminar la sucursal.", "Admin CSY", ex);
+                        try
+                        {
+                            EliminarSucursal();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar la sucursal. No se pudo conectar a la base de datos.", "Admin CSY", ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error genérico al eliminar la sucursal.", "Admin CSY", ex);
+                        }
                     }
                 }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
@@ -178,7 +199,14 @@ namespace EC_Admin.Forms
 
         private void btnCambiar_Click(object sender, EventArgs e)
         {
-            (new frmAsignarSucursal(true)).ShowDialog(this);
+            if (Privilegios._CambiarSucursal)
+            {
+                (new frmAsignarSucursal(true)).ShowDialog(this);
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
     }
 }

@@ -210,34 +210,48 @@ namespace EC_Admin.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (dgvVentas.CurrentRow != null)
+            if (Privilegios._CancelarVenta)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea cancelar esta venta?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                if (dgvVentas.CurrentRow != null)
                 {
-                    try
+                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea cancelar esta venta?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                     {
-                        Venta.CancelarVenta((int)dgvVentas[0, dgvVentas.CurrentRow.Index].Value);
-                        MovimientoCaja();
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cancelado correctamente la venta!", "Admin CSY");
-                        dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
-                    }
-                    catch (MySqlException ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la venta. No se ha podido conectar a la base de datos. Vuelva a cargar la lista de ventas para asegurarse de que ésta se haya cancelado.", Config.shrug, ex);
-                    }
-                    catch (Exception ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la venta. Vuelva a cargar la lista de ventas para asegurarse de que ésta se haya cancelado.", Config.shrug, ex);
+                        try
+                        {
+                            Venta.CancelarVenta((int)dgvVentas[0, dgvVentas.CurrentRow.Index].Value);
+                            MovimientoCaja();
+                            FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cancelado correctamente la venta!", "Admin CSY");
+                            dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
+                        }
+                        catch (MySqlException ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la venta. No se ha podido conectar a la base de datos. Vuelva a cargar la lista de ventas para asegurarse de que ésta se haya cancelado.", Config.shrug, ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al cancelar la venta. Vuelva a cargar la lista de ventas para asegurarse de que ésta se haya cancelado.", Config.shrug, ex);
+                        }
                     }
                 }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnDevoluciones_Click(object sender, EventArgs e)
         {
-            if (dgvVentas.CurrentRow != null)
-            { 
-                (new frmDevoluciones(id)).ShowDialog(this);
+            if (Privilegios._DevolucionVenta)
+            {
+                if (dgvVentas.CurrentRow != null)
+                {
+                    (new frmDevoluciones(id)).ShowDialog(this);
+                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
     }

@@ -730,14 +730,28 @@ namespace EC_Admin.Forms
 
         private void btnNuevaVenta_Click(object sender, EventArgs e)
         {
-            NuevaVenta();
-            txtBusqueda.Select();
+            if (Privilegios._CrearVenta)
+            {
+                NuevaVenta();
+                txtBusqueda.Select();
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnRecuperarVenta_Click(object sender, EventArgs e)
         {
-            (new frmRecuperarVenta(this)).ShowDialog(this);
-            txtBusqueda.Select();
+            if (Privilegios._CrearVenta)
+            {
+                (new frmRecuperarVenta(this)).ShowDialog(this);
+                txtBusqueda.Select();
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -990,6 +1004,11 @@ namespace EC_Admin.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            if (!Privilegios._CancelarVenta && !Privilegios._DevolucionVenta)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+                return;
+            }
             (new frmCancelaciones()).ShowDialog(this);
         }
     }

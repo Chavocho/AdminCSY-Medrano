@@ -93,29 +93,41 @@ namespace EC_Admin
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-            if (Caja.EstadoCaja == false)
+            if (Privilegios._CrearVenta || Privilegios._CancelarVenta || Privilegios._DevolucionVenta)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
-                return;
+                if (Caja.EstadoCaja == false)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
+                    return;
+                }
+                if (Producto.CantidadP <= 0)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un producto antes de iniciar el punto de venta", "Admin CSY");
+                    return;
+                }
+                if (Trabajador.Cantidad <= 0)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un trabajador antes de iniciar el punto de venta", "Admin CSY");
+                    return;
+                }
+                if (!frmPOS.Instancia.Visible)
+                    frmPOS.Instancia.Show();
+                else
+                    frmPOS.Instancia.Select();
             }
-            if (Producto.CantidadP <= 0)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un producto antes de iniciar el punto de venta", "Admin CSY");
-                return;
-            }
-            if (Trabajador.Cantidad <= 0)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un trabajador antes de iniciar el punto de venta", "Admin CSY");
-                return;
-            }
-            if (!frmPOS.Instancia.Visible)
-                frmPOS.Instancia.Show();
             else
-                frmPOS.Instancia.Select();
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
+            if (!Privilegios._CrearCompra && !Privilegios._VisualizarCompra && !Privilegios._CancelarCompra && !Privilegios._DevolucionCompra)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+                return;
+            }
             if (Producto.CantidadP <= 0)
             {
                 FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un producto antes de iniciar el módulo de compras", "Admin CSY");
@@ -134,32 +146,51 @@ namespace EC_Admin
 
         private void btnCotizacion_Click(object sender, EventArgs e)
         {
-            if (Producto.CantidadP <= 0)
+            if (Privilegios._CrearCotizacion)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un producto antes de iniciar el cotizador", "Admin CSY");
-                return;
+                if (Producto.CantidadP <= 0)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un producto antes de iniciar el cotizador", "Admin CSY");
+                    return;
+                }
+                if (Trabajador.Cantidad <= 0)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un trabajador antes de iniciar el cotizador", "Admin CSY");
+                    return;
+                }
+                if (!frmCotizacion.Instancia.Visible)
+                    frmCotizacion.Instancia.Show();
+                else
+                    frmCotizacion.Instancia.Select();
             }
-            if (Trabajador.Cantidad <= 0)
-            {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un trabajador antes de iniciar el cotizador", "Admin CSY");
-                return;
-            }
-            if (!frmCotizacion.Instancia.Visible)
-                frmCotizacion.Instancia.Show();
             else
-                frmCotizacion.Instancia.Select();
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnCaja_Click(object sender, EventArgs e)
         {
-            if (!frmCaja.Instancia.Visible)
-                frmCaja.Instancia.Show();
+            if (Privilegios._Caja)
+            {
+                if (!frmCaja.Instancia.Visible)
+                    frmCaja.Instancia.Show();
+                else
+                    frmCaja.Instancia.Select();
+            }
             else
-                frmCaja.Instancia.Select();
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
+            if (!Privilegios._CrearCliente && !Privilegios._ModificarCliente && !Privilegios._EliminarCliente)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+                return;
+            }
             if (!frmClientes.Instancia.Visible)
                 frmClientes.Instancia.Show();
             else
@@ -168,6 +199,11 @@ namespace EC_Admin
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
+            if (!Privilegios._CrearProveedor && !Privilegios._ModificarProveedor && !Privilegios._EliminarProveedor)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+                return;
+            }
             if (!frmProveedor.Instancia.Visible)
                 frmProveedor.Instancia.Show();
             else
@@ -176,6 +212,11 @@ namespace EC_Admin
 
         private void btnTrabajadores_Click(object sender, EventArgs e)
         {
+            if (!Privilegios._AdministrarHorarioTrabajador && !Privilegios._AdministrarPagoTrabajador && !Privilegios._CrearTrabajador && !Privilegios._ModificarTrabajador && !Privilegios._EliminarTrabajador)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+                return;
+            }
             if (!frmTrabajador.Instancia.Visible)
                 frmTrabajador.Instancia.Show();
             else
@@ -215,10 +256,17 @@ namespace EC_Admin
 
         private void btnBanco_Click(object sender, EventArgs e)
         {
-            if (!frmBanco.Instancia.Visible)
-                frmBanco.Instancia.Show();
+            if (Privilegios._Banco)
+            {
+                if (!frmBanco.Instancia.Visible)
+                    frmBanco.Instancia.Show();
+                else
+                    frmBanco.Instancia.Select();
+            }
             else
-                frmBanco.Instancia.Select();
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
     }
 }

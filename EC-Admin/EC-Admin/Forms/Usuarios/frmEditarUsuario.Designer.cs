@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPrivilegios = new System.Windows.Forms.Button();
             this.btnQuitar = new System.Windows.Forms.Button();
             this.pcbImagen = new System.Windows.Forms.PictureBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
@@ -52,28 +52,29 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.cboCamaras = new System.Windows.Forms.ComboBox();
             this.btnCamara = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).BeginInit();
             this.pnlPass.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnPrivilegios
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Corbel", 9F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(174, 245);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 30);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Asignar huella";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
+            this.btnPrivilegios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPrivilegios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnPrivilegios.FlatAppearance.BorderSize = 0;
+            this.btnPrivilegios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnPrivilegios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnPrivilegios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrivilegios.Font = new System.Drawing.Font("Corbel", 9F);
+            this.btnPrivilegios.ForeColor = System.Drawing.Color.White;
+            this.btnPrivilegios.Location = new System.Drawing.Point(174, 245);
+            this.btnPrivilegios.Name = "btnPrivilegios";
+            this.btnPrivilegios.Size = new System.Drawing.Size(97, 30);
+            this.btnPrivilegios.TabIndex = 12;
+            this.btnPrivilegios.Text = "Privilegios";
+            this.btnPrivilegios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrivilegios.UseVisualStyleBackColor = false;
+            this.btnPrivilegios.Click += new System.EventHandler(this.btnPrivilegios_Click);
             // 
             // btnQuitar
             // 
@@ -362,6 +363,25 @@
             this.btnCamara.UseVisualStyleBackColor = false;
             this.btnCamara.Click += new System.EventHandler(this.btnCamara_Click);
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Corbel", 9F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(174, 209);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(97, 30);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "Asignar huella";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Visible = false;
+            // 
             // frmEditarUsuario
             // 
             this.AcceptButton = this.btnAceptar;
@@ -374,7 +394,7 @@
             this.Controls.Add(this.chbPass);
             this.Controls.Add(this.pnlPass);
             this.Controls.Add(this.lblUsuario);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPrivilegios);
             this.Controls.Add(this.btnQuitar);
             this.Controls.Add(this.pcbImagen);
             this.Controls.Add(this.txtCorreo);
@@ -386,6 +406,7 @@
             this.Controls.Add(this.lblNivel);
             this.Controls.Add(this.cboNivel);
             this.Controls.Add(this.lblEUsuario);
+            this.Controls.Add(this.button2);
             this.Font = new System.Drawing.Font("Corbel", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -406,7 +427,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPrivilegios;
         private System.Windows.Forms.Button btnQuitar;
         private System.Windows.Forms.PictureBox pcbImagen;
         private System.Windows.Forms.TextBox txtCorreo;
@@ -430,5 +451,6 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.ComboBox cboCamaras;
         private System.Windows.Forms.Button btnCamara;
+        private System.Windows.Forms.Button button2;
     }
 }

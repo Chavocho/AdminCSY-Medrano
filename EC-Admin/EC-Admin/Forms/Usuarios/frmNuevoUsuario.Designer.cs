@@ -50,6 +50,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cboCamaras = new System.Windows.Forms.ComboBox();
             this.btnCamara = new System.Windows.Forms.Button();
+            this.btnPrivilegios = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -284,7 +285,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Corbel", 9F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(174, 287);
+            this.button1.Location = new System.Drawing.Point(174, 251);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 30);
             this.button1.TabIndex = 16;
@@ -325,6 +326,25 @@
             this.btnCamara.UseVisualStyleBackColor = false;
             this.btnCamara.Click += new System.EventHandler(this.btnCamara_Click);
             // 
+            // btnPrivilegios
+            // 
+            this.btnPrivilegios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrivilegios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btnPrivilegios.FlatAppearance.BorderSize = 0;
+            this.btnPrivilegios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            this.btnPrivilegios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnPrivilegios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrivilegios.Font = new System.Drawing.Font("Corbel", 9F);
+            this.btnPrivilegios.ForeColor = System.Drawing.Color.White;
+            this.btnPrivilegios.Location = new System.Drawing.Point(174, 287);
+            this.btnPrivilegios.Name = "btnPrivilegios";
+            this.btnPrivilegios.Size = new System.Drawing.Size(97, 30);
+            this.btnPrivilegios.TabIndex = 35;
+            this.btnPrivilegios.Text = "Privilegios";
+            this.btnPrivilegios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrivilegios.UseVisualStyleBackColor = false;
+            this.btnPrivilegios.Click += new System.EventHandler(this.btnPrivilegios_Click);
+            // 
             // frmNuevoUsuario
             // 
             this.AcceptButton = this.btnAceptar;
@@ -332,6 +352,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(548, 450);
+            this.Controls.Add(this.btnPrivilegios);
             this.Controls.Add(this.cboCamaras);
             this.Controls.Add(this.btnCamara);
             this.Controls.Add(this.button1);
@@ -395,5 +416,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cboCamaras;
         private System.Windows.Forms.Button btnCamara;
+        private System.Windows.Forms.Button btnPrivilegios;
     }
 }

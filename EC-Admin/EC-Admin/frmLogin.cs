@@ -21,18 +21,31 @@ namespace EC_Admin
             cancelo = true;
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        async private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Usuario.VerificarIngresoUsuario(txtUsuario.Text, txtPass.Text))
+            try
             {
-                frmPrincipal.Instancia.Show();
-                cancelo = false;
-                this.Close();
+                Task<bool> t = Usuario.VerificarIngresoUsuario(txtUsuario.Text, txtPass.Text);
+                await t;
+                if (t.Result)
+                {
+                    frmPrincipal.Instancia.Show();
+                    cancelo = false;
+                    this.Close();
+                }
+                else
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El usuario y/o contraseña no coinciden.", "Admin CSY");
+                    txtPass.Text = "";
+                }
             }
-            else
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "El usuario y/o contraseña no coinciden.", "Admin CSY");
-                txtPass.Text = "";
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al verificar los datos del usuario. No se ha podido conectar a la base de datos.", Config.shrug);
+            }
+            catch (Exception ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al verificar los datos del usuario.", Config.shrug);
             }
         }
 

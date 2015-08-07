@@ -171,62 +171,73 @@ namespace EC_Admin.Forms
 
         private void btnAbrirCerrar_Click(object sender, EventArgs e)
         {
-            if (Caja.EstadoCaja)
+            if (Privilegios._AbrirCerrarCaja)
             {
-                (new frmCerrarCaja()).ShowDialog(this);
-                if (Caja.EstadoCaja == false)
+                if (Caja.EstadoCaja)
                 {
-                    btnAbrirCerrar.Text = "Abrir caja (F1)";
-                    CalcularTotales();
+                    (new frmCerrarCaja()).ShowDialog(this);
+                    if (Caja.EstadoCaja == false)
+                    {
+                        btnAbrirCerrar.Text = "Abrir caja (F1)";
+                        CalcularTotales();
+                    }
+                }
+                else
+                {
+                    (new frmAbrirCaja()).ShowDialog(this);
+                    if (Caja.EstadoCaja)
+                    {
+                        btnAbrirCerrar.Text = "Cerrar caja (F1)";
+                        CalcularTotales();
+                    }
                 }
             }
             else
             {
-                (new frmAbrirCaja()).ShowDialog(this);
-                if (Caja.EstadoCaja)
-                {
-                    btnAbrirCerrar.Text = "Cerrar caja (F1)";
-                    CalcularTotales();
-                }
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnEntrada_Click(object sender, EventArgs e)
         {
-            //if (rdbCaja.Checked)
-            //{
+            if (Privilegios._MovimientoCaja)
+            {
                 if (Caja.EstadoCaja == false)
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
                     return;
                 }
                 else
-                (new frmEntradaSalida(MovimientoCaja.Entrada,false)).ShowDialog(this);
-            //}
-            //else if(rdbBanco.Checked)
-            //{
-            //    (new frmEntradaSalida(MovimientoCaja.Entrada, true)).ShowDialog(this);
-            //}
-            CalcularTotales();
+                {
+                    (new frmEntradaSalida(MovimientoCaja.Entrada, false)).ShowDialog(this);
+                }
+                CalcularTotales();
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnSalida_Click(object sender, EventArgs e)
         {
-            //if (rdbCaja.Checked)
-            //{
+            if (Privilegios._MovimientoCaja)
+            {
                 if (Caja.EstadoCaja == false)
                 {
                     FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una venta", "Admin CSY");
                     return;
                 }
                 else
-                (new frmEntradaSalida(MovimientoCaja.Salida, false)).ShowDialog(this);
-            //}
-            //else if (rdbBanco.Checked)
-            //{
-            //    (new frmEntradaSalida(MovimientoCaja.Salida, true)).ShowDialog(this);
-            //}
-            CalcularTotales();
+                {
+                    (new frmEntradaSalida(MovimientoCaja.Salida, false)).ShowDialog(this);
+                }
+                CalcularTotales();
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void frmCaja_Load(object sender, EventArgs e)
@@ -269,7 +280,14 @@ namespace EC_Admin.Forms
 
         private void btnCortes_Click(object sender, EventArgs e)
         {
-            (new frmCorteCaja()).ShowDialog(this);
+            if (Privilegios._CortesCaja)
+            {
+                (new frmCorteCaja()).ShowDialog(this);
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void frmCaja_KeyDown(object sender, KeyEventArgs e)

@@ -463,7 +463,7 @@ namespace EC_Admin
         /// <param name="nomUsu">Nombre del usuario</param>
         /// <param name="pass">Contraseña del usuario</param>
         /// <returns>Valor booleano que indica si los datos son correctos</returns>
-        public static bool VerificarIngresoUsuario(string nomUsu, string pass)
+        async public static Task<bool> VerificarIngresoUsuario(string nomUsu, string pass)
         {
             bool existe = false;
             try
@@ -484,7 +484,7 @@ namespace EC_Admin
                     else
                         imgUsuActual = null;
                     existe = true;
-                    ObtenerPrivilegios();
+                    await Privilegios.PrivilegiosUsuario(idUsuActual);
                 }
             }
             catch (InvalidCastException ex)
@@ -604,7 +604,7 @@ namespace EC_Admin
                     sql.Parameters.AddWithValue("?create_user", idUsuActual);
                 else
                     sql.Parameters.AddWithValue("?create_user", 1);
-                ConexionBD.EjecutarConsulta(sql);
+                this.id = ConexionBD.EjecutarConsulta(sql);
                 CambioCantidadUsuarios();
             }
             catch (MySqlException ex)
@@ -786,193 +786,5 @@ namespace EC_Admin
             }
             return num;
         }
-
-        #region Privilegios
-        private static bool pCaja;
-        private static bool pAbrirCerrarCaja;
-        private static bool pMovimientosCaja;
-        private static bool pConfiguracion;
-        private static bool pCorreo;
-        private static bool pBaseDatos;
-        private static bool pCompra;
-        private static bool pCliente;
-        private static bool pEliminarCliente;
-        private static bool pProveedor;
-        private static bool pEliminarProveedor;
-        private static bool pCotizacion;
-        private static bool pProducto;
-        private static bool pEditarProducto;
-        private static bool pEliminarProducto;
-        private static bool pSucursal;
-        private static bool pTrabajador;
-        private static bool pCrearTrabajador;
-        private static bool pEditarTrabajador;
-        private static bool pEliminarTrabajador;
-        private static bool pPagoTrabajador;
-        private static bool pUsuario;
-        private static bool pVenta;
-
-        public static bool PCaja
-        {
-            get { return pCaja; }
-        }
-
-        public static bool PAbrirCerrarCaja
-        {
-            get { return pAbrirCerrarCaja; }
-        }
-
-        public static bool PMovimientosCaja
-        {
-            get { return pMovimientosCaja; }
-        }
-
-        public static bool PConfiguracion
-        {
-            get { return pConfiguracion; }
-        }
-
-        public static bool PCorreo
-        {
-            get { return pCorreo; }
-        }
-
-        public static bool PBaseDatos
-        {
-            get { return pBaseDatos; }
-        }
-
-        public static bool PCompra
-        {
-            get { return pCompra; }
-        }
-
-        public static bool PCliente
-        {
-            get { return pCliente; }
-        }
-
-        public static bool PEliminarCliente
-        {
-            get { return pEliminarCliente; }
-        }
-
-        public static bool PProveedor
-        {
-            get { return pProveedor; }
-        }
-
-        public static bool PEliminarProveedor
-        {
-            get { return pEliminarProveedor; }
-        }
-
-        public static bool PCotizacion
-        {
-            get { return pCotizacion; }
-        }
-
-        public static bool PProducto
-        {
-            get { return pProducto; }
-        }
-
-        public static bool PEditarProducto
-        {
-            get { return pEditarProducto; }
-            set { pEditarProducto = value; }
-        }
-
-        public static bool PEliminarProducto
-        {
-            get { return pEliminarProducto; }
-            set { pEliminarProducto = value; }
-        }
-        
-        public static bool PSucursal
-        {
-            get { return pSucursal; }
-        }
-
-        public static bool PTrabajador
-        {
-            get { return pTrabajador; }
-        }
-
-        public static bool PCrearTrabajador
-        {
-            get { return pCrearTrabajador; }
-        }
-
-        public static bool PEditarTrabajador
-        {
-            get { return pEditarTrabajador; }
-        }
-
-        public static bool EliminarTrabajador
-        {
-            get { return pEliminarTrabajador; }
-        }
-        
-        public static bool PPagoTrabajador
-        {
-            get { return pPagoTrabajador; }
-        }
-
-        public static bool PUsuario
-        {
-            get { return pUsuario; }
-        }
-
-        public static bool PVenta
-        {
-            get { return pVenta; }
-        }
-
-        private static void ObtenerPrivilegios()
-        {
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT * FROM privilegios WHERE id_usuario=?id";
-                sql.Parameters.AddWithValue("?id", idUsuActual);
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    pCaja = (bool)dr["caja"];
-                    pAbrirCerrarCaja = (bool)dr["abrir_cerrar_caja"];
-                    pMovimientosCaja = (bool)dr["movimientos_caja"];
-                    pConfiguracion = (bool)dr["configuracion"];
-                    pCorreo = (bool)dr["correo"];
-                    pBaseDatos = (bool)dr["base_datos"];
-                    pCompra = (bool)dr["compra"];
-                    pCliente = (bool)dr["cliente"];
-                    pEliminarCliente = (bool)dr["eliminar_cliente"];
-                    pProveedor = (bool)dr["proveedor"];
-                    pEliminarProveedor = (bool)dr["eliminar_proveedor"];
-                    pCotizacion = (bool)dr["cotizacion"];
-                    pProducto = (bool)dr["producto"];
-                    pEditarProducto = (bool)dr["editar_producto"];
-                    pEliminarProducto = (bool)dr["eliminar_producto"];
-                    pSucursal = (bool)dr["sucursal"];
-                    pTrabajador = (bool)dr["trabajador"];
-                    pCrearTrabajador = (bool)dr["crear_trabajador"];
-                    pEditarTrabajador = (bool)dr["editar_trabajador"];
-                    pEliminarTrabajador = (bool)dr["eliminar_trabajador"];
-                    pPagoTrabajador = (bool)dr["pago_trabajador"];
-                    pUsuario = (bool)dr["usuario"];
-                    pVenta = (bool)dr["venta"];
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        #endregion
     }
 }

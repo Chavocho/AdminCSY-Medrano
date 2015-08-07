@@ -143,30 +143,51 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (Categoria.Cantidad <= 0)
+            if (Privilegios._CrearProducto)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un categoría antes de poder registrar un producto", "Admin CSY");
-                return;
+                if (Categoria.Cantidad <= 0)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un categoría antes de poder registrar un producto", "Admin CSY");
+                    return;
+                }
+                (new frmNuevoProducto()).ShowDialog(this);
             }
-            (new frmNuevoProducto()).ShowDialog(this);
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvProductos.CurrentRow != null && id > 0)
+            if (Privilegios._ModificarProducto)
             {
-                (new frmEditarProducto(id)).ShowDialog();
+                if (dgvProductos.CurrentRow != null && id > 0)
+                {
+                    (new frmEditarProducto(id)).ShowDialog();
+                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvProductos.CurrentRow != null && id > 0)
+            if (Privilegios._EliminarProducto)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea eliminar el producto con nombre " + dgvProductos[1, dgvProductos.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                if (dgvProductos.CurrentRow != null && id > 0)
                 {
-                    Eliminar();
+                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea eliminar el producto con nombre " + dgvProductos[1, dgvProductos.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        Eliminar();
+                    }
                 }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
@@ -197,6 +218,11 @@ namespace EC_Admin.Forms
 
         private void btnPromociones_Click(object sender, EventArgs e)
         {
+            if (!Privilegios._CrearPromocion && !Privilegios._ModificarPromocion && !Privilegios._EliminarPromocion)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+                return;
+            }
             if (!frmPromociones.Instancia.Visible)
             {
                 frmPromociones.Instancia.Show();
@@ -210,32 +236,39 @@ namespace EC_Admin.Forms
 
         private void btnCodigo_Click(object sender, EventArgs e)
         {
-            if (dgvProductos.CurrentRow != null)
+            if (Privilegios._ImprimirTicket)
             {
-                try
+                if (dgvProductos.CurrentRow != null)
                 {
-                    int cant = int.Parse((new frmCantidadTickets()).Cantidad().ToString());
-                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Desea imprimir " + cant.ToString() + " tickets?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                    try
                     {
-                        for (int i = 0; i < cant; i++)
+                        int cant = int.Parse((new frmCantidadTickets()).Cantidad().ToString());
+                        if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Desea imprimir " + cant.ToString() + " tickets?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                         {
-                            Ticket t = new Ticket();
-                            t.TicketCodigoProducto(id);
+                            for (int i = 0; i < cant; i++)
+                            {
+                                Ticket t = new Ticket();
+                                t.TicketCodigoProducto(id);
+                            }
                         }
                     }
+                    catch (MySqlException ex)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+                    }
+                    catch (InvalidPrinterException ex)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket. La impresora seleccionada se encuentra apagada o no es accesible desde la red.", "Admin CSY", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket.", "Admin CSY", ex);
+                    }
                 }
-                catch (MySqlException ex)
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
-                }
-                catch (InvalidPrinterException ex)
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket. La impresora seleccionada se encuentra apagada o no es accesible desde la red.", "Admin CSY", ex);
-                }
-                catch (Exception ex)
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al imprimir el ticket.", "Admin CSY", ex);
-                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
@@ -247,6 +280,11 @@ namespace EC_Admin.Forms
 
         private void btnApartados_Click(object sender, EventArgs e)
         {
+            if (!Privilegios._CrearApartado && !Privilegios._EstadoApartado)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+                return;
+            }
             (new frmApartados()).Show();
             this.Close();
         }

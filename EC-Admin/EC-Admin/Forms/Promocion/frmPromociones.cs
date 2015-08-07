@@ -169,37 +169,58 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            (new frmNuevaPromocion()).ShowDialog(this);
+            if (Privilegios._CrearPromocion)
+            {
+                (new frmNuevaPromocion()).ShowDialog(this);
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvPromociones.CurrentRow != null)
+            if (Privilegios._ModificarPromocion)
             {
-                (new frmEditarPromocion(id)).ShowDialog(this);
+                if (dgvPromociones.CurrentRow != null)
+                {
+                    (new frmEditarPromocion(id)).ShowDialog(this);
+                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvPromociones.CurrentRow != null)
+            if (Privilegios._EliminarPromocion)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea eliminar ésta promoción?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                if (dgvPromociones.CurrentRow != null)
                 {
-                    try
+                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente desea eliminar ésta promoción?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                     {
-                        Promociones.Eliminar(id);
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha eliminado correctamente la promoción!", "Admin CSY");
-                    }
-                    catch (MySqlException ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar la promoción. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
-                    }
-                    catch (Exception ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar la promoción.", "Admin CSY", ex);
+                        try
+                        {
+                            Promociones.Eliminar(id);
+                            FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha eliminado correctamente la promoción!", "Admin CSY");
+                        }
+                        catch (MySqlException ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar la promoción. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar la promoción.", "Admin CSY", ex);
+                        }
                     }
                 }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 

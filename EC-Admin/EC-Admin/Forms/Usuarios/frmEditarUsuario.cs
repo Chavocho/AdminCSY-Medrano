@@ -12,6 +12,14 @@ namespace EC_Admin.Forms
 {
     public partial class frmEditarUsuario : Form
     {
+        Privilegios p;
+
+        public Privilegios P
+        {
+            get { return p; }
+            set { p = value; }
+        }
+
         Camara c;
         NivelesUsuario n;
         Usuario u;
@@ -29,12 +37,14 @@ namespace EC_Admin.Forms
             cboNivel.Items.AddRange(niveles);
             u = new Usuario();
             u.ID = id;
-            u.ObtenerDatosUsuario();
             u.UserDataChanged += new EventHandler(frmPrincipal.Instancia.UserDataChanged);
+            p = new Privilegios(id);
         }
 
-        private void CargarDatosUsuario()
+        async private void CargarDatosUsuario()
         {
+            u.ObtenerDatosUsuario();
+            await p.ObtenerDatos();
             lblUsuario.Text = u.UserName;
             txtNombre.Text = u.Nombre;
             txtApellidos.Text = u.Apellidos;
@@ -54,7 +64,7 @@ namespace EC_Admin.Forms
             pcbImagen.Image = u.Imagen;
         }
 
-        private void EditarUsuario()
+        async private void EditarUsuario()
         {
             try
             {
@@ -69,6 +79,7 @@ namespace EC_Admin.Forms
                 u.Imagen = pcbImagen.Image;
                 u.Huella = huella;
                 u.EditarUsuario();
+                await p.InsertarEditar();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
@@ -267,6 +278,18 @@ namespace EC_Admin.Forms
             if (c.FuenteDeVideo != null)
             {
                 c.TerminarFuenteDeVideo();
+            }
+        }
+
+        private void btnPrivilegios_Click(object sender, EventArgs e)
+        {
+            if (Privilegios._AdministrarPermisos)
+            {
+                (new frmPrivilegios(this)).ShowDialog(this);
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
     }

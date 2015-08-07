@@ -135,43 +135,64 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (Puesto.Cantidad <= 0)
+            if (Privilegios._CrearTrabajador)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un puesto para poder crear un trabajador", "Admin CSY");
-                return;
+                if (Puesto.Cantidad <= 0)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Necesitas registrar al menos un puesto para poder crear un trabajador", "Admin CSY");
+                    return;
+                }
+                (new frmNuevoTrabajador()).ShowDialog(this);
             }
-            (new frmNuevoTrabajador()).ShowDialog(this);
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvTrabajadores.CurrentRow != null && id > 0)
+            if (Privilegios._ModificarTrabajador)
             {
-                (new frmEditarTrabajador(id)).ShowDialog(this);
+                if (dgvTrabajadores.CurrentRow != null && id > 0)
+                {
+                    (new frmEditarTrabajador(id)).ShowDialog(this);
+                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvTrabajadores.CurrentRow != null && id > 0)
+            if (Privilegios._EliminarTrabajador)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente deseas dar de baja a " + dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                if (dgvTrabajadores.CurrentRow != null && id > 0)
                 {
-                    try
+                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Realmente deseas dar de baja a " + dgvTrabajadores[1, dgvTrabajadores.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                     {
-                        CambiarEstado();
-                        dgvTrabajadores.Rows.Remove(dgvTrabajadores.CurrentRow);
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha dado de baja correctamente al trabajador!", "Admin CSY");
-                    }
-                    catch (MySqlException ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al dar de baja al trabajador. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
-                    }
-                    catch (Exception ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al dar de baja al trabajador. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+                        try
+                        {
+                            CambiarEstado();
+                            dgvTrabajadores.Rows.Remove(dgvTrabajadores.CurrentRow);
+                            FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha dado de baja correctamente al trabajador!", "Admin CSY");
+                        }
+                        catch (MySqlException ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al dar de baja al trabajador. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al dar de baja al trabajador. No se ha podido conectar con la base de datos.", "Admin CSY", ex);
+                        }
                     }
                 }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
@@ -199,7 +220,14 @@ namespace EC_Admin.Forms
 
         private void btnHorarios_Click(object sender, EventArgs e)
         {
-            (new frmHorarioTrabajador()).ShowDialog(this);
+            if (Privilegios._AdministrarHorarioTrabajador)
+            {
+                (new frmHorarioTrabajador()).ShowDialog(this);
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnIngreso_Click(object sender, EventArgs e)
@@ -209,7 +237,14 @@ namespace EC_Admin.Forms
 
         private void btnPagos_Click(object sender, EventArgs e)
         {
-            (new frmPagosPendientes()).Show();
+            if (Privilegios._AdministrarPagoTrabajador)
+            {
+                (new frmPagosPendientes()).Show();
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
     }
 }

@@ -140,61 +140,103 @@ namespace EC_Admin.Forms
 
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
-            string[] niv = null;
-            switch (Usuario.NivelUsuarioActual)
+            if (Privilegios._CrearUsuario)
             {
-                case NivelesUsuario.Administrador:
-                    niv = new string[] { "Administrador", "Encargado", "Desconocido" };
-                    break;
-                case NivelesUsuario.Encargado:
-                    niv = new string[] { "Encargado", "Desconocido" };
-                    break;
-                case NivelesUsuario.Desconocido:
-                    niv = new string[] { "Desconocido" };
-                    break;
+                string[] niv = null;
+                switch (Usuario.NivelUsuarioActual)
+                {
+                    case NivelesUsuario.Administrador:
+                        niv = new string[] { "Administrador", "Encargado", "Desconocido" };
+                        break;
+                    case NivelesUsuario.Encargado:
+                        niv = new string[] { "Encargado", "Desconocido" };
+                        break;
+                    case NivelesUsuario.Desconocido:
+                        niv = new string[] { "Desconocido" };
+                        break;
+                }
+                (new frmNuevoUsuario(niv)).ShowDialog(this);
+                bgwUsuarios.RunWorkerAsync();
             }
-            (new frmNuevoUsuario(niv)).ShowDialog(this);
-            bgwUsuarios.RunWorkerAsync();
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
-            if (dgvUsuarios.CurrentRow != null)
+            if (Privilegios._ModificarUsuario)
             {
-                if ((int)(NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dgvUsuarios[5, dgvUsuarios.CurrentRow.Index].Value.ToString()) > (int)Usuario.NivelUsuarioActual)
+                if (dgvUsuarios.CurrentRow != null)
                 {
-                    Editar();
+                    if ((int)(NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dgvUsuarios[5, dgvUsuarios.CurrentRow.Index].Value.ToString()) > (int)Usuario.NivelUsuarioActual)
+                    {
+                        Editar();
+                    }
+                    else if (id == Usuario.IDUsuarioActual)
+                    {
+                        Editar();
+                    }
+                    else
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para modificar a éste usuario.", "Admin CSY");
+                    }
                 }
-                else if (id == Usuario.IDUsuarioActual)
+            }
+            else
+            {
+                if (dgvUsuarios.CurrentRow != null)
                 {
-                    Editar();
-                }
-                else
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para modificar a éste usuario.", "Admin CSY");
+                    if (id == Usuario.IDUsuarioActual)
+                    {
+                        if ((int)(NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dgvUsuarios[5, dgvUsuarios.CurrentRow.Index].Value.ToString()) > (int)Usuario.NivelUsuarioActual)
+                        {
+                            Editar();
+                        }
+                        else if (id == Usuario.IDUsuarioActual)
+                        {
+                            Editar();
+                        }
+                        else
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para modificar a éste usuario.", "Admin CSY");
+                        }
+                    }
+                    else
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+                    }
                 }
             }
         }
 
         private void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
-            try
+            if (Privilegios._EliminarUsuario)
             {
-                if (dgvUsuarios.CurrentRow != null)
+                try
                 {
-                    if ((int)(NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dgvUsuarios[5, dgvUsuarios.CurrentRow.Index].Value.ToString()) > (int)Usuario.NivelUsuarioActual)
+                    if (dgvUsuarios.CurrentRow != null)
                     {
-                        Eliminar();
-                    }
-                    else
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para eliminar a éste usuario.", "Admin CSY");
+                        if ((int)(NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dgvUsuarios[5, dgvUsuarios.CurrentRow.Index].Value.ToString()) > (int)Usuario.NivelUsuarioActual)
+                        {
+                            Eliminar();
+                        }
+                        else
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para eliminar a éste usuario.", "Admin CSY");
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
@@ -218,9 +260,16 @@ namespace EC_Admin.Forms
 
         private void btnUsuariosEliminados_Click(object sender, EventArgs e)
         {
-            (new frmUsuariosEliminados()).ShowDialog(this);
-            tmrEspera.Enabled = true;
-            bgwUsuarios.RunWorkerAsync();
+            if (Privilegios._ReestablecerUsuario)
+            {
+                (new frmUsuariosEliminados()).ShowDialog(this);
+                tmrEspera.Enabled = true;
+                bgwUsuarios.RunWorkerAsync();
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
     }
 }

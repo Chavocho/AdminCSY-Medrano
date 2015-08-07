@@ -172,38 +172,59 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            (new frmNuevoProveedor()).ShowDialog(this);
+            if (Privilegios._CrearProveedor)
+            {
+                (new frmNuevoProveedor()).ShowDialog(this);
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvProveedores.CurrentRow != null)
+            if (Privilegios._ModificarProveedor)
             {
-                (new frmEditarProveedor(id)).ShowDialog();
+                if (dgvProveedores.CurrentRow != null)
+                {
+                    (new frmEditarProveedor(id)).ShowDialog();
+                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvProveedores.CurrentRow != null)
+            if (Privilegios._EliminarProveedor)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas realmente eliminar a " + dgvProveedores[1, dgvProveedores.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
+                if (dgvProveedores.CurrentRow != null)
                 {
-                    try
+                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas realmente eliminar a " + dgvProveedores[1, dgvProveedores.CurrentRow.Index].Value.ToString() + "?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                     {
-                        EliminarProveedor(id);
-                        dgvProveedores.Rows.Remove(dgvProveedores.CurrentRow);
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha eliminado el proveedor correctamente!", "Admin CSY");
-                    }
-                    catch (MySqlException ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el proveedor.", "Admin CSY", ex);
-                    }
-                    catch (Exception ex)
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el proveedor.", "Admin CSY", ex);
+                        try
+                        {
+                            EliminarProveedor(id);
+                            dgvProveedores.Rows.Remove(dgvProveedores.CurrentRow);
+                            FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha eliminado el proveedor correctamente!", "Admin CSY");
+                        }
+                        catch (MySqlException ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el proveedor.", "Admin CSY", ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al eliminar el proveedor.", "Admin CSY", ex);
+                        }
                     }
                 }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 

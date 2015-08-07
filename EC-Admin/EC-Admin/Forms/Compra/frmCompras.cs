@@ -115,12 +115,19 @@ namespace EC_Admin.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (Caja.EstadoCaja == false)
+            if (Privilegios._CrearCompra)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una compra", "Admin CSY");
-                return;
+                if (Caja.EstadoCaja == false)
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "La caja necesita estar abierta para realizar una compra", "Admin CSY");
+                    return;
+                }
+                (new frmNuevaCompra()).ShowDialog(this);
             }
-            (new frmNuevaCompra()).ShowDialog(this);
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+            }
         }
 
         private void bgwBusqueda_DoWork(object sender, DoWorkEventArgs e)
@@ -143,14 +150,26 @@ namespace EC_Admin.Forms
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
-            if (dgvCompras.CurrentRow != null)
+            if (!Privilegios._VisualizarCompra)
             {
-                (new frmDetalladoCompra(id)).ShowDialog(this);
+                if (dgvCompras.CurrentRow != null)
+                {
+                    (new frmDetalladoCompra(id)).ShowDialog(this);
+                }
+            }
+            else
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
             }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            if (!Privilegios._CancelarCompra && !Privilegios._DevolucionCompra)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes los permisos necesarios para realizar ésta acción. Habla con tu administrador para que te asigne los permisos necesarios.", "Admin CSY");
+                return;
+            }
             (new frmCancelacionCompra()).ShowDialog(this);
         }
     }
