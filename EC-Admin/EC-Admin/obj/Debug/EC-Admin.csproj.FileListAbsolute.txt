@@ -142,7 +142,6 @@ C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmCompraProducto.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmDetalladoCompra.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevaCompra.resources
-C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmPagosProveedor.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmAlmacenTrabajador.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmConfigAlmacen.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmEditarAlmacen.resources
@@ -159,7 +158,6 @@ C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmEditarCuenta.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevaCuenta.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmMapa.resources
-C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmLoginValidacion.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmMensaje.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmBienvenido.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.frmTerminado.resources
@@ -203,7 +201,6 @@ C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmEditarUsuario.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevoUsuario.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmUsuariosEliminados.resources
-C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.Usuarios.Privilegios.frmPrivilegios.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmIngresarUsuario.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmReestablecer.resources
 C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmReestablecerPass.resources
@@ -353,3 +350,9 @@ C:\Users\User\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_A
 C:\Users\User\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmApartados.resources
 C:\Users\User\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevoApartado.resources
 C:\Users\User\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmBanco.resources
+C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmApartados.resources
+C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmNuevoApartado.resources
+C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmBanco.resources
+C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmInfoPago.resources
+C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmPrivilegios.resources
+C:\Users\chava\Documents\GitHub\AdminCSY-Medrano\EC-Admin\EC-Admin\obj\Debug\EC_Admin.Forms.frmReporteVentas.resources

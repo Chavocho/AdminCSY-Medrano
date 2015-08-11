@@ -172,9 +172,6 @@ namespace EC_Admin
             cant = Sucursal.CantidadDomicilios;
             cant = Trabajador.Cantidad;
             cant = Usuario.CantidadUsuarios;
-            cant = Usuario.CantidadUsuariosAdministrador;
-            cant = Usuario.CantidadUsuariosEncargado;
-            cant = Usuario.CantidadUsuariosDesconocido;
             Caja.EstadoC();
             efe = Caja.TotalEfectivo;
         }

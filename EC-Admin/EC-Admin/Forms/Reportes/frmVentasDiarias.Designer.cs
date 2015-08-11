@@ -66,6 +66,9 @@
             this.lblEVentas = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblETotal = new System.Windows.Forms.Label();
+            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.lblEFechaInicio = new System.Windows.Forms.Label();
+            this.lblEFechaFin = new System.Windows.Forms.Label();
             this.grbFechas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +76,9 @@
             // grbFechas
             // 
             this.grbFechas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbFechas.Controls.Add(this.lblEFechaFin);
+            this.grbFechas.Controls.Add(this.lblEFechaInicio);
+            this.grbFechas.Controls.Add(this.dtpFechaFin);
             this.grbFechas.Controls.Add(this.chbTrabajador);
             this.grbFechas.Controls.Add(this.lblEVendedorBusqueda);
             this.grbFechas.Controls.Add(this.btnBuscar);
@@ -80,9 +86,9 @@
             this.grbFechas.Controls.Add(this.dtpFechaInicio);
             this.grbFechas.Font = new System.Drawing.Font("Corbel", 9F);
             this.grbFechas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.grbFechas.Location = new System.Drawing.Point(547, 12);
+            this.grbFechas.Location = new System.Drawing.Point(12, 12);
             this.grbFechas.Name = "grbFechas";
-            this.grbFechas.Size = new System.Drawing.Size(449, 109);
+            this.grbFechas.Size = new System.Drawing.Size(984, 75);
             this.grbFechas.TabIndex = 1;
             this.grbFechas.TabStop = false;
             this.grbFechas.Text = "Búsqueda por fecha";
@@ -91,7 +97,7 @@
             // 
             this.chbTrabajador.AutoSize = true;
             this.chbTrabajador.Font = new System.Drawing.Font("Corbel", 11F);
-            this.chbTrabajador.Location = new System.Drawing.Point(270, 24);
+            this.chbTrabajador.Location = new System.Drawing.Point(502, 44);
             this.chbTrabajador.Name = "chbTrabajador";
             this.chbTrabajador.Size = new System.Drawing.Size(173, 22);
             this.chbTrabajador.TabIndex = 34;
@@ -103,7 +109,7 @@
             this.lblEVendedorBusqueda.AutoSize = true;
             this.lblEVendedorBusqueda.Font = new System.Drawing.Font("Corbel", 11F);
             this.lblEVendedorBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEVendedorBusqueda.Location = new System.Drawing.Point(6, 53);
+            this.lblEVendedorBusqueda.Location = new System.Drawing.Point(678, 18);
             this.lblEVendedorBusqueda.Name = "lblEVendedorBusqueda";
             this.lblEVendedorBusqueda.Size = new System.Drawing.Size(139, 18);
             this.lblEVendedorBusqueda.TabIndex = 33;
@@ -119,7 +125,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(270, 74);
+            this.btnBuscar.Location = new System.Drawing.Point(881, 39);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(97, 30);
             this.btnBuscar.TabIndex = 2;
@@ -137,17 +143,17 @@
             this.cboVendedor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.cboVendedor.FormattingEnabled = true;
-            this.cboVendedor.Location = new System.Drawing.Point(6, 74);
+            this.cboVendedor.Location = new System.Drawing.Point(681, 41);
             this.cboVendedor.Name = "cboVendedor";
-            this.cboVendedor.Size = new System.Drawing.Size(258, 28);
+            this.cboVendedor.Size = new System.Drawing.Size(194, 28);
             this.cboVendedor.TabIndex = 32;
             // 
             // dtpFechaInicio
             // 
             this.dtpFechaInicio.Font = new System.Drawing.Font("Corbel", 11F);
-            this.dtpFechaInicio.Location = new System.Drawing.Point(6, 21);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(6, 41);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(258, 25);
+            this.dtpFechaInicio.Size = new System.Drawing.Size(242, 25);
             this.dtpFechaInicio.TabIndex = 0;
             // 
             // dgvVentas
@@ -197,14 +203,14 @@
             this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvVentas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvVentas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.dgvVentas.Location = new System.Drawing.Point(12, 127);
+            this.dgvVentas.Location = new System.Drawing.Point(12, 125);
             this.dgvVentas.MultiSelect = false;
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvVentas.RowHeadersVisible = false;
             this.dgvVentas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVentas.Size = new System.Drawing.Size(984, 299);
+            this.dgvVentas.Size = new System.Drawing.Size(984, 301);
             this.dgvVentas.TabIndex = 4;
             this.dgvVentas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_RowEnter);
             // 
@@ -275,7 +281,7 @@
             // 
             this.lblECliente.AutoSize = true;
             this.lblECliente.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
-            this.lblECliente.Location = new System.Drawing.Point(31, 12);
+            this.lblECliente.Location = new System.Drawing.Point(8, 95);
             this.lblECliente.Name = "lblECliente";
             this.lblECliente.Size = new System.Drawing.Size(70, 22);
             this.lblECliente.TabIndex = 12;
@@ -285,7 +291,7 @@
             // 
             this.lblCliente.AutoSize = true;
             this.lblCliente.Font = new System.Drawing.Font("Corbel", 13F);
-            this.lblCliente.Location = new System.Drawing.Point(107, 12);
+            this.lblCliente.Location = new System.Drawing.Point(84, 95);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(0, 22);
             this.lblCliente.TabIndex = 13;
@@ -294,7 +300,7 @@
             // 
             this.lblVendedor.AutoSize = true;
             this.lblVendedor.Font = new System.Drawing.Font("Corbel", 13F);
-            this.lblVendedor.Location = new System.Drawing.Point(107, 40);
+            this.lblVendedor.Location = new System.Drawing.Point(588, 95);
             this.lblVendedor.Name = "lblVendedor";
             this.lblVendedor.Size = new System.Drawing.Size(0, 22);
             this.lblVendedor.TabIndex = 15;
@@ -303,7 +309,7 @@
             // 
             this.lblEVendedor.AutoSize = true;
             this.lblEVendedor.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
-            this.lblEVendedor.Location = new System.Drawing.Point(12, 40);
+            this.lblEVendedor.Location = new System.Drawing.Point(493, 95);
             this.lblEVendedor.Name = "lblEVendedor";
             this.lblEVendedor.Size = new System.Drawing.Size(89, 22);
             this.lblEVendedor.TabIndex = 14;
@@ -417,6 +423,36 @@
             this.lblETotal.TabIndex = 24;
             this.lblETotal.Text = "Total del día:";
             // 
+            // dtpFechaFin
+            // 
+            this.dtpFechaFin.Font = new System.Drawing.Font("Corbel", 11F);
+            this.dtpFechaFin.Location = new System.Drawing.Point(254, 41);
+            this.dtpFechaFin.Name = "dtpFechaFin";
+            this.dtpFechaFin.Size = new System.Drawing.Size(242, 25);
+            this.dtpFechaFin.TabIndex = 35;
+            // 
+            // lblEFechaInicio
+            // 
+            this.lblEFechaInicio.AutoSize = true;
+            this.lblEFechaInicio.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEFechaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblEFechaInicio.Location = new System.Drawing.Point(3, 18);
+            this.lblEFechaInicio.Name = "lblEFechaInicio";
+            this.lblEFechaInicio.Size = new System.Drawing.Size(98, 18);
+            this.lblEFechaInicio.TabIndex = 36;
+            this.lblEFechaInicio.Text = "Fecha de inicio";
+            // 
+            // lblEFechaFin
+            // 
+            this.lblEFechaFin.AutoSize = true;
+            this.lblEFechaFin.Font = new System.Drawing.Font("Corbel", 11F);
+            this.lblEFechaFin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblEFechaFin.Location = new System.Drawing.Point(251, 18);
+            this.lblEFechaFin.Name = "lblEFechaFin";
+            this.lblEFechaFin.Size = new System.Drawing.Size(82, 18);
+            this.lblEFechaFin.TabIndex = 37;
+            this.lblEFechaFin.Text = "Fecha de fin";
+            // 
             // frmVentasDiarias
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -485,5 +521,8 @@
         private System.Windows.Forms.Label lblEVentas;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblETotal;
+        private System.Windows.Forms.Label lblEFechaFin;
+        private System.Windows.Forms.Label lblEFechaInicio;
+        private System.Windows.Forms.DateTimePicker dtpFechaFin;
     }
 }

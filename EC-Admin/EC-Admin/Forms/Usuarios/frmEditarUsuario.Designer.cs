@@ -41,8 +41,6 @@
             this.lblRepPass = new System.Windows.Forms.Label();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.lblPass = new System.Windows.Forms.Label();
-            this.lblNivel = new System.Windows.Forms.Label();
-            this.cboNivel = new System.Windows.Forms.ComboBox();
             this.lblEUsuario = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.pnlPass = new System.Windows.Forms.Panel();
@@ -214,31 +212,6 @@
             this.lblPass.TabIndex = 2;
             this.lblPass.Text = "Nueva contraseña";
             // 
-            // lblNivel
-            // 
-            this.lblNivel.AutoSize = true;
-            this.lblNivel.Font = new System.Drawing.Font("Corbel", 11F);
-            this.lblNivel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblNivel.Location = new System.Drawing.Point(277, 9);
-            this.lblNivel.Name = "lblNivel";
-            this.lblNivel.Size = new System.Drawing.Size(38, 18);
-            this.lblNivel.TabIndex = 2;
-            this.lblNivel.Text = "Nivel";
-            // 
-            // cboNivel
-            // 
-            this.cboNivel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            this.cboNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboNivel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboNivel.Font = new System.Drawing.Font("Corbel", 13F);
-            this.cboNivel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.cboNivel.FormattingEnabled = true;
-            this.cboNivel.Location = new System.Drawing.Point(280, 30);
-            this.cboNivel.Name = "cboNivel";
-            this.cboNivel.Size = new System.Drawing.Size(259, 29);
-            this.cboNivel.TabIndex = 3;
-            this.cboNivel.SelectedIndexChanged += new System.EventHandler(this.cboNivel_SelectedIndexChanged);
-            // 
             // lblEUsuario
             // 
             this.lblEUsuario.AutoSize = true;
@@ -403,8 +376,6 @@
             this.Controls.Add(this.lblApellidos);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.lblNivel);
-            this.Controls.Add(this.cboNivel);
             this.Controls.Add(this.lblEUsuario);
             this.Controls.Add(this.button2);
             this.Font = new System.Drawing.Font("Corbel", 9F);
@@ -440,8 +411,6 @@
         private System.Windows.Forms.Label lblRepPass;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label lblPass;
-        private System.Windows.Forms.Label lblNivel;
-        private System.Windows.Forms.ComboBox cboNivel;
         private System.Windows.Forms.Label lblEUsuario;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Panel pnlPass;

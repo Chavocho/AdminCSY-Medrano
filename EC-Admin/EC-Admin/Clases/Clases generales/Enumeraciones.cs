@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace EC_Admin
 {
-    public enum NivelesUsuario
-    {
-        Administrador = 0,
-        Encargado = 1,
-        Desconocido = 2
-    }
-
     public enum TipoPago
     {
         Efectivo = 0,

@@ -27,7 +27,6 @@ namespace EC_Admin
             {
                 nomUsuActual = Nombre;
                 apeUsuActual = Apellidos;
-                nivUsuActual = NivelUsuario;
                 imgUsuActual = Imagen;
                 UserDataChanged(this, e);
             }
@@ -42,7 +41,6 @@ namespace EC_Admin
         private string nombre;
         private string apellidos;
         private string correo;
-        private NivelesUsuario nivel;
         private bool eliminado;
         private string numAut;
         private Image imagen;
@@ -55,12 +53,8 @@ namespace EC_Admin
         private static int idUsuActual;
         private static string nomUsuActual;
         private static string apeUsuActual;
-        private static NivelesUsuario nivUsuActual;
         private static Image imgUsuActual;
         private static int cantUsu = -1;
-        private static int cantUsusAdmin = -1;
-        private static int cantUsusEnc = -1;
-        private static int cantUsusDesc = -1;
 
         /// <summary>
         /// Obtiene o establece el ID del usuario
@@ -120,15 +114,6 @@ namespace EC_Admin
         {
             get { return correo; }
             set { correo = value; }
-        }
-
-        /// <summary>
-        /// Obtiene o establece el nivel del usuario
-        /// </summary>
-        public NivelesUsuario NivelUsuario
-        {
-            get { return nivel; }
-            set { nivel = value; }
         }
         
         /// <summary>
@@ -224,14 +209,6 @@ namespace EC_Admin
         }
 
         /// <summary>
-        /// Obtiene el nivel del usuario que actualmente tiene la sesión iniciada
-        /// </summary>
-        public static NivelesUsuario NivelUsuarioActual
-        {
-            get { return nivUsuActual; }
-        }
-        
-        /// <summary>
         /// Obtiene la imagen del usuario que actualmente tiene la sesión iniciada
         /// </summary>
         public static Image ImagenUsuarioActual
@@ -251,45 +228,7 @@ namespace EC_Admin
                 return cantUsu;
             }
         }
-
-        /// <summary>
-        /// Obtiene la cantidad de usuarios de nivel administrador
-        /// </summary>
-        public static int CantidadUsuariosAdministrador
-        {
-            get 
-            {
-                if (cantUsusAdmin < 0)
-                    cantUsusAdmin = CantUsusAdmin();
-                return cantUsusAdmin;
-            }
-        }
-
-        /// <summary>
-        /// Obtiene la cantidad de usuarios de nivel encargado
-        /// </summary>
-        public static int CantidadUsuariosEncargado
-        {
-            get
-            {
-                if (cantUsusEnc < 0)
-                    cantUsusEnc = CantUsusEncar();
-                return cantUsusEnc;
-            }
-        }
-
-        /// <summary>
-        /// Obtiene la cantidad de usuarios de nivel desconocido
-        /// </summary>
-        public static int CantidadUsuariosDesconocido
-        {
-            get
-            {
-                if (cantUsusDesc < 0)
-                    cantUsusDesc = CantUsusDesc();
-                return cantUsusDesc;
-            }
-        }
+        
         #endregion
 
         #region Cantidades
@@ -299,9 +238,6 @@ namespace EC_Admin
         private void CambioCantidadUsuarios()
         {
             cantUsu = CantUsus();
-            cantUsusAdmin = CantUsusAdmin();
-            cantUsusEnc = CantUsusEncar();
-            cantUsusDesc = CantUsusDesc();
         }
 
         /// <summary>
@@ -336,108 +272,7 @@ namespace EC_Admin
             }
             return cant;
         }
-
-        /// <summary>
-        /// Obtiene la cantidad de usuarios de nivel administrador
-        /// </summary>
-        /// <returns>Cantidad de usuarios</returns>
-        private static int CantUsusAdmin()
-        {
-            int cant = 0;
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE nivel=?nivel AND eliminado=0 AND sucursal_id='" + Config.idSucursal + "'";
-                sql.Parameters.AddWithValue("?nivel", NivelesUsuario.Administrador);
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    if (dr["c"] != DBNull.Value)
-                        cant = int.Parse(dr["c"].ToString());
-                }
-            }
-            catch (InvalidCastException ex)
-            {
-                throw ex;
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return cant;
-        }
-
-        /// <summary>
-        /// Obtiene la cantidad de usuarios de nivel encargado
-        /// </summary>
-        /// <returns>Cantidad de usuarios</returns>
-        private static int CantUsusEncar()
-        {
-            int cant = 0;
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE nivel=?nivel AND eliminado=0 AND sucursal_id='" + Config.idSucursal + "'";
-                sql.Parameters.AddWithValue("?nivel", NivelesUsuario.Encargado);
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    if (dr["c"] != DBNull.Value)
-                        cant = int.Parse(dr["c"].ToString());
-                }
-            }
-            catch (InvalidCastException ex)
-            {
-                throw ex;
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return cant;
-        }
-
-        /// <summary>
-        /// Obtiene la cantidad de usuarios de nivel desconocido
-        /// </summary>
-        /// <returns>Cantidad de usuarios</returns>
-        private static int CantUsusDesc()
-        {
-            int cant = 0;
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT COUNT(id) AS c FROM usuario WHERE nivel=?nivel AND eliminado=0 AND sucursal_id='" + Config.idSucursal + "'";
-                sql.Parameters.AddWithValue("?nivel", NivelesUsuario.Desconocido);
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    if (dr["c"] != DBNull.Value)
-                        cant = int.Parse(dr["c"].ToString());
-                }
-            }
-            catch (InvalidCastException ex)
-            {
-                throw ex;
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return cant;
-        }
+        
         #endregion
 
         /// <summary>
@@ -478,7 +313,6 @@ namespace EC_Admin
                     idUsuActual = (int)dr["id"];
                     nomUsuActual = dr["nombre"].ToString();
                     apeUsuActual = dr["apellidos"].ToString();
-                    nivUsuActual = (NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dr["nivel"].ToString());
                     if (dr["imagen"] != DBNull.Value)
                         imgUsuActual = FuncionesGenerales.BytesImagen((byte[])dr["imagen"]);
                     else
@@ -501,33 +335,7 @@ namespace EC_Admin
             }
             return existe;
         }
-
-        public static NivelesUsuario VerificarNivelUsuario(string nomUsu, string pass)
-        {
-            NivelesUsuario n = NivelesUsuario.Desconocido;
-            try
-            {
-                MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT nivel FROM usuario WHERE username=?userName AND pass=?pass AND eliminado=0";
-                sql.Parameters.AddWithValue("?userName", nomUsu);
-                sql.Parameters.AddWithValue("?pass", Criptografia.Cifrar(pass));
-                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    n = (NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dr["nivel"].ToString());
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return n;
-        }
-
+        
         /// <summary>
         /// Método que obtiene los datos del usuario y los guarda en las propiedades
         /// </summary>
@@ -546,7 +354,6 @@ namespace EC_Admin
                     nombre = dr["nombre"].ToString();
                     apellidos = dr["apellidos"].ToString();
                     correo = dr["email"].ToString();
-                    nivel = (NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dr["nivel"].ToString());
                     eliminado = bool.Parse(dr["eliminado"].ToString());
                     numAut = dr["num_aut"].ToString();
                     if (dr["imagen"] != DBNull.Value)
@@ -583,12 +390,11 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "INSERT INTO usuario (sucursal_id, username, pass, nivel, nombre, apellidos, email, imagen, huella, create_user, create_time) " +
-                    "VALUES (?sucursal_id, ?username, ?pass, ?nivel, ?nombre, ?apellidos, ?email, ?imagen, ?huella, ?create_user, NOW())";
+                sql.CommandText = "INSERT INTO usuario (sucursal_id, username, pass, nombre, apellidos, email, imagen, huella, create_user, create_time) " +
+                    "VALUES (?sucursal_id, ?username, ?pass, ?nombre, ?apellidos, ?email, ?imagen, ?huella, ?create_user, NOW())";
                 sql.Parameters.AddWithValue("?sucursal_id", idSucusal);
                 sql.Parameters.AddWithValue("?username", UserName);
                 sql.Parameters.AddWithValue("?pass", Criptografia.Cifrar(Contraseña));
-                sql.Parameters.AddWithValue("?nivel", NivelUsuario);
                 sql.Parameters.AddWithValue("?nombre", Nombre);
                 sql.Parameters.AddWithValue("?apellidos", Apellidos);
                 sql.Parameters.AddWithValue("?email", Correo);
@@ -625,10 +431,9 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "UPDATE usuario SET pass=?pass, nivel=?nivel, nombre=?nombre, apellidos=?apellidos, email=?email, imagen=?imagen, " + 
+                sql.CommandText = "UPDATE usuario SET pass=?pass, nombre=?nombre, apellidos=?apellidos, email=?email, imagen=?imagen, " + 
                     "huella=?huella, update_user=?update_user, update_time=NOW() WHERE id=?id";
                 sql.Parameters.AddWithValue("?pass", Criptografia.Cifrar(Contraseña));
-                sql.Parameters.AddWithValue("?nivel", NivelUsuario);
                 sql.Parameters.AddWithValue("?nombre", Nombre);
                 sql.Parameters.AddWithValue("?apellidos", Apellidos);
                 sql.Parameters.AddWithValue("?email", Correo);

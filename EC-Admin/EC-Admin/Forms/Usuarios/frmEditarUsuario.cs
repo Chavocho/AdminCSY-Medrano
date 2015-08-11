@@ -21,7 +21,6 @@ namespace EC_Admin.Forms
         }
 
         Camara c;
-        NivelesUsuario n;
         Usuario u;
         private byte[] huella = null;
             
@@ -31,10 +30,9 @@ namespace EC_Admin.Forms
             set { huella = value; }
         }
         
-        public frmEditarUsuario(int id, string[] niveles)
+        public frmEditarUsuario(int id)
         {
             InitializeComponent();
-            cboNivel.Items.AddRange(niveles);
             u = new Usuario();
             u.ID = id;
             u.UserDataChanged += new EventHandler(frmPrincipal.Instancia.UserDataChanged);
@@ -48,18 +46,6 @@ namespace EC_Admin.Forms
             lblUsuario.Text = u.UserName;
             txtNombre.Text = u.Nombre;
             txtApellidos.Text = u.Apellidos;
-            switch (u.NivelUsuario)
-            {
-                case NivelesUsuario.Administrador:
-                    cboNivel.SelectedItem = "Administrador";
-                    break;
-                case NivelesUsuario.Encargado:
-                    cboNivel.SelectedItem = "Encargado";
-                    break;
-                case NivelesUsuario.Desconocido:
-                    cboNivel.SelectedItem = "Desconocido";
-                    break;
-            }
             txtCorreo.Text = u.Correo;
             pcbImagen.Image = u.Imagen;
         }
@@ -68,7 +54,6 @@ namespace EC_Admin.Forms
         {
             try
             {
-                u.NivelUsuario = n;
                 u.Nombre = txtNombre.Text;
                 u.Apellidos = txtApellidos.Text;
                 u.Correo = txtCorreo.Text;
@@ -155,14 +140,6 @@ namespace EC_Admin.Forms
                     FuncionesGenerales.ColoresBien(txtCorreo);
                 }
             }
-            if (u.NivelUsuario == NivelesUsuario.Administrador)
-            {
-                if (n == NivelesUsuario.Encargado || n == NivelesUsuario.Desconocido)
-                {
-                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No puedes bajar el nivel de un usuario administrador.", "Admin CSY");
-                    res = false;
-                }
-            }
             return res;
         }
 
@@ -219,23 +196,7 @@ namespace EC_Admin.Forms
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Los campos en rojo son obligatorios", "Admin CSY");
             }
         }
-
-        private void cboNivel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (cboNivel.Items[cboNivel.SelectedIndex].ToString())
-            {
-                case "Administrador":
-                    n = NivelesUsuario.Administrador;
-                    break;
-                case "Encargado":
-                    n = NivelesUsuario.Encargado;
-                    break;
-                case "Desconocido":
-                    n = NivelesUsuario.Desconocido;
-                    break;
-            }
-        }
-
+        
         private void chbPass_CheckedChanged(object sender, EventArgs e)
         {
             if (chbPass.Checked)

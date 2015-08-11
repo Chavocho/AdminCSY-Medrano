@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.3.11
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-08-2015 a las 19:44:56
+-- Tiempo de generación: 07-08-2015 a las 18:56:29
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `admincsy_general`
 --
+CREATE DATABASE IF NOT EXISTS `admincsy_general` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `admincsy_general`;
 
 -- --------------------------------------------------------
 

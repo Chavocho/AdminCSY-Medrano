@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EC_Admin.Forms
@@ -21,7 +15,6 @@ namespace EC_Admin.Forms
         }
 
         frmPrimerUso frm = null;
-        NivelesUsuario n;
         Camara c;
         private byte[] huella = null;
 
@@ -31,19 +24,15 @@ namespace EC_Admin.Forms
             set { huella = value; }
         }
         
-        public frmNuevoUsuario(string[] niveles)
+        public frmNuevoUsuario()
         {
             InitializeComponent();
-            cboNivel.Items.AddRange(niveles);
-            cboNivel.SelectedIndex = 0;
         }
 
-        public frmNuevoUsuario(frmPrimerUso frm, string [] niveles)
+        public frmNuevoUsuario(frmPrimerUso frm)
         {
             InitializeComponent();
             this.frm = frm;
-            cboNivel.Items.AddRange(niveles);
-            cboNivel.SelectedIndex = 0;
         }
 
         async private void InsertarUsuario()
@@ -57,7 +46,6 @@ namespace EC_Admin.Forms
                     u.IDSucusal = 1;
                 u.UserName = txtUsuario.Text;
                 u.Contraseña = txtPass.Text;
-                u.NivelUsuario = n;
                 u.Nombre = txtNombre.Text;
                 u.Apellidos = txtApellidos.Text;
                 u.Correo = txtCorreo.Text;
@@ -202,23 +190,7 @@ namespace EC_Admin.Forms
                 FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Los campos en rojo son obligatorios", "Admin CSY");
             }
         }
-
-        private void cboNivel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (cboNivel.Items[cboNivel.SelectedIndex].ToString())
-            {
-                case "Administrador":
-                    n = NivelesUsuario.Administrador;
-                    break;
-                case "Encargado":
-                    n = NivelesUsuario.Encargado;
-                    break;
-                case "Desconocido":
-                    n = NivelesUsuario.Desconocido;
-                    break;
-            }
-        }
-
+        
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
             if (Usuario.ExisteUsuario(txtUsuario.Text))

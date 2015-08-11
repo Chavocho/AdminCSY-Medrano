@@ -41,11 +41,11 @@ namespace EC_Admin
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al verificar los datos del usuario. No se ha podido conectar a la base de datos.", Config.shrug);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al verificar los datos del usuario. No se ha podido conectar a la base de datos.", Config.shrug, ex);
             }
             catch (Exception ex)
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al verificar los datos del usuario.", Config.shrug);
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al verificar los datos del usuario.", Config.shrug, ex);
             }
         }
 
@@ -72,11 +72,11 @@ namespace EC_Admin
         private void frmLogin_Shown(object sender, EventArgs e)
         {
             Application.DoEvents();
-            if (Usuario.CantidadUsuariosAdministrador == 0)
+            if (Usuario.CantidadUsuarios == 0)
             {
                 if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "No tienes usuarios registrados, ¿deseas crear uno?", "Admin CSY") == System.Windows.Forms.DialogResult.Yes)
                 {
-                    (new Forms.frmNuevoUsuario(new string[] { "Administador" })).Show();
+                    (new Forms.frmNuevoUsuario()).Show();
                 }
                 else
                 {
@@ -97,8 +97,9 @@ namespace EC_Admin
             //Cliente.ClienteGeneral();
             //(new frmEspera("Algo")).ShowDialog(this);
             //Application.Restart();
-            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error de prueba.", "¯\\_(ツ)_/¯", new Exception("Algo"));
-            
+            //FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error de prueba.", "¯\\_(ツ)_/¯", new Exception("Algo"));
+            Properties.Settings.Default.PrimerUso = true;
+            Properties.Settings.Default.Save();
         }
 
         private void txtUsuario_Leave(object sender, EventArgs e)

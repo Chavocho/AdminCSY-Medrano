@@ -77,7 +77,7 @@
             this.lblEUsuario.BackColor = System.Drawing.Color.Transparent;
             this.lblEUsuario.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
             this.lblEUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblEUsuario.Location = new System.Drawing.Point(169, 0);
+            this.lblEUsuario.Location = new System.Drawing.Point(245, 0);
             this.lblEUsuario.Name = "lblEUsuario";
             this.lblEUsuario.Size = new System.Drawing.Size(70, 22);
             this.lblEUsuario.TabIndex = 2;
@@ -89,7 +89,7 @@
             this.lblESucursal.BackColor = System.Drawing.Color.Transparent;
             this.lblESucursal.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold);
             this.lblESucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblESucursal.Location = new System.Drawing.Point(239, 0);
+            this.lblESucursal.Location = new System.Drawing.Point(169, 0);
             this.lblESucursal.Name = "lblESucursal";
             this.lblESucursal.Size = new System.Drawing.Size(76, 22);
             this.lblESucursal.TabIndex = 3;

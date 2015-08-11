@@ -30,8 +30,6 @@
         {
             this.lblUsuario = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.cboNivel = new System.Windows.Forms.ComboBox();
-            this.lblNivel = new System.Windows.Forms.Label();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.lblPass = new System.Windows.Forms.Label();
             this.txtRepPass = new System.Windows.Forms.TextBox();
@@ -71,33 +69,9 @@
             this.txtUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtUsuario.Location = new System.Drawing.Point(12, 30);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(259, 29);
+            this.txtUsuario.Size = new System.Drawing.Size(524, 29);
             this.txtUsuario.TabIndex = 1;
             this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
-            // 
-            // cboNivel
-            // 
-            this.cboNivel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            this.cboNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboNivel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboNivel.Font = new System.Drawing.Font("Corbel", 13F);
-            this.cboNivel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.cboNivel.FormattingEnabled = true;
-            this.cboNivel.Location = new System.Drawing.Point(277, 30);
-            this.cboNivel.Name = "cboNivel";
-            this.cboNivel.Size = new System.Drawing.Size(259, 29);
-            this.cboNivel.TabIndex = 3;
-            this.cboNivel.SelectedIndexChanged += new System.EventHandler(this.cboNivel_SelectedIndexChanged);
-            // 
-            // lblNivel
-            // 
-            this.lblNivel.AutoSize = true;
-            this.lblNivel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblNivel.Location = new System.Drawing.Point(274, 9);
-            this.lblNivel.Name = "lblNivel";
-            this.lblNivel.Size = new System.Drawing.Size(38, 18);
-            this.lblNivel.TabIndex = 2;
-            this.lblNivel.Text = "Nivel";
             // 
             // txtPass
             // 
@@ -108,7 +82,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '•';
             this.txtPass.Size = new System.Drawing.Size(259, 29);
-            this.txtPass.TabIndex = 5;
+            this.txtPass.TabIndex = 3;
             // 
             // lblPass
             // 
@@ -117,7 +91,7 @@
             this.lblPass.Location = new System.Drawing.Point(9, 67);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(78, 18);
-            this.lblPass.TabIndex = 4;
+            this.lblPass.TabIndex = 2;
             this.lblPass.Text = "Contraseña";
             // 
             // txtRepPass
@@ -129,7 +103,7 @@
             this.txtRepPass.Name = "txtRepPass";
             this.txtRepPass.PasswordChar = '•';
             this.txtRepPass.Size = new System.Drawing.Size(259, 29);
-            this.txtRepPass.TabIndex = 7;
+            this.txtRepPass.TabIndex = 5;
             // 
             // lblRepPass
             // 
@@ -138,7 +112,7 @@
             this.lblRepPass.Location = new System.Drawing.Point(274, 67);
             this.lblRepPass.Name = "lblRepPass";
             this.lblRepPass.Size = new System.Drawing.Size(123, 18);
-            this.lblRepPass.TabIndex = 6;
+            this.lblRepPass.TabIndex = 4;
             this.lblRepPass.Text = "Repetir contraseña";
             // 
             // txtNombre
@@ -149,7 +123,7 @@
             this.txtNombre.Location = new System.Drawing.Point(12, 146);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(259, 29);
-            this.txtNombre.TabIndex = 9;
+            this.txtNombre.TabIndex = 7;
             // 
             // lblNombre
             // 
@@ -158,7 +132,7 @@
             this.lblNombre.Location = new System.Drawing.Point(9, 125);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(58, 18);
-            this.lblNombre.TabIndex = 8;
+            this.lblNombre.TabIndex = 6;
             this.lblNombre.Text = "Nombre";
             // 
             // txtApellidos
@@ -169,7 +143,7 @@
             this.txtApellidos.Location = new System.Drawing.Point(277, 146);
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(259, 29);
-            this.txtApellidos.TabIndex = 11;
+            this.txtApellidos.TabIndex = 9;
             // 
             // lblApellidos
             // 
@@ -178,7 +152,7 @@
             this.lblApellidos.Location = new System.Drawing.Point(274, 125);
             this.lblApellidos.Name = "lblApellidos";
             this.lblApellidos.Size = new System.Drawing.Size(64, 18);
-            this.lblApellidos.TabIndex = 10;
+            this.lblApellidos.TabIndex = 8;
             this.lblApellidos.Text = "Apellidos";
             // 
             // txtCorreo
@@ -189,7 +163,7 @@
             this.txtCorreo.Location = new System.Drawing.Point(277, 204);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(259, 29);
-            this.txtCorreo.TabIndex = 13;
+            this.txtCorreo.TabIndex = 11;
             // 
             // lblCorreo
             // 
@@ -198,7 +172,7 @@
             this.lblCorreo.Location = new System.Drawing.Point(274, 183);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.Size = new System.Drawing.Size(121, 18);
-            this.lblCorreo.TabIndex = 12;
+            this.lblCorreo.TabIndex = 10;
             this.lblCorreo.Text = "Correo electrónico";
             // 
             // pcbImagen
@@ -220,7 +194,7 @@
             this.lblInfoImagen.Location = new System.Drawing.Point(9, 392);
             this.lblInfoImagen.Name = "lblInfoImagen";
             this.lblInfoImagen.Size = new System.Drawing.Size(141, 14);
-            this.lblInfoImagen.TabIndex = 15;
+            this.lblInfoImagen.TabIndex = 13;
             this.lblInfoImagen.Text = "Clic para cambiar la imagen";
             // 
             // btnAceptar
@@ -237,7 +211,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(386, 392);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 46);
-            this.btnAceptar.TabIndex = 18;
+            this.btnAceptar.TabIndex = 19;
             this.btnAceptar.Text = "Crear";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -252,7 +226,7 @@
             this.lblInfo.Location = new System.Drawing.Point(223, 236);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(313, 14);
-            this.lblInfo.TabIndex = 14;
+            this.lblInfo.TabIndex = 12;
             this.lblInfo.Text = "El nombre de usuario ingresado ya existe. Ingrese otro por favor";
             this.lblInfo.Visible = false;
             // 
@@ -269,7 +243,7 @@
             this.btnQuitar.Location = new System.Drawing.Point(174, 323);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(97, 30);
-            this.btnQuitar.TabIndex = 17;
+            this.btnQuitar.TabIndex = 16;
             this.btnQuitar.Text = "Quitar imagen";
             this.btnQuitar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuitar.UseVisualStyleBackColor = false;
@@ -288,7 +262,7 @@
             this.button1.Location = new System.Drawing.Point(174, 251);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 30);
-            this.button1.TabIndex = 16;
+            this.button1.TabIndex = 18;
             this.button1.Text = "Asignar huella";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
@@ -305,7 +279,7 @@
             this.cboCamaras.Location = new System.Drawing.Point(12, 409);
             this.cboCamaras.Name = "cboCamaras";
             this.cboCamaras.Size = new System.Drawing.Size(259, 29);
-            this.cboCamaras.TabIndex = 34;
+            this.cboCamaras.TabIndex = 14;
             // 
             // btnCamara
             // 
@@ -320,7 +294,7 @@
             this.btnCamara.Location = new System.Drawing.Point(174, 359);
             this.btnCamara.Name = "btnCamara";
             this.btnCamara.Size = new System.Drawing.Size(97, 30);
-            this.btnCamara.TabIndex = 33;
+            this.btnCamara.TabIndex = 15;
             this.btnCamara.Text = "Tomar foto";
             this.btnCamara.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCamara.UseVisualStyleBackColor = false;
@@ -339,7 +313,7 @@
             this.btnPrivilegios.Location = new System.Drawing.Point(174, 287);
             this.btnPrivilegios.Name = "btnPrivilegios";
             this.btnPrivilegios.Size = new System.Drawing.Size(97, 30);
-            this.btnPrivilegios.TabIndex = 35;
+            this.btnPrivilegios.TabIndex = 17;
             this.btnPrivilegios.Text = "Privilegios";
             this.btnPrivilegios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrivilegios.UseVisualStyleBackColor = false;
@@ -371,8 +345,6 @@
             this.Controls.Add(this.lblRepPass);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.lblPass);
-            this.Controls.Add(this.lblNivel);
-            this.Controls.Add(this.cboNivel);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.lblUsuario);
             this.Font = new System.Drawing.Font("Corbel", 11F);
@@ -396,8 +368,6 @@
 
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.ComboBox cboNivel;
-        private System.Windows.Forms.Label lblNivel;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.TextBox txtRepPass;

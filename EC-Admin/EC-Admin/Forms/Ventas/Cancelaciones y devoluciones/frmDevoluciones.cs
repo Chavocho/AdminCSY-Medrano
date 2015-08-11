@@ -17,12 +17,14 @@ namespace EC_Admin.Forms
         bool dragSalioDGV01 = false, dragSalioDGV02 = false, dragEntroDGV01= false, dragEntroDGV02 = false;
         int id, rowIndexFromMouseDown;
         Venta v;
+        Dictionary<int, int> cantProds;
 
         public frmDevoluciones(int id)
         {
             InitializeComponent();
             this.id = id;
             v = new Venta(id);
+            cantProds = Devoluciones.CantidadProductosDevolucion(id);
         }
 
         private void CargarDatos()
@@ -33,6 +35,16 @@ namespace EC_Admin.Forms
                 for (int i = 0; i < v.IDProductos.Count; i++)
                 {
                     dgvProductos01.Rows.Add(new object[] { v.IDProductos[i], Producto.CodigoProducto(v.IDProductos[i]), Producto.NombreProducto(v.IDProductos[i]), v.Precio[i], v.Cantidad[i], v.Promocion[i] });
+                }
+                if (cantProds != null)
+                {
+                    foreach (DataGridViewRow dr in dgvProductos01.Rows)
+                    {
+                        if (cantProds.ContainsKey((int)dr.Cells[0].Value))
+                        {
+                            dr.Cells[4].Value = (int)dr.Cells[4].Value - cantProds[(int)dr.Cells[0].Value];
+                        }
+                    }
                 }
             }
             catch (MySqlException ex)

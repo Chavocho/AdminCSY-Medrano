@@ -92,20 +92,7 @@ namespace EC_Admin.Forms
 
         private void Editar()
         {
-            string[] niv = null;
-            switch (Usuario.NivelUsuarioActual)
-            {
-                case NivelesUsuario.Administrador:
-                    niv = new string[] { "Administrador", "Encargado", "Desconocido" };
-                    break;
-                case NivelesUsuario.Encargado:
-                    niv = new string[] { "Encargado", "Desconocido" };
-                    break;
-                case NivelesUsuario.Desconocido:
-                    niv = new string[] { "Desconocido" };
-                    break;
-            }
-            (new frmEditarUsuario(id, niv)).ShowDialog(this);
+            (new frmEditarUsuario(id)).ShowDialog(this);
             tmrEspera.Enabled = true;
             bgwUsuarios.RunWorkerAsync();
         }
@@ -142,20 +129,7 @@ namespace EC_Admin.Forms
         {
             if (Privilegios._CrearUsuario)
             {
-                string[] niv = null;
-                switch (Usuario.NivelUsuarioActual)
-                {
-                    case NivelesUsuario.Administrador:
-                        niv = new string[] { "Administrador", "Encargado", "Desconocido" };
-                        break;
-                    case NivelesUsuario.Encargado:
-                        niv = new string[] { "Encargado", "Desconocido" };
-                        break;
-                    case NivelesUsuario.Desconocido:
-                        niv = new string[] { "Desconocido" };
-                        break;
-                }
-                (new frmNuevoUsuario(niv)).ShowDialog(this);
+                (new frmNuevoUsuario()).ShowDialog(this);
                 bgwUsuarios.RunWorkerAsync();
             }
             else
@@ -170,18 +144,7 @@ namespace EC_Admin.Forms
             {
                 if (dgvUsuarios.CurrentRow != null)
                 {
-                    if ((int)(NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dgvUsuarios[5, dgvUsuarios.CurrentRow.Index].Value.ToString()) > (int)Usuario.NivelUsuarioActual)
-                    {
-                        Editar();
-                    }
-                    else if (id == Usuario.IDUsuarioActual)
-                    {
-                        Editar();
-                    }
-                    else
-                    {
-                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para modificar a éste usuario.", "Admin CSY");
-                    }
+                    Editar();
                 }
             }
             else
@@ -190,18 +153,7 @@ namespace EC_Admin.Forms
                 {
                     if (id == Usuario.IDUsuarioActual)
                     {
-                        if ((int)(NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dgvUsuarios[5, dgvUsuarios.CurrentRow.Index].Value.ToString()) > (int)Usuario.NivelUsuarioActual)
-                        {
-                            Editar();
-                        }
-                        else if (id == Usuario.IDUsuarioActual)
-                        {
-                            Editar();
-                        }
-                        else
-                        {
-                            FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para modificar a éste usuario.", "Admin CSY");
-                        }
+                        Editar();
                     }
                     else
                     {
@@ -219,14 +171,7 @@ namespace EC_Admin.Forms
                 {
                     if (dgvUsuarios.CurrentRow != null)
                     {
-                        if ((int)(NivelesUsuario)Enum.Parse(typeof(NivelesUsuario), dgvUsuarios[5, dgvUsuarios.CurrentRow.Index].Value.ToString()) > (int)Usuario.NivelUsuarioActual)
-                        {
-                            Eliminar();
-                        }
-                        else
-                        {
-                            FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "No tienes permisos para eliminar a éste usuario.", "Admin CSY");
-                        }
+                        Eliminar();
                     }
                 }
                 catch (Exception ex)

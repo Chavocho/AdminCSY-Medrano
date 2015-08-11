@@ -85,22 +85,39 @@ namespace EC_Admin.Forms
             }
         }
 
-        private void BuscarVentas(DateTime fechaIni, bool trabajador, int idTrabajador = 0)
+        private void BuscarVentas(DateTime fechaIni, DateTime fechaFin)
         {
             c = new CerrarFrmEspera(CerrarVenta);
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                if (trabajador)
-                {
-                    sql.CommandText = "SELECT * FROM venta WHERE id_vendedor=?id_vendedor AND DATE_FORMAT(create_time, '%Y-%m-%d')=?fecha_ini AND abierta=0";
-                    sql.Parameters.AddWithValue("?id_vendedor", idTrabajador);
-                }
-                else
-                {
-                    sql.CommandText = "SELECT * FROM venta WHERE DATE_FORMAT(create_time, '%Y-%m-%d')=?fecha_ini AND abierta=0";
-                }
+                sql.CommandText = "SELECT * FROM venta WHERE (DATE_FORMAT(create_time, '%Y-%m-%d') BETWEEN ?fecha_ini AND ?fecha_fin) AND abierta=0";
                 sql.Parameters.AddWithValue("?fecha_ini", fechaIni.ToString("yyyy-MM-dd"));
+                sql.Parameters.AddWithValue("?fecha_fin", fechaFin.ToString("yyyy-MM-dd"));
+                dt = ConexionBD.EjecutarConsultaSelect(sql);
+            }
+            catch (MySqlException ex)
+            {
+                this.Invoke(c);
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las ventas. No se ha podido conectar con la base de datos.", "Admin CSY", ex });
+            }
+            catch (Exception ex)
+            {
+                this.Invoke(c);
+                this.Invoke(d, new object[] { this, Mensajes.Error, "Ocurrió un error al buscar las ventas.", "Admin CSY", ex });
+            }
+        }
+
+        private void BuscarVentas(DateTime fechaIni, DateTime fechaFin, int idTrabajador)
+        {
+            c = new CerrarFrmEspera(CerrarVenta);
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT * FROM venta WHERE (DATE_FORMAT(create_time, '%Y-%m-%d') BETWEEN ?fecha_ini AND ?fecha_fin) AND id_vendedor=?id_vendedor AND abierta=0";
+                sql.Parameters.AddWithValue("?fecha_ini", fechaIni.ToString("yyyy-MM-dd"));
+                sql.Parameters.AddWithValue("?fecha_fin", fechaFin.ToString("yyyy-MM-dd"));
+                sql.Parameters.AddWithValue("?id_vendedor", idTrabajador);
                 dt = ConexionBD.EjecutarConsultaSelect(sql);
             }
             catch (MySqlException ex)
@@ -128,7 +145,7 @@ namespace EC_Admin.Forms
                 unidadesProductos.Clear();
 
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT v.*, p.nombre, p.codigo FROM venta_detallada AS v INNER JOIN producto AS p ON (v.id_producto=p.id) WHERE v.id_venta=?id_venta AND v.id_sucursal='" + Config.idSucursal + "'";
+                sql.CommandText = "SELECT v.*, p.nombre, p.codigo FROM venta_detallada AS v INNER JOIN producto AS p ON (v.id_producto=p.id) WHERE v.id_venta=?id_venta";
                 sql.Parameters.AddWithValue("?id_venta", id);
                 dtd = ConexionBD.EjecutarConsultaSelect(sql);
                 foreach (DataRow dr in dtd.Rows)
@@ -385,22 +402,29 @@ namespace EC_Admin.Forms
         {
             if (!bgwBusquedaVentas.IsBusy)
             {
-                tmrEsperaVenta.Enabled = true;
-                if (idTrabajadores.Count > 0)
+                if (chbTrabajador.Checked)
                 {
-                    bgwBusquedaVentas.RunWorkerAsync(new object[] { dtpFechaInicio.Value, chbTrabajador.Checked, idTrabajadores[cboVendedor.SelectedIndex] });
+                    bgwBusquedaVentas.RunWorkerAsync(new object[] { dtpFechaInicio.Value, dtpFechaFin.Value, idTrabajadores[cboVendedor.SelectedIndex] });
                 }
                 else
                 {
-                    bgwBusquedaVentas.RunWorkerAsync(new object[] { dtpFechaInicio.Value, chbTrabajador.Checked, 0 });
+                    bgwBusquedaVentas.RunWorkerAsync(new object[] { dtpFechaInicio.Value, dtpFechaFin.Value });
                 }
+                tmrEsperaVenta.Enabled = true;
             }
         }
 
         private void bgwBusquedaVentas_DoWork(object sender, DoWorkEventArgs e)
         {
             object[] a = (object[])e.Argument;
-            BuscarVentas((DateTime)a[0], (bool)a[1], (int)a[2]);
+            if (a.Length == 2)
+            {
+                BuscarVentas((DateTime)a[0], (DateTime)a[1]);
+            }
+            else if (a.Length == 3)
+            {
+                BuscarVentas((DateTime)a[0], (DateTime)a[1], (int)a[2]);
+            }
         }
 
         private void bgwBusquedaVentas_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -446,6 +470,7 @@ namespace EC_Admin.Forms
                 {
                     chbTrabajador.Checked = false;
                     chbTrabajador.Enabled = false;
+                    cboVendedor.Enabled = false;
                 }
             }
             catch (MySqlException ex)

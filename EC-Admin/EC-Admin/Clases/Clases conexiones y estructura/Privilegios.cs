@@ -892,7 +892,14 @@ namespace EC_Admin
 
         public Privilegios()
         {
-            InicializarPrivilegios();
+            if (Usuario.CantidadUsuarios > 0)
+            {
+                InicializarPrivilegios();
+            }
+            else
+            {
+                PrivilegiosPrimerUsuario();
+            }
         }
 
         public Privilegios(int idUsuario)
@@ -954,6 +961,60 @@ namespace EC_Admin
             devolucionVenta = false;
         }
 
+        private void PrivilegiosPrimerUsuario()
+        {
+            crearApartado = true;
+            estadoApartado = true;
+            caja = true;
+            banco = true;
+            movimientoCaja = true;
+            movimientoBanco = true;
+            abrirCerrarCaja = true;
+            cortesCaja = true;
+            crearCliente = true;
+            modificarCliente = true;
+            eliminarCliente = true;
+            crearCompra = true;
+            visualizarCompra = true;
+            cancelarCompra = true;
+            devolucionCompra = true;
+            configGeneral = true;
+            configCorreo = true;
+            configBaseDatos = true;
+            configImpresion = true;
+            crearSucursal = true;
+            modificarSucursal = true;
+            eliminarSucursal = true;
+            cambiarSucursal = true;
+            crearCotizacion = true;
+            crearProducto = true;
+            modificarProducto = true;
+            eliminarProducto = true;
+            imprimirTicket = true;
+            modificarCantProducto = true;
+            crearPromocion = true;
+            modificarPromocion = true;
+            eliminarPromocion = true;
+            crearProveedor = true;
+            modificarProveedor = true;
+            eliminarProveedor = true;
+            administrarHorarioTrabajador = true;
+            administrarPagoTrabajador = true;
+            crearTrabajador = true;
+            modificarTrabajador = true;
+            eliminarTrabajador = true;
+            crearTraspaso = true;
+            estadoTraspaso = true;
+            crearUsuario = true;
+            modificarUsuario = true;
+            eliminarUsuario = true;
+            reestablecerUsuario = true;
+            administrarPermisos = true;
+            crearVenta = true;
+            cancelarVenta = true;
+            devolucionVenta = true;
+        }
+        
         async public Task ObtenerDatos()
         {
             try

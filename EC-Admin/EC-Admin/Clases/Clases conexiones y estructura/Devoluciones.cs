@@ -17,7 +17,7 @@ namespace EC_Admin
         private int updateUser;
         private DateTime updateTime;
         private Venta v;
-
+        
         public int ID
         {
             get { return id; }
@@ -297,6 +297,32 @@ namespace EC_Admin
             {
                 throw ex;
             }
+        }
+
+        public static Dictionary<int, int> CantidadProductosDevolucion(int idVenta)
+        {
+            Dictionary<int, int> prods = null;
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT d.id_producto, d.cant FROM devolucion_detallada AS d INNER JOIN devolucion AS de ON (d.id_devolucion=de.id) WHERE de.id_venta=?id_venta";
+                sql.Parameters.AddWithValue("?id_venta", idVenta);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                prods = new Dictionary<int, int>();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    prods.Add((int)dr["id_producto"], (int)dr["cant"]);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return prods;
         }
     }
 }

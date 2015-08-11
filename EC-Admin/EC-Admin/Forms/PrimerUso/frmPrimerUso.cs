@@ -88,7 +88,7 @@ namespace EC_Admin
 
         private void NuevoUsuario()
         {
-            frmNuevoUsuario frm = new frmNuevoUsuario(this, new string[] { "Administador" });
+            frmNuevoUsuario frm = new frmNuevoUsuario(this);
             frm.TopLevel = false;
             frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             frm.StartPosition = FormStartPosition.Manual;
@@ -146,17 +146,17 @@ namespace EC_Admin
             else if (pnlForms.Controls[0].GetType() == typeof(frmConfigBaseDatos))
             {
                 lblCerrar.Enabled = false;
-                NuevoUsuario();
+                NuevaSucursal();
                 lblEBaseDatos.ForeColor = lblEUsuario.BackColor = Colores.Obscuro;
                 lblEBaseDatos.BackColor = lblEUsuario.ForeColor = Colores.Claro;
             }
-            else if (pnlForms.Controls[0].GetType() == typeof(frmNuevoUsuario))
+            else if (pnlForms.Controls[0].GetType() == typeof(frmNuevaSucursal))
             {
-                NuevaSucursal();
+                NuevoUsuario();
                 lblEUsuario.ForeColor = lblESucursal.BackColor = Colores.Obscuro;
                 lblEUsuario.BackColor = lblESucursal.ForeColor = Colores.Claro;
             }
-            else if (pnlForms.Controls[0].GetType() == typeof(frmNuevaSucursal))
+            else if (pnlForms.Controls[0].GetType() == typeof(frmNuevoUsuario))
             {
                 lblCerrar.Enabled = true;
                 Terminado();

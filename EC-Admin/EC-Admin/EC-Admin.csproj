@@ -362,12 +362,6 @@
     <Compile Include="Forms\Mapas\frmMapa.Designer.cs">
       <DependentUpon>frmMapa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mensaje\frmLoginValidacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Mensaje\frmLoginValidacion.Designer.cs">
-      <DependentUpon>frmLoginValidacion.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Mensaje\frmMensaje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -463,6 +457,12 @@
     </Compile>
     <Compile Include="Forms\Proveedor\frmProveedor.Designer.cs">
       <DependentUpon>frmProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reportes\frmReporteVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reportes\frmReporteVentas.Designer.cs">
+      <DependentUpon>frmReporteVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reportes\frmVentasDiarias.cs">
       <SubType>Form</SubType>
@@ -910,9 +910,6 @@
     <EmbeddedResource Include="Forms\Mapas\frmMapa.resx">
       <DependentUpon>frmMapa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Mensaje\frmLoginValidacion.resx">
-      <DependentUpon>frmLoginValidacion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mensaje\frmMensaje.resx">
       <DependentUpon>frmMensaje.cs</DependentUpon>
     </EmbeddedResource>
@@ -960,6 +957,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Proveedor\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reportes\frmReporteVentas.resx">
+      <DependentUpon>frmReporteVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reportes\frmVentasDiarias.resx">
       <DependentUpon>frmVentasDiarias.cs</DependentUpon>
