@@ -17,6 +17,7 @@ namespace EC_Admin.Forms
         bool dragSalioDGV01 = false, dragSalioDGV02 = false, dragEntroDGV01 = false, dragEntroDGV02 = false;
         int id, rowIndexFromMouseDown;
         Compra c;
+        Dictionary<int, int> cantProds;
 
         public frmDevolucionesCompra(int id)
         {
@@ -33,6 +34,34 @@ namespace EC_Admin.Forms
                 for (int i = 0; i < c.IDProductos.Count; i++)
                 {
                     dgvProductos01.Rows.Add(new object[] { c.IDProductos[i], Producto.CodigoProducto(c.IDProductos[i]), Producto.NombreProducto(c.IDProductos[i]), c.Precio[i], c.Cantidad[i] });
+                }
+                if (cantProds != null)
+                {
+                    //Lista que guarda las filas del DataGridView que se removerán
+                    List<DataGridViewRow> drList = new List<DataGridViewRow>();
+                    foreach (DataGridViewRow dr in dgvProductos01.Rows)
+                    {
+                        //Verificamos si el producto de la fila actual tiene un producto ya devuelto, y en caso de ser así, lo resta
+                        if (cantProds.ContainsKey((int)dr.Cells[0].Value))
+                        {
+                            dr.Cells[4].Value = (int)dr.Cells[4].Value - cantProds[(int)dr.Cells[0].Value];
+                            if ((int)dr.Cells[4].Value <= 0)
+                            {
+                                //Si el valor de la resta es menor o igual a cero, añade la fila actual a la lista de filas
+                                drList.Add(dr);
+                            }
+                        }
+                    }
+                    //Se hace un pase por la lista y se remueven las filas que sea necesario remover
+                    for (int i = 0; i < drList.Count; i++)
+                    {
+                        dgvProductos01.Rows.Remove(drList[i]);
+                    }
+                    if (dgvProductos01.Rows.Count <= 0)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "¡Se han devuelto todos los productos de ésta venta!. La ventana se cerrará.", "Admin CSY");
+                        this.Close();
+                    }
                 }
             }
             catch (MySqlException ex)
@@ -265,6 +294,22 @@ namespace EC_Admin.Forms
 
         private void frmDevolucionesCompra_Load(object sender, EventArgs e)
         {
+            try
+            {
+                cantProds = DevolucionesCompra.CantidadProductosDevolucion(id);
+            }
+            catch (MySqlException ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al obtener los datos de devoluciones anteriores. No se ha podido conectar a la base de datos. La ventana se cerrará.", Config.shrug, ex);
+                this.Close();
+                return;
+            }
+            catch (Exception ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al obtener los datos de devoluciones anteriores. La ventana se cerrará.", Config.shrug, ex);
+                this.Close();
+                return;
+            }
             CargarDatos();
         }
 

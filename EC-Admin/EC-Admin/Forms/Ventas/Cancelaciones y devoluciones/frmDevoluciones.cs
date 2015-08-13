@@ -24,7 +24,6 @@ namespace EC_Admin.Forms
             InitializeComponent();
             this.id = id;
             v = new Venta(id);
-            cantProds = Devoluciones.CantidadProductosDevolucion(id);
         }
 
         private void CargarDatos()
@@ -38,12 +37,30 @@ namespace EC_Admin.Forms
                 }
                 if (cantProds != null)
                 {
+                    //Lista que guarda las filas del DataGridView que se removerán
+                    List<DataGridViewRow> drList = new List<DataGridViewRow>();
                     foreach (DataGridViewRow dr in dgvProductos01.Rows)
                     {
+                        //Verificamos si el producto de la fila actual tiene un producto ya devuelto, y en caso de ser así, lo resta
                         if (cantProds.ContainsKey((int)dr.Cells[0].Value))
                         {
                             dr.Cells[4].Value = (int)dr.Cells[4].Value - cantProds[(int)dr.Cells[0].Value];
+                            if ((int)dr.Cells[4].Value <= 0)
+                            {
+                                //Si el valor de la resta es menor o igual a cero, añade la fila actual a la lista de filas
+                                drList.Add(dr);
+                            }
                         }
+                    }
+                    //Se hace un pase por la lista y se remueven las filas que sea necesario remover
+                    for (int i = 0; i < drList.Count; i++)
+                    {
+                        dgvProductos01.Rows.Remove(drList[i]);
+                    }
+                    if (dgvProductos01.Rows.Count <= 0)
+                    {
+                        FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "¡Se han devuelto todos los productos de ésta venta!. La ventana se cerrará.", "Admin CSY");
+                        this.Close();
                     }
                 }
             }
@@ -264,6 +281,22 @@ namespace EC_Admin.Forms
 
         private void frmDevoluciones_Load(object sender, EventArgs e)
         {
+            try
+            {
+                cantProds = Devoluciones.CantidadProductosDevolucion(id);
+            }
+            catch (MySqlException ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al obtener los datos de devoluciones anteriores. No se ha podido conectar a la base de datos. La ventana se cerrará.", Config.shrug, ex);
+                this.Close();
+                return;
+            }
+            catch (Exception ex)
+            {
+                FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al obtener los datos de devoluciones anteriores. La ventana se cerrará.", Config.shrug, ex);
+                this.Close();
+                return;
+            }
             CargarDatos();
         }
 

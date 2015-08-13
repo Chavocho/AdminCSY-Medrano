@@ -305,13 +305,18 @@ namespace EC_Admin
             try
             {
                 MySqlCommand sql = new MySqlCommand();
-                sql.CommandText = "SELECT d.id_producto, d.cant FROM devolucion_detallada AS d INNER JOIN devolucion AS de ON (d.id_devolucion=de.id) WHERE de.id_venta=?id_venta";
+                sql.CommandText = "SELECT d.id_producto, SUM(d.cant) AS cant FROM devolucion_detallada AS d INNER JOIN devolucion AS de ON (d.id_devolucion=de.id) WHERE de.id_venta=?id_venta GROUP BY d.id_producto";
                 sql.Parameters.AddWithValue("?id_venta", idVenta);
                 DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
                 prods = new Dictionary<int, int>();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    prods.Add((int)dr["id_producto"], (int)dr["cant"]);
+                    int idProd = (int)dr["id_producto"];
+                    int cant = int.Parse(dr["cant"].ToString());
+                    if (!prods.ContainsKey(idProd))
+                        prods.Add(idProd, cant);
+                    else
+                        prods[idProd] += cant;
                 }
             }
             catch (MySqlException ex)
@@ -323,6 +328,32 @@ namespace EC_Admin
                 throw ex;
             }
             return prods;
+        }
+
+        public static decimal TotalDevolucion(int idVenta)
+        {
+            decimal total = 0M;
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT SUM(total) AS t FROM devolucion WHERE id_venta=?id_venta";
+                sql.Parameters.AddWithValue("?id_venta", idVenta);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["t"] != DBNull.Value)
+                        total += decimal.Parse(dr["t"].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return total;
         }
     }
 }

@@ -43,14 +43,15 @@
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.grbFolio = new System.Windows.Forms.GroupBox();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CComprador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
-            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
+            this.CTotalDev = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             this.grbFechas.SuspendLayout();
             this.grbFolio.SuspendLayout();
@@ -131,7 +132,8 @@
             this.CComprador,
             this.CTotal,
             this.CTipoPago,
-            this.CFecha});
+            this.CFecha,
+            this.CTotalDev});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Corbel", 11F);
@@ -227,6 +229,16 @@
             this.txtBusqueda.TabIndex = 0;
             this.txtBusqueda.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyUp);
             // 
+            // bgwBusqueda
+            // 
+            this.bgwBusqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusqueda_DoWork);
+            this.bgwBusqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusqueda_RunWorkerCompleted);
+            // 
+            // tmrEspera
+            // 
+            this.tmrEspera.Interval = 300;
+            this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
+            // 
             // CID
             // 
             this.CID.HeaderText = "Folio";
@@ -266,15 +278,11 @@
             this.CFecha.HeaderText = "Fecha";
             this.CFecha.Name = "CFecha";
             // 
-            // bgwBusqueda
+            // CTotalDev
             // 
-            this.bgwBusqueda.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwBusqueda_DoWork);
-            this.bgwBusqueda.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwBusqueda_RunWorkerCompleted);
-            // 
-            // tmrEspera
-            // 
-            this.tmrEspera.Interval = 300;
-            this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
+            this.CTotalDev.HeaderText = "Total Dev.";
+            this.CTotalDev.Name = "CTotalDev";
+            this.CTotalDev.Visible = false;
             // 
             // frmCancelacionCompra
             // 
@@ -311,13 +319,14 @@
         private System.Windows.Forms.DateTimePicker dtpFechaInicio;
         private System.Windows.Forms.GroupBox grbFolio;
         private System.Windows.Forms.TextBox txtBusqueda;
+        private System.ComponentModel.BackgroundWorker bgwBusqueda;
+        private System.Windows.Forms.Timer tmrEspera;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn CComprador;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTipoPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn CFecha;
-        private System.ComponentModel.BackgroundWorker bgwBusqueda;
-        private System.Windows.Forms.Timer tmrEspera;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTotalDev;
     }
 }

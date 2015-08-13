@@ -79,6 +79,7 @@ namespace EC_Admin.Forms
                 dgvVentas.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
+                    decimal total = (decimal)dr["total"], totalDev = Devoluciones.TotalDevolucion((int)dr["id"]);
                     string tipoPago = "";
                     DateTime fecha;
                     switch ((TipoPago)Enum.Parse(typeof(TipoPago), dr["tipo_pago"].ToString()))
@@ -103,7 +104,9 @@ namespace EC_Admin.Forms
                         fecha = (DateTime)dr["update_time"];
                     else
                         fecha = (DateTime)dr["create_time"];
-                    dgvVentas.Rows.Add(new object[] { dr["id"],  Cliente.NombreCliente((int)dr["id_cliente"]), Trabajador.NombreTrabajador((int)dr["id_vendedor"]), dr["total"], tipoPago, fecha });
+
+                    if ((total - totalDev) > 0)
+                        dgvVentas.Rows.Add(new object[] { dr["id"],  Cliente.NombreCliente((int)dr["id_cliente"]), Trabajador.NombreTrabajador((int)dr["id_vendedor"]), total - totalDev, tipoPago, fecha, totalDev });
                 }
                 dgvVentas_RowEnter(dgvVentas, new DataGridViewCellEventArgs(0, 0));
             }
@@ -218,10 +221,15 @@ namespace EC_Admin.Forms
                     {
                         try
                         {
+                            if ((decimal)dgvVentas[6, dgvVentas.CurrentRow.Index].Value > 0)
+                            {
+                                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "A la venta se le resto el valor de " + ((decimal)dgvVentas[6, dgvVentas.CurrentRow.Index].Value).ToString("C2") + " dado a que ya se habían devuelto productos con anterioridad.", "Admin CSY");
+                            }
                             Venta.CancelarVenta((int)dgvVentas[0, dgvVentas.CurrentRow.Index].Value);
                             MovimientoCaja();
                             FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cancelado correctamente la venta!", "Admin CSY");
                             dgvVentas.Rows.Remove(dgvVentas.CurrentRow);
+
                         }
                         catch (MySqlException ex)
                         {

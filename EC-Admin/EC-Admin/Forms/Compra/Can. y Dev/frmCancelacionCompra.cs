@@ -78,6 +78,7 @@ namespace EC_Admin.Forms
                 dgvCompras.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
+                    decimal total = (decimal)dr["total"], totalDev = DevolucionesCompra.TotalDevolucion((int)dr["id"]);
                     string tipoPago = "";
                     switch ((TipoPago)Enum.Parse(typeof(TipoPago), dr["tipo_pago"].ToString()))
                     {
@@ -97,7 +98,8 @@ namespace EC_Admin.Forms
                             tipoPago = "Transferencia";
                             break;
                     }
-                    dgvCompras.Rows.Add(new object[] { dr["id"], Cliente.NombreCliente((int)dr["id_proveedor"]), Trabajador.NombreTrabajador((int)dr["id_comprador"]), dr["total"], tipoPago, dr["create_time"] });
+                    if ((total - totalDev) > 0)
+                        dgvCompras.Rows.Add(new object[] { dr["id"], Cliente.NombreCliente((int)dr["id_proveedor"]), Trabajador.NombreTrabajador((int)dr["id_comprador"]), total - totalDev, tipoPago, dr["create_time"], totalDev });
                 }
                 dgvCompras_RowEnter(dgvCompras, new DataGridViewCellEventArgs(0, 0));
             }
@@ -143,6 +145,10 @@ namespace EC_Admin.Forms
                     {
                         try
                         {
+                            if ((decimal)dgvCompras[6, dgvCompras.CurrentRow.Index].Value > 0)
+                            {
+                                FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "A la compra se le resto el valor de " + ((decimal)dgvCompras[6, dgvCompras.CurrentRow.Index].Value).ToString("C2") + " dado a que ya se habían devuelto productos con anterioridad.", "Admin CSY");
+                            }
                             Compra.CancelarCompra(id);
                             FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha cancelado la compra correctamente!", "Admin CSY");
                             dgvCompras.Rows.Remove(dgvCompras.CurrentRow);

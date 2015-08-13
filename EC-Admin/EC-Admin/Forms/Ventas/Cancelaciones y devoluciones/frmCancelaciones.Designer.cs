@@ -41,16 +41,17 @@
             this.grbFolio = new System.Windows.Forms.GroupBox();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
+            this.btnDevoluciones = new System.Windows.Forms.Button();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
-            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
-            this.btnDevoluciones = new System.Windows.Forms.Button();
+            this.CTotalDevolucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grbFechas.SuspendLayout();
             this.grbFolio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
@@ -163,7 +164,8 @@
             this.CVendedor,
             this.CTotal,
             this.CTipoPago,
-            this.CFecha});
+            this.CFecha,
+            this.CTotalDevolucion});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Corbel", 11F);
@@ -184,45 +186,6 @@
             this.dgvVentas.Size = new System.Drawing.Size(984, 323);
             this.dgvVentas.TabIndex = 13;
             this.dgvVentas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_RowEnter);
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "Folio";
-            this.CID.Name = "CID";
-            // 
-            // CCliente
-            // 
-            this.CCliente.HeaderText = "Cliente";
-            this.CCliente.Name = "CCliente";
-            this.CCliente.Width = 220;
-            // 
-            // CVendedor
-            // 
-            this.CVendedor.HeaderText = "Vendedor";
-            this.CVendedor.Name = "CVendedor";
-            this.CVendedor.Width = 220;
-            // 
-            // CTotal
-            // 
-            dataGridViewCellStyle3.Format = "C2";
-            this.CTotal.DefaultCellStyle = dataGridViewCellStyle3;
-            this.CTotal.HeaderText = "Total de venta";
-            this.CTotal.Name = "CTotal";
-            this.CTotal.Width = 120;
-            // 
-            // CTipoPago
-            // 
-            this.CTipoPago.HeaderText = "Tipo de pago";
-            this.CTipoPago.Name = "CTipoPago";
-            this.CTipoPago.Width = 120;
-            // 
-            // CFecha
-            // 
-            this.CFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Format = "dd \'de\' MMMM \'del\' yyyy ";
-            this.CFecha.DefaultCellStyle = dataGridViewCellStyle4;
-            this.CFecha.HeaderText = "Fecha";
-            this.CFecha.Name = "CFecha";
             // 
             // btnCancelar
             // 
@@ -276,6 +239,51 @@
             this.btnDevoluciones.UseVisualStyleBackColor = false;
             this.btnDevoluciones.Click += new System.EventHandler(this.btnDevoluciones_Click);
             // 
+            // CID
+            // 
+            this.CID.HeaderText = "Folio";
+            this.CID.Name = "CID";
+            // 
+            // CCliente
+            // 
+            this.CCliente.HeaderText = "Cliente";
+            this.CCliente.Name = "CCliente";
+            this.CCliente.Width = 220;
+            // 
+            // CVendedor
+            // 
+            this.CVendedor.HeaderText = "Vendedor";
+            this.CVendedor.Name = "CVendedor";
+            this.CVendedor.Width = 220;
+            // 
+            // CTotal
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            this.CTotal.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CTotal.HeaderText = "Total de venta";
+            this.CTotal.Name = "CTotal";
+            this.CTotal.Width = 120;
+            // 
+            // CTipoPago
+            // 
+            this.CTipoPago.HeaderText = "Tipo de pago";
+            this.CTipoPago.Name = "CTipoPago";
+            this.CTipoPago.Width = 120;
+            // 
+            // CFecha
+            // 
+            this.CFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Format = "dd \'de\' MMMM \'del\' yyyy ";
+            this.CFecha.DefaultCellStyle = dataGridViewCellStyle4;
+            this.CFecha.HeaderText = "Fecha";
+            this.CFecha.Name = "CFecha";
+            // 
+            // CTotalDevolucion
+            // 
+            this.CTotalDevolucion.HeaderText = "Total de devolución";
+            this.CTotalDevolucion.Name = "CTotalDevolucion";
+            this.CTotalDevolucion.Visible = false;
+            // 
             // frmCancelaciones
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -312,12 +320,13 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.ComponentModel.BackgroundWorker bgwBusqueda;
         private System.Windows.Forms.Timer tmrEspera;
+        private System.Windows.Forms.Button btnDevoluciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn CVendedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTipoPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn CFecha;
-        private System.Windows.Forms.Button btnDevoluciones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTotalDevolucion;
     }
 }

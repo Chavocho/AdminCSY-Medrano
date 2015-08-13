@@ -231,7 +231,14 @@ namespace EC_Admin.Forms
         {
             if (Privilegios._CrearApartado)
             {
-                (new frmNuevoApartado()).ShowDialog(this);
+                if (Trabajador.Cantidad > 0)
+                {
+                    (new frmNuevoApartado()).ShowDialog(this);
+                }
+                else
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No tienes trabajadores registrados. Para realizar apartados, debes tener al menos un trabajador registrado.", "Admin CSY");
+                }
             }
             else
             {

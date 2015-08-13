@@ -274,32 +274,43 @@ namespace EC_Admin.Forms
 
         private void btnApartar_Click(object sender, EventArgs e)
         {
-            if (dgvProductos.RowCount > 0)
+            if (Caja.EstadoCaja)
             {
-                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas realizar éste apartado?", "Admin CSY") == DialogResult.Yes)
+                if (dgvProductos.RowCount > 0)
                 {
-                    try
+                    if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "¿Deseas realizar éste apartado?", "Admin CSY") == DialogResult.Yes)
                     {
-                        btnApartar.Enabled = false;
-                        InsertarApartado();
-                        FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado correctamente el apartado!", "Admin CSY");
-                        if (FuncionesGenerales.ImprimirTicket(this, "¿Desea imprimir el ticket del apartado?"))
+                        try
                         {
-                            ImprimirTicket(a.ID);
+                            btnApartar.Enabled = false;
+                            InsertarApartado();
+                            FuncionesGenerales.Mensaje(this, Mensajes.Exito, "¡Se ha creado correctamente el apartado!", "Admin CSY");
+                            if (FuncionesGenerales.ImprimirTicket(this, "¿Desea imprimir el ticket del apartado?"))
+                            {
+                                ImprimirTicket(a.ID);
+                            }
+                            this.Close();
                         }
-                        this.Close();
+                        catch (Exception ex)
+                        {
+                            btnApartar.Enabled = true;
+                            FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el apartado.", Config.shrug, ex);
+                        }
+
                     }
-                    catch (Exception ex)
-                    {
-                        btnApartar.Enabled = true;
-                        FuncionesGenerales.Mensaje(this, Mensajes.Error, "Ocurrió un error al crear el apartado.", Config.shrug, ex);
-                    }
-                    
+                }
+                else
+                {
+                    FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debe haber al menos un producto para realizar el apartado.", "Admin CSY");
                 }
             }
             else
             {
-                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "Debe haber al menos un producto para realizar el apartado.", "Admin CSY");
+                if (FuncionesGenerales.Mensaje(this, Mensajes.Pregunta, "La caja esta cerrada, ¿deseas abrirla?", "Admin CSY") == DialogResult.Yes)
+                {
+                    (new frmAbrirCaja()).ShowDialog(this);
+                    btnApartar.PerformClick();
+                }
             }
         }
 

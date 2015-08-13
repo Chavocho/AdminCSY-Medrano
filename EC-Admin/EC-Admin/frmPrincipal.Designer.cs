@@ -366,7 +366,6 @@
             this.btnBanco.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBanco.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBanco.UseVisualStyleBackColor = false;
-            this.btnBanco.Visible = false;
             this.btnBanco.Click += new System.EventHandler(this.btnBanco_Click);
             // 
             // frmPrincipal
