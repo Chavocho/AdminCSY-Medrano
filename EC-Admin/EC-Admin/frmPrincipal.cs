@@ -234,11 +234,11 @@ namespace EC_Admin
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            //(new frmReporteVentas()).ShowDialog(this);
-            if (!frmVentasDiarias.Instancia.Visible)
+            (new frmReporteVentas()).ShowDialog(this);
+            /*if (!frmVentasDiarias.Instancia.Visible)
                 frmVentasDiarias.Instancia.Show();
             else
-                frmVentasDiarias.Instancia.Select();
+                frmVentasDiarias.Instancia.Select();*/
         }
     
         private void btnUsuarios_Click(object sender, EventArgs e)

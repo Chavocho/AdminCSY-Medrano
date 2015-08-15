@@ -127,6 +127,7 @@ namespace EC_Admin.Forms
 
         private void Graficar()
         {
+            chrInformacion.Series.Clear();
             int dias = (dtpFechaFin.Value - dtpFechaInicio.Value).Days;
             if (dias <= 7)
             {
@@ -135,7 +136,7 @@ namespace EC_Admin.Forms
                 decimal totalFecha = 0M;
                 foreach (DataRow dr in dtVenta.Rows)
                 {
-                    DateTime fecha = DateTime.Parse(dr["update_time"].ToString() + " 00:00:00");
+                    DateTime fecha = ((DateTime)dr["update_time"]).Date;
                     if (fecha == _fecha)
                     {
                         totalFecha += (decimal)dr["total"];
@@ -151,12 +152,39 @@ namespace EC_Admin.Forms
                         totalFecha += (decimal)dr["total"];
                     }
                 }
+                if (fechaMostrar != "")
+                {
+                    chrInformacion.Series.Add(fechaMostrar).Points.AddXY(fechaMostrar, totalFecha);
+                }
             }
             else if (dias <= 30)
             {
-            }
-            else if (dias <= 180)
-            {
+                DateTime _fecha = new DateTime();
+                string fechaMostrar = "";
+                decimal totalFecha = 0M;
+                foreach (DataRow dr in dtVenta.Rows)
+                {
+                    DateTime fecha = ((DateTime)dr["update_time"]).Date;
+                    int diasSemana = (fecha.Date - dtpFechaInicio.Value.Date).Days;
+                    if (diasSemana % 7 != 0)
+                    {
+                        totalFecha += (decimal)dr["total"];
+                    }
+                    else
+                    {
+                        if (fechaMostrar != "")
+                        {
+                            chrInformacion.Series.Add(fechaMostrar).Points.AddXY(fechaMostrar, totalFecha);
+                        }
+                        _fecha = fecha;
+                        fechaMostrar = fecha.ToString("dd/MM/yyyy");
+                        totalFecha += (decimal)dr["total"];
+                    }
+                }
+                if (fechaMostrar != "")
+                {
+                    chrInformacion.Series.Add(fechaMostrar).Points.AddXY(fechaMostrar, totalFecha);
+                }
             }
             else if (dias <= 365)
             {
@@ -207,6 +235,7 @@ namespace EC_Admin.Forms
             {
                 bgwBusqueda.RunWorkerAsync(new object[] { dtpFechaInicio.Value, dtpFechaFin.Value });
             }
+            tmrEspera.Enabled = true;
         }
 
         private void btnBuscarTrabajador_Click(object sender, EventArgs e)
@@ -219,6 +248,7 @@ namespace EC_Admin.Forms
             {
                 bgwBusqueda.RunWorkerAsync(new object[] { idVendedores[cboVendedor.SelectedIndex] });
             }
+            tmrEspera.Enabled = true;
         }
 
         private void frmReporteVentas_Load(object sender, EventArgs e)
