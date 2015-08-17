@@ -47,6 +47,10 @@
             this.chbSaldo = new System.Windows.Forms.CheckBox();
             this.lblSaldo = new System.Windows.Forms.Label();
             this.lblESaldo = new System.Windows.Forms.Label();
+            this.lblECargo = new System.Windows.Forms.Label();
+            this.lblCargo = new System.Windows.Forms.Label();
+            this.lblESubtotal = new System.Windows.Forms.Label();
+            this.lblSubtotal = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCobrar
@@ -74,11 +78,11 @@
             // 
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblTotal.Location = new System.Drawing.Point(72, 126);
+            this.lblTotal.Location = new System.Drawing.Point(101, 193);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(57, 24);
+            this.lblTotal.Size = new System.Drawing.Size(55, 23);
             this.lblTotal.TabIndex = 9;
             this.lblTotal.Text = "$0.00";
             // 
@@ -88,7 +92,7 @@
             this.lblETotal.AutoSize = true;
             this.lblETotal.Font = new System.Drawing.Font("Corbel", 15F);
             this.lblETotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblETotal.Location = new System.Drawing.Point(8, 126);
+            this.lblETotal.Location = new System.Drawing.Point(8, 193);
             this.lblETotal.Name = "lblETotal";
             this.lblETotal.Size = new System.Drawing.Size(58, 24);
             this.lblETotal.TabIndex = 8;
@@ -98,11 +102,11 @@
             // 
             this.txtEfectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEfectivo.Enabled = false;
-            this.txtEfectivo.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtEfectivo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEfectivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtEfectivo.Location = new System.Drawing.Point(279, 126);
             this.txtEfectivo.Name = "txtEfectivo";
-            this.txtEfectivo.Size = new System.Drawing.Size(91, 29);
+            this.txtEfectivo.Size = new System.Drawing.Size(91, 27);
             this.txtEfectivo.TabIndex = 11;
             this.txtEfectivo.Text = "0.00";
             this.txtEfectivo.Click += new System.EventHandler(this.txtEfectivo_Click);
@@ -148,11 +152,11 @@
             this.lblCambio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCambio.AutoSize = true;
             this.lblCambio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(210)))), ((int)(((byte)(50)))));
-            this.lblCambio.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
+            this.lblCambio.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCambio.ForeColor = System.Drawing.Color.White;
             this.lblCambio.Location = new System.Drawing.Point(463, 126);
             this.lblCambio.Name = "lblCambio";
-            this.lblCambio.Size = new System.Drawing.Size(57, 24);
+            this.lblCambio.Size = new System.Drawing.Size(55, 23);
             this.lblCambio.TabIndex = 13;
             this.lblCambio.Text = "$0.00";
             // 
@@ -199,11 +203,11 @@
             // 
             // txtDatos
             // 
-            this.txtDatos.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtDatos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtDatos.Location = new System.Drawing.Point(194, 82);
             this.txtDatos.Name = "txtDatos";
-            this.txtDatos.Size = new System.Drawing.Size(176, 29);
+            this.txtDatos.Size = new System.Drawing.Size(176, 27);
             this.txtDatos.TabIndex = 5;
             this.txtDatos.Visible = false;
             // 
@@ -233,11 +237,11 @@
             // 
             // txtPorcentajeImpuesto
             // 
-            this.txtPorcentajeImpuesto.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtPorcentajeImpuesto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPorcentajeImpuesto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtPorcentajeImpuesto.Location = new System.Drawing.Point(12, 82);
             this.txtPorcentajeImpuesto.Name = "txtPorcentajeImpuesto";
-            this.txtPorcentajeImpuesto.Size = new System.Drawing.Size(176, 29);
+            this.txtPorcentajeImpuesto.Size = new System.Drawing.Size(176, 27);
             this.txtPorcentajeImpuesto.TabIndex = 3;
             this.txtPorcentajeImpuesto.Text = "0";
             this.txtPorcentajeImpuesto.Visible = false;
@@ -258,11 +262,11 @@
             // 
             // txtFolioTerminal
             // 
-            this.txtFolioTerminal.Font = new System.Drawing.Font("Corbel", 13F);
+            this.txtFolioTerminal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFolioTerminal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtFolioTerminal.Location = new System.Drawing.Point(376, 82);
             this.txtFolioTerminal.Name = "txtFolioTerminal";
-            this.txtFolioTerminal.Size = new System.Drawing.Size(176, 29);
+            this.txtFolioTerminal.Size = new System.Drawing.Size(176, 27);
             this.txtFolioTerminal.TabIndex = 7;
             this.txtFolioTerminal.Visible = false;
             // 
@@ -282,11 +286,11 @@
             // 
             this.lblSaldo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
+            this.lblSaldo.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSaldo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblSaldo.Location = new System.Drawing.Point(77, 169);
+            this.lblSaldo.Location = new System.Drawing.Point(101, 236);
             this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(57, 24);
+            this.lblSaldo.Size = new System.Drawing.Size(55, 23);
             this.lblSaldo.TabIndex = 18;
             this.lblSaldo.Text = "$0.00";
             this.lblSaldo.Visible = false;
@@ -297,12 +301,60 @@
             this.lblESaldo.AutoSize = true;
             this.lblESaldo.Font = new System.Drawing.Font("Corbel", 15F);
             this.lblESaldo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblESaldo.Location = new System.Drawing.Point(8, 169);
+            this.lblESaldo.Location = new System.Drawing.Point(8, 236);
             this.lblESaldo.Name = "lblESaldo";
             this.lblESaldo.Size = new System.Drawing.Size(63, 24);
             this.lblESaldo.TabIndex = 17;
             this.lblESaldo.Text = "Saldo:";
             this.lblESaldo.Visible = false;
+            // 
+            // lblECargo
+            // 
+            this.lblECargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblECargo.AutoSize = true;
+            this.lblECargo.Font = new System.Drawing.Font("Corbel", 15F);
+            this.lblECargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblECargo.Location = new System.Drawing.Point(8, 160);
+            this.lblECargo.Name = "lblECargo";
+            this.lblECargo.Size = new System.Drawing.Size(66, 24);
+            this.lblECargo.TabIndex = 8;
+            this.lblECargo.Text = "Cargo:";
+            // 
+            // lblCargo
+            // 
+            this.lblCargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCargo.AutoSize = true;
+            this.lblCargo.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblCargo.Location = new System.Drawing.Point(101, 160);
+            this.lblCargo.Name = "lblCargo";
+            this.lblCargo.Size = new System.Drawing.Size(55, 23);
+            this.lblCargo.TabIndex = 9;
+            this.lblCargo.Text = "$0.00";
+            // 
+            // lblESubtotal
+            // 
+            this.lblESubtotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblESubtotal.AutoSize = true;
+            this.lblESubtotal.Font = new System.Drawing.Font("Corbel", 15F);
+            this.lblESubtotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblESubtotal.Location = new System.Drawing.Point(8, 126);
+            this.lblESubtotal.Name = "lblESubtotal";
+            this.lblESubtotal.Size = new System.Drawing.Size(87, 24);
+            this.lblESubtotal.TabIndex = 8;
+            this.lblESubtotal.Text = "Subtotal:";
+            // 
+            // lblSubtotal
+            // 
+            this.lblSubtotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSubtotal.AutoSize = true;
+            this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.lblSubtotal.Location = new System.Drawing.Point(101, 126);
+            this.lblSubtotal.Name = "lblSubtotal";
+            this.lblSubtotal.Size = new System.Drawing.Size(55, 23);
+            this.lblSubtotal.TabIndex = 9;
+            this.lblSubtotal.Text = "$0.00";
             // 
             // frmCobrar
             // 
@@ -327,6 +379,10 @@
             this.Controls.Add(this.btnCredito);
             this.Controls.Add(this.lblEEfectivo);
             this.Controls.Add(this.txtEfectivo);
+            this.Controls.Add(this.lblSubtotal);
+            this.Controls.Add(this.lblESubtotal);
+            this.Controls.Add(this.lblCargo);
+            this.Controls.Add(this.lblECargo);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblETotal);
             this.Controls.Add(this.btnCobrar);
@@ -362,5 +418,9 @@
         private System.Windows.Forms.CheckBox chbSaldo;
         private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.Label lblESaldo;
+        private System.Windows.Forms.Label lblECargo;
+        private System.Windows.Forms.Label lblCargo;
+        private System.Windows.Forms.Label lblESubtotal;
+        private System.Windows.Forms.Label lblSubtotal;
     }
 }

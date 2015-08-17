@@ -147,6 +147,7 @@ namespace EC_Admin.Forms
                 case 0:
                     lblEEfectivo.Enabled = true;
                     txtEfectivo.Enabled = true;
+                    lblESubtotal.Visible = lblSubtotal.Visible = lblECargo.Visible = lblCargo.Visible = false;
                     txtDatos.Visible = lblEDatos.Visible = txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = lblEFolioTerminal.Visible = txtFolioTerminal.Visible = false;
                     CalcularCambio();
                     t = TipoPago.Efectivo;
@@ -161,6 +162,7 @@ namespace EC_Admin.Forms
                 case 1:
                     QuitarEfectivo();
                     lblEDatos.Text = "Núm. de tarjeta";
+                    lblESubtotal.Visible = lblSubtotal.Visible = lblECargo.Visible = lblCargo.Visible = true;
                     txtDatos.Visible = lblEDatos.Visible = txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = lblEFolioTerminal.Visible = txtFolioTerminal.Visible = true;
                     txtPorcentajeImpuesto.Text = "0";
                     t = TipoPago.Crédito;
@@ -170,6 +172,7 @@ namespace EC_Admin.Forms
                 case 2:
                     QuitarEfectivo();
                     lblEDatos.Text = "Núm. de tarjeta";
+                    lblESubtotal.Visible = lblSubtotal.Visible = lblECargo.Visible = lblCargo.Visible = true;
                     txtDatos.Visible = lblEDatos.Visible = txtPorcentajeImpuesto.Visible = lblEPorcentajeImpuesto.Visible = lblEFolioTerminal.Visible = txtFolioTerminal.Visible = true;
                     txtPorcentajeImpuesto.Text = "0";
                     t = TipoPago.Débito;
@@ -267,14 +270,18 @@ namespace EC_Admin.Forms
 
         private void txtPorcentajeImpuesto_TextChanged(object sender, EventArgs e)
         {
+            decimal cargo = 0M;
             if (txtPorcentajeImpuesto.Text != "")
             {
-                totalPorcentaje = total + (total * (decimal.Parse(txtPorcentajeImpuesto.Text) / 100));
+                cargo = (total * (decimal.Parse(txtPorcentajeImpuesto.Text) / 100));
+                totalPorcentaje = total + cargo;
             }
             else
             {
                 totalPorcentaje = total;
             }
+            lblCargo.Text = cargo.ToString("C2");
+            lblSubtotal.Text = total.ToString("C2");
             lblTotal.Text = totalPorcentaje.ToString("C2");
         }
 
