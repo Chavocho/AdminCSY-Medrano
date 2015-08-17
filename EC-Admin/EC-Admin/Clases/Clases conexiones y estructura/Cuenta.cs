@@ -19,6 +19,8 @@ namespace EC_Admin
         private string numCuenta;
         private TipoCuenta tipoCuenta;
         private static int cant = -1;
+        private static int cantProv = -1;
+        private static int cantSuc = -1;
 
         public int ID
         {
@@ -80,6 +82,25 @@ namespace EC_Admin
             set { idSucursal = value; }
         }
 
+        public static int CantidadProv
+        {
+            get
+            {
+                if (cantProv < 0)
+                    CantProveedor();
+                return cantProv;
+            }
+        }
+
+        public static int CantidadSuc
+        {
+            get
+            {
+                if (cantSuc < 0)
+                    CantSucursal();
+                return cantSuc;
+            }
+        }
         
         
         #endregion
@@ -109,6 +130,53 @@ namespace EC_Admin
                 throw ex;
             }
         }
+
+        private static void CantProveedor()
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT COUNT(id) AS c FROM cuenta WHERE tipo=?tipo";
+                sql.Parameters.AddWithValue("?tipo", TipoCuenta.Proveedor);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    cantProv = int.Parse(dr["c"].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private static void CantSucursal()
+        {
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT COUNT(id) AS c FROM cuenta WHERE tipo=?tipo";
+                sql.Parameters.AddWithValue("?tipo", TipoCuenta.Sucursal);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    cantSuc = int.Parse(dr["c"].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         #endregion
 
         /// <summary>

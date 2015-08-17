@@ -540,7 +540,14 @@ namespace EC_Admin.Forms
 
         private void btnInfoPago_Click(object sender, EventArgs e)
         {
-            (new frmInfoPago(cboTipoPago.SelectedIndex,this)).ShowDialog();
+            if (Cuenta.Cantidad <= 0)
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No hay cuentas registradas", "Admin CSY");
+            else if (Cuenta.CantidadProv <= 0 && t == TipoPago.Transferencia)
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No hay cuentas de proveedores registradas", "Admin CSY");
+            else if (Cuenta.CantidadSuc <= 0 && t != TipoPago.Efectivo)
+                FuncionesGenerales.Mensaje(this, Mensajes.Alerta, "No hay cuentas de sucursales registradas", "Admin CSY");
+            else
+                (new frmInfoPago(cboTipoPago.SelectedIndex, this)).ShowDialog();
         }
 
         private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
