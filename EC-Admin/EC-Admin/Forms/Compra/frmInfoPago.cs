@@ -203,8 +203,11 @@ namespace EC_Admin.Forms
             dgvCuentas_RowEnter(dgvCuentas, new DataGridViewCellEventArgs(0, 0));
         }
 
-        
 
+        private void txtNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesGenerales.VerificarEsNumero(ref sender, ref e, false);
+        }
 
         private void frmInfoPago_Load(object sender, EventArgs e)
         {

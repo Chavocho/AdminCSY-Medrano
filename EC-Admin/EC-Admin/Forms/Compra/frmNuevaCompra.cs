@@ -249,7 +249,7 @@ namespace EC_Admin.Forms
                 cantTot += (int)dr.Cells[4].Value;
                 descuento += ((decimal)dr.Cells[5].Value);
             }
-            impuesto = subtotal * Config.iva;
+            impuesto = subtotal * Config.iva / 100;
             total = subtotal + impuesto - descuento;
 
             lblSubtotal.Text = subtotal.ToString("C2");
@@ -399,7 +399,15 @@ namespace EC_Admin.Forms
                     string[] datos = txtBusqueda.Text.Split(new char[] { '*' }, StringSplitOptions.RemoveEmptyEntries);
                     if (datos.Length > 1)
                     {
-                        BusquedaProducto(datos[1].ToString(), int.Parse(datos[0]));
+                        try
+                        {
+                            BusquedaProducto(datos[1].ToString(), int.Parse(datos[0]));
+                        }
+                        catch (FormatException)
+                        {
+                            FuncionesGenerales.Mensaje(this, Mensajes.Informativo, "Formato de multiplicador no válido", "Admin CSY");
+                        }
+                        
                     }
                     else
                     {

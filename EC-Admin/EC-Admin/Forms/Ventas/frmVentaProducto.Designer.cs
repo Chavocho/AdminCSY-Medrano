@@ -180,6 +180,8 @@
             // 
             // CCant
             // 
+            dataGridViewCellStyle4.Format = "0";
+            this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
             this.CCant.HeaderText = "Existencias";
             this.CCant.Name = "CCant";
             // 
@@ -243,47 +245,14 @@
             // 
             this.nudDescuento.Font = new System.Drawing.Font("Corbel", 11F);
             this.nudDescuento.Location = new System.Drawing.Point(141, 420);
+            this.nudDescuento.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
             this.nudDescuento.Name = "nudDescuento";
             this.nudDescuento.Size = new System.Drawing.Size(120, 25);
             this.nudDescuento.TabIndex = 8;
-            // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CNombre
-            // 
-            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CNombre.HeaderText = "Nombre";
-            this.CNombre.Name = "CNombre";
-            // 
-            // CCodigo
-            // 
-            this.CCodigo.HeaderText = "Cód. producto";
-            this.CCodigo.Name = "CCodigo";
-            this.CCodigo.Width = 125;
-            // 
-            // CPrecio
-            // 
-            dataGridViewCellStyle3.Format = "C2";
-            this.CPrecio.DefaultCellStyle = dataGridViewCellStyle3;
-            this.CPrecio.HeaderText = "Precio";
-            this.CPrecio.Name = "CPrecio";
-            // 
-            // CCant
-            // 
-            dataGridViewCellStyle4.Format = "0";
-            this.CCant.DefaultCellStyle = dataGridViewCellStyle4;
-            this.CCant.HeaderText = "Existencias";
-            this.CCant.Name = "CCant";
-            // 
-            // Unidad
-            // 
-            this.Unidad.HeaderText = "Unidad";
-            this.Unidad.Name = "Unidad";
-            this.Unidad.Visible = false;
             // 
             // frmVentaProducto
             // 
