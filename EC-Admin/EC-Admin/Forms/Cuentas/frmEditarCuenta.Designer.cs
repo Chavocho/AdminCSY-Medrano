@@ -147,9 +147,9 @@
             this.lblEClabe.AutoSize = true;
             this.lblEClabe.Location = new System.Drawing.Point(11, 10);
             this.lblEClabe.Name = "lblEClabe";
-            this.lblEClabe.Size = new System.Drawing.Size(41, 18);
+            this.lblEClabe.Size = new System.Drawing.Size(42, 18);
             this.lblEClabe.TabIndex = 0;
-            this.lblEClabe.Text = "Clave";
+            this.lblEClabe.Text = "Clabe";
             // 
             // cboTipoCuenta
             // 

@@ -165,7 +165,7 @@
             // 
             // CClabe
             // 
-            this.CClabe.HeaderText = "Clave";
+            this.CClabe.HeaderText = "Clabe";
             this.CClabe.Name = "CClabe";
             this.CClabe.Width = 130;
             // 

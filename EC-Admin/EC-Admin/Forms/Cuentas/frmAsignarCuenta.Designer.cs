@@ -33,16 +33,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvCuentas = new System.Windows.Forms.DataGridView();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
+            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CClabe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBeneficiario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNumCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.bgwBusqueda = new System.ComponentModel.BackgroundWorker();
-            this.tmrEspera = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuentas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,42 +102,6 @@
             this.dgvCuentas.TabIndex = 0;
             this.dgvCuentas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCuentas_RowEnter);
             // 
-            // CID
-            // 
-            this.CID.HeaderText = "ID";
-            this.CID.Name = "CID";
-            this.CID.Visible = false;
-            // 
-            // CClabe
-            // 
-            this.CClabe.HeaderText = "Clave";
-            this.CClabe.Name = "CClabe";
-            this.CClabe.Width = 130;
-            // 
-            // CBanco
-            // 
-            this.CBanco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CBanco.HeaderText = "Banco";
-            this.CBanco.Name = "CBanco";
-            // 
-            // CBeneficiario
-            // 
-            this.CBeneficiario.HeaderText = "Beneficiario";
-            this.CBeneficiario.Name = "CBeneficiario";
-            this.CBeneficiario.Width = 200;
-            // 
-            // CSucursal
-            // 
-            this.CSucursal.HeaderText = "Sucursal";
-            this.CSucursal.Name = "CSucursal";
-            this.CSucursal.Width = 150;
-            // 
-            // CNumCuenta
-            // 
-            this.CNumCuenta.HeaderText = "Núm. de Cuenta";
-            this.CNumCuenta.Name = "CNumCuenta";
-            this.CNumCuenta.Width = 130;
-            // 
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -189,6 +153,42 @@
             // 
             this.tmrEspera.Interval = 300;
             this.tmrEspera.Tick += new System.EventHandler(this.tmrEspera_Tick);
+            // 
+            // CID
+            // 
+            this.CID.HeaderText = "ID";
+            this.CID.Name = "CID";
+            this.CID.Visible = false;
+            // 
+            // CClabe
+            // 
+            this.CClabe.HeaderText = "Clabe";
+            this.CClabe.Name = "CClabe";
+            this.CClabe.Width = 130;
+            // 
+            // CBanco
+            // 
+            this.CBanco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CBanco.HeaderText = "Banco";
+            this.CBanco.Name = "CBanco";
+            // 
+            // CBeneficiario
+            // 
+            this.CBeneficiario.HeaderText = "Beneficiario";
+            this.CBeneficiario.Name = "CBeneficiario";
+            this.CBeneficiario.Width = 200;
+            // 
+            // CSucursal
+            // 
+            this.CSucursal.HeaderText = "Sucursal";
+            this.CSucursal.Name = "CSucursal";
+            this.CSucursal.Width = 150;
+            // 
+            // CNumCuenta
+            // 
+            this.CNumCuenta.HeaderText = "Núm. de Cuenta";
+            this.CNumCuenta.Name = "CNumCuenta";
+            this.CNumCuenta.Width = 130;
             // 
             // frmAsignarCuenta
             // 
