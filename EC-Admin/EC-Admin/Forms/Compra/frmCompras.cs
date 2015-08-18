@@ -150,7 +150,7 @@ namespace EC_Admin.Forms
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
-            if (!Privilegios._VisualizarCompra)
+            if (Privilegios._VisualizarCompra)
             {
                 if (dgvCompras.CurrentRow != null)
                 {

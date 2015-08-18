@@ -172,7 +172,7 @@ namespace EC_Admin.Forms
 
         private void btnDevoluciones_Click(object sender, EventArgs e)
         {
-            if (!Privilegios._DevolucionCompra)
+            if (Privilegios._DevolucionCompra)
             {
                 if (dgvCompras.CurrentRow != null)
                 {
