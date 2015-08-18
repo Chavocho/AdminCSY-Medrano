@@ -132,8 +132,26 @@ namespace EC_Admin
         {
             if (ConfiguracionXML.ExisteConfiguracion("sucursal"))
             {
-                Config.idSucursal = int.Parse(ConfiguracionXML.LeerConfiguración("sucursal", "id"));
-                Config.nombreSucursal = ConfiguracionXML.LeerConfiguración("sucursal", "nombre");
+                int idS = int.Parse(ConfiguracionXML.LeerConfiguración("sucursal", "id"));
+                if (Sucursal.ExisteSucursal(idS))
+                {
+                    Config.idSucursal = idS;
+                    Config.nombreSucursal = ConfiguracionXML.LeerConfiguración("sucursal", "nombre");
+                }
+                else
+                {
+                    DialogResult r = (DialogResult)Enum.Parse(typeof(DialogResult), this.Invoke(m, new object[] { this, Mensajes.Pregunta, "La sucursal que se encuentra actualmente asignada no existe, ¿deseas asignarla de nuevo?", "Admin CSY", null }).ToString());
+                    if (r == DialogResult.Yes)
+                    {
+                        this.Invoke((new Action(() => { (new Forms.frmAsignarSucursal(false)).ShowDialog(); })));
+                        ConfiguracionSucursal();
+                    }
+                    else
+                    {
+                        this.Invoke(m, new object[] { this, Mensajes.Informativo, "La aplicación se cerrará.", "Admin CSY", null });
+                        bgwCargando.CancelAsync();
+                    }
+                }
             }
             else
             {

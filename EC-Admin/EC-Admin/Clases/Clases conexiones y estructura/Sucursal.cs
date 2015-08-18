@@ -424,6 +424,31 @@ namespace EC_Admin
             return asignada;
         }
 
+        public static bool ExisteSucursal(int id)
+        {   
+            bool existe = false;
+            try
+            {
+                MySqlCommand sql = new MySqlCommand();
+                sql.CommandText = "SELECT id FROM sucursal WHERE id=?id";
+                sql.Parameters.AddWithValue("?id", id);
+                DataTable dt = ConexionBD.EjecutarConsultaSelect(sql);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    existe = true;
+                }
+            }
+            catch(MySqlException ex)
+            {
+                throw ex;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            return existe;
+        }
+
         #region Direcciones
         private int idDireccion;
         private string calleFiscal;

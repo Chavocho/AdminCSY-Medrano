@@ -306,10 +306,7 @@ namespace EC_Admin.Forms
                 throw ex;
             }
         }
-         /// <summary>
-         /// Método para buscar la compra detallada.
-         /// </summary>
-         /// <param name="id"></param>
+
         private void BuscarCompraDetallada(int id)
         {
             try
