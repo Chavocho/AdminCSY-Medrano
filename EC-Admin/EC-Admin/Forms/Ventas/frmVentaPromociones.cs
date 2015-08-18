@@ -92,6 +92,7 @@ namespace EC_Admin.Forms
                     foreach (DataRow dr in dt.Rows)
                     {
                         dgvProductos.Rows.Add(new object[] { dr["id"], dr["idP"], dr["codigo"], dr["nombre"], dr["precio"], dr["cant"], dr["cant_prod"], dr["unidad"] });
+                        Application.DoEvents();
                     }
                 }
                 else if (cboTipoPromocion.SelectedIndex == 1)
@@ -99,6 +100,7 @@ namespace EC_Admin.Forms
                     foreach (DataRow dr in dt.Rows)
                     {
                         dgvProductos.Rows.Add(new object[] { dr["id"], dr["idP"], dr["codigo"], dr["nombre"], dr["precio"], 0M, 0M, dr["unidad"] });
+                        Application.DoEvents();
                     }
                 }
             }

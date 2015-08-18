@@ -73,6 +73,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["codigo"], dr["precio"], dr["cant"], dr["unidad"] });
+                    Application.DoEvents();
                 }
                 dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
             }

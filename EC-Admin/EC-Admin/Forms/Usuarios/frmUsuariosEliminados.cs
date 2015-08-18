@@ -57,6 +57,7 @@ namespace EC_Admin.Forms
                         break;
                 }
                 dgvUsuarios.Rows.Add(dr["id"], dr["username"], dr["nombre"].ToString() + " " + dr["apellidos"].ToString(), dr["email"], nivel);
+                Application.DoEvents();
             }
             dgvUsuarios_RowEnter(dgvUsuarios, new DataGridViewCellEventArgs(0, 0));
         }

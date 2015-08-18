@@ -100,6 +100,7 @@ namespace EC_Admin.Forms
                     }
                     if ((total - totalDev) > 0)
                         dgvCompras.Rows.Add(new object[] { dr["id"], Cliente.NombreCliente((int)dr["id_proveedor"]), Trabajador.NombreTrabajador((int)dr["id_comprador"]), total - totalDev, tipoPago, dr["create_time"], totalDev });
+                    Application.DoEvents();
                 }
                 dgvCompras_RowEnter(dgvCompras, new DataGridViewCellEventArgs(0, 0));
             }

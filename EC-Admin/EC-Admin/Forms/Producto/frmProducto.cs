@@ -96,6 +96,7 @@ namespace EC_Admin.Forms
                     {
                         dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["descripcion1"], dr["codigo"], precio, cant });
                     }
+                    Application.DoEvents();
                 }
                 dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
                 txtBusqueda.Select();

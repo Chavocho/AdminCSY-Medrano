@@ -74,6 +74,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     dgvCategorias.Rows.Add(new object[] { dr["id"], dr["nombre"].ToString(), dr["descripcion"].ToString() });
+                    Application.DoEvents();
                 }
                 dgvCategorias_RowEnter(dgvCategorias, new DataGridViewCellEventArgs(0, 0));
             }

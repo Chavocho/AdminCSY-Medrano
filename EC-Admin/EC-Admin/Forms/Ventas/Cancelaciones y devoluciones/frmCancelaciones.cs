@@ -107,6 +107,7 @@ namespace EC_Admin.Forms
 
                     if ((total - totalDev) > 0)
                         dgvVentas.Rows.Add(new object[] { dr["id"],  Cliente.NombreCliente((int)dr["id_cliente"]), Trabajador.NombreTrabajador((int)dr["id_vendedor"]), total - totalDev, tipoPago, fecha, totalDev });
+                    Application.DoEvents();
                 }
                 dgvVentas_RowEnter(dgvVentas, new DataGridViewCellEventArgs(0, 0));
             }
@@ -255,6 +256,11 @@ namespace EC_Admin.Forms
                 if (dgvVentas.CurrentRow != null)
                 {
                     (new frmDevoluciones(id)).ShowDialog(this);
+                    if (txtBusqueda.Text != "")
+                        bgwBusqueda.RunWorkerAsync(new object[] { txtBusqueda.Text });
+                    else
+                        bgwBusqueda.RunWorkerAsync(new object[] { dtpFechaInicio.Value, dtpFechaFin.Value });
+                    tmrEspera.Enabled = true;
                 }
             }
             else

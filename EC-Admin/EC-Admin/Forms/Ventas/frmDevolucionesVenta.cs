@@ -56,6 +56,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     dgvDevoluciones.Rows.Add(new object[] { dr["id"], dr["saldo"], dr["create_time"] });
+                    Application.DoEvents();
                 }
                 dgvDevoluciones_RowEnter(dgvDevoluciones, new DataGridViewCellEventArgs(0, 0));
             }

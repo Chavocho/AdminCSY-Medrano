@@ -67,6 +67,7 @@ namespace EC_Admin.Forms
                     ultimoPago = fecha.ToString("dd") + " de " + fecha.ToString("MMMM") + " del " + fecha.ToString("yyyy") + ", " + fecha.ToString("hh:mm tt") + ", " + decimal.Parse(dr["pago"].ToString()).ToString("C2");
                 }
                 dgvPagos.Rows.Add(new object[] { dr["id"], dr["nombre"].ToString() + " " + dr["apellidos"].ToString(), dr["nomina"], dr["puesto"], dr["sueldo"], ultimoPago });
+                Application.DoEvents();
             }
         }
 

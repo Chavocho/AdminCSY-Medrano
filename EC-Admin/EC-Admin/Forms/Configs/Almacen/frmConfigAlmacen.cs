@@ -74,6 +74,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     dgvAlmacen.Rows.Add(new object[] { dr["id"], dr["nombre"].ToString() + " " + dr["apellidos"].ToString(), dr["num_alm"], dr["descripcion"].ToString() });
+                    Application.DoEvents();
                 }
                 dgvAlmacen_RowEnter(dgvAlmacen, new DataGridViewCellEventArgs(0, 0));
             }

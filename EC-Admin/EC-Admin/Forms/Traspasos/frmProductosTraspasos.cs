@@ -60,6 +60,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     dgvProductos.Rows.Add(dr["id"], dr["codigo"], dr["nombre"], dr["marca"], dr["descripcion"], dr["cant"]);
+                    Application.DoEvents();
                 }
             }
             catch (Exception ex)

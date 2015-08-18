@@ -75,6 +75,7 @@ namespace EC_Admin.Forms
                 if (dr["num_int"].ToString() != "")
                     dir += " Int. " + dr["num_int"].ToString();
                 dgvDomicilio.Rows.Add(new object[] { dr["id"], dir, dr["cp"], dr["colonia"], dr["ciudad"], dr["estado"] });
+                Application.DoEvents();
             }
             dgvDomicilio_RowEnter(dgvDomicilio, new DataGridViewCellEventArgs(0, 0));
         }

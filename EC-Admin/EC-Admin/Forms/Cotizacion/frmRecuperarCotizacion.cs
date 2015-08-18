@@ -82,6 +82,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     dgvCotizacion.Rows.Add(new object[] { dr["id"], dr["create_time"], dr["total"] });
+                    Application.DoEvents();
                 }
                 dgvCotizacion_RowEnter(dgvCotizacion, new DataGridViewCellEventArgs(0, 0));
             }

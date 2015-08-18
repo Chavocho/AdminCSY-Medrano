@@ -88,6 +88,7 @@ namespace EC_Admin.Forms
                 if (dr["numero_int"].ToString() != "")
                     direccion += " Int. " + dr["numero_int"].ToString();
                 dgvSucursal.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["rfc"], direccion, telefonos});
+                Application.DoEvents();
             }
             dgvSucursal_RowEnter(dgvSucursal, new DataGridViewCellEventArgs(0, 0));
         }

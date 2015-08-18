@@ -199,6 +199,7 @@ namespace EC_Admin.Forms
             foreach (DataRow dr in dt.Rows)
             {
                 dgvCuentas.Rows.Add(new object[] { dr["id"], (TipoCuenta)Enum.Parse(typeof(TipoCuenta),dr["tipo"].ToString()),dr["clabe"], dr["banco"], dr["beneficiario"], dr["sucursal"], dr["num_cuenta"] });
+                Application.DoEvents();
             }
             dgvCuentas_RowEnter(dgvCuentas, new DataGridViewCellEventArgs(0, 0));
         }

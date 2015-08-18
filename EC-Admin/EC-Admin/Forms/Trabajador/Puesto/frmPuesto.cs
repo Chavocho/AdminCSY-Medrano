@@ -55,6 +55,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     dgvPuestos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["departamento"] });
+                    Application.DoEvents();
                 }
                 dgvPuestos_RowEnter(dgvPuestos, new DataGridViewCellEventArgs(0, 0));
             }

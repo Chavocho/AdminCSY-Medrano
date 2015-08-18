@@ -165,6 +165,7 @@ namespace EC_Admin.Forms
                     tipoFolio = "Remisión";
                     folio = dr["id"].ToString();
                     dgvCompras.Rows.Add(new object[] { dr["id"], dr["id_comprador"], dr["id_proveedor"], dr["total"], tipoPago, dr["create_time"], tipoFolio, folio });
+                    Application.DoEvents();
                 }
                 dgvCompras_RowEnter(dgvCompras, new DataGridViewCellEventArgs(0, 0));
             }

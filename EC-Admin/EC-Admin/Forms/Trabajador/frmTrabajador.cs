@@ -91,6 +91,7 @@ namespace EC_Admin.Forms
                         correo = dr["email"].ToString();
                     }
                     dgvTrabajadores.Rows.Add(new object[] { dr["id"], dr["nombre"].ToString() + " " + dr["apellidos"].ToString(), dr["puesto"].ToString(), telefono, correo });
+                    Application.DoEvents();
                 }
                 dgvTrabajadores_RowEnter(dgvTrabajadores, new DataGridViewCellEventArgs(0, 0));
             }

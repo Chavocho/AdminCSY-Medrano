@@ -95,6 +95,7 @@ namespace EC_Admin.Forms
                             break;
                     }
                     dgvCategorias.Rows.Add(new object[] { dr["id"], dr["nombre"], estado, e, dr["c"], dr["create_time"] });
+                    Application.DoEvents();
                 }
                 dgvCategorias_RowEnter(dgvCategorias, new DataGridViewCellEventArgs(0, 0));
             }

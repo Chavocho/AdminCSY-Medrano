@@ -63,6 +63,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     dgvTraspasos.Rows.Add(dr["id"], dr["id_sucursal_solicito"], dr["id_sucursal_origen"], dr["id_sucursal_destino"], Sucursal.NombreSucursal((int)dr["id_sucursal_origen"]), Sucursal.NombreSucursal((int)dr["id_sucursal_destino"]), dr["descripcion"].ToString());
+                    Application.DoEvents();
                 }
             }
             catch (Exception ex)

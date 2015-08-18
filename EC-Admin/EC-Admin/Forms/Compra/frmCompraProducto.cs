@@ -77,6 +77,7 @@ namespace EC_Admin.Forms
                             break;
                     }
                     dgvProductos.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["codigo"], dr["costo"], dr["cant"], unidad });
+                    Application.DoEvents();
                 }
                 dgvProductos_RowEnter(dgvProductos, new DataGridViewCellEventArgs(0, 0));
             }

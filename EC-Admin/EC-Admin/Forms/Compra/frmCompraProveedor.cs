@@ -110,6 +110,7 @@ namespace EC_Admin.Forms
                         correo = dr["email"].ToString();
                     }
                     dgvProveedores.Rows.Add(new object[] { dr["id"], dr["nombre"], razonSocial, telefono, correo });
+                    Application.DoEvents();
                 }
                 dgvProveedores_RowEnter(dgvProveedores, new DataGridViewCellEventArgs(0, 0));
             }

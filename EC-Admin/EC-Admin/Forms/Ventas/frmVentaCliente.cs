@@ -124,6 +124,7 @@ namespace EC_Admin.Forms
                         correo = dr["email"].ToString();
                     }
                     dgvClientes.Rows.Add(new object[] { dr["id"], dr["nombre"], razonSocial, telefono, correo });
+                    Application.DoEvents();
                 }
             }
             catch (Exception ex)

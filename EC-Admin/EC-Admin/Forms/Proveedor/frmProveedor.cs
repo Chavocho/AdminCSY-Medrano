@@ -133,6 +133,7 @@ namespace EC_Admin.Forms
                 }
 
                 dgvProveedores.Rows.Add(new object[] { dr["id"], dr["nombre"], razonSocial, telefonos, correo });
+                Application.DoEvents();
             }
             dgvProveedores_RowEnter(dgvProveedores, new DataGridViewCellEventArgs(0, 0));
         }

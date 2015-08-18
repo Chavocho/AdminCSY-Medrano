@@ -79,6 +79,7 @@ namespace EC_Admin.Forms
                 foreach (DataRow dr in dt.Rows)
                 {
                     dgvCompras.Rows.Add(new object[] { dr["id"], dr["create_time"], Proveedor.NombreProveedor((int)dr["id_proveedor"]), Trabajador.NombreTrabajador((int)dr["id_comprador"]), dr["total"] });
+                    Application.DoEvents();
                 }
                 dgvCompras_RowEnter(dgvCompras, new DataGridViewCellEventArgs(0, 0));
             }

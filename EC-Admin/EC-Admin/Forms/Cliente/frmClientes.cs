@@ -135,6 +135,7 @@ namespace EC_Admin.Forms
                 {
                     dgvClientes.Rows.Add(new object[] { dr["id"], dr["nombre"], razonSocial, telefonos, correo });
                 }
+                Application.DoEvents();
             }
             dgvClientes_RowEnter(dgvClientes, new DataGridViewCellEventArgs(0, 0));
         }

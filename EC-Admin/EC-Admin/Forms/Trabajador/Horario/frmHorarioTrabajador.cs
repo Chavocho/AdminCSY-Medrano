@@ -125,6 +125,7 @@ namespace EC_Admin.Forms
                             dias = dias.Substring(0, dias.Length - 2);
                         }
                         dgvProductos.Rows.Add(new object[] { dr["tid"], existe, dr["nombre"].ToString() + " " + dr["apellidos"].ToString(), dias, horario });
+                        Application.DoEvents();
                     }
                     else
                     {

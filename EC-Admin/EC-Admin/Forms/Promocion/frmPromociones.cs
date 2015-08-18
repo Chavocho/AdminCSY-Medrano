@@ -98,6 +98,7 @@ namespace EC_Admin.Forms
                     foreach (DataRow dr in dt.Rows)
                     {
                         dgvPromociones.Rows.Add(new object[] { dr["id"], dr["nombre"], dr["fecha_ini"], dr["fecha_fin"], -1, -1, dr["precio"] });
+                        Application.DoEvents();
                     }
                 }
                 else if (cboTipoPromocion.SelectedIndex == 1)
