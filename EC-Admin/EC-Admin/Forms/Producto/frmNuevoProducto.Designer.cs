@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tcoPrincipal = new System.Windows.Forms.TabControl();
             this.tpaProducto = new System.Windows.Forms.TabPage();
@@ -165,7 +164,7 @@
             // 
             // btnQuitar03
             // 
-            this.btnQuitar03.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQuitar03.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnQuitar03.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.btnQuitar03.FlatAppearance.BorderSize = 0;
             this.btnQuitar03.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
@@ -173,7 +172,7 @@
             this.btnQuitar03.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar03.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar03.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar03.Location = new System.Drawing.Point(343, 497);
+            this.btnQuitar03.Location = new System.Drawing.Point(343, 500);
             this.btnQuitar03.Name = "btnQuitar03";
             this.btnQuitar03.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar03.TabIndex = 29;
@@ -184,7 +183,7 @@
             // 
             // btnQuitar02
             // 
-            this.btnQuitar02.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQuitar02.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnQuitar02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.btnQuitar02.FlatAppearance.BorderSize = 0;
             this.btnQuitar02.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
@@ -192,7 +191,7 @@
             this.btnQuitar02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar02.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar02.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar02.Location = new System.Drawing.Point(176, 498);
+            this.btnQuitar02.Location = new System.Drawing.Point(176, 500);
             this.btnQuitar02.Name = "btnQuitar02";
             this.btnQuitar02.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar02.TabIndex = 27;
@@ -203,10 +202,11 @@
             // 
             // lblInfoImagen03
             // 
+            this.lblInfoImagen03.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblInfoImagen03.AutoSize = true;
             this.lblInfoImagen03.Font = new System.Drawing.Font("Corbel", 9F);
             this.lblInfoImagen03.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblInfoImagen03.Location = new System.Drawing.Point(340, 474);
+            this.lblInfoImagen03.Location = new System.Drawing.Point(340, 483);
             this.lblInfoImagen03.Name = "lblInfoImagen03";
             this.lblInfoImagen03.Size = new System.Drawing.Size(141, 14);
             this.lblInfoImagen03.TabIndex = 28;
@@ -214,8 +214,9 @@
             // 
             // pcbImagen03
             // 
+            this.pcbImagen03.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pcbImagen03.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.pcbImagen03.Location = new System.Drawing.Point(343, 315);
+            this.pcbImagen03.Location = new System.Drawing.Point(343, 324);
             this.pcbImagen03.Name = "pcbImagen03";
             this.pcbImagen03.Size = new System.Drawing.Size(156, 156);
             this.pcbImagen03.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -225,10 +226,11 @@
             // 
             // lblInfoImagen02
             // 
+            this.lblInfoImagen02.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblInfoImagen02.AutoSize = true;
             this.lblInfoImagen02.Font = new System.Drawing.Font("Corbel", 9F);
             this.lblInfoImagen02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblInfoImagen02.Location = new System.Drawing.Point(173, 474);
+            this.lblInfoImagen02.Location = new System.Drawing.Point(173, 483);
             this.lblInfoImagen02.Name = "lblInfoImagen02";
             this.lblInfoImagen02.Size = new System.Drawing.Size(141, 14);
             this.lblInfoImagen02.TabIndex = 26;
@@ -236,8 +238,9 @@
             // 
             // pcbImagen02
             // 
+            this.pcbImagen02.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pcbImagen02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.pcbImagen02.Location = new System.Drawing.Point(176, 315);
+            this.pcbImagen02.Location = new System.Drawing.Point(176, 324);
             this.pcbImagen02.Name = "pcbImagen02";
             this.pcbImagen02.Size = new System.Drawing.Size(156, 156);
             this.pcbImagen02.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -289,7 +292,7 @@
             // 
             // btnQuitar01
             // 
-            this.btnQuitar01.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQuitar01.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnQuitar01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.btnQuitar01.FlatAppearance.BorderSize = 0;
             this.btnQuitar01.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
@@ -297,7 +300,7 @@
             this.btnQuitar01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar01.Font = new System.Drawing.Font("Corbel", 9F);
             this.btnQuitar01.ForeColor = System.Drawing.Color.White;
-            this.btnQuitar01.Location = new System.Drawing.Point(9, 498);
+            this.btnQuitar01.Location = new System.Drawing.Point(9, 500);
             this.btnQuitar01.Name = "btnQuitar01";
             this.btnQuitar01.Size = new System.Drawing.Size(97, 30);
             this.btnQuitar01.TabIndex = 25;
@@ -308,10 +311,11 @@
             // 
             // lblInfoImagen01
             // 
+            this.lblInfoImagen01.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblInfoImagen01.AutoSize = true;
             this.lblInfoImagen01.Font = new System.Drawing.Font("Corbel", 9F);
             this.lblInfoImagen01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.lblInfoImagen01.Location = new System.Drawing.Point(6, 474);
+            this.lblInfoImagen01.Location = new System.Drawing.Point(6, 483);
             this.lblInfoImagen01.Name = "lblInfoImagen01";
             this.lblInfoImagen01.Size = new System.Drawing.Size(141, 14);
             this.lblInfoImagen01.TabIndex = 24;
@@ -319,8 +323,9 @@
             // 
             // pcbImagen01
             // 
+            this.pcbImagen01.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pcbImagen01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.pcbImagen01.Location = new System.Drawing.Point(9, 315);
+            this.pcbImagen01.Location = new System.Drawing.Point(9, 324);
             this.pcbImagen01.Name = "pcbImagen01";
             this.pcbImagen01.Size = new System.Drawing.Size(156, 156);
             this.pcbImagen01.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -740,7 +745,7 @@
             this.dgvPaquetes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -755,7 +760,7 @@
             this.CEdito});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Corbel", 11F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -767,14 +772,6 @@
             this.dgvPaquetes.MultiSelect = false;
             this.dgvPaquetes.Name = "dgvPaquetes";
             this.dgvPaquetes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaquetes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPaquetes.RowHeadersVisible = false;
             this.dgvPaquetes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPaquetes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

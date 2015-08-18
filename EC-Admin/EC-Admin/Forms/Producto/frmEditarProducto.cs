@@ -163,15 +163,25 @@ namespace EC_Admin.Forms
                 p.Codigo = txtCodigo.Text;
                 p.Descripcion01 = txtDescripcion01.Text;
                 p.Costo = costo;
-                i.Precio = precio;
-                i.Cantidad = cant;
-                i.PrecioMedioMayoreo = precioMedioMayoreo;
-                i.PrecioMayoreo = precioMayoreo;
                 p.Unidad = u;
                 p.Imagen01 = pcbImagen01.Image;
                 p.Imagen02 = pcbImagen02.Image;
                 p.Imagen03 = pcbImagen03.Image;
                 p.Editar();
+
+                
+                i.Cantidad = cant;
+                i.Precio = precio;
+                i.PrecioMedioMayoreo = precioMedioMayoreo;
+                i.PrecioMayoreo = precioMayoreo;
+                if (i.ID > 0)
+                {
+                    i.Editar();
+                }
+                else
+                {
+                    i.Insertar();
+                }
             }
             catch (MySqlException ex)
             {
